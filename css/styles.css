@@ -1,0 +1,85 @@
+* {
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+h1, h2 {
+	color: #fff;
+}
+
+body {
+	background: #ccc;
+	text-align: center;
+}
+
+.contenedor {
+	width: 500px;
+	/*height: 600px;*/
+	background: #101B6F;
+	display: inline-block;
+	margin: 300px auto;
+	border-radius: 10px;
+	box-shadow: 3px 3px 15px;
+}
+
+.contenedor_reg {
+	width: 500px;
+	/*height: 600px;*/
+	background: #101B6F;
+	display: inline-block;
+	margin: 220px auto;
+	border-radius: 10px;
+	box-shadow: 3px 3px 15px;
+}
+
+.formulario {
+	text-align: center;
+	margin-top: 20px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="submit"],
+input[type="email"] {
+	display: inline-block;
+	width: 400px;
+	height: 40px;
+	margin: 20px auto;
+	padding: 10px;
+	border: none;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="submit"]:focus,
+input[type="email"]:focus {
+	border: 3px solid #6EE2E6;
+}
+
+input[type="submit"] {
+	width: 200px;
+	background: #FFFFFF;
+	border: none;
+	font-weight: bold;
+	letter-spacing: 2px;
+	word-spacing: 5px;
+	margin-bottom: 40px;
+	border-radius: 10px;
+}
+
+input[type="submit"]:hover {
+	background: #9BD7ED;
+}
+
+.error {
+	width: 400px;
+	background: #F2ADAD;
+	display: inline-block;
+	color: #F23131;
+	border-radius: 5px;
+	text-align: left;
+	padding: 5px 20px;
+}

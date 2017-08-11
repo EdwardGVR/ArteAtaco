@@ -11,26 +11,34 @@ h1, h2 {
 }
 
 body {
-	background: #ccc;
+	/*background: #ccc;*/
 	text-align: center;
+	background-image: url(../images/background/fondo_arteataco.jpg);
 }
 
 .contenedor {
 	width: 500px;
-	/*height: 600px;*/
+	height: 270px;
 	background: #101B6F;
 	display: inline-block;
-	margin: 300px auto;
+	position: absolute;
+	top: 50%;
+	left: 10%;
+	
+	margin-top: -140px;
 	border-radius: 10px;
 	box-shadow: 3px 3px 15px;
 }
 
 .contenedor_reg {
 	width: 500px;
-	/*height: 600px;*/
+	height: 430px;
+	position: absolute;
+	top: 25%;
+	left: 10%;
 	background: #101B6F;
 	display: inline-block;
-	margin: 220px auto;
+	/*margin: 220px auto;*/
 	border-radius: 10px;
 	box-shadow: 3px 3px 15px;
 }
@@ -50,6 +58,7 @@ input[type="email"] {
 	margin: 20px auto;
 	padding: 10px;
 	border: none;
+	border-radius: 7px;
 }
 
 input[type="text"]:focus,
@@ -82,4 +91,32 @@ input[type="submit"]:hover {
 	border-radius: 5px;
 	text-align: left;
 	padding: 5px 20px;
+}
+
+.msg_form {
+	background: #FFFFFF;
+	line-height: 30px;
+	width: 300px;
+	margin: 20px auto;
+	border: 2px solid #000;
+	border-radius: 10px;
+	box-shadow: 3px 3px 15px;
+}
+
+#nequi_login {
+	position: absolute;
+	top: 20%;
+	left: 50%;
+}
+
+.info_login {
+	display: inline-block;
+	width: 400px;
+	padding: 10px;
+	border-radius: 10px;
+	background: #8FEAF8;
+	float: right;
+	position: absolute;
+	top: 35%; 
+	left: 60%;
 }

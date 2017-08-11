@@ -22,7 +22,8 @@
 
 			<input type="submit" name="submit" value="Registrarse">
 		</form>
+
+		<p class="msg_form">Ya tienes cuenta? <a href="login.php">Inicia Sesión</a></p>
 	</div>
-	<p>Ya tienes cuenta? <a href="login.php">Inicia Sesión</a></p>
 </body>
 </html>

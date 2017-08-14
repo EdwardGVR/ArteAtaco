@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$logged = $query->fetch();
 		$_SESSION['user'] = $logged['user'];
 		//print_r($logged);
-		header('Location: index.php');
+		header('Location: categorias.php');
 	} else {
 		$errores .= '<li>Datos Incorrectos</li>';
 	}

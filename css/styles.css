@@ -109,6 +109,7 @@ input[type="submit"]:hover {
 
 #nequi_login {
 	position: absolute;
+	width: 150px;
 	top: 20%;
 	left: 50%;
 }
@@ -122,16 +123,19 @@ input[type="submit"]:hover {
 	float: right;
 	position: absolute;
 	top: 35%; 
-	left: 60%;
+	left: 58%;
 }
 
 .bar {
 	height: 50px;
+	width: 100%;
+	z-index: 10;
 	background: #000CFF;
 	color: #fff;
 	text-align: right;
 	padding-right: 20px;
 	box-shadow: 0 5px 10px #000;
+	position: fixed;
 }
 
 .bar img {
@@ -142,6 +146,10 @@ input[type="submit"]:hover {
 	border-radius: 5px;
 }
 
+.bar img:hover {
+	background: #000;
+}
+
 .bar h1 {
 	border: 2px solid #fff;
 	border-radius: 5px;
@@ -150,7 +158,44 @@ input[type="submit"]:hover {
 	font-size: 20px;
 	margin: 5px auto;
 	padding: 5px;
+	cursor: pointer;
+	text-transform: capitalize;
 }
+
+.dropmenu {
+	position: relative;
+	display: inline-block;
+}
+
+.drop-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    top: 45px;
+    border-radius: 5px;
+}
+
+.drop-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border-bottom: 2px solid #000;
+    border-radius: 5px;
+}
+
+.drop-content a:hover {
+	background-color: #B0DFE3;
+}
+
+.dropmenu:hover .drop-content {
+    display: block;
+}
+
 
 .bar h1:hover {
 	background: #FFFFFF;
@@ -158,8 +203,9 @@ input[type="submit"]:hover {
 	border: 2px solid #000;
 }
 
-.contenedor_cat {
-	max-width: 60%;
+.contenedor_cat,
+.contenedor_prod {
+	max-width: 70%;
 	background: #FFFFFF;
 	display: inline-block;
 	margin: 100px auto;
@@ -167,7 +213,7 @@ input[type="submit"]:hover {
 	box-shadow: 0 0 50px #000;
 }
 
-.categoria {
+/*.categoria {
 	width: 220px;
 	height: 250px;
 	background: #DAD8D8;
@@ -195,7 +241,7 @@ input[type="submit"]:hover {
 
 .categoria h2:hover {
 	background: #82C4D0;
-}
+}*/
 
 
 
@@ -205,6 +251,7 @@ input[type="submit"]:hover {
 .contenedor_tarjeta {
 	margin: 20px;
 	display: inline-block;
+	width: 30%;
 }
 
 .contenedor_tarjeta:hover figure {
@@ -222,20 +269,20 @@ input[type="submit"]:hover {
 }
 
 figure {
-	width: 300px;
+	/*width: 300px;*/
 	height: 350px;
 	margin: 0;
 	position: relative;
 	transition: all ease .5s;
 	transform-style: preserve-3d; 
-	transform: perspective(600px) rotateY(0deg);
+	transform: perspective(2000px) rotateY(0deg);
 }
 
 figure .frontal,
 figure .trasera {
 	width: 100%;
 	height: 100%;
-	border-radius: 5px;
+	border-radius: 10px;
 	transition: all ease .5s;
 }
 
@@ -249,7 +296,7 @@ figure .trasera {
 	top: 0;
 	padding: 20px;
 	color: #fff;
-	transform: perspective(600px) rotateY(180deg);
+	transform: perspective(2000px) rotateY(180deg);
 	backface-visibility: hidden;
 	overflow: auto;
 
@@ -278,9 +325,42 @@ figure .trasera hr {
 figure .trasera p {
 	font-family: sans-serif;
 	line-height: 22px;
-	font-size: 14px;
+	font-size: 1em;
+	/*margin-bottom: 20px;*/
+}
+
+figure .trasera a {
+	color: #000;
+	border: 2px solid #000;
+	border-radius: 10px;
+	width: 200px;
+	background: #FFFFFF;
+	padding: 10px;
+	display: inline-block;
+	margin-top: 40px;
+}
+
+figure .trasera a:hover {
+	background: #82C4D0;
 }
 
 figure img {
-	background: #9DEDEC;
+	background: #8BB0C5;
+}
+
+
+.producto {
+	background: #CBF1FB;
+	display: inline-block;
+	margin: 30px;
+	box-shadow: 0 0 15px #000;
+	width: 25%;
+}
+
+.producto h2 {
+	color: #000;
+}
+
+.producto img {
+	width: 100%;
 }

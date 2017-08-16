@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Productos</title>
+	<title><?php echo $categoria['nombre_cat'] ?></title>
 	<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -32,6 +32,10 @@
 				<div class="producto">
 					<img src="<?php echo $producto['imagen'] ?>" alt="">
 					<a href="#"><h2><?php echo $producto['nombre'] ?></h2></a>
+					<div class="prod_options">
+						<a class="detalles" href="#">Detalles</a>
+						<a class="carrito" href="#">Carrito</a>
+					</div>
 				</div>
 			<?php endforeach ?>
 		<?php else: ?>

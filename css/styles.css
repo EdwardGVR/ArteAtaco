@@ -21,14 +21,13 @@ body {
 }
 
 .contenedor {
-	width: 500px;
-	height: 270px;
+	width: 450px;
+	/*height: 270px;*/
 	background: #101B6F;
 	display: inline-block;
 	position: absolute;
-	top: 50%;
+	top: 45%;
 	left: 10%;
-	
 	margin-top: -140px;
 	border-radius: 10px;
 	box-shadow: 3px 3px 15px;
@@ -79,11 +78,24 @@ input[type="submit"] {
 	font-weight: bold;
 	letter-spacing: 2px;
 	word-spacing: 5px;
+	margin-top: 30px;
 	margin-bottom: 40px;
 	border-radius: 10px;
+	box-shadow: 3px 3px 10px #000;
 }
 
 input[type="submit"]:hover {
+	background: #9BD7ED;
+}
+
+a.login {
+	border: 2px solid #000;
+	border-radius: 7px;
+	padding: 2px;
+	background: #ABF6C4;
+}
+
+a.login:hover {
 	background: #9BD7ED;
 }
 
@@ -99,7 +111,7 @@ input[type="submit"]:hover {
 
 .msg_form {
 	background: #FFFFFF;
-	line-height: 30px;
+	line-height: 40px;
 	width: 300px;
 	margin: 20px auto;
 	border: 2px solid #000;
@@ -119,11 +131,19 @@ input[type="submit"]:hover {
 	width: 400px;
 	padding: 10px;
 	border-radius: 10px;
-	background: #8FEAF8;
+	/*background: #8FEAF8;*/
 	float: right;
 	position: absolute;
 	top: 35%; 
 	left: 58%;
+}
+
+.info_login p {
+	background: #AEEDF4;
+	margin-bottom: 50px;
+	border-radius: 10px;
+	box-shadow: 3px 3px 15px;
+	padding: 10px;
 }
 
 .bar {
@@ -331,7 +351,7 @@ figure .trasera p {
 
 figure .trasera a {
 	color: #000;
-	border: 2px solid #000;
+	border: 2px solid #fff;
 	border-radius: 10px;
 	width: 200px;
 	background: #FFFFFF;
@@ -363,4 +383,34 @@ figure img {
 
 .producto img {
 	width: 100%;
+}
+
+.prod_options {
+	width: 100%;
+}
+
+.prod_options a {
+	width: 50%;
+	float: left;
+	line-height: 30px;
+}
+
+.prod_options a.detalles {
+	background: #AFE4A1;
+}
+
+.prod_options a.detalles:hover {
+	background: #3B7B2A;
+	color: #fff;
+	box-shadow: 0 0 15px #000;
+}
+
+.prod_options a.carrito {
+	background: #ECD494;
+}
+
+.prod_options a.carrito:hover {
+	background: #989302;
+	color: #fff;
+	box-shadow: 0 0 15px #000;
 }

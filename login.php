@@ -23,17 +23,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if (!$conexion) {
 		header('Location: error.php');
 	}
-	$login = login_verification($conexion, $user, $password);
 
-	if ($login != false) {
-		$query = $conexion->prepare("SELECT user FROM usuarios WHERE user = :user OR email = :user");
-		$query->execute(array(':user' => $user));
-		$logged = $query->fetch();
-		$_SESSION['user'] = $logged['user'];
-		//print_r($logged);
-		header('Location: categorias.php');
-	} else {
-		$errores .= '<li>Datos Incorrectos</li>';
+	if (empty($errores)) {
+		$login = login_verification($conexion, $user, $password);
+
+		if ($login != false) {
+			$query = $conexion->prepare("SELECT user FROM usuarios WHERE user = :user OR email = :user");
+			$query->execute(array(':user' => $user));
+			$logged = $query->fetch();
+			$_SESSION['user'] = $logged['user'];
+			//print_r($logged);
+			header('Location: categorias.php');
+		} else {
+			$errores .= '<li>Datos Incorrectos</li>';
+		}
 	}
 }
 

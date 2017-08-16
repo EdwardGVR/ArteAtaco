@@ -21,7 +21,7 @@
 			<input type="submit" name="submit" value="Iniciar Sesion">
 		</form>
 
-		<p class="msg_form">No tienes cuenta? <a href="register.php">Registrate</a></p>
+		<p class="msg_form">No tienes cuenta? <a class="login" href="register.php">Registrate</a></p>
 	</div>
 
 	<section>
@@ -29,8 +29,7 @@
 
 		<div class="info_login">
 			<p>Al iniciar sesi&oacute;n podr&aacute;s disfrutar de descuentos exculsivos en todos los productos, adem&aacute;s ser&aacute;s capaz de guardar tu informaci&oacute;n de env&iacute;o para facilitar futuras compras, recibir atenci&oacute;n personalizada con prioridad, entre otros beneficios...</p>
-			<p>De lo contrario, puedes ingresar como invitado.</p>
-			<a href="categorias.php">Entrar como invitado</a>
+			<p>De lo contrario, puedes <a class="login" href="categorias.php">Entrar como invitado</a>.</p>
 		</div>
 	</section>
 </body>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title><?php echo $categoria['nombre_cat'] ?></title>
+	<title>Detalles ...</title>
 	<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -26,21 +26,8 @@
 		</div>
 	</header>
 
-	<div class="contenedor_prod">
-		<?php if ($productos != false): ?>
-			<?php foreach ($productos as $producto): ?>
-				<div class="producto">
-					<img src="<?php echo $producto['imagen'] ?>" alt="">
-					<h2><?php echo $producto['nombre'] ?></h2>
-					<div class="prod_options">
-						<a class="detalles" href="detalles.php?id_prod=<?php echo $producto['id'] ?>">Detalles</a>
-						<a class="carrito" href="#">Carrito</a>
-					</div>
-				</div>
-			<?php endforeach ?>
-		<?php else: ?>
-			<p>Actualmente no hay productos disponibles en esta categoria.</p>
-		<?php endif ?>
+	<div class="contenedor_detalles">
+		asdf
 	</div>
 
 </body>

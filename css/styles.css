@@ -224,8 +224,9 @@ a.login:hover {
 }
 
 .contenedor_cat,
-.contenedor_prod {
-	max-width: 70%;
+.contenedor_prod,
+.contenedor_detalles {
+	width: 70%;
 	background: #FFFFFF;
 	display: inline-block;
 	margin: 100px auto;
@@ -406,11 +407,11 @@ figure img {
 }
 
 .prod_options a.carrito {
-	background: #ECD494;
+	background: #F8F79B;
 }
 
 .prod_options a.carrito:hover {
-	background: #989302;
+	background: #D9BB13;
 	color: #fff;
 	box-shadow: 0 0 15px #000;
 }

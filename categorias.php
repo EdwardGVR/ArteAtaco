@@ -1,4 +1,8 @@
-<?php session_start();
+<?php
+
+if (!isset($_SESSION['user'])) {
+	session_start();
+}
 
 require 'functions.php';
 

@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Registrate</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
 	<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -22,8 +23,7 @@
 
 			<input type="submit" name="submit" value="Registrarse">
 		</form>
-
-		<p class="msg_form">Ya tienes cuenta? <a href="login.php">Inicia Sesión</a></p>
+		<p class="msg_form">Ya tienes cuenta? <a class="reg" href="login.php">Inicia Sesión</a></p>
 	</div>
 </body>
 </html>

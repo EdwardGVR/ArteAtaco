@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Detalles ...</title>
+	<title>Detalles :: <?php echo $detalles['nombre'] ?></title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
 	<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -27,7 +28,24 @@
 	</header>
 
 	<div class="contenedor_detalles">
-		asdf
+		<?php if ($detalles != false): ?>
+			<div class="detalles-prod">
+				<div class="detalles-prod-img">
+					<img src="<?php echo $detalles['imagen'] ?>" alt="">
+				</div>
+				<div class="detalles-prod-info">
+					<h2 class="item">Producto: <?php echo $detalles['nombre'] ?></h2>
+					<hr>
+					<a href="#" class="comprar">opci&oacute;n 1</a>
+					<a href="#" class="carrito-prod">opci&oacute;n 2</a>
+					<h2 class="precio">Precio:</br> <?php echo '$'.$detalles['precio'] ?></h2>
+					<h2 class="descripcion">Descripci&oacute;n:</br> <?php echo $detalles['descripcion'] ?></h2>
+					<h2 class="stock">Disponibles:</br> <?php echo $detalles['stock'] . ' unidades' ?></h2>
+				</div>
+			</div>
+		<?php else: ?>
+			<h3>No se ha encontrado el producto.</h3>
+		<?php endif ?>
 	</div>
 
 </body>

@@ -1,9 +1,5 @@
-<?php session_start();
+<?php
 
-if (isset($_SESSION['user'])) {
 	require 'categorias.php';
-} else {
-	header('Location: login.php');
-}
 
 ?>

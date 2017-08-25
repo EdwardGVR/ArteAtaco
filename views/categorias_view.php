@@ -25,6 +25,7 @@
 				<?php endif ?>
 			</div>
 		</div>
+		<div class="bar_hidden"></div>
 	</header>
 	
 	<div class="contenedor_cat">

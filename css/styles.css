@@ -178,6 +178,12 @@ a.reg:hover {
 	border-radius: 5px;
 }
 
+.bar_hidden {
+	display: inline-block;
+	height: 40px;
+	margin-bottom: 100px;
+}
+
 .bar img:hover {
 	background: #000;
 }
@@ -235,7 +241,6 @@ a.reg:hover {
 	border: 2px solid #000;
 }
 
-.contenedor_cat,
 .contenedor_prod,
 .contenedor_detalles {
 	width: 70%;
@@ -246,45 +251,24 @@ a.reg:hover {
 	box-shadow: 0 0 50px #000;
 }
 
-/*.categoria {
-	width: 220px;
-	height: 250px;
-	background: #DAD8D8;
-	margin: 30px;
-	border-radius: 10px;
-	float: left;
-	box-shadow: 0 0 15px #000;
+.contenedor_cat {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: auto 15%;
+	margin-bottom: 50px;
+	/*width: 70%;*/
+	padding: 20px;
+	background: #fff;
+	box-shadow: 0 0 50px #000;
 }
-
-.categoria img {
-	display: inline-block;
-	width: 200px;
-	height: 200px;
-}
-
-.categoria h2 {
-	color: #000;
-	margin-top: 5px;
-	border: 2px solid #000;
-	border-radius: 10px;
-	width: 200px;
-	margin: 5px auto;
-	background: #FFFFFF;
-}
-
-.categoria h2:hover {
-	background: #82C4D0;
-}*/
-
-
-
-
-
 
 .contenedor_tarjeta {
-	margin: 20px;
-	display: inline-block;
-	width: 30%;
+	margin: 20px auto;
+	max-width: 350px;
+	height: 350px;
+	/*display: inline-block;*/
+	/*width: 30%;*/
 }
 
 .contenedor_tarjeta:hover figure {

@@ -243,10 +243,9 @@ a.reg:hover {
 
 .contenedor_prod,
 .contenedor_detalles {
-	width: 70%;
 	background: #FFFFFF;
 	display: inline-block;
-	margin: 100px auto;
+	margin: 100px 100px;
 	padding: 10px;
 	box-shadow: 0 0 50px #000;
 }
@@ -267,8 +266,6 @@ a.reg:hover {
 	margin: 20px auto;
 	max-width: 350px;
 	height: 350px;
-	/*display: inline-block;*/
-	/*width: 30%;*/
 }
 
 .contenedor_tarjeta:hover figure {

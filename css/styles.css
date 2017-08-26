@@ -168,11 +168,13 @@ a.reg:hover {
 	padding-right: 20px;
 	box-shadow: 0 5px 10px #000;
 	position: fixed;
+	display: flex;
+	justify-content: space-between;
 }
 
 .bar img {
 	height: 40px;
-	float: left;
+	/*float: left;*/
 	margin: 5px 20px;
 	border: 2px solid #fff;
 	border-radius: 5px;
@@ -191,7 +193,7 @@ a.reg:hover {
 .bar h1 {
 	border: 2px solid #fff;
 	border-radius: 5px;
-	display: inline-block;
+	/*display: inline-block;*/
 	width: auto;
 	font-size: 20px;
 	margin: 5px auto;
@@ -253,19 +255,26 @@ a.reg:hover {
 .contenedor_cat {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: center;
-	margin: auto 15%;
+	justify-content: space-between;
+	margin: auto 10%;
 	margin-bottom: 50px;
 	/*width: 70%;*/
-	padding: 20px;
+	padding: 1%;
+	padding-top: 2%;
 	background: #fff;
 	box-shadow: 0 0 50px #000;
 }
 
 .contenedor_tarjeta {
-	margin: 20px auto;
-	max-width: 350px;
-	height: 350px;
+	margin: 1%;
+	margin-bottom: 50px;
+	max-width: 300px;
+	height: 300px;
+}
+
+.contenedor_tarjeta:nth-child(7) {
+	margin: auto;
+	margin-bottom: 50px;
 }
 
 .contenedor_tarjeta:hover figure {
@@ -284,12 +293,13 @@ a.reg:hover {
 
 figure {
 	/*width: 300px;*/
-	height: 350px;
+	height: 300px;
 	margin: 0;
 	position: relative;
 	transition: all ease .5s;
 	transform-style: preserve-3d; 
 	transform: perspective(2000px) rotateY(0deg);
+	font-size: 0.9em;
 }
 
 figure .frontal,
@@ -315,9 +325,8 @@ figure .trasera {
 	overflow: auto;
 
 	background: #000428;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #004e92, #000428);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #004e92, #000428); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+             background: -webkit-linear-gradient(to right, #004e92, #000428);  /* Chrome 10-25, Safari 5.1-6 */
+             background: linear-gradient(to right, #004e92, #000428); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 figure .trasera .titulo {

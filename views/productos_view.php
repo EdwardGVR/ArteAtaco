@@ -25,6 +25,7 @@
 						<?php endif ?>
 				</div>
 		</div>
+		<div class="bar_hidden"></div>
 	</header>
 
 	<div class="contenedor_prod">
@@ -44,5 +45,6 @@
 		<?php endif ?>
 	</div>
 
+	<?php require 'footer.php' ?>
 </body>
 </html>

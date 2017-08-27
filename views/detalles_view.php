@@ -32,6 +32,12 @@
 		<?php if ($detalles != false): ?>
 			<div class="detalles-prod">
 				<div class="detalles-prod-img">
+					<div class="mini-img">
+						<img src="http://lorempixel.com/25/25" alt="">
+						<img src="http://lorempixel.com/25/25/cats" alt="">
+						<img src="http://lorempixel.com/25/25/sports" alt="">
+						<img src="http://lorempixel.com/25/25/city" alt="">
+					</div>
 					<img src="<?php echo $detalles['imagen'] ?>" alt="">
 				</div>
 				<div class="detalles-prod-info">
@@ -48,7 +54,5 @@
 			<h3>No se ha encontrado el producto.</h3>
 		<?php endif ?>
 	</div>
-
-	<?php require 'footer.php' ?>
 </body>
 </html>

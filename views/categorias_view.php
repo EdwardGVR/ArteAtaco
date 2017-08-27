@@ -45,7 +45,5 @@
 			</div>
 		<?php endforeach ?>
 	</div>
-	
-	<?php require 'footer.php' ?>
 </body>
 </html>

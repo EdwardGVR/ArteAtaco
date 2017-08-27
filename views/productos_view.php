@@ -44,7 +44,5 @@
 			<p>Actualmente no hay productos disponibles en esta categoria.</p>
 		<?php endif ?>
 	</div>
-
-	<?php require 'footer.php' ?>
 </body>
 </html>

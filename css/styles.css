@@ -272,6 +272,7 @@ a.reg:hover {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
+
 	margin: auto 10%;
 	margin-bottom: 50px;
 	/*width: 70%;*/
@@ -282,15 +283,18 @@ a.reg:hover {
 }
 
 .contenedor_tarjeta {
-	margin: 1%;
-	margin-bottom: 50px;
-	max-width: 300px;
+	/*margin: 1%;*/
+	margin: 50px;
+	max-width: 350px;
 	height: 300px;
+
+	flex-grow: 1;
 }
 
 .contenedor_tarjeta:nth-child(7) {
-	margin: auto;
-	margin-bottom: 50px;
+	margin: 50px auto;
+
+	flex-grow: 0.08;
 }
 
 .contenedor_tarjeta:hover figure {
@@ -312,7 +316,7 @@ figure {
 	height: 300px;
 	margin: 0;
 	position: relative;
-	transition: all ease .5s;
+	transition: all ease .3s;
 	transform-style: preserve-3d; 
 	transform: perspective(2000px) rotateY(0deg);
 	font-size: 0.9em;
@@ -369,6 +373,7 @@ figure .trasera p {
 }
 
 figure .trasera a {
+	z-index: 1;
 	color: #000;
 	border: 2px solid #fff;
 	border-radius: 10px;
@@ -377,7 +382,7 @@ figure .trasera a {
 	padding: 10px;
 	display: inline-block;
 	margin-top: 20px;
-	transition: all ease 0.5s;
+	transition: all ease 0.3s;
 }
 
 figure .trasera a:hover {
@@ -446,11 +451,13 @@ figure img {
 
 .detalles-prod-img {
 	min-width: 500px;
-	height: 400px;
+	/*height: 500px;*/
 	overflow: visible;
 	margin-right: 30px;
+	/*background: #ccc;*/
 
 	display: flex;
+	flex-wrap: wrap;
 }
 
 .detalles-prod-img .mini-img {
@@ -478,6 +485,16 @@ figure img {
 .detalles-prod-img img {
 	width: 400px;
 	height: 400px;
+}
+
+.detalles-prod-img .img-info {
+	/*background: #ccc;*/
+	width: 100%;
+	margin-top: 10px;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .detalles-prod-info {

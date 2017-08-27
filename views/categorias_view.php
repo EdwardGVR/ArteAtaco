@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html>
 <head>
 	<title>Categorias</title>
@@ -39,7 +39,7 @@
 						<p>
 							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur amet minus facilis ratione, delectus distinctio eius upiditate nesciunt recusandae rerum quasi cum blanditiis, placeat, saepe!
 						</p>
-						<a href="productos.php?id=<?php echo $categoria['id'] ?>">Ver <?php echo $categoria['nombre_cat'] ?></a>
+						<a href="productos.php?id=<?php echo $categoria['id'] ?>"><span class="link-cat">Ver <?php echo $categoria['nombre_cat'] ?></span></a>
 					</figcaption>
 				</figure>
 			</div>

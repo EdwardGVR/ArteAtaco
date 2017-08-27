@@ -39,13 +39,16 @@
 						<img src="http://lorempixel.com/25/25/city" alt="">
 					</div>
 					<img src="<?php echo $detalles['imagen'] ?>" alt="">
+					<div class="img-info">
+						<p>Lorem ipsum dolor sit amet.</p>
+					</div>
 				</div>
 				<div class="detalles-prod-info">
 					<h2 class="item">Producto: <?php echo $detalles['nombre'] ?></h2>
 					<hr>
+					<h2 class="precio">Precio:</br> <?php echo '$'.$detalles['precio'] ?></h2>
 					<a href="#" class="comprar">opci&oacute;n 1</a>
 					<a href="#" class="carrito-prod">opci&oacute;n 2</a>
-					<h2 class="precio">Precio:</br> <?php echo '$'.$detalles['precio'] ?></h2>
 					<h2 class="descripcion">Descripci&oacute;n:</br> <?php echo $detalles['descripcion'] ?></h2>
 					<h2 class="stock">Disponibles:</br> <?php echo $detalles['stock'] . ' unidades' ?></h2>
 				</div>

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<!-- lightbox -->
+	<link href="script/css/lightbox.css" rel="stylesheet">
+
 	<title>Detalles :: <?php echo $detalles['nombre'] ?></title>
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
 	<link rel="stylesheet" href="css/styles.css">
@@ -33,14 +36,25 @@
 			<div class="detalles-prod">
 				<div class="detalles-prod-img">
 					<div class="mini-img">
-						<img src="http://lorempixel.com/25/25" alt="">
-						<img src="http://lorempixel.com/25/25/cats" alt="">
-						<img src="http://lorempixel.com/25/25/sports" alt="">
-						<img src="http://lorempixel.com/25/25/city" alt="">
+						<a href="<?php echo $detalles['imagen'] ?>" data-lightbox="product" data-title="Producto">
+							<img onmousemove="javascript:document.getElementById('imgDefault').src='<?php echo $detalles['imagen'] ?>';" 
+							 src="<?php echo $detalles['imagen'] ?>" alt="">
+						</a>
+						<a href="http://lorempixel.com/720/960/cats" data-lightbox="product" data-title="Producto">
+							<img onmousemove="javascript:document.getElementById('imgDefault').src='http://lorempixel.com/200/200/cats';" src="http://lorempixel.com/200/200/cats" alt="">
+						</a>
+						<a href="http://lorempixel.com/720/960/sports" data-lightbox="product" data-title="Producto">
+							<img onmousemove="javascript:document.getElementById('imgDefault').src='http://lorempixel.com/200/200/sports';" src="http://lorempixel.com/200/200/sports" alt="">
+						</a>
+						<a href="http://lorempixel.com/720/960/city" data-lightbox="product" data-title="Producto">
+							<img onmousemove="javascript:document.getElementById('imgDefault').src='http://lorempixel.com/200/200/city';" src="http://lorempixel.com/200/200/city" alt="">
+						</a>
 					</div>
-					<img src="<?php echo $detalles['imagen'] ?>" alt="">
+					    <a href="<?php echo $detalles['imagen'] ?>" data-lightbox="product" data-title="Producto">
+					    	<img id="imgDefault" src="<?php echo $detalles['imagen'] ?>" alt="">
+					    </a>
 					<div class="img-info">
-						<p>Lorem ipsum dolor sit amet.</p>
+						<p>Click sobre una imagen para ampliarla  </p>
 					</div>
 				</div>
 				<div class="detalles-prod-info">
@@ -57,5 +71,12 @@
 			<h3>No se ha encontrado el producto.</h3>
 		<?php endif ?>
 	</div>
+	<!-- lightbox -->
+	<script src="script/js/lightbox-plus-jquery.js"></script>
+	<script>
+    lightbox.option({
+      'wrapAround': true,
+    })
+	</script>
 </body>
 </html>

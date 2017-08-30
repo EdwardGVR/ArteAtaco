@@ -205,6 +205,24 @@ a.reg:hover {
 	transition: all ease 0.5s;
 }
 
+.bar-options {
+	display: flex;
+	justify-content: space-between;
+}
+
+.bar-options a {
+	border: 2px solid #fff;
+	border-radius: 5px;
+	/*display: inline-block;*/
+	width: auto;
+	font-size: 20px;
+	margin: 5px auto;
+	padding: 5px;
+	cursor: pointer;
+	text-transform: capitalize;
+	transition: all ease 0.5s;
+}
+
 .dropmenu {
 	position: relative;
 	display: inline-block;
@@ -284,8 +302,9 @@ a.reg:hover {
 
 .contenedor_tarjeta {
 	/*margin: 1%;*/
-	margin: 50px;
-	max-width: 350px;
+	margin: auto;
+	margin-bottom: 40px;
+	max-width: 300px;
 	height: 300px;
 
 	flex-grow: 1;

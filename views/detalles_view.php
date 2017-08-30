@@ -12,21 +12,35 @@
 	<header>
 		<div class="bar">
 			<a href="categorias.php"><img src="images/home.png" alt=""></a>
-				<div class="dropmenu">
-					<h1 class="drop-btn"><?php echo $user ?></h1>
-						<?php if (isset($_SESSION['user'])): ?>
-							<div class="drop-content">
-								<a href="#">Cuenta</a>
-								<a href="#">Pedidos</a>
-								<a href="logout.php">Cerrar Sesi&oacute;n</a>
-							</div>
-						<?php else: ?>
-							<div class="drop-content">
-								<a href="login.php">Iniciar Sesi&oacute;n</a>
-								<a href="register.php">Registrarse</a>
-							</div>
-						<?php endif ?>
+			<div class="bar-options">
+				<div class="dropmenu categorias">
+					<h1 class="drop-btn">categorias</h1>
+					<div class="drop-content">
+						<a href="#">lorem</a>
+						<a href="#">lorem</a>
+						<a href="#">lorem</a>
+						<a href="#">lorem</a>
+						<a href="#">lorem</a>
+					</div>
 				</div>
+				<a class="drop-btn">Contacto</a>
+				<a class="drop-btn">A cerca</a>
+			</div>
+			<div class="dropmenu">
+				<h1 class="drop-btn"><?php echo $user ?></h1>
+					<?php if (isset($_SESSION['user'])): ?>
+						<div class="drop-content">
+							<a href="#">Cuenta</a>
+							<a href="#">Pedidos</a>
+							<a href="logout.php">Cerrar Sesi&oacute;n</a>
+						</div>
+					<?php else: ?>
+						<div class="drop-content">
+							<a href="login.php">Iniciar Sesi&oacute;n</a>
+							<a href="register.php">Registrarse</a>
+						</div>
+					<?php endif ?>
+			</div>
 		</div>
 		<div class="bar_hidden"></div>
 	</header>
@@ -43,8 +57,8 @@
 						<a href="http://lorempixel.com/720/960/cats" data-lightbox="product" data-title="Producto">
 							<img onmousemove="javascript:document.getElementById('imgDefault').src='http://lorempixel.com/200/200/cats';" src="http://lorempixel.com/200/200/cats" alt="">
 						</a>
-						<a href="http://lorempixel.com/720/960/sports" data-lightbox="product" data-title="Producto">
-							<img onmousemove="javascript:document.getElementById('imgDefault').src='http://lorempixel.com/200/200/sports';" src="http://lorempixel.com/200/200/sports" alt="">
+						<a href="http://lorempixel.com/720/960/food" data-lightbox="product" data-title="Producto">
+							<img onmousemove="javascript:document.getElementById('imgDefault').src='http://lorempixel.com/200/200/food';" src="http://lorempixel.com/200/200/food" alt="">
 						</a>
 						<a href="http://lorempixel.com/720/960/city" data-lightbox="product" data-title="Producto">
 							<img onmousemove="javascript:document.getElementById('imgDefault').src='http://lorempixel.com/200/200/city';" src="http://lorempixel.com/200/200/city" alt="">

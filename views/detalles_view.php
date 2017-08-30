@@ -51,11 +51,12 @@
 				<div class="detalles-prod-img">
 					<div class="mini-img">
 						<a href="<?php echo $detalles['imagen'] ?>" data-lightbox="product" data-title="Producto">
-							<img onmousemove="javascript:document.getElementById('imgDefault').src='<?php echo $detalles['imagen'] ?>';" 
+							<img onmousemove="javascript:document.getElementById('imgDefault').src='<?php echo $detalles['imagen'] ?>';"
 							 src="<?php echo $detalles['imagen'] ?>" alt="">
 						</a>
 						<a href="http://lorempixel.com/720/960/cats" data-lightbox="product" data-title="Producto">
-							<img onmousemove="javascript:document.getElementById('imgDefault').src='http://lorempixel.com/200/200/cats';" src="http://lorempixel.com/200/200/cats" alt="">
+							<img onmousemove="javascript:document.getElementById('imgDefault').src='http://lorempixel.com/200/200/cats';"
+							 src="http://lorempixel.com/200/200/cats" alt="">
 						</a>
 						<a href="http://lorempixel.com/720/960/food" data-lightbox="product" data-title="Producto">
 							<img onmousemove="javascript:document.getElementById('imgDefault').src='http://lorempixel.com/200/200/food';" src="http://lorempixel.com/200/200/food" alt="">
@@ -64,7 +65,7 @@
 							<img onmousemove="javascript:document.getElementById('imgDefault').src='http://lorempixel.com/200/200/city';" src="http://lorempixel.com/200/200/city" alt="">
 						</a>
 					</div>
-					    <a href="<?php echo $detalles['imagen'] ?>" data-lightbox="product" data-title="Producto">
+					    <a id="principal" href="<?php echo $detalles['imagen'] ?>" data-lightbox="product" data-title="Producto">
 					    	<img id="imgDefault" src="<?php echo $detalles['imagen'] ?>" alt="">
 					    </a>
 					<div class="img-info">

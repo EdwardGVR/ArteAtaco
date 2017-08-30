@@ -33,6 +33,7 @@
 			<div class="contenedor_tarjeta">
 				<figure>
 					<img src="<?php echo $categoria['imagen'] ?>" class="frontal" alt="">
+					<a href="productos.php?id=<?php echo $categoria['id'] ?>"><span class="nombre-front"><?php echo $categoria['nombre_cat'] ?></span></a>
 					<figcaption class="trasera">
 						<h2 class="titulo"><?php echo $categoria['nombre_cat'] ?></h2>
 						<hr>

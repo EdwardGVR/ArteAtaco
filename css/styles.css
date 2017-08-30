@@ -291,30 +291,29 @@ a.reg:hover {
 	flex-wrap: wrap;
 	justify-content: space-between;
 
-	margin: auto 10%;
+	margin: auto 15%;
 	margin-bottom: 50px;
 	/*width: 70%;*/
 	padding: 1%;
-	padding-top: 2%;
 	background: #fff;
 	box-shadow: 0 0 50px #000;
 }
 
 .contenedor_tarjeta {
 	/*margin: 1%;*/
-	margin: auto;
+	/*margin: auto;*/
 	margin-bottom: 40px;
 	max-width: 300px;
 	height: 300px;
 
-	flex-grow: 1;
+	/*flex-grow: 1;*/
 }
 
-.contenedor_tarjeta:nth-child(7) {
+/*.contenedor_tarjeta:nth-child(7) {
 	margin: 50px auto;
 
 	flex-grow: 0.08;
-}
+}*/
 
 .contenedor_tarjeta:hover figure {
 	transform: perspective(600px) rotateY(180deg);
@@ -351,7 +350,27 @@ figure .trasera {
 
 figure .frontal {
 	display: block;
+	/*position: relative;*/
 	/*backface-visibility: hidden;*/
+}
+
+figure .nombre-front {
+	position: absolute;
+	top: 110px;
+	left: 50px;	
+
+	color: #fff;
+	border: 3px solid #fff;
+	border-radius: 10px;
+	width: 200px;
+	padding: 5	px;
+	display: inline-block;
+	margin-top: 20px;
+	font-size: 1.3em;
+
+	background: #000428;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #004e92, #000428);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #004e92, #000428); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 figure .trasera {
@@ -364,8 +383,8 @@ figure .trasera {
 	overflow: auto;
 
 	background: #000428;  /* fallback for old browsers */
-             background: -webkit-linear-gradient(to right, #004e92, #000428);  /* Chrome 10-25, Safari 5.1-6 */
-             background: linear-gradient(to right, #004e92, #000428); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: -webkit-linear-gradient(to right, #004e92, #000428);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #004e92, #000428); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 figure .trasera .titulo {

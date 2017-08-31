@@ -207,20 +207,45 @@ a.reg:hover {
 
 .bar-options {
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
+
+	width: 50%;
+	/*background: #ccc;*/
 }
 
-.bar-options a {
-	border: 2px solid #fff;
-	border-radius: 5px;
-	/*display: inline-block;*/
+.bar-options h1 {
+	border: none;
+}
+
+.bar-options h1,
+.bar-options .drop-btn {
+	margin-top: 0;
+	color: #fff;
+	line-height: 35px;
+	font-weight: normal;
+	/*border: 2px solid #fff;*/
+	border-radius: 0px;
 	width: auto;
-	font-size: 20px;
-	margin: 5px auto;
-	padding: 5px;
+	height: 100%;
+	font-size: 1em;
+	padding: 5px 20px;
 	cursor: pointer;
+	/*margin: auto 20px;*/
 	text-transform: capitalize;
-	transition: all ease 0.5s;
+	transition: all linear 0.2s;
+	background: #3D68A9;
+}
+
+.bar-options h1:hover {
+	border-bottom: 3px solid #000;
+}
+
+.bar-options .drop-btn:hover {
+	background-color: #CFDDEC;
+	color: #000;
+	border-top: 10px solid #000CFD;
+	border-bottom: 10px solid #000CFD;
+	line-height: 20px;
 }
 
 .dropmenu {
@@ -237,7 +262,7 @@ a.reg:hover {
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    top: 45px;
+    top: 50px;
     border-radius: 5px;
 }
 
@@ -268,7 +293,7 @@ a.reg:hover {
 }
 
 
-.bar h1:hover {
+.bar  h1.user:hover {
 	background: #FFFFFF;
 	color: #000;
 	border: 2px solid #000;
@@ -297,6 +322,11 @@ a.reg:hover {
 	padding: 1%;
 	background: #fff;
 	box-shadow: 0 0 50px #000;
+}
+
+.contenedor_prod,
+.contenedor_detalles {
+	margin: auto 10%;
 }
 
 .contenedor_tarjeta {
@@ -485,6 +515,7 @@ figure img {
 	/*height: 500px;*/
 	display: flex;
 	flex-grow: 1;
+	margin-bottom: 50px;
 }
 
 .detalles-prod-img {

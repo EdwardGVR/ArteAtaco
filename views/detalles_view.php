@@ -23,11 +23,13 @@
 						<a href="#">lorem</a>
 					</div>
 				</div>
+				<a class="drop-btn">Opcion</a>
+				<a class="drop-btn">Opcion</a>
 				<a class="drop-btn">Contacto</a>
 				<a class="drop-btn">A cerca</a>
 			</div>
 			<div class="dropmenu">
-				<h1 class="drop-btn"><?php echo $user ?></h1>
+				<h1 class="user"><?php echo $user ?></h1>
 					<?php if (isset($_SESSION['user'])): ?>
 						<div class="drop-content">
 							<a href="#">Cuenta</a>
@@ -82,6 +84,9 @@
 					<h2 class="stock">Disponibles:</br> <?php echo $detalles['stock'] . ' unidades' ?></h2>
 				</div>
 			</div>
+			<div class="detalles-prod">
+				:v		
+			</div>
 		<?php else: ?>
 			<h3>No se ha encontrado el producto.</h3>
 		<?php endif ?>
@@ -89,9 +94,9 @@
 	<!-- lightbox -->
 	<script src="script/js/lightbox-plus-jquery.js"></script>
 	<script>
-    lightbox.option({
-      'wrapAround': true,
-    })
+    		lightbox.option({
+      		'wrapAround': true,
+    		})
 	</script>
 </body>
 </html>

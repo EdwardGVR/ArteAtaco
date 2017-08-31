@@ -10,7 +10,7 @@
 		<div class="bar">
 			<a href="categorias.php"><img src="images/home.png" alt=""></a>
 			<div class="dropmenu">
-				<h1 class="drop-btn"><?php echo $user ?></h1>
+				<h1 class="user"><?php echo $user ?></h1>
 				<?php if (isset($_SESSION['user'])): ?>
 					<div class="drop-content">
 						<a href="#">Cuenta</a>

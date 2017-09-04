@@ -14,13 +14,11 @@
 			<a href="categorias.php"><img src="images/home.png" alt=""></a>
 			<div class="bar-options">
 				<div class="dropmenu categorias">
-					<h1 class="drop-btn">categorias</h1>
+					<h1 class="drop-btn categorias">categorias</h1>
 					<div class="drop-content">
-						<a href="#">lorem</a>
-						<a href="#">lorem</a>
-						<a href="#">lorem</a>
-						<a href="#">lorem</a>
-						<a href="#">lorem</a>
+						<?php foreach ($categorias as $categoria): ?>
+							<a href="productos.php?id=<?php echo $categoria['id'] ?>"><?php echo $categoria['nombre_cat'] ?></a>
+						<?php endforeach ?>
 					</div>
 				</div>
 				<a class="drop-btn">Opcion</a>
@@ -84,13 +82,21 @@
 					<h2 class="stock">Disponibles:</br> <?php echo $detalles['stock'] . ' unidades' ?></h2>
 				</div>
 			</div>
-			<div class="detalles-prod">
-				:v		
-			</div>
 		<?php else: ?>
 			<h3>No se ha encontrado el producto.</h3>
 		<?php endif ?>
 	</div>
+	
+	<div class="contenedor_detalles">
+		<img src="http://lorempixel.com/300/300" alt="">
+	</div>
+
+	<footer>
+		<a href="#" class="bar-footer-link"><div class="bar-footer">
+				<span>Subir</span>
+			</div></a>
+	</footer>
+
 	<!-- lightbox -->
 	<script src="script/js/lightbox-plus-jquery.js"></script>
 	<script>

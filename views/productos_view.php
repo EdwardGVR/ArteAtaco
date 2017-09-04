@@ -41,7 +41,7 @@
 				</div>
 			<?php endforeach ?>
 		<?php else: ?>
-			<p>Actualmente no hay productos disponibles en esta categoria.</p>
+			<p>Actualmente no hay productos disponibles en la categoria de <?php echo $categoria['nombre_cat'] ?>.</p>
 		<?php endif ?>
 	</div>
 </body>

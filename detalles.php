@@ -16,6 +16,10 @@ if ($conexion != false) {
 	$query = $conexion->prepare('SELECT * FROM productos WHERE id = :id_prod');
 	$query->execute(array(':id_prod' => $id_prod));
 	$detalles = $query->fetch();
+
+	$query = $conexion->prepare("SELECT id, nombre_cat FROM categorias");
+	$query->execute();
+	$categorias = $query->fetchall();
 }
 
 

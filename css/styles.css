@@ -243,9 +243,9 @@ a.reg:hover {
 .bar-options .drop-btn:hover {
 	background-color: #CFDDEC;
 	color: #000;
-	border-top: 10px solid #000CFD;
-	border-bottom: 10px solid #000CFD;
-	line-height: 20px;
+	border-top: 5px solid #000CFD;
+	border-bottom: 5px solid #000CFD;
+	line-height: 30px;
 }
 
 .dropmenu {
@@ -292,6 +292,23 @@ a.reg:hover {
     display: block;
 }
 
+.dropmenu.categorias .drop-content a {
+	background-color: #f9f9f9;
+    color: black;
+    padding: 12px 10px;
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px solid #000;
+    border-radius: 0px;
+    transition: all ease 0.3s;
+}
+
+.dropmenu.categorias .drop-content a:hover {
+	background: #093197;
+	color: #fff;
+	border-bottom: 4px solid #ccc;
+}
+
 
 .bar  h1.user:hover {
 	background: #FFFFFF;
@@ -327,6 +344,7 @@ a.reg:hover {
 .contenedor_prod,
 .contenedor_detalles {
 	margin: auto 10%;
+	margin-bottom: 50px;
 }
 
 .contenedor_tarjeta {

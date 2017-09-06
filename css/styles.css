@@ -293,14 +293,14 @@ a.reg:hover {
 }
 
 .dropmenu.categorias .drop-content a {
-	background-color: #f9f9f9;
-    color: black;
-    padding: 12px 10px;
-    text-decoration: none;
-    display: block;
-    border-bottom: 1px solid #000;
-    border-radius: 0px;
-    transition: all ease 0.3s;
+	background-color: #E5E2E2;
+	color: black;
+	padding: 12px 10px;
+	text-decoration: none;
+	display: block;
+	border-bottom: 1px solid #000;
+	border-radius: 0px;
+	transition: all ease 0.2s;
 }
 
 .dropmenu.categorias .drop-content a:hover {
@@ -647,7 +647,7 @@ footer {
 
 	height: 250px;
 	margin-top: 200px;
-	background: #291572;
+	background: #152F72;
 
 }
 

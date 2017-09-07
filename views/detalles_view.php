@@ -92,9 +92,22 @@
 	</div>
 
 	<footer>
-		<a href="#" class="bar-footer-link"><div class="bar-footer">
+		<div class="bar-footer-link">
+			<a href="#" class="bar-footer">
 				<span>Subir</span>
-			</div></a>
+			</a>
+		</div>
+		<div class="social">
+			<div class="facebook">
+				Facebook
+			</div>
+			<div class="whatsapp">
+				Whatsapp
+			</div>
+			<div class="correo">
+				Correo
+			</div>
+		</div>
 	</footer>
 
 	<!-- lightbox -->

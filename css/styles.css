@@ -163,7 +163,7 @@ a.reg:hover {
 	height: 50px;
 	width: 100%;
 	z-index: 10;
-	background: #000CFF;
+	background: #000;
 	color: #fff;
 	text-align: right;
 	padding-right: 20px;
@@ -189,7 +189,7 @@ a.reg:hover {
 }
 
 .bar img:hover {
-	background: #000;
+	background: #16396E;
 }
 
 .bar h1 {
@@ -233,7 +233,7 @@ a.reg:hover {
 	/*margin: auto 20px;*/
 	text-transform: capitalize;
 	transition: all linear 0.2s;
-	background: #3D68A9;
+	background: #16396E;
 }
 
 .bar-options h1:hover {
@@ -243,8 +243,8 @@ a.reg:hover {
 .bar-options .drop-btn:hover {
 	background-color: #CFDDEC;
 	color: #000;
-	border-top: 5px solid #000CFD;
-	border-bottom: 5px solid #000CFD;
+	border-top: 5px solid #000;
+	border-bottom: 5px solid #000;
 	line-height: 30px;
 }
 
@@ -337,7 +337,7 @@ a.reg:hover {
 	margin-bottom: 50px;
 	/*width: 70%;*/
 	padding: 1%;
-	background: #fff;
+	background: #EAE5E5;
 	box-shadow: 0 0 50px #000;
 }
 
@@ -644,10 +644,11 @@ footer {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-wrap: wrap;
 
 	height: 250px;
 	margin-top: 200px;
-	background: #152F72;
+	background: #08224A;
 
 }
 
@@ -660,7 +661,7 @@ footer {
 .bar-footer {
 	align-self: flex-start;
 	height: 50px;
-	background: #4C64B3;
+	background: #193FA1;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -673,4 +674,12 @@ footer {
 	background: #0C0F19;
 	color: #fff;
 	font-size: 1.8em;
+}
+
+footer .social {
+	display: flex;
+	justify-content: space-around;
+	flex-grow: 1;
+
+	color: #fff;
 }

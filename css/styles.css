@@ -173,9 +173,13 @@ a.reg:hover {
 	justify-content: space-between;
 }
 
-.bar img {
+.bar i.fa-home {
 	height: 40px;
+	width: 40px;
+	font-size: 2em;
+	text-align: center;
 	/*float: left;*/
+	padding-top: 2px;
 	margin: 5px 20px;
 	border: 2px solid #fff;
 	border-radius: 5px;
@@ -188,7 +192,7 @@ a.reg:hover {
 	margin-bottom: 100px;
 }
 
-.bar img:hover {
+.bar i.fa-home:hover {
 	background: #16396E;
 }
 
@@ -314,6 +318,10 @@ a.reg:hover {
 	background: #FFFFFF;
 	color: #000;
 	border: 2px solid #000;
+}
+
+h1.user i.fa {
+	font-size: 1em;
 }
 
 /*.contenedor_prod,*/

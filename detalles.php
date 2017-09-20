@@ -22,7 +22,6 @@ if ($conexion != false) {
 	$categorias = $query->fetchall();
 }
 
-
 require 'views/detalles_view.php';
 
 ?>

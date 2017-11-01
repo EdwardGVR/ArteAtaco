@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title><?php echo $categoria['nombre_cat'] ?></title>
+	<title>
+		<?php 
+			echo $categoria['nombre_cat'];
+			$cat_actual = $categoria['nombre_cat'];
+	 	?>
+	 </title>
+	<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
 	<link rel="stylesheet" href="css/styles.css">
 </head>
@@ -23,8 +29,11 @@
 				</div>
 			<?php endforeach ?>
 		<?php else: ?>
-			<p>Actualmente no hay productos disponibles en la categoria de <?php echo $categoria['nombre_cat'] ?>.</p>
+			<p>Actualmente no hay productos disponibles en la categoria de <?php echo $cat_actual ?>.</p>
 		<?php endif ?>
 	</div>
+
+	<?php include 'footer.php'; ?>
+
 </body>
 </html>

@@ -11,7 +11,7 @@
 				<?php endforeach ?>
 			</div>
 		</div>
-			<a class="drop-btn">Opcion</a>
+			<a class="drop-btn">Opciones</a>
 			<a class="drop-btn">Opcion</a>
 			<a class="drop-btn">Contacto</a>
 			<a class="drop-btn">A cerca</a>

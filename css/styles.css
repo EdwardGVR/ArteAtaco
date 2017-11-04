@@ -160,17 +160,21 @@ a.reg:hover {
 }
 
 .bar {
-	height: 50px;
-	width: 100%;
-	z-index: 10;
-	background: #000;
-	color: #fff;
-	text-align: right;
-	padding-right: 20px;
-	box-shadow: 0 5px 10px #000;
-	position: fixed;
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+
+	position: fixed;
+	z-index: 10;
+
+	min-height: 50px;
+	width: 100%;
+	padding: 0 20px;
+
+	background: #000;
+	color: #fff;
+	box-shadow: 0 5px 10px #000;
 }
 
 .bar i.fa-home {
@@ -180,7 +184,6 @@ a.reg:hover {
 	text-align: center;
 	/*float: left;*/
 	padding-top: 2px;
-	margin: 5px 20px;
 	border: 2px solid #fff;
 	border-radius: 5px;
 	transition: all ease 0.5s;
@@ -196,7 +199,8 @@ a.reg:hover {
 	background: #16396E;
 }
 
-.bar h1 {
+.home h1,
+.dropmenu h1 {
 	border: 2px solid #fff;
 	border-radius: 5px;
 	/*display: inline-block;*/
@@ -212,44 +216,36 @@ a.reg:hover {
 .bar-options {
 	display: flex;
 	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
 
-	width: 50%;
-	/*background: #ccc;*/
+	max-height: 50px;
 }
 
-.bar-options h1 {
-	border: none;
-}
+.bar-btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
-.bar-options h1,
-.bar-options .drop-btn {
-	margin-top: 0;
-	color: #fff;
-	line-height: 35px;
-	font-weight: normal;
-	/*border: 2px solid #fff;*/
-	border-radius: 0px;
+	height: 50px;
 	width: auto;
-	height: 100%;
+
+	color: #fff;
 	font-size: 1em;
-	padding: 5px 20px;
 	cursor: pointer;
-	/*margin: auto 20px;*/
-	text-transform: capitalize;
 	transition: all linear 0.2s;
 	background: #16396E;
 }
 
-.bar-options h1:hover {
-	border-bottom: 3px solid #000;
+.bar-btn h1 {
+	border: none;
 }
 
-.bar-options .drop-btn:hover {
+.bar-options .bar-btn:hover {
 	background-color: #CFDDEC;
 	color: #000;
 	border-top: 5px solid #000;
 	border-bottom: 5px solid #000;
-	line-height: 30px;
 }
 
 .dropmenu {
@@ -341,7 +337,7 @@ h1.user i.fa {
 	flex-wrap: wrap;
 	justify-content: space-between;
 
-	margin: auto 20%;
+	margin: auto 10%;
 	margin-bottom: 50px;
 	/*width: 70%;*/
 	padding: 1% 40px;
@@ -369,6 +365,7 @@ h1.user i.fa {
 .contenedor_tarjeta {
 	/*margin: 1%;*/
 	/*margin: auto;*/
+	margin: auto 5px;
 	margin-bottom: 40px;
 	max-width: 300px;
 	height: 300px;

@@ -1,9 +1,11 @@
 <div class="bar">
 
-	<a href="categorias.php"><i class="fa fa-home" style="color: #fff"></i></a>
+	<div class="home">
+		<a href="categorias.php"><i class="fa fa-home" style="color: #fff"></i></a>
+	</div>
 
 	<div class="bar-options">
-		<div class="dropmenu categorias">
+		<div class="dropmenu bar-btn">
 			<a href="categorias.php"><h1 class="drop-btn categorias">categorias</h1></a>
 			<div class="drop-content">
 				<?php foreach ($categorias as $categoria): ?>
@@ -11,10 +13,10 @@
 				<?php endforeach ?>
 			</div>
 		</div>
-			<a class="drop-btn">Opciones</a>
-			<a class="drop-btn">Opcion</a>
-			<a class="drop-btn">Contacto</a>
-			<a class="drop-btn">A cerca</a>
+			<a class="bar-btn">Opciones</a>
+			<a class="bar-btn">Opcion</a>
+			<a class="bar-btn">Contacto</a>
+			<a class="bar-btn">A cerca</a>
 	</div>
 
 	<div class="dropmenu">

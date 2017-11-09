@@ -172,7 +172,7 @@ a.reg:hover {
 	width: 100%;
 	padding: 0 20px;
 
-	background: #000;
+	background: #16396E;
 	color: #fff;
 	box-shadow: 0 5px 10px #000;
 }
@@ -536,38 +536,6 @@ figure img {
 
 .producto img {
 	width: 100%;
-}
-
-.prod_options {
-	width: 100%;
-}
-
-.prod_options a {
-	width: 50%;
-	float: left;
-	line-height: 30px;
-}
-
-.prod_options a.detalles {
-	background: #AFE4A1;
-	transition: all ease 0.5s;
-}
-
-.prod_options a.detalles:hover {
-	background: #3B7B2A;
-	color: #fff;
-	box-shadow: 0 0 15px #000;
-}
-
-.prod_options a.carrito {
-	background: #F8F79B;
-	transition: all ease 0.5s;
-}
-
-.prod_options a.carrito:hover {
-	background: #D9BB13;
-	color: #fff;
-	box-shadow: 0 0 15px #000;
 }
 
 .detalles-prod {

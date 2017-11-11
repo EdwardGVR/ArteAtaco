@@ -45,6 +45,15 @@
 					<h2 class="item">Producto: <?php echo $detalles['nombre'] ?></h2>
 					<hr>
 					<h2 class="precio">Precio:</br> <?php echo '$'.$detalles['precio'] ?></h2>
+					cantidad
+					<select class="cantidad_prod" name="cantidad" id="cantidad">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+					</select>
+					<a href="#" class="carrito-prod">Carrito</a>
 					<h2 class="descripcion">Descripci&oacute;n:</br> <?php echo $detalles['descripcion'] ?></h2>
 					<h2 class="stock">Disponibles:</br> <?php echo $detalles['stock'] . ' unidades' ?></h2>
 				</div>

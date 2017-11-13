@@ -637,30 +637,31 @@ figure img {
 	/*width: 100%;*/
 }
 
-.detalles-prod-info select.cantidad_prod {
+.form_carrito input[name="quantity"] {
 	width: 50px;
 	height: 30px;
 	margin-bottom: 30px;
+	margin-right: 50px;
 }
 
-.detalles-prod-info a {
+.form_carrito .carrito-prod {
 	display: inline-block;
 	padding: 15px;
 	color: #000;
 	width: 200px;
+	height: 50px;
 	margin-right: 20px;
 	margin-bottom: 50px;
 	text-align: center;
 	font-size: 1.5em;
 	font-weight: double;
-}
-
-.detalles-prod-info a.carrito-prod {
+	border-radius: 0;
 	background: #E5CC56;
+	box-shadow: 0 0 0;
 	transition: all ease 0.5s;
 }
 
-.detalles-prod-info a.carrito-prod:hover {
+.form_carrito .carrito-prod:hover {
 	background: #9D8618;
 	color: #fff;
 }

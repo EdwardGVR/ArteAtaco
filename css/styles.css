@@ -356,7 +356,8 @@ h1.user i.fa {
 
 .contenedor_cat,
 .contenedor_prod,
-.contenedor_detalles {
+.contenedor_detalles,
+.contenedor_carrito {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
@@ -380,8 +381,9 @@ h1.user i.fa {
 }
 
 .contenedor_prod,
-.contenedor_detalles {
-	min-height: 356px;
+.contenedor_detalles,
+.contenedor_carrito {
+	min-height: 363px;
 	margin: auto 10%;
 	margin-bottom: 50px;
 }

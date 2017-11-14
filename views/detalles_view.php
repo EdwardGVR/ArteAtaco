@@ -4,7 +4,7 @@
 	<!-- lightbox -->
 	<link href="script/css/lightbox.css" rel="stylesheet">
 
-	<title>Detalles :: <?php echo $detalles['nombre'] ?></title>
+	<title>Arte Ataco :: <?php echo $detalles['nombre'] ?></title>
 	<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
 	<link rel="stylesheet" href="css/styles.css">
@@ -45,10 +45,13 @@
 					<h2 class="item">Producto: <?php echo $detalles['nombre'] ?></h2>
 					<hr>
 					<h2 class="precio">Precio:</br> <?php echo '$'.$detalles['precio'] ?></h2>
-					<form class="form_carrito" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="GET">
+
+					<form class="form_carrito" action="carrito.php" method="POST">
+						<input type="hidden" value="<?php echo $id_prod ?>" name="idprod">
 						Cantidad <input type="number" name="quantity" min="1" max="10" value="1">
 						<input type="submit" class="carrito-prod" value="Carrito">
 					</form>
+
 					<h2 class="descripcion">Descripci&oacute;n:</br> <?php echo $detalles['descripcion'] ?></h2>
 					<h2 class="stock">Disponibles:</br> <?php echo $detalles['stock'] . ' unidades' ?></h2>
 				</div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>
+	<title> Arte Ataco ::
 		<?php 
 			echo $categoria['nombre_cat'];
 			$cat_actual = $categoria['nombre_cat'];

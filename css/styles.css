@@ -644,6 +644,7 @@ figure img {
 	height: 30px;
 	margin-bottom: 30px;
 	margin-right: 50px;
+	text-align: center;
 }
 
 .form_carrito .carrito-prod {
@@ -679,6 +680,36 @@ h2.stock {
 
 h2.precio {
 	margin-left: 10px;
+}
+
+.prod_carrito {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	margin: 20px auto;
+	padding: 20px;
+
+	background: #fff;
+	box-shadow: 0 0 20px;
+}
+
+.info_carrito .form_carrito input[name="quantity"] {
+	margin-right: 0px;
+}
+
+.img_carrito {
+	display: flex;
+
+	max-width: 200px;
+	margin-right: 50px;
+	overflow: hidden;
+}
+
+.info_carrito {
+	display: flex;
+
+	max-width: 300px;
 }
 
 footer {

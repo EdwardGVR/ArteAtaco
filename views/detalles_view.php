@@ -48,6 +48,7 @@
 
 					<form class="form_carrito" action="carrito.php" method="POST">
 						<input type="hidden" value="<?php echo $id_prod ?>" name="idprod">
+						<input type="hidden" value="<?php echo $user ?>">
 						Cantidad <input type="number" name="quantity" min="1" max="10" value="1">
 						<input type="submit" class="carrito-prod" value="Carrito">
 					</form>

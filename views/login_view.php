@@ -26,7 +26,7 @@
 	</div>
 
 	<section>
-		<img src="images/nequi_solo.png" alt="nequi" id="nequi_login">
+		<!-- <img src="images/nequi_solo.png" alt="nequi" id="nequi_login"> -->
 
 		<div class="info_login">
 			<p>Al iniciar sesi&oacute;n podr&aacute;s disfrutar de descuentos exculsivos en todos los productos, adem&aacute;s ser&aacute;s capaz de guardar tu informaci&oacute;n de env&iacute;o para facilitar futuras compras, recibir atenci&oacute;n personalizada con prioridad, entre otros beneficios...</p>

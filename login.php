@@ -27,6 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if (empty($errores)) {
 		$login = login_verification($conexion, $user, $password);
 
+		print_r($login);
+
 		if ($login != false) {
 			$query = $conexion->prepare("SELECT user FROM usuarios WHERE user = :user OR email = :user");
 			$query->execute(array(':user' => $user));

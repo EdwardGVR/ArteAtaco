@@ -11,21 +11,23 @@
 	<?php require 'header.php' ?>
 
 	<div class="contenedor_carrito">
-		<div class="prod_carrito">
-			<div class="img_carrito">
-				<img src="<?php echo $producto['imagen'] ?>" alt="">
+		<?php foreach ($carrito as $item): ?>
+			<div class="prod_carrito">
+				<div class="img_carrito">
+					<img src="<?php echo $item['imagen'] ?>" alt="">
+				</div>
+				<div class="info_carrito">
+					<form class="form_carrito" action="carrito.php" method="POST">
+						<input type="hidden" value="<?php echo $id_prod ?>" name="idprod">
+						<input type="hidden" value="<?php echo $user ?>">
+						Se han agregado <input type="number" class="confirm_cantidad" name="quantity" min="1" max="10" value="<?php echo $item['cantidad'] ?>"> 
+						del producto: <?php echo $producto['nombre'] ?> 
+					 	al carrito, lo que hace un total de $<?php echo $subtotal?> 
+					 	por el usuario <?php echo $user ?>
+					</form>
+				</div>
 			</div>
-			<div class="info_carrito">
-				<form class="form_carrito" action="carrito.php" method="POST">
-					<input type="hidden" value="<?php echo $id_prod ?>" name="idprod">
-					<input type="hidden" value="<?php echo $user ?>">
-					Se han agregado <input type="number" class="confirm_cantidad" name="quantity" min="1" max="10" value="<?php echo $cantidad ?>"> 
-					del producto: <?php echo $producto['nombre'] ?> 
-				 	al carrito, lo que hace un total de $<?php echo $subtotal?> 
-				 	por el usuario <?php echo $user ?>
-				</form>
-			</div>
-		</div>
+		<?php endforeach ?>
 	</div>
 
 	<?php require 'footer.php' ?>

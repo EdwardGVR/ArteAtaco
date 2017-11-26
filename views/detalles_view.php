@@ -46,9 +46,9 @@
 					<hr>
 					<h2 class="precio">Precio:</br> <?php echo '$'.$detalles['precio'] ?></h2>
 
-					<form class="form_carrito" action="carrito.php" method="POST">
+					<form class="form_carrito" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 						<input type="hidden" value="<?php echo $id_prod ?>" name="idprod">
-						<input type="hidden" value="<?php echo $user ?>">
+						<input type="hidden" value="<?php echo $user ?>" name="username">
 						Cantidad <input type="number" name="quantity" min="1" max="10" value="1">
 						<input type="submit" class="carrito-prod" value="Carrito">
 					</form>

@@ -26,7 +26,7 @@ function login_verification($conexion, $user, $password){
 }
 
 function get_user_id($conexion, $user){
-	$query = $conexion->prepare("SELECT id FROM usuarios WHERE user = :user");
+	$query = $conexion->prepare("SELECT id, user FROM usuarios WHERE user = :user");
 	$query->execute(array(':user'=>$user));
 	$result = $query->fetch();
 

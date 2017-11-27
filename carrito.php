@@ -25,6 +25,20 @@ if ($conexion != false) {
 	$query = $conexion->prepare("SELECT * FROM carrito WHERE id_user = :iduser");
 	$query->execute(array(':iduser'=>$iduser));
 	$carrito = $query->fetchall();
+
+	foreach ($carrito as $producto) {
+		$id_prod = $producto['id_producto'];
+
+		$query = $conexion->prepare("
+			SELECT productos.imagen 
+			FROM productos, carrito 
+			WHERE = productos.id = carrito.:id_prod
+		");
+		$query->execute(array(
+			':id_prod' => $id_prod
+		));
+		$imagenes = $query->fetchall();
+	}
 }
 
 require 'views/carrito_view.php';

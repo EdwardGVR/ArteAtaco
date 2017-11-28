@@ -26,6 +26,7 @@
 					<div class="drop-content">
 						<a href="#">Cuenta</a>
 						<a href="#">Pedidos</a>
+						<a href="carrito.php">Carrito</a>
 						<a href="logout.php">Cerrar Sesi&oacute;n</a>
 					</div>
 				<?php else: ?>

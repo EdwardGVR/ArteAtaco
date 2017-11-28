@@ -28,12 +28,31 @@ if ($conexion != false) {
 		$cantidad = $_POST['quantity'];
 		$iduser = get_user_id($conexion, $user);
 
-		$query = $conexion->prepare("INSERT INTO carrito values (null, :user, :idprod, :cantidad)");
+		$query = $conexion->prepare("SELECT * FROM carrito WHERE id_producto = :idprod and id_user = :iduser");
 		$query->execute(array(
-			':user'=>$iduser,
-			':idprod'=>$idprod,
-			':cantidad'=>$cantidad
-		));	
+			':idprod' => $idprod,
+			':iduser' => $iduser
+		));
+		$consultar_carrito = $query->fetchall();
+
+		// print_r($consultar_carrito);
+
+		if (!empty($consultar_carrito)) {
+			$cantidad = $consultar_carrito['cantidad'] + $_POST['quantity'];
+
+			$query = $conexion->prepare("UPDATE carrito SET cantidad = :cantidad WHERE id_producto = :idprod");
+			$query->execute(array(
+				':cantidad' => $cantidad,
+				':idprod' => $idprod
+			));
+		} else {
+			$query = $conexion->prepare("INSERT INTO carrito values (null, :user, :idprod, :cantidad)");
+			$query->execute(array(
+				':user'=>$iduser,
+				':idprod'=>$idprod,
+				':cantidad'=>$cantidad
+			));
+		}	
 
 		header('Location: carrito.php');
 	}

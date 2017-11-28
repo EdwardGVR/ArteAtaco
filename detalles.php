@@ -9,52 +9,67 @@ if (isset($_SESSION['user'])) {
 }
 
 $id_prod = isset($_GET['id_prod']) ? $_GET['id_prod'] : false;
-
 $conexion = conexion('login_propio', 'root', '');
+$iduser = get_user_id($conexion, $user);
 
 if ($conexion != false) {
-
+	// Obtener los detalles del producto
 	$query = $conexion->prepare('SELECT * FROM productos WHERE id = :id_prod');
 	$query->execute(array(':id_prod' => $id_prod));
 	$detalles = $query->fetch();
 
+	// var_dump($detalles);
+
+	// Obtener las categorias
 	$query = $conexion->prepare("SELECT id, nombre_cat FROM categorias");
 	$query->execute();
 	$categorias = $query->fetchall();
 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$idprod = $_POST['idprod'];
-		$username = $_POST['username'];
 		$cantidad = $_POST['quantity'];
-		$iduser = get_user_id($conexion, $user);
 
-		$query = $conexion->prepare("SELECT * FROM carrito WHERE id_producto = :idprod and id_user = :iduser");
+		// Consultar si el usuario ya tiene el producto en el carrito
+		$query = $conexion->prepare("
+				SELECT * 
+				FROM carrito 
+				WHERE id_producto = :idprod AND id_user = :iduser
+			");
 		$query->execute(array(
-			':idprod' => $idprod,
-			':iduser' => $iduser
-		));
-		$consultar_carrito = $query->fetchall();
-
-		// print_r($consultar_carrito);
-
-		if (!empty($consultar_carrito)) {
-			$cantidad = $consultar_carrito['cantidad'] + $_POST['quantity'];
-
-			$query = $conexion->prepare("UPDATE carrito SET cantidad = :cantidad WHERE id_producto = :idprod");
-			$query->execute(array(
-				':cantidad' => $cantidad,
-				':idprod' => $idprod
+				':idprod' => $idprod,
+				':iduser' => $iduser
 			));
+		$consultar_carrito = $query->fetch();
+
+		if ($consultar_carrito != false) {
+			// El usuario ya tiene agregado el producto
+			echo "El usuario ya tiene agregado el producto";
+
+			$cantidad_uptaded = $consultar_carrito['cantidad'] + $cantidad;
+
+			echo "Se ha actualizado la cantidad";
+
+			$query = $conexion->prepare("UPDATE carrito SET cantidad = :cantidad_uptaded WHERE id_producto = :idprod AND id_user = :iduser");
+			$query->execute(array(
+				':cantidad_uptaded' => $cantidad_uptaded,
+				':idprod' => $idprod,
+				':iduser' => $iduser
+			));
+
 		} else {
-			$query = $conexion->prepare("INSERT INTO carrito values (null, :user, :idprod, :cantidad)");
-			$query->execute(array(
-				':user'=>$iduser,
-				':idprod'=>$idprod,
-				':cantidad'=>$cantidad
-			));
-		}	
+			// El usuario NO tiene agregado el producto
+			echo "El usuario NO tiene agregado el producto";
 
-		header('Location: carrito.php');
+			$query = $conexion->prepare("INSERT INTO carrito VALUES (null, :iduser, :idprod, :cantidad)");
+			$query->execute(array(
+				':iduser' => $iduser,
+				':idprod' => $idprod,
+				':cantidad' => $cantidad
+			));
+
+			echo "Se ha ingresado el producto al carrito";
+		}
+
 	}
 }
 

@@ -22,9 +22,11 @@ if ($conexion != false) {
 	$query->execute(array(':idprod' => $idprod));
 	$producto = $query->fetch();
 
-	$query = $conexion->prepare("SELECT carrito.*, productos.* FROM carrito, productos WHERE id_user = :iduser");
+	$query = $conexion->prepare("SELECT carrito.*, productos.* FROM carrito, productos WHERE carrito.id_user = :iduser GROUP BY carrito.id_producto");
 	$query->execute(array(':iduser'=>$iduser));
 	$carrito = $query->fetchall();
+
+	// print_r($carrito);
 }
 
 require 'views/carrito_view.php';

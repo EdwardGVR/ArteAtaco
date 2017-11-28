@@ -14,18 +14,17 @@
 		<?php foreach ($carrito as $item): ?>
 			<div class="prod_carrito">
 				<div class="img_carrito">
-					<img src="<?php echo $imagen['imagen'] ?>" alt="No se pudo cargar la imagen">
+					<img src="<?php echo $item['imagen'] ?>" alt="No se pudo cargar la imagen">
 				</div>
 				<div class="info_carrito">
 					<form class="form_carrito" action="carrito.php" method="POST">
 						<input type="hidden" value="<?php echo $item['id'] ?>" name="idcarrito">
 						<input type="hidden" value="<?php echo $item['id_producto'] ?>" name="idprod">
 						<input type="hidden" value="<?php echo $item['id_user'] ?>" name="iduser">
-						Se han agregado <input type="number" class="confirm_cantidad" name="quantity" min="1" max="10" value="<?php echo $item['cantidad'] ?>"> 
-						del producto: <?php echo $producto['nombre'] ?> 
+						Se han agregado <input type="number" class="confirm_cantidad" name="quantity" min="1" max="10" value="<?php echo $item['cantidad'] ?>"> <br/>
+						del producto: <?php echo $item['nombre'] ?> 
 					 	al carrito, por el usuario <?php echo $user ?>
 					</form>
-					<?php echo $item['id_producto'] ?>
 				</div>
 			</div>
 		<?php endforeach ?>

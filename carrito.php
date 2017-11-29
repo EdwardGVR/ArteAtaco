@@ -18,11 +18,11 @@ if ($conexion != false) {
 	$query->execute();
 	$categorias = $query->fetchall();
 
-	$query = $conexion->prepare("SELECT * FROM productos WHERE id = :idprod");
-	$query->execute(array(':idprod' => $idprod));
-	$producto = $query->fetch();
-
-	$query = $conexion->prepare("SELECT carrito.*, productos.* FROM carrito, productos WHERE carrito.id_user = :iduser GROUP BY carrito.id_producto");
+	$query = $conexion->prepare("
+		SELECT carrito.*, productos.id_categoria, productos.nombre, productos.precio, productos.stock, productos.imagen 
+		FROM carrito, productos 
+		WHERE carrito.id_user = :iduser 
+		GROUP BY carrito.id_producto");
 	$query->execute(array(':iduser'=>$iduser));
 	$carrito = $query->fetchall();
 

@@ -11,6 +11,7 @@ if (isset($_SESSION['user'])) {
 $idprod = isset($_POST['idprod']) ? $_POST['idprod'] : false ;
 $conexion = conexion('login_propio', 'root', '');
 $iduser = get_user_id($conexion, $user);
+$subtotal = 0;
 
 if ($conexion != false) {
 

@@ -30,11 +30,12 @@
 						</form>
 					</div>
 				</div>
-				<div class="carrito_subtotal">
-					<span>Subtotal: $<?php echo $subtotal += ($item['precio']*$item['cantidad']) ?></span>
-					<a href="#" class="checkout">Ir a caja</a>
-				</div>
+				<?php $subtotal += ($item['precio']*$item['cantidad']) ?>
 			<?php endforeach ?>
+			<div class="carrito_subtotal">
+				<span>Subtotal: $ <?php echo  $subtotal ?></span>
+				<a href="#" class="checkout">Ir a caja</a>
+			</div>
 		<?php else: ?>
 			<p>El carrito est&aacute; vac&iacute;o</p>
 		<?php endif ?>

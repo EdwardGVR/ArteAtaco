@@ -22,7 +22,7 @@ if ($conexion != false) {
 	$query = $conexion->prepare("
 		SELECT carrito.*, productos.id_categoria, productos.nombre, productos.precio, productos.stock, productos.imagen 
 		FROM carrito, productos 
-		WHERE carrito.id_user = :iduser 
+		WHERE carrito.id_user = :iduser AND carrito.id_producto = productos.id 
 		GROUP BY carrito.id_producto");
 	$query->execute(array(':iduser'=>$iduser));
 	$carrito = $query->fetchall();

@@ -19,7 +19,7 @@
 					</div>
 					<div class="info_carrito">
 						<div class="eliminar">Eliminar (x)</div>
-						<form class="form_carrito_confirm" action="carrito.php" method="POST">
+						<form class="form_carrito_confirm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 							<input type="hidden" value="<?php echo $item['id'] ?>" name="idcarrito">
 							<input type="hidden" value="<?php echo $item['id_producto'] ?>" name="idprod">
 							<input type="hidden" value="<?php echo $item['id_user'] ?>" name="iduser">

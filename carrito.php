@@ -28,6 +28,24 @@ if ($conexion != false) {
 	$carrito = $query->fetchall();
 
 	// print_r($carrito);
+
+	if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['actualizar_cantidad'] == 'Actualizar') {
+		$cantidad_actualizada = $_POST['quantity'];
+
+		$query = $conexion->prepare("SELECT * FROM carrito WHERE id = :idcarrito");
+		$query->execute(array(':idcarrito'=>$_POST['idcarrito']));
+		$item_update = $query->fetch();
+
+		if ($item_update['cantidad'] != $cantidad_actualizada) {
+			$query = $conexion->prepare("UPDATE carrito SET cantidad = :cantidad_actualizada WHERE id = :idcarrito");
+			$query->execute(array(
+				':cantidad_actualizada'=>$cantidad_actualizada,
+				':idcarrito'=>$_POST['idcarrito']
+			));
+
+			header('Location: carrito.php');
+		}
+	}
 }
 
 require 'views/carrito_view.php';

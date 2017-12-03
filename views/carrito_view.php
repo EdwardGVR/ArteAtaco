@@ -5,6 +5,7 @@
 
 	<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+	<!-- <link rel="stylesheet" href="css/styleModal.css">  -->
 	<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -26,7 +27,7 @@
 							<span class="item_carrito">Producto: <?php echo $item['nombre'] ?></span>
 							<span class="item_cantidad">Cantidad: <?php echo $item['cantidad'] ?></span>
 							<span class="item_mod_cantidad">Modificar cantidad: <input type="number" class="confirm_cantidad" name="quantity" min="1" max="10" value="<?php echo $item['cantidad'] ?>"></span>
-							<input type="submit" class="actualizar_cantidad" name="actualizar_cantidad" value="Actualizar">
+							<input id="two" type="submit" class="actualizar_cantidad button" name="actualizar_cantidad" value="Actualizar">
 						</form>
 					</div>
 				</div>
@@ -42,5 +43,10 @@
 	</div>
 
 	<?php require 'footer.php' ?>
+
+	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+	<script  src="script/js/modal.js"></script>
+
 </body>
 </html>

@@ -51,8 +51,11 @@
     	<div class="modal-background">
       		<div class="modal">
         			<form class="eliminar_item" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-        				<input type="hidden" id="idCarritoDelete" name="idcarrito" value="0">
-        				<input type="submit" value="Eliminar">
+        				<input type="hidden" id="idCarritoDelete" name="idDelete" value="0">
+        				<input type="hidden" name="formDelete" value="delete_item">
+        				<span>Esta a punto de eliminar este producto del carrito</span>
+        				<span>Confirme que desea</span><br />
+        				<input type="submit" name="delete" value="Eliminar">
         			</form>
         			<svg class="modal-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
   				<rect x="0" y="0" fill="none" width="226" height="162" rx="3" ry="3"></rect>

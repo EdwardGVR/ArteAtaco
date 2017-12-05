@@ -21,7 +21,8 @@
 					<div class="info_carrito">
 						<div class="content">
 							<div class="buttons">
-								<div id="two" class="button">X</div>
+								<!-- Eliminar item -->
+								<div onclick="javascript:document.getElementById('idCarritoDelete').value='<?php echo $item['id'] ?>';" id="two" class="button">X</div>
 							</div>
 						</div>
 						<form class="form_carrito_confirm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
@@ -49,12 +50,13 @@
 	<div id="modal-container">
     	<div class="modal-background">
       		<div class="modal">
-        		<h2>Está a punto de eliminar el producto [PRODUCTO] del carrito</h2>
-        		<p>Confirme que desea</p>
-        		<p>[CONTINUAR]</p>
-        		<svg class="modal-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
-  					<rect x="0" y="0" fill="none" width="226" height="162" rx="3" ry="3"></rect>
-  				</svg>
+        			<form class="eliminar_item" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+        				<input type="hidden" id="idCarritoDelete" name="idcarrito" value="0">
+        				<input type="submit" value="Eliminar">
+        			</form>
+        			<svg class="modal-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
+  				<rect x="0" y="0" fill="none" width="226" height="162" rx="3" ry="3"></rect>
+  			</svg>
       		</div>
     	</div>
   	</div>

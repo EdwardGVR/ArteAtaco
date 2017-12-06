@@ -47,11 +47,11 @@ if ($conexion != false) {
 		}
 	}
 
-	if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['formDelete'] == 'delete_item') {
-		$query = $conexion->prepare("DELETE FROM carrito WHERE id = :idcarrito");
-		$query->execute(array(':idcarrito' => $_POST['idDelete']));
+	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formDelete'])) {
+		$query = $conexion->prepare("DELETE FROM carrito WHERE id = :idDelete");
+		$query->execute(array(':idDelete' => $_POST['idDelete']));
 
-		header('Location: carrito.php');
+		// header('Location: carrito.php');
 	}
 }
 

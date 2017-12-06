@@ -51,7 +51,7 @@
     	<div class="modal-background">
       		<div class="modal">
         			<form class="eliminar_item" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-        				<input type="hidden" id="idCarritoDelete" name="idDelete" value="0">
+        				<input type="hidden" id="idCarritoDelete" name="idDelete" value="">
         				<input type="hidden" name="formDelete" value="delete_item">
         				<span>Esta a punto de eliminar este producto del carrito</span>
         				<span>Confirme que desea</span><br />

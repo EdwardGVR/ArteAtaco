@@ -29,7 +29,7 @@ if ($conexion != false) {
 
 	// print_r($carrito);
 
-	if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['actualizar_cantidad'] == 'Actualizar') {
+	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['actualizar_cantidad'])) {
 		$cantidad_actualizada = $_POST['quantity'];
 
 		$query = $conexion->prepare("SELECT * FROM carrito WHERE id = :idcarrito");
@@ -47,12 +47,15 @@ if ($conexion != false) {
 		}
 	}
 
-	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formDelete'])) {
-		$query = $conexion->prepare("DELETE FROM carrito WHERE id = :idDelete");
-		$query->execute(array(':idDelete' => $_POST['idDelete']));
+	if (isset($_POST['delete_item'])) {
+		$id_eliminar = $_POST['idCarritoDelete'];
+		$item_nombre = $_POST['itemName'];
+		$query = $conexion->prepare("DELETE FROM carrito WHERE id = :id_delete");
+		$query->execute(array(':id_delete' => $id_eliminar));
 
-		// header('Location: carrito.php');
+		header('Location: carrito.php');
 	}
+
 }
 
 require 'views/carrito_view.php';

@@ -22,7 +22,11 @@
 						<div class="content">
 							<div class="buttons">
 								<!-- Eliminar item -->
-								<div onclick="javascript:document.getElementById('idCarritoDelete').value='<?php echo $item['id'] ?>';" id="two" class="button">X</div>
+								<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+									<input type="hidden" name="idCarritoDelete" value="<?php echo $item['id'] ?>">
+									<input type="hidden" name="itemName" value="<?php echo $item['nombre'] ?>">
+									<input type="submit" class="eliminar" name="delete_item" value="X">
+								</form>
 							</div>
 						</div>
 						<form class="form_carrito_confirm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
@@ -32,7 +36,7 @@
 							<span class="item_carrito">Producto: <?php echo $item['nombre'] ?></span>
 							<span class="item_cantidad">Cantidad: <?php echo $item['cantidad'] ?></span>
 							<span class="item_mod_cantidad">Modificar cantidad: <input type="number" class="confirm_cantidad" name="quantity" min="1" max="10" value="<?php echo $item['cantidad'] ?>"></span>
-							<input id="two" type="submit" class="actualizar_cantidad button" name="actualizar_cantidad" value="Actualizar">
+							<input type="submit" class="actualizar_cantidad" name="actualizar_cantidad" value="Actualizar">
 						</form>
 					</div>
 				</div>
@@ -47,13 +51,12 @@
 		<?php endif ?>
 	</div>
 
-	<div id="modal-container">
+	<!-- <div id="modal-container">
     	<div class="modal-background">
       		<div class="modal">
-        			<form class="eliminar_item" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-        				<input type="hidden" id="idCarritoDelete" name="idDelete" value="">
-        				<input type="hidden" name="formDelete" value="delete_item">
-        				<span>Esta a punto de eliminar este producto del carrito</span>
+        			<form class="eliminar_item" action="<?php //echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+        				<input type="hidden" id="id_delete" name="idDelete" value="<?php //echo $id_eliminar ?>">
+        				<span>Esta a punto de eliminar <?php //echo $item_nombre ?> del carrito</span><br />
         				<span>Confirme que desea</span><br />
         				<input type="submit" name="delete" value="Eliminar">
         			</form>
@@ -62,7 +65,8 @@
   			</svg>
       		</div>
     	</div>
-  	</div>
+    	
+  	</div> -->
 
 	<?php require 'footer.php' ?>
 

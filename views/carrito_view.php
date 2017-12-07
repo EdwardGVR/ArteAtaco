@@ -19,15 +19,13 @@
 						<img src="<?php echo $item['imagen'] ?>" alt="No se pudo cargar la imagen">
 					</div>
 					<div class="info_carrito">
-						<div class="content">
-							<div class="buttons">
-								<!-- Eliminar item -->
-								<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-									<input type="hidden" name="idCarritoDelete" value="<?php echo $item['id'] ?>">
-									<input type="hidden" name="itemName" value="<?php echo $item['nombre'] ?>">
-									<input type="submit" class="eliminar" name="delete_item" value="X">
-								</form>
-							</div>
+						<!-- Eliminar item -->
+						<div class="eliminar">
+							<form class="form_eliminar" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+								<input type="hidden" name="idCarritoDelete" value="<?php echo $item['id'] ?>">
+								<input type="hidden" name="itemName" value="<?php echo $item['nombre'] ?>">
+								<input type="submit" class="btn_eliminar" name="delete_item" value="X">
+							</form>
 						</div>
 						<form class="form_carrito_confirm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 							<input type="hidden" value="<?php echo $item['id'] ?>" name="idcarrito">

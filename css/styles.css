@@ -735,28 +735,45 @@ h2.precio {
 	width: 100%;
 }
 
-.info_carrito .eliminar,
-input[type="submit"].eliminar {
+.info_carrito .eliminar {
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-	align-self: flex-start;
+	/*align-self: flex-start;*/	
 
-	/*height: 15%;*/
+	height: 15%;
 	width: 100%;
-	padding: 0 20px;	
+	/*height: 30px;*/
+	/*padding:10px;	*/
 	z-index: 9;
 
-	background: #E75F5F;
+	background: #ccc;
 	box-shadow: 0 5px 6px;
-	cursor: pointer;
 }
 
-.info_carrito .eliminar:hover,
-input[type="submit"].eliminar:hover{
+.info_carrito .form_eliminar {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/*height: 100%;*/
+	width: 50px;
+}
+
+.info_carrito .form_eliminar .btn_eliminar {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 30px;
+	line-height: 10px;
+	width: 30px;
+	/*height: 30px;*/
+	margin: 0;
+	background: #FA9191;
+}
+
+.info_carrito .form_eliminar .btn_eliminar:hover {
+	background: #EF0F0F;
 	color: #fff;
-	background: #F20606;
-	box-shadow: 0 5px 6px;
 }
 
 .form_carrito_confirm {

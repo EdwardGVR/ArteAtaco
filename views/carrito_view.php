@@ -42,7 +42,7 @@
 			<?php endforeach ?>
 			<div class="carrito_subtotal">
 				<span>Subtotal: $ <?php echo  $subtotal ?></span>
-				<a href="#" class="checkout">Ir a caja</a>
+				<a href="checkout.php" class="checkout">Ir a caja</a>
 			</div>
 		<?php else: ?>
 			<p>El carrito est&aacute; vac&iacute;o</p>

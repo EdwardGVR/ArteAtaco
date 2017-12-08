@@ -15,6 +15,7 @@
 	<div class="contenedor_checkout">
 		<div class="info_checkout">
 			<div class="contenedor_address">
+				<h3>Seleccione una direccion de envio</h3>
 				<div class="shipping_address">
 					Direccion de envio
 				</div>

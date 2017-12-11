@@ -86,7 +86,20 @@
 		</div>
 
 		<div class="carrito_checkout">
-			
+			<h2>Articulos en el carrito:</h2>
+			<div class="item_checkout">
+				<h3>Nombre del producto 1</h3>
+				<h3>Cantidad: xx</h3>
+				<h3>Precio unitario: $0.00</h3>
+			</div>
+			<div class="item_checkout">
+				<h3>Nombre del producto 2</h3>
+				<h3>Cantidad: xx</h3>
+				<h3>Precio unitario: $0.00</h3>
+			</div>
+			<div class="subtotal_checkout">
+				<span>El subtotal es de: $0.00</span>
+			</div>
 		</div>
 	</div>
 

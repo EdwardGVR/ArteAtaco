@@ -1,8 +1,8 @@
-<?php 
+	<?php 
 
 function conexion($DB, $user, $pass){
 	try {
-		$conexion = new PDO("mysql:host=localhost;dbname=$DB", $user, $pass);
+		$conexion = new PDO("mysql:host=us-cdbr-iron-east-05.cleardb.net;dbname=$DB", $user, $pass);
 		return $conexion;
 	} catch (PDOException $e) {
 		return false;

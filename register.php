@@ -4,7 +4,7 @@ require 'functions.php';
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
-	$conexion = conexion('login_propio', 'root', '');
+	$conexion = conexion('heroku_33996c8507d92de', 'bd1afaf8a26c4e', 'aeb413f5');
 
 	if (!$conexion) {
 		header('Location: error.php');

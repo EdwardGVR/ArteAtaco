@@ -979,7 +979,7 @@ input[name="address_line_2"] {
 }
 
 textarea[id="ref"] {
-	/*min-width: 400px;*/
+	min-width: 100%;
 	min-height: 60px;
 	max-height: 200px;
 	font-family: Roboto;
@@ -1100,6 +1100,21 @@ input[name="add_address"]:hover {
 	height: 200px;
 	margin-bottom: 20px;
 	background: #A8EAD4;
+}
+
+.carrito_checkout .editar {
+	width: 90%;
+	margin-bottom: 20px;
+	text-align: left;
+}
+
+.carrito_checkout .editar a {
+	padding: 10px 20px;
+	background: #F3EEA3;
+}
+
+.carrito_checkout .editar a:hover {
+	background: #C8C046;
 }
 
 .carrito_checkout .subtotal_checkout {

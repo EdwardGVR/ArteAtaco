@@ -38,18 +38,9 @@
 					<input type="text" name="pais" class="new_address_field" value="El Salvador" readonly>
 					Departamento:
 					<select name="departamento" id="dpto" class="new_address_field">
-						<option value="San Salvador">San Salvador</option>
-						<option value="San Salvador">San Salvador</option>
-						<option value="San Salvador">San Salvador</option>
-						<option value="San Salvador">San Salvador</option>
-						<option value="San Salvador">San Salvador</option>
-						<option value="San Salvador">San Salvador</option>
-						<option value="San Salvador">San Salvador</option>
-						<option value="San Salvador">San Salvador</option>
-						<option value="San Salvador">San Salvador</option>
-						<option value="San Salvador">San Salvador</option>
-						<option value="San Salvador">San Salvador</option>
-						<option value="San Salvador">San Salvador</option>
+						<?php foreach ($departamentos as $departamento): ?>
+								<option value="<?php echo $departamento['nombre'] ?>"><?php echo $departamento['nombre'] ?></option>
+						<?php endforeach ?>
 					</select>
 					Direccion:
 					<input type="text" name="address_line_1" class="new_address_field" placeholder="Direccion linea 1">
@@ -87,18 +78,22 @@
 
 		<div class="carrito_checkout">
 			<h2>Articulos en el carrito:</h2>
-			<div class="item_checkout">
-				<h3>Nombre del producto 1</h3>
-				<h3>Cantidad: xx</h3>
-				<h3>Precio unitario: $0.00</h3>
-			</div>
-			<div class="item_checkout">
-				<h3>Nombre del producto 2</h3>
-				<h3>Cantidad: xx</h3>
-				<h3>Precio unitario: $0.00</h3>
+
+			<?php foreach ($carrito as $item): ?>
+				<div class="item_checkout">
+					<h3><?php echo $item['nombre'] ?></h3>
+					<h3>Cantidad: <?php echo $item['cantidad'] ?></h3>
+					<h3>Precio unitario: <?php echo $item['precio'] ?></h3>
+				</div>
+
+				<?php $subtotal += $item['precio'] * $item['cantidad'] ?>
+
+			<?php endforeach ?>
+			<div class="editar">
+				<a href="carrito.php">Editar</a>
 			</div>
 			<div class="subtotal_checkout">
-				<span>El subtotal es de: $0.00</span>
+				<span>El subtotal es de: $ <?php echo $subtotal ?></span>
 			</div>
 		</div>
 	</div>

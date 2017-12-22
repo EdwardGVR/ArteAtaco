@@ -17,15 +17,15 @@
 			<div class="contenedor_address">
 				<div class="step1">1</div>
 				<h3 class="indication">Seleccione una direccion de envio</h3>
-				<div class="shipping_address">
-					Direccion de envio
-				</div>
-				<div class="shipping_address">
-					Direccion de envio
-				</div>
-				<div class="shipping_address">
-					Direccion de envio
-				</div>
+				<form class="select_address" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+					<?php foreach ($direcciones as $direccion): ?>
+						<div class="shipping_address">
+							<input type="radio" value="<?php $direccion['id'] ?>" name="selected_address">
+							<?php echo $direccion['nombre'] ?><br />
+							<?php echo $direccion['linea2'] ?>
+						</div>
+					<?php endforeach ?>
+				</form>
 			</div>
 			<hr>
 			<div class="new_address">
@@ -33,13 +33,13 @@
 					<h3 class="indication">O agregue una nueva</h3>
 					<span class="add_address">Agregar una nueva direccion</span>
 					Nombre de la direccion:
-					<input type="text" name="address_line_1" class="new_address_field" placeholder="Nombre descriptivo ej: Casa Santa Ana, Oficina, etc..">
+					<input type="text" name="address_name" class="new_address_field" placeholder="Nombre descriptivo ej: Casa Santa Ana, Oficina, etc..">
 					Pa&iacute;s:
 					<input type="text" name="pais" class="new_address_field" value="El Salvador" readonly>
 					Departamento:
 					<select name="departamento" id="dpto" class="new_address_field">
 						<?php foreach ($departamentos as $departamento): ?>
-								<option value="<?php echo $departamento['nombre'] ?>"><?php echo $departamento['nombre'] ?></option>
+								<option value="<?php echo $departamento['id'] ?>"><?php echo $departamento['nombre'] ?></option>
 						<?php endforeach ?>
 					</select>
 					Direccion:
@@ -47,6 +47,13 @@
 					<input type="text" name="address_line_2" class="new_address_field" placeholder="Direccion linea 2">
 					Referencias:
 					<textarea name="referencias" id="ref" class="new_address_field" placeholder="Referencias de ubicacion ej: Frente a iglesia, a la par de local X, etc..."></textarea>
+					<?php if (!empty($errores)): ?>
+						<div class="errores"><?php echo $errores ?></div>
+					<?php else: ?>
+						<?php if (isset($added)): ?>
+							<div class="added"><?php echo $added ?></div>
+						<?php endif ?>
+					<?php endif ?>
 					<input type="submit" name="add_address" value="Agregar direccion">
 				</form>
 			</div>

@@ -2,7 +2,7 @@
 --
 -- Host: 127.0.0.1    Database: login_propio
 -- ------------------------------------------------------
--- Server version	5.5.5-10.1.24-MariaDB
+-- Server version	5.5.5-10.1.28-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -118,7 +118,7 @@ CREATE TABLE `direcciones` (
   KEY `direcciones_departemento_idx` (`id_departamento`),
   CONSTRAINT `direcciones_departemento` FOREIGN KEY (`id_departamento`) REFERENCES `departamentos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `direcciones_usuario` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -127,6 +127,7 @@ CREATE TABLE `direcciones` (
 
 LOCK TABLES `direcciones` WRITE;
 /*!40000 ALTER TABLE `direcciones` DISABLE KEYS */;
+INSERT INTO `direcciones` VALUES (1,2,7,'Casa San Marcos','El Salvador','Urb. Florencia, Pje 3 pte, Pol 17, #16','San Marcos, San Salvador','Frente a gasolinera uno'),(2,2,7,'Casa San Marcos','El Salvador','Urb. Florencia, Pje 3 pte, Pol 17, #16','San Marcos, San Salvador','Frente a gasolinera uno'),(3,2,1,'Casa Ataco','El Salvador','Barrio La Vega',NULL,'Dos cuadras atras de iglesia'),(4,2,7,'Oficina','El Salvador','Direccion de ejemplo','',''),(5,2,5,'Otra direccion','El Salvador','Direccion de prueba','',''),(6,2,1,'Prueba','El Salvador','asdasdsdsandsldns','','');
 /*!40000 ALTER TABLE `direcciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -220,4 +221,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-21 17:04:02
+-- Dump completed on 2017-12-21 22:48:31

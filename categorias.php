@@ -12,7 +12,7 @@ if (isset($_SESSION['user'])) {
 	$user = 'Invitado';
 }
 
-$conexion = conexion('login_propio', 'root', '');
+require 'conexion.php';
 
 if ($conexion != false) {
 	$query = $conexion->prepare('SELECT * FROM categorias');

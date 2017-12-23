@@ -8,7 +8,7 @@ if (isset($_SESSION['user'])) {
 	$user = "Invitado";
 }
 
-$conexion = conexion('login_propio', 'root', '');
+require 'conexion.php';
 
 $id_cat = isset($_GET['id']) ? (int)$_GET['id'] : false;
 

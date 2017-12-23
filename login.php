@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$errores .= '<li>No se ingreso la contraseña</li>';
 	}
 
-	$conexion = conexion('login_propio', 'root', '');
+	require 'conexion.php';
 	if (!$conexion) {
 		header('Location: error.php');
 	}

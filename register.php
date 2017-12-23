@@ -4,7 +4,7 @@ require 'functions.php';
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
-	$conexion = conexion('login_propio', 'root', '');
+	require 'conexion.php';
 
 	if (!$conexion) {
 		header('Location: error.php');

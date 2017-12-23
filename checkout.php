@@ -10,7 +10,7 @@ if (isset($_SESSION['user'])) {
 
 $subtotal = 0;
 $errores = "";
-$conexion = conexion('login_propio', 'root', '');
+require 'conexion.php';
 $iduser = get_user_id($conexion, $user);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_address'])) {

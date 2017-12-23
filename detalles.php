@@ -8,7 +8,7 @@ if (isset($_SESSION['user'])) {
 }
 
 $id_prod = isset($_GET['id_prod']) ? $_GET['id_prod'] : false;
-require 'conexion.php';
+r67equire 'conexion.php';
 $iduser = get_user_id($conexion, $user);
 
 if ($conexion != false) {

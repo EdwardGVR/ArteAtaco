@@ -22,7 +22,7 @@
 						<div class="shipping_address">
 							<input type="radio" value="<?php $direccion['id'] ?>" name="selected_address">
 							<?php echo $direccion['nombre'] ?><br />
-							<?php echo $direccion['linea2'] ?>
+							<?php echo $direccion['linea1'] ?>
 						</div>
 					<?php endforeach ?>
 				</form>
@@ -39,7 +39,7 @@
 					Departamento:
 					<select name="departamento" id="dpto" class="new_address_field">
 						<?php foreach ($departamentos as $departamento): ?>
-								<option value="<?php echo $departamento['id'] ?>"><?php echo $departamento['nombre'] ?></option>
+							<option value="<?php echo $departamento['id'] ?>"><?php echo $departamento['nombre'] ?></option>
 						<?php endforeach ?>
 					</select>
 					Direccion:

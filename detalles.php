@@ -8,7 +8,9 @@ if (isset($_SESSION['user'])) {
 }
 
 $id_prod = isset($_GET['id_prod']) ? $_GET['id_prod'] : false;
-$conexion = conexion('heroku_33996c8507d92de', 'bd1afaf8a26c4e', 'aeb413f5');
+
+require 'conexion.php';
+
 $iduser = get_user_id($conexion, $user);
 
 if ($conexion != false) {

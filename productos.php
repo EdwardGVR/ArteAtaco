@@ -8,7 +8,7 @@ if (isset($_SESSION['user'])) {
 	$user = "Invitado";
 }
 
-$conexion = conexion('heroku_33996c8507d92de', 'bd1afaf8a26c4e', 'aeb413f5');
+require 'conexion.php';
 
 $id_cat = isset($_GET['id']) ? (int)$_GET['id'] : false;
 

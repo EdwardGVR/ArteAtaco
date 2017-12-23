@@ -19,7 +19,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$errores .= '<li>No se ingreso la contraseña</li>';
 	}
 
+<<<<<<< HEAD
 	$conexion = conexion('heroku_33996c8507d92de', 'bd1afaf8a26c4e', 'aeb413f5');
+=======
+	require 'conexion.php';
+>>>>>>> master
 	if (!$conexion) {
 		header('Location: error.php');
 	}

@@ -31,7 +31,7 @@ CREATE TABLE `carrito` (
   KEY `carrito_usuario_idx` (`id_user`),
   KEY `carrito_user_idx` (`id_user`),
   CONSTRAINT `carrito_user` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `carrito` (
 
 LOCK TABLES `carrito` WRITE;
 /*!40000 ALTER TABLE `carrito` DISABLE KEYS */;
-INSERT INTO `carrito` VALUES (19,1,1,2),(20,1,2,5),(23,2,1,2);
+INSERT INTO `carrito` VALUES (19,1,1,2),(20,1,2,2),(44,2,1,4),(45,2,3,1);
 /*!40000 ALTER TABLE `carrito` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -68,6 +68,67 @@ LOCK TABLES `categorias` WRITE;
 /*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
 INSERT INTO `categorias` VALUES (1,'L&aacutemparas','images/categorias/lamp.png'),(2,'Atrapasue&ntildeos','images/categorias/atrapa.jpg'),(3,'Banquetas','images/categorias/banqueta.png'),(4,'Llamadores','images/categorias/misc.png'),(5,'Bisuteria','images/categorias/bisute.png'),(6,'Nequi','images/categorias/nequi.jpg'),(7,'Instrumentos','images/categorias/instrumentos.jpg'),(8,'Farolitos','images/categorias/farolitos.jpg');
 /*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `departamentos`
+--
+
+DROP TABLE IF EXISTS `departamentos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `departamentos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_zona` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `departamentos_zonas_idx` (`id_zona`),
+  CONSTRAINT `departamentos_zonas` FOREIGN KEY (`id_zona`) REFERENCES `zonas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `departamentos`
+--
+
+LOCK TABLES `departamentos` WRITE;
+/*!40000 ALTER TABLE `departamentos` DISABLE KEYS */;
+INSERT INTO `departamentos` VALUES (1,1,'Ahuachap&aacute;n'),(2,1,'Santa Ana'),(3,1,'Sonsonate'),(4,2,'La Libertad'),(5,2,'Chalatenango'),(6,2,'Cuscatl&aacute;n'),(7,2,'San Salvador'),(8,3,'La Paz'),(9,3,'Caba&ntilde;as'),(10,3,'San Vicente'),(11,4,'Usulut&aacute;n'),(12,4,'San Miguel'),(13,4,'Moraz&aacute;n'),(14,4,'La Uni&oacute;n');
+/*!40000 ALTER TABLE `departamentos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `direcciones`
+--
+
+DROP TABLE IF EXISTS `direcciones`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `direcciones` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_user` int(11) NOT NULL,
+  `id_departamento` int(11) NOT NULL,
+  `nombre` varchar(150) NOT NULL,
+  `pais` varchar(50) NOT NULL,
+  `linea1` varchar(150) NOT NULL,
+  `linea2` varchar(150) DEFAULT NULL,
+  `referencias` varchar(250) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `direcciones_usuario_idx` (`id_user`),
+  KEY `direcciones_departemento_idx` (`id_departamento`),
+  CONSTRAINT `direcciones_departemento` FOREIGN KEY (`id_departamento`) REFERENCES `departamentos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `direcciones_usuario` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `direcciones`
+--
+
+LOCK TABLES `direcciones` WRITE;
+/*!40000 ALTER TABLE `direcciones` DISABLE KEYS */;
+INSERT INTO `direcciones` VALUES (1,2,7,'Casa San Marcos','El Salvador','Urb. Florencia, Pje 3 pte, Pol 17, #16','San Marcos, San Salvador','Frente a gasolinera uno'),(2,2,7,'Casa San Marcos','El Salvador','Urb. Florencia, Pje 3 pte, Pol 17, #16','San Marcos, San Salvador','Frente a gasolinera uno'),(3,2,1,'Casa Ataco','El Salvador','Barrio La Vega',NULL,'Dos cuadras atras de iglesia'),(4,2,7,'Oficina','El Salvador','Direccion de ejemplo','',''),(5,2,5,'Otra direccion','El Salvador','Direccion de prueba','',''),(6,2,1,'Prueba','El Salvador','asdasdsdsandsldns','','');
+/*!40000 ALTER TABLE `direcciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -126,6 +187,30 @@ LOCK TABLES `usuarios` WRITE;
 INSERT INTO `usuarios` VALUES (1,'fuljencio','edwardgvr414@gmail.com','12345'),(2,'edward','edwardgvr@gmail.com','asdfg'),(3,'prueba','prueba@mail.com','asdfg');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `zonas`
+--
+
+DROP TABLE IF EXISTS `zonas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `zonas` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `zonas`
+--
+
+LOCK TABLES `zonas` WRITE;
+/*!40000 ALTER TABLE `zonas` DISABLE KEYS */;
+INSERT INTO `zonas` VALUES (1,'occidental'),(2,'central'),(3,'paracentral'),(4,'oriental');
+/*!40000 ALTER TABLE `zonas` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -136,4 +221,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-27 22:15:36
+-- Dump completed on 2017-12-21 22:48:31

@@ -12,7 +12,7 @@ if (isset($_SESSION['user'])) {
 	$user = 'Invitado';
 }
 
-$conexion = conexion('heroku_33996c8507d92de', 'bd1afaf8a26c4e', 'aeb413f5');
+require 'conexion.php';
 
 if ($conexion != false) {
 	$query = $conexion->prepare('SELECT * FROM categorias');

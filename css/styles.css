@@ -920,6 +920,7 @@ h3.indication {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-wrap: wrap;
 
 	width: 300px;
 	height: 150px;
@@ -927,6 +928,14 @@ h3.indication {
 	/*margin-bottom: 30px;*/
 
 	background: #ccc;
+}
+
+.shipping_address h4, h5 {
+	width: 100%;
+}
+
+.shipping_address h5 {
+	font-style: italic;
 }
 
 .new_address {

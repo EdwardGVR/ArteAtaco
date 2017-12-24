@@ -20,9 +20,10 @@
 				<form class="select_address" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 					<?php foreach ($direcciones as $direccion): ?>
 						<div class="shipping_address">
-							<input type="radio" value="<?php $direccion['id'] ?>" name="selected_address">
-							<?php echo $direccion['nombre'] ?><br />
-							<?php echo $direccion['linea1'] ?>
+							<h4><?php echo $direccion['nombre'] ?></h4><br />
+							<h5><?php echo $direccion['linea1'] ?></h5>
+							<label for="selected_address">Seleccionar&nbsp;</label>
+							<input type="radio" value="<?php $direccion['id'] ?>" name="selected_address" id="selected_address">
 						</div>
 					<?php endforeach ?>
 				</form>
@@ -60,7 +61,7 @@
 			<hr>
 			<div class="payment_method">
 				<div class="step1">2</div>
-				<h3 class="indication">Seleccione un metodo de pago</h3>
+				<h3 class="indication">Seleccione un m&eacute;todo de pago</h3>
 				<form class="form_pay_method" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>">
 					<div class="pay_option">
 						<i class="fa fa-university" aria-hidden="true"></i><input type="radio" name="payment_method" value="bank-transfer">Transferencia bancaria

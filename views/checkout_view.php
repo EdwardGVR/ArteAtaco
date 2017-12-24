@@ -18,14 +18,24 @@
 				<div class="step1">1</div>
 				<h3 class="indication">Seleccione una direccion de envio</h3>
 				<form class="select_address" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-					<?php foreach ($direcciones as $direccion): ?>
-						<div class="shipping_address">
-							<h4><?php echo $direccion['nombre'] ?></h4><br />
-							<h5><?php echo $direccion['linea1'] ?></h5>
-							<label for="selected_address">Seleccionar&nbsp;</label>
-							<input type="radio" value="<?php $direccion['id'] ?>" name="selected_address" id="selected_address">
-						</div>
-					<?php endforeach ?>
+					<?php if ($direcciones != false): ?>
+						<?php foreach ($direcciones as $direccion): ?>
+							<div class="shipping_address">
+								<div class="info">
+									<input type="hidden" name="id_address" value="<?php echo $direccion['id'] ?>">
+									<input type="hidden" name="id_user" value="<?php echo $direccion['id_user'] ?>">
+									<h4><?php echo $direccion['nombre'] ?></h4><br />
+									<h5><?php echo $direccion['linea1'] ?></h5>
+								</div>
+								<div class="options">
+									<a href="#" class="button">Editar</a>
+									<input class="button" name="confirm_address" type="submit" value="Seleccionar">
+								</div>
+							</div>
+						<?php endforeach ?>
+					<?php else: ?>
+						No tiene ninguna direcci&oacute;n registrada, puede agregar direcciones en el siguiente formulario y apareceran aqu&iacute;:
+					<?php endif ?>
 				</form>
 			</div>
 			<hr>
@@ -67,10 +77,10 @@
 						<i class="fa fa-university" aria-hidden="true"></i><input type="radio" name="payment_method" value="bank-transfer">Transferencia bancaria
 					</div>	
 					<div class="pay_option">
-						<i class="fa fa-money" aria-hidden="true"></i><input type="radio" name="payment_method" value="method">Metodo de pago
+						<i class="fa fa-money" aria-hidden="true"></i><input type="radio" name="payment_method" value="method">Metodo de pago 2
 					</div>
 					<div class="pay_option">
-						<i class="fa fa-money" aria-hidden="true"></i><input type="radio" name="payment_method" value="method">Metodo de pago
+						<i class="fa fa-money" aria-hidden="true"></i><input type="radio" name="payment_method" value="method">Metodo de pago 3
 					</div>
 				</form>
 			</div>
@@ -79,7 +89,7 @@
 				<div class="step1">3</div>
 				<!-- <h3 class="indication">Confirmar informacion</h3> -->
 				<form class="form_confirm_info" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-					<input class="send_info" type="submit" name="confirm_info" value="Confirmar informacion">
+					<input class="send_info" type="submit" name="confirm_info" value="La informaci&oacute;n es correcta">
 				</form>
 			</div>
 		</div>

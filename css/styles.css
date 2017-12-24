@@ -930,6 +930,40 @@ h3.indication {
 	background: #ccc;
 }
 
+.shipping_address .info {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;	
+	height: 70%;
+}
+
+.shipping_address .options {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width: 300px;
+	height: 30%;
+}
+
+.shipping_address .button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #A7E39F;
+	padding: 0;	
+	border-radius: 0;	
+	font-size: 1em;
+	width: 100px;
+	margin: 0;
+	height: 70%;
+	cursor: pointer;
+	transition: all ease 0.3s;
+}
+
+.shipping_address .button:hover{
+	background: #62B856;
+}
+
 .shipping_address h4, h5 {
 	width: 100%;
 }

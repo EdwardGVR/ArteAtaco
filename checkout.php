@@ -59,6 +59,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_address'])) {
 	}
 }
 
+if (isset($_POST['confirm_info'])) {
+	print_r($_POST);
+}
+
 if ($conexion != false) {
 	$query = $conexion->prepare("SELECT id, nombre_cat FROM categorias");
 	$query->execute();

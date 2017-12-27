@@ -59,6 +59,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_address'])) {
 	}
 }
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['confirm_address'])) {
+	$dir_select = true;
+	$id_address = $_POST['id_address'];
+	$dir_nombre = $_POST['dir_nombre'];
+	$dir_detalle = $_POST['dir_detalle'];
+} else {
+	$id_address = "";
+	$dir_select = false;
+}
+
 if (isset($_POST['confirm_info'])) {
 	print_r($_POST);
 }

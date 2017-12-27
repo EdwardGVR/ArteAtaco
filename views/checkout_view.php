@@ -17,13 +17,15 @@
 			<div class="contenedor_address">
 				<div class="step1">1</div>
 				<h3 class="indication">Seleccione una direccion de envio</h3>
-				<form class="select_address" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+				<div class="select_address">
 					<?php if ($direcciones != false): ?>
 						<?php foreach ($direcciones as $direccion): ?>
-							<div class="shipping_address">
+							<form class="shipping_address" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 								<div class="info">
 									<input type="hidden" name="id_address" value="<?php echo $direccion['id'] ?>">
 									<input type="hidden" name="id_user" value="<?php echo $direccion['id_user'] ?>">
+									<input type="hidden" name="dir_nombre" value="<?php echo $direccion['nombre'] ?>">
+									<input type="hidden" name="dir_detalle" value="<?php echo $direccion['linea1'] ?>">
 									<h4><?php echo $direccion['nombre'] ?></h4><br />
 									<h5><?php echo $direccion['linea1'] ?></h5>
 								</div>
@@ -31,12 +33,12 @@
 									<a href="#" class="button">Editar</a>
 									<input class="button" name="confirm_address" type="submit" value="Seleccionar">
 								</div>
-							</div>
+							</form>
 						<?php endforeach ?>
 					<?php else: ?>
 						No tiene ninguna direcci&oacute;n registrada, puede agregar direcciones en el siguiente formulario y apareceran aqu&iacute;:
 					<?php endif ?>
-				</form>
+				</div>
 			</div>
 			<hr>
 			<div class="new_address">
@@ -87,8 +89,21 @@
 			<hr>
 			<div class="confirm_info">
 				<div class="step1">3</div>
-				<!-- <h3 class="indication">Confirmar informacion</h3> -->
+				<h3 class="indication">Revisar informaci&oacute;n</h3>
 				<form class="form_confirm_info" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+					<h3>Se entregar&aacute; en:</h3>
+					<?php if ($dir_select): ?>
+						<div class="shipping_address" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+							<div class="info">
+								<h4><?php echo $dir_nombre ?>id: <?php echo $id_address ?></h4><br />
+								<h5><?php echo $dir_detalle ?></h5>
+							</div>
+							<div class="options">
+								<a href="#" class="button">Editar</a>
+								<input class="button" name="confirm_address" type="submit" value="Seleccionar">
+							</div>
+						</div>						
+					<?php endif ?>
 					<input class="send_info" type="submit" name="confirm_info" value="La informaci&oacute;n es correcta">
 				</form>
 			</div>

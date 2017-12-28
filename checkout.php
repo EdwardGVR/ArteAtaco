@@ -69,6 +69,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['confirm_address'])) {
 	$dir_select = false;
 }
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['confirm_pay'])) {
+	$pay_select = true;
+	$payment_method = $_POST['payment_method'];
+} else {
+	$pay_select = false;
+}
+
 if (isset($_POST['confirm_info'])) {
 	print_r($_POST);
 }

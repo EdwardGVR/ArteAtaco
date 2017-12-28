@@ -74,7 +74,7 @@
 			<div class="payment_method">
 				<div class="step1">2</div>
 				<h3 class="indication">Seleccione un m&eacute;todo de pago</h3>
-				<form class="form_pay_method" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>">
+				<form class="form_pay_method" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 					<div class="pay_option">
 						<i class="fa fa-university" aria-hidden="true"></i><input type="radio" name="payment_method" value="bank-transfer">Transferencia bancaria
 					</div>	
@@ -84,6 +84,7 @@
 					<div class="pay_option">
 						<i class="fa fa-money" aria-hidden="true"></i><input type="radio" name="payment_method" value="method">Metodo de pago 3
 					</div>
+					<input type="submit" name="confirm_pay" value="Aceptar" class="button">
 				</form>
 			</div>
 			<hr>
@@ -91,19 +92,45 @@
 				<div class="step1">3</div>
 				<h3 class="indication">Revisar informaci&oacute;n</h3>
 				<form class="form_confirm_info" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-					<h3>Se entregar&aacute; en:</h3>
-					<?php if ($dir_select): ?>
-						<div class="shipping_address" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-							<div class="info">
-								<h4><?php echo $dir_nombre ?>id: <?php echo $id_address ?></h4><br />
-								<h5><?php echo $dir_detalle ?></h5>
+					<div class="selecciones">
+						<?php if ($dir_select): ?>
+							<div class="direccion_seleccionada">
+								<h3>Se entregar&aacute; en:</h3>
+								<div class="shipping_address">
+									<div class="info">
+										<h4><?php echo $dir_nombre ?></h4><br />
+										<h5><?php echo $dir_detalle ?></h5>
+									</div>
+									<div class="options">
+										<a href="#" class="button">Editar</a>
+										<input class="button" name="confirm_address" type="submit" value="Seleccionar">
+									</div>
+								</div>						
 							</div>
-							<div class="options">
-								<a href="#" class="button">Editar</a>
-								<input class="button" name="confirm_address" type="submit" value="Seleccionar">
+						<?php else: ?>
+							<div class="direccion_seleccionada">
+								<h3>No se han seleccionado una direcci&oacute;n.</h3>
 							</div>
-						</div>						
-					<?php endif ?>
+						<?php endif ?>
+						<?php if ($pay_select): ?>
+							<div class="pago_seleccionado">
+								<h3>Se pagar&aacute; con:</h3>
+								<div class="shipping_address">
+									<div class="info">
+										<h4><?php echo $payment_method ?></h4><br />
+									</div>
+									<div class="options">
+										<a href="#" class="button">Editar</a>
+										<input class="button" name="confirm_address" type="submit" value="Seleccionar">
+									</div>
+								</div>						
+							</div>
+						<?php else: ?>
+							<div class="direccion_seleccionada">
+								<h3>No se ha seleccionado un m&eacute;todo de pago.</h3>
+							</div>
+						<?php endif ?>
+					</div>
 					<input class="send_info" type="submit" name="confirm_info" value="La informaci&oacute;n es correcta">
 				</form>
 			</div>

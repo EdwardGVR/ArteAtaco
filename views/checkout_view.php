@@ -45,18 +45,18 @@
 				<form class="form_new_address" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 					<h3 class="indication">O agregue una nueva</h3>
 					<span class="add_address">Agregar una nueva direccion</span>
-					Nombre de la direccion:
+					Nombre de la direccion: *
 					<input type="text" name="address_name" class="new_address_field" placeholder="Nombre descriptivo ej: Casa Santa Ana, Oficina, etc..">
-					Pa&iacute;s:
+					Pa&iacute;s: *
 					<input type="text" name="pais" class="new_address_field" value="El Salvador" readonly>
-					Departamento:
+					Departamento: *
 					<select name="departamento" id="dpto" class="new_address_field">
 						<?php foreach ($departamentos as $departamento): ?>
 							<option value="<?php echo $departamento['id'] ?>"><?php echo $departamento['nombre'] ?></option>
 						<?php endforeach ?>
 					</select>
 					Direccion:
-					<input type="text" name="address_line_1" class="new_address_field" placeholder="Direccion linea 1">
+					<input type="text" name="address_line_1" class="new_address_field" placeholder="Direccion linea 1 *">
 					<input type="text" name="address_line_2" class="new_address_field" placeholder="Direccion linea 2">
 					Referencias:
 					<textarea name="referencias" id="ref" class="new_address_field" placeholder="Referencias de ubicacion ej: Frente a iglesia, a la par de local X, etc..."></textarea>
@@ -75,15 +75,13 @@
 				<div class="step1">2</div>
 				<h3 class="indication">Seleccione un m&eacute;todo de pago</h3>
 				<form class="form_pay_method" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-					<div class="pay_option">
-						<i class="fa fa-university" aria-hidden="true"></i><input type="radio" name="payment_method" value="bank-transfer">Transferencia bancaria
-					</div>	
-					<div class="pay_option">
-						<i class="fa fa-money" aria-hidden="true"></i><input type="radio" name="payment_method" value="method">Metodo de pago 2
-					</div>
-					<div class="pay_option">
-						<i class="fa fa-money" aria-hidden="true"></i><input type="radio" name="payment_method" value="method">Metodo de pago 3
-					</div>
+					<?php foreach ($metodos as $metodo): ?>
+						<div class="pay_option">
+							<input type="hidden" name="id_pay_method" value="<?php echo $metodo['id'] ?>">
+							<i class="<?php echo $metodo['icon'] ?>" aria-hidden="true"></i><input type="radio" name="payment_method" value="<?php echo $metodo['nombre'] ?>"><?php echo $metodo['nombre'] ?>
+						</div>		
+					<?php endforeach ?>
+					
 					<input type="submit" name="confirm_pay" value="Aceptar" class="button">
 				</form>
 			</div>
@@ -93,13 +91,13 @@
 				<h3 class="indication">Revisar informaci&oacute;n</h3>
 				<form class="form_confirm_info" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 					<div class="selecciones">
-						<?php if ($dir_select): ?>
+						<?php if (isset($direccion_selected) && $direccion_selected != false): ?>
 							<div class="direccion_seleccionada">
 								<h3>Se entregar&aacute; en:</h3>
 								<div class="shipping_address">
 									<div class="info">
-										<h4><?php echo $dir_nombre ?></h4><br />
-										<h5><?php echo $dir_detalle ?></h5>
+										<h4><?php echo $direccion_selected['nombre'] ?></h4><br />
+										<h5><?php echo $direccion_selected['linea1'] ?></h5>
 									</div>
 									<div class="options">
 										<a href="#" class="button">Editar</a>

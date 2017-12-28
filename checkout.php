@@ -59,19 +59,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_address'])) {
 	}
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['confirm_address'])) {
-	$dir_select = true;
+if (isset($_POST['confirm_address'])) {
 	$id_address = $_POST['id_address'];
-	$dir_nombre = $_POST['dir_nombre'];
-	$dir_detalle = $_POST['dir_detalle'];
-} else {
-	$id_address = "";
-	$dir_select = false;
+
+	if ($conexion != false) {
+		$query = $conexion->prepare("SELECT * FROM direcciones WHERE id = :id_address");
+		$query->execute(array(':id_address'=>$id_address));
+		$direccion_selected = $query->fetch();
+	}
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['confirm_pay'])) {
+if (isset($_POST['confirm_pay'])) {
 	$pay_select = true;
-	$payment_method = $_POST['payment_method'];
+	if (!empty($_POST['payment_method'])) {
+		$payment_method = $_POST['payment_method'];	
+	} else {
+		$payment_method = "No se seleccion&oacute; ning&uacute;n m&eacute;todo";
+	}
 } else {
 	$pay_select = false;
 }
@@ -102,6 +106,10 @@ if ($conexion != false) {
 	$query = $conexion->prepare("SELECT * FROM direcciones WHERE id_user = :id_user");
 	$query->execute(array(':id_user'=>$iduser));
 	$direcciones = $query->fetchall();
+
+	$query = $conexion->prepare("SELECT * FROM metodos_pago");
+	$query->execute(array());
+	$metodos = $query->fetchall();
 }
 
 require 'views/checkout_view.php';

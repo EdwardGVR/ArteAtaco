@@ -1098,6 +1098,8 @@ input[name="add_address"]:hover {
 
 .form_pay_method .pay_option {
 	margin-bottom: 20px;
+	width: 100%;
+	text-align: left;
 }
 
 .form_pay_method .fa {

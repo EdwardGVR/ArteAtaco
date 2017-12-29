@@ -91,13 +91,13 @@
 				<h3 class="indication">Revisar informaci&oacute;n</h3>
 				<form class="form_confirm_info" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 					<div class="selecciones">
-						<?php if (isset($direccion_selected) && $direccion_selected != false): ?>
+						<?php if (isset($dir_sel) && $dir_sel != false): ?>
 							<div class="direccion_seleccionada">
 								<h3>Se entregar&aacute; en:</h3>
 								<div class="shipping_address">
 									<div class="info">
-										<h4><?php echo $direccion_selected['nombre'] ?></h4><br />
-										<h5><?php echo $direccion_selected['linea1'] ?></h5>
+										<h4><?php echo $dir_sel['nombre'] ?></h4><br />
+										<h5><?php echo $dir_sel['linea1'] ?></h5>
 									</div>
 									<div class="options">
 										<a href="#" class="button">Editar</a>
@@ -110,12 +110,12 @@
 								<h3>No se han seleccionado una direcci&oacute;n.</h3>
 							</div>
 						<?php endif ?>
-						<?php if ($pay_select): ?>
+						<?php if (isset($pay_sel) && $pay_sel != false): ?>
 							<div class="pago_seleccionado">
 								<h3>Se pagar&aacute; con:</h3>
 								<div class="shipping_address">
 									<div class="info">
-										<h4><?php echo $payment_method ?></h4><br />
+										<h4><?php echo $pay_sel['nombre'] ?></h4><br />
 									</div>
 									<div class="options">
 										<a href="#" class="button">Editar</a>

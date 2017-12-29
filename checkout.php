@@ -59,30 +59,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_address'])) {
 	}
 }
 
-if (isset($_POST['confirm_address'])) {
-	$id_address = $_POST['id_address'];
-
-	if ($conexion != false) {
-		$query = $conexion->prepare("SELECT * FROM direcciones WHERE id = :id_address");
-		$query->execute(array(':id_address'=>$id_address));
-		$direccion_selected = $query->fetch();
-	}
-}
-
-if (isset($_POST['confirm_pay'])) {
-	$pay_select = true;
-	if (!empty($_POST['payment_method'])) {
-		$payment_method = $_POST['payment_method'];	
-	} else {
-		$payment_method = "No se seleccion&oacute; ning&uacute;n m&eacute;todo";
-	}
-} else {
-	$pay_select = false;
-}
-
-if (isset($_POST['confirm_info'])) {
-	print_r($_POST);
-}
+// if (isset($_POST['confirm_info'])) {
+// 	print_r($_POST);
+// }
 
 if ($conexion != false) {
 	$query = $conexion->prepare("SELECT id, nombre_cat FROM categorias");
@@ -110,6 +89,57 @@ if ($conexion != false) {
 	$query = $conexion->prepare("SELECT * FROM metodos_pago");
 	$query->execute(array());
 	$metodos = $query->fetchall();
+
+	if (isset($_POST['confirm_address'])) {
+		$id_address = $_POST['id_address'];
+		$id_user = $_POST['id_user'];
+
+		$query = $conexion->prepare("SELECT * FROM temporal WHERE id_user = :id_user");
+		$query->execute(array(':id_user'=>$id_user));
+		$check_table = $query->fetchall();
+
+		if ($check_table =! false) {
+			$query = $conexion->prepare("UPDATE temporal SET id_direccion = :id_direccion WHERE id_user = :id_user");
+			$query->execute(array(
+				':id_direccion'=>$id_address,
+				':id_user'=>$id_user
+			));
+		} else {
+			$query = $conexion->prepare("INSERT INTO temporal VALUES (null, :id_user, :id_direccion, null)");
+			$query->execute(array(
+				':id_user'=>$id_user,
+				':id_direccion'=>$id_address
+			));
+		}
+	}
+
+	$query = $conexion->prepare("SELECT * FROM temporal WHERE id_user = :id_user");
+	$query->execute(array(':id_user'=>$iduser));
+	$check_table2 = $query->fetch();
+	// print_r($check_table2);
+	
+	$idaddress = $check_table2['id_direccion'];
+
+	$query = $conexion->prepare("SELECT temporal.*, direcciones.nombre, direcciones.linea1 FROM temporal, direcciones WHERE temporal.id_user = :id_user AND direcciones.id = :id_address");
+	$query->execute(array(':id_user'=>$iduser, ':id_address'=>$idaddress));
+	$dir_sel = $query->fetch();
+	// print_r($dir_sel);
+
+	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['confirm_pay'])) {
+		$id_pago = $_POST['id_pay_method'];
+
+		$query = $conexion->prepare("UPDATE temporal SET id_pago = :id_pago WHERE id_user = :id_user");
+		$query->execute(array(
+			':id_pago'=>$id_pago,
+			':id_user'=>$iduser
+		));
+
+		$query = $conexion->prepare("SELECT metodos_pago.* FROM temporal, metodos_pago WHERE temporal.id_user = :id_user AND metodos_pago.id = :id_pago");
+		$query->execute(array(':id_user'=>$iduser, ':id_pago'=>$id_pago));
+		$pay_sel = $query->fetch();
+
+		print_r($pay_sel);
+	}
 }
 
 require 'views/checkout_view.php';

@@ -113,12 +113,13 @@ CREATE TABLE `direcciones` (
   `linea1` varchar(150) NOT NULL,
   `linea2` varchar(150) DEFAULT NULL,
   `referencias` varchar(250) DEFAULT NULL,
+  `seleccionada` int(11) DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `direcciones_usuario_idx` (`id_user`),
   KEY `direcciones_departemento_idx` (`id_departamento`),
   CONSTRAINT `direcciones_departemento` FOREIGN KEY (`id_departamento`) REFERENCES `departamentos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `direcciones_usuario` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -127,8 +128,33 @@ CREATE TABLE `direcciones` (
 
 LOCK TABLES `direcciones` WRITE;
 /*!40000 ALTER TABLE `direcciones` DISABLE KEYS */;
-INSERT INTO `direcciones` VALUES (1,2,7,'Casa San Marcos','El Salvador','FLorencia San Marcos','',''),(2,2,7,'Casa San Marcos','El Salvador','FLorencia San Marcos','','');
+INSERT INTO `direcciones` VALUES (1,2,7,'Casa San Marcos','El Salvador','FLorencia San Marcos','','',0),(3,2,1,'Casa Ataco','El Salvador','asdasd','asdas','ssadas',0);
 /*!40000 ALTER TABLE `direcciones` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `metodos_pago`
+--
+
+DROP TABLE IF EXISTS `metodos_pago`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `metodos_pago` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(150) NOT NULL,
+  `icon` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `metodos_pago`
+--
+
+LOCK TABLES `metodos_pago` WRITE;
+/*!40000 ALTER TABLE `metodos_pago` DISABLE KEYS */;
+INSERT INTO `metodos_pago` VALUES (1,'Transferencia bancaria','fa fa-university'),(2,'M&eacute;todo 2','fa fa-money'),(3,'M&eacute;todo 3','fa fa-money');
+/*!40000 ALTER TABLE `metodos_pago` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -256,4 +282,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-26 14:17:55
+-- Dump completed on 2017-12-28 21:01:25

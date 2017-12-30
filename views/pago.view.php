@@ -12,19 +12,27 @@
 
 <?php require 'header.php' ?>
 	
-<? switch($id_metodo_pago) : case 1 : ?>
+<div class="contenedor_pago">
+	<div class="pago">
+		<?php if ($id_metodo_pago == 1): ?>
+			<h3 class="info">A continuaci&oacute;n los 	detalles de la cuenta:</h3>
+			<div class="info">N&uacute;mero: <h4>xxxx-xxxx-xxxx-xxxx</h4></div>
+			<div class="info">Banco: <h4>Nombre banco</h4></div>
+			<div class="info">Titular: <h4>Nombre del titular</h4></div>
 
-  <div>One</div>
-
-<? break; case 2 : ?>
-
-  <div>Two</div>
-
-<? break; case 3 : ?>
-
-  <div>Three</div>
-
-<? break; endswitch; ?>
+		<?php elseif($id_metodo_pago == 2): ?>
+			3
+		<?php elseif($id_metodo_pago == 3): ?>
+			4
+		<?php endif ?>
+	</div>
+	<div class="nota">El dep&oacute;sito debe hacerse a la mayor brevedad posible.</div>
+	<div class="hacer_pedido">
+		<form class="place_order" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+			<input type="submit" name="place_order" value="Hacer pedido">
+		</form>
+	</div>
+</div>
 
 <?php require 'footer.php' ?>
 

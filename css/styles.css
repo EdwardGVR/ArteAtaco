@@ -383,7 +383,8 @@ h1.user i.fa {
 
 .contenedor_prod,
 .contenedor_detalles,
-.contenedor_carrito {
+.contenedor_carrito,
+.contenedor_pago {
 	min-height: 363px;
 	margin: auto 10%;
 	margin-bottom: 50px;
@@ -1220,6 +1221,56 @@ input[name="add_address"]:hover {
 .carrito_checkout .subtotal_checkout span {
 	font-size: 1.2em;
 	font-weight: bold;
+}
+
+.contenedor_pago {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	margin-top: 100px;
+}
+
+.contenedor_pago .nota {
+	width: 100%;
+	margin-top: 20px;
+	font-style: italic;
+}
+
+.contenedor_pago input[name="place_order"] {
+	line-height: 10px;
+	font-size: 1.4em;
+	background: #F2C049;
+	cursor: pointer;
+	transition: all ease 0.4s;
+	margin-top: 50px;
+}
+
+.contenedor_pago input[name="place_order"]:hover {
+	background: #D89B0A;	
+}
+
+.pago {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	flex-wrap: wrap;
+
+	width: 800px;
+	height: 400px;
+	background: #DAF2E5;
+	border-radius: 20px;
+	box-shadow: 0 0 20px #000;
+}
+
+.pago .info  {
+	width: 100%;
+	margin-bottom: 30px;	
+	font-size: 1.3em;
+}
+
+.pago .info:last-child {
+	margin-bottom: 0;
 }
 
 footer {

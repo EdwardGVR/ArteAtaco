@@ -59,10 +59,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_address'])) {
 	}
 }
 
-// if (isset($_POST['confirm_info'])) {
-// 	print_r($_POST);
-// }
-
 if ($conexion != false) {
 	$query = $conexion->prepare("SELECT id, nombre_cat FROM categorias");
 	$query->execute();
@@ -89,6 +85,7 @@ if ($conexion != false) {
 	$query = $conexion->prepare("SELECT * FROM metodos_pago");
 	$query->execute(array());
 	$metodos = $query->fetchall();
+	// print_r($metodos);
 
 	if (isset($_POST['confirm_address'])) {
 		$id_address = $_POST['id_address'];
@@ -125,13 +122,14 @@ if ($conexion != false) {
 		$idaddress = $check_table2['id_direccion'];	
 	}
 
-	$query = $conexion->prepare("SELECT temporal.*, direcciones.nombre, direcciones.linea1 FROM temporal, direcciones WHERE temporal.id_user = :id_user AND direcciones.id = :id_address");
+	$query = $conexion->prepare("SELECT direcciones.* FROM temporal, direcciones WHERE temporal.id_user = :id_user AND direcciones.id = :id_address");
 	$query->execute(array(':id_user'=>$iduser, ':id_address'=>$idaddress));
 	$dir_sel = $query->fetch();
 	// print_r($dir_sel);
 
 	if (isset($_POST['confirm_pay'])) {
-		$id_pago = $_POST['id_pay_method'];
+		$id_pago = $_POST['payment_method'];
+		// echo $id_pago;
 
 		$query = $conexion->prepare("SELECT * FROM temporal");
 		$query->execute(array());
@@ -143,7 +141,7 @@ if ($conexion != false) {
 				':id_pago'=>$id_pago,
 				':id_user'=>$iduser
 			));
-			echo 'Habia registro';
+			// echo 'Habia registro';
 		} else {
 			$query = $conexion->prepare("INSERT INTO temporal VALUES (null, :id_user, null, id_pago)");
 			$query->execute(array(
@@ -166,7 +164,7 @@ if ($conexion != false) {
 	$query = $conexion->prepare("SELECT metodos_pago.* FROM temporal, metodos_pago WHERE temporal.id_user = :id_user AND metodos_pago.id = :id_pago");
 	$query->execute(array(':id_user'=>$iduser, ':id_pago'=>$idpago));
 	$pay_sel = $query->fetch();
-	print_r($pay_sel);
+	// print_r($pay_sel);
 }
 
 require 'views/checkout_view.php';

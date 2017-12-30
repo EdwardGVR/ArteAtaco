@@ -12,6 +12,7 @@
 	
 	<?php require 'header.php' ?>
 
+	<a name="dirs" id="dirs"></a>
 	<div class="contenedor_checkout">
 		<div class="info_checkout">
 			<div class="contenedor_address">
@@ -71,17 +72,16 @@
 				</form>
 			</div>
 			<hr>
+			<a name="pays" id="pays"></a>
 			<div class="payment_method">
 				<div class="step1">2</div>
 				<h3 class="indication">Seleccione un m&eacute;todo de pago</h3>
 				<form class="form_pay_method" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 					<?php foreach ($metodos as $metodo): ?>
 						<div class="pay_option">
-							<input type="hidden" name="id_pay_method" value="<?php echo $metodo['id'] ?>">
-							<i class="<?php echo $metodo['icon'] ?>" aria-hidden="true"></i><input type="radio" name="payment_method" value="<?php echo $metodo['nombre'] ?>"><?php echo $metodo['nombre'] ?>
+							<i class="<?php echo $metodo['icon'] ?>" aria-hidden="true"></i><input type="radio" name="payment_method" value="<?php echo $metodo['id'] ?>"><?php echo $metodo['nombre'] ?>
 						</div>		
 					<?php endforeach ?>
-					
 					<input type="submit" name="confirm_pay" value="Aceptar" class="button">
 				</form>
 			</div>
@@ -89,19 +89,20 @@
 			<div class="confirm_info">
 				<div class="step1">3</div>
 				<h3 class="indication">Revisar informaci&oacute;n</h3>
-				<form class="form_confirm_info" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+				<form class="form_confirm_info" action="pago.php" method="POST">
 					<div class="selecciones">
 						<?php if (isset($dir_sel) && $dir_sel != false): ?>
 							<div class="direccion_seleccionada">
 								<h3>Se entregar&aacute; en:</h3>
 								<div class="shipping_address">
 									<div class="info">
+										<input type="hidden" name="dir_id" value="<?php echo $dir_sel['id'] ?>">
+										<input type="hidden" name="us_id" value="<?php echo $dir_sel['id_user'] ?>">
 										<h4><?php echo $dir_sel['nombre'] ?></h4><br />
 										<h5><?php echo $dir_sel['linea1'] ?></h5>
 									</div>
 									<div class="options">
-										<a href="#" class="button">Editar</a>
-										<input class="button" name="confirm_address" type="submit" value="Seleccionar">
+										<a href="#dirs" class="button">Cambiar</a>
 									</div>
 								</div>						
 							</div>
@@ -115,11 +116,11 @@
 								<h3>Se pagar&aacute; con:</h3>
 								<div class="shipping_address">
 									<div class="info">
-										<h4><?php echo $pay_sel['nombre'] ?></h4><br />
+										<input type="hidden" name="pm_id" value="<?php echo $pay_sel['id'] ?>">
+										<h4><i class="<?php echo $pay_sel['icon'] ?>" aria-hidden="true"></i><?php echo " ".$pay_sel['nombre'] ?></h4><br />
 									</div>
 									<div class="options">
-										<a href="#" class="button">Editar</a>
-										<input class="button" name="confirm_address" type="submit" value="Seleccionar">
+										<a href="#pays" class="button">Cambiar</a>
 									</div>
 								</div>						
 							</div>

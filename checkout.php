@@ -93,23 +93,26 @@ if ($conexion != false) {
 	if (isset($_POST['confirm_address'])) {
 		$id_address = $_POST['id_address'];
 		$id_user = $_POST['id_user'];
+		// print_r($id_address);
 
-		$query = $conexion->prepare("SELECT * FROM temporal WHERE id_user = :id_user");
-		$query->execute(array(':id_user'=>$id_user));
+		$query = $conexion->prepare("SELECT * FROM temporal");
+		$query->execute(array());
 		$check_table = $query->fetchall();
 
-		if ($check_table =! false) {
+		if ($check_table != false) {
 			$query = $conexion->prepare("UPDATE temporal SET id_direccion = :id_direccion WHERE id_user = :id_user");
 			$query->execute(array(
 				':id_direccion'=>$id_address,
 				':id_user'=>$id_user
 			));
+			// echo 'Habia registro';
 		} else {
 			$query = $conexion->prepare("INSERT INTO temporal VALUES (null, :id_user, :id_direccion, null)");
 			$query->execute(array(
 				':id_user'=>$id_user,
 				':id_direccion'=>$id_address
 			));
+			// echo 'No habia registro';
 		}
 	}
 
@@ -118,28 +121,52 @@ if ($conexion != false) {
 	$check_table2 = $query->fetch();
 	// print_r($check_table2);
 	
-	$idaddress = $check_table2['id_direccion'];
+	if ($check_table2 != false) {
+		$idaddress = $check_table2['id_direccion'];	
+	}
 
 	$query = $conexion->prepare("SELECT temporal.*, direcciones.nombre, direcciones.linea1 FROM temporal, direcciones WHERE temporal.id_user = :id_user AND direcciones.id = :id_address");
 	$query->execute(array(':id_user'=>$iduser, ':id_address'=>$idaddress));
 	$dir_sel = $query->fetch();
 	// print_r($dir_sel);
 
-	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['confirm_pay'])) {
+	if (isset($_POST['confirm_pay'])) {
 		$id_pago = $_POST['id_pay_method'];
 
-		$query = $conexion->prepare("UPDATE temporal SET id_pago = :id_pago WHERE id_user = :id_user");
-		$query->execute(array(
-			':id_pago'=>$id_pago,
-			':id_user'=>$iduser
-		));
+		$query = $conexion->prepare("SELECT * FROM temporal");
+		$query->execute(array());
+		$check_table3 = $query->fetchall();
 
-		$query = $conexion->prepare("SELECT metodos_pago.* FROM temporal, metodos_pago WHERE temporal.id_user = :id_user AND metodos_pago.id = :id_pago");
-		$query->execute(array(':id_user'=>$iduser, ':id_pago'=>$id_pago));
-		$pay_sel = $query->fetch();
-
-		print_r($pay_sel);
+		if ($check_table3 != false) {
+			$query = $conexion->prepare("UPDATE temporal SET id_pago = :id_pago WHERE id_user = :id_user");
+			$query->execute(array(
+				':id_pago'=>$id_pago,
+				':id_user'=>$iduser
+			));
+			echo 'Habia registro';
+		} else {
+			$query = $conexion->prepare("INSERT INTO temporal VALUES (null, :id_user, null, id_pago)");
+			$query->execute(array(
+				':id_user'=>$id_user,
+				':id_pago'=>$id_pago
+			));
+			// echo 'No habia registro';
+		}
 	}
+
+	$query = $conexion->prepare("SELECT * FROM temporal WHERE id_user = :id_user");
+	$query->execute(array(':id_user'=>$iduser));
+	$check_table4 = $query->fetch();
+	// print_r($check_table4);
+	
+	if ($check_table4 != false) {
+		$idpago = $check_table4['id_pago'];	
+	}
+
+	$query = $conexion->prepare("SELECT metodos_pago.* FROM temporal, metodos_pago WHERE temporal.id_user = :id_user AND metodos_pago.id = :id_pago");
+	$query->execute(array(':id_user'=>$iduser, ':id_pago'=>$idpago));
+	$pay_sel = $query->fetch();
+	print_r($pay_sel);
 }
 
 require 'views/checkout_view.php';

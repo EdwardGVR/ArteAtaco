@@ -25,7 +25,7 @@
 					<h1 class="user-btn"><?php echo $user ?></h1>
 					<div class="drop-content">
 						<a href="#">Cuenta</a>
-						<a href="#">Pedidos</a>
+						<a href="pedidos.php">Pedidos</a>
 						<a href="carrito.php">Carrito</a>
 						<a href="logout.php">Cerrar Sesi&oacute;n</a>
 					</div>

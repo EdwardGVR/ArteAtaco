@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Arte Ataco :: Datos del pedido</title>
+	<title>Arte Ataco :: Pago</title>
 
 	<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
@@ -29,6 +29,7 @@
 	<div class="nota">El dep&oacute;sito debe hacerse a la mayor brevedad posible.</div>
 	<div class="hacer_pedido">
 		<form class="place_order" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+			<input type="hidden" name="order_code" value="<?php echo $codigo ?>">
 			<input type="submit" name="place_order" value="Hacer pedido">
 		</form>
 	</div>

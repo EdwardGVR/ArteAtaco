@@ -1273,6 +1273,133 @@ input[name="add_address"]:hover {
 	margin-bottom: 0;
 }
 
+.contenedor_placed {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+
+	width: 100%;
+	height: 300px;
+	background: #ccc;
+	margin-top: 160px;
+	box-shadow: 0 0 50px #ccc;
+}
+
+.contenedor_placed h3,
+.contenedor_placed h4 {
+	width: 100%;
+}
+
+.contenedor_placed .btn_placed {
+	padding: 10px;
+	border-radius: 10px;
+	margin: 10px;
+	background: #A9F3F2;
+	width: 150px;
+	transition: all ease 0.3s;
+}
+
+.contenedor_placed .btn_placed:hover {
+	background: #73C6C5;	
+}
+
+.contenedor_pedidos {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	width: 85%;
+	margin: auto;
+	padding: 30px;
+	box-shadow: 0 0 20px;
+}
+
+.contenedor_pedidos .pedido {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	width: 80%;	
+	border-radius: 20px;
+	background: #DDDBDB;
+	margin-bottom: 50px;
+	padding: 20px;
+}
+
+.pedido .pedido_header {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	width: 100%;
+	text-align: left;
+	margin-bottom: 20px;
+}
+
+.pedido_header .pago_pend {
+	color: #F57A0D;
+}
+
+.pedido_header .detalle {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	font-size: 1em;
+	font-style: italic;
+}
+
+.pedido .pedido_body {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	width: 100%;
+}
+
+.pedido .prod_ped {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 10px;
+	width: 100%;
+	background: #CDF1F4;
+}
+
+.pedido .prod_ped:last-child {
+	margin-bottom: 0;
+}
+
+.prod_ped .prod_img,
+.prod_ped .prod_cant,
+.prod_ped .prod_pre {
+	display: flex;
+	/*flex-direction: column;*/
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	width: 150px;
+	height: 120px;
+	/*background: #000;*/
+	/*color: #fff;*/
+	font-size: 0.8em;
+}
+
+.prod_ped .prod_img h4,
+.prod_ped .prod_cant h4,
+.prod_ped .prod_pre h4 {
+	/*align-self: flex-end;*/
+	width: 100%;
+}
+
+.prod_ped .prod_img img {
+	width: 100px;
+	height: 100px;
+}
+
+.contenedor_pedidos .pedido:last-child {
+	margin-bottom: 0;
+}
+
 footer {
 	display: flex;
 	justify-content: center;

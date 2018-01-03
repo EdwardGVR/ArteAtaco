@@ -2,7 +2,7 @@
 --
 -- Host: 127.0.0.1    Database: login_propio
 -- ------------------------------------------------------
--- Server version	5.5.5-10.1.28-MariaDB
+-- Server version	5.5.5-10.1.24-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -31,7 +31,7 @@ CREATE TABLE `carrito` (
   KEY `carrito_usuario_idx` (`id_user`),
   KEY `carrito_user_idx` (`id_user`),
   CONSTRAINT `carrito_user` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `carrito` (
 
 LOCK TABLES `carrito` WRITE;
 /*!40000 ALTER TABLE `carrito` DISABLE KEYS */;
-INSERT INTO `carrito` VALUES (19,1,1,2),(20,1,2,2),(44,2,1,1),(45,2,3,1);
+INSERT INTO `carrito` VALUES (19,1,1,2),(20,1,2,2);
 /*!40000 ALTER TABLE `carrito` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -169,6 +169,7 @@ CREATE TABLE `pedidos` (
   `codigo` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `id_direccion` int(11) NOT NULL,
+  `id_pago` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
   `estado` int(11) DEFAULT NULL,
@@ -177,10 +178,12 @@ CREATE TABLE `pedidos` (
   KEY `pedidos_user_idx` (`id_user`),
   KEY `pedidos_direccion_idx` (`id_direccion`),
   KEY `pedidos_producto_idx` (`id_producto`),
+  KEY `pedidos_pago_idx` (`id_pago`),
   CONSTRAINT `pedidos_direccion` FOREIGN KEY (`id_direccion`) REFERENCES `direcciones` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `pedidos_pago` FOREIGN KEY (`id_pago`) REFERENCES `metodos_pago` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `pedidos_producto` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `pedidos_user` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -189,6 +192,7 @@ CREATE TABLE `pedidos` (
 
 LOCK TABLES `pedidos` WRITE;
 /*!40000 ALTER TABLE `pedidos` DISABLE KEYS */;
+INSERT INTO `pedidos` VALUES (1,21162,2,1,1,1,1,0,'2018-01-03 22:43:32'),(2,21162,2,1,1,3,1,0,'2018-01-03 22:43:32'),(3,21154,2,1,1,1,1,0,'2018-01-03 22:44:17'),(4,21135,2,1,1,2,2,0,'2018-01-03 22:46:16'),(5,21135,2,1,1,4,3,0,'2018-01-03 22:46:16'),(10,231512,2,3,1,2,1,0,'2018-01-03 22:51:25'),(11,231214,2,3,1,1,1,0,'2018-01-03 22:53:25');
 /*!40000 ALTER TABLE `pedidos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -242,7 +246,7 @@ CREATE TABLE `temporal` (
   CONSTRAINT `tmp_direccion` FOREIGN KEY (`id_direccion`) REFERENCES `direcciones` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `tmp_pago` FOREIGN KEY (`id_pago`) REFERENCES `metodos_pago` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `tmp_usuario` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -251,6 +255,7 @@ CREATE TABLE `temporal` (
 
 LOCK TABLES `temporal` WRITE;
 /*!40000 ALTER TABLE `temporal` DISABLE KEYS */;
+INSERT INTO `temporal` VALUES (1,2,3,1);
 /*!40000 ALTER TABLE `temporal` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -313,4 +318,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-28 21:48:05
+-- Dump completed on 2018-01-03 16:55:14

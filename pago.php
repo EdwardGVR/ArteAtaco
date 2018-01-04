@@ -14,9 +14,6 @@
 
 require 'functions.php';
 
-$unique_code = auto_inc_code();
-// echo $unique_code;
-
 if (isset($_SESSION['user'])) {
 	$user = $_SESSION['user'];
 } else {
@@ -45,10 +42,13 @@ if ($conexion != false) {
 	$codigo .= $id_metodo_pago;
 	$random_code = rand(0,9);
 	$codigo .= $random_code;
-	$codigo .= $unique_code;
 	// echo $codigo;
 
 	if (isset($_POST['place_order'])) {
+		$unique_code = auto_inc_code();
+		$codigo .= $unique_code;
+		// echo $unique_code;
+
 		$query = $conexion->prepare("SELECT  * FROM carrito WHERE id_user = :id_user");
 		$query->execute(array(':id_user'=>$iduser));
 		$productos_carrito = $query->fetchall();

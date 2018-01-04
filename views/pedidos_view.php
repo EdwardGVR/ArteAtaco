@@ -13,7 +13,8 @@
  <?php require 'header.php' ?>
 
 <div class="contenedor_pedidos">
-	<?php foreach ($pedidos as $pedido): ?>
+	<?php if ($pedidos != false): ?>
+		<?php foreach ($pedidos as $pedido): ?>
 			<div class="pedido">
 				<div class="pedido_header">
 					<h3>C&oacute;digo del pedido: #<?php echo $pedido['codigo'] ?></h3>
@@ -55,7 +56,10 @@
 					<?php endforeach ?>		
 				</div>
 			</div>
-	<?php endforeach ?>
+		<?php endforeach ?>
+	<?php else: ?>
+		<h3>No hay pedidos que mostrar.</h3>
+	<?php endif ?>
 </div>
 
  <?php require 'footer.php' ?>

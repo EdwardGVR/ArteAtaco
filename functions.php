@@ -41,9 +41,9 @@ function auto_inc_code(){
 	$archivo = 'script/aiucode/corr.txt';
 
 	if (file_exists($archivo)) {
-		$code = file_get_contents($archivo) + 1;
+		$code = file_get_contents($archivo) ;
+		$code++;
 		file_put_contents($archivo, $code);
-
 		return $code;
 	} else {
 		file_put_contents($archivo, 1);	//Si el archivo no existe, crea uno nuevo con el valor 1

@@ -32,21 +32,34 @@ body {
 	top: 45%;
 	left: 10%;
 	margin-top: -140px;
-	border-radius: 10px;
-	box-shadow: 3px 3px 15px;
+	border-radius: 20px;
+	box-shadow: 3px 3px 10px;
 }
 
 .contenedor_reg {
 	width: 500px;
 	/*height: 430px;*/
 	position: absolute;
-	top: 25%;
+	top: 15%;
 	left: 10%;
 	background: #101B6F;
 	display: inline-block;
 	/*margin: 220px auto;*/
 	border-radius: 10px;
 	box-shadow: 3px 3px 15px;
+}
+
+.contenedor_reg .label {
+	text-align: left;
+	color: #fff;
+	padding-left: 50px;
+}
+
+.contenedor_reg .nombre {
+	display: inline-block;
+	width: 40%;
+	margin: 20px 0;
+
 }
 
 .formulario {
@@ -89,6 +102,21 @@ input[type="submi"] {
 
 input[type="submi"]:hover {
 	background: #9BD7ED;
+}
+
+.remember {
+	color: #fff;
+}
+
+.login_btn {
+	cursor: pointer;
+	transition: all ease 0.3s;
+	font-size: 1.2em;
+	line-height: 15px;
+}
+
+.login_btn:hover {
+	background: #A6D3EF;
 }
 
 a.login {

@@ -31,7 +31,7 @@ CREATE TABLE `carrito` (
   KEY `carrito_usuario_idx` (`id_user`),
   KEY `carrito_user_idx` (`id_user`),
   CONSTRAINT `carrito_user` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `carrito` (
 
 LOCK TABLES `carrito` WRITE;
 /*!40000 ALTER TABLE `carrito` DISABLE KEYS */;
-INSERT INTO `carrito` VALUES (19,1,1,2),(20,1,2,2);
+INSERT INTO `carrito` VALUES (58,1,1,1),(59,2,2,1),(60,2,3,1);
 /*!40000 ALTER TABLE `carrito` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -113,13 +113,12 @@ CREATE TABLE `direcciones` (
   `linea1` varchar(150) NOT NULL,
   `linea2` varchar(150) DEFAULT NULL,
   `referencias` varchar(250) DEFAULT NULL,
-  `seleccionada` int(11) DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `direcciones_usuario_idx` (`id_user`),
   KEY `direcciones_departemento_idx` (`id_departamento`),
   CONSTRAINT `direcciones_departemento` FOREIGN KEY (`id_departamento`) REFERENCES `departamentos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `direcciones_usuario` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -128,7 +127,7 @@ CREATE TABLE `direcciones` (
 
 LOCK TABLES `direcciones` WRITE;
 /*!40000 ALTER TABLE `direcciones` DISABLE KEYS */;
-INSERT INTO `direcciones` VALUES (1,2,7,'Casa San Marcos','El Salvador','FLorencia San Marcos','','',1),(3,2,1,'Casa Ataco','El Salvador','asdasd','asdas','ssadas',1);
+INSERT INTO `direcciones` VALUES (1,2,7,'Casa San Marcos','El Salvador','FLorencia San Marcos','',''),(3,2,1,'Casa Ataco','El Salvador','asdasd','asdas','ssadas'),(4,1,1,'Casa Fuljencio','El Salvador','Casa del fuhrer','','');
 /*!40000 ALTER TABLE `direcciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -183,7 +182,7 @@ CREATE TABLE `pedidos` (
   CONSTRAINT `pedidos_pago` FOREIGN KEY (`id_pago`) REFERENCES `metodos_pago` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `pedidos_producto` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `pedidos_user` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -192,7 +191,7 @@ CREATE TABLE `pedidos` (
 
 LOCK TABLES `pedidos` WRITE;
 /*!40000 ALTER TABLE `pedidos` DISABLE KEYS */;
-INSERT INTO `pedidos` VALUES (1,21162,2,1,1,1,1,0,'2018-01-03 22:43:32'),(2,21162,2,1,1,3,1,0,'2018-01-03 22:43:32'),(3,21154,2,1,1,1,1,0,'2018-01-03 22:44:17'),(4,21135,2,1,1,2,2,0,'2018-01-03 22:46:16'),(5,21135,2,1,1,4,3,0,'2018-01-03 22:46:16'),(10,231512,2,3,1,2,1,0,'2018-01-03 22:51:25'),(11,231214,2,3,1,1,1,0,'2018-01-03 22:53:25');
+INSERT INTO `pedidos` VALUES (12,23161,2,3,1,1,1,0,'2018-01-04 20:40:38'),(13,23122,2,3,1,2,1,0,'2018-01-04 20:41:09'),(14,14133,1,4,1,1,3,0,'2018-01-04 22:08:48'),(15,14133,1,4,1,2,2,0,'2018-01-04 22:08:48');
 /*!40000 ALTER TABLE `pedidos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -246,7 +245,7 @@ CREATE TABLE `temporal` (
   CONSTRAINT `tmp_direccion` FOREIGN KEY (`id_direccion`) REFERENCES `direcciones` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `tmp_pago` FOREIGN KEY (`id_pago`) REFERENCES `metodos_pago` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `tmp_usuario` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -255,7 +254,7 @@ CREATE TABLE `temporal` (
 
 LOCK TABLES `temporal` WRITE;
 /*!40000 ALTER TABLE `temporal` DISABLE KEYS */;
-INSERT INTO `temporal` VALUES (1,2,3,1);
+INSERT INTO `temporal` VALUES (1,2,3,1),(2,1,4,1);
 /*!40000 ALTER TABLE `temporal` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -269,10 +268,12 @@ DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user` varchar(100) NOT NULL,
+  `nombres` varchar(100) DEFAULT 'null',
+  `apellidos` varchar(100) DEFAULT 'null',
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -281,7 +282,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'fuljencio','edwardgvr414@gmail.com','12345'),(2,'edward','edwardgvr@gmail.com','asdfg'),(3,'prueba','prueba@mail.com','asdfg');
+INSERT INTO `usuarios` VALUES (1,'fuljencio','null','null','edwardgvr414@gmail.com','12345'),(2,'edward','null','null','edwardgvr@gmail.com','asdfg'),(3,'prueba','null','null','prueba@mail.com','asdfg'),(4,'usuario','usuario nombre','prueba apellido','nombre@apellidos.com','usuario');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -318,4 +319,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-03 16:55:14
+-- Dump completed on 2018-01-04 16:55:06

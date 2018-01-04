@@ -19,7 +19,11 @@
 				<div class="pedido_header">
 					<h3>C&oacute;digo del pedido: #<?php echo $pedido['codigo'] ?></h3>
 					<h3>Estado: <?php if ($pedido['estado'] == 0): ?>
-							<span class="pago_pend">Pago pendiente</span>
+							<span class="pago_pend">
+								Pago pendiente
+								<i class="fa fa-clock-o" aria-hidden="true"></i>
+								<i class="fa fa-money" aria-hidden="true"></i>
+							</span>
 						         <?php elseif($pedido['estado'] == 1): ?>
 						         	Pago recibido
 						         <?php elseif($pedido['estado'] == 2): ?>

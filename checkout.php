@@ -92,8 +92,8 @@ if ($conexion != false) {
 		$id_user = $_POST['id_user'];
 		// print_r($id_address);
 
-		$query = $conexion->prepare("SELECT * FROM temporal");
-		$query->execute(array());
+		$query = $conexion->prepare("SELECT * FROM temporal WHERE id_user = :id_user");
+		$query->execute(array(':id_user'=>$iduser));
 		$check_table = $query->fetchall();
 
 		if ($check_table != false) {
@@ -123,16 +123,18 @@ if ($conexion != false) {
 	}
 
 	$query = $conexion->prepare("SELECT direcciones.* FROM temporal, direcciones WHERE temporal.id_user = :id_user AND direcciones.id = :id_address");
-	$query->execute(array(':id_user'=>$iduser, ':id_address'=>$idaddress));
-	$dir_sel = $query->fetch();
-	// print_r($dir_sel);
+	if (isset($idaddress)) {
+		$query->execute(array(':id_user'=>$iduser, ':id_address'=>$idaddress));
+		$dir_sel = $query->fetch();
+		// print_r($dir_sel);
+	}
 
 	if (isset($_POST['confirm_pay'])) {
 		$id_pago = $_POST['payment_method'];
 		// echo $id_pago;
 
-		$query = $conexion->prepare("SELECT * FROM temporal");
-		$query->execute(array());
+		$query = $conexion->prepare("SELECT * FROM temporal WHERE id_user = :id_user");
+		$query->execute(array(':id_user'=>$iduser));
 		$check_table3 = $query->fetchall();
 
 		if ($check_table3 != false) {
@@ -162,9 +164,11 @@ if ($conexion != false) {
 	}
 
 	$query = $conexion->prepare("SELECT metodos_pago.* FROM temporal, metodos_pago WHERE temporal.id_user = :id_user AND metodos_pago.id = :id_pago");
-	$query->execute(array(':id_user'=>$iduser, ':id_pago'=>$idpago));
-	$pay_sel = $query->fetch();
-	// print_r($pay_sel);
+	if (isset($idpago)) {
+		$query->execute(array(':id_user'=>$iduser, ':id_pago'=>$idpago));
+		$pay_sel = $query->fetch();
+		// print_r($pay_sel);
+	}
 }
 
 require 'views/checkout_view.php';

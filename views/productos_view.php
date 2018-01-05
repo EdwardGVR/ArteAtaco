@@ -24,7 +24,10 @@
 					<h2><?php echo $producto['nombre'] ?></h2>
 					<div class="prod_options">
 						<a class="detalles" href="detalles.php?id_prod=<?php echo $producto['id'] ?>">Detalles</a>
-						<a class="carrito" href="#">Carrito</a>
+						<form class="shortcut_carrito" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+							<input type="hidden" name="id_producto" value="<?php echo $producto['id'] ?>">
+							<input type="submit" class="carrito" name="shortcut_carrito" value="Carrito">
+						</form>
 					</div>
 				</div>
 			<?php endforeach ?>

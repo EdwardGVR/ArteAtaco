@@ -577,13 +577,28 @@ figure img {
 	background: #475CA1;
 }
 
-.producto .prod_options a {
+.producto .prod_options a,
+.producto .prod_options .shortcut_carrito {
 	flex-grow: 1;
 
-	padding: 10px;
+	/*padding: 10px;*/
+}
+
+.prod_options .shortcut_carrito {
+	display: flex;
+	padding: 0px 0px;
+	background: #E5D65B;
+	transition: all ease 0.3s;
+}
+
+.prod_options .shortcut_carrito:hover {
+	background: #5F5505;
 }
 
 .producto .prod_options a.detalles {
+	font-weight: bold;
+	letter-spacing: 1px;
+	padding: 10px;
 	background: #2F902F;
 }
 
@@ -592,11 +607,29 @@ figure img {
 	background: #045B04;
 }
 
-.producto .prod_options a.carrito {
-	background: #E5D65B;
+.prod_options input[type="submit"] {
+	display: inline-block;
+	/*width: 100%;*/
+	/*height: 100%;*/
+	margin: 0;
+	padding: 0px;
+	border: none;
+	border-radius: 0px;
+	cursor: pointer;
 }
 
-.producto .prod_options a.carrito:hover {
+.producto .prod_options input.carrito {
+	letter-spacing: 1px;
+	padding: 10px;
+	font-weight: bold;
+	font-size: 1.1em;
+	height: 100%;
+	width: 100%;
+	background: #E5D65B;
+	transition: all ease 0.3s;
+}
+
+.producto .prod_options input.carrito:hover {
 	color: #fff;
 	background: #5F5505;
 }
@@ -710,10 +743,6 @@ h2.stock {
 
 h2.precio {
 	margin-left: 10px;
-}
-
-.contenedor_carrito {
-	width: 87%;
 }
 
 .prod_carrito {

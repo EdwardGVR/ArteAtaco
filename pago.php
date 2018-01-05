@@ -1,17 +1,5 @@
 <?php session_start();
 
-//if (isset($_COOKIE["auto_inc_code"])) {
-//	$auto_inc_code = $_COOKIE["auto_inc_code"];
-//	$auto_inc_code++;
-//	setcookie("auto_inc_code", $auto_inc_code);
-//	$unique_code = $_COOKIE["auto_inc_code"]; 
-	// echo $_COOKIE["auto_inc_code"];
-//} else {
-//	$auto_inc_code = 1;
-	//setcookie("auto_inc_code", $auto_inc_code);
-	// echo $_COOKIE["auto_inc_code"];
-//}
-
 require 'functions.php';
 
 if (isset($_SESSION['user'])) {

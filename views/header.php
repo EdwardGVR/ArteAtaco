@@ -22,7 +22,7 @@
 	<div class="user">
 		<div class="dropmenu">
 				<?php if (isset($_SESSION['user'])): ?>
-					<h1 class="user-btn"><?php echo $user ?></h1>
+					<h1 class="user-btn"><?php echo $user ?><img src="http://www.lorempixel.com/30/30" alt="Na"></h1>
 					<div class="drop-content">
 						<a href="#">Cuenta</a>
 						<a href="pedidos.php">Pedidos</a>

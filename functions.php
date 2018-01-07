@@ -37,6 +37,18 @@ function get_user_id($conexion, $user){
 	}
 }
 
+function get_user_img($conexion, $iduser) {
+	$query = $conexion->prepare("SELECT imagen FROM usuarios WHERE id = :iduser");
+	$query->execute(array(':id'=>$iduser));
+	$result = $query->fetch();
+
+	if ($result != false) {
+		return $result['imagen'];
+	} else {
+		return false;
+	}	
+}
+
 function auto_inc_code(){
 	$archivo = 'script/aiucode/corr.txt';
 

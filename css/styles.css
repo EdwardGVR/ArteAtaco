@@ -228,6 +228,13 @@ a.reg:hover {
 	background: #16396E;
 }
 
+.bar .user {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	/*width: 130px;*/
+}
+
 .home h1,
 .user .dropmenu h1 {
 	border: 2px solid #fff;
@@ -304,6 +311,13 @@ a.reg:hover {
 .dropmenu {
 	position: relative;
 	display: inline-block;
+}
+
+.user_img {
+	width: 50px;
+	height: 50px;
+	border-radius: 5px;
+	margin-left: 10px;
 }
 
 .drop-content {

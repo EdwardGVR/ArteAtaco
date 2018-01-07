@@ -1,3 +1,5 @@
+<?php require '../functions.php' ?>
+
 <div class="bar">
 
 	<div class="home">
@@ -19,10 +21,11 @@
 			<a class="bar-btn">A cerca</a>
 	</div>
 
-	<div class="user">
+	<div class="user">		
 		<div class="dropmenu">
 				<?php if (isset($_SESSION['user'])): ?>
-					<h1 class="user-btn"><?php echo $user ?><img src="http://www.lorempixel.com/30/30" alt="Na"></h1>
+					<h1 class="user-btn"><?php echo $user ?> <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+</h1>
 					<div class="drop-content">
 						<a href="#">Cuenta</a>
 						<a href="pedidos.php">Pedidos</a>
@@ -37,6 +40,11 @@
 					</div>
 				<?php endif ?>
 		</div>
+		<!-- Condicion imagen -->
+		<?php if (expr): ?>
+			
+		<?php endif ?>
+		<img class="user_img" src="http://www.lorempixel.com/50/50" alt="N/A">
 	</div>
 </div>
 

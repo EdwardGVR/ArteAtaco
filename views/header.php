@@ -1,5 +1,5 @@
 <?php 
-
+		
 	$user_img = get_user_img($conexion, $iduser);
 
  ?>
@@ -45,11 +45,13 @@
 				<?php endif ?>
 		</div>
 		<!-- Condicion imagen -->
-		<?php if ($user_img != false): ?>
-			<img class="user_img" src="http://www.lorempixel.com/50/50" alt="N/A">
-		<?php else: ?>
-			<i class="fa fa-user" aria-hidden="true"></i>
-		<?php endif ?> 
+		<?php if (isset($user_img)): ?>
+			<?php if ($user_img != false): ?>
+				<img class="user_img" src="<?php echo $user_img ?>" alt="N/A">
+			<?php else: ?>
+				<div class="user_img"><i class="fa fa-user-circle"></i></div>
+			<?php endif ?>
+		<?php endif ?>
 	</div>
 </div>
 

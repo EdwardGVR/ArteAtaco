@@ -43,12 +43,12 @@ function get_user_img($conexion, $iduser) {
 	$result = $query->fetch();
 
 	if ($result != false) {
-		if ($result['imagen'] != NULL) {
+		if (!is_null($result['imagen'])) {
 			return $result['imagen'];
-		}
-	} else {
-		return false;
-	}	
+		} else {
+			return false;
+		}	
+	}
 }
 
 function auto_inc_code(){

@@ -7,6 +7,7 @@
 	<title>Arte Ataco :: <?php echo $detalles['nombre'] ?></title>
 	<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+	<link rel="stylesheet" href="css/styleModal.css">
 	<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -49,8 +50,28 @@
 					<form class="form_carrito" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 						<input type="hidden" value="<?php echo $id_prod ?>" name="idprod">
 						<input type="hidden" value="<?php echo $user ?>" name="username">
-						Cantidad <input type="number" name="quantity" min="1" max="10" value="1">					
-						<input type="submit" class="carrito-prod" value="Carrito">
+						Cantidad <input type="number" name="quantity" min="1" max="10" value="1">
+						<?php if ($user != "Invitado"): ?>
+							<input type="submit" class="carrito-prod" value="Carrito">
+						<?php else: ?>
+
+							  <div id="modal-container">
+							    <div class="modal-background">
+							      <div class="modal">
+							        <h2>Para continuar por favor</h2>
+							        <div class="btns">
+							        	<a href="login.php" class="boton">Inicia Sesi&oacute;n</a> <span>&oacute;</span>
+							        	<a href="register.php" class="boton">Registrate</a>
+							        </div>
+							        <svg class="modal-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
+							  					<rect x="0" y="0" fill="none" width="226" height="162" rx="3" ry="3"></rect>
+							  			</svg>
+							      </div>
+							    </div>
+							  </div>
+
+							<div id="two" class="button carrito-prod">Add to cart</div>
+						<?php endif ?>				
 					</form>
 
 					<h2 class="descripcion">Descripci&oacute;n:</br> <?php echo $detalles['descripcion'] ?></h2>
@@ -82,5 +103,8 @@
     			enlaceDefault.href = imgDefault.src;
     		}
 	</script>
+
+	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+	<script  src="script/js/modal.js"></script>
 </body>
 </html>

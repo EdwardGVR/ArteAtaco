@@ -2,7 +2,7 @@
 --
 -- Host: 127.0.0.1    Database: login_propio
 -- ------------------------------------------------------
--- Server version	5.5.5-10.1.28-MariaDB
+-- Server version	5.5.5-10.1.24-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -31,7 +31,7 @@ CREATE TABLE `carrito` (
   KEY `carrito_usuario_idx` (`id_user`),
   KEY `carrito_user_idx` (`id_user`),
   CONSTRAINT `carrito_user` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -283,7 +283,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'fuljencio','null','null','edwardgvr414@gmail.com','12345','fa fa-user'),(2,'edward','null','null','edwardgvr@gmail.com','asdfg','fa fa-user'),(3,'prueba','null','null','prueba@mail.com','asdfg','fa fa-user'),(4,'usuario','usuario nombre','prueba apellido','nombre@apellidos.com','usuario','fa fa-user');
+INSERT INTO `usuarios` VALUES (1,'fuljencio','null','null','edwardgvr414@gmail.com','12345',NULL),(2,'edward','null','null','edwardgvr@gmail.com','asdfg',NULL),(3,'prueba','null','null','prueba@mail.com','asdfg',NULL),(4,'usuario','usuario nombre','prueba apellido','nombre@apellidos.com','usuario',NULL);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -320,4 +320,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-07 21:43:22
+-- Dump completed on 2018-01-08 16:53:19

@@ -320,6 +320,10 @@ a.reg:hover {
 	margin-left: 10px;
 }
 
+.user_img .fa {
+	font-size: 3em;	
+}
+
 .drop-content {
     display: none;
     position: absolute;
@@ -738,12 +742,30 @@ figure img {
 	border-radius: 0;
 	background: #E5CC56;
 	box-shadow: 0 0 0;
+	cursor: pointer;
 	transition: all ease 0.5s;
 }
 
 .form_carrito .carrito-prod:hover {
 	background: #9D8618;
 	color: #fff;
+}
+
+.modal .btns {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	font-size: 1.3em;
+}
+
+.modal .btns .boton {
+	padding: 15px;
+	background: #3B5FA0;
+	color: #fff;
+	min-width: 110px;
+	border-radius: 20px;
+	
 }
 
 h2.item,

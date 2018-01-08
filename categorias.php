@@ -5,14 +5,15 @@ if (!isset($_SESSION['user'])) {
 }
 
 require 'functions.php';
+require 'conexion.php';
 
 if (isset($_SESSION['user'])) {
 	$user = $_SESSION['user'];
+	$iduser = get_user_id($conexion, $user);
 } else {
 	$user = 'Invitado';
+	$iduser = false;
 }
-
-require 'conexion.php';
 
 if ($conexion != false) {
 	$query = $conexion->prepare('SELECT * FROM categorias');

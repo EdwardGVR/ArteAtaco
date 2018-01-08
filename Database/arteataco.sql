@@ -272,7 +272,7 @@ CREATE TABLE `usuarios` (
   `apellidos` varchar(100) DEFAULT 'null',
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `imagen` varchar(150) DEFAULT 'fa fa-user',
+  `imagen` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -320,4 +320,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-06 21:43:20
+-- Dump completed on 2018-01-07 21:43:22

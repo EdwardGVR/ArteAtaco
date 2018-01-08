@@ -1,4 +1,8 @@
-<?php require '../functions.php' ?>
+<?php 
+
+	$user_img = get_user_img($conexion, $iduser);
+
+ ?>
 
 <div class="bar">
 
@@ -41,10 +45,11 @@
 				<?php endif ?>
 		</div>
 		<!-- Condicion imagen -->
-		<?php if (expr): ?>
-			
-		<?php endif ?>
-		<img class="user_img" src="http://www.lorempixel.com/50/50" alt="N/A">
+		<?php if ($user_img != false): ?>
+			<img class="user_img" src="http://www.lorempixel.com/50/50" alt="N/A">
+		<?php else: ?>
+			<i class="fa fa-user" aria-hidden="true"></i>
+		<?php endif ?> 
 	</div>
 </div>
 

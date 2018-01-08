@@ -39,11 +39,13 @@ function get_user_id($conexion, $user){
 
 function get_user_img($conexion, $iduser) {
 	$query = $conexion->prepare("SELECT imagen FROM usuarios WHERE id = :iduser");
-	$query->execute(array(':id'=>$iduser));
+	$query->execute(array(':iduser'=>$iduser));
 	$result = $query->fetch();
 
 	if ($result != false) {
-		return $result['imagen'];
+		if ($result['imagen'] != NULL) {
+			return $result['imagen'];
+		}
 	} else {
 		return false;
 	}	

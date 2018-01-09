@@ -341,6 +341,7 @@ a.reg:hover {
     background-color: #f9f9f9;
     color: black;
     padding: 10px 16px;
+    text-align: left;
     text-decoration: none;
     display: block;
     border-bottom: 1px solid #000;
@@ -652,6 +653,23 @@ figure img {
 	background: #5F5505;
 }
 
+.producto .prod_options div.carrito {
+	letter-spacing: 1px;
+	padding: 10px;
+	font-weight: bold;
+	font-size: 1em;
+	height: 100%;
+	width: 100%;
+	cursor: pointer;
+	background: #E5D65B;
+	transition: all ease 0.3s;
+}
+
+.producto .prod_options div.carrito:hover {
+	color: #fff;
+	background: #5F5505;
+}
+
 .detalles-prod {
 	/*background: #95EDD7;*/
 	/*height: 500px;*/
@@ -753,7 +771,7 @@ figure img {
 
 .modal .btns {
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: center;
 	width: 100%;
 	font-size: 1.3em;
@@ -765,7 +783,6 @@ figure img {
 	color: #fff;
 	min-width: 110px;
 	border-radius: 20px;
-	
 }
 
 h2.item,

@@ -16,6 +16,21 @@
 	</header>
 
 	<div class="contenedor_detalles">
+
+	<div id="modal-container">
+	    <div class="modal-background">
+	      <div class="modal">
+	        <h2>Para continuar por favor inicia sesi&oacute;n o registrate</h2>
+	        <div class="btns">
+	        	<a href="login.php" class="boton">Aceptar</a>
+	        </div>
+	        <svg class="modal-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
+	  	<rect x="0" y="0" fill="none" width="226" height="162" rx="3" ry="3"></rect>
+	        </svg>
+	      </div>
+	    </div>
+	  </div>
+
 		<?php if ($detalles != false): ?>
 			<div class="detalles-prod">
 				<div class="detalles-prod-img">
@@ -54,23 +69,7 @@
 						<?php if ($user != "Invitado"): ?>
 							<input type="submit" class="carrito-prod" value="Carrito">
 						<?php else: ?>
-
-							  <div id="modal-container">
-							    <div class="modal-background">
-							      <div class="modal">
-							        <h2>Para continuar por favor</h2>
-							        <div class="btns">
-							        	<a href="login.php" class="boton">Inicia Sesi&oacute;n</a> <span>&oacute;</span>
-							        	<a href="register.php" class="boton">Registrate</a>
-							        </div>
-							        <svg class="modal-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
-							  					<rect x="0" y="0" fill="none" width="226" height="162" rx="3" ry="3"></rect>
-							  			</svg>
-							      </div>
-							    </div>
-							  </div>
-
-							<div id="two" class="button carrito-prod">Add to cart</div>
+							<div id="two" class="button carrito-prod">Carrito</div>
 						<?php endif ?>				
 					</form>
 

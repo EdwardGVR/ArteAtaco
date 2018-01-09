@@ -16,7 +16,7 @@ if (isset($_SESSION['user'])) {
 }
 
 if ($conexion != false) {
-	$query = $conexion->prepare('SELECT * FROM categorias');
+	$query = $conexion->prepare('SELECT * FROM categorias ORDER BY nombre_cat ASC');
 	$query->execute();
 	$categorias = $query->fetchall();
 

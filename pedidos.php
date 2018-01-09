@@ -13,7 +13,7 @@ require 'conexion.php';
 $iduser = get_user_id($conexion, $user);
 
 if ($conexion != false) {
-	$query = $conexion->prepare("SELECT id, nombre_cat FROM categorias");
+	$query = $conexion->prepare("SELECT id, nombre_cat FROM categorias ORDER BY nombre_cat ASC");
 	$query->execute();
 	$categorias = $query->fetchall();
 

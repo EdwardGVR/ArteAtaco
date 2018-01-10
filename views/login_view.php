@@ -10,6 +10,9 @@
 		<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST" class="formulario" name="login">
 			<input type="text" placeholder="Usuario o correo: " name="nombre">
 			<input type="password" placeholder="Contraseña: " name="pass">
+			<span class="remember">Mantener sesi&oacute;n iniciada? <input type="checkbox" name="remember" value="1">	</span>
+			
+
 
 				<?php if (!empty($errores)): ?>
 					<div class="error">
@@ -19,7 +22,7 @@
 					</div>
 				<?php endif; ?>
 
-			<input type="submit" name="submit" value="Iniciar Sesion">
+			<input type="submit" name="submit" class="login_btn" value="Iniciar Sesion">
 		</form>
 
 		<p class="msg_form">No tienes cuenta? <a class="login" href="register.php">Registrate</a></p>

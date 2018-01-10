@@ -21,7 +21,7 @@ if ($conexion != false) {
 	// var_dump($detalles);
 
 	// Obtener las categorias
-	$query = $conexion->prepare("SELECT id, nombre_cat FROM categorias");
+	$query = $conexion->prepare("SELECT id, nombre_cat FROM categorias ORDER BY nombre_cat ASC");
 	$query->execute();
 	$categorias = $query->fetchall();
 	

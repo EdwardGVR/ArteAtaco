@@ -1,3 +1,9 @@
+<?php 
+		
+	$user_img = get_user_img($conexion, $iduser);
+
+ ?>
+
 <div class="bar">
 
 	<div class="home">
@@ -19,13 +25,14 @@
 			<a class="bar-btn">A cerca</a>
 	</div>
 
-	<div class="user">
+	<div class="user">		
 		<div class="dropmenu">
 				<?php if (isset($_SESSION['user'])): ?>
-					<h1 class="user-btn"><?php echo $user ?></h1>
+					<h1 class="user-btn"><?php echo $user ?> <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+</h1>
 					<div class="drop-content">
-						<a href="#">Cuenta</a>
-						<a href="#">Pedidos</a>
+						<a href="cuenta.php">Cuenta</a>
+						<a href="pedidos.php">Pedidos</a>
 						<a href="carrito.php">Carrito</a>
 						<a href="logout.php">Cerrar Sesi&oacute;n</a>
 					</div>
@@ -37,6 +44,14 @@
 					</div>
 				<?php endif ?>
 		</div>
+		<!-- Condicion imagen -->
+		<?php if (isset($user_img)): ?>
+			<?php if ($user_img != false): ?>
+				<img class="user_img" src="<?php echo $user_img ?>" alt="N/A">
+			<?php else: ?>
+				<div class="user_img"><i class="fa fa-user-circle"></i></div>
+			<?php endif ?>
+		<?php endif ?>
 	</div>
 </div>
 

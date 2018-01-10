@@ -28,15 +28,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if (empty($errores)) {
 		$login = login_verification($conexion, $user, $password);
 
-		print_r($login);
+		// print_r($login);
 
 		if ($login != false) {
 			$query = $conexion->prepare("SELECT user FROM usuarios WHERE user = :user OR email = :user");
 			$query->execute(array(':user' => $user));
 			$logged = $query->fetch();
-			$_SESSION['user'] = $logged['user'];
-			//print_r($logged);
+
+			$_SESSION['user'] = $logged['user'];	
 			header('Location: categorias.php');
+			//print_r($logged);
 		} else {
 			$errores .= '<li>Datos Incorrectos</li>';
 		}

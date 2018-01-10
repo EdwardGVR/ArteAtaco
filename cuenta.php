@@ -23,6 +23,6 @@ if ($conexion != false) {
 	//print_r($categorias);
 }
 
-require 'views/categorias_view.php';
+require 'views/cuenta_view.php';
 
 ?>

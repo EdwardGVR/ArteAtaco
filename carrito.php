@@ -17,7 +17,7 @@ $subtotal = 0;
 
 if ($conexion != false) {
 
-	$query = $conexion->prepare("SELECT id, nombre_cat FROM categorias");
+	$query = $conexion->prepare("SELECT id, nombre_cat FROM categorias ORDER BY nombre_cat ASC");
 	$query->execute();
 	$categorias = $query->fetchall();
 

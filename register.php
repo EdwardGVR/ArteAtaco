@@ -28,6 +28,18 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		$errores .= "<li>No se ingreso un nombre</li>";
 	}
 
+	if (!empty($_POST['nombres'])) {
+		$nombres = filter_var(strtolower($_POST['nombres']), FILTER_SANITIZE_STRING);
+	} else {
+		$nombre = null;
+	}
+
+	if (!empty($_POST['apellidos'])) {
+		$apellidos = filter_var(strtolower($_POST['apellidos']), FILTER_SANITIZE_STRING);
+	} else {
+		$apellidos = null;
+	}
+
 	if (!empty($_POST['correo'])) {
 		$correo = filter_var($_POST['correo'], FILTER_SANITIZE_EMAIL);
 
@@ -70,9 +82,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		// Ingresar Datos
 		//echo "Correcto";
 
-		$query = $conexion->prepare ("INSERT INTO usuarios (id, user, email, password) VALUES (null, :user, :email, :pass)");
+		$query = $conexion->prepare ("INSERT INTO usuarios (id, user, nombres, apellidos, email, password) VALUES (null, :user, :nombres, :apellidos, :email, :pass)");
 		$query->execute(array(
 			":user" => $user,
+			":nombres" => $nombres,
+			":apellidos" => $apellidos,
 			":email" => $email,
 			":pass" => $password
 		));

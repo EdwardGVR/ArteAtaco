@@ -12,8 +12,22 @@
 <?php require 'header.php' ?>
 	
 <div class="contenedor_cuenta">
-	<div class="cuenta">
-		asd
+	<div class="imagen_cuenta">
+		<div class="imagen_usuario">
+			<i class="fa fa-user"></i>
+		</div>
+		<div class="datos_usuario">
+			<span>Nombre usuario	</span>
+			<span>Pedidos activos: 0</span>
+		</div>
+	</div>
+	<div class="informacion_cuenta">
+		<div class="info_usuario">
+			
+		</div>
+		<div class="detalles_usuario">
+			
+		</div>
 	</div>
 </div>
 

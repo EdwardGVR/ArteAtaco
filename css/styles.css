@@ -1517,7 +1517,8 @@ input[name="add_address"]:hover {
 	flex-wrap: wrap;
 
 	margin: auto;
-	width: 80%;
+	max-width: 80%;
+	min-width: 650px;
 	min-height: 400px;
 	padding-bottom: 30px;
 	box-shadow: 0px 10px 30px;
@@ -1568,8 +1569,9 @@ background: linear-gradient(to top, #fff, #16396E); /* W3C, IE 10+/ Edge, Firefo
 
 .contenedor_cuenta .informacion_cuenta {
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: flex-start;
+	flex-wrap: wrap;
 	width: 95%;
 	min-height: 500px;
 	/*background: #ccc;*/
@@ -1578,13 +1580,101 @@ background: linear-gradient(to top, #fff, #16396E); /* W3C, IE 10+/ Edge, Firefo
 
 .informacion_cuenta .info_usuario {
 	display: flex;
-	justify-content: flex-start;
-	align-items: flex-start;
+	justify-content: center;
+	align-items: center;
+	flex-grow: 1;
 
-	width: 300px;
-	height: 400px;
+	margin-right: 20px;
+	margin-bottom: 50px;
+	width: 15%;
+	min-width: 200px;
+	/*height: 400px;*/
 	background: #BBE1E8;
 	border-radius: 20px;
+}
+
+.info_usuario form.edit_info {
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	flex-wrap: wrap;	
+	
+	padding: 20px 0px;
+	width: 90%;
+	/*background: #ccc;*/
+}
+
+.info_usuario form.edit_info hr {
+	width: 90%;
+	height: 3px;
+	border: none;
+	background: #ccc;
+	margin: auto;
+	margin-bottom: 20px;
+}
+
+.info_usuario form.edit_info h3 {
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+.info_usuario form.edit_info input.field {
+	background: none;
+	border-radius: 0;
+	cursor: default;
+	margin: 20px 0;
+	width: 100%;
+}
+
+.info_usuario form.edit_info input.field:focus {
+	border: none;
+}
+
+.info_usuario form.edit_info .editar {
+	width: 100%;
+	text-align: right;
+}
+
+.info_usuario form.edit_info .editar_hidden {
+	display: none;
+}
+
+.info_usuario form.edit_info .editar_boton {
+	padding: 10px 25px;
+	background: #7CC28B;
+	cursor: pointer;
+	border-radius: 20px;
+	transition: all ease 0.3s;
+}
+
+.info_usuario form.edit_info .editar_boton:hover {
+	background: #1F8144;
+	color: #fff;
+}
+
+.info_usuario form.edit_info .opciones_hidden {
+	display: none;
+}
+
+.info_usuario form.edit_info .opciones {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	margin: auto;
+}
+
+.info_usuario form.edit_info .editar_submit,
+.info_usuario form.edit_info .cancelar_submit {
+	display: flex;
+	justify-content: center;
+	cursor: pointer;
+	align-items: center;
+	font-size: 1em;
+	width: 140px;
+	height: 40px;
+	margin: 0;
+	border-radius: 20px;
+	background: #ccc;
 }
 
 .informacion_cuenta .detalles_usuario {
@@ -1592,8 +1682,9 @@ background: linear-gradient(to top, #fff, #16396E); /* W3C, IE 10+/ Edge, Firefo
 	justify-content: center;
 	align-items: center;
 	flex-grow: 1;	
-	margin-left: 20px;
-	width: auto;
+	/*margin-left: 20px;*/
+	width: 65%;
+	min-width: 400px;
 	height: 400px;
 	background: #BBE1E8;
 	border-radius: 20px;

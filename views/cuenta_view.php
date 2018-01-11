@@ -14,11 +14,16 @@
 <div class="contenedor_cuenta">
 	<div class="imagen_cuenta">
 		<div class="imagen_usuario">
-			<i class="fa fa-user"></i>
+			<?php if (isset($imagen)): ?>
+				<img class="imagen_usuario" src="<?php echo $imagen ?>" alt="No se pudo mostrar">
+			<?php else: ?>
+				<i class="fa fa-user"></i>	
+			<?php endif ?>
+			
 		</div>
 		<div class="datos_usuario">
-			<span>Nombre usuario	</span>
-			<span>Pedidos activos: 0</span>
+			<span><?php echo $user ?></span>
+			<span>Pedidos activos: <?php echo $pedidos_activos ?></span>
 		</div>
 	</div>
 	<div class="informacion_cuenta">

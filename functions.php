@@ -37,6 +37,18 @@ function get_user_id($conexion, $user){
 	}
 }
 
+function get_user_data($conexion, $iduser){
+	$query = $conexion->prepare("SELECT * FROM usuarios WHERE id = :iduser");
+	$query->execute(array(':iduser'=>$iduser));
+	$result = $query->fetch();
+
+	if ($result != false) {
+		return $result;
+	} else {
+		return false;
+	}
+}
+
 function get_user_img($conexion, $iduser) {
 	$query = $conexion->prepare("SELECT imagen FROM usuarios WHERE id = :iduser");
 	$query->execute(array(':iduser'=>$iduser));
@@ -49,6 +61,14 @@ function get_user_img($conexion, $iduser) {
 			return false;
 		}	
 	}
+}
+
+function cantidad_pedidos_activos($conexion, $iduser) {
+	$query = $conexion->prepare("SELECT COUNT(*) FROM pedidos WHERE id_user = :iduser AND estado != 3");
+	$query->execute(array(':iduser' => $iduser));
+	$pe_act = $query->fetch();
+
+	return $pe_act[0];
 }
 
 function auto_inc_code(){

@@ -31,7 +31,7 @@ CREATE TABLE `carrito` (
   KEY `carrito_usuario_idx` (`id_user`),
   KEY `carrito_user_idx` (`id_user`),
   CONSTRAINT `carrito_user` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `carrito` (
 
 LOCK TABLES `carrito` WRITE;
 /*!40000 ALTER TABLE `carrito` DISABLE KEYS */;
-INSERT INTO `carrito` VALUES (58,1,1,1),(59,2,2,1),(60,2,3,1);
+INSERT INTO `carrito` VALUES (58,1,1,1),(59,2,2,1),(60,2,3,1),(62,2,1,1);
 /*!40000 ALTER TABLE `carrito` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -268,8 +268,8 @@ DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user` varchar(100) NOT NULL,
-  `nombres` varchar(100) DEFAULT 'null',
-  `apellidos` varchar(100) DEFAULT 'null',
+  `nombres` varchar(100) DEFAULT NULL,
+  `apellidos` varchar(100) DEFAULT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `imagen` varchar(150) DEFAULT NULL,
@@ -283,7 +283,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'fuljencio','null','null','edwardgvr414@gmail.com','12345',NULL),(2,'edward','null','null','edwardgvr@gmail.com','asdfg',NULL),(3,'prueba','null','null','prueba@mail.com','asdfg',NULL),(4,'usuario','usuario nombre','prueba apellido','nombre@apellidos.com','usuario',NULL);
+INSERT INTO `usuarios` VALUES (1,'fuljencio',NULL,NULL,'edwardgvr414@gmail.com','12345',NULL),(2,'edward',NULL,NULL,'edwardgvr@gmail.com','asdfg','images/user/profile/dewey.jpg'),(3,'prueba',NULL,NULL,'prueba@mail.com','asdfg',NULL),(4,'usuario','usuario nombre','prueba apellido','nombre@apellidos.com','usuario',NULL);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -320,4 +320,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-08 16:53:19
+-- Dump completed on 2018-01-11 16:51:00

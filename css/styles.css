@@ -40,7 +40,7 @@ body {
 	width: 500px;
 	/*height: 430px;*/
 	position: absolute;
-	top: 15%;
+	top: 10%;
 	left: 10%;
 	background: #101B6F;
 	display: inline-block;
@@ -1544,8 +1544,8 @@ background: linear-gradient(to top, #fff, #16396E); /* W3C, IE 10+/ Edge, Firefo
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 200px;
-	height: 200px;
+	width: 230px;
+	height: 230px;
 	background: #ccc;
 	border-radius: 50%;
 	font-size: 10em;
@@ -1556,7 +1556,7 @@ background: linear-gradient(to top, #fff, #16396E); /* W3C, IE 10+/ Edge, Firefo
 	justify-content: space-between;
 	align-items: center;
 	width: 100%;
-	font-style: italic;
+	/*font-style: italic;*/
 	/*background: #ccc;*/
 	padding: 0 30px;
 }
@@ -1565,6 +1565,8 @@ background: linear-gradient(to top, #fff, #16396E); /* W3C, IE 10+/ Edge, Firefo
 	padding: 10px;
 	border: 2px solid #395CAB;
 	border-radius: 20px;
+	text-transform: capitalize;
+	text-align: center;
 }
 
 .contenedor_cuenta .informacion_cuenta {

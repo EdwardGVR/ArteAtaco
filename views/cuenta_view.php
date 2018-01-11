@@ -28,13 +28,13 @@
 				<hr>
 				
 				<span>Nombres:</span>
-				<input id="field_user" class="field" type="text" name="nombres" value="Nombres Usuario" readonly="">
+				<input id="nombre_user" class="field_user" type="text" name="nombres" value="Nombres Usuario" disabled="true" readonly="">
 				<span>Apellidos:</span>
-				<input id="field_user" class="field" type="text" name="apellidos" value="Apellidos Usuario" readonly="">
+				<input id="apellido_user" class="field_user" type="text" name="apellidos" value="Apellidos Usuario" disabled="true" readonly="">
 				<span>E-mail:</span>
-				<input id="field_user" class="field" type="text" name="email" value="email@usuario.com" readonly="">
+				<input id="email_user" class="field_user" type="text" name="email" value="email@usuario.com" disabled="true" readonly="">
 				<span>Tel&eacute;fono:</span>
-				<input id="field_user" class="field" type="text" name="telefono" value="55555555" readonly="">
+				<input id="telefono_user" class="field_user" type="text" name="telefono" value="55555555" disabled="true" readonly="">
 				<div id="btnEditar" class="editar"><span onclick="editInfoUser()" class="editar_boton">Editar</span></div>
 				
 				<div id="btnsOpciones" class="opciones_hidden">

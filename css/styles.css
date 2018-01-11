@@ -1618,16 +1618,18 @@ background: linear-gradient(to top, #fff, #16396E); /* W3C, IE 10+/ Edge, Firefo
 	margin-bottom: 20px;
 }
 
-.info_usuario form.edit_info input.field {
+.info_usuario form.edit_info input.field_user {
 	background: none;
 	border-radius: 0;
 	cursor: default;
 	margin: 20px 0;
 	width: 100%;
+	color: #000;
 }
 
-.info_usuario form.edit_info input.field:focus {
+.info_usuario form.edit_info input.field_user:focus {
 	border: none;
+	cursor: default;
 }
 
 .info_usuario form.edit_info .editar {

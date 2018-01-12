@@ -33,13 +33,13 @@
 				<hr>
 				
 				<span>Nombres:</span>
-				<input id="nombre_user" class="field_user" type="text" name="nombres" value="Nombres Usuario" disabled="true" readonly="">
+				<input id="nombre_user" class="field_user" type="text" name="nombres" value="<?php echo $nombres ?>" disabled="true" readonly="">
 				<span>Apellidos:</span>
-				<input id="apellido_user" class="field_user" type="text" name="apellidos" value="Apellidos Usuario" disabled="true" readonly="">
+				<input id="apellido_user" class="field_user" type="text" name="apellidos" value="<?php echo $apellidos ?>" disabled="true" readonly="">
 				<span>E-mail:</span>
-				<input id="email_user" class="field_user" type="text" name="email" value="email@usuario.com" disabled="true" readonly="">
+				<input id="email_user" class="field_user" type="email" name="email" value="<?php echo $email ?>" disabled="true" readonly="">
 				<span>Tel&eacute;fono:</span>
-				<input id="telefono_user" class="field_user" type="text" name="telefono" value="55555555" disabled="true" readonly="">
+				<input id="telefono_user" class="field_user" type="text" name="telefono" value="<?php echo $telefono ?>" disabled="true" readonly="">
 				<div id="btnEditar" class="editar"><span onclick="editInfoUser()" class="editar_boton">Editar</span></div>
 				
 				<div id="btnsOpciones" class="opciones_hidden">

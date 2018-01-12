@@ -2,7 +2,7 @@
 --
 -- Host: 127.0.0.1    Database: login_propio
 -- ------------------------------------------------------
--- Server version	5.5.5-10.1.24-MariaDB
+-- Server version	5.5.5-10.1.28-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -40,7 +40,6 @@ CREATE TABLE `carrito` (
 
 LOCK TABLES `carrito` WRITE;
 /*!40000 ALTER TABLE `carrito` DISABLE KEYS */;
-INSERT INTO `carrito` VALUES (58,1,1,1),(59,2,2,1),(60,2,3,1),(62,2,1,1);
 /*!40000 ALTER TABLE `carrito` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -182,7 +181,7 @@ CREATE TABLE `pedidos` (
   CONSTRAINT `pedidos_pago` FOREIGN KEY (`id_pago`) REFERENCES `metodos_pago` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `pedidos_producto` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `pedidos_user` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -191,7 +190,7 @@ CREATE TABLE `pedidos` (
 
 LOCK TABLES `pedidos` WRITE;
 /*!40000 ALTER TABLE `pedidos` DISABLE KEYS */;
-INSERT INTO `pedidos` VALUES (12,23161,2,3,1,1,1,0,'2018-01-04 20:40:38'),(13,23122,2,3,1,2,1,0,'2018-01-04 20:41:09'),(14,14133,1,4,1,1,3,0,'2018-01-04 22:08:48'),(15,14133,1,4,1,2,2,0,'2018-01-04 22:08:48');
+INSERT INTO `pedidos` VALUES (12,23161,2,3,1,1,1,0,'2018-01-04 20:40:38'),(13,23122,2,3,1,2,1,0,'2018-01-04 20:41:09'),(14,14133,1,4,1,1,3,0,'2018-01-04 22:08:48'),(15,14133,1,4,1,2,2,0,'2018-01-04 22:08:48'),(16,14124,1,4,1,1,2,0,'2018-01-12 04:04:31'),(17,23175,2,3,1,2,1,0,'2018-01-12 04:05:46'),(18,23175,2,3,1,1,2,0,'2018-01-12 04:05:46');
 /*!40000 ALTER TABLE `pedidos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -273,8 +272,9 @@ CREATE TABLE `usuarios` (
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `imagen` varchar(150) DEFAULT NULL,
+  `telefono` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -283,7 +283,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'fuljencio',NULL,NULL,'edwardgvr414@gmail.com','12345',NULL),(2,'edward',NULL,NULL,'edwardgvr@gmail.com','asdfg','images/user/profile/dewey.jpg'),(3,'prueba',NULL,NULL,'prueba@mail.com','asdfg',NULL),(4,'usuario','usuario nombre','prueba apellido','nombre@apellidos.com','usuario',NULL);
+INSERT INTO `usuarios` VALUES (1,'fuljencio','Prueba Formulario','Apellidos Prueba','fuljencio@gmail.com','12345',NULL,NULL),(2,'edward','Edward Guevara','Guevara','edwardgvr@gmail.com','asdfg','images/user/profile/dewey.jpg','75002016'),(3,'prueba',NULL,NULL,'prueba@mail.com','asdfg',NULL,NULL),(4,'usuario','usuario nombre','prueba apellido','nombre@apellidos.com','usuario',NULL,NULL),(5,'test5','registro','prueba','registro@prueba.com','asdfg',NULL,'55555555'),(6,'test6','usuario','numero6','test6@mail.com','asdfg',NULL,NULL);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -320,4 +320,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-11 16:51:00
+-- Dump completed on 2018-01-11 22:22:42

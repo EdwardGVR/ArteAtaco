@@ -322,6 +322,7 @@ a.reg:hover {
 
 .user_img .fa {
 	font-size: 3em;	
+	color: #fff;
 }
 
 .drop-content {
@@ -1620,6 +1621,12 @@ background: linear-gradient(to top, #fff, #16396E); /* W3C, IE 10+/ Edge, Firefo
 	margin-bottom: 20px;
 }
 
+.info_usuario form.edit_info span {
+	width: 100%;
+	text-align: left;
+	font-weight: bold;
+}
+
 .info_usuario form.edit_info input.field_user {
 	background: none;
 	border-radius: 0;
@@ -1688,10 +1695,96 @@ background: linear-gradient(to top, #fff, #16396E); /* W3C, IE 10+/ Edge, Firefo
 	flex-grow: 1;	
 	/*margin-left: 20px;*/
 	width: 65%;
+	padding: 25px;
+	padding-bottom: 0;
 	min-width: 400px;
-	height: 400px;
+	/*height: 400px;*/
 	background: #BBE1E8;
 	border-radius: 20px;
+}
+
+.detalles_usuario .titulo {
+	text-align: left;
+	width: 100%;
+	margin-bottom: 20px;
+	font-size: 1.4em;
+	font-weight: bold;
+}
+
+.detalles_usuario .address {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+
+	width: 100%;
+	min-height: 100px;
+	margin-bottom: 20px;
+	background: #ccc;
+	border-radius: 20px;	
+	padding: 20px 20px;
+}
+
+.detalles_usuario .address input {
+	width: 75%;
+	margin: 10px 0;
+	text-align: left;
+	/*background: none;*/
+	color: #000;
+	font-size: 1em;
+}
+
+.detalles_usuario .address span {
+	width: 25%;
+	/*background: #000;*/
+	margin: 10px 0;
+	text-align: left;
+}
+
+.detalles_usuario form.address .editar {
+	width: 100%;
+	/*height: 30px;*/
+	margin-top: 10px;
+	text-align: right;
+}
+
+.detalles_usuario form.address .editar_boton {
+	padding: 10px 25px;
+	background: #7CC28B;
+	cursor: pointer;
+	border-radius: 20px;
+	transition: all ease 0.3s;
+}
+
+.detalles_usuario form.address .editar_boton:hover {
+	background: #1F8144;
+	color: #fff;
+}
+
+.address .editar .editar_submit,
+.address .editar .cancelar_submit {
+	display: inline-block;
+	line-height: 0px;
+	width: 100px;
+	height: 40px;
+	text-align: center;
+	padding: 20px;
+	background: #fff;
+	border-radius: 20px;
+	cursor: pointer;
+	transition: all ease 0.3s;
+}
+
+.address .editar .editar_submit:hover {
+	background: #8FC38F;
+}
+
+.address .editar .cancelar_submit:hover {
+	background: #EEAFAF;
+}
+
+.address .editar_hidden {
+	display: none;
 }
 
 footer {

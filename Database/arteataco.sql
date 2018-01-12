@@ -2,7 +2,7 @@
 --
 -- Host: 127.0.0.1    Database: login_propio
 -- ------------------------------------------------------
--- Server version	5.5.5-10.1.28-MariaDB
+-- Server version	5.5.5-10.1.24-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -31,7 +31,7 @@ CREATE TABLE `carrito` (
   KEY `carrito_usuario_idx` (`id_user`),
   KEY `carrito_user_idx` (`id_user`),
   CONSTRAINT `carrito_user` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,6 +40,7 @@ CREATE TABLE `carrito` (
 
 LOCK TABLES `carrito` WRITE;
 /*!40000 ALTER TABLE `carrito` DISABLE KEYS */;
+INSERT INTO `carrito` VALUES (63,2,1,1);
 /*!40000 ALTER TABLE `carrito` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -117,7 +118,7 @@ CREATE TABLE `direcciones` (
   KEY `direcciones_departemento_idx` (`id_departamento`),
   CONSTRAINT `direcciones_departemento` FOREIGN KEY (`id_departamento`) REFERENCES `departamentos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `direcciones_usuario` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -126,7 +127,7 @@ CREATE TABLE `direcciones` (
 
 LOCK TABLES `direcciones` WRITE;
 /*!40000 ALTER TABLE `direcciones` DISABLE KEYS */;
-INSERT INTO `direcciones` VALUES (1,2,7,'Casa San Marcos','El Salvador','FLorencia San Marcos','',''),(3,2,1,'Casa Ataco','El Salvador','asdasd','asdas','ssadas'),(4,1,1,'Casa Fuljencio','El Salvador','Casa del fuhrer','','');
+INSERT INTO `direcciones` VALUES (1,2,7,'Casa San Marcos','El Salvador','FLorencia San Marcos',NULL,NULL),(3,2,1,'Casa Ataco','El Salvador','asdasd','asdas','ssadas'),(4,1,1,'Casa Fuljencio','El Salvador','Casa del fuhrer',NULL,NULL),(8,2,1,'Direccion 5','El Salvador','dir 5 asdasdas',NULL,NULL);
 /*!40000 ALTER TABLE `direcciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -253,7 +254,7 @@ CREATE TABLE `temporal` (
 
 LOCK TABLES `temporal` WRITE;
 /*!40000 ALTER TABLE `temporal` DISABLE KEYS */;
-INSERT INTO `temporal` VALUES (1,2,3,1),(2,1,4,1);
+INSERT INTO `temporal` VALUES (1,2,1,1),(2,1,4,1);
 /*!40000 ALTER TABLE `temporal` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -320,4 +321,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-11 22:22:42
+-- Dump completed on 2018-01-12 17:05:22

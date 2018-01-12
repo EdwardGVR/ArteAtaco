@@ -16,6 +16,7 @@ if (isset($_SESSION['user'])) {
 }
 
 $iduser = get_user_id($conexion, $user);
+$direccion_numero = 0;
 
 if (!is_null(get_user_data($conexion, $iduser)['imagen'])) {
 	$imagen = get_user_data($conexion, $iduser)['imagen'];
@@ -50,8 +51,19 @@ if ($conexion != false) {
 	$query = $conexion->prepare('SELECT * FROM categorias ORDER BY nombre_cat ASC');
 	$query->execute();
 	$categorias = $query->fetchall();
-
 	//print_r($categorias);
+
+	$query = $conexion->prepare("SELECT * FROM direcciones WHERE id_user = :iduser");
+	$query->execute(array(':iduser' => $iduser));
+	$dirs = $query->fetchall();
+	// Obtener cantidad de direcciones del usuario
+	$cant_direcciones = count($dirs);
+
+	if ($cant_direcciones < 5) {
+		$permitir_direccion = true;
+	} else {
+		$permitir_direccion = false;
+	}
 
 	// Guardar los cambios
 	if (isset($_POST['guardar'])) {
@@ -90,6 +102,10 @@ if ($conexion != false) {
 		}
 		header('Location: cuenta.php');
 	}
+
+	$query = $conexion->prepare("SELECT * FROM direcciones WHERE id_user = :iduser");
+	$query->execute(array(':iduser' => $iduser));
+	$direcciones = $query->fetchall();
 }
 
 require 'views/cuenta_view.php';

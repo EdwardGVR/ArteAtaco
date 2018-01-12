@@ -34,13 +34,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_address'])) {
 	if (!empty($_POST['address_line_2'])) {
 		$address_line_2 = $_POST['address_line_2'];
 	} else {
-		$address_line_2 = "";
+		$address_line_2 = NULL;
 	}
 
 	if (!empty($_POST['referencias'])) {
 		$referencias = $_POST['referencias'];
 	} else {
-		$referencias = "";
+		$referencias = NULL;
 	}
 
 	if ($conexion != false && empty($errores)) {
@@ -63,6 +63,18 @@ if ($conexion != false) {
 	$query = $conexion->prepare("SELECT id, nombre_cat FROM categorias ORDER BY nombre_cat ASC");
 	$query->execute();
 	$categorias = $query->fetchall();
+
+	$query = $conexion->prepare("SELECT * FROM direcciones WHERE id_user = :iduser");
+	$query->execute(array(':iduser' => $iduser));
+	$dirs = $query->fetchall();
+	// Obtener cantidad de direcciones del usuario
+	$cant_direcciones = count($dirs);
+
+	if ($cant_direcciones < 5) {
+		$permitir_direccion = true;
+	} else {
+		$permitir_direccion = false;
+	}
 
 	$query = $conexion->prepare("
 		SELECT carrito.*, productos.id_categoria, productos.nombre, productos.precio, productos.stock, productos.imagen 

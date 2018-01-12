@@ -59,3 +59,52 @@ function cancelEditInfoUser() {
 
 	location.reload();
 }
+
+function addressChange(b) {
+	// console.log(b.parentNode.id);
+	var id = b.parentNode.id;
+	console.log(id);
+
+	// var btnEditAddress = document.getElementById("btnEditarDir");
+	// btnEditAddress.setAttribute("class", "editar_hidden");
+
+	// var opcionesAddress = document.getElementById("opcionesDir");
+	// opcionesAddress.setAttribute("class", "editar");
+
+	var direcciones = document.getElementById("cant_direcciones");
+
+	// for (var i = 1; i < direcciones.getAttribute("value"); i++) {
+	// 	Things[i]
+	// }
+
+	switch (id) {
+		case "btnEditarDir1":
+			b.setAttribute("class", "editar_hidden");
+			var opcionesDir = document.getElementById("opcionesDir1");
+			opcionesDir.setAttribute("class", "editar");
+			break;
+		case "btnEditarDir2":
+			b.setAttribute("class", "editar_hidden");
+			var opcionesDir = document.getElementById("opcionesDir2");
+			opcionesDir.setAttribute("class", "editar");
+			break;
+		case "btnEditarDir3":
+			b.setAttribute("class", "editar_hidden");
+			var opcionesDir = document.getElementById("opcionesDir3");
+			opcionesDir.setAttribute("class", "editar");
+			break;
+		case btnEditarDir4:
+			b.setAttribute("class", "editar_hidden");
+			var opcionesDir = document.getElementById("opcionesDir4");
+			opcionesDir.setAttribute("class", "editar");
+			break;
+		case btnEditarDir5:
+			b.setAttribute("class", "editar_hidden");
+			var opcionesDir = document.getElementById("opcionesDir5");
+			opcionesDir.setAttribute("class", "editar");
+			break;
+		default:
+			// statements_def
+			break;
+	}
+}

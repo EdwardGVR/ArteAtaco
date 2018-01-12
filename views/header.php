@@ -47,9 +47,9 @@
 		<!-- Condicion imagen -->
 		<?php if (isset($user_img)): ?>
 			<?php if ($user_img != false): ?>
-				<img class="user_img" src="<?php echo $user_img ?>" alt="N/A">
+				<a href="cuenta.php"><img class="user_img" src="<?php echo $user_img ?>" alt="N/A"></a>
 			<?php else: ?>
-				<div class="user_img"><i class="fa fa-user-circle"></i></div>
+				<div class="user_img"><a href="cuenta.php"><i class="fa fa-user-circle"></i></a></div>
 			<?php endif ?>
 		<?php endif ?>
 	</div>

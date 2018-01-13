@@ -2,7 +2,7 @@
 --
 -- Host: 127.0.0.1    Database: login_propio
 -- ------------------------------------------------------
--- Server version	5.5.5-10.1.24-MariaDB
+-- Server version	5.5.5-10.1.28-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -127,7 +127,7 @@ CREATE TABLE `direcciones` (
 
 LOCK TABLES `direcciones` WRITE;
 /*!40000 ALTER TABLE `direcciones` DISABLE KEYS */;
-INSERT INTO `direcciones` VALUES (1,2,7,'Casa San Marcos','El Salvador','FLorencia San Marcos',NULL,NULL),(3,2,1,'Casa Ataco','El Salvador','asdasd','asdas','ssadas'),(4,1,1,'Casa Fuljencio','El Salvador','Casa del fuhrer',NULL,NULL),(8,2,1,'Direccion 5','El Salvador','dir 5 asdasdas',NULL,NULL);
+INSERT INTO `direcciones` VALUES (1,2,7,'Casa San Marcos','El Salvador','FLorencia San Marcos','Casa #16','Colonia frente a UNO'),(3,2,1,'Casa Ataco','El Salvador','Barrio La Vega','No hay datos',NULL),(4,1,1,'Casa Fuljencio','El Salvador','Casa del fuhrer',NULL,NULL),(8,2,1,'Direccion 5','El Salvador','dir 5 asdasdas',NULL,'No hay datos');
 /*!40000 ALTER TABLE `direcciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -321,4 +321,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-12 17:05:22
+-- Dump completed on 2018-01-12 22:47:51

@@ -65,7 +65,7 @@ if ($conexion != false) {
 		$permitir_direccion = false;
 	}
 
-	// Guardar los cambios
+	// Guardar los cambios de usuario
 	if (isset($_POST['guardar'])) {
 		$nombres_update = $_POST['nombres'];
 		$apellidos_update = $_POST['apellidos'];
@@ -101,6 +101,69 @@ if ($conexion != false) {
 			));
 		}
 		header('Location: cuenta.php');
+	}
+
+	// Guardar los cambios de direccion
+	if (isset($_POST['cambiar_direccion'])) {
+		$dir_id = $_POST['id_address'];
+		$errores_direccion = "";
+		if (!empty($_POST['nombre_dir'])) {
+			$nombre_dir_update = $_POST['nombre_dir'];		
+		} else{
+			$errores_direccion .= "El nombre es requerido <br />";
+		}
+		if (!empty($_POST['linea1_dir'])) {
+			$linea1_update = $_POST['linea1_dir'];	
+		} else {
+			$errores_direccion .= "La linea 1 es requerida <br />";
+		}
+		if (!empty($_POST['linea2_dir'])) {
+			$linea2_update = $_POST['linea2_dir'];	
+		} else {
+			$linea2_update = NULL;
+		}
+		if ( !empty($_POST['ref_dir'])) {
+			$referencias_update = $_POST['ref_dir'];	
+		} else {
+			$referencias_update = NULL;
+		}
+		
+		if (empty($errores_direccion)) {
+			$query = $conexion->prepare("SELECT * FROM direcciones WHERE id = :id");
+			$query->execute(array(':id' => $_POST['id_address']));
+			$direccion = $query->fetch();
+
+			if ($direccion['nombre'] != $nombre_dir_update) {
+				$query = $conexion->prepare("UPDATE direcciones SET nombre = :nombre_dir_update WHERE id = :id");
+				$query->execute(array(
+					':nombre_dir_update' => $nombre_dir_update,
+					':id' => $_POST['id_address']
+				));
+			}
+			if ($direccion['linea1'] != $linea1_update) {
+				$query = $conexion->prepare("UPDATE direcciones SET linea1 = :linea1_update WHERE id = :id");
+				$query->execute(array(
+					':linea1_update' => $linea1_update,
+					':id' => $_POST['id_address']
+				));	
+			}
+			if ($direccion['linea2'] != $linea2_update) {
+				$query = $conexion->prepare("UPDATE direcciones SET linea2 = :linea2_update WHERE id = :id");
+				$query->execute(array(
+					':linea2_update' => $linea2_update,
+					':id' => $_POST['id_address']
+				));
+			}
+			if ($direccion['referencias'] != $referencias_update) {
+				$query = $conexion->prepare("UPDATE direcciones SET referencias = :referencias_update WHERE id = :id");
+				$query->execute(array(
+					':referencias_update' => $referencias_update,
+					':id' => $_POST['id_address']
+				));
+			}
+
+			header('Location: cuenta.php');	
+		}
 	}
 
 	$query = $conexion->prepare("SELECT * FROM direcciones WHERE id_user = :iduser");

@@ -1474,6 +1474,7 @@ input[name="add_address"]:hover {
 	margin-bottom: 10px;
 	width: 100%;
 	background: #CDF1F4;
+	border-radius: 20px;
 }
 
 .pedido .prod_ped:last-child {
@@ -1578,7 +1579,7 @@ background: linear-gradient(to top, #fff, #16396E); /* W3C, IE 10+/ Edge, Firefo
 	width: 95%;
 	min-height: 500px;
 	/*background: #ccc;*/
-	margin-top: 20px;
+	margin-top: 50px;
 }
 
 .informacion_cuenta .info_usuario {
@@ -1785,6 +1786,16 @@ background: linear-gradient(to top, #fff, #16396E); /* W3C, IE 10+/ Edge, Firefo
 
 .address .editar_hidden {
 	display: none;
+}
+
+.address .errores_direccion {
+	background: #EEA9A9;
+	color: #B52E2E;
+	border-radius: 10px;
+	padding: 10px;
+	width: 75%;
+	margin-left: 25%;
+	margin-bottom: 10px;
 }
 
 footer {

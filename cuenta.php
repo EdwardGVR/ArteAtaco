@@ -26,6 +26,8 @@ $pedidos_activos = cantidad_pedidos_activos($conexion, $iduser);
 $datos_user = get_user_data($conexion, $iduser);
 
 // Comprobacion de datos para mostrar en formulario
+$user_name = $datos_user['user'];
+
 if (!is_null($datos_user['nombres'])) {
 	$nombres = $datos_user['nombres'];
 } else {
@@ -67,40 +69,78 @@ if ($conexion != false) {
 
 	// Guardar los cambios de usuario
 	if (isset($_POST['guardar'])) {
-		$nombres_update = $_POST['nombres'];
-		$apellidos_update = $_POST['apellidos'];
-		$email_update = $_POST['email'];
-		$telefono_update = $_POST['telefono'];
+		$errores_usuario = "";
 
-		if ($nombres_update != $nombres) {
-			$query = $conexion->prepare("UPDATE usuarios SET nombres = :nombres_update WHERE id = :iduser");
-			$query->execute(array(
-				':nombres_update' => $nombres_update,
-				':iduser'=>$iduser
-			));
+		// Comproacion de campos requeridos
+		if (!empty($_POST['user'])) {
+			$user_update = $_POST['user'];
+		} else {
+			$errores_usuario .= "El usuario es requerido <br />";
 		}
-		if ($apellidos_update != $apellidos) {
-			$query = $conexion->prepare("UPDATE usuarios SET apellidos = :apellidos_update WHERE id = :iduser");
-			$query->execute(array(
-				':apellidos_update' => $apellidos_update,
-				':iduser'=>$iduser
-			));	
+		if (!empty($_POST['email'])) {
+			$email_update = $_POST['email'];
+		} else {
+			$errores_usuario .= "El correo es requerido <br />";
 		}
-		if ($email_update != $email) {
-			$query = $conexion->prepare("UPDATE usuarios SET email = :email_update WHERE id = :iduser");
-			$query->execute(array(
-				':email_update' => $email_update,
-				':iduser'=>$iduser
-			));
+
+		//Comprobacion de campos no requeridos vacios
+		if (!empty($_POST['nombres'])) {
+			$nombres_update = $_POST['nombres'];	
+		} else {
+			$nombres_update = NULL;
 		}
-		if ($telefono_update != $telefono) {
-			$query = $conexion->prepare("UPDATE usuarios SET telefono = :telefono_update WHERE id = :iduser");
-			$query->execute(array(
-				':telefono_update' => $telefono_update,
-				':iduser'=>$iduser
-			));
+		if (!empty($_POST['apellidos'])) {
+			$apellidos_update = $_POST['apellidos'];			
+		} else {
+			$apellidos_update = NULL;
 		}
-		header('Location: cuenta.php');
+		if (!empty($_POST['telefono'])) {
+			$telefono_update = $_POST['telefono'];	
+		} else {
+			$telefono_update = NULL;
+		}
+
+		if (empty($errores_usuario)) {
+			if ($user_update != $user_name) {
+				$query = $conexion->prepare("UPDATE usuarios SET user = :user_update WHERE id = :iduser");
+				$query->execute(array(
+					':user_update' => $user_update,
+					':iduser'=>$iduser
+				));
+
+				$_SESSION['user'] = $user_update;	
+			}
+
+			if ($nombres_update != $nombres) {
+				$query = $conexion->prepare("UPDATE usuarios SET nombres = :nombres_update WHERE id = :iduser");
+				$query->execute(array(
+					':nombres_update' => $nombres_update,
+					':iduser'=>$iduser
+				));
+			}
+			if ($apellidos_update != $apellidos) {
+				$query = $conexion->prepare("UPDATE usuarios SET apellidos = :apellidos_update WHERE id = :iduser");
+				$query->execute(array(
+					':apellidos_update' => $apellidos_update,
+					':iduser'=>$iduser
+				));	
+			}
+			if ($email_update != $email) {
+				$query = $conexion->prepare("UPDATE usuarios SET email = :email_update WHERE id = :iduser");
+				$query->execute(array(
+					':email_update' => $email_update,
+					':iduser'=>$iduser
+				));
+			}
+			if ($telefono_update != $telefono) {
+				$query = $conexion->prepare("UPDATE usuarios SET telefono = :telefono_update WHERE id = :iduser");
+				$query->execute(array(
+					':telefono_update' => $telefono_update,
+					':iduser'=>$iduser
+				));
+			}
+			header('Location: cuenta.php');	
+		}
 	}
 
 	// Guardar los cambios de direccion

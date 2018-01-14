@@ -1608,6 +1608,14 @@ background: linear-gradient(to top, #fff, #16396E); /* W3C, IE 10+/ Edge, Firefo
 	/*background: #ccc;*/
 }
 
+.info_usuario form.edit_info span.user_label_hidden {
+	display: none;
+}
+
+.info_usuario form.edit_info span.user_label {
+	display: inline-block;
+}
+
 .info_usuario form.edit_info hr {
 	width: 90%;
 	height: 3px;
@@ -1625,12 +1633,12 @@ background: linear-gradient(to top, #fff, #16396E); /* W3C, IE 10+/ Edge, Firefo
 .info_usuario form.edit_info span {
 	width: 100%;
 	text-align: left;
-	font-weight: bold;
+	/*font-weight: bold;*/
 }
 
 .info_usuario form.edit_info input.field_user {
-	background: none;
-	border-radius: 0;
+	/*background: none;*/
+	/*border-radius: 0;*/
 	cursor: default;
 	margin: 20px 0;
 	width: 100%;
@@ -1687,6 +1695,16 @@ background: linear-gradient(to top, #fff, #16396E); /* W3C, IE 10+/ Edge, Firefo
 	margin: 0;
 	border-radius: 20px;
 	background: #ccc;
+}
+
+.edit_info .errores_usuario {
+	background: #EEA9A9;
+	color: #B52E2E;
+	border-radius: 10px;
+	padding: 10px;
+	width: 100%;
+	margin-bottom: 30px;
+	text-align: left;
 }
 
 .informacion_cuenta .detalles_usuario {

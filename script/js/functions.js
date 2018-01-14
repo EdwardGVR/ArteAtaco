@@ -26,6 +26,15 @@ function editInfoUser() {
 	userPhone.removeAttribute("readonly");
 	userPhone.setAttribute("class", "field");
 	userPhone.removeAttribute("disabled");
+
+	var userLabelUser = document.getElementById("user_label");
+	userLabelUser.setAttribute("class", "user_label");
+
+	var userUser = document.getElementById("user_user");
+	userUser.setAttribute("type", "text");
+	userUser.setAttribute("class", "field");
+	userUser.removeAttribute("readonly");
+	userUser.removeAttribute("disabled"); 
 }
 
 function cancelEditInfoUser() {

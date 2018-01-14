@@ -32,14 +32,22 @@
 				<h3>Informaci&oacute;n</h3>
 				<hr>
 				
+				<span id="user_label" class="user_label_hidden"> Nombre de usuario:</span>
+				<input id="user_user" class="field_user"  type="hidden" name="user" value="<?php echo $user ?>" disabled="true" readonly="">
+
 				<span>Nombres:</span>
-				<input id="nombre_user" class="field_user" type="text" name="nombres" value="<?php echo $nombres ?>" disabled="true" readonly="">
+				<input id="nombre_user" class="field_user"  type="text" name="nombres" value="<?php echo $nombres ?>" disabled="true" readonly="">
 				<span>Apellidos:</span>
-				<input id="apellido_user" class="field_user" type="text" name="apellidos" value="<?php echo $apellidos ?>" disabled="true" readonly="">
+				<input id="apellido_user" class="field_user"  type="text" name="apellidos" value="<?php echo $apellidos ?>" disabled="true" readonly="">
 				<span>E-mail:</span>
-				<input id="email_user" class="field_user" type="email" name="email" value="<?php echo $email ?>" disabled="true" readonly="">
+				<input id="email_user" class="field_user"  type="email" name="email" value="<?php echo $email ?>" disabled="true" readonly="">
 				<span>Tel&eacute;fono:</span>
-				<input id="telefono_user" class="field_user" type="text" name="telefono" value="<?php echo $telefono ?>" disabled="true" readonly="">
+				<input id="telefono_user" class="field_user"  type="text" name="telefono" value="<?php echo $telefono ?>" disabled="true" readonly="">
+				<?php if (isset($errores_usuario) && !empty($errores_usuario)): ?>
+					<div class="errores_usuario">
+						<?php echo $errores_usuario ?>
+					</div>
+				<?php endif ?>
 				<div id="btnEditar" class="editar"><span onclick="editInfoUser()" class="editar_boton">Editar</span></div>
 				
 				<div id="btnsOpciones" class="opciones_hidden">

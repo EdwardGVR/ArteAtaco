@@ -135,6 +135,7 @@
 						<?php endif ?>
 					</div>
 					<input class="send_info" type="submit" name="confirm_info" value="La informaci&oacute;n es correcta">
+					<input type="hidden" name="checkout_checkpoint">
 				</form>
 			</div>
 		</div>

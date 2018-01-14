@@ -5,7 +5,12 @@ require 'functions.php';
 if (isset($_SESSION['user'])) {
 	$user = $_SESSION['user'];
 } else {
+	header("Location: categorias.php");
 	$user = "Invitado";
+}
+
+if (!isset($_POST['checkout_checkpoint'])) {
+	header("Location: carrito.php");
 }
 
 require 'conexion.php';
@@ -61,6 +66,8 @@ if ($conexion != false) {
 			$query = $conexion->prepare("DELETE FROM carrito WHERE id_user = :id_user");
 			$query->execute(array(':id_user'=>$iduser));
 		}
+
+		setcookie("order_placed_ckp", true);
 
 		header('Location: order_placed.php');
 	}

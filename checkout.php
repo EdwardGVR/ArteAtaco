@@ -5,6 +5,7 @@ require 'functions.php';
 if (isset($_SESSION['user'])) {
 	$user = $_SESSION['user'];
 } else {
+	header("Location: categorias.php");
 	$user = "Invitado";
 }
 
@@ -83,6 +84,10 @@ if ($conexion != false) {
 		GROUP BY carrito.id_producto");
 	$query->execute(array(':iduser'=>$iduser));
 	$carrito = $query->fetchall();
+
+	if (!$carrito) {
+		header("Location:carrito.php");
+	}
 
 	$query = $conexion->prepare("SELECT * FROM departamentos");
 	$query->execute(array());

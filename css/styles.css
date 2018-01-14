@@ -946,6 +946,10 @@ h2.precio {
 	background: #52C433;
 	border-radius: 10px;
 	transition: all ease 0.3s;
+	cursor: pointer;
+	width: 200px;
+	font-size: 1em;
+	line-height: 0;
 }
 
 .contenedor_carrito .checkout:hover {

@@ -5,6 +5,7 @@ require 'functions.php';
 if (isset($_SESSION['user'])) {
 	$user = $_SESSION['user'];
 } else {
+	header("Location: categorias.php");
 	$user = "Invitado";
 }
 

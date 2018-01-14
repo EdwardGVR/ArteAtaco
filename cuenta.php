@@ -11,6 +11,7 @@ if (isset($_SESSION['user'])) {
 	$user = $_SESSION['user'];
 	$iduser = get_user_id($conexion, $user);
 } else {
+	header("Location: categorias.php");
 	$user = 'Invitado';
 	$iduser = false;
 }

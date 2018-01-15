@@ -16,13 +16,16 @@
 		<div class="imagen_usuario">
 			<?php if (isset($imagen)): ?>
 				<img class="imagen_usuario" src="<?php echo $imagen ?>" alt="No se pudo mostrar">
-				<form class="upload" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-  					<input class="file" id="file" type="file" accept="image/*"/>
+				<form class="upload" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" enctype="multipart/form-data" method="POST">
+  					<input onchange="this.form.submit()" class="file" id="file" name="user_img" type="file" accept="image/*"/>
   					<label for="file"><i class="fa fa-upload"></i></label>
 				</form>
-				<!-- <div class="upload"><i class="fa fa-upload"></i></div> -->
 			<?php else: ?>
 				<i class="fa fa-user"></i>	
+				<form class="upload" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" enctype="multipart/form-data" method="POST">
+  					<input onchange="this.form.submit()" class="file" id="file" name="user_img" type="file" accept="image/*"/>
+  					<label for="file"><i class="fa fa-upload"></i></label>
+				</form>
 			<?php endif ?>
 			
 		</div>

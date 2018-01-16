@@ -5,6 +5,7 @@
 
 	<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+	<link rel="stylesheet" href="css/styleModal.css">
 	<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -13,6 +14,9 @@
 	
 <div class="contenedor_cuenta">
 	<div class="imagen_cuenta">
+		<?php if (isset($img_upload_error)): ?>
+					<div class="error_upload_img">Error al subir la imagen<br /> Intente con un archivo m&aacute;s peque&ntilde;o</div>
+				<?php endif ?>
 		<div class="imagen_usuario">
 			<?php if (isset($imagen)): ?>
 				<img class="imagen_usuario" src="<?php echo $imagen_user ?>" alt="*">
@@ -118,6 +122,8 @@
 
 <?php require 'footer.php' ?>
 <script src="script/js/functions.js"></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script  src="script/js/modal.js"></script>
 
 </body>
 </html>

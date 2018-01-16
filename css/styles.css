@@ -1582,6 +1582,20 @@ background: linear-gradient(to top, #fff, #16396E); /* W3C, IE 10+/ Edge, Firefo
 	left: 78%;
 }
 
+.imagen_cuenta .error_upload_img {
+	display: flex;
+	justify-content: flex-start;
+	position: absolute;
+	top: 160px;
+	right: 210px;
+	width: 500px;
+	background: #EFB2B2;
+	color: #BA1B1B;
+	border-radius: 5px;
+	/*padding-left: 10px;*/
+	font-size: 16px;
+}
+
 /*Boton para subir imagen*/
 .upload {
   position: relative;

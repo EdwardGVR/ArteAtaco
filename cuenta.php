@@ -84,6 +84,7 @@ if ($conexion != false) {
 
 		$archivo_subido = "images/user/profile/" . $user_img['name'];
 		move_uploaded_file($_FILES['user_img']['tmp_name'], $archivo_subido);
+		header("Location: cuenta.php");
 
 
 		if (is_null($check_image['imagen'])) {

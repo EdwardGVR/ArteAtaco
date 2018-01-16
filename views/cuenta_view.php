@@ -24,7 +24,7 @@
 				<i class="fa fa-user"></i>	
 				<form class="upload" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" enctype="multipart/form-data" method="POST">
   					<input onchange="this.form.submit()" class="file" id="file" name="user_img" type="file" accept="image/*"/>
-  					<label for="file"><i class="fa fa-upload"></i></label>
+  					<label for="file"><i class="fa fa-camera"></i></label>
 				</form>
 			<?php endif ?>
 			

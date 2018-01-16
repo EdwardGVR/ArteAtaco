@@ -19,7 +19,6 @@
 			<div class="info">N&uacute;mero: <h4>xxxx-xxxx-xxxx-xxxx</h4></div>
 			<div class="info">Banco: <h4>Nombre banco</h4></div>
 			<div class="info">Titular: <h4>Nombre del titular</h4></div>
-
 		<?php elseif($id_metodo_pago == 2): ?>
 			3
 		<?php elseif($id_metodo_pago == 3): ?>

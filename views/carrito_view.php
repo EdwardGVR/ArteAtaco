@@ -42,7 +42,10 @@
 			<?php endforeach ?>
 			<div class="carrito_subtotal">
 				<span>Subtotal: $ <?php echo  $subtotal ?></span>
-				<a href="checkout.php" class="checkout">Ir a caja</a>
+				<form action="checkout.php" method="POST">
+					<input type="submit" name="carrito_checkpoint" class="checkout" value="Ir a caja">
+				</form>
+				<!-- <a href="checkout.php" class="checkout">Ir a caja</a> -->
 			</div>
 		<?php else: ?>
 			<p>El carrito est&aacute; vac&iacute;o</p>

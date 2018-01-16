@@ -5,10 +5,18 @@ require 'functions.php';
 if (isset($_SESSION['user'])) {
 	$user = $_SESSION['user'];
 } else {
+	header("Location: categorias.php");
 	$user = "Invitado";
 }
 
 //CODE...
+
+if (isset($_COOKIE['order_placed_ckp'])) {
+	unset($_COOKIE['order_placed_ckp']);
+	setcookie("order_placed_ckp", "", time()-3600);
+} else {
+	header("Location: categorias.php");
+}
 
 require 'conexion.php';
 $iduser = get_user_id($conexion, $user);

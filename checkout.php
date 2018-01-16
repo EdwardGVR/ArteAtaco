@@ -5,6 +5,7 @@ require 'functions.php';
 if (isset($_SESSION['user'])) {
 	$user = $_SESSION['user'];
 } else {
+	header("Location: categorias.php");
 	$user = "Invitado";
 }
 
@@ -36,13 +37,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_address'])) {
 	if (!empty($_POST['address_line_2'])) {
 		$address_line_2 = $_POST['address_line_2'];
 	} else {
-		$address_line_2 = "";
+		$address_line_2 = NULL;
 	}
 
 	if (!empty($_POST['referencias'])) {
 		$referencias = $_POST['referencias'];
 	} else {
-		$referencias = "";
+		$referencias = NULL;
 	}
 
 	if ($conexion != false && empty($errores)) {
@@ -66,6 +67,18 @@ if ($conexion != false) {
 	$query->execute();
 	$categorias = $query->fetchall();
 
+	$query = $conexion->prepare("SELECT * FROM direcciones WHERE id_user = :iduser");
+	$query->execute(array(':iduser' => $iduser));
+	$dirs = $query->fetchall();
+	// Obtener cantidad de direcciones del usuario
+	$cant_direcciones = count($dirs);
+
+	if ($cant_direcciones < 5) {
+		$permitir_direccion = true;
+	} else {
+		$permitir_direccion = false;
+	}
+
 	$query = $conexion->prepare("
 		SELECT carrito.*, productos.id_categoria, productos.nombre, productos.precio, productos.stock, productos.imagen 
 		FROM carrito, productos 
@@ -73,6 +86,10 @@ if ($conexion != false) {
 		GROUP BY carrito.id_producto");
 	$query->execute(array(':iduser'=>$iduser));
 	$carrito = $query->fetchall();
+
+	if (!$carrito) {
+		header("Location:carrito.php");
+	}
 
 	$query = $conexion->prepare("SELECT * FROM departamentos");
 	$query->execute(array());

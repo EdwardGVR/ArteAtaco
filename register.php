@@ -1,4 +1,4 @@
-<?php 
+<?php session_start();
 
 require 'functions.php';
 
@@ -91,7 +91,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			":pass" => $password
 		));
 
-		header('Location: login.php');
+		$_SESSION['user'] = $user;
+		header('Location: categorias.php');
 	}
 
 }

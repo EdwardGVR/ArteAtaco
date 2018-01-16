@@ -31,47 +31,51 @@
 									<h5><?php echo $direccion['linea1'] ?></h5>
 								</div>
 								<div class="options">
-									<a href="#" class="button">Editar</a>
+									<a href="cuenta.php" class="button">Editar</a>
 									<input class="button" name="confirm_address" type="submit" value="Seleccionar">
 								</div>
 							</form>
 						<?php endforeach ?>
 					<?php else: ?>
-						No tiene ninguna direcci&oacute;n registrada, puede agregar direcciones en el siguiente formulario y apareceran aqu&iacute;:
+						No tiene ninguna direcci&oacute;n registrada, puede agregar direcciones en el siguiente formulario y aparecer&aacute;n aqu&iacute;:
 					<?php endif ?>
 				</div>
 			</div>
 			<hr>
-			<div class="new_address">
-				<form class="form_new_address" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-					<h3 class="indication">O agregue una nueva</h3>
-					<span class="add_address">Agregar una nueva direccion</span>
-					Nombre de la direccion: *
-					<input type="text" name="address_name" class="new_address_field" placeholder="Nombre descriptivo ej: Casa Santa Ana, Oficina, etc..">
-					Pa&iacute;s: *
-					<input type="text" name="pais" class="new_address_field" value="El Salvador" readonly>
-					Departamento: *
-					<select name="departamento" id="dpto" class="new_address_field">
-						<?php foreach ($departamentos as $departamento): ?>
-							<option value="<?php echo $departamento['id'] ?>"><?php echo $departamento['nombre'] ?></option>
-						<?php endforeach ?>
-					</select>
-					Direccion:
-					<input type="text" name="address_line_1" class="new_address_field" placeholder="Direccion linea 1 *">
-					<input type="text" name="address_line_2" class="new_address_field" placeholder="Direccion linea 2">
-					Referencias:
-					<textarea name="referencias" id="ref" class="new_address_field" placeholder="Referencias de ubicacion ej: Frente a iglesia, a la par de local X, etc..."></textarea>
-					<?php if (!empty($errores)): ?>
-						<div class="errores"><?php echo $errores ?></div>
-					<?php else: ?>
-						<?php if (isset($added)): ?>
-							<div class="added"><?php echo $added ?></div>
+
+			<?php if ($permitir_direccion): ?>
+				<div class="new_address">
+					<form class="form_new_address" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+						<h3 class="indication">O agregue una nueva</h3>
+						<span class="add_address">Agregar una nueva direccion</span>
+						Nombre de la direccion: *
+						<input type="text" name="address_name" class="new_address_field" placeholder="Nombre descriptivo ej: Casa Santa Ana, Oficina, etc..">
+						Pa&iacute;s: *
+						<input type="text" name="pais" class="new_address_field" value="El Salvador" readonly>
+						Departamento: *
+						<select name="departamento" id="dpto" class="new_address_field">
+							<?php foreach ($departamentos as $departamento): ?>
+								<option value="<?php echo $departamento['id'] ?>"><?php echo $departamento['nombre'] ?></option>
+							<?php endforeach ?>
+						</select>
+						Direccion:
+						<input type="text" name="address_line_1" class="new_address_field" placeholder="Direccion linea 1 *">
+						<input type="text" name="address_line_2" class="new_address_field" placeholder="Direccion linea 2">
+						Referencias:
+						<textarea name="referencias" id="ref" class="new_address_field" placeholder="Referencias de ubicacion ej: Frente a iglesia, a la par de local X, etc..."></textarea>
+						<?php if (!empty($errores)): ?>
+							<div class="errores"><?php echo $errores ?></div>
+						<?php else: ?>
+							<?php if (isset($added)): ?>
+								<div class="added"><?php echo $added ?></div>
+							<?php endif ?>
 						<?php endif ?>
-					<?php endif ?>
-					<input type="submit" name="add_address" value="Agregar direccion">
-				</form>
-			</div>
+						<input type="submit" name="add_address" value="Agregar direccion">
+					</form>
+				</div>	
 			<hr>
+			<?php endif ?>
+			
 			<a name="pays" id="pays"></a>
 			<div class="payment_method">
 				<div class="step1">2</div>
@@ -131,6 +135,7 @@
 						<?php endif ?>
 					</div>
 					<input class="send_info" type="submit" name="confirm_info" value="La informaci&oacute;n es correcta">
+					<input type="hidden" name="checkout_checkpoint">
 				</form>
 			</div>
 		</div>

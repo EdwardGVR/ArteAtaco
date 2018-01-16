@@ -68,33 +68,33 @@ if ($conexion != false) {
 		// $pos_punto = strpos($user_img['name'], '@');
 
 		$palabra = "imagen.test.jpg";
-		$pos_punto = 0;
-		while ($pos_punto != false) {
-			$pos_punto = strpos($palabra, '.');
-			$extension = substr($palabra, $pos_punto+1);
-			
-		}
+		// $pos_punto = 0;
+		// $pos_punto = strpos($palabra, '.');
+		// $extension = substr($palabra, $pos_punto+1);
 	
-		print_r($pos_punto);
-		var_dump($pos_punto);
+		// print_r($pos_punto);
+		// var_dump($pos_punto);
+
 		// $extension_imagen = substr($user_img['name'], $pos_punto);
 		// // echo $extension_imagen;
 		// // echo $pos_punto;
 
-		// $user_img['name'] = "user_img_" . $iduser . $extension_imagen;
-		// // print_r($user_img['name']);
+		$user_img['name'] = "user_img_" . $iduser . ".jpg";
+		// print_r($user_img['name']);
 
-		// $archivo_subido = "images/user/profile/" . $user_img['name'];
-		// move_uploaded_file($_FILES['user_img']['tmp_name'], $archivo_subido);
+		$archivo_subido = "images/user/profile/" . $user_img['name'];
+		move_uploaded_file($_FILES['user_img']['tmp_name'], $archivo_subido);
 
-		// if (is_null($check_image['imagen'])) {
-		// 	$query = $conexion->prepare("UPDATE usuarios SET imagen = :imagen WHERE id = :iduser");
-		// 	$query->execute(array(
-		// 		':imagen' => $archivo_subido,
-		// 		':iduser' => $iduser
-		// 	));
-		// }
+
+		if (is_null($check_image['imagen'])) {
+			$query = $conexion->prepare("UPDATE usuarios SET imagen = :imagen WHERE id = :iduser");
+			$query->execute(array(
+				':imagen' => $archivo_subido,
+				':iduser' => $iduser
+			));
+		}
 	}
+	$imagen_user = "images/user/profile/user_img_" . $iduser . ".jpg";
 
 	$query = $conexion->prepare("SELECT * FROM direcciones WHERE id_user = :iduser");
 	$query->execute(array(':iduser' => $iduser));

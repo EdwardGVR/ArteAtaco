@@ -15,7 +15,10 @@
 <div class="contenedor_cuenta">
 	<div class="imagen_cuenta">
 		<?php if (isset($img_upload_error)): ?>
-					<div class="error_upload_img">Error al subir la imagen<br /> Intente con un archivo m&aacute;s peque&ntilde;o</div>
+					<div class="error_upload_img">
+						<span>Error al subir la imagen</span><br />
+						<span>Intente con un archivo m&aacute;s peque&ntilde;o</span>
+					</div>
 				<?php endif ?>
 		<div class="imagen_usuario">
 			<?php if (isset($imagen)): ?>
@@ -105,11 +108,21 @@
 							<?php endif ?>
 							<div id="btnEditarDir<?php echo $direccion_numero ?>" class="editar"><span onclick="addressChange(this)" class="editar_boton">Editar</span></div>
 							<div id="opcionesDir<?php echo $direccion_numero ?>" class="editar_hidden">
-								<input class="editar_submit" type="submit" name="cambiar_direccion" value="Guardar">
-								<div onclick="cancelEditInfoUser()" class="cancelar_submit">Cancelar</div>
+								<input class="eliminar_direccion" type="submit" name="eliminar_direccion" value="Borrar">
+								<div>
+									<input class="editar_submit" type="submit" name="cambiar_direccion" value="Guardar">
+									<div onclick="cancelEditInfoUser()" class="cancelar_submit">Cancelar</div>
+								</div>
 							</div>
 						</form>
 					<?php endforeach ?>
+
+					<?php if ($permitir_direccion): ?>
+						<div class="add_address">
+							<span>Agregar nueva</span>
+						</div>
+					<?php endif ?>
+
 				<?php else: ?>
 					<div class="address">
 						No tiene ninguna direcci&oacute;n registrada, puede agregar direcciones en el siguiente formulario y apareceran aqu&iacute;:

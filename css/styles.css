@@ -1549,6 +1549,7 @@ input[name="add_address"]:hover {
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
+	position: relative;
 
 	height: 350px;
 	width: 100%;
@@ -1585,15 +1586,22 @@ background: linear-gradient(to top, #fff, #16396E); /* W3C, IE 10+/ Edge, Firefo
 .imagen_cuenta .error_upload_img {
 	display: flex;
 	justify-content: flex-start;
+	align-items: center;
+	flex-wrap: wrap;
 	position: absolute;
-	top: 160px;
-	right: 210px;
-	width: 500px;
+	top: 10px;
+	right: 10px;
+	width: 30%;
 	background: #EFB2B2;
 	color: #BA1B1B;
 	border-radius: 5px;
 	/*padding-left: 10px;*/
-	font-size: 16px;
+	font-size: 12px;
+	padding: 5px;
+}
+
+.imagen_cuenta .error_upload_img span {
+	/*width: 100%;*/
 }
 
 /*Boton para subir imagen*/
@@ -1862,6 +1870,8 @@ background: linear-gradient(to top, #fff, #16396E); /* W3C, IE 10+/ Edge, Firefo
 }
 
 .detalles_usuario form.address .editar {
+	display: flex;
+	justify-content: space-between;
 	width: 100%;
 	/*height: 30px;*/
 	margin-top: 10px;
@@ -1874,6 +1884,9 @@ background: linear-gradient(to top, #fff, #16396E); /* W3C, IE 10+/ Edge, Firefo
 	cursor: pointer;
 	border-radius: 20px;
 	transition: all ease 0.3s;
+	width: 100px;
+	text-align: center;
+	margin-left: 85%;
 }
 
 .detalles_usuario form.address .editar_boton:hover {
@@ -1900,11 +1913,25 @@ background: linear-gradient(to top, #fff, #16396E); /* W3C, IE 10+/ Edge, Firefo
 }
 
 .address .editar .cancelar_submit:hover {
-	background: #EEAFAF;
+	background: #E4EE8F;
 }
 
 .address .editar_hidden {
 	display: none;
+}
+
+.address .editar .eliminar_direccion {
+	border-radius: 20px;
+	background: #EC7070;
+	color: #fff;
+	width: 100px;
+	text-align: center;	
+	cursor: pointer;		
+	transition: all ease 0.3s;
+}
+
+.address .editar .eliminar_direccion:hover {
+	background: #E00C0C;
 }
 
 .address .errores_direccion {
@@ -1915,6 +1942,27 @@ background: linear-gradient(to top, #fff, #16396E); /* W3C, IE 10+/ Edge, Firefo
 	width: 75%;
 	margin-left: 25%;
 	margin-bottom: 10px;
+}
+
+.contenedor_address .add_address {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	width: 100%;
+}
+
+.contenedor_address .add_address span {
+	padding: 10px;
+	border-radius: 20px;
+	background: #2C4DBA;
+	color: #fff;
+	margin-bottom: 20px;
+	cursor: pointer;
+	transition: all ease 0.3s;
+}
+
+.contenedor_address .add_address span:hover {
+	background: #05207A;
 }
 
 footer {

@@ -82,7 +82,7 @@ if ($conexion != false) {
 					':iduser' => $iduser
 				));
 
-				// header("Location: cuenta.php");
+				header("Location: cuenta.php");
 			}
 		}
 	}
@@ -95,7 +95,7 @@ if ($conexion != false) {
 	// Obtener cantidad de direcciones del usuario
 	$cant_direcciones = count($dirs);
 
-	if ($cant_direcciones < 5) {
+	if ($cant_direcciones < 3) {
 		$permitir_direccion = true;
 	} else {
 		$permitir_direccion = false;
@@ -238,6 +238,19 @@ if ($conexion != false) {
 
 			header('Location: cuenta.php');	
 		}
+	}
+
+	// Eliminar una direccion
+	if (isset($_POST['eliminar_direccion'])) {
+		$id_address = $_POST['id_address'];
+
+		$query = $conexion->prepare("DELETE FROM direcciones WHERE id = :id_address AND id_user = :id_user");
+		$query->execute(array(
+			':id_address' => $id_address,
+			':id_user' => $iduser
+		));
+
+		header("Location: cuenta.php");
 	}
 
 	$query = $conexion->prepare("SELECT * FROM direcciones WHERE id_user = :iduser");

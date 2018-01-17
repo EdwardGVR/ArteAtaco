@@ -71,7 +71,7 @@ if ($conexion != false) {
 	// Obtener cantidad de direcciones del usuario
 	$cant_direcciones = count($dirs);
 
-	if ($cant_direcciones < 5) {
+	if ($cant_direcciones < 3) {
 		$permitir_direccion = true;
 	} else {
 		$permitir_direccion = false;

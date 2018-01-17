@@ -58,44 +58,36 @@ if ($conexion != false) {
 
 	// Subir imagen de usuario
 	if (isset($_FILES['user_img'])) {
-		$query = $conexion->prepare("SELECT imagen FROM usuarios WHERE id = :iduser");
-		$query->execute(array(':iduser' => $iduser));
-		$check_image = $query->fetch();
-
 		$user_img = $_FILES['user_img'];
-		
-		// print_r($user_img);
-		// $pos_punto = strpos($user_img['name'], '@');
 
-		$palabra = "imagen.test.jpg";
-		// $pos_punto = 0;
-		// $pos_punto = strpos($palabra, '.');
-		// $extension = substr($palabra, $pos_punto+1);
-	
-		// print_r($pos_punto);
-		// var_dump($pos_punto);
+		// print_r($user_img['error']);
+		if ($user_img['error'] == 1) {
+			$img_upload_error = true;
+			// echo "Hubo un error al subir la imagen";
+		} else {
+			$user_img['name'] = "user_img_" . $iduser . ".jpg";
+			// print_r($user_img['name']);
 
-		// $extension_imagen = substr($user_img['name'], $pos_punto);
-		// // echo $extension_imagen;
-		// // echo $pos_punto;
+			$archivo_subido = "images/user/profile/" . $user_img['name'];
+			move_uploaded_file($_FILES['user_img']['tmp_name'], $archivo_subido);
 
-		$user_img['name'] = "user_img_" . $iduser . ".jpg";
-		// print_r($user_img['name']);
+			$query = $conexion->prepare("SELECT imagen FROM usuarios WHERE id = :iduser");
+			$query->execute(array(':iduser' => $iduser));
+			$check_image = $query->fetch();
 
-		$archivo_subido = "images/user/profile/" . $user_img['name'];
-		move_uploaded_file($_FILES['user_img']['tmp_name'], $archivo_subido);
-		header("Location: cuenta.php");
+			if (is_null($check_image['imagen'])) {
+				$query = $conexion->prepare("UPDATE usuarios SET imagen = :imagen WHERE id = :iduser");
+				$query->execute(array(
+					':imagen' => $archivo_subido,
+					':iduser' => $iduser
+				));
 
-
-		if (is_null($check_image['imagen'])) {
-			$query = $conexion->prepare("UPDATE usuarios SET imagen = :imagen WHERE id = :iduser");
-			$query->execute(array(
-				':imagen' => $archivo_subido,
-				':iduser' => $iduser
-			));
+				header("Location: cuenta.php");
+			}
 		}
 	}
 	$imagen_user = "images/user/profile/user_img_" . $iduser . ".jpg";
+	// echo $imagen_user;
 
 	$query = $conexion->prepare("SELECT * FROM direcciones WHERE id_user = :iduser");
 	$query->execute(array(':iduser' => $iduser));
@@ -103,7 +95,7 @@ if ($conexion != false) {
 	// Obtener cantidad de direcciones del usuario
 	$cant_direcciones = count($dirs);
 
-	if ($cant_direcciones < 5) {
+	if ($cant_direcciones < 3) {
 		$permitir_direccion = true;
 	} else {
 		$permitir_direccion = false;
@@ -246,6 +238,19 @@ if ($conexion != false) {
 
 			header('Location: cuenta.php');	
 		}
+	}
+
+	// Eliminar una direccion
+	if (isset($_POST['eliminar_direccion'])) {
+		$id_address = $_POST['id_address'];
+
+		$query = $conexion->prepare("DELETE FROM direcciones WHERE id = :id_address AND id_user = :id_user");
+		$query->execute(array(
+			':id_address' => $id_address,
+			':id_user' => $iduser
+		));
+
+		header("Location: cuenta.php");
 	}
 
 	$query = $conexion->prepare("SELECT * FROM direcciones WHERE id_user = :iduser");

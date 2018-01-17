@@ -5,6 +5,7 @@
 
 	<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+	<link rel="stylesheet" href="css/styleModal.css">
 	<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -13,6 +14,12 @@
 	
 <div class="contenedor_cuenta">
 	<div class="imagen_cuenta">
+		<?php if (isset($img_upload_error)): ?>
+					<div class="error_upload_img">
+						<span>Error al subir la imagen</span><br />
+						<span>Intente con un archivo m&aacute;s peque&ntilde;o</span>
+					</div>
+				<?php endif ?>
 		<div class="imagen_usuario">
 			<?php if (isset($imagen)): ?>
 				<img class="imagen_usuario" src="<?php echo $imagen_user ?>" alt="*">
@@ -101,11 +108,21 @@
 							<?php endif ?>
 							<div id="btnEditarDir<?php echo $direccion_numero ?>" class="editar"><span onclick="addressChange(this)" class="editar_boton">Editar</span></div>
 							<div id="opcionesDir<?php echo $direccion_numero ?>" class="editar_hidden">
-								<input class="editar_submit" type="submit" name="cambiar_direccion" value="Guardar">
-								<div onclick="cancelEditInfoUser()" class="cancelar_submit">Cancelar</div>
+								<input class="eliminar_direccion" type="submit" name="eliminar_direccion" value="Borrar">
+								<div>
+									<input class="editar_submit" type="submit" name="cambiar_direccion" value="Guardar">
+									<div onclick="cancelEditInfoUser()" class="cancelar_submit">Cancelar</div>
+								</div>
 							</div>
 						</form>
 					<?php endforeach ?>
+
+					<?php if ($permitir_direccion): ?>
+						<div class="add_address">
+							<span>Agregar nueva</span>
+						</div>
+					<?php endif ?>
+
 				<?php else: ?>
 					<div class="address">
 						No tiene ninguna direcci&oacute;n registrada, puede agregar direcciones en el siguiente formulario y apareceran aqu&iacute;:
@@ -118,6 +135,8 @@
 
 <?php require 'footer.php' ?>
 <script src="script/js/functions.js"></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script  src="script/js/modal.js"></script>
 
 </body>
 </html>

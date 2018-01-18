@@ -76,6 +76,9 @@
 				<span class="titulo">Direcciones</span>
 				<?php if ($direcciones != false): ?>
 					<?php foreach ($direcciones as $direccion): ?>
+						<?php echo $direccion['id'] ?>
+						<?php echo $direccion['id_user'] ?>
+
 						<?php $direccion_numero++ ?>
 
 						<?php if (!is_null($direccion['linea2'])): ?>

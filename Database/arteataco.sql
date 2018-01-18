@@ -2,7 +2,7 @@
 --
 -- Host: 127.0.0.1    Database: login_propio
 -- ------------------------------------------------------
--- Server version	5.5.5-10.1.28-MariaDB
+-- Server version	5.5.5-10.1.24-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -31,7 +31,7 @@ CREATE TABLE `carrito` (
   KEY `carrito_usuario_idx` (`id_user`),
   KEY `carrito_user_idx` (`id_user`),
   CONSTRAINT `carrito_user` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,6 @@ CREATE TABLE `carrito` (
 
 LOCK TABLES `carrito` WRITE;
 /*!40000 ALTER TABLE `carrito` DISABLE KEYS */;
-INSERT INTO `carrito` VALUES (63,2,1,1);
 /*!40000 ALTER TABLE `carrito` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -127,7 +126,7 @@ CREATE TABLE `direcciones` (
 
 LOCK TABLES `direcciones` WRITE;
 /*!40000 ALTER TABLE `direcciones` DISABLE KEYS */;
-INSERT INTO `direcciones` VALUES (1,2,7,'Casa San Marcos','El Salvador','FLorencia San Marcos','Casa #16','Colonia frente a UNO'),(3,2,1,'Casa Ataco','El Salvador','Barrio La Vega','No hay datos',NULL),(4,1,1,'Casa Fuljencio','El Salvador','Casa del fuhrer',NULL,NULL),(8,2,1,'Direccion 5','El Salvador','dir 5 asdasdas',NULL,'No hay datos');
+INSERT INTO `direcciones` VALUES (1,2,7,'Casa de San Marcos','El Salvador','FLorencia San Marcos','Casa #16','Colonia frente a UNO'),(4,1,1,'Casa Fuljencio','El Salvador','Casa del fuhrer',NULL,NULL);
 /*!40000 ALTER TABLE `direcciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -167,7 +166,7 @@ CREATE TABLE `pedidos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `codigo` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `id_direccion` int(11) NOT NULL,
+  `id_direccion` int(11) DEFAULT NULL,
   `id_pago` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
@@ -178,11 +177,11 @@ CREATE TABLE `pedidos` (
   KEY `pedidos_direccion_idx` (`id_direccion`),
   KEY `pedidos_producto_idx` (`id_producto`),
   KEY `pedidos_pago_idx` (`id_pago`),
-  CONSTRAINT `pedidos_direccion` FOREIGN KEY (`id_direccion`) REFERENCES `direcciones` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `pedidos_direccion` FOREIGN KEY (`id_direccion`) REFERENCES `direcciones` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION,
   CONSTRAINT `pedidos_pago` FOREIGN KEY (`id_pago`) REFERENCES `metodos_pago` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `pedidos_producto` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `pedidos_user` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -191,7 +190,7 @@ CREATE TABLE `pedidos` (
 
 LOCK TABLES `pedidos` WRITE;
 /*!40000 ALTER TABLE `pedidos` DISABLE KEYS */;
-INSERT INTO `pedidos` VALUES (12,23161,2,3,1,1,1,0,'2018-01-04 20:40:38'),(13,23122,2,3,1,2,1,0,'2018-01-04 20:41:09'),(14,14133,1,4,1,1,3,0,'2018-01-04 22:08:48'),(15,14133,1,4,1,2,2,0,'2018-01-04 22:08:48'),(16,14124,1,4,1,1,2,0,'2018-01-12 04:04:31'),(17,23175,2,3,1,2,1,0,'2018-01-12 04:05:46'),(18,23175,2,3,1,1,2,0,'2018-01-12 04:05:46');
+INSERT INTO `pedidos` VALUES (12,23161,2,NULL,1,1,1,0,'2018-01-04 20:40:38'),(13,23122,2,NULL,1,2,1,0,'2018-01-04 20:41:09'),(14,14133,1,4,1,1,3,0,'2018-01-04 22:08:48'),(15,14133,1,4,1,2,2,0,'2018-01-04 22:08:48'),(16,14124,1,4,1,1,2,0,'2018-01-12 04:04:31'),(17,23175,2,NULL,1,2,1,0,'2018-01-12 04:05:46'),(18,23175,2,NULL,1,1,2,0,'2018-01-12 04:05:46'),(19,21186,2,1,1,1,1,0,'2018-01-14 23:01:11');
 /*!40000 ALTER TABLE `pedidos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -284,7 +283,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'fuljencio','Prueba Formulario','Apellidos Prueba','fuljencio@gmail.com','12345',NULL,NULL),(2,'edward','Edward Guevara','Guevara','edwardgvr@gmail.com','asdfg','images/user/profile/dewey.jpg',NULL),(3,'prueba4','Usuario de prueba','Prueba','prueba@mail.com','asdfg',NULL,'555555'),(4,'usuario','usuario nombre','prueba apellido','nombre@apellidos.com','usuario',NULL,NULL),(5,'test5','registro','prueba','registro@prueba.com','asdfg',NULL,'55555555'),(6,'test6','usuario','numero6','test6@mail.com','asdfg',NULL,NULL);
+INSERT INTO `usuarios` VALUES (1,'fuljencio','Prueba Formulario','Apellidos Prueba','fuljencio@gmail.com','12345',NULL,NULL),(2,'edward','Edward Ernesto','Guevara','edwardgvr@gmail.com','asdfg','images/user/profile/user_img_2.jpg',NULL),(3,'prueba4','Usuario de prueba','Prueba','prueba@mail.com','asdfg',NULL,'555555'),(4,'usuario','usuario nombre','prueba apellido','nombre@apellidos.com','usuario',NULL,NULL),(5,'test5','registro','prueba','registro@prueba.com','asdfg',NULL,'55555555'),(6,'test6','usuario','numero6','test6@mail.com','asdfg','images/user/profile/user_img_6.jpg',NULL);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -321,4 +320,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-13 22:34:24
+-- Dump completed on 2018-01-18 15:54:23

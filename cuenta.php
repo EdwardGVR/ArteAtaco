@@ -94,12 +94,14 @@ if ($conexion != false) {
 	$dirs = $query->fetchall();
 	// Obtener cantidad de direcciones del usuario
 	$cant_direcciones = count($dirs);
+	// print_r($cant_direcciones);
 
 	if ($cant_direcciones < 3) {
 		$permitir_direccion = true;
 	} else {
 		$permitir_direccion = false;
 	}
+	// var_dump($permitir_direccion);
 
 	// Guardar los cambios de usuario
 	if (isset($_POST['guardar'])) {
@@ -208,28 +210,56 @@ if ($conexion != false) {
 			$direccion = $query->fetch();
 
 			if ($direccion['nombre'] != $nombre_dir_update) {
+				// Guardar en direcciones
 				$query = $conexion->prepare("UPDATE direcciones SET nombre = :nombre_dir_update WHERE id = :id");
+				$query->execute(array(
+					':nombre_dir_update' => $nombre_dir_update,
+					':id' => $_POST['id_address']
+				));
+				// Guardar en direcciones_persistence
+				$query = $conexion->prepare("UPDATE direcciones_persistence SET nombre = :nombre_dir_update WHERE id = :id");
 				$query->execute(array(
 					':nombre_dir_update' => $nombre_dir_update,
 					':id' => $_POST['id_address']
 				));
 			}
 			if ($direccion['linea1'] != $linea1_update) {
+				// Guardar en direcciones
 				$query = $conexion->prepare("UPDATE direcciones SET linea1 = :linea1_update WHERE id = :id");
+				$query->execute(array(
+					':linea1_update' => $linea1_update,
+					':id' => $_POST['id_address']
+				));	
+				// Guardar en direcciones_persistence
+				$query = $conexion->prepare("UPDATE direcciones_persistence SET linea1 = :linea1_update WHERE id = :id");
 				$query->execute(array(
 					':linea1_update' => $linea1_update,
 					':id' => $_POST['id_address']
 				));	
 			}
 			if ($direccion['linea2'] != $linea2_update) {
+				// Guardar en direcciones
 				$query = $conexion->prepare("UPDATE direcciones SET linea2 = :linea2_update WHERE id = :id");
+				$query->execute(array(
+					':linea2_update' => $linea2_update,
+					':id' => $_POST['id_address']
+				));
+				// Guardar en direcciones_persistence
+				$query = $conexion->prepare("UPDATE direcciones_persistence SET linea2 = :linea2_update WHERE id = :id");
 				$query->execute(array(
 					':linea2_update' => $linea2_update,
 					':id' => $_POST['id_address']
 				));
 			}
 			if ($direccion['referencias'] != $referencias_update) {
+				// Guardar en direcciones
 				$query = $conexion->prepare("UPDATE direcciones SET referencias = :referencias_update WHERE id = :id");
+				$query->execute(array(
+					':referencias_update' => $referencias_update,
+					':id' => $_POST['id_address']
+				));
+				// Guardar en direcciones_persistence
+				$query = $conexion->prepare("UPDATE direcciones_persistence SET referencias = :referencias_update WHERE id = :id");
 				$query->execute(array(
 					':referencias_update' => $referencias_update,
 					':id' => $_POST['id_address']
@@ -250,6 +280,9 @@ if ($conexion != false) {
 			':id_user' => $iduser
 		));
 
+		$query = $conexion->prepare("UPDATE direcciones_persistence SET activa = 0 WHERE id = :id");
+		$query->execute(array(':id' => $_POST['id_address']));
+
 		header("Location: cuenta.php");
 	}
 
@@ -264,7 +297,7 @@ if ($conexion != false) {
 		if (!empty($_POST['nombre_new_dir'])) {
 			$address_name = $_POST['nombre_new_dir'];
 		} else {
-			$errores_new_direccion .= "Por favor ingrese un nombre descriptivo <br />";
+			$errores_new_direccion .= "El nombre no puede estar vac&iacute;o <br />";
 		}
 
 		$pais = "El Salvador";
@@ -274,7 +307,7 @@ if ($conexion != false) {
 		if (!empty($_POST['linea1_new_dir'])) {
 			$address_line_1 = $_POST['linea1_new_dir'];
 		} else {
-			$errores_new_direccion .= "Por favor ingrese la linea 1 de la direccion <br />";
+			$errores_new_direccion .= "La linea 1 no puede estar vac&iacute;a <br />";
 		}
 
 		if (!empty($_POST['linea2_new_dir'])) {
@@ -290,7 +323,7 @@ if ($conexion != false) {
 		}
 
 		// Comprobar que no hay errores
-		if (empty($errores_new_direccion)) {
+		if (empty($errores_new_direccion && $permitir_direccion)) {
 			// Guardar en la tabla direcciones
 			$query = $conexion->prepare("INSERT INTO direcciones VALUES(null, :id_user, :id_departamento, :nombre, :pais, :linea1, :linea2, :referencias)");
 			$query->execute(array(
@@ -306,7 +339,7 @@ if ($conexion != false) {
 			// Guardar en la tabla direcciones_persistence
 			$query = $conexion->prepare("
 				INSERT INTO direcciones_persistence
-				VALUES(null, :id_user, :id_departamento, :nombre, :pais, :linea1, :linea2, :referencias)
+				VALUES(null, :id_user, :id_departamento, :nombre, :pais, :linea1, :linea2, :referencias, 1)
 			");
 			$query->execute(array(
 				':id_user'=>$iduser,
@@ -319,6 +352,7 @@ if ($conexion != false) {
 			));
 
 			$added = "Se agreg&oacute; la direcci&oacute;n!";
+			header("Location: cuenta.php");
 		}
 	}
 

@@ -2030,10 +2030,21 @@ background: linear-gradient(to top, #fff, #16396E); /* W3C, IE 10+/ Edge, Firefo
 	margin-bottom: 10px;
 }
 
+.add_address .errores_direccion {
+	background: #F3C3C3;
+	color: #DC5F5F;
+	border-radius: 10px;
+	padding: 10px;
+	width: 100%;
+	/*margin-left: 25%;*/
+	margin-bottom: 10px;	
+}
+
 .contenedor_address .add_address {
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
+	flex-wrap: wrap;
 	width: 100%;
 }
 

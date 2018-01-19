@@ -253,6 +253,75 @@ if ($conexion != false) {
 		header("Location: cuenta.php");
 	}
 
+	// Agregar una direccion
+	$query = $conexion->prepare("SELECT * FROM departamentos");
+	$query->execute();
+	$departamentos = $query->fetchall();
+
+	if (isset($_POST['guardar_direccion'])) {
+		$errores_new_direccion = "";
+		
+		if (!empty($_POST['nombre_new_dir'])) {
+			$address_name = $_POST['nombre_new_dir'];
+		} else {
+			$errores_new_direccion .= "Por favor ingrese un nombre descriptivo <br />";
+		}
+
+		$pais = "El Salvador";
+
+		$departamento = $_POST['departamento_new_dir'];
+
+		if (!empty($_POST['linea1_new_dir'])) {
+			$address_line_1 = $_POST['linea1_new_dir'];
+		} else {
+			$errores_new_direccion .= "Por favor ingrese la linea 1 de la direccion <br />";
+		}
+
+		if (!empty($_POST['linea2_new_dir'])) {
+			$address_line_2 = $_POST['linea2_new_dir'];
+		} else {
+			$address_line_2 = NULL;
+		}
+
+		if (!empty($_POST['ref_new_dir'])) {
+			$referencias = $_POST['ref_new_dir'];
+		} else {
+			$referencias = NULL;
+		}
+
+		// Comprobar que no hay errores
+		if (empty($errores_new_direccion)) {
+			// Guardar en la tabla direcciones
+			$query = $conexion->prepare("INSERT INTO direcciones VALUES(null, :id_user, :id_departamento, :nombre, :pais, :linea1, :linea2, :referencias)");
+			$query->execute(array(
+				':id_user'=>$iduser,
+				':id_departamento'=>$departamento,
+				':nombre'=>$address_name,
+				':pais'=>$pais,
+				':linea1'=>$address_line_1,
+				':linea2'=>$address_line_2,
+				':referencias'=>$referencias
+			));
+
+			// Guardar en la tabla direcciones_persistence
+			$query = $conexion->prepare("
+				INSERT INTO direcciones_persistence
+				VALUES(null, :id_user, :id_departamento, :nombre, :pais, :linea1, :linea2, :referencias)
+			");
+			$query->execute(array(
+				':id_user'=>$iduser,
+				':id_departamento'=>$departamento,
+				':nombre'=>$address_name,
+				':pais'=>$pais,
+				':linea1'=>$address_line_1,
+				':linea2'=>$address_line_2,
+				':referencias'=>$referencias
+			));
+
+			$added = "Se agreg&oacute; la direcci&oacute;n!";
+		}
+	}
+
 	$query = $conexion->prepare("SELECT * FROM direcciones WHERE id_user = :iduser");
 	$query->execute(array(':iduser' => $iduser));
 	$direcciones = $query->fetchall();

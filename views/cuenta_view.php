@@ -127,12 +127,18 @@
 							</div>
 							<span>Nombre:</span>
 							<input id="nombre_new_dir" type="text" name="nombre_new_dir">
+							<span>Departamento:</span>
+							<select name="departamento_new_dir" id="dpto" class="new_address_dpto">
+								<?php foreach ($departamentos as $departamento): ?>
+									<option value="<?php echo $departamento['id'] ?>"><?php echo $departamento['nombre'] ?></option>
+								<?php endforeach ?>
+							</select>
 							<span>Linea 1:</span>
 							<input id="linea1_new_dir" type="text" name="linea1_new_dir">
 							<span>Linea 2:</span>
-							<input id="linea2_new_dir" type="text" name="linea2_new_dir">
+							<input id="linea2_new_dir" class="linea2_new_dir" type="text" name="linea2_new_dir">
 							<span>Referencias:</span>
-							<input id="ref_new_dir" type="text" name="ref_new_dir">
+							<textarea id="ref_new_dir" class="ref_new_dir" type="text" name="ref_new_dir"></textarea>
 							<?php if (isset($errores_new_direccion) && !empty($errores_new_direccion)): ?>
 								<div class="errores_direccion">
 									<?php echo $errores_new_direccion ?>

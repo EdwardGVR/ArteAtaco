@@ -1870,12 +1870,43 @@ background: linear-gradient(to top, #fff, #16396E); /* W3C, IE 10+/ Edge, Firefo
 	margin-bottom: 10px;
 }
 
+.detalles_usuario form.address .new_address_dpto {
+	width: 75%;
+	height: 40px;
+	border-radius: 5px;
+	border: none;
+}
+
+.detalles_usuario form.address .linea2_new_dir {
+	margin-top: 0;
+}
+
+.detalles_usuario form.address .ref_new_dir {
+	width: 75%;
+	min-width: 75%;
+	max-width: 75%;
+	max-height: 100px;
+	min-height: 40px;
+	border-radius: 5px;
+	border: none;
+	padding: 10px;
+}
+
+.detalles_usuario form.address select[name="departamento_new_dir"]:focus,
+.detalles_usuario form.address textarea[id="ref_new_dir"]:focus {
+	border: 3px solid #6EE2E6;
+}
+
 .detalles_usuario form.address .opciones_new_address {
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
 	width: 100%;
 	margin-top: 10px;
+}
+
+.opciones_new_address .cancelar_submit {
+	padding: 10px;
 }
 
 .detalles_usuario form.address .guardar_direccion {
@@ -1894,7 +1925,7 @@ background: linear-gradient(to top, #fff, #16396E); /* W3C, IE 10+/ Edge, Firefo
 }
 
 .detalles_usuario form.address .cancelar_submit {
-	padding: 10px;
+	/*padding: 10px;*/
 	background: #fff;
 	border-radius: 20px;
 	width: 100px;
@@ -1925,7 +1956,7 @@ background: linear-gradient(to top, #fff, #16396E); /* W3C, IE 10+/ Edge, Firefo
 
 .detalles_usuario form.address .editar {
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-end;
 	width: 100%;
 	/*height: 30px;*/
 	margin-top: 10px;
@@ -1959,6 +1990,7 @@ background: linear-gradient(to top, #fff, #16396E); /* W3C, IE 10+/ Edge, Firefo
 	background: #fff;
 	border-radius: 20px;
 	cursor: pointer;
+	margin-left: 10px;
 	transition: all ease 0.3s;
 }
 

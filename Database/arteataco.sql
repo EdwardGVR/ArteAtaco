@@ -31,7 +31,7 @@ CREATE TABLE `carrito` (
   KEY `carrito_usuario_idx` (`id_user`),
   KEY `carrito_user_idx` (`id_user`),
   CONSTRAINT `carrito_user` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -131,6 +131,36 @@ INSERT INTO `direcciones` VALUES (1,2,7,'Casa de San Marcos','El Salvador','FLor
 UNLOCK TABLES;
 
 --
+-- Table structure for table `direcciones_persistence`
+--
+
+DROP TABLE IF EXISTS `direcciones_persistence`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `direcciones_persistence` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_user` int(11) NOT NULL,
+  `id_departamento` int(11) NOT NULL,
+  `nombre` varchar(150) NOT NULL,
+  `pais` varchar(50) NOT NULL,
+  `linea1` varchar(150) NOT NULL,
+  `linea2` varchar(150) DEFAULT NULL,
+  `referencias` varchar(250) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `direcciones_persistence`
+--
+
+LOCK TABLES `direcciones_persistence` WRITE;
+/*!40000 ALTER TABLE `direcciones_persistence` DISABLE KEYS */;
+INSERT INTO `direcciones_persistence` VALUES (1,2,7,'Casa de San Marcos','El Salvador','FLorencia San Marcos','Casa #16','Colonia frente a UNO'),(2,1,1,'Casa Fuljencio','El Salvador','Casa del fuhrer',NULL,NULL),(3,2,1,'Casa en Ataco','El Salvador','Concepcion de ataco','Barrio La Vega','Dos cuadras atras de iglesia');
+/*!40000 ALTER TABLE `direcciones_persistence` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `metodos_pago`
 --
 
@@ -166,7 +196,7 @@ CREATE TABLE `pedidos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `codigo` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `id_direccion` int(11) DEFAULT NULL,
+  `id_direccion` int(11) NOT NULL,
   `id_pago` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
@@ -177,11 +207,11 @@ CREATE TABLE `pedidos` (
   KEY `pedidos_direccion_idx` (`id_direccion`),
   KEY `pedidos_producto_idx` (`id_producto`),
   KEY `pedidos_pago_idx` (`id_pago`),
-  CONSTRAINT `pedidos_direccion` FOREIGN KEY (`id_direccion`) REFERENCES `direcciones` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION,
+  CONSTRAINT `pedidos_direccionesPersist` FOREIGN KEY (`id_direccion`) REFERENCES `direcciones_persistence` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `pedidos_pago` FOREIGN KEY (`id_pago`) REFERENCES `metodos_pago` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `pedidos_producto` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `pedidos_user` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -190,7 +220,7 @@ CREATE TABLE `pedidos` (
 
 LOCK TABLES `pedidos` WRITE;
 /*!40000 ALTER TABLE `pedidos` DISABLE KEYS */;
-INSERT INTO `pedidos` VALUES (12,23161,2,NULL,1,1,1,0,'2018-01-04 20:40:38'),(13,23122,2,NULL,1,2,1,0,'2018-01-04 20:41:09'),(14,14133,1,4,1,1,3,0,'2018-01-04 22:08:48'),(15,14133,1,4,1,2,2,0,'2018-01-04 22:08:48'),(16,14124,1,4,1,1,2,0,'2018-01-12 04:04:31'),(17,23175,2,NULL,1,2,1,0,'2018-01-12 04:05:46'),(18,23175,2,NULL,1,1,2,0,'2018-01-12 04:05:46'),(19,21186,2,1,1,1,1,0,'2018-01-14 23:01:11');
+INSERT INTO `pedidos` VALUES (1,21187,2,1,1,2,1,0,'2018-01-19 00:50:28');
 /*!40000 ALTER TABLE `pedidos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -320,4 +350,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-18 15:54:23
+-- Dump completed on 2018-01-18 18:56:42

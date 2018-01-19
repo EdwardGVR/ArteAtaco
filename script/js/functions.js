@@ -196,3 +196,11 @@ function addressChange(b) {
 			break;
 	}
 }
+
+function newAddress() {
+	var btnNewAddress = document.getElementById("add_address");
+	btnNewAddress.setAttribute("class", "add_address_hidden");
+
+	var formNewAddress = document.getElementById("new_address");
+	formNewAddress.setAttribute("class", "address");
+}

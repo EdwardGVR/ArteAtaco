@@ -76,8 +76,8 @@
 				<span class="titulo">Direcciones</span>
 				<?php if ($direcciones != false): ?>
 					<?php foreach ($direcciones as $direccion): ?>
-						<?php echo $direccion['id'] ?>
-						<?php echo $direccion['id_user'] ?>
+						<?php //echo $direccion['id'] ?>
+						<?php //echo $direccion['id_user'] ?>
 
 						<?php $direccion_numero++ ?>
 
@@ -121,8 +121,30 @@
 					<?php endforeach ?>
 
 					<?php if ($permitir_direccion): ?>
-						<div class="add_address">
-							<span>Agregar nueva</span>
+						<form id="new_address" class="address_hidden" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+							<div class="new_address_title">
+								Agregar una nueva direccion (quedan <?php echo 3 - $cant_direcciones ?>)
+							</div>
+							<span>Nombre:</span>
+							<input id="nombre_new_dir" type="text" name="nombre_new_dir">
+							<span>Linea 1:</span>
+							<input id="linea1_new_dir" type="text" name="linea1_new_dir">
+							<span>Linea 2:</span>
+							<input id="linea2_new_dir" type="text" name="linea2_new_dir">
+							<span>Referencias:</span>
+							<input id="ref_new_dir" type="text" name="ref_new_dir">
+							<?php if (isset($errores_new_direccion) && !empty($errores_new_direccion)): ?>
+								<div class="errores_direccion">
+									<?php echo $errores_new_direccion ?>
+								</div>
+							<?php endif ?>
+							<div class="opciones_new_address">
+								<input class="guardar_direccion" type="submit" name="guardar_direccion" value="Guardar">
+								<div onclick="cancelEditInfoUser()" class="cancelar_submit">Cancelar</div>
+							</div>
+						</form>
+						<div id="add_address" class="add_address">
+							<span onclick="newAddress()">Agregar nueva</span>
 						</div>
 					<?php endif ?>
 

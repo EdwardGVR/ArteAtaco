@@ -1477,6 +1477,12 @@ input[name="add_address"]:hover {
 	font-style: italic;
 }
 
+.pedido_header .detalle span.eliminada {
+	border-radius: 5px;
+	background: #E99F9F;
+	padding: 0 5px;
+}
+
 .pedido .pedido_body {
 	display: flex;
 	justify-content: space-between;

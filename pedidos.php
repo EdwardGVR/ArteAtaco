@@ -23,7 +23,7 @@ if ($conexion != false) {
 		FROM pedidos, direcciones_persistence
 		WHERE pedidos.id_user = :id_user AND pedidos.id_direccion = direcciones_persistence.id
 		GROUP BY codigo 
-		ORDER BY fecha ASC");
+		ORDER BY fecha DESC");
 	$query->execute(array(':id_user'=>$iduser));
 	$pedidos = $query->fetchall();
 

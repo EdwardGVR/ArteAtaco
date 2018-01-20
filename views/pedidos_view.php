@@ -38,7 +38,7 @@
 						<span>
 							Env&iacute;o a: <?php echo $pedido['dir_name'] ?>
 							<?php if ($pedido['activa'] == 0): ?>
-								&nbsp;(Esta direccion fue eliminada)
+								&nbsp;<span class="eliminada">(Esta direccion fue eliminada)</span>
 							<?php endif ?>
 						</span>	
 						<span>Fecha: <?php echo $pedido['fecha'] ?></span>					

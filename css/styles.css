@@ -2072,6 +2072,12 @@ background: linear-gradient(to top, #fff, #16396E); /* W3C, IE 10+/ Edge, Firefo
 	display: none;
 }
 
+#disqus_thread {
+	width: 80%;
+	padding-top: 50px;
+	margin: auto;
+}
+
 footer {
 	display: flex;
 	justify-content: center;

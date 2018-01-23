@@ -2086,6 +2086,7 @@ background: linear-gradient(to top, #fff, #16396E); /* W3C, IE 10+/ Edge, Firefo
 	width: 80%;
 	margin: auto;
 	box-shadow: 0 0 10px #000;
+	min-width: 600px;
 }
 
 .contenedor_contacto h3 {
@@ -2093,13 +2094,85 @@ background: linear-gradient(to top, #fff, #16396E); /* W3C, IE 10+/ Edge, Firefo
 	width: 100%;
 	background: #1B428A;
 	color: #fff;
+	margin-bottom: 40px;
 }
 
 .contenedor_contacto .contacto_form {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-wrap: wrap;
 	width: 100%;
+	padding: 20px;
+}
+
+.contacto_form .contacto_campo {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	flex-wrap: nowrap;
+	width: 100%;
+	padding: 30px;
+	border-radius: 10px;
+	margin-bottom: 30px;
+	background: #D6E5F2;
+}
+
+.contacto_form .contacto_campo:last-child {
+	background: none;
+}
+
+.contacto_campo span {
+	width: 400px;
+	/*background: #ccc;*/
+	text-align: left;
+	/*margin-bottom: 10px;*/
+}
+
+.contacto_campo span .contacto_tip,
+.contacto_campo span .contacto_tip a {
+	font-style: italic;
+	font-size: 0.9em;
+	color: #56A7DB;
+}
+
+.contacto_campo span .contacto_tip a {
+ 	font-size: 1.1em;
+ 	color: #4857C8;
+ 	text-decoration: underline;
+}
+
+.contacto_campo select,
+.contacto_campo textarea,
+.contacto_campo input {
+	flex-grow: 1;
+	border-radius: 10px;
+	border: none;
+	min-height: 30px;
+	max-height: 150px;
+	padding: 10px;
+}
+
+.contacto_campo input {
+	margin: 0;
+}
+
+.contacto_campo select:focus,
+.contacto_campo textarea:focus {
+	border: 2px solid #4BEAEC;
+}
+
+.contacto_campo input[type="submit"] {
+	background: #437FD1;
+	color: #fff;
+	font-size: 1.2em;
+	line-height: 0;
+	cursor: pointer;
+	transition: all ease 0.3s;
+}
+
+.contacto_campo input[type="submit"]:hover {
+	background: #0D4A9C;
 }
 
 footer {

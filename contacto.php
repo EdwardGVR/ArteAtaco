@@ -21,6 +21,9 @@ if ($conexion != false) {
 	$categorias = $query->fetchall();
 
 	//print_r($categorias);
+
+	$user_nombre = get_user_data($conexion, $iduser)['nombres'];
+	$user_mail = get_user_data($conexion, $iduser)['email'];
 }
 
 require 'views/contacto_view.php';

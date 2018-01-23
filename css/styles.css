@@ -2078,6 +2078,30 @@ background: linear-gradient(to top, #fff, #16396E); /* W3C, IE 10+/ Edge, Firefo
 	margin: auto;
 }
 
+.contenedor_contacto {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	width: 80%;
+	margin: auto;
+	box-shadow: 0 0 10px #000;
+}
+
+.contenedor_contacto h3 {
+	padding: 20px;
+	width: 100%;
+	background: #1B428A;
+	color: #fff;
+}
+
+.contenedor_contacto .contacto_form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
 footer {
 	display: flex;
 	justify-content: center;

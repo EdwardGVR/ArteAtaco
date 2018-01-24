@@ -2,7 +2,7 @@
 --
 -- Host: 127.0.0.1    Database: login_propio
 -- ------------------------------------------------------
--- Server version	5.5.5-10.1.28-MariaDB
+-- Server version	5.5.5-10.1.24-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -32,9 +32,13 @@ CREATE TABLE `carrito` (
   KEY `carrito_user_idx` (`id_user`),
   CONSTRAINT `carrito_user` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 <<<<<<< HEAD
+<<<<<<< HEAD
 ) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=latin1;
 =======
 ) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=latin1;
+>>>>>>> master
+=======
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 >>>>>>> master
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -45,9 +49,12 @@ CREATE TABLE `carrito` (
 LOCK TABLES `carrito` WRITE;
 /*!40000 ALTER TABLE `carrito` DISABLE KEYS */;
 <<<<<<< HEAD
+<<<<<<< HEAD
 INSERT INTO `carrito` VALUES (58,1,1,1);
 =======
 INSERT INTO `carrito` VALUES (63,2,1,1);
+>>>>>>> master
+=======
 >>>>>>> master
 /*!40000 ALTER TABLE `carrito` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -126,7 +133,7 @@ CREATE TABLE `direcciones` (
   KEY `direcciones_departemento_idx` (`id_departamento`),
   CONSTRAINT `direcciones_departemento` FOREIGN KEY (`id_departamento`) REFERENCES `departamentos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `direcciones_usuario` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -135,8 +142,39 @@ CREATE TABLE `direcciones` (
 
 LOCK TABLES `direcciones` WRITE;
 /*!40000 ALTER TABLE `direcciones` DISABLE KEYS */;
-INSERT INTO `direcciones` VALUES (1,2,7,'Casa San Marcos','El Salvador','FLorencia San Marcos','Casa #16','Colonia frente a UNO'),(3,2,1,'Casa Ataco','El Salvador','Barrio La Vega','No hay datos',NULL),(4,1,1,'Casa Fuljencio','El Salvador','Casa del fuhrer',NULL,NULL),(8,2,1,'Direccion 5','El Salvador','dir 5 asdasdas',NULL,'No hay datos');
+INSERT INTO `direcciones` VALUES (29,2,1,'Direccion test 5','El Salvador','Direccion de prueba',NULL,NULL);
 /*!40000 ALTER TABLE `direcciones` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `direcciones_persistence`
+--
+
+DROP TABLE IF EXISTS `direcciones_persistence`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `direcciones_persistence` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_user` int(11) NOT NULL,
+  `id_departamento` int(11) NOT NULL,
+  `nombre` varchar(150) NOT NULL,
+  `pais` varchar(50) NOT NULL,
+  `linea1` varchar(150) NOT NULL,
+  `linea2` varchar(150) DEFAULT NULL,
+  `referencias` varchar(250) DEFAULT NULL,
+  `activa` tinyint(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `direcciones_persistence`
+--
+
+LOCK TABLES `direcciones_persistence` WRITE;
+/*!40000 ALTER TABLE `direcciones_persistence` DISABLE KEYS */;
+INSERT INTO `direcciones_persistence` VALUES (1,2,1,'Direccion 1','El Salvador','Direccion de prueba',NULL,NULL,0),(2,2,1,'Direccion 2','El Salvador','Direccion de prueba','Probar la edicion en ambas tablas','No hay datos',0),(3,2,1,'Direccion 3','El Salvador','Direccion de prueba',NULL,NULL,0),(4,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,0),(5,2,1,'Direccion 5','El Salvador','Direccion de prueba',NULL,NULL,0),(6,2,1,'Direccion 5','El Salvador','Direccion de prueba',NULL,NULL,0),(7,2,1,'Direccion 5','El Salvador','Direccion de prueba',NULL,NULL,0),(8,2,1,'Direccion 5','El Salvador','Direccion de prueba',NULL,NULL,0),(9,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,0),(10,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,0),(11,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,0),(12,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,0),(13,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,0),(14,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,0),(15,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,0),(16,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,0),(17,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,0),(18,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,0),(19,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,0),(20,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,0),(21,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,0),(22,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,0),(23,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,0),(24,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,0),(25,2,1,'Direccion 5 editada','El Salvador','Direccion de prueba','No hay datos','No hay datos',0),(26,2,1,'Direccion test 1','El Salvador','Direccion de prueba',NULL,NULL,0),(27,2,1,'Direccion test 2','El Salvador','Direccion de prueba\\',NULL,NULL,0),(28,2,1,'Direccion test 3','El Salvador','Direccion de prueba',NULL,NULL,0),(29,2,1,'Direccion test 5','El Salvador','Direccion de prueba',NULL,NULL,1);
+/*!40000 ALTER TABLE `direcciones_persistence` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -183,14 +221,14 @@ CREATE TABLE `pedidos` (
   `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `pedidos_user_idx` (`id_user`),
-  KEY `pedidos_direccion_idx` (`id_direccion`),
   KEY `pedidos_producto_idx` (`id_producto`),
   KEY `pedidos_pago_idx` (`id_pago`),
-  CONSTRAINT `pedidos_direccion` FOREIGN KEY (`id_direccion`) REFERENCES `direcciones` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  KEY `pedidos_direccionPersist_idx` (`id_direccion`),
+  CONSTRAINT `pedidos_direccion` FOREIGN KEY (`id_direccion`) REFERENCES `direcciones_persistence` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `pedidos_pago` FOREIGN KEY (`id_pago`) REFERENCES `metodos_pago` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `pedidos_producto` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `pedidos_user` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -199,7 +237,7 @@ CREATE TABLE `pedidos` (
 
 LOCK TABLES `pedidos` WRITE;
 /*!40000 ALTER TABLE `pedidos` DISABLE KEYS */;
-INSERT INTO `pedidos` VALUES (12,23161,2,3,1,1,1,0,'2018-01-04 20:40:38'),(13,23122,2,3,1,2,1,0,'2018-01-04 20:41:09'),(14,14133,1,4,1,1,3,0,'2018-01-04 22:08:48'),(15,14133,1,4,1,2,2,0,'2018-01-04 22:08:48'),(16,14124,1,4,1,1,2,0,'2018-01-12 04:04:31'),(17,23175,2,3,1,2,1,0,'2018-01-12 04:05:46'),(18,23175,2,3,1,1,2,0,'2018-01-12 04:05:46');
+INSERT INTO `pedidos` VALUES (1,21199,2,1,1,1,1,0,'2018-01-19 20:34:33'),(2,221810,2,2,1,2,1,0,'2018-01-19 20:34:53'),(3,2251111,2,25,1,3,1,0,'2018-01-19 21:20:08'),(4,2261012,2,26,1,1,1,0,'2018-01-19 21:27:41'),(5,2271013,2,27,1,2,1,0,'2018-01-19 21:50:36'),(6,2291114,2,29,1,1,1,0,'2018-01-19 21:51:38');
 /*!40000 ALTER TABLE `pedidos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -248,12 +286,12 @@ CREATE TABLE `temporal` (
   `id_pago` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `tmp_usuario_idx` (`id_user`),
-  KEY `tmp_direccion_idx` (`id_direccion`),
   KEY `tmp_pago_idx` (`id_pago`),
+  KEY `tmp_direccion_idx` (`id_direccion`),
   CONSTRAINT `tmp_direccion` FOREIGN KEY (`id_direccion`) REFERENCES `direcciones` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `tmp_pago` FOREIGN KEY (`id_pago`) REFERENCES `metodos_pago` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `tmp_usuario` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -262,7 +300,6 @@ CREATE TABLE `temporal` (
 
 LOCK TABLES `temporal` WRITE;
 /*!40000 ALTER TABLE `temporal` DISABLE KEYS */;
-INSERT INTO `temporal` VALUES (1,2,1,1),(2,1,4,1);
 /*!40000 ALTER TABLE `temporal` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -292,7 +329,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'fuljencio','Prueba Formulario','Apellidos Prueba','fuljencio@gmail.com','12345',NULL,NULL),(2,'edward','Edward Guevara','Guevara','edwardgvr@gmail.com','asdfg','images/user/profile/dewey.jpg',NULL),(3,'prueba4','Usuario de prueba','Prueba','prueba@mail.com','asdfg',NULL,'555555'),(4,'usuario','usuario nombre','prueba apellido','nombre@apellidos.com','usuario',NULL,NULL),(5,'test5','registro','prueba','registro@prueba.com','asdfg',NULL,'55555555'),(6,'test6','usuario','numero6','test6@mail.com','asdfg',NULL,NULL);
+INSERT INTO `usuarios` VALUES (1,'fuljencio','Prueba Formulario','Apellidos Prueba','fuljencio@gmail.com','12345',NULL,NULL),(2,'edward','Edward Ernesto','Guevara','edwardgvr@gmail.com','asdfg','images/user/profile/user_img_2.jpg',NULL),(3,'prueba4','Usuario de prueba','Prueba','prueba@mail.com','asdfg',NULL,'555555'),(4,'usuario','usuario nombre','prueba apellido','nombre@apellidos.com','usuario',NULL,NULL),(5,'test5','registro','prueba','registro@prueba.com','asdfg',NULL,'55555555'),(6,'test6','usuario','numero6','test6@mail.com','asdfg','images/user/profile/user_img_6.jpg',NULL);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -330,7 +367,11 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 -- Dump completed on 2018-01-09 23:03:37
 =======
 -- Dump completed on 2018-01-13 22:34:24
+>>>>>>> master
+=======
+-- Dump completed on 2018-01-19 15:54:00
 >>>>>>> master

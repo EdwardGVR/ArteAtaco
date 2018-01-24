@@ -67,6 +67,9 @@ if ($conexion != false) {
 			$query->execute(array(':id_user'=>$iduser));
 		}
 
+		$query = $conexion->prepare("DELETE FROM temporal WHERE id_user = :iduser");
+		$query->execute(array(':iduser' => $iduser));
+
 		setcookie("order_placed_ckp", true);
 
 		header('Location: order_placed.php');

@@ -31,7 +31,7 @@
 				<span>Sobre qu&eacute; producto quieres consultar?</span>
 				<select name="producto" id="contacto_producto" required="">
 					<?php foreach ($categorias as $categoria): ?>
-						<option value="<?php echo $categoria['id'] ?>"><?php echo $categoria['nombre_cat'] ?></option>
+						<option value="<?php echo $categoria['nombre_cat'] ?>"><?php echo $categoria['nombre_cat'] ?></option>
 					<?php endforeach ?>
 					<option value="general">Ninguno, es una pregunta general</option>
 					<option value="null" disabled="" selected="">- - Selecciona una opci&oacute;n - -</option>
@@ -46,7 +46,6 @@
 			</div>
 		</form>
 	</div>
-
 	<?php require 'footer.php' ?>
 </body>
 </html>

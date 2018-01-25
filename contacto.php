@@ -31,8 +31,8 @@ if ($conexion != false) {
 		$usuario_nombre = $_POST['contacto_nombre'];
 		$usuario_correo = $_POST['contacto_correo'];
 
-		$to = "edwardgvr414@gmail.com";
-		$subject = "Consulta" .$producto ."Arte Ataco";
+		$to = 'edwardgvr414@gmail.com';
+		$subject = 'Consulta' .$producto .'Arte Ataco';
 		$message = $usuario_nombre ."\r" .$usuario_correo;
 		$message .= $mensaje;
 

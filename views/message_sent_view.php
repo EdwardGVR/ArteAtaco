@@ -13,9 +13,9 @@
 	<div class="contenedor_mensaje_enviado">
 		<span>Su mensaje fue enviado con &eacute;xito, pronto nos pondremos en contacto <i class="fa fa-check"></i></span>
 		<div class="botones">
-			<a href="../categorias.php">Ir a categorias</a>
+			<a href="categorias.php">Ir a categorias</a>
 			<?php if ($iduser != false): ?>
-				<a href="../cuenta.php">Ir a cuenta</a>
+				<a href="cuenta.php">Ir a cuenta</a>
 			<?php endif ?>
 		</div>
 	</div>

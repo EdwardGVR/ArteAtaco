@@ -13,8 +13,18 @@ if (!isset($_POST['checkout_checkpoint'])) {
 	header("Location: carrito.php");
 }
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'script/PHPMailer/src/Exception.php';
+require 'script/PHPMailer/src/PHPMailer.php';
+require 'script/PHPMailer/src/SMTP.php';
+
 require 'conexion.php';
 $iduser = get_user_id($conexion, $user);
+$user_data = get_user_data($conexion, $iduser);
+$email_user = $user_data['email'];
+$nombre_user = $user_data['nombres'];
 
 //CODE...
 
@@ -69,6 +79,45 @@ if ($conexion != false) {
 
 		$query = $conexion->prepare("DELETE FROM temporal WHERE id_user = :iduser");
 		$query->execute(array(':iduser' => $iduser));
+
+		//Enviar email de confirmacion de pedido
+		$mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+		
+		try {
+		    //Server settings
+		    $mail->SMTPDebug = 2;                                 // Enable verbose debug output
+		    // $mail->isSMTP();                                      // Set mailer to use SMTP
+		    $mail->Host = 'mail.arteataco.dx.am';  // Specify main and backup SMTP servers
+		    $mail->SMTPAuth = true;                               // Enable SMTP authentication
+		    $mail->Username = 'consultas@arteataco.dx.am';                 // SMTP username
+		    $mail->Password = 'arteataco10';                           // SMTP password
+		    $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+		    $mail->Port = 465;                                    // TCP port to connect to
+
+		    //Recipients
+		    $mail->setFrom('arteataco@gmail.com', 'Arte Ataco');
+		    // $mail->addAddress('joe@example.net', 'Joe User');     // Add a recipient
+		    $mail->addAddress($email_user, $nombre_user);               // Name is optional
+		    $mail->addReplyTo('arteataco@gmail.com', 'Nuevo pedido');
+		    // $mail->addCC('cc@example.com');
+		    // $mail->addBCC('bcc@example.com');
+
+		    //Attachments
+		    // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+		    // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+
+		    //Content
+		    $mail->isHTML(true);                                  // Set email format to HTML
+		    $mail->Subject = 'Su pedido ' . '#' . $codigo . 'ha sido tomado';
+		    $mail->Body    = "Puede visitar la sección <Pedidos> para ver los detalles";
+		    // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+		    $mail->send();
+		    // echo 'Message has been sent';
+		    header("Location: mensaje_sent.php");
+		} catch (Exception $e) {
+		    echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+		}
 
 		setcookie("order_placed_ckp", true);
 

@@ -2,7 +2,7 @@
 
 function conexion($DB, $user, $pass){
 	try {
-		$conexion = new PDO("mysql:host=localhost;dbname=$DB", $user, $pass);
+		$conexion = new PDO("mysql:host=fdb2.awardspace.net;dbname=$DB", $user, $pass);
 		return $conexion;
 	} catch (PDOException $e) {
 		echo "Error en la conexion". $e;

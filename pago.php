@@ -95,10 +95,10 @@ if ($conexion != false) {
 		    $mail->Port = 465;                                    // TCP port to connect to
 
 		    //Recipients
-		    $mail->setFrom('arteataco@gmail.com', 'Arte Ataco');
+		    $mail->setFrom('arte.ataco@gmail.com', 'Arte Ataco');
 		    // $mail->addAddress('joe@example.net', 'Joe User');     // Add a recipient
 		    $mail->addAddress($email_user, $nombre_user);               // Name is optional
-		    $mail->addReplyTo('arteataco@gmail.com', 'Nuevo pedido');
+		    $mail->addReplyTo('arte.ataco@gmail.com', 'Nuevo pedido');
 		    // $mail->addCC('cc@example.com');
 		    // $mail->addBCC('bcc@example.com');
 
@@ -109,7 +109,7 @@ if ($conexion != false) {
 		    //Content
 		    $mail->isHTML(true);                                  // Set email format to HTML
 		    $mail->Subject = 'Su pedido ' . '#' . $codigo . 'ha sido tomado';
-		    $mail->Body    = "Puede visitar la sección <Pedidos> para ver los detalles";
+		    $mail->Body    = "Puede visitar la sección <Pedidos> en <arteataco.onlinewebshop.net> para ver los detalles";
 		    // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
 		    $mail->send();

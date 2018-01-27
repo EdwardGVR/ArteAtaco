@@ -61,7 +61,7 @@ if ($conexion != false) {
 		    //Recipients
 		    $mail->setFrom($usuario_correo, $usuario_nombre);
 		    // $mail->addAddress('joe@example.net', 'Joe User');     // Add a recipient
-		    $mail->addAddress('edwardgvr414@gmail.com', 'Consultas Arte Ataco');               // Name is optional
+		    $mail->addAddress('arte.ataco@gmail.com', 'Consultas Arte Ataco');               // Name is optional
 		    // $mail->addReplyTo('info@example.com', 'Information');
 		    // $mail->addCC('cc@example.com');
 		    // $mail->addBCC('bcc@example.com');

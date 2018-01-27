@@ -1,5 +1,12 @@
 <?php session_start();
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'script/PHPMailer/src/Exception.php';
+require 'script/PHPMailer/src/PHPMailer.php';
+require 'script/PHPMailer/src/SMTP.php';
+
 require 'functions.php';
 
 if (isset($_SESSION['user'])) {
@@ -12,13 +19,6 @@ if (isset($_SESSION['user'])) {
 if (!isset($_POST['checkout_checkpoint'])) {
 	header("Location: carrito.php");
 }
-
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-require 'script/PHPMailer/src/Exception.php';
-require 'script/PHPMailer/src/PHPMailer.php';
-require 'script/PHPMailer/src/SMTP.php';
 
 require 'conexion.php';
 $iduser = get_user_id($conexion, $user);
@@ -98,18 +98,12 @@ if ($conexion != false) {
 		    $mail->setFrom('arte.ataco@gmail.com', 'Arte Ataco');
 		    // $mail->addAddress('joe@example.net', 'Joe User');     // Add a recipient
 		    $mail->addAddress($email_user, $nombre_user);               // Name is optional
-		    $mail->addReplyTo('arte.ataco@gmail.com', 'Nuevo pedido');
-		    // $mail->addCC('cc@example.com');
-		    // $mail->addBCC('bcc@example.com');
-
-		    //Attachments
-		    // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-		    // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+		    $mail->addAddress('arte.ataco@gmail.com', 'Nuevo pedido');
 
 		    //Content
 		    $mail->isHTML(true);                                  // Set email format to HTML
-		    $mail->Subject = 'Su pedido ' . '#' . $codigo . 'ha sido tomado';
-		    $mail->Body    = "Puede visitar la sección <Pedidos> en <arteataco.onlinewebshop.net> para ver los detalles";
+		    $mail->Subject = 'Su pedido: ' . '#' . $codigo . ' ha sido tomado';
+		    $mail->Body    = "Puede visitar la sección Pedidos en la web de Arte Ataco para ver los detalles";
 		    // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
 		    $mail->send();

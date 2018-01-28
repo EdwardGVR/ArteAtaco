@@ -49,8 +49,8 @@ if ($conexion != false) {
 		
 		try {
 		    //Server settings
-		    $mail->SMTPDebug = 2;                                 // Enable verbose debug output
-		    // $mail->isSMTP();                                      // Set mailer to use SMTP
+		    $mail->SMTPDebug = 1;                                 // Enable verbose debug output
+		    $mail->isSMTP();                                      // Set mailer to use SMTP
 		    $mail->Host = 'mail.arteataco.dx.am';  // Specify main and backup SMTP servers
 		    $mail->SMTPAuth = true;                               // Enable SMTP authentication
 		    $mail->Username = 'consultas@arteataco.dx.am';                 // SMTP username

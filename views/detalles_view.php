@@ -11,6 +11,9 @@
 	<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+
+<?php require("messenger_contact.php") ?>
+
 	<header>
 		<?php require 'header.php' ?>
 	</header>
@@ -123,7 +126,8 @@
     			enlaceDefault.href = imgDefault.src;
     		}
 	</script>
-
+	
+	<script src="script/js/functions.js"></script>
 	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 	<script  src="script/js/modal.js"></script>
 	<script id="dsq-count-scr" src="//arteataco.disqus.com/count.js" async></script>

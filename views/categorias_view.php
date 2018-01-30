@@ -7,6 +7,9 @@
 	<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+
+<?php require("messenger_contact.php") ?>
+
 	<header>
 		<?php require 'header.php' ?>
 	</header>
@@ -34,6 +37,7 @@
 	</div>
 
 	<?php include 'footer.php'; ?>
-
+	
+	<script src="script/js/functions.js"></script>
 </body>
 </html>

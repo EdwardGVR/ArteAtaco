@@ -2279,11 +2279,12 @@ footer .social {
 	/*background: none;*/
 
 	position: fixed;
-	top: 95%;
+	top: 96%;
 	right: 10%;
 	width: 300px;
 	height: 540px;
 	transition: all ease 0.3s;
+	z-index: 5;
 }
 
 .fb_chat .boton_chat {
@@ -2312,11 +2313,12 @@ footer .social {
 	cursor: pointer;
 }
 
-.fb_chat .boton_chat div {
+.fb_chat .boton_chat .close_hidden {
 	display: none;
+	visibility: hidden;
 }
 
-.fb_chat .boton_chat div.close_chat {
+.fb_chat .boton_chat .close_chat {
 	flex-grow: 0.2;
 	margin: 5px;
 	font-weight: bold;

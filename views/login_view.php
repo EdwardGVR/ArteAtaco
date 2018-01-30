@@ -6,6 +6,9 @@
 	<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+
+<?php require("messenger_contact.php") ?>
+
 	<div class="contenedor">
 		<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST" class="formulario" name="login">
 			<input type="text" placeholder="Usuario o correo: " name="nombre">
@@ -36,5 +39,7 @@
 			<p>De lo contrario, puedes <a class="login" href="categorias.php">Entrar como invitado</a>.</p>
 		</div>
 	</section>
+
+	<script src="script/js/functions.js"></script>
 </body>
 </html>

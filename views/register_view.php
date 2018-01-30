@@ -6,6 +6,9 @@
 	<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+
+<?php require("messenger_contact.php") ?>
+
 	<div class="contenedor_reg">
 		<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST" class="formulario" name="register">
 			<h4 class="label">Usuario: </h4>
@@ -32,5 +35,7 @@
 		</form>
 		<p class="msg_form">Ya tienes cuenta? <a class="reg" href="login.php">Inicia Sesión</a></p>
 	</div>
+
+	<script src="script/js/functions.js"></script>
 </body>
 </html>

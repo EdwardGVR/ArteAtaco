@@ -13,6 +13,9 @@
 	<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+
+<?php require("messenger_contact.php") ?>
+
 	<header>
 		<?php require 'header.php' ?>
 	</header>
@@ -58,7 +61,8 @@
 	</div>
 
 	<?php include 'footer.php'; ?>
-
+	
+	<script src="script/js/functions.js"></script>
 	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 	<script  src="script/js/modal.js"></script>
 

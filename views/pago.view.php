@@ -10,6 +10,7 @@
 </head>
 <body>
 
+<?php require("messenger_contact.php") ?>
 <?php require 'header.php' ?>
 	
 <div class="contenedor_pago">
@@ -35,6 +36,8 @@
 </div>
 
 <?php require 'footer.php' ?>
+
+<script src="script/js/functions.js"></script>
 
 </body>
 </html>

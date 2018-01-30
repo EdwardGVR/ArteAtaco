@@ -201,9 +201,11 @@
 		</div>
 	</div>
 </div>
-
 	<div id="chatBox" class="fb_chat">
-		<div onclick="showChat()" id="chatBtn" class="boton_chat">Escr&iacute;benos en Messenger <span onclick="hideChat()" id="close_chat">X</span></div>
+		<div onclick="showChat()" id="chatBtn" class="boton_chat">
+			<span>Escr&iacute;benos en Messenger</span>
+		</div>
+		<div onclick="hideChat()" id="close_chat">X</div>
 		<div class="fb-page" data-href="https://www.facebook.com/ArteAtaco/" data-tabs="messages" data-width="500" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/ArteAtaco/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/ArteAtaco/">Arte Ataco</a></blockquote></div>
 	</div>
 

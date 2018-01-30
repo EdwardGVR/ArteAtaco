@@ -211,12 +211,18 @@ function showChat() {
 
 	var closeChat = document.getElementById("close_chat");
 	closeChat.setAttribute("class", "close_chat");
+
+	var chatBtn = document.getElementById("chatBtn");
+	chatBtn.setAttribute("class", "boton_chat_open");
 }
 
 function hideChat() {
 	var chatBox = document.getElementById("chatBox");
 	chatBox.setAttribute("class", "fb_chat");
 
-	// var closeChat = document.getElementById("close_chat");
-	// closeChat.removeAttribute("class");
+	var closeChat = document.getElementById("close_chat");
+	closeChat.removeAttribute("class");
+
+	var chatBtn = document.getElementById("chatBtn");
+	chatBtn.setAttribute("class", "boton_chat");
 }

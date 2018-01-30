@@ -204,3 +204,21 @@ function newAddress() {
 	var formNewAddress = document.getElementById("new_address");
 	formNewAddress.setAttribute("class", "address");
 }
+
+function showChat() {
+	var chatBox = document.getElementById("chatBox");
+	chatBox.setAttribute("class", "fb_chat chatBox");
+
+	var chatBtn = document.getElementById("chatBtn");
+	chatBtn.setAttribute("class", "boton_chat_open");
+	chatBtn.setAttribute("onclick", "hideChat()");
+}
+
+function hideChat() {
+	var chatBox = document.getElementById("chatBox");
+	chatBox.setAttribute("class", "fb_chat");
+
+	var chatBtn = document.getElementById("chatBtn");
+	chatBtn.setAttribute("onclick", "showChat()");
+	chatBtn.setAttribute("class", "boton_chat")
+}

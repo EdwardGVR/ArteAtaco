@@ -9,8 +9,9 @@
 	<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-	
-	<?php require 'header.php' ?>
+
+<?php require("messenger_contact.php") ?>	
+<?php require 'header.php' ?>
 
 	<a name="dirs" id="dirs"></a>
 	<div class="contenedor_checkout">
@@ -164,5 +165,6 @@
 
 	<?php require 'footer.php' ?>
 
+	<script src="script/js/functions.js"></script>
 </body>
 </html>

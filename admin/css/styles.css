@@ -1,0 +1,388 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    background: #000;
+}
+
+hr {
+    height: 3px;
+    border: none;
+    background: #ccc;
+}
+
+nav {
+    display: flex;
+
+    width: 25%;
+    min-width: 300px; 
+    height: 100vh;
+    background: #fff;
+}
+
+nav .side_bar {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+
+    /* padding-top: 350px; */
+
+    min-width: 50px;
+    max-width: 50px;
+    color: #fff;
+    background: #040b29;
+}
+
+.side_bar .side_user_info {
+    display: inline-block;
+    height: 150px;
+    width: 100%;
+    /* background: #000; */
+}
+
+.side_bar .side_icons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    height: 300px;
+    width: 100%;
+    padding-bottom: 30px;
+    /* background: #fff; */
+}
+
+.side_icons .side_icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 100%;
+    /* background: #000; */
+    border-bottom: 2px solid #ccc;
+    margin-bottom: 10px;
+    font-size: 1.5em;
+}
+
+nav .options {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+
+    width: 100%;
+    background: #113054;
+}
+
+.options .user_info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    height: 150px;
+    /* background: #fff; */
+}
+
+.user_info .image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 100px;
+    height: 100px;
+    background: #ccc;
+    color: #fff;
+    margin: 10px;
+    border-radius: 50%;
+}
+
+.user_info .data {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin: 10px;
+
+    height: 40%;
+    color: #fff;
+    /* background: #000; */
+}
+
+.user_info .data span {
+    width: 100%;
+    text-align: right;
+}
+
+.user_info .data span.nombre {
+    font-size: 1.3em;
+}
+
+.user_info .data hr {
+    width: 100%;
+}
+
+.options .buttons {
+    height: 300px;
+}
+
+.options .buttons a {
+    display: inline-block;
+    width: 100%;
+    text-decoration: none;
+    color: #fff;
+    padding: 19px 30px;
+    /* background: #365C8A; */
+    margin-bottom: 10px;
+    border-bottom: 2px solid #fff;
+}
+
+.options .buttons a:hover {
+    background: #365C8A;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+
+    width: 75%;
+    min-width: 235px;
+    /* height: 100vh; */
+    background: #fff;
+}
+
+main .bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 60px;
+    margin-bottom: 20px;
+    background: #040b29;
+    color: #fff;
+    text-align: center;
+    font-size: 0.8em;
+}
+
+main section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+
+    width: 100%;
+    /* height: calc(100% - 60px); */
+    /* background: #ccc; */
+}
+
+main section .title {
+    width: 100%;
+}
+
+.title h2 {
+    width: 100%;
+    padding-left: 5%;
+    margin: auto;
+}
+
+.title hr {
+    width: 90%;
+    margin: 20px auto;
+    margin-bottom: 20px;
+}
+
+.contenedor_pedidos {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    width: 100%;
+}
+
+.contenedor_pedidos .pedido {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: 200px;
+    height: 300px;
+    margin: 20px auto;
+    background: #a3a2a2;
+}
+
+.contenedor_pedidos .pedido:hover {
+    border: 2px solid #2F80ED;
+}
+
+.pedido div {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    width: 100%;
+    padding: 10px;
+}
+
+.pedido hr {
+    width: 90%;
+    margin: auto;
+}
+
+.pedido .pedido_cliente {
+    height: 20%;
+}
+
+.pedido_cliente span {
+    width: 100%;
+}
+
+.pedido .pedido_cliente .img_cliente {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    display: inline-block;
+    width: 70px;
+    height: 70px;
+    background: #2F80ED;
+    border-radius: 50%;
+}
+
+.pedido_cliente .nombre {
+    font-size: 1.2em;
+}
+
+.pedido_cliente .apellido {
+    font-size: 0.8em;
+}
+
+.pedido .pedido_productos {
+    height: 45%;
+    font-size: 0.8em;
+    overflow-y: auto;
+}
+
+.pedido_productos .producto {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0;
+    border-bottom: 1px dotted #000;
+}
+
+.pedido_productos .producto .cantidad {
+    width: 20%;
+    text-align-last: left;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.pedido_productos .producto .nombre_producto {
+    width: 80%;
+    text-align: right;
+}
+
+.pedido .pedido_direccion {
+    position: relative; 
+    height: 20%;
+}
+
+.pedido_direccion span {
+    width: 80%;
+}
+
+.pedido_direccion .departamento {
+    font-size: 1.2em;
+}
+
+.pedido_direccion .nombre_direccion {
+    font-size: 0.8em;
+}
+
+.pedido_direccion .info_direccion {
+    display: flex;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    background: #fff;
+    position: absolute;
+    right: 10px;
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+}
+
+.pedido_direccion .info_direccion i {
+    font-size: 2em;
+    color: #2F80ED;
+}
+
+/* ------------------------ tooltip ---------------------- */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+/* -------------------------------------------------------------------- */
+
+.pedido .pedido_total {
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #666565;
+    color: #5EDB93;
+    font-weight: bold;
+    padding: 0;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.button a {
+    text-decoration: none;
+    color: #000;
+    padding: 10px 20px;
+    background: #ccc;
+}
+
+.button a:hover {
+    background: #888787;
+}

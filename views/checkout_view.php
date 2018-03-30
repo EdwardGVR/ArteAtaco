@@ -59,7 +59,7 @@
 								<?php if($departamento['id'] == 1 || $departamento['id'] == 2 || $departamento['id'] == 3 || $departamento['id'] == 7): ?>
 									<option value="<?php echo $departamento['id'] ?>"><?php echo $departamento['nombre'] ?></option>
 								<?php else: ?>
-									<option value="<?php echo $departamento['id'] ?>" disabled><?php echo $departamento['nombre'] ?></option>
+									<option value="<?php echo $departamento['id'] ?>" disabled><?php echo $departamento['nombre'] . "(No disponible)" ?></option>
 								<?php endif ?>
 							<?php endforeach ?>
 						</select>

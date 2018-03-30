@@ -1448,8 +1448,8 @@ input[name="add_address"]:hover {
 	flex-wrap: wrap;
 	width: 85%;
 	margin: auto;
-	padding: 30px;
-	box-shadow: 0 0 20px;
+	/* padding: 30px; */
+	/* box-shadow: 0 0 20px; */
 }
 
 .contenedor_pedidos .pedido {
@@ -1462,6 +1462,7 @@ input[name="add_address"]:hover {
 	background: #DDDBDB;
 	margin-bottom: 50px;
 	padding: 20px;
+	box-shadow: 0 0 10px;
 }
 
 .pedido .pedido_header {

@@ -132,7 +132,11 @@
 							<span>Departamento:</span>
 							<select name="departamento_new_dir" id="dpto" class="new_address_dpto">
 								<?php foreach ($departamentos as $departamento): ?>
-									<option value="<?php echo $departamento['id'] ?>"><?php echo $departamento['nombre'] ?></option>
+									<?php if($departamento['id'] == 1 || $departamento['id'] == 2 || $departamento['id'] == 3 || $departamento['id'] == 7): ?>
+										<option value="<?php echo $departamento['id'] ?>"><?php echo $departamento['nombre'] ?></option>
+									<?php else: ?>
+										<option value="<?php echo $departamento['id'] ?>" disabled><?php echo $departamento['nombre'] . "(No disponible)" ?></option>
+									<?php endif ?>
 								<?php endforeach ?>
 							</select>
 							<span>Linea 1:</span>

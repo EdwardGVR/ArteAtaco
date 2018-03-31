@@ -18,11 +18,18 @@ hr {
 
 nav {
     display: flex;
+    position: fixed;
 
     width: 25%;
     min-width: 300px; 
     height: 100vh;
     background: #fff;
+}
+
+.nav_hidden {
+    display: flex;
+    width: 25%;
+    min-width: 300px;
 }
 
 nav .side_bar {
@@ -118,7 +125,7 @@ nav .options {
 }
 
 .user_info .data span.nombre {
-    font-size: 1.3em;
+    font-size: 1.2em;
 }
 
 .user_info .data hr {
@@ -138,9 +145,11 @@ nav .options {
     /* background: #365C8A; */
     margin-bottom: 10px;
     border-bottom: 2px solid #fff;
+    transition: border ease 0.3s;
 }
 
 .options .buttons a:hover {
+    border-left: 20px solid #040b29;
     background: #365C8A;
 }
 
@@ -175,6 +184,7 @@ main section {
     align-items: flex-start;
 
     width: 100%;
+    margin-bottom: 50px;
     /* height: calc(100% - 60px); */
     /* background: #ccc; */
 }
@@ -195,14 +205,16 @@ main section .title {
     margin-bottom: 20px;
 }
 
-.contenedor_pedidos {
+.contenedor_pedidos,
+.contenedor_productos {
     display: flex;
     flex-wrap: wrap;
     margin: auto;
     width: 100%;
 }
 
-.contenedor_pedidos .pedido {
+.contenedor_pedidos .pedido,
+.contenedor_productos .producto {
     position: relative;
     display: flex;
     flex-wrap: wrap;
@@ -212,11 +224,13 @@ main section .title {
     background: #a3a2a2;
 }
 
-.contenedor_pedidos .pedido:hover {
+.contenedor_pedidos .pedido:hover,
+.contenedor_productos .producto:hover {
     border: 2px solid #2F80ED;
 }
 
-.pedido div {
+.pedido div,
+.producto div {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -225,20 +239,24 @@ main section .title {
     padding: 10px;
 }
 
-.pedido hr {
+.pedido hr,
+.producto hr {
     width: 90%;
     margin: auto;
 }
 
-.pedido .pedido_cliente {
+.pedido .pedido_cliente,
+.producto .producto_nombre {
     height: 20%;
 }
 
-.pedido_cliente span {
+.pedido_cliente span,
+.producto_nombre span {
     width: 100%;
 }
 
-.pedido .pedido_cliente .img_cliente {
+.pedido .pedido_cliente .img_cliente,
+.producto .producto_nombre .img_categoria {
     position: absolute;
     top: -20px;
     right: -20px;
@@ -249,18 +267,37 @@ main section .title {
     border-radius: 50%;
 }
 
-.pedido_cliente .nombre {
+.producto .producto_nombre .img_categoria {
+    border-radius: 10%;
+}
+
+.pedido_cliente .nombre,
+.producto_nombre .nombre {
     font-size: 1.2em;
 }
 
-.pedido_cliente .apellido {
+.pedido_cliente .apellido,
+.producto_nombre .categoria {
     font-size: 0.8em;
 }
 
-.pedido .pedido_productos {
+.pedido .pedido_productos,
+.producto .producto_imagen {
     height: 45%;
     font-size: 0.8em;
-    overflow-y: auto;
+    overflow: auto;
+    /* background: #000; */
+    min-width: 110%;
+    padding-right: 15%;
+}
+
+.producto .producto_imagen {
+    display: flex;
+}
+
+.producto .producto_imagen i {
+    margin: auto;
+    font-size: 9em;
 }
 
 .pedido_productos .producto {
@@ -282,13 +319,25 @@ main section .title {
     text-align: right;
 }
 
-.pedido .pedido_direccion {
+.pedido .pedido_direccion,
+.producto .producto_descripcion {
     position: relative; 
     height: 20%;
 }
 
+.producto .producto_descripcion {
+    overflow: hidden;
+    padding: 5px 10px;
+}
+
 .pedido_direccion span {
     width: 80%;
+}
+
+.producto_descripcion span {
+    width: 100%;
+    font-size: 0.8em;
+    text-align: justify;
 }
 
 .pedido_direccion .departamento {
@@ -357,7 +406,8 @@ main section .title {
 
 /* -------------------------------------------------------------------- */
 
-.pedido .pedido_total {
+.pedido .pedido_total,
+.producto .producto_precio {
     height: 10%;
     display: flex;
     justify-content: center;

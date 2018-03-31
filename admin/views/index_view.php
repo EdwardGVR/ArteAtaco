@@ -10,6 +10,7 @@
     <title>ArteAteataco :: Admin</title>
 </head>
 <body>
+    <div class="nav_hidden"></div>
     <nav>
         <div class="side_bar">
             <div class="side_user_info"></div>
@@ -119,28 +120,28 @@
                         <div class="img_cliente"></div>
                     </div>
                     <hr>
-                    <div class="pedido_productos">
-                        <div class="producto">
-                            <span class="cantidad">1x</span>
-                            <span class="nombre_producto">Nombre del producto</span>
-                            <span class="precio">$00.00</span>
+                        <div class="pedido_productos">
+                            <div class="producto">
+                                <span class="cantidad">1x</span>
+                                <span class="nombre_producto">Nombre del producto</span>
+                                <span class="precio">$00.00</span>
+                            </div>
+                            <div class="producto">
+                                <span class="cantidad">1x</span>
+                                <span class="nombre_producto">Nombre del producto</span>
+                                <span class="precio">$00.00</span>
+                            </div>
+                            <div class="producto">
+                                <span class="cantidad">1x</span>
+                                <span class="nombre_producto">Nombre del producto</span>
+                                <span class="precio">$00.00</span>
+                            </div>
+                            <div class="producto">
+                                <span class="cantidad">1x</span>
+                                <span class="nombre_producto">Nombre del producto</span>
+                                <span class="precio">$00.00</span>
+                            </div>
                         </div>
-                        <div class="producto">
-                            <span class="cantidad">1x</span>
-                            <span class="nombre_producto">Nombre del producto</span>
-                            <span class="precio">$00.00</span>
-                        </div>
-                        <div class="producto">
-                            <span class="cantidad">1x</span>
-                            <span class="nombre_producto">Nombre del producto</span>
-                            <span class="precio">$00.00</span>
-                        </div>
-                        <div class="producto">
-                            <span class="cantidad">1x</span>
-                            <span class="nombre_producto">Nombre del producto</span>
-                            <span class="precio">$00.00</span>
-                        </div>
-                    </div>
                     <hr>
                     <div class="pedido_direccion">
                         <span class="departamento">Departamento</span>
@@ -150,6 +151,72 @@
                         </div>
                     </div>
                     <div class="pedido_total">
+                        <span>$00.00</span>
+                    </div>
+                </article>
+            </div>
+            <div class="button">
+                <a href="#">Ver todos</a>
+            </div>
+        </section>
+
+        <section>
+            <div class="title">
+                <h2>Nuevos productos</h2>
+                <hr>
+            </div>
+            <div class="contenedor_productos">
+                <article class="producto">
+                    <div class="producto_nombre">
+                        <span class="nombre">Prod name</span>
+                        <span class="categoria">Category</span>
+                        <div class="img_categoria"></div>
+                    </div>
+                    <hr>
+                    <div class="producto_imagen">
+                        <i class="fas fa-file-image"></i>
+                    </div>
+                    <hr>
+                    <div class="producto_descripcion">
+                        <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur, corporis? Lorem ipsum dolor sit amet.</span>
+                    </div>
+                    <div class="producto_precio">
+                        <span>$00.00</span>
+                    </div>
+                </article>
+                <article class="producto">
+                    <div class="producto_nombre">
+                        <span class="nombre">Prod name</span>
+                        <span class="categoria">Category</span>
+                        <div class="img_categoria"></div>
+                    </div>
+                    <hr>
+                    <div class="producto_imagen">
+                        <i class="fas fa-file-image"></i>
+                    </div>
+                    <hr>
+                    <div class="producto_descripcion">
+                        <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur, corporis? Lorem ipsum dolor sit amet.</span>
+                    </div>
+                    <div class="producto_precio">
+                        <span>$00.00</span>
+                    </div>
+                </article>
+                <article class="producto">
+                    <div class="producto_nombre">
+                        <span class="nombre">Prod name</span>
+                        <span class="categoria">Category</span>
+                        <div class="img_categoria"></div>
+                    </div>
+                    <hr>
+                    <div class="producto_imagen">
+                        <i class="fas fa-file-image"></i>
+                    </div>
+                    <hr>
+                    <div class="producto_descripcion">
+                        <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur, corporis? Lorem ipsum dolor sit amet.</span>
+                    </div>
+                    <div class="producto_precio">
                         <span>$00.00</span>
                     </div>
                 </article>

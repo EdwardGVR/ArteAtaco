@@ -56,7 +56,44 @@
                        <div class="codigo">#1234567</div>
                    </div>
                    <div class="pedido_body">
-                       
+                       <div class="pedido_cliente_direccion">
+                           <div class="pedido_cliente">
+                                <div class="titulo">
+                                    <span>Cliente</span>
+                                    <hr>
+                                </div>
+                                <div class="info">
+                                    <div class="imagen">
+
+                                    </div>
+                                    <div class="datos">
+                                        <span class="nombres">Nombre nombre</span>
+                                        <span class="apellidos">Apellido apellido</span>
+                                    </div>
+                                </div>
+                           </div>
+                           <div class="pedido_direccion">
+                                <div class="titulo">
+                                    <span>Direccion</span>
+                                    <hr>
+                                </div>
+                                <div class="info">
+                                    <span>Departamento</span>
+                                    <span>Nombre de la direccion</span>
+                                </div>
+                           </div>
+                       </div>
+                       <div class="ped_prods">
+                           <div class="title">
+                               <span>Productos</span>
+                               <hr>
+                           </div>
+                           <div class="prods">
+                               <div class="ped_prod">
+                                   
+                               </div>
+                           </div>
+                       </div>
                    </div>
                 </article>
             </div>

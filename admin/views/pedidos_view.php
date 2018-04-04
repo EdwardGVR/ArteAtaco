@@ -64,7 +64,7 @@
                                 </div>
                                 <div class="info">
                                     <div class="imagen">
-
+                                        <i class="fas fa-user fa-4x"></i>
                                     </div>
                                     <div class="datos">
                                         <span class="nombres">Nombre nombre</span>
@@ -90,9 +90,39 @@
                            </div>
                            <div class="prods">
                                <div class="ped_prod">
-                                   
+                                    <div class="imagen">
+                                    <i class="fas fa-file-image fa-2x"></i>
+                                    </div>
+                                    <div class="datos">
+                                        <span class="nombre">Nombre del producto</span>
+                                        <span class="cat">Categoria</span>
+                                        <span class="cant">1x</span>
+                                        <span class="precio">$00.00</span>
+                                    </div>
                                </div>
-                           </div>
+                               <div class="ped_prod">
+                                    <div class="imagen">
+                                    <i class="fas fa-file-image fa-2x"></i>
+                                    </div>
+                                    <div class="datos">
+                                        <span class="nombre">Nombre del producto</span>
+                                        <span class="cat">Categoria</span>
+                                        <span class="cant">1x</span>
+                                        <span class="precio">$00.00</span>
+                                    </div>
+                               </div>
+                               <div class="ped_prod">
+                                    <div class="imagen">
+                                    <i class="fas fa-file-image fa-2x"></i>
+                                    </div>
+                                    <div class="datos">
+                                        <span class="nombre">Nombre del producto</span>
+                                        <span class="cat">Categoria</span>
+                                        <span class="cant">1x</span>
+                                        <span class="precio">$00.00</span>
+                                    </div>
+                               </div>                                                           
+                           </div>                                       
                        </div>
                    </div>
                 </article>

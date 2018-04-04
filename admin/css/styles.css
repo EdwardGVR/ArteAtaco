@@ -23,6 +23,7 @@ nav {
     width: 25%;
     min-width: 300px; 
     height: 100vh;
+    margin-right: 20px;
     background: #fff;
 }
 
@@ -30,6 +31,7 @@ nav {
     display: flex;
     width: 25%;
     min-width: 300px;
+    /* margin-right: 20px; */
 }
 
 nav .side_bar {
@@ -444,7 +446,7 @@ main section .title {
     margin: 30px auto;
     /* height: 200px; */
     width: 80%;
-    min-width: 285px;
+    min-width: 320px;
     /* background: #ccc; */
 }
 
@@ -472,10 +474,10 @@ main section .title {
     display: flex;
     flex-wrap: wrap;
 
-    padding: 20px;
+    padding: 20px 20px 0 20px;
     width: 100%;
     /* height: 100%; */
-    background: #b5d0f3;
+    background: #C0E2ED;
 }
 
 .pedido_todos .pedido_body .pedido_cliente_direccion {
@@ -512,23 +514,28 @@ main section .title {
     background: #919090;
 }
 
-.pedido_cliente_direccion .pedido_cliente .info {
+.pedido_cliente_direccion .pedido_cliente .info,
+.ped_prods .prods .ped_prod {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     width: 100%;
 }
 
-.pedido_cliente_direccion .pedido_cliente .info .imagen {
-    display: inline-block;
+.pedido_cliente_direccion .pedido_cliente .info .imagen,
+.ped_prods .prods .ped_prod .imagen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 80px;
     min-width: 80px;
     border-radius: 10px;
     margin-right: 10px;
-    background: #919090;
+    background: #C4C4C4;
 }
 
-.pedido_cliente_direccion .pedido_cliente .info .datos {
+.pedido_cliente_direccion .pedido_cliente .info .datos,
+.ped_prods .prods .ped_prod .datos {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
@@ -566,8 +573,10 @@ main section .title {
 .pedido_todos .pedido_body .ped_prods {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
 
     width: 100%;
+    margin-top: 20px;
     /* height: 100px; */
     /* background: #ccc; */
 }
@@ -584,18 +593,42 @@ main section .title {
 
 .ped_prods .prods {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-start;
 
     width: 100%;
     min-height: 50px;
-    background: #ccc;
+    /* background: #ccc; */
 }
 
 .ped_prods .prods .ped_prod {
     display: flex;
+    justify-content: flex-start;
 
     height: 100px;
-    width: 35%;
-    background: #62a5db;
+    width: 30%;
+    min-width: 265px;
+    padding: 10px;
+    background: #8BD0F7;
+    margin-bottom: 20px;
+}
+
+.ped_prods .prods .ped_prod .datos {
+    align-content: flex-start;
+    height: 100%;
+}
+
+.ped_prods .prods .ped_prod .datos span {
+    width: 100%;
+    margin: 0;
+}
+
+.ped_prods .prods .ped_prod .datos .cat {
+    font-size: 0.8em;
+    margin-bottom: 5px;
+}
+
+.ped_prods .prods .ped_prod .datos .cant {
+    font-size: 0.8em;
 }

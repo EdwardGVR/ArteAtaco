@@ -69,6 +69,9 @@
                                     <div class="datos">
                                         <span class="nombres">Nombre nombre</span>
                                         <span class="apellidos">Apellido apellido</span>
+                                        <hr>
+                                        <span class="tel">0000-0000</span>
+                                        <span class="email">cliente@mail.com</span>
                                     </div>
                                 </div>
                            </div>
@@ -80,6 +83,10 @@
                                 <div class="info">
                                     <span>Departamento</span>
                                     <span>Nombre de la direccion</span>
+                                    <hr>
+                                    <span class="det">
+                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias illum accusantium, sunt cumque voluptates inventore.
+                                    </span>
                                 </div>
                            </div>
                        </div>
@@ -123,6 +130,11 @@
                                     </div>
                                </div>                                                           
                            </div>                                       
+                       </div>
+                       <div class="total">
+                           <div class="subtotal"></div>
+                           <div class="envio"></div>
+                           <div class="total_sum"></div>
                        </div>
                    </div>
                 </article>

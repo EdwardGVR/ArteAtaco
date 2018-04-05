@@ -699,14 +699,58 @@ main section .title {
     text-align: center;
     padding-right: 10px;
     font-weight: bold;
+    letter-spacing: 2px;
 }
 
 .pedido_todos .pedido_body .estado {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
+    flex-wrap: wrap;
     width: 100%;
+    /* height: 50px; */
+    /* margin-bottom: 20px; */
+    padding: 10px;
+    /* background: #8BD0F7; */
+}
+
+.pedido_todos .pedido_body .estado .actual {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* width: 300px; */
     height: 50px;
-    background: #ccc;
-    margin-bottom: 20px;
+    margin-right: 20px;
+    /* margin-bottom: 20px; */
+    /* background: #ccc; */
+}
+
+.pedido_todos .pedido_body .estado .indicador {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+    background: #a3a2a2;
+}
+
+.pedido_todos .pedido_body .estado .actual span {
+    font-style: italic;
+}
+
+.pedido_todos .pedido_body .estado .update {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 100px;
+    color: #fff;
+    background: #365C8A;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all ease 0.3s;
+}
+
+.pedido_todos .pedido_body .estado .update:hover {
+    background: #203550;
 }

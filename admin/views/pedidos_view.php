@@ -155,7 +155,13 @@
                            </div>
                        </div>
                        <div class="estado">
-                           
+                           <div class="actual">
+                               <div class="indicador"></div>
+                               <span>Estado actual del pedido</span>
+                           </div>
+                           <div class="update">
+                               Actualizar
+                           </div>
                        </div>
                    </div>
                 </article>

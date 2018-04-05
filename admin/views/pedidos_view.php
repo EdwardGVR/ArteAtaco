@@ -64,7 +64,7 @@
                                 </div>
                                 <div class="info">
                                     <div class="imagen">
-                                        <i class="fas fa-user fa-4x"></i>
+                                        <i class="fas fa-user fa-2x"></i>
                                     </div>
                                     <div class="datos">
                                         <span class="nombres">Nombre nombre</span>
@@ -132,9 +132,30 @@
                            </div>                                       
                        </div>
                        <div class="total">
-                           <div class="subtotal"></div>
-                           <div class="envio"></div>
-                           <div class="total_sum"></div>
+                           <div class="envio">
+                               <div class="icon"><i class="fas fa-tags fa-lg"></i></div>
+                               <div class="mount">
+                                   <span>Sub-total:</span>
+                                   <span>$00.00</span>
+                               </div>                               
+                           </div>
+                           <div class="subtotal">
+                               <div class="icon"><i class="fas fa-truck fa-lg"></i></div>
+                               <div class="mount">
+                                   <span>Envio:</span>
+                                   <span>$00.00</span>
+                               </div>
+                           </div>
+                           <div class="total_sum">
+                               <div class="icon"><i class="fas fa-money-bill-alt fa-lg"></i></div>
+                               <div class="mount">
+                                   <span>Total:</span>
+                                   <span>$00.00</span>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="estado">
+                           
                        </div>
                    </div>
                 </article>

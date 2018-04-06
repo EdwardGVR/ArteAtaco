@@ -749,8 +749,74 @@ main section .title {
     border-radius: 5px;
     cursor: pointer;
     transition: all ease 0.3s;
+    margin-right: -100px;
+    z-index: 2;
 }
 
 .pedido_todos .pedido_body .estado .update:hover {
     background: #203550;
+}
+
+.pedido_todos .pedido_body .estado .select_status {
+    display: flex;
+}
+
+.pedido_todos .pedido_body .estado .select_status .sel_stat_hidden {
+    display: flex;
+    height: 30px;
+    max-width: 100px;
+    border: none;
+    background: #92c3df;
+    z-index: 1;
+}
+
+.pedido_todos .pedido_body .estado .select_status .sel_stat {
+    display: flex;
+    height: 30px;
+    min-width: 120px;
+    border: none;
+    background: #92c3df;
+    margin-right: -120px;
+    z-index: 1;
+    transition: all ease 0.3s;
+}
+
+.pedido_todos .pedido_body .estado .select_status .submit_status {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 100px;
+    background: #89c791;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    /* margin-left: 20px; */
+    font-size: 1em;
+    visibility: hidden;
+    transition: all ease 0.3s;
+}
+
+.pedido_todos .pedido_body .estado .select_status .submit_status:hover {
+    background: #138141;
+    color: #fff;
+}
+
+.pedido_todos .pedido_body .estado .cancelar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 100px;
+    background: #d48686;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all ease 0.3s;
+    margin-right: 20px;
+    z-index: 2;
+}
+
+.pedido_todos .pedido_body .estado .cancelar:hover {
+    background: #7a0707;
+    color: #fff;
 }

@@ -802,7 +802,7 @@ main section .title {
     color: #fff;
 }
 
-.pedido_todos .pedido_body .estado .cancelar {
+.pedido_todos .pedido_body .estado .cancelUpdateOrderStatus {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -816,7 +816,7 @@ main section .title {
     z-index: 2;
 }
 
-.pedido_todos .pedido_body .estado .cancelar:hover {
+.pedido_todos .pedido_body .estado .cancelUpdateOrderStatus:hover {
     background: #7a0707;
     color: #fff;
 }

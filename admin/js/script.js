@@ -1,43 +1,31 @@
-let updateOrderStatusBtns = [...document.getElementsByClassName('updOrderStat')],
-    x = 0;
-
-updateOrderStatusBtns.forEach(() => {
-    // console.log(updateOrderStatusBtns[x]);
-
-    updateOrderStatusBtns[x].addEventListener('click', () => {
-        console.log('lol' + x);
-        
+let updateOrderStatusBtns = [...document.getElementsByClassName('updOrderStat')];
+for (let i = 0; i < updateOrderStatusBtns.length; i++) {
+    // Agregar evento para mostrar opciones
+    updateOrderStatusBtns[i].addEventListener('click', () => {
+        let updateOrderStatusForms = [...document.getElementsByClassName('orderStatusForm')],
+            selectsOrderStatus = [...document.getElementsByClassName('sel_status')];
+        updateOrderStatusBtns[i].setAttribute('class', 'cancelUpdateOrderStatus'); 
+        updateOrderStatusBtns[i].innerText = "Cancelar";
+        selectsOrderStatus[i].setAttribute('class', 'sel_stat');
+        let cancelarOrderStatus = [...document.getElementsByClassName('cancelUpdateOrderStatus')];
+        // Agregar evento para cancelar cambio de estado
+        for (let j = 0; j < cancelarOrderStatus.length; j++) {            
+            cancelarOrderStatus[j].addEventListener('click', () => {
+                cancelarOrderStatus[j].style.marginRight = '-100px';
+                selectsOrderStatus[i].setAttribute('class', 'sel_stat_hidden');
+                setTimeout(() => {
+                    location.reload();
+                }, 200);
+            });            
+        }
+        // Agregar evento para mostrar boton de aceptar (al cambiar el valor)
+        for (let k = 0; k < selectsOrderStatus.length; k++) {
+            selectsOrderStatus[k].addEventListener('change', () => {
+                let submitsOrderStatus = [...document.getElementsByClassName('submit_status')];
+                selectsOrderStatus[k].style.marginRight = '20px';
+                submitsOrderStatus[k].style.visibility = 'visible';
+            });
+        }
     });
-    
-    x++;
-});
 
-
-
-// updateOrderStatusBtn.addEventListener('click', () => {
-//     let updateOrderStatusForm = document.getElementById('orderStatusForm'),
-//         selectOrderStatus = document.getElementById('sel_status');
-        
-//     updateOrderStatusBtn.setAttribute('class', 'cancelar');
-//     updateOrderStatusBtn.innerText = "Cancelar";
-//     updateOrderStatusBtn.setAttribute('id', 'cancelar');
-
-//     let cancelarOrderStatus = document.getElementById('cancelar');
-
-//     cancelarOrderStatus.addEventListener('click', () => {
-//         cancelarOrderStatus.style.marginRight = '-100px';
-
-//         setTimeout(() => {
-//             location.reload();
-//         }, 200);
-//     });
-
-//     selectOrderStatus.setAttribute('class', 'sel_stat');
-
-//     selectOrderStatus.addEventListener('change', () => {
-//         let submitOrderStatus = document.getElementById('submit_status');
-
-//         selectOrderStatus.style.marginRight = '20px';
-//         submitOrderStatus.style.visibility = 'visible';
-//     });
-// });
+}

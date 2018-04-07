@@ -60,13 +60,16 @@
                             <img src="" alt="">
                             <img src="" alt="">
                             <img src="" alt="">
-                            <img src="" alt="">
-                            <img src="" alt="">
-                            <img src="" alt="">
+                        </div>
+                        <div class="add_img">
+                            <i class="fas fa-plus-circle fa-lg"></i>
                         </div>
                     </div>
                     <div class="info">
-
+                        <div class="nom_cat">
+                            <span class="nombre">Nombre producto</span>
+                            <span class="categoria">Categoria</span>
+                        </div>
                     </div>
                 </div>
             </div>

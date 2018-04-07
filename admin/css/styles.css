@@ -825,18 +825,20 @@ main section .title {
     display: flex;
 
     min-height: 100px;
-    width: 40%;
+    width: 80%;
     background: #C0E2ED;
     margin: auto;
+    margin-bottom: 20px;
 }
 
 .producto_list .imgs {
     display: flex;
     justify-content: center;
+    align-content: flex-start;
     flex-wrap: wrap;
 
     height: 400px;
-    width: 250px;
+    width: 200px;
     background: #113054;
     padding: 10px;
 }
@@ -844,25 +846,61 @@ main section .title {
 .producto_list .imgs .main {
     display: flex;
 
-    width: 230px;
-    height: 230px;
+    width: 100%;
+    height: 180px;
     background: #829ba3;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
 }
 
 .producto_list .imgs .others {
     display: flex;
     justify-content: space-between;
-    align-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
 
-    height: 130px;
+    /* height: 130px; */
     width: 230px;
-    background: #829ba3;
+    margin-bottom: 40px;
 }
 
-.producto_list .imgs .others .img {
+.producto_list .imgs .others img {
     display: inline-block;
     height: 50px;
     width: 50px;
-    border: 1px solid #fff;
+    background: #aec2c9;
+    border-radius: 5px;
+}
+
+.producto_list .imgs .add_img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    color: #fff;
+    background: #2F80ED;
+    border-radius: 5px;
+    /* border: none; */
+}
+
+.producto_list .info .nom_cat {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 0 20px;
+    padding-top: 10px;
+}
+
+.producto_list .info .nom_cat span {
+    width: 100%;
+}
+
+.producto_list .info .nom_cat .nombre {
+    font-weight: bold;
+}
+
+.producto_list .info .nom_cat .categoria {
+    font-size: 0.8em;
+    font-style: italic;
 }

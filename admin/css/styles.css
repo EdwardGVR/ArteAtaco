@@ -820,3 +820,49 @@ main section .title {
     background: #7a0707;
     color: #fff;
 }
+
+.producto_list {
+    display: flex;
+
+    min-height: 100px;
+    width: 40%;
+    background: #C0E2ED;
+    margin: auto;
+}
+
+.producto_list .imgs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    height: 400px;
+    width: 250px;
+    background: #113054;
+    padding: 10px;
+}
+
+.producto_list .imgs .main {
+    display: flex;
+
+    width: 230px;
+    height: 230px;
+    background: #829ba3;
+    margin-bottom: 20px;
+}
+
+.producto_list .imgs .others {
+    display: flex;
+    justify-content: space-between;
+    align-content: flex-start;
+
+    height: 130px;
+    width: 230px;
+    background: #829ba3;
+}
+
+.producto_list .imgs .others .img {
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    border: 1px solid #fff;
+}

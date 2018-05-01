@@ -60,9 +60,12 @@
                             <img src="" alt="">
                             <img src="" alt="">
                             <img src="" alt="">
-                        </div>
-                        <div class="add_img">
-                            <i class="fas fa-plus-circle fa-lg"></i>
+                            <img src="" alt="">
+                            <img src="" alt="">
+                            <img src="" alt="">
+                            <div class="add_img">
+                                <i class="fas fa-plus-circle fa-lg"></i>
+                            </div>
                         </div>
                     </div>
                     <div class="info">

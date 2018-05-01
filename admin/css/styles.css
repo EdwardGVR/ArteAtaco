@@ -823,12 +823,18 @@ main section .title {
 
 .producto_list {
     display: flex;
-
-    min-height: 100px;
+    min-width: 360px;
+    /* min-height: 100px; */
     width: 80%;
     background: #C0E2ED;
     margin: auto;
     margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 1px #000;
+}
+
+.producto_list:first-child {
+    margin-top: 20px;
 }
 
 .producto_list .imgs {
@@ -837,10 +843,11 @@ main section .title {
     align-content: flex-start;
     flex-wrap: wrap;
 
-    height: 400px;
+    /* height: 400px; */
     width: 200px;
-    background: #113054;
+    background: #365272;
     padding: 10px;
+    border-radius: 5px;
 }
 
 .producto_list .imgs .main {
@@ -848,7 +855,7 @@ main section .title {
 
     width: 100%;
     height: 180px;
-    background: #829ba3;
+    background: #ccc;
     margin-bottom: 10px;
     border-radius: 5px;
 }
@@ -857,37 +864,58 @@ main section .title {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
 
     /* height: 130px; */
     width: 230px;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
+    overflow-x: auto;
 }
 
 .producto_list .imgs .others img {
     display: inline-block;
     height: 50px;
     width: 50px;
-    background: #aec2c9;
+    min-width: 50px;
+    margin: 0 10px;
+    background: #ccc;
     border-radius: 5px;
+    margin-bottom: 10px;
 }
 
-.producto_list .imgs .add_img {
+.producto_list .imgs .others img:nth-child(odd) {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.producto_list .imgs .others .add_img {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50px;
+    min-width: 50px;
+    margin-bottom: 10px;
     height: 50px;
     color: #fff;
     background: #2F80ED;
     border-radius: 5px;
+    cursor: pointer;
+    transition: all ease 0.3s;
     /* border: none; */
+}
+
+.producto_list .imgs .others .add_img:hover {
+    background: #1262ca;
+}
+
+.producto_list .info {
+    min-width: 170px;
 }
 
 .producto_list .info .nom_cat {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+    min-width: 170px;
     padding: 0 20px;
     padding-top: 10px;
 }

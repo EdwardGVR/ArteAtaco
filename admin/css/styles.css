@@ -823,14 +823,14 @@ main section .title {
 
 .producto_list {
     display: flex;
-    min-width: 360px;
+    min-width: 460px;
     /* min-height: 100px; */
     width: 80%;
     background: #C0E2ED;
     margin: auto;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 5px 1px #000;
+    margin-bottom: 50px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px 1px #000;
 }
 
 .producto_list:first-child {
@@ -844,16 +844,17 @@ main section .title {
     flex-wrap: wrap;
 
     /* height: 400px; */
-    width: 200px;
+    min-width: 200px;
+    width: 30%;
     background: #365272;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 5px 0 0 5px;
 }
 
 .producto_list .imgs .main {
     display: flex;
 
-    width: 100%;
+    width: 180px;
     height: 180px;
     background: #ccc;
     margin-bottom: 10px;
@@ -862,12 +863,9 @@ main section .title {
 
 .producto_list .imgs .others {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    /* flex-wrap: wrap; */
-
-    /* height: 130px; */
-    width: 230px;
+    width: 100%;
     margin-bottom: 10px;
     overflow-x: auto;
 }
@@ -893,6 +891,7 @@ main section .title {
     justify-content: center;
     align-items: center;
     min-width: 50px;
+    margin-left: 10px;
     margin-bottom: 10px;
     height: 50px;
     color: #fff;
@@ -900,35 +899,83 @@ main section .title {
     border-radius: 5px;
     cursor: pointer;
     transition: all ease 0.3s;
+    font-size: 1.5em;
     /* border: none; */
 }
 
 .producto_list .imgs .others .add_img:hover {
-    background: #1262ca;
+    border-radius: 50%;
+    background: #6ea1e4;
 }
 
 .producto_list .info {
     min-width: 170px;
+    width: 70%;
 }
 
-.producto_list .info .nom_cat {
+.producto_list .info .field {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
     min-width: 170px;
     padding: 0 20px;
     padding-top: 10px;
+    margin-bottom: 20px;
 }
 
-.producto_list .info .nom_cat span {
+.producto_list .info .field span {
     width: 100%;
 }
 
-.producto_list .info .nom_cat .nombre {
+.producto_list .info .field .value {
     font-weight: bold;
 }
 
-.producto_list .info .nom_cat .categoria {
-    font-size: 0.8em;
+.producto_list .info .field .label {
+    font-size: 0.9em;
     font-style: italic;
+}
+
+.producto_list .options {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100px;
+    background: #8cb3e5;
+    border-radius: 0 5px 5px 0;
+    padding: 10px;
+}
+
+.producto_list .options .opt {
+    width: 100%;
+    text-align: center;
+    /* height: 50px; */
+}
+
+.producto_list .options .opt span {
+    width: 100%;
+    font-size: 0.9em;
+}
+
+.producto_list .options .opt .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background: #7682eb;
+    border-radius: 5px;
+    margin: auto;
+    margin-top: 5px;
+    font-size: 2em;
+    color: #113054;
+    cursor: pointer;
+    transition: all ease 0.3s;
+}
+
+.producto_list .options .opt .icon:hover {
+    border-radius: 50%;
+    color: #fff;
+    background: #113054;
 }

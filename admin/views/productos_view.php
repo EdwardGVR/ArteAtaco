@@ -51,6 +51,7 @@
                 <hr>
             </div>
             <div class="contenedor_productos">
+
                 <div class="producto_list">
                     <div class="imgs">
                         <div class="main">
@@ -69,9 +70,199 @@
                         </div>
                     </div>
                     <div class="info">
-                        <div class="nom_cat">
-                            <span class="nombre">Nombre producto</span>
-                            <span class="categoria">Categoria</span>
+                        <div class="field">
+                            <span class="label">Nombre producto</span>
+                            <span class="value">Nombre producto</span>
+                        </div>
+                        <div class="field">
+                            <span class="label">Categoria</span>
+                            <span class="value">Categoria</span>
+                        </div>
+                        <div class="field">
+                            <span class="label">Precio</span>
+                            <span class="value">$00.00</span>
+                        </div>
+                        <div class="field">
+                            <span class="label">Descripcion del producto</span>
+                            <span class="value">Descripcion</span>
+                        </div>
+                    </div>
+                    <div class="options">
+                        <div class="opt disponible">
+                            <span>Disponible</span>
+                            <div class="icon">
+                                <i class="fas fa-toggle-on"></i>
+                            </div>
+                        </div>
+                        <div class="opt borrar">
+                            <span>Eliminar</span>
+                            <div class="icon">
+                                <i class="fa fa-times-circle"></i>
+                            </div>
+                        </div>
+                        <div class="opt editar">
+                            <span>Editar</span>
+                            <div class="icon">
+                                <i class="fa fa-cog"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="producto_list">
+                    <div class="imgs">
+                        <div class="main">
+
+                        </div>
+                        <div class="others">
+                            <img src="" alt="">
+                            <img src="" alt="">
+                            <div class="add_img">
+                                <i class="fas fa-plus-circle fa-lg"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <div class="field">
+                            <span class="label">Nombre producto</span>
+                            <span class="value">Nombre producto</span>
+                        </div>
+                        <div class="field">
+                            <span class="label">Categoria</span>
+                            <span class="value">Categoria</span>
+                        </div>
+                        <div class="field">
+                            <span class="label">Precio</span>
+                            <span class="value">$00.00</span>
+                        </div>
+                        <div class="field">
+                            <span class="label">Descripcion del producto</span>
+                            <span class="value">Descripcion</span>
+                        </div>
+                    </div>
+                    <div class="options">
+                        <div class="opt disponible">
+                            <span>Disponible</span>
+                            <div class="icon">
+                                <i class="fas fa-toggle-on"></i>
+                            </div>
+                        </div>
+                        <div class="opt borrar">
+                            <span>Eliminar</span>
+                            <div class="icon">
+                                <i class="fa fa-times-circle"></i>
+                            </div>
+                        </div>
+                        <div class="opt editar">
+                            <span>Editar</span>
+                            <div class="icon">
+                                <i class="fa fa-cog"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="producto_list">
+                    <div class="imgs">
+                        <div class="main">
+
+                        </div>
+                        <div class="others">
+                            <img src="" alt="">
+                            <img src="" alt="">
+                            <img src="" alt="">
+                            <div class="add_img">
+                                <i class="fas fa-plus-circle fa-lg"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <div class="field">
+                            <span class="label">Nombre producto</span>
+                            <span class="value">Nombre producto</span>
+                        </div>
+                        <div class="field">
+                            <span class="label">Categoria</span>
+                            <span class="value">Categoria</span>
+                        </div>
+                        <div class="field">
+                            <span class="label">Precio</span>
+                            <span class="value">$00.00</span>
+                        </div>
+                        <div class="field">
+                            <span class="label">Descripcion del producto</span>
+                            <span class="value">Descripcion</span>
+                        </div>
+                    </div>
+                    <div class="options">
+                        <div class="opt disponible">
+                            <span>Disponible</span>
+                            <div class="icon">
+                                <i class="fas fa-toggle-on"></i>
+                            </div>
+                        </div>
+                        <div class="opt borrar">
+                            <span>Eliminar</span>
+                            <div class="icon">
+                                <i class="fa fa-times-circle"></i>
+                            </div>
+                        </div>
+                        <div class="opt editar">
+                            <span>Editar</span>
+                            <div class="icon">
+                                <i class="fa fa-cog"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="producto_list">
+                    <div class="imgs">
+                        <div class="main">
+
+                        </div>
+                        <div class="others">
+                            <div class="add_img">
+                                <i class="fas fa-plus-circle fa-lg"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <div class="field">
+                            <span class="label">Nombre producto</span>
+                            <span class="value">Nombre producto</span>
+                        </div>
+                        <div class="field">
+                            <span class="label">Categoria</span>
+                            <span class="value">Categoria</span>
+                        </div>
+                        <div class="field">
+                            <span class="label">Precio</span>
+                            <span class="value">$00.00</span>
+                        </div>
+                        <div class="field">
+                            <span class="label">Descripcion del producto</span>
+                            <span class="value">Descripcion</span>
+                        </div>
+                    </div>
+                    <div class="options">
+                        <div class="opt disponible">
+                            <span>Disponible</span>
+                            <div class="icon">
+                                <i class="fas fa-toggle-on"></i>
+                            </div>
+                        </div>
+                        <div class="opt borrar">
+                            <span>Eliminar</span>
+                            <div class="icon">
+                                <i class="fa fa-times-circle"></i>
+                            </div>
+                        </div>
+                        <div class="opt editar">
+                            <span>Editar</span>
+                            <div class="icon">
+                                <i class="fa fa-cog"></i>
+                            </div>
                         </div>
                     </div>
                 </div>

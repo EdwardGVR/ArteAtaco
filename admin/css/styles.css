@@ -893,13 +893,73 @@ main section .title {
     justify-content: space-between;
     width: 100%;
     padding: 5px;
-    z-index: 1;
+    z-index: 10;
+}
+
+.producto_list .imgs .main .bg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5em;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    background: #ccc;
+    opacity: 0;
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    transition: all ease 0.3s;
+}
+
+.producto_list .imgs .main .bg:hover {
+    opacity: 0.5;
+}
+
+.producto_list .imgs .main .icons .main-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    border-radius: 5px;
+    background: #2F80ED;
+    color: #fbff00;
+    transition: all ease 0.3s;
+}
+
+.producto_list .imgs .main .icons .del {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    border-radius: 5px;
+    background: #2F80ED;
+    color: #fff;
+    cursor: pointer;
+    transition: all ease 0.3s;
+}
+
+.producto_list .imgs .main .icons .del:hover {
+    color: #ff0000;
+    background: #6ea1e4;
+    border-radius: 50%;
+}
+
+.producto_list .imgs .main .icons .main-img:hover {
+    border-radius: 50%;
+    background: #6ea1e4;
 }
 
 .producto_list .imgs .main img {
     width: 180px;
     height: 180px;
-    background: #4a94d8;
+    /* background: #4a94d8; */
     position: absolute;
     border-radius: 5px;
 }
@@ -911,6 +971,61 @@ main section .title {
     width: 100%;
     margin-bottom: 10px;
     overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.producto_list .imgs .others .other-img {
+    width: 50px;
+    /* margin-right: 10px; */
+}
+
+.producto_list .imgs .others .other-img .img {
+    position: relative;
+}
+
+.producto_list .imgs .others .other-img .img .bg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    background: #ccc;
+    opacity: 0;
+    top: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all ease 0.3s;
+}
+
+.producto_list .imgs .others .other-img .img .bg:hover {
+    opacity: 0.5;
+}
+
+.producto_list .imgs .others .other-img .icons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background: #2F80ED;
+    padding: 5px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 0.8em;
+}
+
+.producto_list .imgs .others .other-img .icons .set-main,
+.producto_list .imgs .others .other-img .icons .delete {
+    cursor: pointer;
+    transition: all ease 0.3s;
+}
+
+.producto_list .imgs .others .other-img .icons .set-main:hover {
+    color: #ecf00e;
+}
+
+.producto_list .imgs .others .other-img .icons .delete:hover {
+    color: #dd7777;
 }
 
 .producto_list .imgs .others img {
@@ -921,12 +1036,11 @@ main section .title {
     background: #ccc;
     border-radius: 5px;
     margin: 0 10px;
-    margin-bottom: 10px;
 }
 
 .producto_list .imgs .others img:nth-child(odd) {
     margin: 0;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
 }
 
 .producto_list .imgs .others .add_img {
@@ -972,6 +1086,10 @@ main section .title {
 
 .producto_list .info .field .value {
     font-weight: bold;
+}
+
+.producto_list .info .field .value.name {
+    font-size: 1.5em;
 }
 
 .producto_list .info .field .label {
@@ -1034,7 +1152,7 @@ main section .title {
     border-radius: 5px;
     margin: auto;
     margin-top: 20px;
-    transition: all ease 0.3s;
+    transition: all ease 0.2s;
     font-size: 6em;
     box-shadow: 3px 3px 15px #000;
 }
@@ -1046,7 +1164,7 @@ main section .title {
 }
 
 .add_product .icon {
-    color: #95d0eb;
+    color: #f5fcff;
 }
 
 /***************************************** tooltip ********************************************/
@@ -1060,14 +1178,14 @@ main section .title {
 .tooltip .tooltiptext {
     visibility: hidden;
     width: 120px;
-    background-color: #000;
+    background: #2F80ED;
     color: #fff;
     text-align: center;
     border-radius: 6px;
     padding: 5px 0;
     position: absolute;
     z-index: 1;
-    bottom: 150%;
+    bottom: 170%;
     left: 50%;
     margin-left: -60px;
     opacity: 0;
@@ -1082,7 +1200,7 @@ main section .title {
     margin-left: -7px;
     border-width: 7px;
     border-style: solid;
-    border-color: #000 transparent transparent transparent;
+    border-color: #2F80ED transparent transparent transparent;
 }
 
 .tooltip:hover .tooltiptext {

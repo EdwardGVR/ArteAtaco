@@ -58,9 +58,10 @@
                         <div class="imgs">
                             <div class="main">
                                 <div class="icons">
+                                    <div class="bg"><i class="fa fa-eye"></i></div>
                                     <div class="main-img">
                                         <div class="tooltip">
-                                            <i class="fa fa-gem"></i>
+                                            <i class="fa fa-star"></i>
                                             <span class="tooltiptext">Principal</span>
                                         </div>
                                     </div>
@@ -71,15 +72,50 @@
                                         </div>
                                     </div>
                                 </div>
-                                <img src="" alt="">
+                                <img src="http://placeimg.com/180/180/tech" alt="">
                             </div>
                             <div class="others">
-                                <img src="" alt="">
-                                <img src="" alt="">
-                                <img src="" alt="">
-                                <img src="" alt="">
-                                <img src="" alt="">
-                                <img src="" alt="">
+                                <div class="other-img">
+                                    <div class="img">
+                                        <img src="http://placeimg.com/50/50/any" alt="">
+                                        <div class="bg"><i class="fa fa-eye"></i></div>
+                                    </div>
+                                    <div class="icons">
+                                        <span class="set-main"><i class="fa fa-star"></i></span>
+                                        <span class="delete"><i class="fas fa-trash-alt"></i></span>
+                                    </div>
+                                </div>
+                                <div class="other-img">
+                                    <div class="img">
+                                        <img src="http://placeimg.com/50/50/animals" alt="">
+                                        <div class="bg"><i class="fa fa-eye"></i></div>
+                                    </div>
+                                    <div class="icons">
+                                        <span class="set-main"><i class="fa fa-star"></i></span>
+                                        <span class="delete"><i class="fas fa-trash-alt"></i></span>
+                                    </div>
+                                </div>
+                                <div class="other-img">
+                                    <div class="img">
+                                        <img src="http://placeimg.com/50/50/nature" alt="">
+                                        <div class="bg"><i class="fa fa-eye"></i></div>
+                                    </div>
+                                    <div class="icons">
+                                        <span class="set-main"><i class="fa fa-star"></i></span>
+                                        <span class="delete"><i class="fas fa-trash-alt"></i></span>
+                                    </div>
+                                </div>
+                                <div class="other-img">
+                                    <div class="img">
+                                        <img src="http://placeimg.com/50/50/sepia" alt="">
+                                        <div class="bg"><i class="fa fa-eye"></i></div>
+                                    </div>
+                                    <div class="icons">
+                                        <span class="set-main"><i class="fa fa-star"></i></span>
+                                        <span class="delete"><i class="fas fa-trash-alt"></i></span>
+                                    </div>
+                                </div>
+                                
                                 <div class="add_img">
                                     <i class="fas fa-plus-circle fa-lg"></i>
                                 </div>
@@ -88,11 +124,11 @@
                         <div class="info">
                             <div class="field">
                                 <span class="label">Nombre producto</span>
-                                <span class="value"><?= $producto['nombre'] ?></span>
+                                <span class="value name"><?= $producto['nombre'] ?></span>
                             </div>
                             <div class="field">
                                 <span class="label">Categoria</span>
-                                <span class="value"><?= $producto['id_categoria'] ?></span>
+                                <span class="value"><?= $producto['nombre_cat'] ?></span>
                             </div>
                             <div class="field">
                                 <span class="label">Precio</span>

@@ -42,10 +42,10 @@
         </div>
     </nav>
     <main>
-    <div class="bar">
-            <a href="index.php"><i class="fa fa-home"></i></a>
-            <h1>Productos</h1>
-            <a href="#" class="logout" title="Cerrar sesion"><i class="fa fa-times-circle"></i></a>
+        <div class="bar">
+                <a href="index.php"><i class="fa fa-home"></i></a>
+                <h1>Productos</h1>
+                <a href="#" class="logout" title="Cerrar sesion"><i class="fa fa-times-circle"></i></a>
         </div>
         <section>
             <div class="title">
@@ -53,222 +53,82 @@
                 <hr>
             </div>
             <div class="contenedor_productos">
-
-                <div class="producto_list">
-                    <div class="imgs">
-                        <div class="main">
-
+                <?php foreach ($productos as $producto): ?>
+                    <div class="producto_list">
+                        <div class="imgs">
+                            <div class="main">
+                                <div class="icons">
+                                    <div class="main-img">
+                                        <div class="tooltip">
+                                            <i class="fa fa-gem"></i>
+                                            <span class="tooltiptext">Principal</span>
+                                        </div>
+                                    </div>
+                                    <div class="del">
+                                        <div class="tooltip">
+                                            <i class="fas fa-trash-alt"></i>
+                                            <span class="tooltiptext">Eliminar</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <img src="" alt="">
+                            </div>
+                            <div class="others">
+                                <img src="" alt="">
+                                <img src="" alt="">
+                                <img src="" alt="">
+                                <img src="" alt="">
+                                <img src="" alt="">
+                                <img src="" alt="">
+                                <div class="add_img">
+                                    <i class="fas fa-plus-circle fa-lg"></i>
+                                </div>
+                            </div>
                         </div>
-                        <div class="others">
-                            <img src="" alt="">
-                            <img src="" alt="">
-                            <img src="" alt="">
-                            <img src="" alt="">
-                            <img src="" alt="">
-                            <img src="" alt="">
-                            <div class="add_img">
-                                <i class="fas fa-plus-circle fa-lg"></i>
+                        <div class="info">
+                            <div class="field">
+                                <span class="label">Nombre producto</span>
+                                <span class="value"><?= $producto['nombre'] ?></span>
+                            </div>
+                            <div class="field">
+                                <span class="label">Categoria</span>
+                                <span class="value"><?= $producto['id_categoria'] ?></span>
+                            </div>
+                            <div class="field">
+                                <span class="label">Precio</span>
+                                <span class="value"><?= '$' . $producto['precio'] ?></span>
+                            </div>
+                            <div class="field">
+                                <span class="label">Descripcion del producto</span>
+                                <span class="value"><?= $producto['descripcion'] ?></span>
+                            </div>
+                        </div>
+                        <div class="options">
+                            <div class="opt disponible">
+                                <span>Disponible</span>
+                                <div class="icon">
+                                    <i class="fas fa-toggle-on"></i>
+                                </div>
+                            </div>
+                            <div class="opt borrar">
+                                <span>Eliminar</span>
+                                <div class="icon">
+                                    <i class="fa fa-times-circle"></i>
+                                </div>
+                            </div>
+                            <div class="opt editar">
+                                <span>Editar</span>
+                                <div class="icon">
+                                    <i class="fa fa-cog"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="info">
-                        <div class="field">
-                            <span class="label">Nombre producto</span>
-                            <span class="value">Nombre producto</span>
-                        </div>
-                        <div class="field">
-                            <span class="label">Categoria</span>
-                            <span class="value">Categoria</span>
-                        </div>
-                        <div class="field">
-                            <span class="label">Precio</span>
-                            <span class="value">$00.00</span>
-                        </div>
-                        <div class="field">
-                            <span class="label">Descripcion del producto</span>
-                            <span class="value">Descripcion</span>
-                        </div>
-                    </div>
-                    <div class="options">
-                        <div class="opt disponible">
-                            <span>Disponible</span>
-                            <div class="icon">
-                                <i class="fas fa-toggle-on"></i>
-                            </div>
-                        </div>
-                        <div class="opt borrar">
-                            <span>Eliminar</span>
-                            <div class="icon">
-                                <i class="fa fa-times-circle"></i>
-                            </div>
-                        </div>
-                        <div class="opt editar">
-                            <span>Editar</span>
-                            <div class="icon">
-                                <i class="fa fa-cog"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="producto_list">
-                    <div class="imgs">
-                        <div class="main">
-
-                        </div>
-                        <div class="others">
-                            <img src="" alt="">
-                            <img src="" alt="">
-                            <div class="add_img">
-                                <i class="fas fa-plus-circle fa-lg"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="info">
-                        <div class="field">
-                            <span class="label">Nombre producto</span>
-                            <span class="value">Nombre producto</span>
-                        </div>
-                        <div class="field">
-                            <span class="label">Categoria</span>
-                            <span class="value">Categoria</span>
-                        </div>
-                        <div class="field">
-                            <span class="label">Precio</span>
-                            <span class="value">$00.00</span>
-                        </div>
-                        <div class="field">
-                            <span class="label">Descripcion del producto</span>
-                            <span class="value">Descripcion</span>
-                        </div>
-                    </div>
-                    <div class="options">
-                        <div class="opt disponible">
-                            <span>Disponible</span>
-                            <div class="icon">
-                                <i class="fas fa-toggle-on"></i>
-                            </div>
-                        </div>
-                        <div class="opt borrar">
-                            <span>Eliminar</span>
-                            <div class="icon">
-                                <i class="fa fa-times-circle"></i>
-                            </div>
-                        </div>
-                        <div class="opt editar">
-                            <span>Editar</span>
-                            <div class="icon">
-                                <i class="fa fa-cog"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="producto_list">
-                    <div class="imgs">
-                        <div class="main">
-
-                        </div>
-                        <div class="others">
-                            <img src="" alt="">
-                            <img src="" alt="">
-                            <img src="" alt="">
-                            <div class="add_img">
-                                <i class="fas fa-plus-circle fa-lg"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="info">
-                        <div class="field">
-                            <span class="label">Nombre producto</span>
-                            <span class="value">Nombre producto</span>
-                        </div>
-                        <div class="field">
-                            <span class="label">Categoria</span>
-                            <span class="value">Categoria</span>
-                        </div>
-                        <div class="field">
-                            <span class="label">Precio</span>
-                            <span class="value">$00.00</span>
-                        </div>
-                        <div class="field">
-                            <span class="label">Descripcion del producto</span>
-                            <span class="value">Descripcion</span>
-                        </div>
-                    </div>
-                    <div class="options">
-                        <div class="opt disponible">
-                            <span>Disponible</span>
-                            <div class="icon">
-                                <i class="fas fa-toggle-on"></i>
-                            </div>
-                        </div>
-                        <div class="opt borrar">
-                            <span>Eliminar</span>
-                            <div class="icon">
-                                <i class="fa fa-times-circle"></i>
-                            </div>
-                        </div>
-                        <div class="opt editar">
-                            <span>Editar</span>
-                            <div class="icon">
-                                <i class="fa fa-cog"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="producto_list">
-                    <div class="imgs">
-                        <div class="main">
-
-                        </div>
-                        <div class="others">
-                            <div class="add_img">
-                                <i class="fas fa-plus-circle fa-lg"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="info">
-                        <div class="field">
-                            <span class="label">Nombre producto</span>
-                            <span class="value">Nombre producto</span>
-                        </div>
-                        <div class="field">
-                            <span class="label">Categoria</span>
-                            <span class="value">Categoria</span>
-                        </div>
-                        <div class="field">
-                            <span class="label">Precio</span>
-                            <span class="value">$00.00</span>
-                        </div>
-                        <div class="field">
-                            <span class="label">Descripcion del producto</span>
-                            <span class="value">Descripcion</span>
-                        </div>
-                    </div>
-                    <div class="options">
-                        <div class="opt disponible">
-                            <span>Disponible</span>
-                            <div class="icon">
-                                <i class="fas fa-toggle-on"></i>
-                            </div>
-                        </div>
-                        <div class="opt borrar">
-                            <span>Eliminar</span>
-                            <div class="icon">
-                                <i class="fa fa-times-circle"></i>
-                            </div>
-                        </div>
-                        <div class="opt editar">
-                            <span>Editar</span>
-                            <div class="icon">
-                                <i class="fa fa-cog"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php endforeach ?>
             </div>
+            <a href="#" class="add_product">
+                <div class="icon"><i class="fa fa-plus-circle"></i></div>
+            </a>
         </section>
     </main>
 

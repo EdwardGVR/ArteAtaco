@@ -43,7 +43,9 @@
     </nav>
     <main>
         <div class="bar">
+            <a href="index.php"><i class="fa fa-home"></i></a>
             <h1>Inicio</h1>
+            <a href="#" class="logout" title="Cerrar sesion"><i class="fa fa-times-circle"></i></a>
         </div>
         <section>
             <div class="title">

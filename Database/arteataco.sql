@@ -31,7 +31,7 @@ CREATE TABLE `carrito` (
   KEY `carrito_usuario_idx` (`id_user`),
   KEY `carrito_user_idx` (`id_user`),
   CONSTRAINT `carrito_user` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -162,6 +162,34 @@ INSERT INTO `direcciones_persistence` VALUES (1,2,1,'Direccion 1','El Salvador',
 UNLOCK TABLES;
 
 --
+-- Table structure for table `imgs_prods`
+--
+
+DROP TABLE IF EXISTS `imgs_prods`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `imgs_prods` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_prod` int(11) NOT NULL,
+  `ruta` varchar(150) NOT NULL,
+  `principal` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `prodImgs_prod_idx` (`id_prod`),
+  CONSTRAINT `prodImgs_prod` FOREIGN KEY (`id_prod`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `imgs_prods`
+--
+
+LOCK TABLES `imgs_prods` WRITE;
+/*!40000 ALTER TABLE `imgs_prods` DISABLE KEYS */;
+INSERT INTO `imgs_prods` VALUES (1,1,'....',0);
+/*!40000 ALTER TABLE `imgs_prods` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `metodos_pago`
 --
 
@@ -275,7 +303,7 @@ CREATE TABLE `temporal` (
   CONSTRAINT `tmp_direccion` FOREIGN KEY (`id_direccion`) REFERENCES `direcciones` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `tmp_pago` FOREIGN KEY (`id_pago`) REFERENCES `metodos_pago` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `tmp_usuario` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -313,7 +341,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'fuljencio','Prueba Formulario','Apellidos Prueba','fuljencio@gmail.com','12345',NULL,NULL),(2,'edward','Edward Ernesto','Guevara','edwardgvr@gmail.com','asdfg','images/user/profile/user_img_2.jpg',NULL),(3,'prueba4','Usuario de prueba','Prueba','prueba@mail.com','asdfg',NULL,'555555'),(4,'usuario','usuario nombre','prueba apellido','nombre@apellidos.com','usuario',NULL,NULL),(5,'test5','registro','prueba','registro@prueba.com','asdfg',NULL,'55555555'),(6,'test6','usuario','numero6','test6@mail.com','asdfg','images/user/profile/user_img_6.jpg',NULL);
+INSERT INTO `usuarios` VALUES (1,'fuljencio','Fuljencio Imbecil','Apellidos Prueba','fuljencio@gmail.com','12345',NULL,NULL),(2,'edward','Edward Ernesto','Guevara','edwardgvr@gmail.com','asdfg','images/user/profile/user_img_2.jpg',NULL),(3,'prueba4','Usuario de prueba','Prueba','prueba@mail.com','asdfg',NULL,'555555'),(4,'usuario','usuario nombre','prueba apellido','nombre@apellidos.com','usuario',NULL,NULL),(5,'test5','registro','prueba','registro@prueba.com','asdfg',NULL,'55555555'),(6,'test6','usuario','numero6','test6@mail.com','asdfg','images/user/profile/user_img_6.jpg',NULL);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -350,4 +378,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-19 15:54:00
+-- Dump completed on 2018-05-04 17:00:01

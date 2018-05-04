@@ -128,9 +128,12 @@
                                     </div>
                                 </div>
                                 
-                                <div class="add_img">
-                                    <i class="fas fa-plus-circle fa-lg"></i>
-                                </div>
+                                <form class="add_img" action="" enctype="multipart/form-data" method="POST">
+                                    <input type="hidden" name="idCat" value="<?= $producto['id_categoria'] ?>">
+                                    <input type="hidden" name="idProd" value="<?= $producto['id'] ?>">
+                                    <input type="file" onchange="this.form.submit()" id="uploadImgProd<?= $producto['id'] ?>" name="newImg" accept="image/*"/>
+                                    <label for="uploadImgProd<?= $producto['id'] ?>"><i class="fas fa-plus-circle fa-lg"></i></label>
+                                </form>
                             </div>
                         </div>
                         <div class="info">

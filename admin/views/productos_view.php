@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">   
-    <link rel="stylesheet" href="css/styles.css">
+    <link href="css/lightbox.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
     <title>Productos</title>
 </head>
 <body>
@@ -49,7 +50,7 @@
         </div>
         <section>
             <div class="title">
-                <h2>Todos los productos</h2>
+                <h2>Viendo: Todos los productos</h2>
                 <hr>
             </div>
             <div class="contenedor_productos">
@@ -58,7 +59,10 @@
                         <div class="imgs">
                             <div class="main">
                                 <div class="icons">
-                                    <div class="bg"><i class="fa fa-eye"></i></div>
+                                    <a href="http://placeimg.com/400/500/tech" class="bg" data-lightbox="producto<?= $producto['id'] ?>">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+                                    <!-- <div class="bg"><i class="fa fa-eye"></i></div> -->
                                     <div class="main-img">
                                         <div class="tooltip">
                                             <i class="fa fa-star"></i>
@@ -78,7 +82,9 @@
                                 <div class="other-img">
                                     <div class="img">
                                         <img src="http://placeimg.com/50/50/any" alt="">
-                                        <div class="bg"><i class="fa fa-eye"></i></div>
+                                        <a href="http://placeimg.com/400/500/any" class="bg" data-lightbox="producto<?= $producto['id'] ?>">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
                                     </div>
                                     <div class="icons">
                                         <span class="set-main"><i class="fa fa-star"></i></span>
@@ -88,7 +94,9 @@
                                 <div class="other-img">
                                     <div class="img">
                                         <img src="http://placeimg.com/50/50/animals" alt="">
-                                        <div class="bg"><i class="fa fa-eye"></i></div>
+                                        <a href="http://placeimg.com/400/500/animals" class="bg" data-lightbox="producto<?= $producto['id'] ?>">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
                                     </div>
                                     <div class="icons">
                                         <span class="set-main"><i class="fa fa-star"></i></span>
@@ -98,7 +106,9 @@
                                 <div class="other-img">
                                     <div class="img">
                                         <img src="http://placeimg.com/50/50/nature" alt="">
-                                        <div class="bg"><i class="fa fa-eye"></i></div>
+                                        <a href="http://placeimg.com/400/500/nature" class="bg" data-lightbox="producto<?= $producto['id'] ?>">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
                                     </div>
                                     <div class="icons">
                                         <span class="set-main"><i class="fa fa-star"></i></span>
@@ -107,8 +117,10 @@
                                 </div>
                                 <div class="other-img">
                                     <div class="img">
-                                        <img src="http://placeimg.com/50/50/sepia" alt="">
-                                        <div class="bg"><i class="fa fa-eye"></i></div>
+                                        <img src="http://placeimg.com/50/50/arch" alt="">
+                                        <a href="http://placeimg.com/400/500/arch" class="bg" data-lightbox="producto<?= $producto['id'] ?>">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
                                     </div>
                                     <div class="icons">
                                         <span class="set-main"><i class="fa fa-star"></i></span>
@@ -168,6 +180,7 @@
         </section>
     </main>
 
+    <script src="js/lightbox-plus-jquery.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

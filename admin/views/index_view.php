@@ -158,7 +158,7 @@
                 </article>
             </div>
             <div class="button">
-                <a href="#">Ver todos</a>
+                <a href="pedidos.php">Ver todos</a>
             </div>
         </section>
 
@@ -224,7 +224,7 @@
                 </article>
             </div>
             <div class="button">
-                <a href="#">Ver todos</a>
+                <a href="productos.php">Ver todos</a>
             </div>
         </section>
     </main>

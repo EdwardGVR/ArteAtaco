@@ -79,61 +79,38 @@
                                 <img src="http://placeimg.com/180/180/tech" alt="">
                             </div>
                             <div class="others">
-                                <div class="other-img">
-                                    <div class="img">
-                                        <img src="http://placeimg.com/50/50/any" alt="">
-                                        <a href="http://placeimg.com/400/500/any" class="bg" data-lightbox="producto<?= $producto['id'] ?>">
-                                            <i class="fa fa-eye"></i>
-                                        </a>
-                                    </div>
-                                    <div class="icons">
-                                        <span class="set-main"><i class="fa fa-star"></i></span>
-                                        <span class="delete"><i class="fas fa-trash-alt"></i></span>
-                                    </div>
-                                </div>
-                                <div class="other-img">
-                                    <div class="img">
-                                        <img src="http://placeimg.com/50/50/animals" alt="">
-                                        <a href="http://placeimg.com/400/500/animals" class="bg" data-lightbox="producto<?= $producto['id'] ?>">
-                                            <i class="fa fa-eye"></i>
-                                        </a>
-                                    </div>
-                                    <div class="icons">
-                                        <span class="set-main"><i class="fa fa-star"></i></span>
-                                        <span class="delete"><i class="fas fa-trash-alt"></i></span>
-                                    </div>
-                                </div>
-                                <div class="other-img">
-                                    <div class="img">
-                                        <img src="http://placeimg.com/50/50/nature" alt="">
-                                        <a href="http://placeimg.com/400/500/nature" class="bg" data-lightbox="producto<?= $producto['id'] ?>">
-                                            <i class="fa fa-eye"></i>
-                                        </a>
-                                    </div>
-                                    <div class="icons">
-                                        <span class="set-main"><i class="fa fa-star"></i></span>
-                                        <span class="delete"><i class="fas fa-trash-alt"></i></span>
-                                    </div>
-                                </div>
-                                <div class="other-img">
-                                    <div class="img">
-                                        <img src="http://placeimg.com/50/50/arch" alt="">
-                                        <a href="http://placeimg.com/400/500/arch" class="bg" data-lightbox="producto<?= $producto['id'] ?>">
-                                            <i class="fa fa-eye"></i>
-                                        </a>
-                                    </div>
-                                    <div class="icons">
-                                        <span class="set-main"><i class="fa fa-star"></i></span>
-                                        <span class="delete"><i class="fas fa-trash-alt"></i></span>
-                                    </div>
-                                </div>
+                                <?php foreach ($imgsProds as $imgProd): ?>
+                                    <?php if ($imgProd['id_prod'] == $producto['id']): ?>
+                                        <?php $cantImgsPorProducto++ ?>
+                                        <div class="other-img">
+                                            <div class="img">
+                                                <img src="../<?= $imgProd['ruta'] ?>" alt="">
+                                                <a href="../<?= $imgProd['ruta'] ?>" class="bg" data-lightbox="producto<?= $producto['id'] ?>">
+                                                    <i class="fa fa-eye"></i>
+                                                </a>
+                                            </div>
+                                            <form action="" class="icons" method="POST">
+                                                <input type="hidden" name="imgId" value="<?= $imgProd['id'] ?>">
+                                                <input type="hidden" name="imgPath" value="<?= $imgProd['ruta'] ?>">
+                                                <input type="submit" name="setMainImg" id="setMainImg<?= $imgProd['id'] ?>">
+                                                <input type="submit" name="deleteImg" id="deleteImg<?= $imgProd['id'] ?>">
+                                                <label for="setMainImg<?= $imgProd['id'] ?>" class="set-main"><i class="fa fa-star"></i></label>
+                                                <label for="deleteImg<?= $imgProd['id'] ?>" class="delete"><i class="fas fa-trash-alt"></i></label>
+                                            </form>
+                                        </div>
+                                    <?php else: ?>
+                                        <?php $cantImgsPorProducto = 0 ?>
+                                    <?php endif ?>
+                                <?php endforeach ?>
                                 
-                                <form class="add_img" action="" enctype="multipart/form-data" method="POST">
-                                    <input type="hidden" name="idCat" value="<?= $producto['id_categoria'] ?>">
-                                    <input type="hidden" name="idProd" value="<?= $producto['id'] ?>">
-                                    <input type="file" onchange="this.form.submit()" id="uploadImgProd<?= $producto['id'] ?>" name="newImg" accept="image/*"/>
-                                    <label for="uploadImgProd<?= $producto['id'] ?>"><i class="fas fa-plus-circle fa-lg"></i></label>
-                                </form>
+                                <?php if ($cantImgsPorProducto < 5): ?>
+                                    <form class="add_img" action="" enctype="multipart/form-data" method="POST">
+                                        <input type="hidden" name="idCat" value="<?= $producto['id_categoria'] ?>">
+                                        <input type="hidden" name="idProd" value="<?= $producto['id'] ?>">
+                                        <input type="file" onchange="this.form.submit()" id="uploadImgProd<?= $producto['id'] ?>" name="newImg" accept="image/*"/>
+                                        <label for="uploadImgProd<?= $producto['id'] ?>"><i class="fas fa-plus-circle fa-lg"></i></label>
+                                    </form>
+                                <?php endif ?>
                             </div>
                         </div>
                         <div class="info">

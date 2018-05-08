@@ -13,6 +13,8 @@
         $query -> execute();
         $productos = $query->fetchall();
 
+        $cantImgsPorProducto = 0;
+
         // Comprobar que se recibe la imagen
         if (isset($_FILES['newImg'])) {
             $newImg = $_FILES['newImg'];
@@ -27,19 +29,86 @@
 
             if ($newImg['error']  == 1) {
                 $newImg_error = true;
-                echo 'error';
             } else {
-                // Si ya hay o no imagenes para el producto actual
+                // comprobar si ya hay o no imagenes para el producto actual
                 if ($numImgs['numImgs'] == 0) {
                     $numImg = 1;
                 } else {
                     $numImg = ++$numImgs['numImgs'];
                 }
 
-                $newImg['name'] = "prod" . $idProd . "_cat" . $idCat . "_img" . $numImg . ".jpg";
+                switch ($idCat) {
+                    case 1:
+                        $categoria = 'lamparas';
+                        break;
+                    case 2:
+                        $categoria = 'dreamcatchers';
+                        break;
+                    case 3:
+                        $categoria = 'banquetas';
+                        break;
+                    case 4:
+                        $categoria = 'llamadores';
+                        break;
+                    case 5:
+                        $categoria = 'bisuteria';
+                        break;
+                    case 6:
+                        $categoria = 'nequis';
+                        break;
+                    case 7:
+                        $categoria = 'instrumentos';
+                        break;
+                    case 8:
+                        $categoria = 'farolitos';
+                        break;
+                    default:
+                        $categoria = FALSE;
+                        $errCat = "Categoria no valida";
+                        break;
+                }
+
+                if ($categoria != FALSE) {
+                    if (substr($categoria, -1, 1) == 's') {
+                        $newImg['name'] = substr($categoria, 0, -1) . $idProd  . "_img" . $numImg . ".jpg";
+                    } else {
+                        $newImg['name'] = $categoria . $idProd  . "_img" . $numImg . ".jpg";
+                    }
+
+                    $uploadedFile = "../images/productos/" . $categoria . "/" . $newImg['name'];
+                    move_uploaded_file($_FILES['newImg']['tmp_name'], $uploadedFile);
+                    $successUpload = TRUE;
+                }
+
+                if ($successUpload) {
+                    $query = $conexion->prepare("INSERT INTO imgs_prods (id, id_prod, ruta, principal) VALUES (null, :id_prod, :ruta, 0)");
+                    $query->execute(array(
+                        ":id_prod" => $idProd, 
+                        ":ruta" => substr($uploadedFile, 3)
+                    ));
+                }
+
             }
         }
-    }
 
+        if (isset($_POST['deleteImg'])) {
+            $imgId = $_POST['imgId'];
+            $query = $conexion->prepare("DELETE FROM imgs_prods WHERE id = :idImg");
+            $query->execute(array(':idImg' => $imgId));
+            
+            unlink('../' . $_POST['imgPath']);
+        }
+
+        if (isset($_POST['setMainImg'])) {
+            $imgId = $_POST['imgId'];
+            $query = $conexion->prepare("UPDATE imgs_prods SET principal = 1 WHERE id = :idImg");
+            $query->execute(array(':idImg' => $imgId));
+        }
+
+        // Obtener las imagenes
+        $query = $conexion->prepare("SELECT * FROM imgs_prods");
+        $query->execute();
+        $imgsProds = $query->fetchall();
+    }
 
     require "views/productos_view.php";

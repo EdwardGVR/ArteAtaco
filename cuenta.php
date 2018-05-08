@@ -63,7 +63,6 @@ if ($conexion != false) {
 		// print_r($user_img['error']);
 		if ($user_img['error'] == 1) {
 			$img_upload_error = true;
-			// echo "Hubo un error al subir la imagen";
 		} else {
 			$user_img['name'] = "user_img_" . $iduser . ".jpg";
 			// print_r($user_img['name']);

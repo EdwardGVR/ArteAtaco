@@ -875,7 +875,7 @@ main section .title {
 
     /* height: 400px; */
     min-width: 200px;
-    /* width: 40%; */
+    width: 40%;
     background: #365272;
     padding: 10px;
     border-radius: 5px;
@@ -984,7 +984,7 @@ main section .title {
 
 .producto_list .imgs .others .other-img {
     width: 50px;
-    margin-right: 10px;
+    margin-right: 20px;
 }
 
 .producto_list .imgs .others .other-img .img {
@@ -1024,6 +1024,10 @@ main section .title {
     font-size: 0.8em;
 }
 
+.producto_list .imgs .others .other-img .icons input[type="submit"] {
+    display: none;
+}
+
 .producto_list .imgs .others .other-img .icons .set-main,
 .producto_list .imgs .others .other-img .icons .delete {
     cursor: pointer;
@@ -1058,7 +1062,7 @@ main section .title {
     justify-content: center;
     align-items: center;
     min-width: 50px;
-    margin-left: 10px;
+    /* margin-left: 10px; */
     margin-bottom: 10px;
     height: 50px;
     color: #fff;
@@ -1068,6 +1072,7 @@ main section .title {
     transition: all ease 0.3s;
     font-size: 1.5em;
     /* border: none; */
+    /* margin: auto; */
 }
 
 .producto_list .imgs .others .add_img input[name="newImg"] {

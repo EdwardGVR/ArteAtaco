@@ -1032,6 +1032,11 @@ main section .title {
     font-size: 0.8em;
 }
 
+.producto_list .imgs .others .other-img .icons .currentMain {
+    color: #ecf00e;
+    margin-top: 1px;    
+}
+
 .producto_list .imgs .others .other-img .icons input[type="submit"] {
     display: none;
 }
@@ -1216,7 +1221,8 @@ main section .title {
 
 .tooltip .tooltiptext {
     visibility: hidden;
-    width: 120px;
+    width: 100px;
+    min-width: 100px;
     background: #2F80ED;
     color: #fff;
     text-align: center;
@@ -1225,7 +1231,7 @@ main section .title {
     position: absolute;
     z-index: 1;
     bottom: 170%;
-    left: 50%;
+    left: -50%;
     margin-left: -60px;
     opacity: 0;
     transition: all ease 0.3s;

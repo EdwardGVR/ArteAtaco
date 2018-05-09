@@ -176,7 +176,7 @@ CREATE TABLE `imgs_prods` (
   PRIMARY KEY (`id`),
   KEY `prodImgs_prod_idx` (`id_prod`),
   CONSTRAINT `prodImgs_prod` FOREIGN KEY (`id_prod`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -185,7 +185,7 @@ CREATE TABLE `imgs_prods` (
 
 LOCK TABLES `imgs_prods` WRITE;
 /*!40000 ALTER TABLE `imgs_prods` DISABLE KEYS */;
-INSERT INTO `imgs_prods` VALUES (1,1,'images/productos/lamparas/lampara1_img1.jpg',1);
+INSERT INTO `imgs_prods` VALUES (1,1,'images/productos/lamparas/lampara1_img1.jpg',0),(3,1,'images/productos/lamparas/lampara1_img2.jpg',1);
 /*!40000 ALTER TABLE `imgs_prods` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -378,4 +378,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-08 21:10:30
+-- Dump completed on 2018-05-09 12:33:11

@@ -60,27 +60,10 @@
                             <div class="main">
 
                                 <?php foreach ($imgsProds as $imgProd): ?>
-                                    <?php if ($imgProd['id_prod'] == $producto['id'] && $imgProd['principal'] == 1): ?>
-                                       
-                                        <div class="icons">
-                                            <a href="../<?= $imgProd['ruta'] ?>" class="bg" data-lightbox="producto<?= $producto['id'] ?>">
-                                                <i class="fa fa-eye"></i>
-                                            </a>
-                                            <div class="main-img">
-                                                <div class="tooltip">
-                                                    <i class="fa fa-star"></i>
-                                                    <span class="tooltiptext">Principal</span>
-                                                </div>
-                                            </div>
-                                            <div class="del">
-                                                <div class="tooltip">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                    <span class="tooltiptext">Eliminar</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
+                                    <?php if ($imgProd['id_prod'] == $producto['id'] && $imgProd['principal'] == 1): ?>                                        
                                         <img src="../<?= $imgProd['ruta'] ?>" alt="">
+                                    <?php else: ?>
+                                        <span>No hay imagenes para este producto</span>
                                     <?php endif?>
                                 <?php endforeach ?>
                                 <span>No se ha definido imagen principal <i class="fa fa-star-half"></i></span>
@@ -97,11 +80,16 @@
                                                 </a>
                                             </div>
                                             <form action="" class="icons" method="POST">
+                                                <input type="hidden" name="prodId" value="<?= $producto['id'] ?>">
                                                 <input type="hidden" name="imgId" value="<?= $imgProd['id'] ?>">
                                                 <input type="hidden" name="imgPath" value="<?= $imgProd['ruta'] ?>">
                                                 <input type="submit" name="setMainImg" id="setMainImg<?= $imgProd['id'] ?>">
                                                 <input type="submit" name="deleteImg" id="deleteImg<?= $imgProd['id'] ?>">
-                                                <label for="setMainImg<?= $imgProd['id'] ?>" class="set-main"><i class="fa fa-star"></i></label>
+                                                <?php if ($imgProd['principal'] == 0): ?>
+                                                    <label for="setMainImg<?= $imgProd['id'] ?>" class="set-main"><i class="fa fa-star"></i></label>
+                                                <?php else: ?>
+                                                    <i class="fa fa-star currentMain"></i>
+                                                <?php endif ?>
                                                 <label for="deleteImg<?= $imgProd['id'] ?>" class="delete"><i class="fas fa-trash-alt"></i></label>
                                             </form>
                                         </div>

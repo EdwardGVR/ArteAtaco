@@ -101,11 +101,15 @@
 
         if (isset($_POST['setMainImg'])) {
             $imgId = $_POST['imgId'];
+            $prodId = $_POST['prodId'];
             $query = $conexion->prepare("UPDATE imgs_prods SET principal = 1 WHERE id = :idImg");
             $query->execute(array(':idImg' => $imgId));
 
-            $query = $conexion->prepare("UPDATE imgs_prods SET principal = 0 WHERE id != :idImg");
-            $query->execute(array(':idImg' => $imgId));
+            $query = $conexion->prepare("UPDATE imgs_prods SET principal = 0 WHERE id != :idImg AND id_prod = :id_prod");
+            $query->execute(array(
+                ':idImg' => $imgId,
+                ':id_prod' => $prodId
+            ));
         }
 
         // Obtener las imagenes

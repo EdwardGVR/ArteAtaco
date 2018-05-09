@@ -964,6 +964,14 @@ main section .title {
     background: #6ea1e4;
 }
 
+.producto_list .imgs .main span {
+    margin: auto;
+    text-align: center; 
+    width: 100%;
+    font-style: italic;
+    font-size: 0.8em;
+}
+
 .producto_list .imgs .main img {
     width: 180px;
     height: 180px;

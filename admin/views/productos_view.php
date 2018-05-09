@@ -58,25 +58,32 @@
                     <div class="producto_list">
                         <div class="imgs">
                             <div class="main">
-                                <div class="icons">
-                                    <a href="http://placeimg.com/400/500/tech" class="bg" data-lightbox="producto<?= $producto['id'] ?>">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
-                                    <!-- <div class="bg"><i class="fa fa-eye"></i></div> -->
-                                    <div class="main-img">
-                                        <div class="tooltip">
-                                            <i class="fa fa-star"></i>
-                                            <span class="tooltiptext">Principal</span>
+
+                                <?php foreach ($imgsProds as $imgProd): ?>
+                                    <?php if ($imgProd['id_prod'] == $producto['id'] && $imgProd['principal'] == 1): ?>
+                                       
+                                        <div class="icons">
+                                            <a href="../<?= $imgProd['ruta'] ?>" class="bg" data-lightbox="producto<?= $producto['id'] ?>">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
+                                            <div class="main-img">
+                                                <div class="tooltip">
+                                                    <i class="fa fa-star"></i>
+                                                    <span class="tooltiptext">Principal</span>
+                                                </div>
+                                            </div>
+                                            <div class="del">
+                                                <div class="tooltip">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                    <span class="tooltiptext">Eliminar</span>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="del">
-                                        <div class="tooltip">
-                                            <i class="fas fa-trash-alt"></i>
-                                            <span class="tooltiptext">Eliminar</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <img src="http://placeimg.com/180/180/tech" alt="">
+                                        
+                                        <img src="../<?= $imgProd['ruta'] ?>" alt="">
+                                    <?php endif?>
+                                <?php endforeach ?>
+                                <span>No se ha definido imagen principal <i class="fa fa-star-half"></i></span>
                             </div>
                             <div class="others">
                                 <?php foreach ($imgsProds as $imgProd): ?>

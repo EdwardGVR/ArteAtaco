@@ -103,6 +103,9 @@
             $imgId = $_POST['imgId'];
             $query = $conexion->prepare("UPDATE imgs_prods SET principal = 1 WHERE id = :idImg");
             $query->execute(array(':idImg' => $imgId));
+
+            $query = $conexion->prepare("UPDATE imgs_prods SET principal = 0 WHERE id != :idImg");
+            $query->execute(array(':idImg' => $imgId));
         }
 
         // Obtener las imagenes

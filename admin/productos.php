@@ -112,6 +112,21 @@
             ));
         }
 
+        if (isset($_POST['setDisp'])) {
+            $idProd = $_POST['idProd'];
+            $currentDisp = $_POST['currentDisp'];
+
+            if ($currentDisp == 1) {
+                $query = $conexion->prepare("UPDATE productos SET disponible = 0 WHERE id = :idProd");
+                $query->execute(array(':idProd' => $idProd));
+            } elseif ($currentDisp == 0) {
+                $query = $conexion->prepare("UPDATE productos SET disponible = 1 WHERE id = :idProd");
+                $query->execute(array(':idProd' => $idProd));
+            }
+
+            header('Location: productos.php');
+        }
+
         // Obtener las imagenes
         $query = $conexion->prepare("SELECT * FROM imgs_prods");
         $query->execute();

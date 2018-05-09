@@ -55,98 +55,254 @@
             </div>
             <div class="contenedor_productos">
                 <?php foreach ($productos as $producto): ?>
-                    <div class="producto_list">
-                        <div class="imgs">
-                            <div class="main">
+                    <?php if ($producto['disponible'] == 1): ?>
+                        <div class="producto_list">
+                            <div class="imgs">
+                                <div class="main">
 
-                                <?php foreach ($imgsProds as $imgProd): ?>
-                                    <?php if ($imgProd['id_prod'] == $producto['id'] && $imgProd['principal'] == 1): ?>                                        
-                                        <img src="../<?= $imgProd['ruta'] ?>" alt="">
-                                    <?php else: ?>
-                                        <span>No hay imagenes para este producto</span>
-                                    <?php endif?>
-                                <?php endforeach ?>
-                                <span>No se ha definido imagen principal <i class="fa fa-star-half"></i></span>
-                            </div>
-                            <div class="others">
-                                <?php foreach ($imgsProds as $imgProd): ?>
-                                    <?php if ($imgProd['id_prod'] == $producto['id']): ?>
-                                        <?php $cantImgsPorProducto++ ?>
-                                        <div class="other-img">
-                                            <div class="img">
+                                    <?php foreach ($imgsProds as $imgProd): ?>
+                                        
+                                        <?php if ($imgProd['id_prod'] == $producto['id']): ?>
+                                    
+                                            <?php $imgsForThisProd = TRUE ?>
+                                            
+                                            <?php if ($imgProd['principal'] == 1): ?>
                                                 <img src="../<?= $imgProd['ruta'] ?>" alt="">
-                                                <a href="../<?= $imgProd['ruta'] ?>" class="bg" data-lightbox="producto<?= $producto['id'] ?>">
-                                                    <i class="fa fa-eye"></i>
-                                                </a>
+                                            <?php else: ?>
+                                                <span>No se ha definido im&aacute;gen principal <i class="fa fa-star-half"></i></span>
+                                            <?php endif ?>
+                                        
+                                        <?php else: ?>
+                                            <?php $imgsForThisProd = FALSE ?>
+                                        <?php endif?>
+
+                                    <?php endforeach ?>
+
+                                    <?php if (!$imgsForThisProd): ?>
+                                        <div class="noImgsText">
+                                            <span>No hay im&aacute;genes para este producto </span>
+                                            <div class="icons">
+                                                <i class="fa fa-images fa-2x"></i> <i class="fa fa-exclamation-circle fa-2x"></i>
                                             </div>
-                                            <form action="" class="icons" method="POST">
-                                                <input type="hidden" name="prodId" value="<?= $producto['id'] ?>">
-                                                <input type="hidden" name="imgId" value="<?= $imgProd['id'] ?>">
-                                                <input type="hidden" name="imgPath" value="<?= $imgProd['ruta'] ?>">
-                                                <input type="submit" name="setMainImg" id="setMainImg<?= $imgProd['id'] ?>">
-                                                <input type="submit" name="deleteImg" id="deleteImg<?= $imgProd['id'] ?>">
-                                                <?php if ($imgProd['principal'] == 0): ?>
-                                                    <label for="setMainImg<?= $imgProd['id'] ?>" class="set-main"><i class="fa fa-star"></i></label>
-                                                <?php else: ?>
-                                                    <i class="fa fa-star currentMain"></i>
-                                                <?php endif ?>
-                                                <label for="deleteImg<?= $imgProd['id'] ?>" class="delete"><i class="fas fa-trash-alt"></i></label>
-                                            </form>
+                                            <span>Para agregar haga click en</span>
+                                            <div class="icons">
+                                                <i class="fa fa-plus-circle"></i>
+                                            </div>
                                         </div>
-                                    <?php else: ?>
-                                        <?php $cantImgsPorProducto = 0 ?>
                                     <?php endif ?>
-                                <?php endforeach ?>
-                                
-                                <?php if ($cantImgsPorProducto < 5): ?>
-                                    <form class="add_img" action="" enctype="multipart/form-data" method="POST">
-                                        <input type="hidden" name="idCat" value="<?= $producto['id_categoria'] ?>">
-                                        <input type="hidden" name="idProd" value="<?= $producto['id'] ?>">
-                                        <input type="file" onchange="this.form.submit()" id="uploadImgProd<?= $producto['id'] ?>" name="newImg" accept="image/*"/>
-                                        <label for="uploadImgProd<?= $producto['id'] ?>"><i class="fas fa-plus-circle fa-lg"></i></label>
-                                    </form>
-                                <?php endif ?>
-                            </div>
-                        </div>
-                        <div class="info">
-                            <div class="field">
-                                <span class="label">Nombre producto</span>
-                                <span class="value name"><?= $producto['nombre'] ?></span>
-                            </div>
-                            <div class="field">
-                                <span class="label">Categoria</span>
-                                <span class="value"><?= $producto['nombre_cat'] ?></span>
-                            </div>
-                            <div class="field">
-                                <span class="label">Precio</span>
-                                <span class="value"><?= '$' . $producto['precio'] ?></span>
-                            </div>
-                            <div class="field">
-                                <span class="label">Descripcion del producto</span>
-                                <span class="value"><?= $producto['descripcion'] ?></span>
-                            </div>
-                        </div>
-                        <div class="options">
-                            <div class="opt disponible">
-                                <span>Disponible</span>
-                                <div class="icon">
-                                    <i class="fas fa-toggle-on"></i>
+
+                                </div>
+                                <div class="others">
+                                    <?php foreach ($imgsProds as $imgProd): ?>
+                                        <?php if ($imgProd['id_prod'] == $producto['id']): ?>
+                                            <?php $cantImgsPorProducto++ ?>
+                                            <div class="other-img">
+                                                <div class="img">
+                                                    <img src="../<?= $imgProd['ruta'] ?>" alt="">
+                                                    <a href="../<?= $imgProd['ruta'] ?>" class="bg" data-lightbox="producto<?= $producto['id'] ?>">
+                                                        <i class="fa fa-eye"></i>
+                                                    </a>
+                                                </div>
+                                                <form action="" class="icons" method="POST">
+                                                    <input type="hidden" name="prodId" value="<?= $producto['id'] ?>">
+                                                    <input type="hidden" name="imgId" value="<?= $imgProd['id'] ?>">
+                                                    <input type="hidden" name="imgPath" value="<?= $imgProd['ruta'] ?>">
+                                                    <input type="submit" name="setMainImg" id="setMainImg<?= $imgProd['id'] ?>">
+                                                    <input type="submit" name="deleteImg" id="deleteImg<?= $imgProd['id'] ?>">
+                                                    <?php if ($imgProd['principal'] == 0): ?>
+                                                        <label for="setMainImg<?= $imgProd['id'] ?>" class="set-main"><i class="fa fa-star"></i></label>
+                                                    <?php else: ?>
+                                                        <i class="fa fa-star currentMain"></i>
+                                                    <?php endif ?>
+                                                    <label for="deleteImg<?= $imgProd['id'] ?>" class="delete"><i class="fas fa-trash-alt"></i></label>
+                                                </form>
+                                            </div>
+                                        <?php else: ?>
+                                            <?php $cantImgsPorProducto = 0 ?>
+                                        <?php endif ?>
+                                    <?php endforeach ?>
+                                    
+                                    <?php if ($cantImgsPorProducto < 5): ?>
+                                        <form class="add_img" action="" enctype="multipart/form-data" method="POST">
+                                            <input type="hidden" name="idCat" value="<?= $producto['id_categoria'] ?>">
+                                            <input type="hidden" name="idProd" value="<?= $producto['id'] ?>">
+                                            <input type="file" onchange="this.form.submit()" id="uploadImgProd<?= $producto['id'] ?>" name="newImg" accept="image/*"/>
+                                            <label for="uploadImgProd<?= $producto['id'] ?>"><i class="fas fa-plus-circle fa-lg"></i></label>
+                                        </form>
+                                    <?php endif ?>
                                 </div>
                             </div>
-                            <div class="opt borrar">
-                                <span>Eliminar</span>
-                                <div class="icon">
-                                    <i class="fa fa-times-circle"></i>
+                            <div class="info">
+                                <div class="field">
+                                    <span class="label">Nombre</span>
+                                    <span class="value name"><?= $producto['nombre'] ?></span>
+                                </div>
+                                <div class="field">
+                                    <span class="label">Categor&iacute;a</span>
+                                    <span class="value"><?= $producto['nombre_cat'] ?></span>
+                                </div>
+                                <div class="field">
+                                    <span class="label">Precio</span>
+                                    <span class="value"><?= '$' . $producto['precio'] ?></span>
+                                </div>
+                                <div class="field">
+                                    <span class="label">Descripci&oacute;n</span>
+                                    <span class="value"><?= $producto['descripcion'] ?></span>
                                 </div>
                             </div>
-                            <div class="opt editar">
-                                <span>Editar</span>
-                                <div class="icon">
-                                    <i class="fa fa-cog"></i>
+                            <div class="options">
+                                <form action="" class="opt disponible" method="POST">
+                                    <input type="hidden" name="idProd" value="<?= $producto['id'] ?>">
+                                    <input type="hidden" name="currentDisp" value="<?= $producto['disponible'] ?>">
+                                    <input type="submit" name="setDisp" id="setDisp<?= $producto['id'] ?>">
+                                    <span>Disponible</span>
+                                    <div class="icon">
+                                        <?php if ($producto['disponible'] == 1): ?>
+                                            <label for="setDisp<?= $producto['id'] ?>"><i class="fas fa-toggle-on"></i></label>
+                                        <?php elseif ($producto['disponible'] == 0): ?>
+                                            <label for="setDisp<?= $producto['id'] ?>"><i class="fas fa-toggle-off"></i></label>
+                                        <?php endif ?>
+                                    </div>
+                                </form>
+                                <div class="opt borrar">
+                                    <span>Eliminar</span>
+                                    <div class="icon">
+                                        <i class="fa fa-times-circle"></i>
+                                    </div>
+                                </div>
+                                <div class="opt editar">
+                                    <span>Editar</span>
+                                    <div class="icon">
+                                        <i class="fa fa-edit"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    <?php elseif ($producto['disponible'] == 0):?>
+                       <div class="producto_list">
+                            <div class="imgs noDisp">
+                                <div class="main">
+
+                                    <?php foreach ($imgsProds as $imgProd): ?>
+                                        
+                                        <?php if ($imgProd['id_prod'] == $producto['id']): ?>
+                                    
+                                            <?php $imgsForThisProd = TRUE ?>
+                                            
+                                            <?php if ($imgProd['principal'] == 1): ?>
+                                                <img src="../<?= $imgProd['ruta'] ?>" alt="">
+                                            <?php else: ?>
+                                                <span>No se ha definido im&aacute;gen principal <i class="fa fa-star-half"></i></span>
+                                            <?php endif ?>
+                                        
+                                        <?php else: ?>
+                                            <?php $imgsForThisProd = FALSE ?>
+                                        <?php endif?>
+
+                                    <?php endforeach ?>
+
+                                    <?php if (!$imgsForThisProd): ?>
+                                        <div class="noImgsText">
+                                            <span>No hay im&aacute;genes para este producto </span>
+                                            <div class="icons">
+                                                <i class="fa fa-images fa-2x"></i> <i class="fa fa-exclamation-circle fa-2x"></i>
+                                            </div>
+                                            <span>Para agregar haga click en</span>
+                                            <div class="icons">
+                                                <i class="fa fa-plus-circle"></i>
+                                            </div>
+                                        </div>
+                                    <?php endif ?>
+
+                                </div>
+                                <div class="others">
+                                    <?php foreach ($imgsProds as $imgProd): ?>
+                                        <?php if ($imgProd['id_prod'] == $producto['id']): ?>
+                                            <?php $cantImgsPorProducto++ ?>
+                                            <div class="other-img">
+                                                <div class="img">
+                                                    <img src="../<?= $imgProd['ruta'] ?>" alt="">
+                                                    <a href="../<?= $imgProd['ruta'] ?>" class="bg" data-lightbox="producto<?= $producto['id'] ?>">
+                                                        <i class="fa fa-eye"></i>
+                                                    </a>
+                                                </div>
+                                                <form action="" class="icons" method="POST">
+                                                    <input type="hidden" name="prodId" value="<?= $producto['id'] ?>">
+                                                    <input type="hidden" name="imgId" value="<?= $imgProd['id'] ?>">
+                                                    <input type="hidden" name="imgPath" value="<?= $imgProd['ruta'] ?>">
+                                                    <input type="submit" name="setMainImg" id="setMainImg<?= $imgProd['id'] ?>">
+                                                    <input type="submit" name="deleteImg" id="deleteImg<?= $imgProd['id'] ?>">
+                                                    <?php if ($imgProd['principal'] == 0): ?>
+                                                        <label for="setMainImg<?= $imgProd['id'] ?>" class="set-main"><i class="fa fa-star"></i></label>
+                                                    <?php else: ?>
+                                                        <i class="fa fa-star currentMain"></i>
+                                                    <?php endif ?>
+                                                    <label for="deleteImg<?= $imgProd['id'] ?>" class="delete"><i class="fas fa-trash-alt"></i></label>
+                                                </form>
+                                            </div>
+                                        <?php else: ?>
+                                            <?php $cantImgsPorProducto = 0 ?>
+                                        <?php endif ?>
+                                    <?php endforeach ?>
+                                    
+                                    <?php if ($cantImgsPorProducto < 5): ?>
+                                        <form class="add_img" action="" enctype="multipart/form-data" method="POST">
+                                            <input type="hidden" name="idCat" value="<?= $producto['id_categoria'] ?>">
+                                            <input type="hidden" name="idProd" value="<?= $producto['id'] ?>">
+                                            <input type="file" onchange="this.form.submit()" id="uploadImgProd<?= $producto['id'] ?>" name="newImg" accept="image/*"/>
+                                            <label for="uploadImgProd<?= $producto['id'] ?>"><i class="fas fa-plus-circle fa-lg"></i></label>
+                                        </form>
+                                    <?php endif ?>
+                                </div>
+                            </div>
+                            <div class="info noDisp">
+                                <div class="field">
+                                    <span class="label">Nombre</span>
+                                    <span class="value name"><?= $producto['nombre'] ?></span>
+                                </div>
+                                <div class="field">
+                                    <span class="label">Categor&iacute;a</span>
+                                    <span class="value"><?= $producto['nombre_cat'] ?></span>
+                                </div>
+                                <div class="field">
+                                    <span class="label">Precio</span>
+                                    <span class="value"><?= '$' . $producto['precio'] ?></span>
+                                </div>
+                                <div class="field">
+                                    <span class="label">Descripci&oacute;n</span>
+                                    <span class="value"><?= $producto['descripcion'] ?></span>
+                                </div>
+                            </div>
+                            <div class="options noDisp">
+                                <form action="" class="opt disponible" method="POST">
+                                    <input type="hidden" name="idProd" value="<?= $producto['id'] ?>">
+                                    <input type="hidden" name="currentDisp" value="<?= $producto['disponible'] ?>">
+                                    <input type="submit" name="setDisp" id="setDisp<?= $producto['id'] ?>">
+                                    <span>Disponible</span>
+                                    <div class="icon">
+                                        <?php if ($producto['disponible'] == 1): ?>
+                                            <label for="setDisp<?= $producto['id'] ?>"><i class="fas fa-toggle-on"></i></label>
+                                        <?php elseif ($producto['disponible'] == 0): ?>
+                                            <label for="setDisp<?= $producto['id'] ?>"><i class="fas fa-toggle-off"></i></label>
+                                        <?php endif ?>
+                                    </div>
+                                </form>
+                                <div class="opt borrar">
+                                    <span>Eliminar</span>
+                                    <div class="icon">
+                                        <i class="fa fa-times-circle"></i>
+                                    </div>
+                                </div>
+                                <div class="opt editar">
+                                    <span>Editar</span>
+                                    <div class="icon">
+                                        <i class="fa fa-edit"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif ?>
+
                 <?php endforeach ?>
             </div>
             <a href="#" class="add_product">

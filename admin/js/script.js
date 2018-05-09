@@ -29,3 +29,11 @@ for (let i = 0; i < updateOrderStatusBtns.length; i++) {
     });
 
 }
+
+// let deleteProducts = [...document.getElementsByClassName('')]
+
+// function confirmProdDel (e) {
+//     if (!confirm('Se eliminara el producto')) {
+//         e.preventDefault();
+//     }
+// }

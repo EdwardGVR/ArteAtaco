@@ -878,7 +878,8 @@ main section .title {
     width: 40%;
     background: #365272;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 5px 0 0 5px;
+    transition: all ease 0.3s;
 }
 
 .producto_list .imgs .main {
@@ -892,6 +893,18 @@ main section .title {
     background: #ccc;
     margin-bottom: 30px;
     border-radius: 5px;
+}
+
+.producto_list .imgs .main .noImgsText {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.producto_list .imgs .main .noImgsText .icons {
+    display: flex;
+    justify-content: space-around;
 }
 
 .producto_list .imgs .main .icons {
@@ -978,6 +991,7 @@ main section .title {
     /* background: #4a94d8; */
     position: absolute;
     border-radius: 5px;
+    z-index: 100;
 }
 
 .producto_list .imgs .others {
@@ -1034,7 +1048,7 @@ main section .title {
 
 .producto_list .imgs .others .other-img .icons .currentMain {
     color: #ecf00e;
-    margin-top: 1px;    
+    margin-top: 0px;    
 }
 
 .producto_list .imgs .others .other-img .icons input[type="submit"] {
@@ -1110,8 +1124,9 @@ main section .title {
     min-width: 170px;
     width: 60%;
     background: #80b2eb;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     /* box-shadow: 10px 0px 10px #000; */
+    transition: all ease 0.3s
 }
 
 .producto_list .info .field {
@@ -1121,7 +1136,7 @@ main section .title {
     min-width: 170px;
     padding: 0 20px;
     padding-top: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .producto_list .info .field span {
@@ -1137,8 +1152,14 @@ main section .title {
 }
 
 .producto_list .info .field .label {
+    width: auto;
+    padding: 5px;
+    border-radius: 5px;
     font-size: 1em;
-    font-style: italic;
+    /* font-style: italic; */
+    background: #b2d8ee;
+    cursor: default;
+    margin-bottom: 5px;
 }
 
 .producto_list .options {
@@ -1150,6 +1171,15 @@ main section .title {
     background: #98b8e2;
     border-radius: 0 5px 5px 0;
     padding: 10px;
+    transition: all ease 0.3s
+}
+
+.producto_list .options form.disponible input[type="submit"] {
+    display: none;
+}
+
+.producto_list .options form.disponible label {
+    cursor: pointer;
 }
 
 .producto_list .options .opt {
@@ -1209,6 +1239,38 @@ main section .title {
 
 .add_product .icon {
     color: #f5fcff;
+}
+
+.contenedor_productos .producto_list .imgs.noDisp {
+    background: #919090;
+    transition: all ease 0.3s
+}
+
+.producto_list .imgs.noDisp .others .other-img .icons {
+    background: #686868;
+}
+
+.producto_list .imgs.noDisp .others .add_img {
+    background: #686868;
+}
+
+.contenedor_productos .producto_list .info.noDisp {
+    background: #bbb9b9;   
+    transition: all ease 0.3s
+}
+
+.contenedor_productos .producto_list .info.noDisp .field .label {
+    background: #dbdada;
+}
+
+.contenedor_productos .producto_list .options.noDisp {
+    background: #e7e5e5;
+    transition: all ease 0.3s
+}
+
+.contenedor_productos .producto_list .options.noDisp .icon {
+    background: #b9b7b7;
+    color: #6e6e6e;
 }
 
 /***************************************** tooltip ********************************************/

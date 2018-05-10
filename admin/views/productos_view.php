@@ -136,19 +136,42 @@
                             <form action="#" class="info" method="POST">
                                 <div class="field">
                                     <span class="label">Nombre</span>
-                                    <input type="text" name="nombreProd" class="value name" value="<?= $producto['nombre']?>" disabled></input>
+                                    <input 
+                                        type="text"
+                                        name="nombreProd"
+                                        class="value name valueProd<?= $producto['id'] ?>"
+                                        value="<?= $producto['nombre']?>"
+                                        disabled>
+                                    </input>
                                 </div>
                                 <div class="field">
                                     <span class="label">Categor&iacute;a</span>
-                                    <input type="text" name="catProd" class="value" value="<?= $producto['nombre_cat'] ?>" disabled></input>
+                                    <input 
+                                        type="text" 
+                                        name="catProd" 
+                                        class="value valueProd<?= $producto['id'] ?>" 
+                                        value="<?= $producto['nombre_cat'] ?>" 
+                                        disabled>
+                                    </input>
                                 </div>
                                 <div class="field">
                                     <span class="label">Precio</span>
-                                    <input type="text" name="precioProd" class="value" value="<?= '$' . $producto['precio'] ?>" disabled></input>
+                                    <input 
+                                        type="text" 
+                                        name="precioProd" 
+                                        class="value valueProd<?= $producto['id'] ?>" 
+                                        value="<?= '$' . $producto['precio'] ?>" 
+                                        disabled>
+                                    </input>
                                 </div>
                                 <div class="field">
                                     <span class="label">Descripci&oacute;n</span>
-                                    <textarea name="descProd" class="value" placeholder="<?= $producto['descripcion'] ?>" disabled><?= $producto['descripcion'] ?></textarea>
+                                    <textarea 
+                                        name="descProd" 
+                                        class="value valueProd<?= $producto['id'] ?>" 
+                                        placeholder="<?= $producto['descripcion'] ?>" 
+                                        disabled><?= $producto['descripcion'] ?>
+                                    </textarea>
                                 </div>
                             </form>
 
@@ -179,7 +202,20 @@
                                 <div class="opt editProd">
                                     <span>Editar</span>
                                     <div class="icon">
-                                        <i class="fa fa-edit"></i>
+                                        <i class="fa fa-edit <?= $producto['id'] ?>"></i>
+                                    </div>
+                                </div>
+
+                                <form action="#" class="hidden editProd<?= $producto['id'] ?>" method="POST">
+                                    <span>Enviar</span>
+                                    <div class="icon">
+                                        <i class="fa fa-check-circle"></i>
+                                    </div>
+                                </form>
+                                <div class="hidden cancelEdit editProd<?= $producto['id'] ?>">
+                                    <span>Cancelar</span>
+                                    <div class="icon">
+                                        <i class="fa fa-times-circle"></i>
                                     </div>
                                 </div>
                             </div>

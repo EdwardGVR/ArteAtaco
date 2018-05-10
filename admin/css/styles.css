@@ -1202,6 +1202,10 @@ main section .title {
     transition: all ease 0.3s
 }
 
+.producto_list .options .hidden {
+    display: none;
+}
+
 .producto_list .options form.disponible input[type="submit"],
 .producto_list .options form.borrar input[type="submit"] {
     display: none;

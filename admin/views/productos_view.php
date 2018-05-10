@@ -132,24 +132,26 @@
                                     <?php endif ?>
                                 </div>
                             </div>
-                            <div class="info">
+                            
+                            <form action="#" class="info" method="POST">
                                 <div class="field">
                                     <span class="label">Nombre</span>
-                                    <span class="value name"><?= $producto['nombre'] ?></span>
+                                    <input type="text" name="nombreProd" class="value name" value="<?= $producto['nombre']?>" disabled></input>
                                 </div>
                                 <div class="field">
                                     <span class="label">Categor&iacute;a</span>
-                                    <span class="value"><?= $producto['nombre_cat'] ?></span>
+                                    <input type="text" name="catProd" class="value" value="<?= $producto['nombre_cat'] ?>" disabled></input>
                                 </div>
                                 <div class="field">
                                     <span class="label">Precio</span>
-                                    <span class="value"><?= '$' . $producto['precio'] ?></span>
+                                    <input type="text" name="precioProd" class="value" value="<?= '$' . $producto['precio'] ?>" disabled></input>
                                 </div>
                                 <div class="field">
                                     <span class="label">Descripci&oacute;n</span>
-                                    <span class="value"><?= $producto['descripcion'] ?></span>
+                                    <textarea name="descProd" class="value" placeholder="<?= $producto['descripcion'] ?>" disabled><?= $producto['descripcion'] ?></textarea>
                                 </div>
-                            </div>
+                            </form>
+
                             <div class="options">
                                 <form action="" class="opt disponible" method="POST">
                                     <input type="hidden" name="idProd" value="<?= $producto['id'] ?>">
@@ -164,13 +166,17 @@
                                         <?php endif ?>
                                     </div>
                                 </form>
-                                <div class="opt borrar">
+                                <form action="" class="opt borrar" method="POST">
+                                    <input type="hidden" name="idProd" value="<?= $producto['id'] ?>">
+                                    <input type="submit" name="deleteProd" id="deleteProd<?= $producto['id'] ?>">
                                     <span>Eliminar</span>
                                     <div class="icon">
-                                        <i class="fa fa-times-circle"></i>
+                                        <label for="deleteProd<?= $producto['id'] ?>" class="delProd">
+                                            <i class="fa fa-times-circle"></i>
+                                        </label>
                                     </div>
-                                </div>
-                                <div class="opt editar">
+                                </form>
+                                <div class="opt editProd">
                                     <span>Editar</span>
                                     <div class="icon">
                                         <i class="fa fa-edit"></i>

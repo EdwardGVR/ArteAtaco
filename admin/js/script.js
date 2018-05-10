@@ -1,39 +1,56 @@
-let updateOrderStatusBtns = [...document.getElementsByClassName('updOrderStat')];
-for (let i = 0; i < updateOrderStatusBtns.length; i++) {
-    // Agregar evento para mostrar opciones
-    updateOrderStatusBtns[i].addEventListener('click', () => {
-        let updateOrderStatusForms = [...document.getElementsByClassName('orderStatusForm')],
-            selectsOrderStatus = [...document.getElementsByClassName('sel_status')];
-        updateOrderStatusBtns[i].setAttribute('class', 'cancelUpdateOrderStatus'); 
-        updateOrderStatusBtns[i].innerText = "Cancelar";
-        selectsOrderStatus[i].setAttribute('class', 'sel_stat');
-        let cancelarOrderStatus = [...document.getElementsByClassName('cancelUpdateOrderStatus')];
-        // Agregar evento para cancelar cambio de estado
-        for (let j = 0; j < cancelarOrderStatus.length; j++) {            
-            cancelarOrderStatus[j].addEventListener('click', () => {
-                cancelarOrderStatus[j].style.marginRight = '-100px';
-                selectsOrderStatus[i].setAttribute('class', 'sel_stat_hidden');
-                setTimeout(() => {
-                    location.reload();
-                }, 200);
-            });            
-        }
-        // Agregar evento para mostrar boton de aceptar (al cambiar el valor)
-        for (let k = 0; k < selectsOrderStatus.length; k++) {
-            selectsOrderStatus[k].addEventListener('change', () => {
-                let submitsOrderStatus = [...document.getElementsByClassName('submit_status')];
-                selectsOrderStatus[k].style.marginRight = '20px';
-                submitsOrderStatus[k].style.visibility = 'visible';
-            });
-        }
-    });
+if (document.title == 'Pedidos') {
+
+    let updateOrderStatusBtns = [...document.getElementsByClassName('updOrderStat')];
+    for (let i = 0; i < updateOrderStatusBtns.length; i++) {
+        // Agregar evento para mostrar opciones
+        updateOrderStatusBtns[i].addEventListener('click', () => {
+            let updateOrderStatusForms = [...document.getElementsByClassName('orderStatusForm')],
+                selectsOrderStatus = [...document.getElementsByClassName('sel_status')];
+            updateOrderStatusBtns[i].setAttribute('class', 'cancelUpdateOrderStatus'); 
+            updateOrderStatusBtns[i].innerText = "Cancelar";
+            selectsOrderStatus[i].setAttribute('class', 'sel_stat');
+            let cancelarOrderStatus = [...document.getElementsByClassName('cancelUpdateOrderStatus')];
+            // Agregar evento para cancelar cambio de estado
+            for (let j = 0; j < cancelarOrderStatus.length; j++) {            
+                cancelarOrderStatus[j].addEventListener('click', () => {
+                    cancelarOrderStatus[j].style.marginRight = '-100px';
+                    selectsOrderStatus[i].setAttribute('class', 'sel_stat_hidden');
+                    setTimeout(() => {
+                        location.reload();
+                    }, 200);
+                });            
+            }
+            // Agregar evento para mostrar boton de aceptar (al cambiar el valor)
+            for (let k = 0; k < selectsOrderStatus.length; k++) {
+                selectsOrderStatus[k].addEventListener('change', () => {
+                    let submitsOrderStatus = [...document.getElementsByClassName('submit_status')];
+                    selectsOrderStatus[k].style.marginRight = '20px';
+                    submitsOrderStatus[k].style.visibility = 'visible';
+                });
+            }
+        });
+    
+    }
+
+} else if (document.title == 'Productos') {
+
+    let deleteProducts = [...document.getElementsByClassName('delProd')],
+        editProducts = [...document.getElementsByClassName('editProd')];
+    
+    for (let i = 0; i < deleteProducts.length; i++) {
+        deleteProducts[i].addEventListener('click', function confirmProdDel (e) {
+            if (!confirm('Se eliminará permanentemente el producto.\n\nSi solamente desea que no se muestre al cliente.\n\nConsidere mejor desactivar la disponibilidad.\n\n\nPulse Aceptar para continuar con la eliminación.\n\n\n')) {
+                e.preventDefault();
+            }
+        });
+
+        editProducts[i].addEventListener('click', () => {
+            $fields = [...document.querySelectorAll('.producto_list .info .value')];
+            for (let f = 0; f < 4; f++) {
+                $fields[f].setAttribute('class', $fields[f].getAttribute('class') + ' active');
+                $fields[f].removeAttribute('disabled');
+            }
+        });
+    }
 
 }
-
-// let deleteProducts = [...document.getElementsByClassName('')]
-
-// function confirmProdDel (e) {
-//     if (!confirm('Se eliminara el producto')) {
-//         e.preventDefault();
-//     }
-// }

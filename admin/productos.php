@@ -127,6 +127,15 @@
             header('Location: productos.php');
         }
 
+        if (isset($_POST['deleteProd'])) {
+            $idProd = $_POST['idProd'];
+
+            $query = $conexion->prepare("DELETE FROM productos WHERE id = :idProd");
+            $query->execute(array(':idProd' => $idProd));
+
+            header('Location: productos.php');
+        }
+
         // Obtener las imagenes
         $query = $conexion->prepare("SELECT * FROM imgs_prods");
         $query->execute();

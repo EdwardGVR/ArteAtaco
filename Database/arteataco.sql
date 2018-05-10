@@ -2,7 +2,7 @@
 --
 -- Host: 127.0.0.1    Database: login_propio
 -- ------------------------------------------------------
--- Server version	5.5.5-10.1.24-MariaDB
+-- Server version	5.5.5-10.1.28-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -281,7 +281,7 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES (1,1,'L&aacutempara de b&uacuteho',15,'L&aacutempara de b&uacuteho hecha en PVC calado',3,'images/productos/lamparas/pvc/buho.jpg',1),(2,1,'L&aacutempara de [nombre]',15,'L&aacutempara de otra cosa para probar',2,'images/productos/lamparas/pvc/lamp1.jpg',1),(3,1,'L&aacutempara de [nombre]',15,'L&aacutempara de b&uacuteho hecha en PVC calado',1,'images/productos/lamparas/pvc/lamp2.jpg',1),(4,1,'L&aacutempara de [nombre]',15,'L&aacutempara de b&uacuteho hecha en PVC calado',2,'images/productos/lamparas/pvc/lamp3.jpg',1);
+INSERT INTO `productos` VALUES (1,1,'L&aacutempara de b&uacuteho',15,'L&aacutempara de b&uacuteho hecha en PVC calado',3,'images/productos/lamparas/pvc/buho.jpg',1),(2,1,'L&aacutempara de [nombre]',15,'L&aacutempara de otra cosa para probar',2,'images/productos/lamparas/pvc/lamp1.jpg',1),(3,1,'L&aacutempara de [nombre]',15,'L&aacutempara de b&uacuteho hecha en PVC calado',1,'images/productos/lamparas/pvc/lamp2.jpg',1);
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -379,4 +379,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-09 16:54:30
+-- Dump completed on 2018-05-09 22:46:20

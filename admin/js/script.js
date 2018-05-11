@@ -44,13 +44,24 @@ if (document.title == 'Pedidos') {
             }
         });
 
-        editProducts[i].addEventListener('click', (e) => {
-            let idProd = e.target.getAttribute('class').substring(11,12),
-                fields = [...document.querySelectorAll('.producto_list .info .valueProd' + idProd)],
+        
+        
+    }
+    
+    for (let j = 0; j < editProducts.length; j++) {
+        editProducts[j].addEventListener('click', (e) => {
+
+            if (e.target.getAttribute('class').substring(0,2) == 'fa') {
+                var idProd = e.target.getAttribute('class').substring(11,12);
+            } else if (e.target.getAttribute('class').substring(0,2) == 'ic') {
+                var idProd = e.target.getAttribute('class').substring(14,15);
+            }
+
+            let fields = [...document.querySelectorAll('.producto_list .info .valueProd' + idProd)],
                 options = [...document.querySelectorAll('.producto_list .options .opt')],
                 editOptions = [...document.querySelectorAll('.producto_list .options .editProd' + idProd)],
                 cancelEdit = [...document.querySelectorAll('.producto_list .options .cancelEdit')];
-
+    
             for (let f = 0; f < fields.length; f++) {
                 fields[f].setAttribute('class', fields[f].getAttribute('class') + ' active');
                 fields[f].removeAttribute('disabled');
@@ -59,19 +70,17 @@ if (document.title == 'Pedidos') {
             for (let o = 0; o < options.length; o++) {
                 options[o].setAttribute('class', 'hidden');
             }
-
+    
             for (let hiddenO = 0; hiddenO < editOptions.length; hiddenO++) {
                 editOptions[hiddenO].setAttribute('class', 'opt');
             }
-
+    
             for (let c = 0; c < cancelEdit.length; c++) {
                 cancelEdit[c].addEventListener('click', () => {
                     location.reload();
                 });
             }
         });
-
-        
     }
 
 }

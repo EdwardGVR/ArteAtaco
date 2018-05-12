@@ -65,6 +65,10 @@ if (document.title == 'Pedidos') {
             for (let f = 0; f < fields.length; f++) {
                 fields[f].setAttribute('class', fields[f].getAttribute('class') + ' active');
                 fields[f].removeAttribute('disabled');
+
+                if (fields[f].getAttribute('id') == 'precioProd') {
+                    fields[f].setAttribute('type', 'number');
+                }
             }
             
             for (let o = 0; o < options.length; o++) {
@@ -77,7 +81,10 @@ if (document.title == 'Pedidos') {
     
             for (let c = 0; c < cancelEdit.length; c++) {
                 cancelEdit[c].addEventListener('click', () => {
-                    location.reload();
+                    for (let f = 0; f < fields.length; f++) {
+                        fields[f].setAttribute('disabled', 'true');
+                    }       
+                    location.reload(true);
                 });
             }
         });

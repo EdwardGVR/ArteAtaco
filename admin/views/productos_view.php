@@ -133,7 +133,7 @@
                                 </div>
                             </div>
                             
-                            <form action="#enviarCambios" class="info" method="POST">
+                            <form action="" class="info" method="POST">
                                 <div class="field">
                                     <span class="label">Nombre</span>
                                     <input 
@@ -146,21 +146,32 @@
                                 </div>
                                 <div class="field">
                                     <span class="label">Categor&iacute;a</span>
-                                    <input 
+                                    <select 
                                         type="text" 
                                         name="catProd" 
                                         class="value valueProd<?= $producto['id'] ?>" 
                                         value="<?= $producto['nombre_cat'] ?>" 
                                         disabled>
-                                    </input>
+                                        <option value="null" disabled>-- Seleccione una categor&iacute;a --</option>
+                                        <?php foreach ($categorias as $categoria): ?>
+                                            <?php if ($producto['id_categoria'] == $categoria['id']): ?>
+                                                <option value="<?= $categoria['id'] ?>" selected><?= $categoria['nombre_cat'] ?></option>
+                                            <?php else: ?>
+                                                <option value="<?= $categoria['id'] ?>"><?= $categoria['nombre_cat'] ?></option>
+                                            <?php endif ?>
+                                        <?php endforeach ?>
+                                    </select>
                                 </div>
                                 <div class="field">
-                                    <span class="label">Precio</span>
+                                    <span class="label">Precio ($)</span>
                                     <input 
+                                        id="precioProd"
                                         type="text" 
                                         name="precioProd" 
                                         class="value valueProd<?= $producto['id'] ?>" 
-                                        value="<?= '$' . $producto['precio'] ?>" 
+                                        value="<?= $producto['precio'] ?>"
+                                        step="0.10"
+                                        min="0" 
                                         disabled>
                                     </input>
                                 </div>
@@ -173,6 +184,7 @@
                                         disabled><?= $producto['descripcion'] ?>
                                     </textarea>
                                 </div>
+                                <input type="hidden" name="idProd" value="<?= $producto['id'] ?>">
                                 <input type="submit" name="saveChangesProd" id="saveChangesProd<?= $producto['id'] ?>">
                             </form>
 

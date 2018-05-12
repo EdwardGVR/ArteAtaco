@@ -1170,6 +1170,12 @@ main section .title {
     resize: none;
 }
 
+.producto_list .info .field select {
+    -moz-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: '';
+}
+
 .producto_list .info .field textarea.value.active {
     resize: both;
     padding: 5px;

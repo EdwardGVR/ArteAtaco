@@ -10,9 +10,16 @@
              FROM productos 
              JOIN categorias ON productos.id_categoria = categorias.id"
         );
+
+        
         $query -> execute();
         $productos = $query->fetchall();
-
+        
+        // Obtener las categorias
+        $query = $conexion->prepare("SELECT * FROM categorias");
+        $query->execute();
+        $categorias = $query->fetchall();
+        
         $cantImgsPorProducto = 0;
 
         // Comprobar que se recibe la imagen
@@ -132,6 +139,32 @@
 
             $query = $conexion->prepare("DELETE FROM productos WHERE id = :idProd");
             $query->execute(array(':idProd' => $idProd));
+
+            header('Location: productos.php');
+        }
+
+        if (isset($_POST['saveChangesProd'])) {
+            $idProd = $_POST['idProd'];
+
+            $nombreProd = $_POST['nombreProd'];
+            $catProd = $_POST['catProd'];
+            $precioProd = $_POST['precioProd'];
+            $descProd = $_POST['descProd'];
+
+            // echo $nombreProd;
+
+            $query = $conexion->prepare(
+                "UPDATE productos 
+                 SET id_categoria = :catProd, nombre = :nombreProd, precio = :precioProd, descripcion = :descProd
+                 WHERE id = :idProd"
+            );
+            $query->execute(array(
+                ':catProd' => $catProd,
+                ':nombreProd' => $nombreProd,
+                ':precioProd' => $precioProd,
+                ':descProd' => $descProd,
+                ':idProd' => $idProd
+            ));
 
             header('Location: productos.php');
         }

@@ -882,6 +882,18 @@ main section .title {
     transition: all ease 0.3s;
 }
 
+.producto_list .imgs span.dateReg {
+    width: 100%;
+    /* padding: 5px; */
+    text-align: center;
+    font-size: 0.9em;
+    font-style: italic;
+    border-radius: 5px;
+    color: #fff;
+    border: 2px solid #1686ee;
+    cursor: default;
+}
+
 .producto_list .imgs .main {
     display: flex;
     flex-wrap: wrap;
@@ -1270,6 +1282,7 @@ main section .title {
     border-radius: 5px;
     margin: auto;
     margin-top: 20px;
+    opacity: 1;
     transition: all ease 0.2s;
     font-size: 6em;
     box-shadow: 3px 3px 15px #000;
@@ -1288,6 +1301,18 @@ main section .title {
 .contenedor_productos .producto_list .imgs.noDisp {
     background: #919090;
     transition: all ease 0.3s
+}
+
+.producto_list .imgs.noDisp span.dateReg {
+    width: 100%;
+    text-align: center;
+    font-size: 0.9em;
+    font-style: italic;
+    border-radius: 5px;
+    color: #fff;
+    background: #727171;
+    border: 2px solid #fff;
+    cursor: default;
 }
 
 .producto_list .imgs.noDisp .others .other-img .icons {
@@ -1342,6 +1367,152 @@ main section .title {
 .contenedor_productos .producto_list .options.noDisp .icon {
     background: #b9b7b7;
     color: #6e6e6e;
+}
+
+.productsAdmin .newProduct {
+    width: 100%;
+}
+
+.productsAdmin .newProduct .add_product.hidden {
+    display: none;
+    opacity: 0;
+    transition: all ease 0.3s;
+}
+
+.productsAdmin .newProduct .newProductForm.hidden {
+    display: none;
+    opacity: 0;
+    transition: all ease 0.3s;
+}
+
+.productsAdmin .newProduct .newProductForm {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+    min-height: 100px;
+    margin: auto;
+    /* background: #000; */
+    opacity: 1;
+    transition: all ease 0.3s;
+}
+
+.productsAdmin .newProduct .newProductForm .data {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-right: 20px;
+    padding: 10px;
+    min-height: 100px;
+    background: #a7cbec;
+    border-radius: 5px;
+}
+
+.productsAdmin .newProduct .newProductForm .data span.title {
+    text-align: center;
+    padding: 10px 5px;
+    border-radius: 5px;
+    background: #113054;
+    color: #fff;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.productsAdmin .newProduct .newProductForm .data .field {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.productsAdmin .newProduct .newProductForm .data .field label {
+    width: 20%;
+    min-width: 100px;
+    background: #1686ee;
+    padding: 5px;
+    border-radius: 5px;
+    color: #fff;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.productsAdmin .newProduct .newProductForm .data .field input,
+.productsAdmin .newProduct .newProductForm .data .field select,
+.productsAdmin .newProduct .newProductForm .data .field textarea {
+    width: 70%;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    flex-grow: 1;
+    margin-bottom: 10px;
+}
+
+.productsAdmin .newProduct .newProductForm .data .field input:focus,
+.productsAdmin .newProduct .newProductForm .data .field select:focus,
+.productsAdmin .newProduct .newProductForm .data .field textarea:focus {
+    border: 2px solid #1686ee;
+}
+
+.productsAdmin .newProduct .newProductForm .data .field textarea {
+    height: 30px;
+    min-height: 30px;
+    resize: vertical;
+    max-height: 300px;
+}
+
+.productsAdmin .newProduct .newProductForm .options {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    background: #1686ee;
+    border-radius: 5px;
+    padding: 10px;
+    height: 100%;
+    width: 10%;
+}
+
+.productsAdmin .newProduct .newProductForm .options input[type="submit"],
+.productsAdmin .newProduct .newProductForm .options input[type="reset"] {
+    display: none;
+}
+
+.productsAdmin .newProduct .newProductForm .options .opt {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-size: 2em;
+}
+
+.productsAdmin .newProduct .newProductForm .options .opt label,
+.productsAdmin .newProduct .newProductForm .options .opt .icon {
+    /* background: #5f90c9; */
+    /* padding: 10px; */
+    cursor: pointer;
+    transition: all ease 0.3s;
+}
+
+.productsAdmin .newProduct .newProductForm .options .opt.reset {
+    margin: 40px 0;
+}
+
+.productsAdmin .newProduct .newProductForm .options .opt.save label:hover {
+    color: #5EDB93;
+    font-size: 1.5em;
+}
+
+.productsAdmin .newProduct .newProductForm .options .opt.reset label:hover {
+    color: #ecf00e;
+    font-size: 1.5em;
+}
+
+.productsAdmin .newProduct .newProductForm .options .opt .icon:hover {
+    color: #db6969;
+    font-size: 1.5em;
 }
 
 /***************************************** tooltip ********************************************/

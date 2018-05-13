@@ -48,13 +48,14 @@
                 <h1>Productos</h1>
                 <a href="#" class="logout" title="Cerrar sesion"><i class="fa fa-times-circle"></i></a>
         </div>
-        <section>
+        <section class="productsAdmin">
             <div class="title">
                 <h2>Viendo: Todos los productos</h2>
                 <hr>
             </div>
             <div class="contenedor_productos">
                 <?php foreach ($productos as $producto): ?>
+
                     <?php if ($producto['disponible'] == 1): ?>
                         <div class="producto_list">
                             <div class="imgs">
@@ -131,6 +132,7 @@
                                         </form>
                                     <?php endif ?>
                                 </div>
+                                <span class="dateReg">Fecha y hora de registro: <?= $producto['fecha_registro'] ?></span>
                             </div>
                             
                             <form action="" class="info" method="POST">
@@ -313,9 +315,10 @@
                                         </form>
                                     <?php endif ?>
                                 </div>
+                                <span class="dateReg">Fecha y hora de registro: <?= $producto['fecha_registro'] ?></span>
                             </div>
 
-                            <form action="#enviarCambios" class="info noDisp" method="POST">
+                            <form action="" class="info noDisp" method="POST">
                                 <div class="field">
                                     <span class="label">Nombre</span>
                                     <input 
@@ -411,9 +414,58 @@
 
                 <?php endforeach ?>
             </div>
-            <a href="#" class="add_product">
-                <div class="icon"><i class="fa fa-plus-circle"></i></div>
-            </a>
+
+            <div class="newProduct">
+                <a href="#newProductForm" class="add_product" id="addProductBtn">
+                    <div class="icon"><i class="fa fa-plus-circle"></i></div>
+                </a>
+
+                <form action="" class="newProductForm hidden" id="newProductForm" method="POST">
+                    <div class="data">
+                        <span class="title">Agregar nuevo producto.</span>
+
+                        <div class="field">
+                            <label for="newProdName">Nombre:</label>
+                            <input type="text" name="newProdName" id="newProdName" placeholder="Nombre del nuevo producto">
+                        </div>
+
+                        <div class="field">
+                            <label for="newProdCat">Categor&iacute;a:</label>
+                            <select name="newProdCat" id="newProdCat">
+                                <option value="NULL" disabled selected>- - Seleccione una categor&iacute;a - -</option>
+                                <?php foreach ($categorias as $categoria): ?>
+                                    <option value="<?= $categoria['id'] ?>"><?= $categoria['nombre_cat'] ?></option>
+                                <?php endforeach ?>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="newProdPrice">Precio:</label>
+                            <input type="number" name="newProdPrice" id="newProdPrice" min="0" step="0.01" placeholder="00.00">
+                        </div>
+
+                        <div class="field">
+                            <label for="newProdDesc">Descripci&oacute;n:</label>
+                            <textarea type="number" name="newProdDesc" id="newProdDesc" placeholder="Descripci&oacute;n del nuevo producto"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="options">
+                        <div class="opt save">
+                            <input type="submit" name="saveNewProduct" id="saveNewProduct">
+                            <label for="saveNewProduct" title="Guardar"><i class="fa fa-save"></i></label>
+                        </div>
+                        <div class="opt reset">
+                            <input type="reset" id="resetNewProduct">
+                            <label for="resetNewProduct" title="Limpiar formulario"><i class="fa fa-eraser"></i></label>
+                        </div>
+                        <div class="opt cancel">
+                            <div class="icon cancelNewProd" id="cancelNewProd" title="Cancelar"><i class="fa fa-times-circle"></i></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
         </section>
     </main>
 

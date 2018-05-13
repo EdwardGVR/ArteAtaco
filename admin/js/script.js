@@ -90,4 +90,19 @@ if (document.title == 'Pedidos') {
         });
     }
 
+    let canelNewProduct = document.getElementById('cancelNewProd');
+    canelNewProduct.addEventListener('click', () => {
+        location.reload(true);
+    });
+
+    let addNewProductBtn = document.getElementById('addProductBtn');
+    addNewProductBtn.addEventListener('click', () => {
+        addNewProductBtn.setAttribute('class', 'add_product hidden');
+
+        // setTimeout(() => {
+            let newProducForm = document.getElementById('newProductForm');
+            newProducForm.setAttribute('class', 'newProductForm');
+        // }, 5000);
+    });
+
 }

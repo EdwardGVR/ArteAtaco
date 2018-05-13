@@ -8,8 +8,9 @@
         $query = $conexion->prepare(
             "SELECT productos.*, categorias.nombre_cat
              FROM productos 
-             JOIN categorias ON productos.id_categoria = categorias.id"
-        );
+             JOIN categorias ON productos.id_categoria = categorias.id
+             ORDER BY productos.id DESC
+        ");
 
         
         $query -> execute();
@@ -164,6 +165,23 @@
                 ':precioProd' => $precioProd,
                 ':descProd' => $descProd,
                 ':idProd' => $idProd
+            ));
+
+            header('Location: productos.php');
+        }
+
+        if (isset($_POST['saveNewProduct'])) {
+            $idCat = $_POST['newProdCat'];
+            $nombre = $_POST['newProdName'];
+            $precio = $_POST['newProdPrice'];
+            $descripcion = $_POST['newProdDesc'];
+
+            $query = $conexion->prepare("INSERT INTO productos (id, id_categoria, nombre, precio, descripcion, fecha_registro) VALUES (null, :idCat, :nombre, :precio, :descripcion, CURRENT_TIMESTAMP)");
+            $query->execute(array(
+                ':idCat' => $idCat,
+                ':nombre' => $nombre,
+                ':precio' => $precio,
+                ':descripcion' => $descripcion
             ));
 
             header('Location: productos.php');

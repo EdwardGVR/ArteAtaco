@@ -39,23 +39,36 @@
 				<div class="detalles-prod-img">
 					<div class="mini-img">
 						<a href="<?php echo $detalles['imagen'] ?>" data-lightbox="product" data-title="Producto">
-							<img onmousemove="javascript:document.getElementById('imgDefault').src='<?php echo $detalles['imagen'] ?>';"
-							 src="<?php echo $detalles['imagen'] ?>" alt="">
+							<img 
+								onmousemove="javascript:document.getElementById('imgDefault').src='<?php echo $detalles['imagen'] ?>';"
+							 	src="<?php echo $detalles['imagen'] ?>" alt=""
+							>
 						</a>
-						<a href="http://lorempixel.com/720/960/cats" data-lightbox="product" data-title="Producto">
-							<img onmousemove="javascript:document.getElementById('imgDefault').src='http://lorempixel.com/720/960/cats';"
-							 src="http://lorempixel.com/200/200/cats" alt="">
+						<a href="http://placeimg.com/720/960/any" data-lightbox="product" data-title="Producto">
+							<img 
+								onmousemove="javascript:document.getElementById('imgDefault').src='http://placeimg.com/720/960/any';"
+							 	src="http://placeimg.com/200/200/any" alt=""
+							>
 						</a>
-						<a href="http://lorempixel.com/720/960/food" data-lightbox="product" data-title="Producto">
-							<img onmousemove="javascript:document.getElementById('imgDefault').src='http://lorempixel.com/720/960/food';" src="http://lorempixel.com/200/200/food" alt="">
+						<a href="http://placeimg.com/720/960/arch" data-lightbox="product" data-title="Producto">
+							<img 
+								onmousemove="javascript:document.getElementById('imgDefault').src='http://placeimg.com/720/960/arch';" 
+								src="http://placeimg.com/200/200/arch" alt=""
+							>
 						</a>
-						<a href="http://lorempixel.com/720/960/city" data-lightbox="product" data-title="Producto">
-							<img onmousemove="javascript:document.getElementById('imgDefault').src='http://lorempixel.com/720/960/city';" src="http://lorempixel.com/200/200/city" alt="">
+						<a href="http://placeimg.com/720/960/tech" data-lightbox="product" data-title="Producto">
+							<img 
+								onmousemove="javascript:document.getElementById('imgDefault').src='http://placeimg.com/720/960/tech';" 
+								src="http://placeimg.com/200/200/tech" alt=""
+							>
 						</a>
 					</div>
-					    <a id="principal" onmousemove="cambiarEnlace()" href="<?php echo $detalles['imagen'] ?>" data-lightbox="product" data-title="Producto">
-					    	<img class="img_default" id="imgDefault" src="<?php echo $detalles['imagen'] ?>" alt="">
-					    </a>
+					<a 
+						id="principal" 
+						onmousemove="cambiarEnlace()" 
+						href="<?php echo $detalles['imagen'] ?>" data-lightbox="product" data-title="Producto">
+						<img class="img_default" id="imgDefault" src="<?php echo $detalles['imagen'] ?>" alt="">
+					</a>
 					<div class="img-info">
 						<p>Click sobre una imagen para ampliarla  </p>
 					</div>
@@ -86,7 +99,7 @@
 	</div>
 	
 	<div class="contenedor_detalles">
-		<img src="http://lorempixel.com/300/300/food" alt="">
+		<img src="http://placeimg.com/300/300/tech" alt="">
 	</div>
 	
 	<!-- Comentarios disqus -->

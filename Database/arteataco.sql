@@ -2,7 +2,7 @@
 --
 -- Host: 127.0.0.1    Database: login_propio
 -- ------------------------------------------------------
--- Server version	5.5.5-10.1.28-MariaDB
+-- Server version	5.5.5-10.1.24-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -269,10 +269,11 @@ CREATE TABLE `productos` (
   `stock` int(11) DEFAULT NULL,
   `imagen` varchar(250) DEFAULT NULL,
   `disponible` tinyint(4) NOT NULL DEFAULT '1',
+  `fecha_registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `productos_categorias_idx` (`id_categoria`),
   CONSTRAINT `productos_categorias` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -281,7 +282,7 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES (1,1,'L&aacutempara de b&uacuteho',15,'L&aacutempara de b&uacuteho hecha en PVC calado',3,'images/productos/lamparas/pvc/buho.jpg',1),(2,1,'L&aacutempara de [nombre]',15,'L&aacutempara de otra cosa para probar',2,'images/productos/lamparas/pvc/lamp1.jpg',1),(3,1,'L&aacutempara de [nombre]',15,'L&aacutempara de b&uacuteho hecha en PVC calado',1,'images/productos/lamparas/pvc/lamp2.jpg',1);
+INSERT INTO `productos` VALUES (1,1,'L&aacutempara de b&uacuteho',15,'L&aacutempara de b&uacuteho hecha en PVC calado',3,'images/productos/lamparas/pvc/buho.jpg',1,'2018-05-12 23:58:35'),(2,1,'L&aacutempara de [nombre]',15,'L&aacutempara de otra cosa para probar',2,'images/productos/lamparas/pvc/lamp1.jpg',1,'2018-05-12 23:58:35'),(3,1,'L&aacutempara de [nombre]',15,'L&aacutempara de b&uacuteho hecha en PVC calado',1,'images/productos/lamparas/pvc/lamp2.jpg',1,'2018-05-12 23:58:35'),(4,1,'L&aacutempara de [nombre]',15,'L&aacutempara de b&uacuteho hecha en PVC calado',2,'images/productos/lamparas/pvc/lamp3.jpg',1,'2018-05-12 23:58:35'),(6,3,'Producto nuevo',5,'Descripcion del nuevo producto',NULL,NULL,1,'2018-05-13 00:09:39');
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -379,4 +380,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-09 22:46:20
+-- Dump completed on 2018-05-13 14:43:14

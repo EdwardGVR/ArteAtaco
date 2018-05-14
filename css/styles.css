@@ -575,13 +575,14 @@ figure img {
 }
 
 .producto {
-	background: #CBF1FB;
 	display: flex;
-	flex-wrap: wrap;
 	justify-content: center;
+	flex-wrap: wrap;
 	margin: 20px 10px;
-	box-shadow: 3px 3px 10px #000;
+	background: #CBF1FB;
+	box-shadow: 0px 5px 10px #000;
 	width: 200px;
+	border-radius: 10px;
 }
 
 .producto h2 {
@@ -592,6 +593,7 @@ figure img {
 .producto img {
 	width: 100%;
 	height: 250px;
+	border-radius: 10px 10px 0 0;
 	overflow: auto;
 }
 
@@ -600,10 +602,10 @@ figure img {
 
 	width: 100%;
 	text-align: center;
-	background: #475CA1;
+	/* background: #475CA1; */
 }
 
-.producto .prod_options a,
+.producto .prod_options .detalles,
 .producto .prod_options .shortcut_carrito {
 	flex-grow: 1;
 	width: 50%;
@@ -616,6 +618,7 @@ figure img {
 	display: flex;
 	padding: 0px 0px;
 	background: #E5D65B;
+	border-radius: 10px;
 	transition: all ease 0.3s;
 }
 
@@ -628,6 +631,8 @@ figure img {
 	letter-spacing: 1px;
 	padding: 10px;
 	background: #2F902F;
+	border-radius: 0 0 0 10px;
+	transition: all ease 0.3s;
 }
 
 .producto .prod_options a.detalles:hover {
@@ -671,6 +676,7 @@ figure img {
 	width: 100%;
 	cursor: pointer;
 	background: #E5D65B;
+	border-radius: 0 0 10px 0;
 	transition: all ease 0.3s;
 }
 

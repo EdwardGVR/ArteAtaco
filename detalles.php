@@ -18,6 +18,11 @@ if ($conexion != false) {
 	$detalles = $query->fetch();
 	// var_dump($detalles);
 
+	//Obtener las imagenes del producto
+	$query = $conexion->prepare("SELECT * FROM imgs_prods WHERE id_prod = :id_prod");
+	$query->execute(array(':id_prod' => $id_prod));
+	$imagenes = $query->fetchall();
+
 	// Obtener las categorias
 	$query = $conexion->prepare("SELECT id, nombre_cat FROM categorias ORDER BY nombre_cat ASC");
 	$query->execute();

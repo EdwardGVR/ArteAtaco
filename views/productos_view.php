@@ -39,11 +39,15 @@
 		<?php if ($productos != false): ?>
 			<?php foreach ($productos as $producto): ?>
 				<div class="producto">
-					<img src="<?php echo $producto['imagen'] ?>" alt="">
-					<h2><?php echo $producto['nombre'] ?></h2>
-					<div class="prod_options">
-						<a class="detalles" href="detalles.php?id_prod=<?php echo $producto['id'] ?>">Detalles</a>
-						<form class="shortcut_carrito" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+					<div class="prod-img">
+						<img src="<?php echo $producto['imagen'] ?>" alt="">
+					</div>
+					<div class="prod-nombre">
+						<?php echo $producto['nombre'] ?>
+					</div>
+					<div class="prod-options">
+						<a class="opt detalles" href="detalles.php?id_prod=<?php echo $producto['id'] ?>">Detalles</a>
+						<form class="opt shortcut_carrito" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 							<input type="hidden" name="id_producto" value="<?php echo $producto['id'] ?>">
 
 							<?php if ($user != "Invitado"): ?>

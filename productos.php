@@ -37,6 +37,8 @@ if ($conexion != false) {
 	$query->execute(array(':id_cat' => $id_cat));
 	$catImgs = $query->fetchall();
 
+	// print_r($catImgs);
+
 	//Otener imagenes principales de los productos de la categoria
 	$query = $conexion->prepare(
 		"SELECT imgs_prods.*, productos.id_categoria FROM imgs_prods

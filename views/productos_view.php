@@ -41,15 +41,43 @@
 				<div class="producto">
 					<div class="prod-img">
 						
+					<?php 
+						$imgsPorProd = 0;
+						$mainImg = false;
+					?>
+
 					<?php foreach ($catImgs as $catImg): ?>
+
 						<?php if ($catImg['id_prod'] == $producto['id']): ?>
-							<?php $imgs = true ?>
-								<img src="<?= $catImg['ruta'] ?>" alt="">	
+							<?php ++$imgsPorProd ?>
+							<?php if ($catImg['principal']): ?>
+								<?php 
+									$mainImg = true;
+									$mainImgPath = $catImg['ruta'];
+								?>
+							<?php endif ?>
 						<?php endif ?>
+
 					<?php endforeach ?>
 
-					<?php if ($imgs): ?>
-						sds
+
+
+					<?php if ($imgsPorProd > 0): ?>	
+						Hay <?= $imgsPorProd ?> imagenes <br>
+						<?php if ($mainImg == true): ?>
+							Hay imagen ppal <br>
+							Ruta: <?= $mainImgPath ?>
+						<?php else: ?>
+							No hay imagen ppal <br>
+							Ruta provisional: 
+							<?php foreach ($catImgs as $provImg): ?>
+								<?php if ($provImg['id_prod'] == $producto['id']): ?>
+									<?= $provImg['ruta']; break; ?>
+								<?php endif ?>
+							<?php endforeach ?>
+						<?php endif ?>
+					<?php elseif ($imgsPorProd == 0): ?>
+						No hay imagenes para este producto
 					<?php endif ?>
 
 					</div>

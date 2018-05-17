@@ -609,6 +609,25 @@ figure img {
 	box-shadow: 0px 4px 7px #000;
 }
 
+.contenedor_prod .producto .prod-img .noImg {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 200px;
+	border-radius: 5px;
+	font-size: 0.9em;
+	background: #dddcdc;
+	padding: 10px;
+}
+
+.contenedor_prod .producto .prod-img .noImg span {
+	border-radius: 5px;
+	background: #f7f2ad;
+	padding: 5px;
+	cursor: default;
+}
+
 .contenedor_prod .producto .prod-nombre {
 	width: 100%;
 	height: 30px;
@@ -619,6 +638,7 @@ figure img {
 	border-radius: 5px;
 	box-shadow: 0px 1px 4px #000;
 	overflow: hidden;
+	cursor: default;
 	margin-bottom: 10px;
 }
 
@@ -627,6 +647,7 @@ figure img {
 	justify-content: flex-start;
 	width: 100%;
 	margin-bottom: 10px;
+	cursor: default;
 }
 
 .contenedor_prod .producto .prod-precio span {
@@ -728,7 +749,30 @@ figure img {
 	max-width: 60px;
 	max-height: 60px;
 	margin-bottom: 10px;
-	transition: all ease 0.3s;
+	position: relative;
+	transition: all ease 0.5s;
+}
+
+.mini-img .bg {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    position: absolute;
+    width: 100%;
+    height: 80px;
+    background: #ccc;
+    opacity: 0;
+    top: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #000;
+    text-decoration: none;
+    transition: all ease 0.5s;
+}
+
+.mini-img .bg:hover {
+    opacity: 0.5;
 }
 
 .mini-img img:hover {
@@ -747,6 +791,7 @@ figure img {
 	margin-top: 10px;
 	margin-bottom: 50px;
 	text-align: center;
+	padding-left: 100px;
 }
 
 .detalles-prod-info {

@@ -39,54 +39,48 @@
 		<?php if ($productos != false): ?>
 			<?php foreach ($productos as $producto): ?>
 				<div class="producto">
+
 					<div class="prod-img">
-						
-					<?php 
-						$imgsPorProd = 0;
-						$mainImg = false;
-					?>
-
-					<?php foreach ($catImgs as $catImg): ?>
-
-						<?php if ($catImg['id_prod'] == $producto['id']): ?>
-							<?php ++$imgsPorProd ?>
-							<?php if ($catImg['principal']): ?>
-								<?php 
-									$mainImg = true;
-									$mainImgPath = $catImg['ruta'];
-								?>
-							<?php endif ?>
-						<?php endif ?>
-
-					<?php endforeach ?>
-
-
-
-					<?php if ($imgsPorProd > 0): ?>	
-						Hay <?= $imgsPorProd ?> imagenes <br>
-						<?php if ($mainImg == true): ?>
-							Hay imagen ppal <br>
-							Ruta: <?= $mainImgPath ?>
-						<?php else: ?>
-							No hay imagen ppal <br>
-							Ruta provisional: 
-							<?php foreach ($catImgs as $provImg): ?>
-								<?php if ($provImg['id_prod'] == $producto['id']): ?>
-									<?= $provImg['ruta']; break; ?>
+						<?php $imgsPorProd = 0; $mainImg = false; ?>
+						<?php foreach ($catImgs as $catImg): ?>
+							<?php if ($catImg['id_prod'] == $producto['id']): ?>
+								<?php ++$imgsPorProd ?>
+								<?php if ($catImg['principal']): ?>
+									<?php $mainImg = true; $mainImgPath = $catImg['ruta']; ?>
 								<?php endif ?>
-							<?php endforeach ?>
-						<?php endif ?>
-					<?php elseif ($imgsPorProd == 0): ?>
-						No hay imagenes para este producto
-					<?php endif ?>
+							<?php endif ?>
+						<?php endforeach ?>
 
+						<?php if ($imgsPorProd > 0): ?>	
+							<?php if ($mainImg == true): ?>
+								<img src="<?= $mainImgPath ?>" alt="">
+							<?php else: ?>
+								<?php foreach ($catImgs as $provImg): ?>
+									<?php if ($provImg['id_prod'] == $producto['id']): ?>
+										<img src="<?= $provImg['ruta'] ?>" alt="">
+										<?php break; ?>
+									<?php endif ?>
+								<?php endforeach ?>
+							<?php endif ?>
+						<?php elseif ($imgsPorProd == 0): ?>
+							<div class="noImg">
+								<span>
+									Actualmente no hay imagenes para este producto 
+									<i class="fa fa-image"></i> 
+									<i class="fa fa-exclamation-circle"></i>
+								</span>
+							</div>
+						<?php endif ?>
 					</div>
+
 					<div class="prod-nombre">
 						<?= $producto['nombre'] ?>
 					</div>
+
 					<div class="prod-precio">
 						<span><?= '$' . $producto['precio'] ?> <i class="fa fa-tag"></i></span>
 					</div>
+
 					<div class="prod-options">
 						<a class="opt detalles" href="detalles.php?id_prod=<?php echo $producto['id'] ?>">Detalles <i class="fa fa-info-circle"></i></a>
 						<form class="opt shortcut_carrito" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
@@ -99,6 +93,7 @@
 							<?php endif ?>	
 						</form>
 					</div>
+
 				</div>
 			<?php endforeach ?>
 		<?php else: ?>

@@ -185,7 +185,7 @@ CREATE TABLE `imgs_prods` (
 
 LOCK TABLES `imgs_prods` WRITE;
 /*!40000 ALTER TABLE `imgs_prods` DISABLE KEYS */;
-INSERT INTO `imgs_prods` VALUES (1,1,'images/productos/lamparas/lampara1_img1.jpg',1),(3,1,'images/productos/lamparas/lampara1_img2.jpg',0),(7,2,'images/productos/lamparas/lampara2_img1.jpg',1),(8,3,'images/productos/lamparas/lampara3_img1.jpg',0);
+INSERT INTO `imgs_prods` VALUES (1,1,'images/productos/lamparas/lampara1_img1.jpg',0),(3,1,'images/productos/lamparas/lampara1_img2.jpg',1),(7,2,'images/productos/lamparas/lampara2_img1.jpg',1),(8,3,'images/productos/lamparas/lampara3_img1.jpg',0);
 /*!40000 ALTER TABLE `imgs_prods` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -282,7 +282,7 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES (1,1,'L&aacutempara de b&uacuteho',15,'L&aacutempara de b&uacuteho hecha en PVC calado',3,'images/productos/lamparas/pvc/buho.jpg',1,'2018-05-12 23:58:35'),(2,1,'L&aacutempara de [nombre]',15,'L&aacutempara de otra cosa para probar',2,'images/productos/lamparas/pvc/lamp1.jpg',1,'2018-05-12 23:58:35'),(3,1,'L&aacutempara de [nombre]',15,'L&aacutempara de b&uacuteho hecha en PVC calado',1,'images/productos/lamparas/pvc/lamp2.jpg',1,'2018-05-12 23:58:35'),(4,1,'L&aacutempara de [nombre]',15,'L&aacutempara de b&uacuteho hecha en PVC calado',2,'images/productos/lamparas/pvc/lamp3.jpg',1,'2018-05-12 23:58:35'),(6,3,'Producto nuevo',5,'Descripcion del nuevo producto',NULL,NULL,1,'2018-05-13 00:09:39');
+INSERT INTO `productos` VALUES (1,1,'L&aacutempara de b&uacuteho',15,'L&aacutempara de b&uacuteho hecha en PVC calado',3,'images/productos/lamparas/pvc/buho.jpg',1,'2018-05-12 23:58:35'),(2,1,'L&aacute;mpara 2',15,'LÃ¡mpara de otra cosa para probar                                    ',2,'images/productos/lamparas/pvc/lamp1.jpg',1,'2018-05-12 23:58:35'),(3,1,'L&aacute;mpara 3',15,'LÃ¡mpara de bÃºho hecha en PVC calado                                    ',1,'images/productos/lamparas/pvc/lamp2.jpg',1,'2018-05-12 23:58:35'),(4,1,'L&aacute;mpara 4',15,'LÃ¡mpara de bÃºho hecha en PVC calado                                    ',2,'images/productos/lamparas/pvc/lamp3.jpg',1,'2018-05-12 23:58:35'),(6,3,'Producto nuevo',5,'Descripcion del nuevo producto',NULL,NULL,1,'2018-05-13 00:09:39');
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -380,4 +380,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-13 18:49:53
+-- Dump completed on 2018-05-17 12:47:01

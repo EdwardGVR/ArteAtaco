@@ -40,20 +40,34 @@
 			<?php foreach ($productos as $producto): ?>
 				<div class="producto">
 					<div class="prod-img">
-						<img src="<?php echo $producto['imagen'] ?>" alt="">
+						
+					<?php foreach ($catImgs as $catImg): ?>
+						<?php if ($catImg['id_prod'] == $producto['id']): ?>
+							<?php $imgs = true ?>
+								<img src="<?= $catImg['ruta'] ?>" alt="">	
+						<?php endif ?>
+					<?php endforeach ?>
+
+					<?php if ($imgs): ?>
+						sds
+					<?php endif ?>
+
 					</div>
 					<div class="prod-nombre">
-						<?php echo $producto['nombre'] ?>
+						<?= $producto['nombre'] ?>
+					</div>
+					<div class="prod-precio">
+						<span><?= '$' . $producto['precio'] ?> <i class="fa fa-tag"></i></span>
 					</div>
 					<div class="prod-options">
-						<a class="opt detalles" href="detalles.php?id_prod=<?php echo $producto['id'] ?>">Detalles</a>
+						<a class="opt detalles" href="detalles.php?id_prod=<?php echo $producto['id'] ?>">Detalles <i class="fa fa-info-circle"></i></a>
 						<form class="opt shortcut_carrito" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 							<input type="hidden" name="id_producto" value="<?php echo $producto['id'] ?>">
 
 							<?php if ($user != "Invitado"): ?>
 								<input type="submit" class="carrito" name="shortcut_carrito" value="Carrito">
 							<?php else: ?>
-								<div id="two" class="button carrito">Carrito</div>
+								<div id="two" class="button carrito">Carrito <i class="fa fa-cart-plus fa-lg"></i></div>
 							<?php endif ?>	
 						</form>
 					</div>

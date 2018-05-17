@@ -18,14 +18,44 @@ if (!$id_cat) {
 }
 
 if ($conexion != false) {
+	// Obtener categorias para el menu
 	$query = $conexion->prepare('SELECT * FROM categorias ORDER BY nombre_cat ASC');
 	$query->execute();
 	$categorias = $query->fetchall();
 
+	// Obtener datos de los productos de la categoria
 	$query = $conexion->prepare('SELECT * FROM productos WHERE id_categoria = :id_cat');
 	$query->execute(array(':id_cat' => $id_cat));
 	$productos = $query->fetchall();
 
+	//Otener todas las imagenes de los productos de la categoria
+	$query = $conexion->prepare(
+		"SELECT imgs_prods.*, productos.id_categoria FROM imgs_prods
+			JOIN productos ON imgs_prods.id_prod = productos.id
+			WHERE id_categoria = :id_cat"
+	);
+	$query->execute(array(':id_cat' => $id_cat));
+	$catImgs = $query->fetchall();
+
+	//Otener imagenes principales de los productos de la categoria
+	$query = $conexion->prepare(
+		"SELECT imgs_prods.*, productos.id_categoria FROM imgs_prods
+		 JOIN productos ON imgs_prods.id_prod = productos.id
+		 WHERE imgs_prods.principal = 1 AND id_categoria = :id_cat"
+	);
+	$query->execute(array(':id_cat' => $id_cat));
+	$mainImgs = $query->fetchall();
+
+	//Otener imagenes no principales de los productos de la categoria
+	$query = $conexion->prepare(
+		"SELECT imgs_prods.*, productos.id_categoria FROM imgs_prods
+		 JOIN productos ON imgs_prods.id_prod = productos.id
+		 WHERE imgs_prods.principal = 0 AND id_categoria = :id_cat"
+	);
+	$query->execute(array(':id_cat' => $id_cat));
+	$notMainImgs = $query->fetchall();
+
+	// Obtener categorias para el title de la tab
 	$query = $conexion->prepare('SELECT nombre_cat FROM categorias WHERE id = :id_cat');
 	$query->execute(array(':id_cat' => $id_cat));
 	$categoria = $query->fetch();
@@ -49,7 +79,6 @@ if ($conexion != false) {
 		$consultar_carrito = $query->fetch();
 
 		if ($consultar_carrito != false) {
-			// El usuario ya tiene agregado el producto
 			// echo "El usuario ya tiene agregado el producto";
 			$cantidad_uptaded = $consultar_carrito['cantidad'] + $cantidad;
 			// echo "Se ha actualizado la cantidad";
@@ -60,7 +89,6 @@ if ($conexion != false) {
 				':iduser' => $iduser
 			));
 		} else {
-			// El usuario NO tiene agregado el producto
 			// echo "El usuario NO tiene agregado el producto";
 			$query = $conexion->prepare("INSERT INTO carrito VALUES (null, :iduser, :idprod, :cantidad)");
 			$query->execute(array(
@@ -75,8 +103,6 @@ if ($conexion != false) {
 	}
 
 }
-
-
 
 require 'views/productos_view.php';
 

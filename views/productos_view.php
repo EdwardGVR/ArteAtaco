@@ -87,7 +87,8 @@
 							<input type="hidden" name="id_producto" value="<?php echo $producto['id'] ?>">
 
 							<?php if ($user != "Invitado"): ?>
-								<input type="submit" class="carrito" name="shortcut_carrito" value="Carrito">
+								<input type="submit" class="carrito" id="carrito_shortcut" name="shortcut_carrito" value="Carrito">
+								<label for="carrito_shortcut" class="button carrito">Carrito <i class="fa fa-cart-plus fa-lg"></i></label>
 							<?php else: ?>
 								<div id="two" class="button carrito">Carrito <i class="fa fa-cart-plus fa-lg"></i></div>
 							<?php endif ?>	

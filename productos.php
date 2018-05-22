@@ -103,7 +103,6 @@ if ($conexion != false) {
 		header('Location: carrito.php');
 
 	}
-
 }
 
 require 'views/productos_view.php';

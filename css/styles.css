@@ -691,6 +691,17 @@ figure img {
 	box-shadow: 0px 2px 10px #000;
 }
 
+.contenedor_prod .producto .prod-options .opt.shortcut_carrito input.carrito {
+	display: none;
+}
+
+.contenedor_prod .producto .prod-options .opt.shortcut_carrito label {
+	display: inline-block;
+	height: 100%;
+	width: 100%;
+	cursor: pointer;
+}
+
 .modal {
 	width: 400px;
 	height: 200px;

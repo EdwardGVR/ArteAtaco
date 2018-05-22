@@ -222,3 +222,22 @@ function hideChat() {
 	chatBtn.setAttribute("onclick", "showChat()");
 	chatBtn.setAttribute("class", "boton_chat")
 }
+
+let showEditCantForm = (e) => {
+	let idProd = e.target.attributes.idProd.value;
+	
+	for (let i = 0; i < editCantCarr.length; i++) {
+		if (editCantCarr[i].getAttribute('idProd') == idProd) {
+			editCantCarr[i].setAttribute('class', 'hidden');
+		}
+		
+	}
+};
+
+let editCantCarr = [...document.querySelectorAll(".editarCant")];
+
+if (editCantCarr != null) {
+	for (let i = 0; i < editCantCarr.length; i++) {
+		editCantCarr[i].addEventListener('click', showEditCantForm);
+	}
+}

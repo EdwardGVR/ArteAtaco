@@ -7,6 +7,10 @@
 	font-family: 'Roboto', sans-serif;
 }
 
+.hidden {
+	display: none;
+}
+
 a {
 	text-decoration: none;
 	color: #000;
@@ -940,75 +944,68 @@ h2.stock {
 
 .prod_carrito {
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
 	
-	max-width: 550px;
-	margin: 20px 0;
+	width: 40%;
+	margin-top: 20px;
 	padding: 20px;
 
-	background: #fff;
-	box-shadow: 0 0 20px;
-}
-
-.info_carrito .form_carrito input[name="quantity"] {
-	margin-right: 0px;
+	/* background: #fff; */
+	border-top: 2px solid #000;
+	border-bottom: 2px solid #000;
+	/* box-shadow: 0 0 20px; */
 }
 
 .img_carrito {
 	display: flex;
 
 	max-width: 200px;
-	margin-right: 50px;
-	overflow: hidden;
+	height: 200px;
 }
 
 .info_carrito {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	align-items: center;
+	align-content: flex-start;
 
-	max-width: 300px;
+	width: 100%;
 	height: 100%;
+	padding-left: 20px;
+	/* background: #000; */
 }
 
-.info_carrito .item_carrito {
+.info_carrito .header {
+	display: flex;
+	justify-content: space-between;
 	width: 100%;
-	margin-bottom: 30px;
+	margin-bottom: 20px;
+	/* background: #ccc; */
 }
 
-.info_carrito .item_cantidad {
-	width: 100%;
-	margin-bottom: 30px;
+.info_carrito .header .art {
+	padding: 5px;
+	border-radius: 5px;
+	background: #97cdff;
 }
 
-.info_carrito .item_mod_cantidad {
-	width: 100%;
-}
-
-.info_carrito .eliminar {
+.info_carrito .header .eliminar {
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-	/*align-self: flex-start;*/	
 
-	height: 15%;
 	width: 100%;
-	/*height: 30px;*/
-	/*padding:10px;	*/
-	z-index: 9;
+}
 
-	background: #ccc;
-	box-shadow: 0 5px 6px;
+.info_carrito .form_carrito_confirm {
+	display: none;
 }
 
 .info_carrito .form_eliminar {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	/*height: 100%;*/
-	width: 50px;
 }
 
 .info_carrito .form_eliminar .btn_eliminar {
@@ -1029,39 +1026,43 @@ h2.stock {
 	color: #fff;
 }
 
-.form_carrito_confirm {
+.info_carrito .info {
 	display: flex;
 	justify-content: flex-start;
-	align-items: center;
+	align-content: flex-start;
 	flex-wrap: wrap;
-
-	height: 85%;
-	width: 95%;
-	padding: 20px;
-
-	background: #A8DBE0;
+	width: 100%;
+	min-height: 100px;
+	background: #fff;
 }
 
-.form_carrito_confirm .confirm_cantidad {
-	height: 30px;
-	width: 50px;
-	text-align: center;
+.info_carrito .info .field {
+	display: flex;
+	align-content: center;
+	flex-wrap: wrap;
+	width: 100%;
+	margin-bottom: 20px;
 }
 
-.form_carrito_confirm .actualizar_cantidad {
-	width: 150px;
-	padding: 10px 30px;
-	background: #EBDE86;
-	border-radius: 10px;
-	box-shadow: none;
-	border: 2px solid #000;
-	transition: all ease 0.3s;
+.info_carrito .info .field span {
+	width: 100%;
+	text-align-last: left;
+}
+
+.info_carrito .info .field span.cantidad {
+	width: 100px;
+}
+
+.info_carrito .info .field .editarCant {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 5px;
+	border-radius: 5px;
+	background: #cdf8bc;
+	font-size: 0.8em;
+	width: 60px;
 	cursor: pointer;
-}
-
-.form_carrito_confirm .actualizar_cantidad:hover {
-	color: #fff;
-	background: #B6971A;
 }
 
 .contenedor_carrito .carrito_subtotal {
@@ -1382,10 +1383,6 @@ input[name="add_address"]:hover {
 	align-items: center;
 	flex-wrap: wrap;
 	width: 100%;
-}
-
-.form_confirm_info h3 {
-	/*width: 100%;*/
 }
 
 .form_confirm_info .selecciones {

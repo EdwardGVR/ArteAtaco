@@ -945,23 +945,25 @@ h2.stock {
 .prod_carrito {
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
+	align-content: flex-start;
 	
 	width: 40%;
 	margin-top: 20px;
-	padding: 20px;
+	padding: 20px 0;
 
-	/* background: #fff; */
 	border-top: 2px solid #000;
 	border-bottom: 2px solid #000;
-	/* box-shadow: 0 0 20px; */
 }
 
 .img_carrito {
 	display: flex;
+	border-radius: 5px;
+	max-width: 150px;
+	height: 150px;
+}
 
-	max-width: 200px;
-	height: 200px;
+.img_carrito img {
+	border-radius: 5px;
 }
 
 .info_carrito {
@@ -990,35 +992,30 @@ h2.stock {
 	background: #97cdff;
 }
 
-.info_carrito .header .eliminar {
-	display: flex;
-	justify-content: flex-end;
-	align-items: center;
-
-	width: 100%;
-}
-
 .info_carrito .form_carrito_confirm {
 	display: none;
 }
 
 .info_carrito .form_eliminar {
 	display: flex;
-	justify-content: center;
+	justify-content: flex-end;
 	align-items: center;
+	width: 100%;
+	margin-top: 20px;
 }
 
 .info_carrito .form_eliminar .btn_eliminar {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 30px;
+	/* height: 30px; */
+	font-size: 0.8em;
+	padding: 5px;
+	border-radius: 5px;
 	line-height: 10px;
-	width: 30px;
-	/*height: 30px;*/
-	margin: 0;
 	cursor: pointer;
 	background: #FA9191;
+	transition: all ease 0.3s;
 }
 
 .info_carrito .form_eliminar .btn_eliminar:hover {
@@ -1033,15 +1030,20 @@ h2.stock {
 	flex-wrap: wrap;
 	width: 100%;
 	min-height: 100px;
-	background: #fff;
+	/* background: #fff; */
 }
 
 .info_carrito .info .field {
 	display: flex;
+	justify-content: space-between;
 	align-content: center;
 	flex-wrap: wrap;
 	width: 100%;
 	margin-bottom: 20px;
+}
+
+.info_carrito .info .field:last-child {
+	margin-bottom: 0;
 }
 
 .info_carrito .info .field span {
@@ -1059,10 +1061,38 @@ h2.stock {
 	align-items: center;
 	padding: 5px;
 	border-radius: 5px;
-	background: #cdf8bc;
+	background: #9df87a;
 	font-size: 0.8em;
-	width: 60px;
+	width: auto;
 	cursor: pointer;
+	transition: all ease 0.3s;
+}
+
+.info_carrito .info .field .editarCant:hover {
+	background: #389c10;
+	color: #fff;
+}
+
+.info_carrito .info .field form select {
+	height: 30px;
+	width: 60px;
+	border: 2px solid #05a7e7;
+	background: #fff;
+}
+
+.info_carrito .info .field form input[type="submit"] {
+	display: none;
+}
+
+.info_carrito .info .field label.iconUpdtQnt {
+	color: #1fbd39;
+	font-size: 2em;
+	cursor: pointer;
+	transition: all ease 0.3s;
+}
+
+.info_carrito .info .field label.iconUpdtQnt:hover {
+	color: #086335;
 }
 
 .contenedor_carrito .carrito_subtotal {

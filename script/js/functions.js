@@ -224,13 +224,24 @@ function hideChat() {
 }
 
 let showEditCantForm = (e) => {
-	let idProd = e.target.attributes.idProd.value;
+	console.log(e.target);
+	
+	let idProd = e.target.attributes.idProd.value,
+		currenQuantity = [...document.querySelectorAll(".prod_carrito .info .field .value.cantidad")],
+		formEditQuantity = [...document.querySelectorAll(".prod_carrito .info .field form")],
+		formQuantitySelect = [...document.querySelectorAll(".prod_carrito .info .field form select")],
+		sendQuantity = [...document.querySelectorAll(".prod_carrito .info .field label")];
 	
 	for (let i = 0; i < editCantCarr.length; i++) {
 		if (editCantCarr[i].getAttribute('idProd') == idProd) {
 			editCantCarr[i].setAttribute('class', 'hidden');
+			currenQuantity[i].setAttribute('class', 'hidden');
+			formEditQuantity[i].setAttribute('class', 'cantidad');
+
+			formQuantitySelect[i].addEventListener('change', () => {
+				sendQuantity[i].setAttribute('class', 'iconUpdtQnt');
+			});
 		}
-		
 	}
 };
 

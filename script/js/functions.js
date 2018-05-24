@@ -230,13 +230,19 @@ let showEditCantForm = (e) => {
 		currenQuantity = [...document.querySelectorAll(".prod_carrito .info .field .value.cantidad")],
 		formEditQuantity = [...document.querySelectorAll(".prod_carrito .info .field form")],
 		formQuantitySelect = [...document.querySelectorAll(".prod_carrito .info .field form select")],
-		sendQuantity = [...document.querySelectorAll(".prod_carrito .info .field label")];
+		sendQuantity = [...document.querySelectorAll(".prod_carrito .info .field label")],
+		cancelEditQuantity = [...document.querySelectorAll(".prod_carrito .info .field div.cancelEQ")];
 	
 	for (let i = 0; i < editCantCarr.length; i++) {
 		if (editCantCarr[i].getAttribute('idProd') == idProd) {
 			editCantCarr[i].setAttribute('class', 'hidden');
 			currenQuantity[i].setAttribute('class', 'hidden');
 			formEditQuantity[i].setAttribute('class', 'cantidad');
+			cancelEditQuantity[i].setAttribute('class', 'cancelEditQuantity');
+			
+			cancelEditQuantity[i].addEventListener('click', () => {
+				location.reload();
+			});
 
 			formQuantitySelect[i].addEventListener('change', () => {
 				sendQuantity[i].setAttribute('class', 'iconUpdtQnt');

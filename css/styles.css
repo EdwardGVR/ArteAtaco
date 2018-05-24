@@ -946,8 +946,10 @@ h2.stock {
 	display: flex;
 	justify-content: space-between;
 	align-content: flex-start;
+	flex-wrap: wrap;
 	
 	width: 40%;
+	min-width: 390px;
 	margin-top: 20px;
 	padding: 20px 0;
 
@@ -972,8 +974,7 @@ h2.stock {
 	justify-content: center;
 	align-content: flex-start;
 
-	width: 100%;
-	height: 100%;
+	width: 50%;
 	padding-left: 20px;
 	/* background: #000; */
 }
@@ -994,33 +995,6 @@ h2.stock {
 
 .info_carrito .form_carrito_confirm {
 	display: none;
-}
-
-.info_carrito .form_eliminar {
-	display: flex;
-	justify-content: flex-end;
-	align-items: center;
-	width: 100%;
-	margin-top: 20px;
-}
-
-.info_carrito .form_eliminar .btn_eliminar {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	/* height: 30px; */
-	font-size: 0.8em;
-	padding: 5px;
-	border-radius: 5px;
-	line-height: 10px;
-	cursor: pointer;
-	background: #FA9191;
-	transition: all ease 0.3s;
-}
-
-.info_carrito .form_eliminar .btn_eliminar:hover {
-	background: #EF0F0F;
-	color: #fff;
 }
 
 .info_carrito .info {
@@ -1055,24 +1029,6 @@ h2.stock {
 	width: 100px;
 }
 
-.info_carrito .info .field .editarCant {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 5px;
-	border-radius: 5px;
-	background: #9df87a;
-	font-size: 0.8em;
-	width: auto;
-	cursor: pointer;
-	transition: all ease 0.3s;
-}
-
-.info_carrito .info .field .editarCant:hover {
-	background: #389c10;
-	color: #fff;
-}
-
 .info_carrito .info .field form select {
 	height: 30px;
 	width: 60px;
@@ -1080,11 +1036,10 @@ h2.stock {
 	background: #fff;
 }
 
-.info_carrito .info .field form input[type="submit"] {
-	display: none;
-}
-
-.info_carrito .info .field label.iconUpdtQnt {
+.info_carrito .info .field label.iconUpdtQnt,
+.info_carrito .info .field div.cancelEditQuantity {
+	display: flex;
+	align-items: flex-start;
 	color: #1fbd39;
 	font-size: 2em;
 	cursor: pointer;
@@ -1093,6 +1048,74 @@ h2.stock {
 
 .info_carrito .info .field label.iconUpdtQnt:hover {
 	color: #086335;
+}
+
+.info_carrito .info .field div.cancelEditQuantity {
+	color: #FA9191;
+}
+
+.info_carrito .info .field div.cancelEditQuantity:hover {
+	color: #f53d3d;
+}
+
+.prod_carrito .options {
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+	width: 100%;
+	margin-top: 20px;
+}
+
+.prod_carrito .options .opt {
+	width: 100%;
+}
+
+.prod_carrito .options .editarCant {
+	display: flex;
+	/* justify-content: space-between; */
+	align-items: center;
+	padding: 5px;
+	border-radius: 5px;
+	background: #9df87a;
+	font-size: 0.8em;
+	width: 120px;
+	cursor: pointer;
+	transition: all ease 0.3s;
+}
+
+.prod_carrito .options .editarCant:hover {
+	background: #389c10;
+	color: #fff;
+}
+
+
+.prod_carrito input[type="submit"] {
+	display: none;
+}
+
+.prod_carrito .options .form_eliminar {
+	display: flex;
+	align-items: center;
+	margin-top: 20px;
+}
+
+.prod_carrito .options .form_eliminar .btn_eliminar {
+	display: flex;
+	
+	align-items: center;
+	width: 120px;
+	font-size: 0.8em;
+	padding: 5px;
+	border-radius: 5px;
+	line-height: 10px;
+	cursor: pointer;
+	background: #FA9191;
+	transition: all ease 0.3s;
+}
+
+.prod_carrito .options .form_eliminar .btn_eliminar:hover {
+	background: #EF0F0F;
+	color: #fff;
 }
 
 .contenedor_carrito .carrito_subtotal {

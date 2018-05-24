@@ -53,29 +53,37 @@
 											name="actualizar_cantidad"
 									>
 								</form>
-								<label for="updateQuantity<?= $item['id_producto'] ?>" class="hidden">
-									<i class="fa fa-check-circle"></i>
-								</label>
 								<span class="value cantidad"  idProd="<?= $item['id_producto'] ?>">
 									<?= $item['cantidad'] ?>
-								</span>
+								</span>	
+								<label for="updateQuantity<?= $item['id_producto'] ?>" class="hidden" title="Aceptar">
+									<i class="fa fa-check-circle"></i>
+								</label>
+								<!-- cancelEditQuantity -->
+								<div class="hidden cancelEQ" idProd="<?= $item['id_producto'] ?>">
+									<i class="fa fa-times-circle" title="Cancelar"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+						<div class="options">
+							<div class="opt">
 								<span class="editarCant" idProd="<?= $item['id_producto'] ?>">
 									<i class="fa fa-edit" idProd="<?= $item['id_producto'] ?>"></i> 
 									<pre idProd="<?= $item['id_producto'] ?>"> Editar cantidad</pre>
 								</span>
-								
+							</div>
+							<div class="opt">
 								<form class="form_eliminar" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 									<input type="hidden" name="idCarritoDelete" value="<?php echo $item['id'] ?>">
 									<input type="hidden" name="itemName" value="<?php echo $item['nombre'] ?>">
-									<input type="submit" id="eliminar<?= $item['id_producto'] ?>" class="btn_eliminar" name="delete_item" value="X">
+									<input type="submit" id="eliminar<?= $item['id_producto'] ?>" name="delete_item" value="X">
 									<label for="eliminar<?= $item['id_producto'] ?>" class="btn_eliminar">
 										<i class="fa fa-times-circle"></i><pre> Eliminar</pre>
 									</label>
 								</form>
-								
 							</div>
 						</div>
-					</div>
 				</div>
 				<?php $subtotal += ($item['precio']*$item['cantidad']) ?>
 			<?php endforeach ?>

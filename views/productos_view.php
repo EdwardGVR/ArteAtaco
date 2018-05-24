@@ -85,10 +85,9 @@
 						<a class="opt detalles" href="detalles.php?id_prod=<?php echo $producto['id'] ?>">Detalles <i class="fa fa-info-circle"></i></a>
 						<form class="opt shortcut_carrito" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 							<input type="hidden" name="id_producto" value="<?php echo $producto['id'] ?>">
-
 							<?php if ($user != "Invitado"): ?>
-								<input type="submit" class="carrito" id="carrito_shortcut" name="shortcut_carrito" value="Carrito">
-								<label for="carrito_shortcut" class="button carrito">Carrito <i class="fa fa-cart-plus fa-lg"></i></label>
+								<input type="submit" class="carrito" id="carrito_shortcut<?= $producto['id'] ?>" name="shortcut_carrito" value="Carrito">
+								<label for="carrito_shortcut<?= $producto['id'] ?>" class="button carrito">Carrito <i class="fa fa-cart-plus fa-lg"></i></label>
 							<?php else: ?>
 								<div id="two" class="button carrito">Carrito <i class="fa fa-cart-plus fa-lg"></i></div>
 							<?php endif ?>	

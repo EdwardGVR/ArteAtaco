@@ -18,7 +18,32 @@
 			<?php foreach ($carrito as $item): ?>
 				<div class="prod_carrito">
 					<div class="img_carrito">
-						<img src="<?php echo $item['imagen'] ?>" alt="No se pudo cargar la imagen">
+						<?php $mainImg = false; $imgsForProd = false; ?>
+						<?php foreach ($imagenes as $img): ?>
+							<?php if ($img['id_prod'] == $item['id_producto']): ?>
+								<?php $imgsForProd = true ?>
+								<?php if ($img['principal'] == 1): ?>
+									<?php 
+										$mainImg = true;
+										$rutaMainImg = $img['ruta'];
+									?>
+								<?php endif ?>
+							<?php endif ?>
+						<?php endforeach ?>
+
+						<?php if ($imgsForProd == true): ?>
+							<?php if ($mainImg == true): ?>
+								<img src="<?= $rutaMainImg ?>" alt="No se pudo cargar la imagen">
+							<?php else: ?>
+								<?php foreach ($imagenes as $noMainImg): ?>
+									<?php if ($noMainImg['id_prod'] == $item['id_producto']): ?>
+										<img src="<?= $noMainImg['ruta'] ?>" alt="No se pudo cargar">
+									<?php endif ?>
+								<?php endforeach ?>
+							<?php endif ?>
+						<?php else: ?>
+							<span class="noImgs">No hay imagenes para este producto <i class="fa fa-exclamation-circle"></i></span>
+						<?php endif ?>
 					</div>
 					<div class="info_carrito">
 						<div class="header">
@@ -79,7 +104,7 @@
 									<input type="hidden" name="itemName" value="<?php echo $item['nombre'] ?>">
 									<input type="submit" id="eliminar<?= $item['id_producto'] ?>" name="delete_item" value="X">
 									<label for="eliminar<?= $item['id_producto'] ?>" class="btn_eliminar">
-										<i class="fa fa-times-circle"></i><pre> Eliminar</pre>
+										<i class="fa fa-trash"></i><pre> Eliminar</pre>
 									</label>
 								</form>
 							</div>

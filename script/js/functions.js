@@ -234,8 +234,8 @@ let showEditCantForm = (e) => {
 		cancelEditQuantity = [...document.querySelectorAll(".prod_carrito .info .field div.cancelEQ")];
 	
 	for (let i = 0; i < editCantCarr.length; i++) {
+		editCantCarr[i].setAttribute('class', 'hidden');
 		if (editCantCarr[i].getAttribute('idProd') == idProd) {
-			editCantCarr[i].setAttribute('class', 'hidden');
 			currenQuantity[i].setAttribute('class', 'hidden');
 			formEditQuantity[i].setAttribute('class', 'cantidad');
 			cancelEditQuantity[i].setAttribute('class', 'cancelEditQuantity');

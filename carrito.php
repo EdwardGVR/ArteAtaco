@@ -27,8 +27,15 @@ if ($conexion != false) {
 		GROUP BY carrito.id_producto");
 	$query->execute(array(':iduser'=>$iduser));
 	$carrito = $query->fetchall();
-
+	
 	// print_r($carrito);
+	
+	$query = $conexion->prepare("SELECT * FROM imgs_prods");
+	$query->execute();
+	$imagenes = $query->fetchall();
+
+	// print_r($imagenes);
+
 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['actualizar_cantidad'])) {
 		$cantidad_actualizada = $_POST['quantity'];

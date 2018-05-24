@@ -408,9 +408,14 @@ h1.user i.fa {
 	margin: auto 10%;
 	margin-bottom: 50px;
 	/*width: 70%;*/
-	padding: 1% 50px;
+	padding: 1% 30px;
 	background: #EAE5E5;
-	box-shadow: 0 0 50px #000;
+	box-shadow: 0 5px 10px #000;
+}
+
+.contenedor_carrito {
+	min-width: 440px;
+	background: none;
 }
 
 .titulo_cat {
@@ -951,10 +956,18 @@ h2.stock {
 	width: 40%;
 	min-width: 390px;
 	margin-top: 20px;
-	padding: 20px 0;
+	margin-right: 10px;
+	padding: 30px 10px;
+	border-radius: 5px 5px 0 0;
 
-	border-top: 2px solid #000;
+	/* border-top: 2px solid #000; */
 	border-bottom: 2px solid #000;
+	transition: all ease 0.3s;
+}
+
+.prod_carrito:hover {
+	background: #e4e2e2;
+	box-shadow: 0 2px 5px #000;
 }
 
 .img_carrito {
@@ -966,6 +979,15 @@ h2.stock {
 
 .img_carrito img {
 	border-radius: 5px;
+}
+
+.prod_carrito .img_carrito .noImgs {
+	padding: 5px;
+	border-radius: 5px;
+	background: #fdf472;
+	font-size: 0.8em;
+	margin: auto;
+	cursor: default;
 }
 
 .info_carrito {
@@ -1109,7 +1131,7 @@ h2.stock {
 	border-radius: 5px;
 	line-height: 10px;
 	cursor: pointer;
-	background: #FA9191;
+	background: #faa8a8;
 	transition: all ease 0.3s;
 }
 

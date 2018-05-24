@@ -1106,7 +1106,7 @@ h2.stock {
 	align-items: center;
 	padding: 5px;
 	border-radius: 5px;
-	background: #9df87a;
+	background: #baf5a3;
 	font-size: 0.8em;
 	width: 120px;
 	cursor: pointer;
@@ -1151,16 +1151,22 @@ h2.stock {
 .contenedor_carrito .carrito_subtotal {
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
+	align-content: center;
+	flex-wrap: wrap;
 
 	width: 100%;
-	height: 60px;
-	padding: 0 100px;
+	min-height: 50px;
+	padding: 10px 100px;
 	margin-top: 100px;
 
 	background: #EFC248;
 	font-size: 1.3em;
 	font-weight: bold;
+}
+
+.contenedor_carrito .carrito_subtotal .subtotal,
+.contenedor_carrito .carrito_subtotal .goToCheckout {
+	margin: auto;
 }
 
 .contenedor_carrito .carrito_subtotal .subtotal span {
@@ -1169,14 +1175,15 @@ h2.stock {
 
 .contenedor_carrito .checkout {
 	padding: 10px 60px;
-	margin-left: 100px;
 	background: #52C433;
-	border-radius: 10px;
-	transition: all ease 0.3s;
+	border-radius: 5px;
 	cursor: pointer;
 	width: 200px;
 	font-size: 1em;
-	line-height: 0;
+	/* line-height: 0; */
+	height: auto;
+	margin: 10px 0;
+	transition: all ease 0.3s;
 }
 
 .contenedor_carrito .checkout:hover {

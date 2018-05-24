@@ -123,10 +123,11 @@
 			<?php endforeach ?>
 			<div class="carrito_subtotal">
 				<div class="subtotal">Subtotal (<?= $cantItems ?> items): <span>$<?php echo  $subtotal ?></span></div>
-				<form action="checkout.php" method="POST">
-					<input type="submit" name="carrito_checkpoint" class="checkout" value="Ir a caja">
-				</form>
-				<!-- <a href="checkout.php" class="checkout">Ir a caja</a> -->
+				<div class="goToCheckout">
+					<form action="checkout.php" method="POST">
+						<input type="submit" name="carrito_checkpoint" class="checkout" value="Ir a caja">
+					</form>
+				</div>
 			</div>
 		<?php else: ?>
 			<p>El carrito est&aacute; vac&iacute;o</p>

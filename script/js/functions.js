@@ -231,7 +231,9 @@ let showEditCantForm = (e) => {
 		formEditQuantity = [...document.querySelectorAll(".prod_carrito .info .field form")],
 		formQuantitySelect = [...document.querySelectorAll(".prod_carrito .info .field form select")],
 		sendQuantity = [...document.querySelectorAll(".prod_carrito .info .field label")],
-		cancelEditQuantity = [...document.querySelectorAll(".prod_carrito .info .field div.cancelEQ")];
+		cancelEditQuantity = [...document.querySelectorAll(".prod_carrito .info .field div.cancelEQ")],
+		precio = [...document.querySelectorAll(".prod_carrito .info_carrito .info .field .precio")],
+		subtotalProd = [...document.querySelectorAll(".prod_carrito .info_carrito .info .field .subtotalProd")];
 	
 	for (let i = 0; i < editCantCarr.length; i++) {
 		editCantCarr[i].setAttribute('class', 'hidden');
@@ -244,8 +246,12 @@ let showEditCantForm = (e) => {
 				location.reload();
 			});
 
+			console.log(precio[i].innerHTML.substring(1));
+			
+
 			formQuantitySelect[i].addEventListener('change', () => {
 				sendQuantity[i].setAttribute('class', 'iconUpdtQnt');
+				subtotalProd[i].innerHTML = '$' + formQuantitySelect[i].value * precio[i].innerHTML.substring(1);
 			});
 		}
 	}

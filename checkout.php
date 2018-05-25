@@ -9,6 +9,8 @@ if (isset($_SESSION['user'])) {
 	$user = "Invitado";
 }
 
+// print_r($_POST['carrito_checkpoint']);
+
 $subtotal = 0;
 $errores = "";
 require 'conexion.php';
@@ -75,6 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_address'])) {
 }
 
 if ($conexion != false) {
+
 	$query = $conexion->prepare("SELECT id, nombre_cat FROM categorias ORDER BY nombre_cat ASC");
 	$query->execute();
 	$categorias = $query->fetchall();
@@ -84,8 +87,9 @@ if ($conexion != false) {
 	$dirs = $query->fetchall();
 	// Obtener cantidad de direcciones del usuario
 	$cant_direcciones = count($dirs);
+	// print_r($cant_direcciones);
 
-	if ($cant_direcciones < 3) {
+	if ($cant_direcciones <= 3) {
 		$permitir_direccion = true;
 	} else {
 		$permitir_direccion = false;
@@ -200,7 +204,16 @@ if ($conexion != false) {
 		$pay_sel = $query->fetch();
 		// print_r($pay_sel);
 	}
+
 }
+
+if (isset($dir_sel) && isset($pay_sel)) {
+	$allowPass = true;
+} else {
+	$allowPass = false;
+}
+
+var_dump($allowPass);
 
 require 'views/checkout_view.php';
 

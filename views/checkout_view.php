@@ -114,10 +114,10 @@
 								<h3>Se entregar&aacute; en:</h3>
 								<div class="shipping_address">
 									<div class="info">
-										<input type="hidden" name="dir_id" value="<?php echo $dir_sel['id'] ?>">
-										<input type="hidden" name="us_id" value="<?php echo $dir_sel['id_user'] ?>">
-										<h4><?php echo $dir_sel['nombre'] ?></h4><br />
-										<h5><?php echo $dir_sel['linea1'] ?></h5>
+										<input type="hidden" name="dir_id" value="<?= $dir_sel['id'] ?>">
+										<input type="hidden" name="us_id" value="<?= $dir_sel['id_user'] ?>">
+										<h4><?= $dir_sel['nombre'] ?></h4><br />
+										<h5><?= $dir_sel['linea1'] ?></h5>
 									</div>
 									<div class="options">
 										<a href="#dirs" class="button">Cambiar</a>
@@ -126,7 +126,11 @@
 							</div>
 						<?php else: ?>
 							<div class="direccion_seleccionada">
-								<h3>No se han seleccionado una direcci&oacute;n.</h3>
+								<h3 class="noSel">
+									No se han seleccionado una direcci&oacute;n.
+									<i class="fa fa-truck"></i>
+									<i class="fa fa-question"></i>
+								</h3>
 							</div>
 						<?php endif ?>
 						<?php if (isset($pay_sel) && $pay_sel != false): ?>
@@ -134,8 +138,8 @@
 								<h3>Se pagar&aacute; con:</h3>
 								<div class="shipping_address">
 									<div class="info">
-										<input type="hidden" name="pm_id" value="<?php echo $pay_sel['id'] ?>">
-										<h4><i class="<?php echo $pay_sel['icon'] ?>" aria-hidden="true"></i><?php echo " ".$pay_sel['nombre'] ?></h4><br />
+										<input type="hidden" name="pm_id" value="<?= $pay_sel['id'] ?>">
+										<h4><i class="<?= $pay_sel['icon'] ?>" aria-hidden="true"></i><?= " ". $pay_sel['nombre'] ?></h4><br />
 									</div>
 									<div class="options">
 										<a href="#pays" class="button">Cambiar</a>
@@ -144,12 +148,20 @@
 							</div>
 						<?php else: ?>
 							<div class="direccion_seleccionada">
-								<h3>No se ha seleccionado un m&eacute;todo de pago.</h3>
+								<h3 class="noSel">
+									No se ha seleccionado un m&eacute;todo de pago.
+									<i class="fa fa-money"></i>
+									<i class="fa fa-question"></i>
+								</h3>
 							</div>
 						<?php endif ?>
 					</div>
-					<input class="send_info" type="submit" name="confirm_info" value="La informaci&oacute;n es correcta">
-					<input type="hidden" name="checkout_checkpoint">
+					<?php if ($allowPass): ?>
+						<input class="send_info" type="submit" name="confirm_info" value="La informaci&oacute;n es correcta">
+						<input type="hidden" name="checkout_checkpoint">
+					<?php else: ?>
+						<div class="noInfo">Completar informaci&oacute;n para continuar</div>
+					<?php endif ?>
 				</form>
 			</div>
 		</div>

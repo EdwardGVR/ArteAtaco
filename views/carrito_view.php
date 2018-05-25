@@ -124,7 +124,7 @@
 			<div class="carrito_subtotal">
 				<div class="subtotal">Subtotal (<?= $cantItems ?> items): <span>$<?php echo  $subtotal ?></span></div>
 				<div class="goToCheckout">
-					<form action="checkout.php" method="POST">
+					<form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 						<input type="submit" name="carrito_checkpoint" class="checkout" value="Ir a caja">
 					</form>
 				</div>

@@ -66,6 +66,10 @@ if ($conexion != false) {
 
 }
 
+if (isset($_POST['carrito_checkpoint'])) {
+	header('Location: checkout.php');
+}
+
 require 'views/carrito_view.php';
 
 ?>

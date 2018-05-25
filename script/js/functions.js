@@ -264,3 +264,18 @@ if (editCantCarr != null) {
 		editCantCarr[i].addEventListener('click', showEditCantForm);
 	}
 }
+
+let showNewAddressForm = document.getElementById("showNewAddressForm");
+if (showNewAddressForm != null) {
+	showNewAddressForm.addEventListener('click', () => {
+		let newAddressForm = document.getElementById("newAddressForm");
+		newAddressForm.setAttribute('class', 'form_new_address');
+	});
+}
+
+let cancelNewAddresOnCheckout = document.getElementById("cancelNewAddressChkt");
+if (cancelNewAddresOnCheckout != null) {
+	cancelNewAddresOnCheckout.addEventListener('click', () =>{
+		location.reload(true);
+	})
+}

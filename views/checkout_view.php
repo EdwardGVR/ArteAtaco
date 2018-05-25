@@ -18,18 +18,18 @@
 		<div class="info_checkout">
 			<div class="contenedor_address">
 				<div class="step1">1</div>
-				<h3 class="indication">Seleccione una direccion de envio</h3>
+				<h3 class="indication"><i class="fa fa-truck"></i> Seleccione una direccion de env&iacute;o</h3>
 				<div class="select_address">
 					<?php if ($direcciones != false): ?>
 						<?php foreach ($direcciones as $direccion): ?>
-							<form class="shipping_address" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+							<form class="shipping_address" action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 								<div class="info">
-									<input type="hidden" name="id_address" value="<?php echo $direccion['id'] ?>">
-									<input type="hidden" name="id_user" value="<?php echo $direccion['id_user'] ?>">
-									<input type="hidden" name="dir_nombre" value="<?php echo $direccion['nombre'] ?>">
-									<input type="hidden" name="dir_detalle" value="<?php echo $direccion['linea1'] ?>">
-									<h4><?php echo $direccion['nombre'] ?></h4><br />
-									<h5><?php echo $direccion['linea1'] ?></h5>
+									<input type="hidden" name="id_address" value="<?= $direccion['id'] ?>">
+									<input type="hidden" name="id_user" value="<?= $direccion['id_user'] ?>">
+									<input type="hidden" name="dir_nombre" value="<?= $direccion['nombre'] ?>">
+									<input type="hidden" name="dir_detalle" value="<?= $direccion['linea1'] ?>">
+									<h4><?= $direccion['nombre'] ?></h4><br />
+									<h5><?= $direccion['linea1'] ?></h5>
 								</div>
 								<div class="options">
 									<a href="cuenta.php" class="button">Editar</a>
@@ -42,24 +42,28 @@
 					<?php endif ?>
 				</div>
 			</div>
-			<hr>
 
 			<?php if ($permitir_direccion): ?>
 				<div class="new_address">
-					<form class="form_new_address" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-						<h3 class="indication">O agregue una nueva</h3>
-						<span class="add_address">Agregar una nueva direccion</span>
-						Nombre de la direccion: *
+					<div class="show-form">
+						<span class="add_address" id="showNewAddressForm">
+							Agregar una nueva direccion 
+							&nbsp;<i class="fa fa-truck"></i>
+							&nbsp;<i class="fa fa-plus"></i>
+						</span>
+					</div>
+					<form id="newAddressForm" class="form_new_address closed" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+						Nombre de la direcci&oacute;n: *
 						<input type="text" name="address_name" class="new_address_field" placeholder="Nombre descriptivo ej: Casa Santa Ana, Oficina, etc..">
 						Pa&iacute;s: *
-						<input type="text" name="pais" class="new_address_field" value="El Salvador" readonly>
+						<input type="text" name="pais" class="new_address_field" value="El Salvador" readonly disabled>
 						Departamento: *
 						<select name="departamento" id="dpto" class="new_address_field">
 							<?php foreach ($departamentos as $departamento): ?>
 								<?php if($departamento['id'] == 1 || $departamento['id'] == 2 || $departamento['id'] == 3 || $departamento['id'] == 7): ?>
-									<option value="<?php echo $departamento['id'] ?>"><?php echo $departamento['nombre'] ?></option>
+									<option value="<?= $departamento['id'] ?>"><?php echo $departamento['nombre'] ?></option>
 								<?php else: ?>
-									<option value="<?php echo $departamento['id'] ?>" disabled><?php echo $departamento['nombre'] . "(No disponible)" ?></option>
+									<option value="<?= $departamento['id'] ?>" disabled><?php echo $departamento['nombre'] . "(No disponible)" ?></option>
 								<?php endif ?>
 							<?php endforeach ?>
 						</select>
@@ -69,13 +73,18 @@
 						Referencias:
 						<textarea name="referencias" id="ref" class="new_address_field" placeholder="Referencias de ubicacion ej: Frente a iglesia, a la par de local X, etc..."></textarea>
 						<?php if (!empty($errores)): ?>
-							<div class="errores"><?php echo $errores ?></div>
+							<div class="errores"><?= $errores ?></div>
 						<?php else: ?>
 							<?php if (isset($added)): ?>
-								<div class="added"><?php echo $added ?></div>
+								<div class="added"><?= $added ?></div>
 							<?php endif ?>
 						<?php endif ?>
-						<input type="submit" name="add_address" value="Agregar direccion">
+						<div class="options">
+							<input type="submit" name="add_address" value="Agregar direcci&oacute;n">
+							<div class="cancel" id="cancelNewAddressChkt">
+								<i class="fa fa-times-circle"></i>
+							</div>
+						</div>
 					</form>
 				</div>	
 			<hr>
@@ -146,23 +155,28 @@
 		</div>
 
 		<div class="carrito_checkout">
-			<h2>Articulos en el carrito:</h2>
+			<h2><i class="fa fa-shopping-cart"></i> Articulos en el carrito:</h2>
 
 			<?php foreach ($carrito as $item): ?>
 				<div class="item_checkout">
-					<h3><?php echo $item['nombre'] ?></h3>
-					<h3>Cantidad: <?php echo $item['cantidad'] ?></h3>
-					<h3>Precio unitario: <?php echo $item['precio'] ?></h3>
+					<div class="item-info">
+						<h3><?= $item['nombre'] ?></h3>
+					</div>
+					<div class="item-info">
+						<h4>Cantidad: <?= $item['cantidad'] ?></h4>
+					</div>
+					<div class="item-info">
+						<h4>Precio unitario: $<?= $item['precio'] ?></h4>
+					</div>
 				</div>
-
 				<?php $subtotal += $item['precio'] * $item['cantidad'] ?>
-
 			<?php endforeach ?>
+
 			<div class="editar">
 				<a href="carrito.php">Editar</a>
 			</div>
 			<div class="subtotal_checkout">
-				<span>El subtotal es de: $ <?php echo $subtotal ?></span>
+				<span>Subtotal: $ <?= $subtotal ?></span>
 			</div>
 		</div>
 	</div>

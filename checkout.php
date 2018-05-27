@@ -213,8 +213,6 @@ if (isset($dir_sel) && isset($pay_sel)) {
 	$allowPass = false;
 }
 
-var_dump($allowPass);
-
 require 'views/checkout_view.php';
 
 ?>

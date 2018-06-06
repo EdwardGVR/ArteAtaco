@@ -643,9 +643,9 @@ figure img {
 	line-height: 30px;
 	font-size: 1em;
 	color: #000;
-	background: #85bff5;
-	border-radius: 5px;
-	box-shadow: 0px 1px 4px #000;
+	/* background: #85bff5; */
+	/* border-radius: 5px; */
+	box-shadow: 0px 2px 1px #000;
 	overflow: hidden;
 	cursor: default;
 	margin-bottom: 10px;
@@ -680,12 +680,13 @@ figure img {
 
 .contenedor_prod .producto .prod-options .opt {
 	width: 40%;
-	height: 40px;
-	line-height: 40px;
+	height: 35px;
+	line-height: 35px;
 	font-size: 0.9em;
+	margin-top: 10px;
 	cursor: pointer;
 	border-radius: 5px;
-	background: #34a0ff;
+	background: #84c4fc;
 	box-shadow: 0px 2px 3px #000;
 	transition: all ease 0.3s;
 }
@@ -911,7 +912,7 @@ figure img {
 .detalles-prod-info .prod-det {
 	width: 100%;
 	text-align: left;
-	font-weight: bold;
+	/* font-weight: bold; */
 	margin-bottom: 20px;
 }
 
@@ -921,16 +922,16 @@ figure img {
 
 .detalles-prod-info .prod-det .title span {
 	padding: 5px;
-	background: #5eacf5;
+	background: #9dc9f3;
 	border-radius: 5px;
-	font-size: 1.5em;
+	font-size: 1.3em;
 	cursor: default;
 }
 
 .detalles-prod-info .prod-det .info {
 	width: 100%;
 	margin: 10px 0;
-	font-size: 1.4em;
+	font-size: 1.5em;
 }
 
 .detalles-prod-info .prod-det .info input[type="number"]:focus {
@@ -966,7 +967,7 @@ h2.stock {
 }
 
 .prod_carrito:hover {
-	background: #e4e2e2;
+	background: #e6f5fd;
 	box-shadow: 0 2px 5px #000;
 }
 
@@ -1016,7 +1017,7 @@ h2.stock {
 .info_carrito .header .art {
 	padding: 5px;
 	border-radius: 5px;
-	background: #97cdff;
+	background: #a6d1f8;
 }
 
 .info_carrito .form_carrito_confirm {
@@ -1159,7 +1160,7 @@ h2.stock {
 	padding: 10px 100px;
 	margin-top: 100px;
 
-	background: #EFC248;
+	background: #f1d68a;
 	font-size: 1.3em;
 	font-weight: bold;
 }
@@ -1175,7 +1176,7 @@ h2.stock {
 
 .contenedor_carrito .checkout {
 	padding: 10px 60px;
-	background: #52C433;
+	background: #4aca27;
 	border-radius: 5px;
 	cursor: pointer;
 	width: 200px;
@@ -1546,6 +1547,7 @@ input[name="add_address"]:hover {
 .form_confirm_info .send_info {
 	height: auto;
 	width: 100%;
+	margin-top: 100px;
 	cursor: pointer;
 	font-size: 1.7em;
 	font-weight: bold;

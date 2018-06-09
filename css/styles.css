@@ -225,6 +225,7 @@ a.reg:hover {
 .bar_hidden {
 	display: inline-block;
 	height: 40px;
+	width: 100%;
 	margin-bottom: 100px;
 }
 
@@ -963,6 +964,7 @@ h2.stock {
 
 	/* border-top: 2px solid #000; */
 	border-bottom: 2px solid #000;
+	box-shadow: 0 0 2px 0px #000;
 	transition: all ease 0.3s;
 }
 
@@ -1192,6 +1194,10 @@ h2.stock {
 	color: #fff;
 }
 
+body.checkout {
+	/* min-width: 870px; */
+}
+
 .contenedor_checkout {
 	display: flex;
 	justify-content: space-between;
@@ -1213,8 +1219,9 @@ h2.stock {
 	flex-grow: 1;
 
 	width: 70%;
+	min-width: 440px;
 	min-height: 300px;
-	margin-right: 30px;
+	margin-right: 350px;
 	margin-bottom: 50px;
 	padding: 20px;
 
@@ -1278,9 +1285,14 @@ h3.indication {
 	height: 150px;
 	margin: 10px;
 	border-radius: 7px;
-	/*margin-bottom: 30px;*/
+	margin-bottom: 50px;
 
 	background: #ccc;
+}
+
+.direccion_seleccionada h3,
+.pago_seleccionado h3 {
+	text-align-last: left;
 }
 
 .shipping_address .info {
@@ -1532,6 +1544,7 @@ input[name="add_address"]:hover {
 
 .form_confirm_info .selecciones {
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-between;
 	align-items: center;
 	padding-top: 20px;
@@ -1572,35 +1585,49 @@ input[name="add_address"]:hover {
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
-
+	position: fixed;
+	right: 50px;
+	margin-bottom: 50px;
 	width: 250px;
-	/* min-width: 250px; */
-	/*height: 300px;*/
-
-	/* background: #CFEFF1; */
+	background: #fff;
 	box-shadow: 0 2px 10px;
 }
 
-.carrito_checkout h2 {
+.carrito_checkout_noFixed {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	position: initial;
+	margin-bottom: 50px;
+	width: 250px;
+	background: #fff;
+	box-shadow: 0 2px 10px;
+}
+
+.carrito_checkout h2,
+.carrito_checkout_noFixed h2 {
 	font-size: 1em;
 	padding: 10px;
 	color: #000;
 }
 
-.carrito_checkout .item_checkout h3 {
+.carrito_checkout .item_checkout h3,
+.carrito_checkout_noFixed .item_checkout h3 {
 	font-size: 0.8em;
 	/* width: 100%;	 */
 	/* margin-left: 20px; */
 	text-align: left;
 }
 
-.carrito_checkout .item_checkout h4 {
+.carrito_checkout .item_checkout h4,
+.carrito_checkout_noFixed .item_checkout h4 {
 	font-size: 0.7em;
 	font-weight: normal;
 	text-align-last: left;
 }
 
-.carrito_checkout .item_checkout {
+.carrito_checkout .item_checkout,
+.carrito_checkout_noFixed .item_checkout {
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
@@ -1616,45 +1643,54 @@ input[name="add_address"]:hover {
 	transition: all ease 0.3s;
 }
 
-.carrito_checkout .item_checkout:hover {
+.carrito_checkout .item_checkout:hover,
+.carrito_checkout_noFixed .item_checkout:hover {
 	background: #A8EAD4;
 }
 
-.carrito_checkout .item_checkout .item-info {
+.carrito_checkout .item_checkout .item-info,
+.carrito_checkout_noFixed .item_checkout .item-info {
 	width: 100%;
 	margin-bottom: 10px;
 }
 
-.carrito_checkout .item_checkout .item-info:last-child {
+.carrito_checkout .item_checkout .item-info:last-child,
+.carrito_checkout_noFixed .item_checkout .item-info:last-child {
 	margin-bottom: 0;
 }
 
-.carrito_checkout .editar {
+.carrito_checkout .editar,
+.carrito_checkout_noFixed .editar {
 	display: flex;
 	width: 90%;
 	margin-bottom: 30px;
 	text-align: left;
 }
 
-.carrito_checkout .editar a {
-	padding: 10px 20px;
-	background: #85f05a;
+.carrito_checkout .editar a,
+.carrito_checkout_noFixed .editar a {
+	padding: 5px 10px;
+	background: #379e0f;
+	color: #fff;
 	transition: all ease 0.3s;
 	border-radius: 5px;
 }
 
-.carrito_checkout .editar a:hover {
-	background: #379e0f;
-	color: #fff;
+.carrito_checkout .editar a:hover,
+.carrito_checkout_noFixed .editar a:hover {
+	background: #85f05a;
+	color: #000;
 }
 
-.carrito_checkout .subtotal_checkout {
+.carrito_checkout .subtotal_checkout,
+.carrito_checkout_noFixed .subtotal_checkout {
 	width: 100%;
 	padding: 20px;
 	background: #B0F395;
 }
 
-.carrito_checkout .subtotal_checkout span {
+.carrito_checkout .subtotal_checkout span,
+.carrito_checkout_noFixed .subtotal_checkout span {
 	font-size: 1.2em;
 	font-weight: bold;
 }

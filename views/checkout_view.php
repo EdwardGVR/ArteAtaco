@@ -8,13 +8,39 @@
 	<link rel="stylesheet" href="css/styleModal.css"> 
 	<link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+<body class="checkout">
 
 <?php require("messenger_contact.php") ?>	
 <?php require 'header.php' ?>
 
 	<a name="dirs" id="dirs"></a>
 	<div class="contenedor_checkout">
+		<div id="carritoCheckout" class="carrito_checkout">
+			<h2><i class="fa fa-shopping-cart"></i> Articulos en el carrito:</h2>
+
+			<?php foreach ($carrito as $item): ?>
+				<div class="item_checkout">
+					<div class="item-info">
+						<h3><?= $item['nombre'] ?></h3>
+					</div>
+					<div class="item-info">
+						<h4>Cantidad: <?= $item['cantidad'] ?></h4>
+					</div>
+					<div class="item-info">
+						<h4>Precio unitario: $<?= $item['precio'] ?></h4>
+					</div>
+				</div>
+				<?php $subtotal += $item['precio'] * $item['cantidad'] ?>
+			<?php endforeach ?>
+
+			<div class="editar">
+				<a href="carrito.php">Editar</a>
+			</div>
+			<div class="subtotal_checkout">
+				<span>Subtotal: $ <?= $subtotal ?></span>
+			</div>
+		</div>
+
 		<div class="info_checkout">
 			<div class="contenedor_address">
 				<div class="step1">1</div>
@@ -163,32 +189,6 @@
 						<div class="noInfo">Completar informaci&oacute;n para continuar</div>
 					<?php endif ?>
 				</form>
-			</div>
-		</div>
-
-		<div class="carrito_checkout">
-			<h2><i class="fa fa-shopping-cart"></i> Articulos en el carrito:</h2>
-
-			<?php foreach ($carrito as $item): ?>
-				<div class="item_checkout">
-					<div class="item-info">
-						<h3><?= $item['nombre'] ?></h3>
-					</div>
-					<div class="item-info">
-						<h4>Cantidad: <?= $item['cantidad'] ?></h4>
-					</div>
-					<div class="item-info">
-						<h4>Precio unitario: $<?= $item['precio'] ?></h4>
-					</div>
-				</div>
-				<?php $subtotal += $item['precio'] * $item['cantidad'] ?>
-			<?php endforeach ?>
-
-			<div class="editar">
-				<a href="carrito.php">Editar</a>
-			</div>
-			<div class="subtotal_checkout">
-				<span>Subtotal: $ <?= $subtotal ?></span>
 			</div>
 		</div>
 	</div>

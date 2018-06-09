@@ -279,3 +279,18 @@ if (cancelNewAddresOnCheckout != null) {
 		location.reload(true);
 	})
 }
+
+let bodyCheckout = document.querySelector("body.checkout");
+if (bodyCheckout != null) {	
+	let infoCheckout = document.querySelector(".contenedor_checkout .info_checkout");
+	window.addEventListener("resize", () => {
+		// console.log(infoCheckout.clientWidth);
+		let carritoCheckout = document.getElementById("carritoCheckout");
+		if (infoCheckout.clientWidth == 440) {
+			carritoCheckout.setAttribute("class", "carrito_checkout_noFixed");
+		} else {
+			carritoCheckout.setAttribute("class", "carrito_checkout");
+		}
+	});
+	
+}

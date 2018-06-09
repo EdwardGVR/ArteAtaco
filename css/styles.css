@@ -203,6 +203,7 @@ a.reg:hover {
 
 	min-height: 50px;
 	width: 100%;
+	min-width: 500px;
 	padding: 0 20px;
 
 	background: #16396E;
@@ -226,7 +227,7 @@ a.reg:hover {
 	display: inline-block;
 	height: 40px;
 	width: 100%;
-	margin-bottom: 100px;
+	margin-bottom: 50px;
 }
 
 .bar i.fa-home:hover {
@@ -302,7 +303,10 @@ a.reg:hover {
 	.bar-options {
 		margin: 10px auto 20px auto;
 		order: 2;
-	} 
+	}
+	.bar_hidden {
+		height: 200px;
+	}
 }
 
 /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/

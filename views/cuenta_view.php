@@ -10,6 +10,8 @@
 </head>
 <body>
 
+<script>var pagId = "cuenta";</script>
+
 <?php require("messenger_contact.php") ?>
 
 <?php require 'header.php' ?>

@@ -10,6 +10,8 @@
 </head>
 <body class="checkout">
 
+<script>var pagId = "checkout";</script>
+
 <?php require("messenger_contact.php") ?>	
 <?php require 'header.php' ?>
 
@@ -186,7 +188,7 @@
 						<input class="send_info" type="submit" name="confirm_info" value="La informaci&oacute;n es correcta">
 						<input type="hidden" name="checkout_checkpoint">
 					<?php else: ?>
-						<div class="noInfo">Completar informaci&oacute;n para continuar</div>
+						<div class="noInfo">Completar informaci&oacute;n para continuar <i class="fa fa-exclamation-triangle"></i></div>
 					<?php endif ?>
 				</form>
 			</div>

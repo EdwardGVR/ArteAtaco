@@ -223,74 +223,82 @@ function hideChat() {
 	chatBtn.setAttribute("class", "boton_chat")
 }
 
-let showEditCantForm = (e) => {
-	console.log(e.target);
-	
-	let idProd = e.target.attributes.idProd.value,
-		currenQuantity = [...document.querySelectorAll(".prod_carrito .info .field .value.cantidad")],
-		formEditQuantity = [...document.querySelectorAll(".prod_carrito .info .field form")],
-		formQuantitySelect = [...document.querySelectorAll(".prod_carrito .info .field form select")],
-		sendQuantity = [...document.querySelectorAll(".prod_carrito .info .field label")],
-		cancelEditQuantity = [...document.querySelectorAll(".prod_carrito .info .field div.cancelEQ")],
-		precio = [...document.querySelectorAll(".prod_carrito .info_carrito .info .field .precio")],
-		subtotalProd = [...document.querySelectorAll(".prod_carrito .info_carrito .info .field .subtotalProd")];
-	
-	for (let i = 0; i < editCantCarr.length; i++) {
-		editCantCarr[i].setAttribute('class', 'hidden');
-		if (editCantCarr[i].getAttribute('idProd') == idProd) {
-			currenQuantity[i].setAttribute('class', 'hidden');
-			formEditQuantity[i].setAttribute('class', 'cantidad');
-			cancelEditQuantity[i].setAttribute('class', 'cancelEditQuantity');
-			
-			cancelEditQuantity[i].addEventListener('click', () => {
-				location.reload();
-			});
+if (window.pagId) {
+	if (pagId == "checkout") {
+		console.log("Pagina de caja");
 
-			console.log(precio[i].innerHTML.substring(1));
+		let showEditCantForm = (e) => {
+			console.log(e.target);
 			
-
-			formQuantitySelect[i].addEventListener('change', () => {
-				sendQuantity[i].setAttribute('class', 'iconUpdtQnt');
-				subtotalProd[i].innerHTML = '$' + formQuantitySelect[i].value * precio[i].innerHTML.substring(1);
+			let idProd = e.target.attributes.idProd.value,
+				currenQuantity = [...document.querySelectorAll(".prod_carrito .info .field .value.cantidad")],
+				formEditQuantity = [...document.querySelectorAll(".prod_carrito .info .field form")],
+				formQuantitySelect = [...document.querySelectorAll(".prod_carrito .info .field form select")],
+				sendQuantity = [...document.querySelectorAll(".prod_carrito .info .field label")],
+				cancelEditQuantity = [...document.querySelectorAll(".prod_carrito .info .field div.cancelEQ")],
+				precio = [...document.querySelectorAll(".prod_carrito .info_carrito .info .field .precio")],
+				subtotalProd = [...document.querySelectorAll(".prod_carrito .info_carrito .info .field .subtotalProd")];
+			
+			for (let i = 0; i < editCantCarr.length; i++) {
+				editCantCarr[i].setAttribute('class', 'hidden');
+				if (editCantCarr[i].getAttribute('idProd') == idProd) {
+					currenQuantity[i].setAttribute('class', 'hidden');
+					formEditQuantity[i].setAttribute('class', 'cantidad');
+					cancelEditQuantity[i].setAttribute('class', 'cancelEditQuantity');
+					
+					cancelEditQuantity[i].addEventListener('click', () => {
+						location.reload();
+					});
+		
+					console.log(precio[i].innerHTML.substring(1));
+					
+		
+					formQuantitySelect[i].addEventListener('change', () => {
+						sendQuantity[i].setAttribute('class', 'iconUpdtQnt');
+						subtotalProd[i].innerHTML = '$' + formQuantitySelect[i].value * precio[i].innerHTML.substring(1);
+					});
+				}
+			}
+		};
+		
+		let editCantCarr = [...document.querySelectorAll(".editarCant")];
+		if (editCantCarr != null) {
+			for (let i = 0; i < editCantCarr.length; i++) {
+				editCantCarr[i].addEventListener('click', showEditCantForm);
+			}
+		}
+		
+		let showNewAddressForm = document.getElementById("showNewAddressForm");
+		if (showNewAddressForm != null) {
+			showNewAddressForm.addEventListener('click', () => {
+				let newAddressForm = document.getElementById("newAddressForm");
+				newAddressForm.setAttribute('class', 'form_new_address');
 			});
 		}
-	}
-};
-
-let editCantCarr = [...document.querySelectorAll(".editarCant")];
-
-if (editCantCarr != null) {
-	for (let i = 0; i < editCantCarr.length; i++) {
-		editCantCarr[i].addEventListener('click', showEditCantForm);
-	}
-}
-
-let showNewAddressForm = document.getElementById("showNewAddressForm");
-if (showNewAddressForm != null) {
-	showNewAddressForm.addEventListener('click', () => {
-		let newAddressForm = document.getElementById("newAddressForm");
-		newAddressForm.setAttribute('class', 'form_new_address');
-	});
-}
-
-let cancelNewAddresOnCheckout = document.getElementById("cancelNewAddressChkt");
-if (cancelNewAddresOnCheckout != null) {
-	cancelNewAddresOnCheckout.addEventListener('click', () =>{
-		location.reload(true);
-	})
-}
-
-let bodyCheckout = document.querySelector("body.checkout");
-if (bodyCheckout != null) {	
-	let infoCheckout = document.querySelector(".contenedor_checkout .info_checkout");
-	window.addEventListener("resize", () => {
-		// console.log(infoCheckout.clientWidth);
-		let carritoCheckout = document.getElementById("carritoCheckout");
-		if (infoCheckout.clientWidth == 440) {
-			carritoCheckout.setAttribute("class", "carrito_checkout_noFixed");
-		} else {
-			carritoCheckout.setAttribute("class", "carrito_checkout");
+		
+		let cancelNewAddresOnCheckout = document.getElementById("cancelNewAddressChkt");
+		if (cancelNewAddresOnCheckout != null) {
+			cancelNewAddresOnCheckout.addEventListener('click', () =>{
+				location.reload(true);
+			})
 		}
-	});
-	
+		
+		let bodyCheckout = document.querySelector("body.checkout");
+		if (bodyCheckout != null) {	
+			let infoCheckout = document.querySelector(".contenedor_checkout .info_checkout");
+			window.addEventListener("resize", () => {
+				// console.log(infoCheckout.clientWidth);
+				let carritoCheckout = document.getElementById("carritoCheckout");
+				if (infoCheckout.clientWidth == 440) {
+					carritoCheckout.setAttribute("class", "carrito_checkout_noFixed");
+				} else {
+					carritoCheckout.setAttribute("class", "carrito_checkout");
+				}
+			});
+			
+		}
+
+		
+		
+	}
 }

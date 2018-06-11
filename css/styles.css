@@ -1559,6 +1559,8 @@ input[name="add_address"]:hover {
 	padding: 20px;
 	border-radius: 5px;
 	background: #f7f2ad;
+	min-width: 450px;
+	margin-bottom: 20px;
 }
 
 .form_confirm_info .send_info {

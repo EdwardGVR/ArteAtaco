@@ -92,7 +92,8 @@
 								</div>
 								<div class="options">
 									<a href="cuenta.php" class="button">Editar</a>
-									<input class="button" name="confirm_address" type="submit" value="Seleccionar">
+									<!-- <input class="button" name="confirm_address" type="submit" value="Seleccionar"> -->
+									<a href="#" class="button">Seleccionar</a>
 								</div>
 							</form>
 						<?php endforeach ?>

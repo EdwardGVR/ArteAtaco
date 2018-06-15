@@ -1257,6 +1257,25 @@ body.checkout {
 	width: 100%;
 }
 
+.select_address h4.addressType {
+	width: 100%;
+	font-weight: normal;
+	text-align-last: left;
+	padding-left: 10px;
+	margin-bottom: 10px;
+	font-style: italic;
+}
+
+.select_address h4.info {
+	width: 100%;
+	font-weight: normal;
+	text-align-last: left;
+	padding-left: 30px;
+	margin-bottom: 20px;
+	font-style: italic;
+	font-size: 0.7em;
+}
+
 h3.indication {
 	width: 100%;
 	text-align: left;
@@ -1285,13 +1304,18 @@ h3.indication {
 	align-items: center;
 	flex-wrap: wrap;
 
-	width: 300px;
-	height: 150px;
+	width: 250px;
+	min-height: 150px;
 	margin: 10px;
 	border-radius: 7px;
 	margin-bottom: 50px;
 
-	background: #ccc;
+	background: #dddddd;
+	transition: all ease 0.3s;
+}
+
+.shipping_address:hover {
+	box-shadow: 0 0 3px #000;
 }
 
 .direccion_seleccionada h3,
@@ -1318,7 +1342,7 @@ h3.indication {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background: #A7E39F;
+	background: #84c4dd;
 	padding: 0;	
 	border-radius: 7px;	
 	font-size: 1em;
@@ -1330,7 +1354,8 @@ h3.indication {
 }
 
 .shipping_address .button:hover{
-	background: #62B856;
+	background: #2e69ac;
+	color: #fff;
 }
 
 .shipping_address h4, h5 {
@@ -1339,6 +1364,7 @@ h3.indication {
 
 .shipping_address h5 {
 	font-style: italic;
+	font-weight: normal;
 }
 
 .new_address {
@@ -1347,9 +1373,6 @@ h3.indication {
 	flex-wrap: wrap;
 
 	width: 100%;
-	margin-top: 100px;
-	/*padding: 20px;*/
-	/*background: #ccc;*/
 }
 
 .new_address .show-form {
@@ -1362,12 +1385,10 @@ h3.indication {
 	display: flex;
 	justify-content: center;
 	width: 400px;
-	border: 2px dotted #000;
+	border: 1px dashed #000;
 	padding: 10px;
-	margin-bottom: 0px;
 	background: #CAF4E6;
 	cursor: pointer;
-	border-radius: 5px 5px 0 0;
 }
 
 .form_new_address {
@@ -1559,8 +1580,11 @@ input[name="add_address"]:hover {
 	padding: 20px;
 	border-radius: 5px;
 	background: #f7f2ad;
-	min-width: 450px;
+	min-width: 350px;
 	margin-bottom: 20px;
+	font-weight: normal;
+	font-size: 0.9em;
+	cursor: default;
 }
 
 .form_confirm_info .send_info {
@@ -1585,6 +1609,7 @@ input[name="add_address"]:hover {
 	line-height: 50px;
 	background: #ccc;
 	margin-top: 50px;
+	cursor: default;
 }
 
 .carrito_checkout {
@@ -1676,16 +1701,16 @@ input[name="add_address"]:hover {
 .carrito_checkout .editar a,
 .carrito_checkout_noFixed .editar a {
 	padding: 5px 10px;
-	background: #379e0f;
-	color: #fff;
+	background: #57aee0;
+	/* color: #fff; */
 	transition: all ease 0.3s;
 	border-radius: 5px;
 }
 
 .carrito_checkout .editar a:hover,
 .carrito_checkout_noFixed .editar a:hover {
-	background: #85f05a;
-	color: #000;
+	background: #224edf;
+	color: #fff;
 }
 
 .carrito_checkout .subtotal_checkout,

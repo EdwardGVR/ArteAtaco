@@ -46,8 +46,39 @@
 		<div class="info_checkout">
 			<div class="contenedor_address">
 				<div class="step1">1</div>
-				<h3 class="indication"><i class="fa fa-truck"></i> Seleccione una direccion de env&iacute;o</h3>
+				<h3 class="indication"><i class="fa fa-truck"></i> Seleccione una direccion para la entrega</h3>
+				
 				<div class="select_address">
+					<h4 class="addressType"><i class="fa fa-map-marker"></i> Puntos establecidos:</h4>
+					<div class="shipping_address">
+						<div class="info">
+							<h4>Punto de entrega 1</h4>
+						</div>
+						<div class="options">
+							<a href="#" class="button">Seleccionar</a>
+						</div>
+					</div>
+					<div class="shipping_address">
+						<div class="info">
+							<h4>Punto de entrega 2</h4>
+						</div>
+						<div class="options">
+							<a href="#" class="button">Seleccionar</a>
+						</div>
+					</div>
+					<div class="shipping_address">
+						<div class="info">
+							<h4>Punto de entrega 3</h4>
+						</div>
+						<div class="options">
+							<a href="#" class="button">Seleccionar</a>
+						</div>
+					</div>
+				</div>
+				
+				<div class="select_address">
+					<h4 class="addressType"><i class="fa fa-compass"></i> Direcciones personalizadas:</h4>
+					<h4 class="info"><i class="fa fa-info-circle"></i>Podr&iacute;an aplicarse cargos</h4>
 					<?php if ($direcciones != false): ?>
 						<?php foreach ($direcciones as $direccion): ?>
 							<form class="shipping_address" action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
@@ -78,6 +109,7 @@
 							Agregar una nueva direccion 
 							&nbsp;<i class="fa fa-truck"></i>
 							&nbsp;<i class="fa fa-plus"></i>
+							&nbsp;&nbsp;&nbsp;(quedan <?= $restantes ?>)
 						</span>
 					</div>
 					<form id="newAddressForm" class="form_new_address closed" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">

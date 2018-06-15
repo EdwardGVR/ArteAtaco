@@ -91,6 +91,7 @@ if ($conexion != false) {
 
 	if ($cant_direcciones <= 3) {
 		$permitir_direccion = true;
+		$restantes = 3 - $cant_direcciones;
 	} else {
 		$permitir_direccion = false;
 	}

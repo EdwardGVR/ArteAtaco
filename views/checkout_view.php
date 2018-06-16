@@ -55,7 +55,7 @@
 							<h4>Punto de entrega 1</h4>
 						</div>
 						<div class="options">
-							<a href="#" class="button">Seleccionar</a>
+							<a href="#" class="button selectDir" addressType="preset">Seleccionar</a>
 						</div>
 					</div>
 					<div class="shipping_address">
@@ -63,7 +63,7 @@
 							<h4>Punto de entrega 2</h4>
 						</div>
 						<div class="options">
-							<a href="#" class="button">Seleccionar</a>
+							<a href="#" class="button selectDir" addressType="preset">Seleccionar</a>
 						</div>
 					</div>
 					<div class="shipping_address">
@@ -71,7 +71,7 @@
 							<h4>Punto de entrega 3</h4>
 						</div>
 						<div class="options">
-							<a href="#" class="button">Seleccionar</a>
+							<a href="#" class="button selectDir" addressType="preset">Seleccionar</a>
 						</div>
 					</div>
 				</div>
@@ -93,7 +93,11 @@
 								<div class="options">
 									<a href="cuenta.php" class="button">Editar</a>
 									<!-- <input class="button" name="confirm_address" type="submit" value="Seleccionar"> -->
-									<a href="#" class="button">Seleccionar</a>
+									<a idAddress="<?= $direccion['id'] ?>" 
+									   href="#" class="button selectDir"
+									   addressType="user">
+									   Seleccionar
+									</a>
 								</div>
 							</form>
 						<?php endforeach ?>

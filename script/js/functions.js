@@ -1,3 +1,19 @@
+function getCookie(cname) {
+	var name = cname + "=";
+	var decodedCookie = decodeURIComponent(document.cookie);
+	var ca = decodedCookie.split(';');
+	for(var i = 0; i <ca.length; i++) {
+		var c = ca[i];
+		while (c.charAt(0) == ' ') {
+			c = c.substring(1);
+		}
+		if (c.indexOf(name) == 0) {
+			return c.substring(name.length, c.length);
+		}
+	}
+	return "";
+}
+
 function editInfoUser() {
 	//Botones
 	var btnEditar = document.getElementById("btnEditar");
@@ -298,6 +314,26 @@ if (window.pagId) {
 			
 		}
 
+		let selectAddressBtns = [...document.querySelectorAll(".selectDir")];
+		if (selectAddressBtns != null) {
+			if (getCookie("dirSelected") == 0) {
+				document.cookie = "dirSelected = 0";
+			}
+			for (let i = 0; i < selectAddressBtns.length; i++) {
+				selectAddressBtns[i].addEventListener("click", (e) => {
+					// console.log(e.target.attributes.addresstype.value);
+					// console.log(e.target.attributes.idAddress.value);
+					let idAddress = e.target.attributes.idAddress.value,
+						typeAddress = e.target.attributes.addresstype.value;
+					document.cookie = "dirSelected =" + idAddress;
+					document.cookie = "dirType =" + typeAddress;
+					location.reload();
+				});
+			}
+			
+			console.log(getCookie("dirSelected"));
+			
+		}
 		
 		
 	}

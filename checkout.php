@@ -205,8 +205,21 @@ if ($conexion != false) {
 	// 	$pay_sel = $query->fetch();
 	// 	// print_r($pay_sel);
 	// }
+	
+	if (isset($_COOKIE["dirSelected"])) {
+		$query = $conexion->prepare(
+			"SELECT direcciones.*, departamentos.nombre AS nombreDpto
+			 FROM direcciones 
+			 JOIN departamentos ON direcciones.id_departamento = departamentos.id
+			 WHERE direcciones.id = :idAddress 
+		");
+		$query->execute(array(':idAddress' => $_COOKIE['dirSelected']));
+		$dir_sel = $query->fetch();
+	}
 
 }
+
+// print_r($_COOKIE["dirSelected"]);
 
 if (isset($dir_sel) && isset($pay_sel)) {
 	$allowPass = true;

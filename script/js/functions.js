@@ -240,9 +240,12 @@ function hideChat() {
 }
 
 if (window.pagId) {
-	if (pagId == "checkout") {
-		console.log("Pagina de caja");
+	if (pagId == "carrito") {
+		console.log("Pagina de carrito");
 
+		document.cookie = "dirSelected = 0";
+		document.cookie = "dirType = 0";
+		
 		let showEditCantForm = (e) => {
 			console.log(e.target);
 			
@@ -283,7 +286,10 @@ if (window.pagId) {
 				editCantCarr[i].addEventListener('click', showEditCantForm);
 			}
 		}
-		
+
+	} else if (pagId == "checkout") {
+		console.log("Pagina de caja");
+
 		let showNewAddressForm = document.getElementById("showNewAddressForm");
 		if (showNewAddressForm != null) {
 			showNewAddressForm.addEventListener('click', () => {
@@ -316,25 +322,33 @@ if (window.pagId) {
 
 		let selectAddressBtns = [...document.querySelectorAll(".selectDir")];
 		if (selectAddressBtns != null) {
-			if (getCookie("dirSelected") == 0) {
-				document.cookie = "dirSelected = 0";
-			}
 			for (let i = 0; i < selectAddressBtns.length; i++) {
 				selectAddressBtns[i].addEventListener("click", (e) => {
-					// console.log(e.target.attributes.addresstype.value);
-					// console.log(e.target.attributes.idAddress.value);
 					let idAddress = e.target.attributes.idAddress.value,
 						typeAddress = e.target.attributes.addresstype.value;
+
 					document.cookie = "dirSelected =" + idAddress;
 					document.cookie = "dirType =" + typeAddress;
+					
 					location.reload();
 				});
 			}
-			
-			console.log(getCookie("dirSelected"));
+		}
+
+		if (getCookie("dirSelected") != 0) {
+			let dirActive = document.getElementById("dirUser" + getCookie("dirSelected")),
+				selectDirBtn = document.querySelector("#dirUser" + getCookie("dirSelected") + " .options a.selectDir"),
+				notUseBtn = document.querySelector("#dirUser" + getCookie("dirSelected") + " .options a.hidden");
+			console.log(dirActive);
+
+			dirActive.setAttribute("class", "shipping_address_active");
+			selectDirBtn.setAttribute("class", "hidden");
+			notUseBtn.setAttribute("class", "button selectDir");
 			
 		}
 		
+		
+		console.log(getCookie("dirSelected"));
 		
 	}
 }

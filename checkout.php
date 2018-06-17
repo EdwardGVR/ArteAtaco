@@ -206,7 +206,7 @@ if ($conexion != false) {
 	// 	// print_r($pay_sel);
 	// }
 	
-	if (isset($_COOKIE["dirSelected"])) {
+	if (isset($_COOKIE["dirSelected"]) && $_COOKIE["dirSelected"] != 0) {
 		$query = $conexion->prepare(
 			"SELECT direcciones.*, departamentos.nombre AS nombreDpto
 			 FROM direcciones 

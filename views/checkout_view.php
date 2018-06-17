@@ -81,25 +81,22 @@
 					<h4 class="info"><i class="fa fa-info-circle"></i>Podr&iacute;an aplicarse cargos</h4>
 					<?php if ($direcciones != false): ?>
 						<?php foreach ($direcciones as $direccion): ?>
-							<form class="shipping_address" action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+							<div id="dirUser<?= $direccion['id'] ?>" class="shipping_address">
 								<div class="info">
-									<input type="hidden" name="id_address" value="<?= $direccion['id'] ?>">
-									<input type="hidden" name="id_user" value="<?= $direccion['id_user'] ?>">
-									<input type="hidden" name="dir_nombre" value="<?= $direccion['nombre'] ?>">
-									<input type="hidden" name="dir_detalle" value="<?= $direccion['linea1'] ?>">
 									<h4><?= $direccion['nombre'] ?></h4><br />
 									<h5><?= $direccion['linea1'] ?></h5>
 								</div>
 								<div class="options">
 									<a href="cuenta.php" class="button">Editar</a>
-									<!-- <input class="button" name="confirm_address" type="submit" value="Seleccionar"> -->
 									<a idAddress="<?= $direccion['id'] ?>" 
-									   href="#" class="button selectDir"
+									   href="#" 
+									   class="button selectDir <?= $direccion['id'] ?>"
 									   addressType="user">
 									   Seleccionar
 									</a>
+									<a href="#" class="hidden">No usar</a>
 								</div>
-							</form>
+							</div>
 						<?php endforeach ?>
 					<?php else: ?>
 						No tiene ninguna direcci&oacute;n registrada, puede agregar direcciones en el siguiente formulario y aparecer&aacute;n aqu&iacute;:

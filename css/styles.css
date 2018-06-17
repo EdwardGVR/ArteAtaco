@@ -1298,7 +1298,8 @@ h3.indication {
 	font-weight: bold;
 }
 
-.shipping_address {
+.shipping_address,
+.shipping_address_active {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -1314,7 +1315,13 @@ h3.indication {
 	transition: all ease 0.3s;
 }
 
-.shipping_address:hover {
+.shipping_address_active {
+	background: #c8dfff;
+	box-shadow: 0 0 2px #000;
+}
+
+.shipping_address:hover,
+.shipping_address_active:hover {
 	box-shadow: 0 0 3px #000;
 }
 
@@ -1323,14 +1330,16 @@ h3.indication {
 	text-align-last: left;
 }
 
-.shipping_address .info {
+.shipping_address .info,
+.shipping_address_active .info {
 	display: flex;
 	align-items: center;
 	flex-wrap: wrap;	
 	height: 70%;
 }
 
-.shipping_address .options {
+.shipping_address .options,
+.shipping_address_active .options {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
@@ -1338,7 +1347,8 @@ h3.indication {
 	height: 30%;
 }
 
-.shipping_address .button {
+.shipping_address .button,
+.shipping_address_active .button {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -1353,16 +1363,19 @@ h3.indication {
 	transition: all ease 0.3s;
 }
 
-.shipping_address .button:hover{
+.shipping_address .button:hover,
+.shipping_address_active .button:hover {
 	background: #2e69ac;
 	color: #fff;
 }
 
-.shipping_address h4, h5 {
+.shipping_address h4, h5,
+.shipping_address_active h4, h5 {
 	width: 100%;
 }
 
-.shipping_address h5 {
+.shipping_address h5,
+.shipping_address_active h5 {
 	font-style: italic;
 	font-weight: normal;
 }

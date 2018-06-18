@@ -1310,9 +1310,26 @@ h3.indication {
 	margin: 10px;
 	border-radius: 7px;
 	margin-bottom: 50px;
+	position: relative;
 
 	background: #dddddd;
 	transition: all ease 0.3s;
+}
+
+.shipping_address_active .selected-check {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 40px;
+	width: 40px;
+	position: absolute;
+	top: -15px;
+	right: -15px;
+	font-size: 2em;
+	color: #24b300;
+	background: #ccc;
+	border-radius: 50%;
+	box-shadow: 1px 1px 3px #000;
 }
 
 .shipping_address_active {
@@ -1361,6 +1378,10 @@ h3.indication {
 	height: 70%;
 	cursor: pointer;
 	transition: all ease 0.3s;
+}
+
+.shipping_address_active .button.cancel {
+	background: #a8a8a8;
 }
 
 .shipping_address .button:hover,

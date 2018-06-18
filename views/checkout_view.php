@@ -94,7 +94,10 @@
 									   addressType="user">
 									   Seleccionar
 									</a>
-									<a href="#" class="hidden">No usar</a>
+									<a id="cancelDirUser<?= $direccion['id'] ?>" href="#" class="hidden">No usar</a>
+								</div>
+								<div class="hidden checkOnDir">
+									<i class="fa fa-check-circle"></i>
 								</div>
 							</div>
 						<?php endforeach ?>

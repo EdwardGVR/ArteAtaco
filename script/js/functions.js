@@ -330,7 +330,7 @@ if (window.pagId) {
 					document.cookie = "dirSelected =" + idAddress;
 					document.cookie = "dirType =" + typeAddress;
 					
-					location.reload();
+					location.reload(true);
 				});
 			}
 		}
@@ -338,13 +338,23 @@ if (window.pagId) {
 		if (getCookie("dirSelected") != 0) {
 			let dirActive = document.getElementById("dirUser" + getCookie("dirSelected")),
 				selectDirBtn = document.querySelector("#dirUser" + getCookie("dirSelected") + " .options a.selectDir"),
-				notUseBtn = document.querySelector("#dirUser" + getCookie("dirSelected") + " .options a.hidden");
+				notUseBtn = document.querySelector("#dirUser" + getCookie("dirSelected") + " .options a.hidden"),
+				checkOnDir = document.querySelector("#dirUser" + getCookie("dirSelected") + " .hidden.checkOnDir");
 			console.log(dirActive);
 
 			dirActive.setAttribute("class", "shipping_address_active");
 			selectDirBtn.setAttribute("class", "hidden");
-			notUseBtn.setAttribute("class", "button selectDir");
-			
+			notUseBtn.setAttribute("class", "button selectDir cancel");
+			checkOnDir.setAttribute("class", 'selected-check');
+
+			let cancelDir = document.getElementById("cancelDirUser" + getCookie("dirSelected"));
+			if (cancelDir != null) {
+				cancelDir.addEventListener("click", ()=>{
+					document.cookie = "dirSelected =; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+					document.cookie = "dirType =; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+					location.reload(true);
+				});
+			}
 		}
 		
 		

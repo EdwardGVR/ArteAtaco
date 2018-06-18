@@ -74,6 +74,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_address'])) {
 
 		$added = "Se agreg&oacute; la direcci&oacute;n!";
 	}
+
+	if (isset($added)) {
+		header("Location: checkout.php");
+	}
 }
 
 if ($conexion != false) {
@@ -89,7 +93,7 @@ if ($conexion != false) {
 	$cant_direcciones = count($dirs);
 	// print_r($cant_direcciones);
 
-	if ($cant_direcciones <= 3) {
+	if ($cant_direcciones <= 2) {
 		$permitir_direccion = true;
 		$restantes = 3 - $cant_direcciones;
 	} else {

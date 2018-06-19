@@ -31,10 +31,12 @@ $nombre_user = $user_data['nombres'];
 $codigo = $iduser;
 
 if ($conexion != false) {
+	// Traer las categorias
 	$query = $conexion->prepare("SELECT id, nombre_cat FROM categorias ORDER BY nombre_cat ASC");
 	$query->execute();
 	$categorias = $query->fetchall();
 
+	// Datos seleccionados por el cliente en checkout
 	$query = $conexion->prepare("SELECT * FROM temporal WHERE id_user = :id_user");
 	$query->execute(array(':id_user'=>$iduser));
 	$datos_cliente = $query->fetch();

@@ -245,6 +245,7 @@ if (window.pagId) {
 
 		document.cookie = "dirSelected = 0";
 		document.cookie = "dirType = 0";
+		document.cookie = "pagoSelected = 0";
 		
 		let showEditCantForm = (e) => {
 			console.log(e.target);
@@ -340,7 +341,6 @@ if (window.pagId) {
 				selectDirBtn = document.querySelector("#dirUser" + getCookie("dirSelected") + " .options a.selectDir"),
 				notUseBtn = document.querySelector("#dirUser" + getCookie("dirSelected") + " .options a.hidden"),
 				checkOnDir = document.querySelector("#dirUser" + getCookie("dirSelected") + " .hidden.checkOnDir");
-			console.log(dirActive);
 
 			dirActive.setAttribute("class", "shipping_address_active");
 			selectDirBtn.setAttribute("class", "hidden");
@@ -356,9 +356,22 @@ if (window.pagId) {
 				});
 			}
 		}
+
+		let selectPagoRadio = [...document.querySelectorAll(".radioPago")];
+		if (selectPagoRadio != null) {
+			for (let i = 0; i < selectPagoRadio.length; i++) {
+				selectPagoRadio[i].addEventListener("click", (e) => {
+					let idPago = e.target.attributes.idPago.value;
+					// console.log(idPago);
+
+					document.cookie = "pagoSelected = " + idPago;
+					location.reload(true);
+				});
+			}
+		}
 		
 		
-		console.log(getCookie("dirSelected"));
+		// console.log(getCookie("dirSelected"));
 		
 	}
 }

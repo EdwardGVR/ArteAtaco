@@ -1301,9 +1301,10 @@ h3.indication {
 .shipping_address,
 .shipping_address_active {
 	display: flex;
-	justify-content: center;
+	flex-direction: column;
+	justify-content: space-between;
 	align-items: center;
-	flex-wrap: wrap;
+	/* flex-wrap: wrap; */
 
 	width: 250px;
 	min-height: 150px;
@@ -1352,7 +1353,8 @@ h3.indication {
 	display: flex;
 	align-items: center;
 	flex-wrap: wrap;	
-	height: 70%;
+	min-height: 100px;
+	padding: 10px;
 }
 
 .shipping_address .options,
@@ -1360,8 +1362,8 @@ h3.indication {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	width: 300px;
-	height: 30%;
+	width: 100%;
+	height: 45px;
 }
 
 .shipping_address .button,
@@ -1562,16 +1564,34 @@ input[name="add_address"]:hover {
 	display: flex;
 	justify-content: flex-start;
 	flex-wrap: wrap;
-	
 	width: 300px;
 	padding: 20px;
-	background: #ccc;
+	background: #dddddd;
+	border-radius: 5px;
+	transition: all ease 0.3s;
+}
+
+.form_pay_method:hover {
+	box-shadow: 0 0 3px #000
 }
 
 .form_pay_method .pay_option {
 	margin-bottom: 20px;
 	width: 100%;
+	padding: 10px;
+	background: #b5d6e4;
+	border-radius: 5px;
 	text-align: left;
+	transition: all ease 0.3s;
+}
+
+.form_pay_method .pay_option:hover {
+	background: #2e69ac;
+	color: #fff;
+}
+
+.form_pay_method .pay_option:last-child {
+	margin-bottom: 0;
 }
 
 .form_pay_method .fa {

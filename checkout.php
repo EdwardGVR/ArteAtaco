@@ -221,6 +221,12 @@ if ($conexion != false) {
 		$dir_sel = $query->fetch();
 	}
 
+	if (isset($_COOKIE["pagoSelected"]) && $_COOKIE["pagoSelected"] != 0) {
+		$query = $conexion->prepare("SELECT * FROM metodos_pago WHERE id = :id");
+		$query->execute(array(':id' => $_COOKIE["pagoSelected"]));
+		$pay_sel = $query->fetch();
+	}
+
 }
 
 // print_r($_COOKIE["dirSelected"]);

@@ -159,14 +159,20 @@
 			<div class="payment_method">
 				<div class="step1">2</div>
 				<h3 class="indication">Seleccione un m&eacute;todo de pago</h3>
-				<form class="form_pay_method" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+				<div class="form_pay_method">
 					<?php foreach ($metodos as $metodo): ?>
 						<div class="pay_option">
-							<i class="<?php echo $metodo['icon'] ?>" aria-hidden="true"></i><input type="radio" name="payment_method" value="<?php echo $metodo['id'] ?>"><?php echo $metodo['nombre'] ?>
+							<i class="<?= $metodo['icon'] ?>" aria-hidden="true"></i>
+							<input id="metodoPago<?= $metodo['id'] ?>" 
+								   idPago="<?= $metodo['id'] ?>"
+								   class="radioPago"
+								   type="radio" name="payment_method" 
+								   value="<?= $metodo['id'] ?>"
+							>
+							<label for="metodoPago<?= $metodo['id'] ?>"><?= $metodo['nombre'] ?></label>
 						</div>		
 					<?php endforeach ?>
-					<input type="submit" name="confirm_pay" value="Aceptar" class="button">
-				</form>
+				</div>
 			</div>
 			<hr>
 			<div class="confirm_info">
@@ -186,6 +192,7 @@
 									</div>
 									<div class="options">
 										<a href="#dirs" class="button">Cambiar</a>
+										<a id="anularDirUser<?= $direccion['id'] ?>" class="button" href="#">No usar</a>
 									</div>
 								</div>						
 							</div>
@@ -208,6 +215,7 @@
 									</div>
 									<div class="options">
 										<a href="#pays" class="button">Cambiar</a>
+										<a id="anularPagoUser" class="button" href="#">No usar</a>
 									</div>
 								</div>						
 							</div>

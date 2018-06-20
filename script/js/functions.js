@@ -331,7 +331,7 @@ if (window.pagId) {
 					document.cookie = "dirSelected =" + idAddress;
 					document.cookie = "dirType =" + typeAddress;
 					
-					location.reload(true);
+					location.reload();
 				});
 			}
 		}
@@ -352,7 +352,16 @@ if (window.pagId) {
 				cancelDir.addEventListener("click", ()=>{
 					document.cookie = "dirSelected =; expires=Thu, 01 Jan 1970 00:00:00 UTC";
 					document.cookie = "dirType =; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-					location.reload(true);
+					location.reload();
+				});
+			}
+
+			let anularDir = document.getElementById("anularDirUser" + getCookie("dirSelected"));
+			if (anularDir != null) {
+				anularDir.addEventListener("click", () => {
+					document.cookie = "dirSelected =; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+					document.cookie = "dirType =; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+					location.reload();
 				});
 			}
 		}
@@ -365,9 +374,25 @@ if (window.pagId) {
 					// console.log(idPago);
 
 					document.cookie = "pagoSelected = " + idPago;
-					location.reload(true);
+					location.reload();
 				});
 			}
+		}
+		
+		if (getCookie("pagoSelected") != 0) {
+			let pagoActive = document.getElementById("payOption" + getCookie("pagoSelected")),
+				inputRadioPago = document.getElementById("metodoPago" + getCookie("pagoSelected")),
+				anularPagoSel = document.getElementById("anularPagoUser" + getCookie("pagoSelected"));
+
+			pagoActive.setAttribute("class", "pay_option_active");
+
+			inputRadioPago.setAttribute("disabled", "");
+			inputRadioPago.setAttribute("checked", "");
+
+			anularPagoSel.addEventListener("click", () => {
+				document.cookie = "pagoSelected =; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+				location.reload();
+			});
 		}
 		
 		

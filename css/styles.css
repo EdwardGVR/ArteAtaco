@@ -1235,11 +1235,11 @@ body.checkout {
 
 .info_checkout hr {
 	width: 100%;
-	height: 3px;
-	background: #020C92;
+	height: 5px;
+	background: #89b1ec;
 	border-radius: 5px;
 	border: none;
-	margin: 50px 0;
+	margin-bottom: 20px;
 }
 
 .contenedor_address {
@@ -1299,7 +1299,8 @@ h3.indication {
 }
 
 .shipping_address,
-.shipping_address_active {
+.shipping_address_active,
+.shipping_address.review {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -1308,7 +1309,7 @@ h3.indication {
 
 	width: 250px;
 	min-height: 150px;
-	margin: 10px;
+	margin: 10px 0;
 	border-radius: 7px;
 	margin-bottom: 50px;
 	position: relative;
@@ -1338,9 +1339,19 @@ h3.indication {
 	box-shadow: 0 0 2px #000;
 }
 
+.shipping_address.review {
+	background: #b5d6e4;
+	box-shadow: 0 0 3px #000;
+	transition: all ease 0.3s;
+}
+
 .shipping_address:hover,
 .shipping_address_active:hover {
 	box-shadow: 0 0 3px #000;
+}
+
+.shipping_address.review:hover {
+	box-shadow: 0 0 6px #000;
 }
 
 .direccion_seleccionada h3,
@@ -1367,7 +1378,8 @@ h3.indication {
 }
 
 .shipping_address .button,
-.shipping_address_active .button {
+.shipping_address_active .button,
+.shipping_address .button.review {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -1382,7 +1394,8 @@ h3.indication {
 	transition: all ease 0.3s;
 }
 
-.shipping_address_active .button.cancel {
+.shipping_address_active .button.cancel,
+.shipping_address .button.review {
 	background: #a8a8a8;
 }
 
@@ -1575,7 +1588,8 @@ input[name="add_address"]:hover {
 	box-shadow: 0 0 3px #000
 }
 
-.form_pay_method .pay_option {
+.form_pay_method .pay_option,
+.form_pay_method .pay_option_active {
 	margin-bottom: 20px;
 	width: 100%;
 	padding: 10px;
@@ -1585,12 +1599,18 @@ input[name="add_address"]:hover {
 	transition: all ease 0.3s;
 }
 
+.form_pay_method .pay_option_active {
+	background: #3883d8;
+	color: #fff;
+}
+
 .form_pay_method .pay_option:hover {
 	background: #2e69ac;
 	color: #fff;
 }
 
-.form_pay_method .pay_option:last-child {
+.form_pay_method .pay_option:last-child,
+.form_pay_method .pay_option_active:last-child {
 	margin-bottom: 0;
 }
 
@@ -1628,6 +1648,11 @@ input[name="add_address"]:hover {
 	align-items: center;
 	padding-top: 20px;
 	width: 100%;
+}
+
+.form_confirm_info .selecciones h3 {
+	font-size: 0.9em;
+	font-weight: normal;
 }
 
 .form_confirm_info .selecciones .noSel {

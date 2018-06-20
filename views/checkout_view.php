@@ -15,11 +15,9 @@
 <?php require("messenger_contact.php") ?>	
 <?php require 'header.php' ?>
 
-	<a name="dirs" id="dirs"></a>
 	<div class="contenedor_checkout">
 		<div id="carritoCheckout" class="carrito_checkout">
 			<h2><i class="fa fa-shopping-cart"></i> Articulos en el carrito:</h2>
-
 			<?php foreach ($carrito as $item): ?>
 				<div class="item_checkout">
 					<div class="item-info">
@@ -89,12 +87,12 @@
 								<div class="options">
 									<a href="cuenta.php" class="button">Editar</a>
 									<a idAddress="<?= $direccion['id'] ?>" 
-									   href="#" 
+									    
 									   class="button selectDir <?= $direccion['id'] ?>"
 									   addressType="user">
 									   Seleccionar
 									</a>
-									<a id="cancelDirUser<?= $direccion['id'] ?>" href="#" class="hidden">No usar</a>
+									<a id="cancelDirUser<?= $direccion['id'] ?>" class="hidden">No usar</a>
 								</div>
 								<div class="hidden checkOnDir">
 									<i class="fa fa-check-circle"></i>
@@ -106,6 +104,7 @@
 					<?php endif ?>
 				</div>
 			</div>
+			<hr>
 
 			<?php if ($permitir_direccion): ?>
 				<div class="new_address">
@@ -155,13 +154,12 @@
 			<hr>
 			<?php endif ?>
 			
-			<a name="pays" id="pays"></a>
 			<div class="payment_method">
 				<div class="step1">2</div>
 				<h3 class="indication">Seleccione un m&eacute;todo de pago</h3>
 				<div class="form_pay_method">
 					<?php foreach ($metodos as $metodo): ?>
-						<div class="pay_option">
+						<div id="payOption<?= $metodo['id'] ?>" class="pay_option">
 							<i class="<?= $metodo['icon'] ?>" aria-hidden="true"></i>
 							<input id="metodoPago<?= $metodo['id'] ?>" 
 								   idPago="<?= $metodo['id'] ?>"
@@ -175,6 +173,7 @@
 				</div>
 			</div>
 			<hr>
+
 			<div class="confirm_info">
 				<div class="step1">3</div>
 				<h3 class="indication">Revisar informaci&oacute;n</h3>
@@ -183,7 +182,7 @@
 						<?php if (isset($dir_sel) && $dir_sel != false): ?>
 							<div class="direccion_seleccionada">
 								<h3>Se entregar&aacute; en:</h3>
-								<div class="shipping_address">
+								<div class="shipping_address review">
 									<div class="info">
 										<input type="hidden" name="dir_id" value="<?= $dir_sel['id'] ?>">
 										<input type="hidden" name="us_id" value="<?= $dir_sel['id_user'] ?>">
@@ -191,8 +190,8 @@
 										<h5><?= $dir_sel['linea1'] ?></h5>
 									</div>
 									<div class="options">
-										<a href="#dirs" class="button">Cambiar</a>
-										<a id="anularDirUser<?= $direccion['id'] ?>" class="button" href="#">No usar</a>
+										<!-- <a href="#dirs" class="button">Cambiar</a> -->
+										<a id="anularDirUser<?= $dir_sel['id'] ?>" class="button review">Quitar</a>
 									</div>
 								</div>						
 							</div>
@@ -208,14 +207,14 @@
 						<?php if (isset($pay_sel) && $pay_sel != false): ?>
 							<div class="pago_seleccionado">
 								<h3>Se pagar&aacute; con:</h3>
-								<div class="shipping_address">
+								<div class="shipping_address review">
 									<div class="info">
 										<input type="hidden" name="pm_id" value="<?= $pay_sel['id'] ?>">
 										<h4><i class="<?= $pay_sel['icon'] ?>" aria-hidden="true"></i><?= " ". $pay_sel['nombre'] ?></h4><br />
 									</div>
 									<div class="options">
-										<a href="#pays" class="button">Cambiar</a>
-										<a id="anularPagoUser" class="button" href="#">No usar</a>
+										<!-- <a href="#pays" class="button">Cambiar</a> -->
+										<a id="anularPagoUser<?= $pay_sel['id'] ?>" class="button review">Quitar</a>
 									</div>
 								</div>						
 							</div>

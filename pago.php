@@ -25,9 +25,6 @@ $iduser = get_user_id($conexion, $user);
 $user_data = get_user_data($conexion, $iduser);
 $email_user = $user_data['email'];
 $nombre_user = $user_data['nombres'];
-
-//CODE...
-
 $codigo = $iduser;
 
 if ($conexion != false) {
@@ -36,14 +33,14 @@ if ($conexion != false) {
 	$query->execute();
 	$categorias = $query->fetchall();
 
-	// Datos seleccionados por el cliente en checkout
-	$query = $conexion->prepare("SELECT * FROM temporal WHERE id_user = :id_user");
-	$query->execute(array(':id_user'=>$iduser));
-	$datos_cliente = $query->fetch();
+	// Datos seleccionados por el cliente en checkout (traidos desde DB)
+	// $query = $conexion->prepare("SELECT * FROM temporal WHERE id_user = :id_user");
+	// $query->execute(array(':id_user'=>$iduser));
+	// $datos_cliente = $query->fetch();
 
-	$id_direccion = $datos_cliente['id_direccion'];
+	$id_direccion = $_COOKIE["dirSelected"];
 	$codigo .= $id_direccion;
-	$id_metodo_pago = $datos_cliente['id_pago'];
+	$id_metodo_pago = $_COOKIE["pagoSelected"];
 	$codigo .= $id_metodo_pago;
 	$random_code = rand(0,9);
 	$codigo .= $random_code;
@@ -78,9 +75,6 @@ if ($conexion != false) {
 			$query = $conexion->prepare("DELETE FROM carrito WHERE id_user = :id_user");
 			$query->execute(array(':id_user'=>$iduser));
 		}
-
-		$query = $conexion->prepare("DELETE FROM temporal WHERE id_user = :iduser");
-		$query->execute(array(':iduser' => $iduser));
 
 		//Enviar email de confirmacion de pedido
 		$mail = new PHPMailer(true);                              // Passing `true` enables exceptions

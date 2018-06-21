@@ -177,20 +177,18 @@
 			<div class="confirm_info">
 				<div class="step1">3</div>
 				<h3 class="indication">Revisar informaci&oacute;n</h3>
-				<form class="form_confirm_info" action="pago.php" method="POST">
+				
+				<div class="form_confirm_info">
 					<div class="selecciones">
 						<?php if (isset($dir_sel) && $dir_sel != false): ?>
 							<div class="direccion_seleccionada">
 								<h3>Se entregar&aacute; en:</h3>
 								<div class="shipping_address review">
 									<div class="info">
-										<input type="hidden" name="dir_id" value="<?= $dir_sel['id'] ?>">
-										<input type="hidden" name="us_id" value="<?= $dir_sel['id_user'] ?>">
 										<h4><?= $dir_sel['nombre'] ?></h4><br />
 										<h5><?= $dir_sel['linea1'] ?></h5>
 									</div>
 									<div class="options">
-										<!-- <a href="#dirs" class="button">Cambiar</a> -->
 										<a id="anularDirUser<?= $dir_sel['id'] ?>" class="button review">Quitar</a>
 									</div>
 								</div>						
@@ -204,16 +202,15 @@
 								</h3>
 							</div>
 						<?php endif ?>
+
 						<?php if (isset($pay_sel) && $pay_sel != false): ?>
 							<div class="pago_seleccionado">
 								<h3>Se pagar&aacute; con:</h3>
 								<div class="shipping_address review">
 									<div class="info">
-										<input type="hidden" name="pm_id" value="<?= $pay_sel['id'] ?>">
 										<h4><i class="<?= $pay_sel['icon'] ?>" aria-hidden="true"></i><?= " ". $pay_sel['nombre'] ?></h4><br />
 									</div>
 									<div class="options">
-										<!-- <a href="#pays" class="button">Cambiar</a> -->
 										<a id="anularPagoUser<?= $pay_sel['id'] ?>" class="button review">Quitar</a>
 									</div>
 								</div>						
@@ -228,6 +225,9 @@
 							</div>
 						<?php endif ?>
 					</div>
+				</div>
+
+				<form class="form_confirm_info" action="pago.php" method="POST">
 					<?php if ($allowPass): ?>
 						<input class="send_info" type="submit" name="confirm_info" value="La informaci&oacute;n es correcta">
 						<input type="hidden" name="checkout_checkpoint">

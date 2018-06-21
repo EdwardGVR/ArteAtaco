@@ -47,7 +47,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_address'])) {
 	}
 
 	if ($conexion != false && empty($errores)) {
-		$query = $conexion->prepare("INSERT INTO direcciones VALUES(null, :id_user, :id_departamento, :nombre, :pais, :linea1, :linea2, :referencias)");
+		$query = $conexion->prepare("
+			INSERT INTO direcciones 
+			VALUES(null, :id_user, :id_departamento, :nombre, :pais, :linea1, :linea2, :referencias, 1)
+		");
 		$query->execute(array(
 			':id_user'=>$iduser,
 			':id_departamento'=>$departamento,
@@ -60,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_address'])) {
 
 		$query = $conexion->prepare("
 			INSERT INTO direcciones_persistence
-			VALUES(null, :id_user, :id_departamento, :nombre, :pais, :linea1, :linea2, :referencias, 1)
+			VALUES(null, :id_user, :id_departamento, :nombre, :pais, :linea1, :linea2, :referencias, 1, 1)
 		");
 		$query->execute(array(
 			':id_user'=>$iduser,

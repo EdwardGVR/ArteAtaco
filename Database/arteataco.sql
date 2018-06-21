@@ -2,7 +2,7 @@
 --
 -- Host: 127.0.0.1    Database: login_propio
 -- ------------------------------------------------------
--- Server version	5.5.5-10.1.24-MariaDB
+-- Server version	5.5.5-10.1.32-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -31,7 +31,7 @@ CREATE TABLE `carrito` (
   KEY `carrito_usuario_idx` (`id_user`),
   KEY `carrito_user_idx` (`id_user`),
   CONSTRAINT `carrito_user` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,6 +40,7 @@ CREATE TABLE `carrito` (
 
 LOCK TABLES `carrito` WRITE;
 /*!40000 ALTER TABLE `carrito` DISABLE KEYS */;
+INSERT INTO `carrito` VALUES (1,2,2,1);
 /*!40000 ALTER TABLE `carrito` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -112,12 +113,15 @@ CREATE TABLE `direcciones` (
   `linea1` varchar(150) NOT NULL,
   `linea2` varchar(150) DEFAULT NULL,
   `referencias` varchar(250) DEFAULT NULL,
+  `id_tipo` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `direcciones_usuario_idx` (`id_user`),
   KEY `direcciones_departemento_idx` (`id_departamento`),
+  KEY `direcciones_tipo_idx` (`id_tipo`),
   CONSTRAINT `direcciones_departemento` FOREIGN KEY (`id_departamento`) REFERENCES `departamentos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `direcciones_tipo` FOREIGN KEY (`id_tipo`) REFERENCES `tipo_direccion` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `direcciones_usuario` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -126,7 +130,7 @@ CREATE TABLE `direcciones` (
 
 LOCK TABLES `direcciones` WRITE;
 /*!40000 ALTER TABLE `direcciones` DISABLE KEYS */;
-INSERT INTO `direcciones` VALUES (29,2,1,'Direccion test 5','El Salvador','Direccion de prueba',NULL,NULL);
+INSERT INTO `direcciones` VALUES (29,2,1,'Direccion test 5','El Salvador','Direccion de prueba',NULL,NULL,1),(30,2,1,'Direccion test 6','El Salvador','Direccion de prueba',NULL,NULL,1),(35,2,1,'Direccion test 7','El Salvador','Direccion de prueba',NULL,NULL,1);
 /*!40000 ALTER TABLE `direcciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -146,9 +150,10 @@ CREATE TABLE `direcciones_persistence` (
   `linea1` varchar(150) NOT NULL,
   `linea2` varchar(150) DEFAULT NULL,
   `referencias` varchar(250) DEFAULT NULL,
+  `id_tipo` int(11) NOT NULL DEFAULT '1',
   `activa` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -157,7 +162,7 @@ CREATE TABLE `direcciones_persistence` (
 
 LOCK TABLES `direcciones_persistence` WRITE;
 /*!40000 ALTER TABLE `direcciones_persistence` DISABLE KEYS */;
-INSERT INTO `direcciones_persistence` VALUES (1,2,1,'Direccion 1','El Salvador','Direccion de prueba',NULL,NULL,0),(2,2,1,'Direccion 2','El Salvador','Direccion de prueba','Probar la edicion en ambas tablas','No hay datos',0),(3,2,1,'Direccion 3','El Salvador','Direccion de prueba',NULL,NULL,0),(4,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,0),(5,2,1,'Direccion 5','El Salvador','Direccion de prueba',NULL,NULL,0),(6,2,1,'Direccion 5','El Salvador','Direccion de prueba',NULL,NULL,0),(7,2,1,'Direccion 5','El Salvador','Direccion de prueba',NULL,NULL,0),(8,2,1,'Direccion 5','El Salvador','Direccion de prueba',NULL,NULL,0),(9,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,0),(10,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,0),(11,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,0),(12,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,0),(13,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,0),(14,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,0),(15,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,0),(16,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,0),(17,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,0),(18,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,0),(19,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,0),(20,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,0),(21,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,0),(22,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,0),(23,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,0),(24,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,0),(25,2,1,'Direccion 5 editada','El Salvador','Direccion de prueba','No hay datos','No hay datos',0),(26,2,1,'Direccion test 1','El Salvador','Direccion de prueba',NULL,NULL,0),(27,2,1,'Direccion test 2','El Salvador','Direccion de prueba\\',NULL,NULL,0),(28,2,1,'Direccion test 3','El Salvador','Direccion de prueba',NULL,NULL,0),(29,2,1,'Direccion test 5','El Salvador','Direccion de prueba',NULL,NULL,1);
+INSERT INTO `direcciones_persistence` VALUES (1,2,1,'Direccion 1','El Salvador','Direccion de prueba',NULL,NULL,1,0),(2,2,1,'Direccion 2','El Salvador','Direccion de prueba','Probar la edicion en ambas tablas','No hay datos',1,0),(3,2,1,'Direccion 3','El Salvador','Direccion de prueba',NULL,NULL,1,0),(4,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,1,0),(5,2,1,'Direccion 5','El Salvador','Direccion de prueba',NULL,NULL,1,0),(6,2,1,'Direccion 5','El Salvador','Direccion de prueba',NULL,NULL,1,0),(7,2,1,'Direccion 5','El Salvador','Direccion de prueba',NULL,NULL,1,0),(8,2,1,'Direccion 5','El Salvador','Direccion de prueba',NULL,NULL,1,0),(9,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,1,0),(10,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,1,0),(11,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,1,0),(12,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,1,0),(13,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,1,0),(14,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,1,0),(15,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,1,0),(16,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,1,0),(17,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,1,0),(18,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,1,0),(19,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,1,0),(20,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,1,0),(21,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,1,0),(22,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,1,0),(23,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,1,0),(24,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,1,0),(25,2,1,'Direccion 5 editada','El Salvador','Direccion de prueba','No hay datos','No hay datos',1,0),(26,2,1,'Direccion test 1','El Salvador','Direccion de prueba',NULL,NULL,1,0),(27,2,1,'Direccion test 2','El Salvador','Direccion de prueba\\',NULL,NULL,1,0),(28,2,1,'Direccion test 3','El Salvador','Direccion de prueba',NULL,NULL,1,0),(29,2,1,'Direccion test 5','El Salvador','Direccion de prueba',NULL,NULL,1,1),(30,2,1,'Direccion test 6','El Salvador','Direccion de prueba',NULL,NULL,1,1),(31,2,1,'Direccion test 6','El Salvador','Direccion de prueba',NULL,NULL,1,1),(32,2,1,'Direccion test 6','El Salvador','Direccion de prueba',NULL,NULL,1,1),(33,2,1,'Direccion test 7','El Salvador','Direccion de prueba',NULL,NULL,1,1),(34,2,1,'Direccion test 7','El Salvador','Direccion de prueba',NULL,NULL,1,1),(35,2,1,'Direccion test 7','El Salvador','Direccion de prueba',NULL,NULL,1,1);
 /*!40000 ALTER TABLE `direcciones_persistence` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -318,6 +323,30 @@ LOCK TABLES `temporal` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tipo_direccion`
+--
+
+DROP TABLE IF EXISTS `tipo_direccion`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tipo_direccion` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tipo` varchar(150) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tipo_direccion`
+--
+
+LOCK TABLES `tipo_direccion` WRITE;
+/*!40000 ALTER TABLE `tipo_direccion` DISABLE KEYS */;
+INSERT INTO `tipo_direccion` VALUES (1,'Usuario'),(2,'Punto de entrega');
+/*!40000 ALTER TABLE `tipo_direccion` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `usuarios`
 --
 
@@ -380,4 +409,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-17 16:57:11
+-- Dump completed on 2018-06-20 22:29:50

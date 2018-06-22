@@ -17,7 +17,7 @@
 
 	<div class="contenedor_checkout">
 		<div id="carritoCheckout" class="carrito_checkout">
-			<h2><i class="fa fa-shopping-cart"></i> Articulos en el carrito:</h2>
+			<h2>&nbsp;&nbsp;&nbsp;<i class="fa fa-shopping-cart"></i> Articulos en el carrito:</h2>
 			<?php foreach ($carrito as $item): ?>
 				<div class="item_checkout">
 					<div class="item-info">
@@ -32,12 +32,27 @@
 				</div>
 				<?php $subtotal += $item['precio'] * $item['cantidad'] ?>
 			<?php endforeach ?>
+			<div class="subtotal_checkout">
+				<span>Subtotal: $ <?= $subtotal ?></span>
+			</div>
 
 			<div class="editar">
 				<a href="carrito.php">Editar</a>
 			</div>
-			<div class="subtotal_checkout">
-				<span>Subtotal: $ <?= $subtotal ?></span>
+
+			<hr>
+
+			<div class="costoEnvio">
+				<h2><i class="fa fa-money"></i> <i class="fa fa-truck"></i> Costo de env&iacute;o:</h2>
+				<div class="costo">
+					Seleccione una direcci&oacute;n para calcular
+				</div>
+			</div>
+
+			<hr>
+
+			<div class="total_checkout">
+				<span>Total: $ <?= $subtotal ?></span>
 			</div>
 		</div>
 

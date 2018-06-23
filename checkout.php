@@ -132,7 +132,7 @@ if ($conexion != false) {
 	
 	if (isset($_COOKIE["dirSelected"]) && $_COOKIE["dirSelected"] != 0) {
 		$query = $conexion->prepare(
-			"SELECT direcciones.*, departamentos.nombre AS nombreDpto
+			"SELECT direcciones.*, departamentos.nombre AS nombreDpto, departamentos.costo_envio AS costo
 			 FROM direcciones 
 			 JOIN departamentos ON direcciones.id_departamento = departamentos.id
 			 WHERE direcciones.id = :idAddress 
@@ -150,6 +150,12 @@ if ($conexion != false) {
 }
 
 // print_r($_COOKIE["dirSelected"]);
+
+if (isset($dir_sel)) {
+	$costoEnvio = $dir_sel['costo'];
+} else {
+	$costoEnvio = 0;
+}
 
 if (isset($dir_sel) && isset($pay_sel)) {
 	$allowPass = true;

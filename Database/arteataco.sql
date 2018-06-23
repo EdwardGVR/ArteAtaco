@@ -31,7 +31,7 @@ CREATE TABLE `carrito` (
   KEY `carrito_usuario_idx` (`id_user`),
   KEY `carrito_user_idx` (`id_user`),
   CONSTRAINT `carrito_user` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `carrito` (
 
 LOCK TABLES `carrito` WRITE;
 /*!40000 ALTER TABLE `carrito` DISABLE KEYS */;
-INSERT INTO `carrito` VALUES (1,2,2,1);
+INSERT INTO `carrito` VALUES (1,2,2,2),(2,2,1,1);
 /*!40000 ALTER TABLE `carrito` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -81,6 +81,7 @@ CREATE TABLE `departamentos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_zona` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL,
+  `costo_envio` float NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `departamentos_zonas_idx` (`id_zona`),
   CONSTRAINT `departamentos_zonas` FOREIGN KEY (`id_zona`) REFERENCES `zonas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -93,7 +94,7 @@ CREATE TABLE `departamentos` (
 
 LOCK TABLES `departamentos` WRITE;
 /*!40000 ALTER TABLE `departamentos` DISABLE KEYS */;
-INSERT INTO `departamentos` VALUES (1,1,'Ahuachap&aacute;n'),(2,1,'Santa Ana'),(3,1,'Sonsonate'),(4,2,'La Libertad'),(5,2,'Chalatenango'),(6,2,'Cuscatl&aacute;n'),(7,2,'San Salvador'),(8,3,'La Paz'),(9,3,'Caba&ntilde;as'),(10,3,'San Vicente'),(11,4,'Usulut&aacute;n'),(12,4,'San Miguel'),(13,4,'Moraz&aacute;n'),(14,4,'La Uni&oacute;n');
+INSERT INTO `departamentos` VALUES (1,1,'Ahuachap&aacute;n',5),(2,1,'Santa Ana',5),(3,1,'Sonsonate',5),(4,2,'La Libertad',5),(5,2,'Chalatenango',10),(6,2,'Cuscatl&aacute;n',5),(7,2,'San Salvador',3),(8,3,'La Paz',7),(9,3,'Caba&ntilde;as',7),(10,3,'San Vicente',10),(11,4,'Usulut&aacute;n',15),(12,4,'San Miguel',15),(13,4,'Moraz&aacute;n',15),(14,4,'La Uni&oacute;n',15);
 /*!40000 ALTER TABLE `departamentos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -130,7 +131,7 @@ CREATE TABLE `direcciones` (
 
 LOCK TABLES `direcciones` WRITE;
 /*!40000 ALTER TABLE `direcciones` DISABLE KEYS */;
-INSERT INTO `direcciones` VALUES (29,2,1,'Direccion test 5','El Salvador','Direccion de prueba',NULL,NULL,1),(30,2,1,'Direccion test 6','El Salvador','Direccion de prueba',NULL,NULL,1),(35,2,1,'Direccion test 7','El Salvador','Direccion de prueba',NULL,NULL,1);
+INSERT INTO `direcciones` VALUES (29,2,7,'Direccion test 5','El Salvador','Direccion de prueba',NULL,NULL,1),(30,2,1,'Direccion test 6','El Salvador','Direccion de prueba',NULL,NULL,1),(35,2,12,'Direccion test 7','El Salvador','Direccion de prueba',NULL,NULL,1);
 /*!40000 ALTER TABLE `direcciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -409,4 +410,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-20 22:29:50
+-- Dump completed on 2018-06-22 21:13:21

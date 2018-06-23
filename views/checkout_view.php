@@ -44,15 +44,21 @@
 
 			<div class="costoEnvio">
 				<h2><i class="fa fa-money"></i> <i class="fa fa-truck"></i> Costo de env&iacute;o:</h2>
-				<div class="costo">
-					Seleccione una direcci&oacute;n para calcular
-				</div>
+				<?php if (isset($dir_sel)): ?>
+					<div class="costo">
+						<?= $dir_sel['nombreDpto'] . ': $' . $dir_sel['costo'] ?>
+					</div>
+				<?php else: ?>
+					<div class="costo">
+						Seleccione una direcci&oacute;n para calcular
+					</div>
+				<?php endif ?>
 			</div>
 
 			<hr>
 
 			<div class="total_checkout">
-				<span>Total: $ <?= $subtotal ?></span>
+				<span>Total: $ <?= $subtotal + $costoEnvio ?></span>
 			</div>
 		</div>
 

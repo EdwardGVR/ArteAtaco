@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">   
     <link rel="stylesheet" href="css/styles.css">
-    <title>Pedidos</title>
+    <title>Puntos de entrega</title>
 </head>
 <body>
     <div class="nav_hidden"></div>
@@ -54,41 +54,107 @@
                     <hr>    
                 </div>
                 <div class="contenedor_puntos">
-                    <article class="punto">
+                    <?php foreach($puntos AS $punto): ?>
+                        <article class="punto">
+                            <div class="title">
+                                <span class="nombre"><?= $punto['nombre'] ?></span>
+                                <hr>
+                                <span class="dpto"><?= $punto['dptoNombre'] . " (" . $punto['pais'] . ")" ?></span>
+                            </div>
+                            <div class="body">
+                                <div class="info">
+                                    <span class="value"><?= $punto['linea1'] ?></span>
+                                    <span class="value"><?= $punto['linea2'] ?></span>
+                                    <span class="value"><?= $punto['referencias'] ?></span>
+                                </div>
+                                <div class="details">
+                                    <i class="fas fa-map-marked-alt fa-8x"></i>
+                                </div>
+                            </div>
+                            <div class="options">
+                                <div class="toggle">
+                                    <?php if($punto['estado'] == 1): ?>
+                                        <label for="togglePunto<?= $punto['id'] ?>" class="btn">
+                                            <!-- <div class="far fa-circle"></div> -->
+                                            <i class="fa fa-dot-circle"></i>
+                                        </label>
+                                        <div class="status">
+                                            <span>Activo</span>
+                                        </div>
+                                    <?php elseif($punto['estado'] == 0): ?>
+                                        <label for="togglePunto<?= $punto['id'] ?>" class="btn">
+                                            <i class="far fa-circle"></i>
+                                        </label>
+                                        <div class="status">
+                                            <span>Inactivo</span>
+                                        </div>
+                                    <?php endif ?>
+                                </div>
+                                <div class="editOptions">
+                                    <div class="btn img">
+                                        <i class="fa fa-image"></i>
+                                    </div>
+                                    <div class="btn edit">
+                                        <i class="fa fa-pen-square"></i>
+                                    </div>
+                                    <label for="deletePunto<?= $punto['id'] ?>" class="btn delete">
+                                            <i class="fa fa-times-circle"></i>
+                                    </label>
 
-                    </article>                          
+                                    <form class="hidden" action="" method="POST">
+                                        <input type="hidden" name="puntoId" value="<?= $punto['id'] ?>">
+                                        <input type="submit" name="deletePoint" id="deletePunto<?= $punto['id'] ?>">
+                                        <input type="submit" name="togglePoint" id="togglePunto<?= $punto['id'] ?>">
+                                    </form>
+
+                                    <!-- <div class="btn cancel"></div>
+                                    <div class="btn reset"></div>
+                                    <div class="btn save"></div> -->
+                                </div>
+                            </div>
+                        </article>                          
+                    <?php endforeach ?>
                 </div>
-            <?php else: ?>
+            <?php endif ?>
                 <div class="contenedorNoPuntos">
                     <article class="punto">
-                        <div class="text">
-                            No hay puntos registrados.
+                        <div id="puntosTitle" class="text">
+                            <?php if($hayPuntos): ?>
+                                <span>Registrar un nuevo punto.</span>
+                            <?php else: ?>
+                                <span>No hay puntos registrados.</span>
+                            <?php endif ?>
                         </div>
-                        <div class="btnAdd">
+                        <div id="btnShowForm" class="btnAdd">
                             <i class="fa fa-plus-circle"></i>
                         </div>
-                        <div class="btnAdd cancel">
+                        <div id="cancelForm" class="btnAdd noShow cancel">
                             <i class="fa fa-times-circle"></i>
                         </div>
-                        <div class="btnAdd clear">
+                        <label for="resetForm" class="btnAdd noShow clear">
                             <i class="fa fa-eraser"></i>
-                        </div>
-                        <div class="btnAdd save">
+                        </label>
+                        <label for="saveForm" class="btnAdd noShow save">
                             <i class="fa fa-check-circle"></i>
-                        </div>
+                        </label>
                     </article>  
 
-                    <form class="addPoint" action="" method="POST">
+                    <form id="formNewPoint" class="hidden" action="" method="POST">
                         <input type="hidden" name="userId" value="<?php //id del usuario ?>">
                         <input type="hidden" name="tipoDir" value="2">
+                        <input id="resetForm" type="reset">
+                        <input id="saveForm" name="savePoint" type="submit">
                         <div class="field">
                             <label for="nombrePunto">Nombre:</label>
-                            <input type="text" id="nombrePunto" name="nombrePunto" placeholder="Nombre del punto de entrega">
+                            <input type="text" id="nombrePunto" name="nombrePunto" placeholder="Nombre del punto de entrega" required>
                         </div>
                         <div class="field">
                             <label for="dptoPunto">Departamento:</label>
-                            <select name="dptoPunto" id="dptoPunto">
+                            <select name="dptoPunto" id="dptoPunto" required>
                                 <option value="NULL" disabled selected>-- Seleccione un departamento --</option>
+                                <?php foreach($departamentos AS $dpto): ?>
+                                    <option value="<?= $dpto['id'] ?>"><?= $dpto['nombre'] ?></option>
+                                <?php endforeach ?>
                             </select>
                         </div>
                         <div class="field">
@@ -97,11 +163,11 @@
                         </div>
                         <div class="field">
                             <label for="linea1">Linea 1:</label>
-                            <input type="text" id="linea1" name="linea1" placeholder="Municipio, ciudad, colonia">
+                            <input type="text" id="linea1" name="linea1" placeholder="Municipio, ciudad, colonia" required>
                         </div>
                         <div class="field">
                             <label for="linea2">Linea 1:</label>
-                            <input type="text" id="linea2" name="linea2" placeholder="Calle, pasaje/block, #casa">
+                            <input type="text" id="linea2" name="linea2" placeholder="Calle, pasaje/block, #casa" required>
                         </div>
                         <div class="field">
                             <label for="refPunto">Referencias:</label>
@@ -110,7 +176,6 @@
                     </form>  
 
                 </div>
-            <?php endif ?>
         </section>
     </main>
 

@@ -31,7 +31,7 @@ CREATE TABLE `carrito` (
   KEY `carrito_usuario_idx` (`id_user`),
   KEY `carrito_user_idx` (`id_user`),
   CONSTRAINT `carrito_user` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `carrito` (
 
 LOCK TABLES `carrito` WRITE;
 /*!40000 ALTER TABLE `carrito` DISABLE KEYS */;
-INSERT INTO `carrito` VALUES (1,2,2,2),(2,2,1,1);
+INSERT INTO `carrito` VALUES (3,2,6,1);
 /*!40000 ALTER TABLE `carrito` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -115,6 +115,8 @@ CREATE TABLE `direcciones` (
   `linea2` varchar(150) DEFAULT NULL,
   `referencias` varchar(250) DEFAULT NULL,
   `id_tipo` int(11) NOT NULL DEFAULT '1',
+  `estado` tinyint(4) NOT NULL DEFAULT '1',
+  `disponible` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `direcciones_usuario_idx` (`id_user`),
   KEY `direcciones_departemento_idx` (`id_departamento`),
@@ -122,7 +124,7 @@ CREATE TABLE `direcciones` (
   CONSTRAINT `direcciones_departemento` FOREIGN KEY (`id_departamento`) REFERENCES `departamentos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `direcciones_tipo` FOREIGN KEY (`id_tipo`) REFERENCES `tipo_direccion` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `direcciones_usuario` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -131,7 +133,7 @@ CREATE TABLE `direcciones` (
 
 LOCK TABLES `direcciones` WRITE;
 /*!40000 ALTER TABLE `direcciones` DISABLE KEYS */;
-INSERT INTO `direcciones` VALUES (29,2,7,'Direccion test 5','El Salvador','Direccion de prueba',NULL,NULL,1),(30,2,1,'Direccion test 6','El Salvador','Direccion de prueba',NULL,NULL,1),(35,2,12,'Direccion test 7','El Salvador','Direccion de prueba',NULL,NULL,1);
+INSERT INTO `direcciones` VALUES (29,2,7,'Direccion test 5','El Salvador','Direccion de prueba',NULL,NULL,1,1,1),(30,2,1,'Direccion test 6','El Salvador','Direccion de prueba',NULL,NULL,1,1,1),(35,2,12,'Direccion test 7','El Salvador','Direccion de prueba',NULL,NULL,1,1,1),(38,2,7,'Punto 1','El Salvador','Linea 1','Linea 2','Referencias',2,1,1),(39,2,1,'Punto 2','El Salvador','Linea 1','Linea 2','Referencias',2,1,1),(40,2,2,'Punto 3','El Salvador','Linea 1','Linea 2','Referencias',2,1,1);
 /*!40000 ALTER TABLE `direcciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -191,7 +193,7 @@ CREATE TABLE `imgs_prods` (
 
 LOCK TABLES `imgs_prods` WRITE;
 /*!40000 ALTER TABLE `imgs_prods` DISABLE KEYS */;
-INSERT INTO `imgs_prods` VALUES (1,1,'images/productos/lamparas/lampara1_img1.jpg',0),(3,1,'images/productos/lamparas/lampara1_img2.jpg',1),(7,2,'images/productos/lamparas/lampara2_img1.jpg',1),(8,3,'images/productos/lamparas/lampara3_img1.jpg',0),(9,3,'images/productos/lamparas/lampara3_img2.jpg',0);
+INSERT INTO `imgs_prods` VALUES (1,1,'images/productos/lamparas/lampara1_img1.jpg',1),(3,1,'images/productos/lamparas/lampara1_img2.jpg',0),(7,2,'images/productos/lamparas/lampara2_img1.jpg',1),(8,3,'images/productos/lamparas/lampara3_img1.jpg',0),(9,3,'images/productos/lamparas/lampara3_img2.jpg',0);
 /*!40000 ALTER TABLE `imgs_prods` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -246,7 +248,7 @@ CREATE TABLE `pedidos` (
   CONSTRAINT `pedidos_pago` FOREIGN KEY (`id_pago`) REFERENCES `metodos_pago` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `pedidos_producto` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `pedidos_user` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -255,7 +257,7 @@ CREATE TABLE `pedidos` (
 
 LOCK TABLES `pedidos` WRITE;
 /*!40000 ALTER TABLE `pedidos` DISABLE KEYS */;
-INSERT INTO `pedidos` VALUES (1,21199,2,1,1,1,1,0,'2018-01-19 20:34:33'),(2,221810,2,2,1,2,1,0,'2018-01-19 20:34:53'),(3,2251111,2,25,1,3,1,0,'2018-01-19 21:20:08'),(4,2261012,2,26,1,1,1,0,'2018-01-19 21:27:41'),(5,2271013,2,27,1,2,1,0,'2018-01-19 21:50:36'),(6,2291114,2,29,1,1,1,0,'2018-01-19 21:51:38');
+INSERT INTO `pedidos` VALUES (1,21199,2,1,1,1,1,0,'2018-01-19 20:34:33'),(2,221810,2,2,1,2,1,0,'2018-01-19 20:34:53'),(3,2251111,2,25,1,3,1,0,'2018-01-19 21:20:08'),(4,2261012,2,26,1,1,1,0,'2018-01-19 21:27:41'),(5,2271013,2,27,1,2,1,0,'2018-01-19 21:50:36'),(6,2291114,2,29,1,1,1,0,'2018-01-19 21:51:38'),(7,2291915,2,29,1,2,2,0,'2018-06-26 03:30:58'),(8,2291915,2,29,1,1,1,0,'2018-06-26 03:30:58');
 /*!40000 ALTER TABLE `pedidos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -410,4 +412,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-22 21:13:21
+-- Dump completed on 2018-07-02 22:21:36

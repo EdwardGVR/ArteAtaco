@@ -10,6 +10,12 @@ body {
     /* background: #000; */
 }
 
+.hidden {
+    display: none;
+    transition: all ease 0.3s;
+    height: 0px;
+}
+
 hr {
     height: 3px;
     border: none;
@@ -1560,12 +1566,142 @@ main section .title {
 
 .contenedor_puntos .punto {
     display: flex;
+    flex-wrap: wrap;
     width: 80%;
     min-height: 50px;
     background: #ccc;
     margin: auto;
     margin-top: 20px;
     border-radius: 5px;
+    padding: 10px;
+    transition: all ease 0.3s;
+}
+
+.contenedor_puntos .punto:hover {
+    box-shadow: 0px 0px 4px 0px #000;
+}
+
+.contenedor_puntos .punto .title {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    background: #fff;
+    margin-bottom: 10px;
+}
+
+.contenedor_puntos .punto .title hr {
+    width: 100%;
+    height: 2px;
+    margin: 5px 0;
+}
+
+.contenedor_puntos .punto .title .nombre {
+    width: 100%;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.contenedor_puntos .punto .title .dpto {
+    width: 100%;
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+.contenedor_puntos .punto .body {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    background: #fff;
+}
+
+.contenedor_puntos .punto .body .info {
+    display: flex;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    width: calc(100% - 200px);
+    padding-right: 20px;
+}
+
+.contenedor_puntos .punto .body .info .value {
+    width: 100%;
+    padding: 10px;
+    background: #f1f1f1;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 1px 2px 0px #000;
+}
+
+.contenedor_puntos .punto .body .details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 200px;
+    height: 200px;
+    border-radius: 5px;
+    background: #a2b9f8;
+}
+
+.contenedor_puntos .punto .options {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    /* height: 30px; */
+    margin-top: 10px;
+    border-radius: 5px;
+    padding: 10px;
+    background: #dddddd;
+}
+
+.contenedor_puntos .punto .options .toggle {
+    display: flex;
+    align-items: center;
+}
+
+.contenedor_puntos .punto .options .toggle .status {
+    margin-left: 10px;
+    background: #ccc;
+    height: 30px;
+    border-radius: 5px;
+    padding: 0 10px;
+    line-height: 30px;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+.contenedor_puntos .punto .options .editOptions {
+    display: flex;
+}
+
+.contenedor_puntos .punto .options .toggle .btn,
+.contenedor_puntos .punto .options .editOptions .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    background: #ccc;
+    cursor: pointer;
+    transition: all ease 0.3s;
+}
+
+.contenedor_puntos .punto .options .toggle .btn:hover,
+.contenedor_puntos .punto .options .editOptions .btn:hover {
+    background: #aaa;
+}
+
+.contenedor_puntos .punto .options .editOptions .delete:hover {
+    font-size: 1em;
+    color: #fa2d2d;
+}
+
+.contenedor_puntos .punto .options .editOptions .btn {
+    margin-left: 10px;
 }
 
 .contenedorNoPuntos {
@@ -1587,7 +1723,8 @@ main section .title {
     height: 50px;
 }
 
-.contenedorNoPuntos .punto .text {
+.contenedorNoPuntos .punto .text,
+.contenedorNoPuntos .punto .text.active {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1595,6 +1732,20 @@ main section .title {
     height: 50px;
     background: #ccc;
     border-radius: 5px;
+    transition: all ease 1s;
+}
+
+.contenedorNoPuntos .punto .text.active {
+    background: #113561;
+    color: #fff;
+    font-weight: bold;
+}
+
+.contenedorNoPuntos .punto .btnAdd.noShow {
+    display: none;
+    height: 0;
+    width: 0;
+    transition: all ease 0.3s;
 }
 
 .contenedorNoPuntos .punto .btnAdd {
@@ -1632,7 +1783,7 @@ main section .title {
     color: #acecc7;
 }
 
-.contenedorNoPuntos form.addPoint {
+.contenedorNoPuntos .addPoint {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1643,6 +1794,7 @@ main section .title {
     margin-top: 20px;
     border-radius: 5px;
     padding: 10px;
+    transition: all ease 0.3s;
 }
 
 .contenedorNoPuntos form.addPoint .field {
@@ -1666,6 +1818,11 @@ main section .title {
     min-width: 200px;
 }
 
+.contenedorNoPuntos form.addPoint input[type="reset"],
+.contenedorNoPuntos form.addPoint input[type="submit"] {
+    display: none;
+}
+
 .contenedorNoPuntos form.addPoint .field input,
 .contenedorNoPuntos form.addPoint .field select,
 .contenedorNoPuntos form.addPoint .field textarea {
@@ -1677,6 +1834,12 @@ main section .title {
     font-size: 0.8em;
 }
 
+.contenedorNoPuntos form.addPoint .field input:focus,
+.contenedorNoPuntos form.addPoint .field select:focus,
+.contenedorNoPuntos form.addPoint .field textarea:focus {
+    border: 2px solid #1686ee;
+}
+
 .contenedorNoPuntos form.addPoint .field input[name="paisPunto"] {
     cursor: not-allowed;
 }
@@ -1685,4 +1848,5 @@ main section .title {
     resize: vertical;
     min-height: 40px;
     max-height: 150px;
+    overflow-y: hidden;
 }

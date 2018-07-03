@@ -105,4 +105,26 @@ if (document.title == 'Pedidos') {
         // }, 5000);
     });
 
+} else if (document.title == 'Puntos de entrega') {
+    let btnShowForm = document.getElementById('btnShowForm');
+
+    btnShowForm.addEventListener("click", () => {
+        let formNewPoint = document.getElementById('formNewPoint'),
+            puntoTitle = document.getElementById("puntosTitle"),
+            btnsActionForm = [...document.querySelectorAll(".contenedorNoPuntos .punto .btnAdd.noShow")],
+            btnCancelForm = document.getElementById("cancelForm");
+
+        formNewPoint.setAttribute("class", "addPoint");
+        btnShowForm.setAttribute("class", "hidden");
+        puntoTitle.innerText = "Agregar un nuevo punto de entrega";
+        puntoTitle.setAttribute("class", "text active");
+
+        for (let i = 0; i < btnsActionForm.length; i++) {
+            btnsActionForm[i].classList.remove("noShow");
+        }
+
+        btnCancelForm.addEventListener("click", () =>{
+            location.replace("puntosEntrega.php");
+        });
+    });
 }

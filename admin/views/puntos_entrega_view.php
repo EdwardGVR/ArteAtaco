@@ -173,6 +173,18 @@
                             <label for="refPunto">Referencias:</label>
                             <textarea name="refPunto" id="refPunto" placeholder="Ej: Frente a iglesia, a la par de banco..."></textarea>
                         </div>
+                        <div class="field">
+                            <label for="tipoEntrega">Entrega gratuita?</label>
+                            <div class="input">
+                                <div class="siNo">
+                                    <label class="tipoEntrega" for="siGratis">Si</label>
+                                    <input type="radio" id="siGratis" name="tipoEntrega" value="Si">
+                                    <label class="tipoEntrega" for="noGratis">No</label>
+                                    <input type="radio" id="noGratis" name="tipoEntrega" value="No">
+                                </div>
+                                <input type="number" class="costo" min="0" max="1000" step="0.01" placeholder="10.00">
+                            </div>
+                        </div>
                     </form>  
 
                 </div>

@@ -89,7 +89,9 @@ if ($conexion != false) {
 	$query->execute();
 	$categorias = $query->fetchall();
 
-	$query = $conexion->prepare("SELECT * FROM direcciones WHERE id_user = :iduser");
+	$query = $conexion->prepare("SELECT");
+
+	$query = $conexion->prepare("SELECT * FROM direcciones WHERE id_user = :iduser AND id_tipo = 1");
 	$query->execute(array(':iduser' => $iduser));
 	$dirs = $query->fetchall();
 	// Obtener cantidad de direcciones del usuario
@@ -121,7 +123,17 @@ if ($conexion != false) {
 
 	// print_r($departamentos[6][2]);
 
-	$query = $conexion->prepare("SELECT * FROM direcciones WHERE id_user = :id_user");
+	$query = $conexion->prepare("
+		SELECT direcciones.*, departamentos.nombre AS nombreDpto  
+		FROM direcciones 
+		JOIN departamentos ON direcciones.id_departamento = departamentos.id
+		WHERE direcciones.id_tipo = 2 AND direcciones.estado = 1");
+	$query->execute();
+	$puntosEntrega = $query->fetchall();
+
+	$query = $conexion->prepare("
+		SELECT * FROM direcciones 
+		WHERE id_user = :id_user AND id_tipo = 1 AND estado = 1");
 	$query->execute(array(':id_user'=>$iduser));
 	$direcciones = $query->fetchall();
 

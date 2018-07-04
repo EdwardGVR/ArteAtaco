@@ -66,35 +66,31 @@
 			<div class="contenedor_address">
 				<div class="step1">1</div>
 				<h3 class="indication"><i class="fa fa-truck"></i> Seleccione una direccion para la entrega</h3>
-				
+				<!-- Puntos de entrega -->
 				<div class="select_address">
 					<h4 class="addressType"><i class="fa fa-map-marker"></i> Puntos establecidos:</h4>
-					<div class="shipping_address">
-						<div class="info">
-							<h4>Punto de entrega 1</h4>
+					<?php foreach($puntosEntrega AS $puntoEntrega): ?>
+						<div id="dirUser<?= $puntoEntrega['id'] ?>" class="shipping_address">
+							<div class="info">
+								<h4><?= $puntoEntrega['nombre'] . ' (' . $puntoEntrega['nombreDpto'] . ')' ?></h4>
+								<h5><?= $puntoEntrega['linea1'] ?></h5>
+								<h5><?= $puntoEntrega['linea2'] ?></h5>
+							</div>
+							<div class="options">
+								<a  idAddress="<?= $puntoEntrega['id'] ?>"  
+									class="button selectDir <?= $puntoEntrega['id'] ?>"
+									addressType="deliveryPoint">
+									Seleccionar
+								</a>
+								<a id="cancelDirUser<?= $puntoEntrega['id'] ?>" class="hidden">No usar</a>
+							</div>
+							<div class="hidden checkOnDir">
+								<i class="fa fa-check-circle"></i>
+							</div>
 						</div>
-						<div class="options">
-							<a href="#" class="button selectDir" addressType="preset">Seleccionar</a>
-						</div>
-					</div>
-					<div class="shipping_address">
-						<div class="info">
-							<h4>Punto de entrega 2</h4>
-						</div>
-						<div class="options">
-							<a href="#" class="button selectDir" addressType="preset">Seleccionar</a>
-						</div>
-					</div>
-					<div class="shipping_address">
-						<div class="info">
-							<h4>Punto de entrega 3</h4>
-						</div>
-						<div class="options">
-							<a href="#" class="button selectDir" addressType="preset">Seleccionar</a>
-						</div>
-					</div>
+					<?php endforeach ?>
 				</div>
-				
+				<!-- Direcciones del cliente -->
 				<div class="select_address">
 					<h4 class="addressType"><i class="fa fa-compass"></i> Direcciones personalizadas:</h4>
 					<h4 class="info"><i class="fa fa-info-circle"></i>Podr&iacute;an aplicarse cargos</h4>
@@ -107,8 +103,7 @@
 								</div>
 								<div class="options">
 									<a href="cuenta.php" class="button">Editar</a>
-									<a idAddress="<?= $direccion['id'] ?>" 
-									    
+									<a idAddress="<?= $direccion['id'] ?>"  
 									   class="button selectDir <?= $direccion['id'] ?>"
 									   addressType="user">
 									   Seleccionar

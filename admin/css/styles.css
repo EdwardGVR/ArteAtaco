@@ -1850,3 +1850,32 @@ main section .title {
     max-height: 150px;
     overflow-y: hidden;
 }
+
+.contenedorNoPuntos form.addPoint .field .input {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    /* background: #fff; */
+}
+
+.contenedorNoPuntos form.addPoint .field .input .siNo {
+    display: flex;
+    align-items: center;
+    /* max-width: 200px; */
+    /* background: #000; */
+}
+
+.contenedorNoPuntos form.addPoint .field .input .siNo label.tipoEntrega {
+    min-width: auto;
+    font-size: 0.9em;
+    margin-right: 5px;
+}
+
+.contenedorNoPuntos form.addPoint .field .input .siNo input {
+    margin-right: 20px;
+}
+
+.contenedorNoPuntos form.addPoint .field .input .costo {
+    width: 100%;
+    background: #fff;
+}

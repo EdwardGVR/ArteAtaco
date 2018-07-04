@@ -30,7 +30,7 @@ if ($conexion != false) {
         $linea2Point = $_POST['linea2'];
         $refsPoint = $_POST['refPunto'];
         
-        $query = $conexion->prepare("INSERT INTO direcciones VALUES (null, 2, :dpto, :nombre, :pais, :linea1, :linea2, :referencias, 2)");
+        $query = $conexion->prepare("INSERT INTO direcciones VALUES (null, 2, :dpto, :nombre, :pais, :linea1, :linea2, :referencias, 2, 1, 1)");
         $query->execute(array(
             ':dpto' => $dptoPoint,
             ':nombre' => $nombrePoint,
@@ -47,7 +47,7 @@ if ($conexion != false) {
     if (isset($_POST['deletePoint'])) {
         $idPoint = $_POST['puntoId'];
 
-        $query = $conexion->prepare("UPDATE direcciones SET disponible = 0 WHERE id = :idPoint");
+        $query = $conexion->prepare("UPDATE direcciones SET disponible = 0, estado = 0 WHERE id = :idPoint");
         $query->execute(array(':idPoint' => $idPoint));
 
         unset($_POST['deletePoint']);

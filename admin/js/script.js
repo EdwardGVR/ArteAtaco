@@ -112,7 +112,10 @@ if (document.title == 'Pedidos') {
         let formNewPoint = document.getElementById('formNewPoint'),
             puntoTitle = document.getElementById("puntosTitle"),
             btnsActionForm = [...document.querySelectorAll(".contenedorNoPuntos .punto .btnAdd.noShow")],
-            btnCancelForm = document.getElementById("cancelForm");
+            btnCancelForm = document.getElementById("cancelForm"),
+            radioSiGratis = document.getElementById("siGratis"),
+            radioNoGratis = document.getElementById("noGratis"),
+            inputCostoEntrega = document.getElementById("costoEntrega");
 
         formNewPoint.setAttribute("class", "addPoint");
         btnShowForm.setAttribute("class", "hidden");
@@ -125,6 +128,14 @@ if (document.title == 'Pedidos') {
 
         btnCancelForm.addEventListener("click", () =>{
             location.replace("puntosEntrega.php");
+        });
+
+        radioSiGratis.addEventListener("click", () =>{
+            inputCostoEntrega.setAttribute("type", "hidden");
+        });
+
+        radioNoGratis.addEventListener("click", () =>{
+            inputCostoEntrega.setAttribute("type", "number");
         });
     });
 }

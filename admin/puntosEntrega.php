@@ -4,8 +4,11 @@ require '../functions.php';
 require '../conexion.php';
 
 if ($conexion != false) {
+
+    // Obtener los puntos de entrega
     $query = $conexion->prepare("
-        SELECT direcciones.*, departamentos.nombre AS dptoNombre FROM direcciones
+        SELECT direcciones.*, departamentos.nombre AS dptoNombre 
+        FROM direcciones
         JOIN departamentos ON direcciones.id_departamento = departamentos.id
         WHERE id_tipo = 2 AND disponible = 1;
     ");
@@ -18,10 +21,12 @@ if ($conexion != false) {
         $hayPuntos = false;
     }
 
+    // Obtener los departamentos
     $query = $conexion->prepare("SELECT * FROM departamentos");
     $query->execute();
     $departamentos = $query->fetchall();
 
+    // Guardar un nuevo punto de entrega
     if (isset($_POST['savePoint'])) {
         $dptoPoint = $_POST['dptoPunto'];
         $nombrePoint = $_POST['nombrePunto'];
@@ -29,21 +34,30 @@ if ($conexion != false) {
         $linea1Point = $_POST['linea1'];
         $linea2Point = $_POST['linea2'];
         $refsPoint = $_POST['refPunto'];
+        $tipoEntrega = $_POST['tipoEntrega'];
+
+        if ($tipoEntrega == "free") {
+            $costo = 0;
+        } elseif ($tipoEntrega == "noFree") {
+            $costo = $_POST['costoEntrega'];
+        }
         
-        $query = $conexion->prepare("INSERT INTO direcciones VALUES (null, 2, :dpto, :nombre, :pais, :linea1, :linea2, :referencias, 2, 1, 1)");
+        $query = $conexion->prepare("INSERT INTO direcciones VALUES (null, 2, :dpto, :nombre, :pais, :linea1, :linea2, :referencias, 2, :costo, 1, 1)");
         $query->execute(array(
             ':dpto' => $dptoPoint,
             ':nombre' => $nombrePoint,
             ':pais' => $paisPoint,
             ':linea1' => $linea1Point,
             ':linea2' => $linea2Point,
-            ':referencias' => $refsPoint
+            ':referencias' => $refsPoint,
+            ':costo' => $costo
         ));
 
         unset($_POST['savePoint']);
         header('Location: puntosEntrega.php');
     }
 
+    // "Borrar" un punto de entrega
     if (isset($_POST['deletePoint'])) {
         $idPoint = $_POST['puntoId'];
 
@@ -54,6 +68,7 @@ if ($conexion != false) {
         header('Location: puntosEntrega.php');
     }
 
+    // Activar / desactivar punto de entrega
     if (isset($_POST['togglePoint'])) {
         $idPoint = $_POST['puntoId'];    
         

@@ -88,7 +88,9 @@ if ($conexion != false) {
 	$imagen_user = "images/user/profile/user_img_" . $iduser . ".jpg";
 	// echo $imagen_user;
 
-	$query = $conexion->prepare("SELECT * FROM direcciones WHERE id_user = :iduser");
+	$query = $conexion->prepare("
+		SELECT * FROM direcciones 
+		WHERE id_user = :iduser AND id_tipo = 1 AND disponible = 1");
 	$query->execute(array(':iduser' => $iduser));
 	$dirs = $query->fetchall();
 	// Obtener cantidad de direcciones del usuario
@@ -197,7 +199,7 @@ if ($conexion != false) {
 		} else {
 			$linea2_update = NULL;
 		}
-		if ( !empty($_POST['ref_dir'])) {
+		if (!empty($_POST['ref_dir'])) {
 			$referencias_update = $_POST['ref_dir'];	
 		} else {
 			$referencias_update = NULL;
@@ -273,14 +275,20 @@ if ($conexion != false) {
 	if (isset($_POST['eliminar_direccion'])) {
 		$id_address = $_POST['id_address'];
 
-		$query = $conexion->prepare("DELETE FROM direcciones WHERE id = :id_address AND id_user = :id_user");
+		// $query = $conexion->prepare("DELETE FROM direcciones WHERE id = :id_address AND id_user = :id_user");
+		// $query->execute(array(
+		// 	':id_address' => $id_address,
+		// 	':id_user' => $iduser
+		// ));
+
+		// $query = $conexion->prepare("UPDATE direcciones_persistence SET activa = 0 WHERE id = :id");
+		// $query->execute(array(':id' => $_POST['id_address']));
+
+		$query = $conexion->prepare("UPDATE direcciones SET estado = 0, disponible = 0 WHERE id = :id_address AND id_user = :id_user");
 		$query->execute(array(
 			':id_address' => $id_address,
 			':id_user' => $iduser
 		));
-
-		$query = $conexion->prepare("UPDATE direcciones_persistence SET activa = 0 WHERE id = :id");
-		$query->execute(array(':id' => $_POST['id_address']));
 
 		header("Location: cuenta.php");
 	}
@@ -326,7 +334,7 @@ if ($conexion != false) {
 			// Guardar en la tabla direcciones
 			$query = $conexion->prepare("
 				INSERT INTO direcciones 
-				VALUES(null, :id_user, :id_departamento, :nombre, :pais, :linea1, :linea2, :referencias, 1)
+				VALUES(null, :id_user, :id_departamento, :nombre, :pais, :linea1, :linea2, :referencias, 1, 0, 1, 1)
 			");
 			$query->execute(array(
 				':id_user'=>$iduser,
@@ -341,7 +349,7 @@ if ($conexion != false) {
 			// Guardar en la tabla direcciones_persistence
 			$query = $conexion->prepare("
 				INSERT INTO direcciones_persistence
-				VALUES(null, :id_user, :id_departamento, :nombre, :pais, :linea1, :linea2, :referencias, 1, 1)
+				VALUES(null, :id_user, :id_departamento, :nombre, :pais, :linea1, :linea2, :referencias, 1, 0, 1, 1)
 			");
 			$query->execute(array(
 				':id_user'=>$iduser,
@@ -358,7 +366,9 @@ if ($conexion != false) {
 		}
 	}
 
-	$query = $conexion->prepare("SELECT * FROM direcciones WHERE id_user = :iduser");
+	$query = $conexion->prepare("
+		SELECT * FROM direcciones 
+		WHERE id_user = :iduser AND id_tipo = 1 AND disponible = 1");
 	$query->execute(array(':iduser' => $iduser));
 	$direcciones = $query->fetchall();
 }

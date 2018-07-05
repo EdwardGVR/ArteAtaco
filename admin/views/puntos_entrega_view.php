@@ -66,6 +66,11 @@
                                     <span class="value"><?= $punto['linea1'] ?></span>
                                     <span class="value"><?= $punto['linea2'] ?></span>
                                     <span class="value"><?= $punto['referencias'] ?></span>
+                                    <?php if($punto['costo'] == 0): ?>
+                                        <span class="value">Entrega gratuita</span>
+                                    <?php elseif($punto['costo'] != 0): ?>
+                                        <span class="value">Costo de envio: $<?= $punto['costo'] ?></span>
+                                    <?php endif ?>
                                 </div>
                                 <div class="details">
                                     <i class="fas fa-map-marked-alt fa-8x"></i>
@@ -177,12 +182,12 @@
                             <label for="tipoEntrega">Entrega gratuita?</label>
                             <div class="input">
                                 <div class="siNo">
-                                    <label class="tipoEntrega" for="siGratis">Si</label>
-                                    <input type="radio" id="siGratis" name="tipoEntrega" value="Si">
-                                    <label class="tipoEntrega" for="noGratis">No</label>
-                                    <input type="radio" id="noGratis" name="tipoEntrega" value="No">
+                                    <label class="tipoEntrega" for="">Si</label>
+                                    <input type="radio" id="siGratis" name="tipoEntrega" value="free" checked>
+                                    <label class="tipoEntrega" for="">No</label>
+                                    <input type="radio" id="noGratis" name="tipoEntrega" value="noFree">
                                 </div>
-                                <input type="number" class="costo" min="0" max="1000" step="0.01" placeholder="10.00">
+                                <input id="costoEntrega" name="costoEntrega" type="hidden" class="costo" min="0" max="1000" step="0.01" placeholder="Ingrese el costo Ej: 10.00">
                             </div>
                         </div>
                     </form>  

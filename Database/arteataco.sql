@@ -2,7 +2,7 @@
 --
 -- Host: 127.0.0.1    Database: login_propio
 -- ------------------------------------------------------
--- Server version	5.5.5-10.1.32-MariaDB
+-- Server version	5.5.5-10.1.33-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -115,6 +115,7 @@ CREATE TABLE `direcciones` (
   `linea2` varchar(150) DEFAULT NULL,
   `referencias` varchar(250) DEFAULT NULL,
   `id_tipo` int(11) NOT NULL DEFAULT '1',
+  `costo` float DEFAULT '0',
   `estado` tinyint(4) NOT NULL DEFAULT '1',
   `disponible` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
@@ -124,7 +125,7 @@ CREATE TABLE `direcciones` (
   CONSTRAINT `direcciones_departemento` FOREIGN KEY (`id_departamento`) REFERENCES `departamentos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `direcciones_tipo` FOREIGN KEY (`id_tipo`) REFERENCES `tipo_direccion` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `direcciones_usuario` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -133,7 +134,7 @@ CREATE TABLE `direcciones` (
 
 LOCK TABLES `direcciones` WRITE;
 /*!40000 ALTER TABLE `direcciones` DISABLE KEYS */;
-INSERT INTO `direcciones` VALUES (29,2,7,'Direccion test 5','El Salvador','Direccion de prueba',NULL,NULL,1,1,1),(30,2,1,'Direccion test 6','El Salvador','Direccion de prueba',NULL,NULL,1,1,1),(35,2,12,'Direccion test 7','El Salvador','Direccion de prueba',NULL,NULL,1,1,1),(38,2,7,'Punto 1','El Salvador','Linea 1','Linea 2','Referencias',2,1,1),(39,2,1,'Punto 2','El Salvador','Linea 1','Linea 2','Referencias',2,1,1),(40,2,2,'Punto 3','El Salvador','Linea 1','Linea 2','Referencias',2,1,1);
+INSERT INTO `direcciones` VALUES (29,2,7,'Direccion test 5','El Salvador','Direccion de prueba',NULL,NULL,1,0,1,1),(30,2,1,'Direccion test 6','El Salvador','Direccion de prueba',NULL,NULL,1,0,1,1),(35,2,12,'Direccion test 7','El Salvador','Direccion de prueba',NULL,NULL,1,0,1,1),(38,2,7,'Punto 1','El Salvador','Linea 1','Linea 2','Referencias',2,0,1,1),(39,2,1,'Punto 2','El Salvador','Linea 1','Linea 2','Referencias',2,0,1,1),(40,2,2,'Punto 3','El Salvador','Linea 1','Linea 2','Referencias',2,0,1,1),(41,2,12,'Punto 4','El Salvador','Linea uno del punto','La linea lel del sos','lorem ipsum dolor sit amet',2,17.5,1,1);
 /*!40000 ALTER TABLE `direcciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -412,4 +413,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-07-02 22:21:36
+-- Dump completed on 2018-07-05 15:46:52

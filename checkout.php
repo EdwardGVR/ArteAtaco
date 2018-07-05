@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_address'])) {
 	if ($conexion != false && empty($errores)) {
 		$query = $conexion->prepare("
 			INSERT INTO direcciones 
-			VALUES(null, :id_user, :id_departamento, :nombre, :pais, :linea1, :linea2, :referencias, 1)
+			VALUES(null, :id_user, :id_departamento, :nombre, :pais, :linea1, :linea2, :referencias, 1, 0, 1, 1)
 		");
 		$query->execute(array(
 			':id_user'=>$iduser,
@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_address'])) {
 
 		$query = $conexion->prepare("
 			INSERT INTO direcciones_persistence
-			VALUES(null, :id_user, :id_departamento, :nombre, :pais, :linea1, :linea2, :referencias, 1, 1)
+			VALUES(null, :id_user, :id_departamento, :nombre, :pais, :linea1, :linea2, :referencias, 1, 0, 1, 1)
 		");
 		$query->execute(array(
 			':id_user'=>$iduser,
@@ -91,7 +91,7 @@ if ($conexion != false) {
 
 	$query = $conexion->prepare("SELECT");
 
-	$query = $conexion->prepare("SELECT * FROM direcciones WHERE id_user = :iduser AND id_tipo = 1");
+	$query = $conexion->prepare("SELECT * FROM direcciones WHERE id_user = :iduser AND id_tipo = 1 AND disponible = 1");
 	$query->execute(array(':iduser' => $iduser));
 	$dirs = $query->fetchall();
 	// Obtener cantidad de direcciones del usuario
@@ -132,8 +132,10 @@ if ($conexion != false) {
 	$puntosEntrega = $query->fetchall();
 
 	$query = $conexion->prepare("
-		SELECT * FROM direcciones 
-		WHERE id_user = :id_user AND id_tipo = 1 AND estado = 1");
+		SELECT direcciones.*, departamentos.nombre AS nombreDpto
+		FROM direcciones 
+		JOIN departamentos ON direcciones.id_departamento = departamentos.id
+		WHERE id_user = :id_user AND id_tipo = 1 AND disponible = 1");
 	$query->execute(array(':id_user'=>$iduser));
 	$direcciones = $query->fetchall();
 
@@ -143,14 +145,46 @@ if ($conexion != false) {
 	// print_r($metodos);
 	
 	if (isset($_COOKIE["dirSelected"]) && $_COOKIE["dirSelected"] != 0) {
-		$query = $conexion->prepare(
-			"SELECT direcciones.*, departamentos.nombre AS nombreDpto, departamentos.costo_envio AS costo
-			 FROM direcciones 
-			 JOIN departamentos ON direcciones.id_departamento = departamentos.id
-			 WHERE direcciones.id = :idAddress 
-		");
-		$query->execute(array(':idAddress' => $_COOKIE['dirSelected']));
-		$dir_sel = $query->fetch();
+		$idAddress = $_COOKIE['dirSelected'];
+
+		// Consultar el tipo de direccion seleccionada
+		$query = $conexion->prepare("SELECT id_tipo, estado FROM direcciones WHERE id = :idAddress");
+		$query->execute(array(':idAddress' => $idAddress));
+		$datosDireccion = $query->fetch();
+		$tipoDireccion = $datosDireccion[0];
+		$estadoDireccion = $datosDireccion[1];
+
+		if ($estadoDireccion == 1) {
+			if ($tipoDireccion == 1) {
+				// Si es una direccion personalizada
+	
+				$query = $conexion->prepare(
+					"SELECT direcciones.*, departamentos.nombre AS nombreDpto, departamentos.costo_envio AS costo
+					 FROM direcciones 
+					 JOIN departamentos ON direcciones.id_departamento = departamentos.id
+					 WHERE direcciones.id = :idAddress 
+				");
+				$query->execute(array(':idAddress' => $idAddress));
+				$dir_sel = $query->fetch();
+	
+			} elseif ($tipoDireccion == 2) {
+				// Si es un punto de entrega
+	
+				$query = $conexion->prepare(
+					"SELECT direcciones.*, departamentos.nombre AS nombreDpto
+					 FROM direcciones 
+					 JOIN departamentos ON direcciones.id_departamento = departamentos.id
+					 WHERE direcciones.id = :idAddress
+				");
+				$query->execute(array(':idAddress' => $idAddress));
+				$dir_sel = $query->fetch();
+	
+			}
+		} elseif ($estadoDireccion == 0) {
+			unset($_COOKIE['dirSelected']);
+			setcookie("dirSelected", "", time()-3600);
+			header('Loacation: checkout.php');
+		}
 	}
 
 	if (isset($_COOKIE["pagoSelected"]) && $_COOKIE["pagoSelected"] != 0) {

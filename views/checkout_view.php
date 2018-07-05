@@ -2,7 +2,6 @@
 <html>
 <head>
 	<title>Arte Ataco :: Datos del pedido</title>
-
 	<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
 	<link rel="stylesheet" href="css/styleModal.css"> 
@@ -35,7 +34,6 @@
 			<div class="subtotal_checkout">
 				<span>Subtotal: $ <?= $subtotal ?></span>
 			</div>
-
 			<div class="editar">
 				<a href="carrito.php">Editar</a>
 			</div>
@@ -46,7 +44,11 @@
 				<h2><i class="fa fa-money"></i> <i class="fa fa-truck"></i> Costo de env&iacute;o:</h2>
 				<?php if (isset($dir_sel)): ?>
 					<div class="costo">
-						<?= $dir_sel['nombreDpto'] . ': $' . $dir_sel['costo'] ?>
+						<?php if($dir_sel['costo'] == 0): ?>
+							La entrega en <?= $dir_sel['nombre'] . ' (' . $dir_sel['nombreDpto'] . ')' ?> es <b>gratuita</b>
+						<?php elseif($dir_sel['costo'] != 0): ?>
+							<?= $dir_sel['nombre'] . ' (' . $dir_sel['nombreDpto'] . ')' . ': $' . $dir_sel['costo'] ?>
+						<?php endif ?>
 					</div>
 				<?php else: ?>
 					<div class="costo">
@@ -99,6 +101,7 @@
 							<div id="dirUser<?= $direccion['id'] ?>" class="shipping_address">
 								<div class="info">
 									<h4><?= $direccion['nombre'] ?></h4><br />
+									<h5><?= $direccion['nombreDpto'] ?></h5>
 									<h5><?= $direccion['linea1'] ?></h5>
 								</div>
 								<div class="options">

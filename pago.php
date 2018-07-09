@@ -1,7 +1,5 @@
 <?php session_start();
 
-require 'functions.php';
-
 if (isset($_SESSION['user'])) {
 	$user = $_SESSION['user'];
 } else {
@@ -9,7 +7,7 @@ if (isset($_SESSION['user'])) {
 	$user = "Invitado";
 }
 
-if (!isset($_POST['checkout_checkpoint'])) {
+if (!isset($_COOKIE["checkoutCheckpoint"])) {
 	header("Location: carrito.php");
 }
 
@@ -19,8 +17,9 @@ use PHPMailer\PHPMailer\Exception;
 require 'script/PHPMailer/src/Exception.php';
 require 'script/PHPMailer/src/PHPMailer.php';
 require 'script/PHPMailer/src/SMTP.php';
-
+require 'functions.php';
 require 'conexion.php';
+
 $iduser = get_user_id($conexion, $user);
 $user_data = get_user_data($conexion, $iduser);
 $email_user = $user_data['email'];
@@ -28,15 +27,10 @@ $nombre_user = $user_data['nombres'];
 $codigo = $iduser;
 
 if ($conexion != false) {
-	// Traer las categorias
+	// Obtener las categorias
 	$query = $conexion->prepare("SELECT id, nombre_cat FROM categorias ORDER BY nombre_cat ASC");
 	$query->execute();
 	$categorias = $query->fetchall();
-
-	// Datos seleccionados por el cliente en checkout (traidos desde DB)
-	// $query = $conexion->prepare("SELECT * FROM temporal WHERE id_user = :id_user");
-	// $query->execute(array(':id_user'=>$iduser));
-	// $datos_cliente = $query->fetch();
 
 	$id_direccion = $_COOKIE["dirSelected"];
 	$codigo .= $id_direccion;

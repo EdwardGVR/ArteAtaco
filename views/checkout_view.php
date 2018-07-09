@@ -246,14 +246,13 @@
 					</div>
 				</div>
 
-				<form class="form_confirm_info" action="pago.php" method="POST">
+				<div class="form_confirm_info">
 					<?php if ($allowPass): ?>
-						<input class="send_info" type="submit" name="confirm_info" value="La informaci&oacute;n es correcta">
-						<input type="hidden" name="checkout_checkpoint">
+						<a id="checkoutBtn" href="pago.php" class="send_info">La informaci&oacute;n es correcta</a>
 					<?php else: ?>
 						<div class="noInfo">Completar informaci&oacute;n para continuar <i class="fa fa-exclamation-triangle"></i></div>
 					<?php endif ?>
-				</form>
+				</div>
 			</div>
 		</div>
 	</div>

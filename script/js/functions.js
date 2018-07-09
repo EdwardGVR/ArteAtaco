@@ -394,9 +394,13 @@ if (window.pagId) {
 				location.reload();
 			});
 		}
-		
-		
 		// console.log(getCookie("dirSelected"));
 		
+		let checkoutBtn = document.getElementById("checkoutBtn");
+		if (checkoutBtn != null) {
+			checkoutBtn.addEventListener("click", () => {
+				document.cookie = "checkoutCheckpoint =" + true;
+			});
+		}
 	}
 }

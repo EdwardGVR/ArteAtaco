@@ -24,7 +24,7 @@ $iduser = get_user_id($conexion, $user);
 $user_data = get_user_data($conexion, $iduser);
 $email_user = $user_data['email'];
 $nombre_user = $user_data['nombres'];
-$codigo = $iduser;
+$codigo = $iduser;	
 
 if ($conexion != false) {
 	// Obtener las categorias
@@ -115,6 +115,25 @@ if ($conexion != false) {
 	}
 }
 
-require 'views/pago.view.php';
+switch ($id_metodo_pago) {
+	case 1:
+		// Transferencia bancaria
+		//...
+		require 'views/bank_transfer_view.php';
+		break;
+	case 2:
+		// Metodo 2
+		//...
+		require 'views/pago_view.php';
+		break;
+	case 3:
+		// Metodo 3
+		//...
+		require 'views/pago_view.php';
+		break;
+	default:
+		# code...
+		break;
+}
 
 ?>

@@ -1868,7 +1868,7 @@ input[name="add_address"]:hover {
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
-	margin-top: 100px;
+	/* margin-top: 100px; */
 }
 
 .contenedor_pago .nota {
@@ -1882,8 +1882,8 @@ input[name="add_address"]:hover {
 	font-size: 1.4em;
 	background: #F2C049;
 	cursor: pointer;
-	transition: all ease 0.4s;
 	margin-top: 50px;
+	transition: all ease 0.3s;
 }
 
 .contenedor_pago input[name="place_order"]:hover {
@@ -1896,11 +1896,12 @@ input[name="add_address"]:hover {
 	align-content: center;
 	flex-wrap: wrap;
 
-	width: 800px;
-	height: 400px;
+	/* width: 800px; */
+	/* height: 400px; */
+	padding: 20px;
 	background: #DAF2E5;
-	border-radius: 20px;
-	box-shadow: 0 0 20px #000;
+	border-radius: 5px;
+	box-shadow: 0 2px 5px #000;
 }
 
 .pago .info  {

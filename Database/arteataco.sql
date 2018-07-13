@@ -2,7 +2,7 @@
 --
 -- Host: 127.0.0.1    Database: login_propio
 -- ------------------------------------------------------
--- Server version	5.5.5-10.1.33-MariaDB
+-- Server version	5.5.5-10.1.32-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -31,7 +31,7 @@ CREATE TABLE `carrito` (
   KEY `carrito_usuario_idx` (`id_user`),
   KEY `carrito_user_idx` (`id_user`),
   CONSTRAINT `carrito_user` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `carrito` (
 
 LOCK TABLES `carrito` WRITE;
 /*!40000 ALTER TABLE `carrito` DISABLE KEYS */;
-INSERT INTO `carrito` VALUES (3,2,6,1);
+INSERT INTO `carrito` VALUES (8,2,1,1);
 /*!40000 ALTER TABLE `carrito` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -134,7 +134,7 @@ CREATE TABLE `direcciones` (
 
 LOCK TABLES `direcciones` WRITE;
 /*!40000 ALTER TABLE `direcciones` DISABLE KEYS */;
-INSERT INTO `direcciones` VALUES (29,2,7,'Direccion test 5','El Salvador','Direccion de prueba',NULL,NULL,1,0,1,1),(30,2,1,'Direccion test 6','El Salvador','Direccion de prueba',NULL,NULL,1,0,1,1),(35,2,12,'Direccion test 7','El Salvador','Direccion de prueba',NULL,NULL,1,0,1,1),(38,2,7,'Punto 1','El Salvador','Linea 1','Linea 2','Referencias',2,0,1,1),(39,2,1,'Punto 2','El Salvador','Linea 1','Linea 2','Referencias',2,0,1,1),(40,2,2,'Punto 3','El Salvador','Linea 1','Linea 2','Referencias',2,0,1,1),(41,2,12,'Punto 4','El Salvador','Linea uno del punto','La linea lel del sos','lorem ipsum dolor sit amet',2,17.5,1,1);
+INSERT INTO `direcciones` VALUES (29,2,7,'Direccion test 5','El Salvador','Direccion de prueba',NULL,NULL,1,0,1,1),(30,2,1,'Direccion test 6','El Salvador','Direccion de prueba',NULL,NULL,1,0,1,1),(35,2,12,'Direccion test 7','El Salvador','Direccion de prueba',NULL,NULL,1,0,1,1),(38,2,7,'Punto 1','El Salvador','Linea 1','Linea 2','Referencias',2,0,0,1),(39,2,1,'Punto 2','El Salvador','Linea 1','Linea 2','Referencias',2,0,1,1),(40,2,2,'Punto 3','El Salvador','Linea 1','Linea 2','Referencias',2,0,1,1),(41,2,12,'Punto 4','El Salvador','Linea uno del punto','La linea lel del sos','lorem ipsum dolor sit amet',2,17.5,1,1);
 /*!40000 ALTER TABLE `direcciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -238,7 +238,9 @@ CREATE TABLE `pedidos` (
   `id_pago` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
-  `estado` int(11) DEFAULT NULL,
+  `precioCompra` float NOT NULL DEFAULT '0',
+  `costoEnvioCompra` float NOT NULL DEFAULT '0',
+  `estado` int(11) NOT NULL,
   `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `pedidos_user_idx` (`id_user`),
@@ -249,7 +251,7 @@ CREATE TABLE `pedidos` (
   CONSTRAINT `pedidos_pago` FOREIGN KEY (`id_pago`) REFERENCES `metodos_pago` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `pedidos_producto` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `pedidos_user` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -258,7 +260,7 @@ CREATE TABLE `pedidos` (
 
 LOCK TABLES `pedidos` WRITE;
 /*!40000 ALTER TABLE `pedidos` DISABLE KEYS */;
-INSERT INTO `pedidos` VALUES (1,21199,2,1,1,1,1,0,'2018-01-19 20:34:33'),(2,221810,2,2,1,2,1,0,'2018-01-19 20:34:53'),(3,2251111,2,25,1,3,1,0,'2018-01-19 21:20:08'),(4,2261012,2,26,1,1,1,0,'2018-01-19 21:27:41'),(5,2271013,2,27,1,2,1,0,'2018-01-19 21:50:36'),(6,2291114,2,29,1,1,1,0,'2018-01-19 21:51:38'),(7,2291915,2,29,1,2,2,0,'2018-06-26 03:30:58'),(8,2291915,2,29,1,1,1,0,'2018-06-26 03:30:58');
+INSERT INTO `pedidos` VALUES (1,21199,2,1,1,1,1,0,0,0,'2018-01-19 20:34:33'),(2,221810,2,2,1,2,1,0,0,0,'2018-01-19 20:34:53'),(3,2251111,2,25,1,3,1,0,0,0,'2018-01-19 21:20:08'),(4,2261012,2,26,1,1,1,0,0,0,'2018-01-19 21:27:41'),(5,2271013,2,27,1,2,1,0,0,0,'2018-01-19 21:50:36'),(6,2291114,2,29,1,1,1,0,0,0,'2018-01-19 21:51:38'),(7,2291915,2,29,1,2,2,0,0,0,'2018-06-26 03:30:58'),(8,2291915,2,29,1,1,1,0,0,0,'2018-06-26 03:30:58'),(9,2351916,2,35,1,6,1,5,15,0,'2018-07-11 04:04:54'),(13,2291320,2,29,1,1,1,15,3,0,'2018-07-11 04:14:04'),(16,2351428,2,35,1,2,1,15,15,0,'2018-07-11 04:36:38'),(28,2301652,2,30,1,1,1,15,5,0,'2018-07-12 03:41:51'),(33,2291357,2,29,1,1,1,15,5,0,'2018-07-12 03:52:07'),(38,2301666,2,30,1,1,1,12,11,0,'2018-07-12 04:27:50');
 /*!40000 ALTER TABLE `pedidos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -413,4 +415,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-07-05 15:46:52
+-- Dump completed on 2018-07-13  9:49:43

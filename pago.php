@@ -56,13 +56,12 @@ if ($conexion != false) {
 		$query->execute(array(':idDireccion'=>$id_direccion));
 		$costoEnvio = $query->fetch();
 		$costoEnvio = $costoEnvio[0];
-	} else {
+	} elseif ($tipoDireccion == 2) {
 		$query = $conexion->prepare("SELECT costo FROM direcciones WHERE id = :idDireccion");
 		$query->execute(array(':idDireccion'=>$id_direccion));
 		$costoEnvio = $query->fetch();
 		$costoEnvio = $costoEnvio[0];
 	}
-
 	// print_r($costoEnvio);
 
 	if (isset($_POST['place_order'])) {
@@ -78,42 +77,25 @@ if ($conexion != false) {
 		");
 		$query->execute(array(':id_user'=>$iduser));
 		$productos_carrito = $query->fetchall();
-
 		// print_r($productos_carrito);
 
-		// foreach ($productos_carrito AS $producto) {
-		// 	$query = $conexion->prepare("
-		// 		INSERT INTO pedidos 
-		// 		VALUES (null, :codigo, :id_user, :id_direccion, :id_pago, :id_producto, :cantidad, :precioCompra, :costoEnvioCompra, 0, CURRENT_TIMESTAMP)
-		// 	");
-		// 	$query->execute(array(
-		// 		':codigo'=>$codigo,
-		// 		':id_user'=>$iduser,
-		// 		':id_direccion'=>$id_direccion,
-		// 		':id_pago'=>$id_metodo_pago,
-		// 		':id_producto'=>$producto['id_producto'],
-		// 		':cantidad'=>$producto['cantidad'],
-		// 		':precioCompra'=>$producto['precio'],
-		// 		':costoEnvioCompra'=>5
-		// 	));	
-		// }
-
-		$query = $conexion->prepare("
-			INSERT INTO pedidos (codigo, id_user, id_direccion, id_pago, id_producto, cantidad, precioCompra, costoEnvioCompra, estado) 
-			VALUES (:codigo, :iduser, :iddireccion, :idpago, :idproducto, :cantidad, :precioCompra, :costoEnvioCompra, :estado)");
-		$query->execute(array(
-			':codigo'=>$codigo,
-			':iduser'=>$iduser,
-			':iddireccion'=>$id_direccion,
-			':idpago'=>$id_metodo_pago,
-			':idproducto'=>1,
-			':cantidad'=>1,
-			':precioCompra'=>12,
-			':costoEnvioCompra'=>11,
-			':estado'=>0
-		));
+		foreach ($productos_carrito AS $producto) {
+			$query = $conexion->prepare("
+				INSERT INTO pedidos 
+				VALUES (null, :codigo, :id_user, :id_direccion, :id_pago, :id_producto, :cantidad, :precioCompra, :costoEnvioCompra, 0, CURRENT_TIMESTAMP)
+			");
+			$query->execute(array(
+				':codigo'=>$codigo,
+				':id_user'=>$iduser,
+				':id_direccion'=>$id_direccion,
+				':id_pago'=>$id_metodo_pago,
+				':id_producto'=>$producto['id_producto'],
+				':cantidad'=>$producto['cantidad'],
+				':precioCompra'=>$producto['precio'],
+				':costoEnvioCompra'=>$costoEnvio
+			));	
+		}
 		
-		/*
 		$query = $conexion->prepare("SELECT * FROM pedidos WHERE codigo = :codigo");
 		$query->execute(array(':codigo'=>$codigo));
 		$check_pedido = $query->fetch();
@@ -122,7 +104,6 @@ if ($conexion != false) {
 			$query = $conexion->prepare("DELETE FROM carrito WHERE id_user = :id_user");
 			$query->execute(array(':id_user'=>$iduser));
 		}
-		*/
 
 		/*
 		//Enviar email de confirmacion de pedido
@@ -163,11 +144,11 @@ if ($conexion != false) {
 		} catch (Exception $e) {
 		    echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
 		}
+		*/
 		
 		setcookie("order_placed_ckp", true);
 		
 		header('Location: order_placed.php');
-		*/
 	}
 }
 

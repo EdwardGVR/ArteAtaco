@@ -39,28 +39,36 @@
 					</h3>
 					<div class="detalle">
 						<span>
-							Env&iacute;o a: <?php echo $pedido['dir_name'] ?>
-							<?php if ($pedido['activa'] == 0): ?>
+							Env&iacute;o a: <?= $pedido['dir_name'] ?>
+							<?php if ($pedido['disponible'] == 0): ?>
 								&nbsp;<span class="eliminada">(Esta direccion fue eliminada)</span>
 							<?php endif ?>
 						</span>	
-						<span>Fecha: <?php echo $pedido['fecha'] ?></span>					
+						<span>Fecha: <?= $pedido['fecha'] ?></span>					
 					</div>
 				</div>
 				<div class="pedido_body">
 					<?php foreach ($productos_pedidos as $prod): ?>
 						<?php if ($pedido['codigo'] == $prod['codigo']): ?>
+							<?php 
+								$imgsCounter = 0; $mainImg = false; 
+
+								foreach ($imgs as $key => $value) {
+									# code...
+								}
+							?>
+
 							<div class="prod_ped">
 								<div class="prod_img">
-									<a href="detalles.php?id_prod=<?php echo $prod['id'] ?>"><img src="<?php echo $prod['imagen'] ?>" alt="X"></a>
-									<a href="detalles.php?id_prod=<?php echo $prod['id'] ?>"><h4><?php echo $prod['nombre'] ?></h4></a>
+									<a href="detalles.php?id_prod=<?= $prod['idProd'] ?>"><img src="<?= $prod['imagen'] ?>" alt="X"></a>
+									<a href="detalles.php?id_prod=<?= $prod['idProd'] ?>"><h4><?= $prod['nombreProd'] ?></h4></a>
 								</div>
 								<div class="prod_cant">
-									<h3>x<?php echo $prod['cantidad'] ?></h3>
+									<h3>x<?= $prod['cantidad'] ?></h3>
 									<h4>Cantidad</h4>
 								</div>
 								<div class="prod_pre">
-									<h3>$<?php echo $prod['precio'] ?></h3>
+									<h3>$<?= $prod['precioCompra'] ?></h3>
 									<h4>Precio unitario</h4>
 								</div>
 							</div>

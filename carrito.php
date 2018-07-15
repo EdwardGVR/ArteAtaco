@@ -2,6 +2,8 @@
 
 require 'functions.php';
 
+// setcookie("checkoutCheckpoint",  "", time()-3600);
+
 if (isset($_SESSION['user'])) {
 	$user = $_SESSION['user'];
 } else {

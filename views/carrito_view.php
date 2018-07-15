@@ -22,34 +22,36 @@
 				<?php $subtotalProd = $item['precio'] * $item['cantidad'] ?>
 				<div class="prod_carrito">
 					<div class="img-opts">
+						<a href="detalles.php?id_prod=<?= $item['id_producto'] ?>">
 						<div class="img_carrito">
-							<?php $mainImg = false; $imgsForProd = false; ?>
-							<?php foreach ($imagenes as $img): ?>
-								<?php if ($img['id_prod'] == $item['id_producto']): ?>
-									<?php $imgsForProd = true ?>
-									<?php if ($img['principal'] == 1): ?>
-										<?php 
-											$mainImg = true;
-											$rutaMainImg = $img['ruta'];
-										?>
-									<?php endif ?>
-								<?php endif ?>
-							<?php endforeach ?>
-	
-							<?php if ($imgsForProd == true): ?>
-								<?php if ($mainImg == true): ?>
-									<img src="<?= $rutaMainImg ?>" alt="No se pudo cargar la imagen">
-								<?php else: ?>
-									<?php foreach ($imagenes as $noMainImg): ?>
-										<?php if ($noMainImg['id_prod'] == $item['id_producto']): ?>
-											<img src="<?= $noMainImg['ruta'] ?>" alt="No se pudo cargar">
+								<?php $mainImg = false; $imgsForProd = false; ?>
+								<?php foreach ($imagenes as $img): ?>
+									<?php if ($img['id_prod'] == $item['id_producto']): ?>
+										<?php $imgsForProd = true ?>
+										<?php if ($img['principal'] == 1): ?>
+											<?php 
+												$mainImg = true;
+												$rutaMainImg = $img['ruta'];
+											?>
 										<?php endif ?>
-									<?php endforeach ?>
+									<?php endif ?>
+								<?php endforeach ?>
+		
+								<?php if ($imgsForProd == true): ?>
+									<?php if ($mainImg == true): ?>
+										<img src="<?= $rutaMainImg ?>" alt="No se pudo cargar la imagen">
+									<?php else: ?>
+										<?php foreach ($imagenes as $noMainImg): ?>
+											<?php if ($noMainImg['id_prod'] == $item['id_producto']): ?>
+												<img src="<?= $noMainImg['ruta'] ?>" alt="No se pudo cargar">
+											<?php endif ?>
+										<?php endforeach ?>
+									<?php endif ?>
+								<?php else: ?>
+									<span class="noImgs">No hay imagenes para este producto <i class="fa fa-exclamation-circle"></i></span>
 								<?php endif ?>
-							<?php else: ?>
-								<span class="noImgs">No hay imagenes para este producto <i class="fa fa-exclamation-circle"></i></span>
-							<?php endif ?>
 						</div>
+						</a>
 						<div class="options">
 							<div class="opt">
 								<span class="editarCant" idProd="<?= $item['id_producto'] ?>">

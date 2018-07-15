@@ -8,7 +8,9 @@ if (isset($_SESSION['user'])) {
 }
 
 if (!isset($_COOKIE["checkoutCheckpoint"])) {
-	header("Location: carrito.php");
+	header("Location: checkout.php");
+} else {
+	setcookie("checkoutCheckpoint", "", time()-3600);
 }
 
 use PHPMailer\PHPMailer\PHPMailer;
@@ -103,6 +105,9 @@ if ($conexion != false) {
 		if ($check_pedido != false) {
 			$query = $conexion->prepare("DELETE FROM carrito WHERE id_user = :id_user");
 			$query->execute(array(':id_user'=>$iduser));
+
+			setcookie("checkoutCheckpoint", "", time()-3600);
+			unset($_COOKIE['checkoutCheckpoint']);
 		}
 
 		/*

@@ -39,7 +39,16 @@
 					</h3>
 					<div class="detalle">
 						<span>
+							<!-- Validacion coste de envio -->
+							<?php 
+								if ($pedido['costoEnvioCompra'] == 0) {
+									$costoEnvio = "Gratuito";
+								} else {
+									$costoEnvio = "$" . $pedido['costoEnvioCompra'];
+								}
+							?>
 							Env&iacute;o a: <?= $pedido['dir_name'] ?>
+							(Costo de env&iacute;o: <?= $costoEnvio ?>)
 							<?php if ($pedido['disponible'] == 0): ?>
 								&nbsp;<span class="eliminada">(Esta direccion fue eliminada)</span>
 							<?php endif ?>
@@ -50,18 +59,32 @@
 				<div class="pedido_body">
 					<?php foreach ($productos_pedidos as $prod): ?>
 						<?php if ($pedido['codigo'] == $prod['codigo']): ?>
+							<!-- Validacion de imagenes -->
 							<?php 
 								$imgsCounter = 0; $mainImg = false; 
-
-								foreach ($imgs as $key => $value) {
-									# code...
+								foreach ($imgs as $img) {
+									if ($img['id_prod'] == $prod['idProd']) {
+										$imgsCounter++;
+										if ($imgsCounter > 0 && $img['principal'] == 1) {
+											$mainImg = true; $imgPath = $img['ruta'];
+										}
+										if ($imgsCounter > 0 && !$mainImg) {
+											$imgPath = $img['ruta'];
+										}
+									}
 								}
 							?>
 
 							<div class="prod_ped">
 								<div class="prod_img">
-									<a href="detalles.php?id_prod=<?= $prod['idProd'] ?>"><img src="<?= $prod['imagen'] ?>" alt="X"></a>
-									<a href="detalles.php?id_prod=<?= $prod['idProd'] ?>"><h4><?= $prod['nombreProd'] ?></h4></a>
+									<?php if ($imgsCounter > 0): ?>
+										<a href="detalles.php?id_prod=<?= $prod['idProd'] ?>">
+											<img src="<?= $imgPath ?>" alt="X">
+										</a>
+									<?php endif ?>
+									<a href="detalles.php?id_prod=<?= $prod['idProd'] ?>">
+										<h4><?= $prod['nombreProd'] ?></h4>
+									</a>
 								</div>
 								<div class="prod_cant">
 									<h3>x<?= $prod['cantidad'] ?></h3>
@@ -69,7 +92,7 @@
 								</div>
 								<div class="prod_pre">
 									<h3>$<?= $prod['precioCompra'] ?></h3>
-									<h4>Precio unitario</h4>
+									<h4>Precio de compra</h4>
 								</div>
 							</div>
 						<?php endif ?>

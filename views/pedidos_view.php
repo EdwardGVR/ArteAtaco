@@ -20,7 +20,7 @@
 		<?php foreach ($pedidos as $pedido): ?>
 			<div class="pedido">
 				<div class="pedido_header">
-					<h3>C&oacute;digo del pedido: #<?php echo $pedido['codigo'] ?></h3>
+					<h3>C&oacute;digo: #<?php echo $pedido['codigo'] ?></h3>
 					<h3>Estado: <?php if ($pedido['estado'] == 0): ?>
 							<span class="pago_pend">
 								Pago pendiente
@@ -55,6 +55,8 @@
 						</span>	
 						<span>Fecha: <?= $pedido['fecha'] ?></span>					
 					</div>
+					<span class="prodsHeader">Producto(s):</span>
+					<hr class="lineProds">
 				</div>
 				<div class="pedido_body">
 					<?php foreach ($productos_pedidos as $prod): ?>
@@ -74,16 +76,15 @@
 									}
 								}
 							?>
-
 							<div class="prod_ped">
 								<div class="prod_img">
 									<?php if ($imgsCounter > 0): ?>
 										<a href="detalles.php?id_prod=<?= $prod['idProd'] ?>">
-											<img src="<?= $imgPath ?>" alt="X">
+											<img src="<?= $imgPath ?>" alt="...">
 										</a>
 									<?php endif ?>
 									<a href="detalles.php?id_prod=<?= $prod['idProd'] ?>">
-										<h4><?= $prod['nombreProd'] ?></h4>
+										<h4 class="prodName"><?= $prod['nombreProd'] ?></h4>
 									</a>
 								</div>
 								<div class="prod_cant">

@@ -1962,11 +1962,11 @@ input[name="add_address"]:hover {
 	align-items: center;
 	flex-wrap: wrap;
 	width: 80%;	
-	border-radius: 20px;
+	border-radius: 5px;
 	background: #DDDBDB;
 	margin-bottom: 50px;
 	padding: 20px;
-	box-shadow: 0 0 10px;
+	box-shadow: 0 1px 4px;
 }
 
 .pedido .pedido_header {
@@ -1996,6 +1996,18 @@ input[name="add_address"]:hover {
 	padding: 0 5px;
 }
 
+.pedido .pedido_header .prodsHeader {
+	margin: 20px 0 5px 0;
+}
+
+.pedido .pedido_header .lineProds {
+	width: 100%;
+	height: 3px;
+	border: none;
+	background: #7cb2e7;
+	border-radius: 2px;
+}
+
 .pedido .pedido_body {
 	display: flex;
 	justify-content: space-between;
@@ -2011,7 +2023,9 @@ input[name="add_address"]:hover {
 	margin-bottom: 10px;
 	width: 100%;
 	background: #CDF1F4;
-	border-radius: 20px;
+	border-radius: 5px;
+	padding: 10px;
+	box-shadow: 0 1px 2px;
 }
 
 .pedido .prod_ped:last-child {
@@ -2027,9 +2041,7 @@ input[name="add_address"]:hover {
 	align-items: center;
 	flex-wrap: wrap;
 	width: 150px;
-	height: 120px;
-	/*background: #000;*/
-	/*color: #fff;*/
+	min-height: 120px;
 	font-size: 0.8em;
 }
 
@@ -2043,6 +2055,14 @@ input[name="add_address"]:hover {
 .prod_ped .prod_img img {
 	width: 100px;
 	height: 100px;
+	border-radius: 5px;
+}
+
+.prod_ped .prod_img .prodName {
+	min-width: 100px;
+	background: #89aff7;
+	padding: 5px;
+	border-radius: 5px;
 }
 
 .contenedor_pedidos .pedido:last-child {

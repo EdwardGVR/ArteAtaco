@@ -1963,7 +1963,7 @@ input[name="add_address"]:hover {
 	flex-wrap: wrap;
 	width: 80%;	
 	border-radius: 5px;
-	background: #DDDBDB;
+	background: #d6e5f1;
 	margin-bottom: 50px;
 	padding: 20px;
 	box-shadow: 0 1px 4px;
@@ -2022,7 +2022,7 @@ input[name="add_address"]:hover {
 	align-items: center;
 	margin-bottom: 10px;
 	width: 100%;
-	background: #CDF1F4;
+	background: #e6ecff;
 	border-radius: 5px;
 	padding: 10px;
 	box-shadow: 0 1px 2px;

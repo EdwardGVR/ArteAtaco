@@ -1428,6 +1428,7 @@ h3.indication {
 	display: flex;
 	width: 100%;
 	text-align-last: left;
+	margin-top: 40px;
 }
 
 .new_address .show-form span.add_address {
@@ -1448,6 +1449,7 @@ h3.indication {
 	width: 400px;
 	padding: 20px;
 	background: #ccc;
+	margin-bottom: 40px;
 	transition: all ease 0.3s;
 }
 
@@ -1952,6 +1954,7 @@ input[name="add_address"]:hover {
 	flex-wrap: wrap;
 	width: 85%;
 	margin: auto;
+	min-height: 300px;
 	/* padding: 30px; */
 	/* box-shadow: 0 0 20px; */
 }

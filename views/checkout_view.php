@@ -123,7 +123,7 @@
 					<?php endif ?>
 				</div>
 			</div>
-			<hr>
+			<!-- <hr> -->
 
 			<?php if ($permitir_direccion): ?>
 				<div class="new_address">
@@ -170,9 +170,10 @@
 						</div>
 					</form>
 				</div>	
-			<hr>
 			<?php endif ?>
 			
+			<hr>
+				
 			<div class="payment_method">
 				<div class="step1">2</div>
 				<h3 class="indication">Seleccione un m&eacute;todo de pago</h3>

@@ -2020,16 +2020,19 @@ input[name="add_address"]:hover {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin-bottom: 10px;
+	/* margin-bottom: 10px; */
 	width: 100%;
 	background: #e6ecff;
-	border-radius: 5px;
+	/* border-radius: 5px; */
 	padding: 10px;
-	box-shadow: 0 1px 2px;
+	/* border-bottom: 2px solid #003973; */
+	box-shadow: 0 1px 3px;
+	transition: all ease 0.3s;
 }
 
-.pedido .prod_ped:last-child {
-	margin-bottom: 0;
+.pedido .prod_ped:hover {
+	z-index: 110;
+	box-shadow: 0 0px 5px;
 }
 
 .prod_ped .prod_img,

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Arte Ataco :: Datos del pedido</title>
+	<title>Arte Ataco :: Pedidos</title>
 
 	<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
@@ -20,22 +20,31 @@
 		<?php foreach ($pedidos as $pedido): ?>
 			<div class="pedido">
 				<div class="pedido_header">
-					<h3>C&oacute;digo: #<?php echo $pedido['codigo'] ?></h3>
-					<h3>Estado: <?php if ($pedido['estado'] == 0): ?>
+					<h3>C&oacute;digo: #<?= $pedido['codigo'] ?></h3>
+					<h3>Estado: 
+						<?php if ($pedido['estado'] == 0): ?>
 							<span class="pago_pend">
 								Pago pendiente
 								<i class="fa fa-clock-o" aria-hidden="true"></i>
 								<i class="fa fa-money" aria-hidden="true"></i>
 							</span>
-						         <?php elseif($pedido['estado'] == 1): ?>
-						         	Pago recibido
-						         <?php elseif($pedido['estado'] == 2): ?>
-						         	Listo para entrega
-						         <?php elseif($pedido['estado'] == 3): ?>
-						         	Entregado
-						         <?php else: ?>
-						         	No se encontr&oacute;
-						         <?php endif ?>
+						<?php elseif($pedido['estado'] == 1): ?>
+							<span class="pago_rec">
+								Pago recibido
+							</span>
+						<?php elseif($pedido['estado'] == 2): ?>
+							<span class="ready_shipp">
+								Listo para entrega
+							</span>			 
+						<?php elseif($pedido['estado'] == 3): ?>
+							<span class="delivered">
+								Entregado
+							</span>			 
+						<?php else: ?>
+							<span class="nd">
+								No se encontr&oacute;
+							</span>	
+						<?php endif ?>
 					</h3>
 					<div class="detalle">
 						<span>

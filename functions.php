@@ -87,4 +87,18 @@ function auto_inc_code(){
 	}
 }
 
+function getShpCarQty ($id_user) {
+	require 'conexion.php';
+	if ($conexion != false) {
+		$query = $conexion->prepare("SELECT cantidad FROM carrito WHERE id_user = :id_user");
+		$query->execute(array(":id_user"=>$id_user));
+		$qtysResult = $query->fetchall();
+		$items = 0;
+		foreach($qtysResult as $qty){
+			$items += $qty['cantidad'];
+		}
+		return $items;
+	}
+}
+
  ?>

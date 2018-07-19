@@ -561,6 +561,7 @@ main section .title {
 }
 
 .pedido_cliente_direccion .pedido_cliente .info .imagen,
+.pedido_cliente_direccion .pedido_cliente .info .imagen img,
 .ped_prods .prods .ped_prod .imagen {
     display: flex;
     justify-content: center;
@@ -570,6 +571,10 @@ main section .title {
     border-radius: 10px;
     margin-right: 10px;
     background: #C4C4C4;
+}
+
+.pedido_cliente_direccion .pedido_cliente .info .imagen img {
+    margin-right: 0;
 }
 
 .pedido_cliente_direccion .pedido_cliente .info .datos,

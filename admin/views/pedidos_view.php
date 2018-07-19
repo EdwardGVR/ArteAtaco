@@ -53,527 +53,122 @@
                 <hr>
             </div>
             <div class="contenedor_pedidos">
-                <article class="pedido_todos">
-                   <div class="pedido_header">
-                       <div class="codigo">#1234567</div>
-                   </div>
-                   <div class="pedido_body">
-                       <div class="pedido_cliente_direccion">
-                           <div class="pedido_cliente">
-                                <div class="titulo">
-                                    <span>Cliente</span>
-                                    <hr>
-                                </div>
-                                <div class="info">
-                                    <div class="imagen">
-                                        <i class="fas fa-user fa-2x"></i>
-                                    </div>
-                                    <div class="datos">
-                                        <span class="nombres">Nombre nombre</span>
-                                        <span class="apellidos">Apellido apellido</span>
+                <?php foreach ($pedidos AS $pedido): ?>
+                    <?php $subtotal = 0; ?>
+                    <article class="pedido_todos">
+                    <div class="pedido_header">
+                        <div class="codigo">#<?= $pedido['codigo'] ?></div>
+                    </div>
+                    <div class="pedido_body">
+                        <div class="pedido_cliente_direccion">
+                            <div class="pedido_cliente">
+                                    <div class="titulo">
+                                        <span>Cliente</span>
                                         <hr>
-                                        <span class="tel">0000-0000</span>
-                                        <span class="email">cliente@mail.com</span>
                                     </div>
-                                </div>
-                           </div>
-                           <div class="pedido_direccion">
-                                <div class="titulo">
-                                    <span>Direccion</span>
-                                    <hr>
-                                </div>
-                                <div class="info">
-                                    <span>Departamento</span>
-                                    <span>Nombre de la direccion</span>
-                                    <hr>
-                                    <span class="det">
-                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias illum accusantium, sunt cumque voluptates inventore.
-                                    </span>
-                                </div>
-                           </div>
-                       </div>
-                       <div class="ped_prods">
-                           <div class="title">
-                               <span>Productos</span>
-                               <hr>
-                           </div>
-                           <div class="prods">
-                               <div class="ped_prod">
-                                    <div class="imagen">
-                                    <i class="fas fa-file-image fa-2x"></i>
+                                    <div class="info">
+                                        <div class="imagen">
+                                            <?php if ($pedido['cos_img'] == NULL): ?>
+                                                <i class="fas fa-user fa-2x"></i>
+                                            <?php else: ?>
+                                                <img src="../<?= $pedido['cos_img'] ?>" alt="">
+                                            <?php endif ?>
+                                        </div>
+                                        <div class="datos">
+                                            <span class="nombres"><?= $pedido['cos_names'] ?></span>
+                                            <span class="apellidos"><?= $pedido['cos_apellidos'] ?></span>
+                                            <hr>
+                                            <?php if ($pedido['cos_tel'] == NULL): ?>
+                                                <span class="tel">No se ha registrado tel&eacute;fono</span>
+                                            <?php else: ?>
+                                                <span class="tel"><?= $pedido['cos_tel'] ?></span>
+                                            <?php endif ?>
+                                            <span class="email"><?= $pedido['cos_email'] ?></span>
+                                        </div>
                                     </div>
-                                    <div class="datos">
-                                        <span class="nombre">Nombre del producto</span>
-                                        <span class="cat">Categoria</span>
-                                        <span class="cant">1x</span>
-                                        <span class="precio">$00.00</span>
-                                    </div>
-                               </div>
-                               <div class="ped_prod">
-                                    <div class="imagen">
-                                    <i class="fas fa-file-image fa-2x"></i>
-                                    </div>
-                                    <div class="datos">
-                                        <span class="nombre">Nombre del producto</span>
-                                        <span class="cat">Categoria</span>
-                                        <span class="cant">1x</span>
-                                        <span class="precio">$00.00</span>
-                                    </div>
-                               </div>
-                               <div class="ped_prod">
-                                    <div class="imagen">
-                                    <i class="fas fa-file-image fa-2x"></i>
-                                    </div>
-                                    <div class="datos">
-                                        <span class="nombre">Nombre del producto</span>
-                                        <span class="cat">Categoria</span>
-                                        <span class="cant">1x</span>
-                                        <span class="precio">$00.00</span>
-                                    </div>
-                               </div>                                                           
-                           </div>                                       
-                       </div>
-                       <div class="total">
-                           <div class="envio">
-                               <div class="icon"><i class="fas fa-tags fa-lg"></i></div>
-                               <div class="mount">
-                                   <span>Sub-total:</span>
-                                   <span>$00.00</span>
-                               </div>                               
-                           </div>
-                           <div class="subtotal">
-                               <div class="icon"><i class="fas fa-truck fa-lg"></i></div>
-                               <div class="mount">
-                                   <span>Envio:</span>
-                                   <span>$00.00</span>
-                               </div>
-                           </div>
-                           <div class="total_sum">
-                               <div class="icon"><i class="fas fa-money-bill-alt fa-lg"></i></div>
-                               <div class="mount">
-                                   <span>Total:</span>
-                                   <span>$00.00</span>
-                               </div>
-                           </div>
-                       </div>
-                       <div class="estado">
-                           <div class="actual">
-                               <div class="indicador"></div>
-                               <span>Estado actual del pedido</span>
-                           </div>
-                           <div class="update updOrderStat" id="updOrderStat">
-                               Actualizar
-                           </div>
-                           <form id="orderStatusForm" class="select_status orderStatusForm" action="#" method="post">
-                               <select class="sel_stat_hidden sel_status" name="status" id="sel_status">
-                                   <option value="1">Estado 1</option>
-                                   <option value="2">Estado 2</option>
-                                   <option value="3">Estado 3</option>
-                               </select>
-                               <input id='submit_status' class='submit_status' type="submit" value="Aceptar">
-                           </form>
-                       </div>
-                   </div>
-                </article>
-                <article class="pedido_todos">
-                   <div class="pedido_header">
-                       <div class="codigo">#1234567</div>
-                   </div>
-                   <div class="pedido_body">
-                       <div class="pedido_cliente_direccion">
-                           <div class="pedido_cliente">
-                                <div class="titulo">
-                                    <span>Cliente</span>
-                                    <hr>
-                                </div>
-                                <div class="info">
-                                    <div class="imagen">
-                                        <i class="fas fa-user fa-2x"></i>
-                                    </div>
-                                    <div class="datos">
-                                        <span class="nombres">Nombre nombre</span>
-                                        <span class="apellidos">Apellido apellido</span>
+                            </div>
+                            <div class="pedido_direccion">
+                                    <div class="titulo">
+                                        <span>Direccion (<?= $pedido['dir_tipo'] ?>)</span>
                                         <hr>
-                                        <span class="tel">0000-0000</span>
-                                        <span class="email">cliente@mail.com</span>
                                     </div>
-                                </div>
-                           </div>
-                           <div class="pedido_direccion">
-                                <div class="titulo">
-                                    <span>Direccion</span>
-                                    <hr>
-                                </div>
-                                <div class="info">
-                                    <span>Departamento</span>
-                                    <span>Nombre de la direccion</span>
-                                    <hr>
-                                    <span class="det">
-                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias illum accusantium, sunt cumque voluptates inventore.
-                                    </span>
-                                </div>
-                           </div>
-                       </div>
-                       <div class="ped_prods">
-                           <div class="title">
-                               <span>Productos</span>
-                               <hr>
-                           </div>
-                           <div class="prods">
-                               <div class="ped_prod">
-                                    <div class="imagen">
-                                    <i class="fas fa-file-image fa-2x"></i>
-                                    </div>
-                                    <div class="datos">
-                                        <span class="nombre">Nombre del producto</span>
-                                        <span class="cat">Categoria</span>
-                                        <span class="cant">1x</span>
-                                        <span class="precio">$00.00</span>
-                                    </div>
-                               </div>
-                               <div class="ped_prod">
-                                    <div class="imagen">
-                                    <i class="fas fa-file-image fa-2x"></i>
-                                    </div>
-                                    <div class="datos">
-                                        <span class="nombre">Nombre del producto</span>
-                                        <span class="cat">Categoria</span>
-                                        <span class="cant">1x</span>
-                                        <span class="precio">$00.00</span>
-                                    </div>
-                               </div>
-                               <div class="ped_prod">
-                                    <div class="imagen">
-                                    <i class="fas fa-file-image fa-2x"></i>
-                                    </div>
-                                    <div class="datos">
-                                        <span class="nombre">Nombre del producto</span>
-                                        <span class="cat">Categoria</span>
-                                        <span class="cant">1x</span>
-                                        <span class="precio">$00.00</span>
-                                    </div>
-                               </div>                                                           
-                           </div>                                       
-                       </div>
-                       <div class="total">
-                           <div class="envio">
-                               <div class="icon"><i class="fas fa-tags fa-lg"></i></div>
-                               <div class="mount">
-                                   <span>Sub-total:</span>
-                                   <span>$00.00</span>
-                               </div>                               
-                           </div>
-                           <div class="subtotal">
-                               <div class="icon"><i class="fas fa-truck fa-lg"></i></div>
-                               <div class="mount">
-                                   <span>Envio:</span>
-                                   <span>$00.00</span>
-                               </div>
-                           </div>
-                           <div class="total_sum">
-                               <div class="icon"><i class="fas fa-money-bill-alt fa-lg"></i></div>
-                               <div class="mount">
-                                   <span>Total:</span>
-                                   <span>$00.00</span>
-                               </div>
-                           </div>
-                       </div>
-                       <div class="estado">
-                           <div class="actual">
-                               <div class="indicador"></div>
-                               <span>Estado actual del pedido</span>
-                           </div>
-                           <div class="update updOrderStat" id="updOrderStat2">
-                               Actualizar
-                           </div>
-                           <form id="orderStatusForm" class="select_status orderStatusForm" action="#" method="post">
-                               <select class="sel_stat_hidden sel_status" name="status" id="sel_status">
-                                   <option value="1">Estado 1</option>
-                                   <option value="2">Estado 2</option>
-                                   <option value="3">Estado 3</option>
-                               </select>
-                               <input id='submit_status' class='submit_status' type="submit" value="Aceptar">
-                           </form>
-                       </div>
-                   </div>
-                </article>
-                <article class="pedido_todos">
-                   <div class="pedido_header">
-                       <div class="codigo">#1234567</div>
-                   </div>
-                   <div class="pedido_body">
-                       <div class="pedido_cliente_direccion">
-                           <div class="pedido_cliente">
-                                <div class="titulo">
-                                    <span>Cliente</span>
-                                    <hr>
-                                </div>
-                                <div class="info">
-                                    <div class="imagen">
-                                        <i class="fas fa-user fa-2x"></i>
-                                    </div>
-                                    <div class="datos">
-                                        <span class="nombres">Nombre nombre</span>
-                                        <span class="apellidos">Apellido apellido</span>
+                                    <div class="info">
+                                        <span><?= $pedido['dir_dpto'] ?></span>
+                                        <span><?= $pedido['dir_name'] ?></span>
                                         <hr>
-                                        <span class="tel">0000-0000</span>
-                                        <span class="email">cliente@mail.com</span>
+                                        <span class="det">
+                                            <?= $pedido['dir_linea1'] ?>, <?= $pedido['dir_linea2'] ?>, <?= $pedido['dir_refs'] ?>
+                                        </span>
                                     </div>
+                            </div>
+                        </div>
+                        <div class="ped_prods">
+                            <div class="title">
+                                <span>Productos</span>
+                                <hr>
+                            </div>
+                            <div class="prods">
+                                <?php foreach ($prods_pedidos AS $prod): ?>
+                                    <?php if ($pedido['codigo'] == $prod['codigo']): ?>
+                                        <div class="ped_prod">
+                                            <div class="imagen">
+                                            <i class="fas fa-file-image fa-2x"></i>
+                                            </div>
+                                            <div class="datos">
+                                                <span class="nombre"><?= $prod['prod_name'] ?></span>
+                                                <span class="cat"><?= $prod['prod_cat'] ?></span>
+                                                <span class="cant"><?= $prod['cantidad'] ?>x</span>
+                                                <span class="precio">$<?= $prod['precioCompra'] ?></span>
+                                            </div>
+                                        </div>
+                                        <?php $subtotal += $prod['precioCompra'] ?>  
+                                    <?php endif ?>
+                                <?php endforeach ?>                                                      
+                            </div>                                       
+                        </div>
+                        <div class="total">
+                            <div class="envio">
+                                <div class="icon"><i class="fas fa-tags fa-lg"></i></div>
+                                <div class="mount">
+                                    <span>Sub-total:</span>
+                                    <span>$<?= $subtotal ?></span>
+                                </div>                               
+                            </div>
+                            <div class="subtotal">
+                                <div class="icon"><i class="fas fa-truck fa-lg"></i></div>
+                                <div class="mount">
+                                    <span>Costo de env&iacute;o:</span>
+                                    <span>$<?= $pedido['costoEnvioCompra'] ?></span>
                                 </div>
-                           </div>
-                           <div class="pedido_direccion">
-                                <div class="titulo">
-                                    <span>Direccion</span>
-                                    <hr>
+                            </div>
+                            <div class="total_sum">
+                                <div class="icon"><i class="fas fa-money-bill-alt fa-lg"></i></div>
+                                <div class="mount">
+                                    <span>Total:</span>
+                                    <span>$<?= $subtotal + $pedido['costoEnvioCompra'] ?></span>
                                 </div>
-                                <div class="info">
-                                    <span>Departamento</span>
-                                    <span>Nombre de la direccion</span>
-                                    <hr>
-                                    <span class="det">
-                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias illum accusantium, sunt cumque voluptates inventore.
-                                    </span>
-                                </div>
-                           </div>
-                       </div>
-                       <div class="ped_prods">
-                           <div class="title">
-                               <span>Productos</span>
-                               <hr>
-                           </div>
-                           <div class="prods">
-                               <div class="ped_prod">
-                                    <div class="imagen">
-                                    <i class="fas fa-file-image fa-2x"></i>
-                                    </div>
-                                    <div class="datos">
-                                        <span class="nombre">Nombre del producto</span>
-                                        <span class="cat">Categoria</span>
-                                        <span class="cant">1x</span>
-                                        <span class="precio">$00.00</span>
-                                    </div>
-                               </div>
-                               <div class="ped_prod">
-                                    <div class="imagen">
-                                    <i class="fas fa-file-image fa-2x"></i>
-                                    </div>
-                                    <div class="datos">
-                                        <span class="nombre">Nombre del producto</span>
-                                        <span class="cat">Categoria</span>
-                                        <span class="cant">1x</span>
-                                        <span class="precio">$00.00</span>
-                                    </div>
-                               </div>
-                               <div class="ped_prod">
-                                    <div class="imagen">
-                                    <i class="fas fa-file-image fa-2x"></i>
-                                    </div>
-                                    <div class="datos">
-                                        <span class="nombre">Nombre del producto</span>
-                                        <span class="cat">Categoria</span>
-                                        <span class="cant">1x</span>
-                                        <span class="precio">$00.00</span>
-                                    </div>
-                               </div>                                                           
-                           </div>                                       
-                       </div>
-                       <div class="total">
-                           <div class="envio">
-                               <div class="icon"><i class="fas fa-tags fa-lg"></i></div>
-                               <div class="mount">
-                                   <span>Sub-total:</span>
-                                   <span>$00.00</span>
-                               </div>                               
-                           </div>
-                           <div class="subtotal">
-                               <div class="icon"><i class="fas fa-truck fa-lg"></i></div>
-                               <div class="mount">
-                                   <span>Envio:</span>
-                                   <span>$00.00</span>
-                               </div>
-                           </div>
-                           <div class="total_sum">
-                               <div class="icon"><i class="fas fa-money-bill-alt fa-lg"></i></div>
-                               <div class="mount">
-                                   <span>Total:</span>
-                                   <span>$00.00</span>
-                               </div>
-                           </div>
-                       </div>
-                       <div class="estado">
-                           <div class="actual">
-                               <div class="indicador"></div>
-                               <span>Estado actual del pedido</span>
-                           </div>
-                           <div class="update updOrderStat" id="updOrderStat">
-                               Actualizar
-                           </div>
-                           <form id="orderStatusForm" class="select_status orderStatusForm" action="#" method="post">
-                               <select class="sel_stat_hidden sel_status" name="status" id="sel_status">
-                                   <option value="1">Estado 1</option>
-                                   <option value="2">Estado 2</option>
-                                   <option value="3">Estado 3</option>
-                               </select>
-                               <input id='submit_status' class='submit_status' type="submit" value="Aceptar">
-                           </form>
-                       </div>
-                   </div>
-                </article>
-                <article class="pedido_todos">
-                   <div class="pedido_header">
-                       <div class="codigo">#1234567</div>
-                   </div>
-                   <div class="pedido_body">
-                       <div class="pedido_cliente_direccion">
-                           <div class="pedido_cliente">
-                                <div class="titulo">
-                                    <span>Cliente</span>
-                                    <hr>
-                                </div>
-                                <div class="info">
-                                    <div class="imagen">
-                                        <i class="fas fa-user fa-2x"></i>
-                                    </div>
-                                    <div class="datos">
-                                        <span class="nombres">Nombre nombre</span>
-                                        <span class="apellidos">Apellido apellido</span>
-                                        <hr>
-                                        <span class="tel">0000-0000</span>
-                                        <span class="email">cliente@mail.com</span>
-                                    </div>
-                                </div>
-                           </div>
-                           <div class="pedido_direccion">
-                                <div class="titulo">
-                                    <span>Direccion</span>
-                                    <hr>
-                                </div>
-                                <div class="info">
-                                    <span>Departamento</span>
-                                    <span>Nombre de la direccion</span>
-                                    <hr>
-                                    <span class="det">
-                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias illum accusantium, sunt cumque voluptates inventore.
-                                    </span>
-                                </div>
-                           </div>
-                       </div>
-                       <div class="ped_prods">
-                           <div class="title">
-                               <span>Productos</span>
-                               <hr>
-                           </div>
-                           <div class="prods">
-                               <div class="ped_prod">
-                                    <div class="imagen">
-                                    <i class="fas fa-file-image fa-2x"></i>
-                                    </div>
-                                    <div class="datos">
-                                        <span class="nombre">Nombre del producto</span>
-                                        <span class="cat">Categoria</span>
-                                        <span class="cant">1x</span>
-                                        <span class="precio">$00.00</span>
-                                    </div>
-                               </div>
-                               <div class="ped_prod">
-                                    <div class="imagen">
-                                    <i class="fas fa-file-image fa-2x"></i>
-                                    </div>
-                                    <div class="datos">
-                                        <span class="nombre">Nombre del producto</span>
-                                        <span class="cat">Categoria</span>
-                                        <span class="cant">1x</span>
-                                        <span class="precio">$00.00</span>
-                                    </div>
-                               </div>
-                               <div class="ped_prod">
-                                    <div class="imagen">
-                                    <i class="fas fa-file-image fa-2x"></i>
-                                    </div>
-                                    <div class="datos">
-                                        <span class="nombre">Nombre del producto</span>
-                                        <span class="cat">Categoria</span>
-                                        <span class="cant">1x</span>
-                                        <span class="precio">$00.00</span>
-                                    </div>
-                               </div>                                                           
-                               <div class="ped_prod">
-                                    <div class="imagen">
-                                    <i class="fas fa-file-image fa-2x"></i>
-                                    </div>
-                                    <div class="datos">
-                                        <span class="nombre">Nombre del producto</span>
-                                        <span class="cat">Categoria</span>
-                                        <span class="cant">1x</span>
-                                        <span class="precio">$00.00</span>
-                                    </div>
-                               </div>
-                               <div class="ped_prod">
-                                    <div class="imagen">
-                                    <i class="fas fa-file-image fa-2x"></i>
-                                    </div>
-                                    <div class="datos">
-                                        <span class="nombre">Nombre del producto</span>
-                                        <span class="cat">Categoria</span>
-                                        <span class="cant">1x</span>
-                                        <span class="precio">$00.00</span>
-                                    </div>
-                               </div>
-                               <div class="ped_prod">
-                                    <div class="imagen">
-                                    <i class="fas fa-file-image fa-2x"></i>
-                                    </div>
-                                    <div class="datos">
-                                        <span class="nombre">Nombre del producto</span>
-                                        <span class="cat">Categoria</span>
-                                        <span class="cant">1x</span>
-                                        <span class="precio">$00.00</span>
-                                    </div>
-                               </div>                                                           
-                           </div>                                       
-                       </div>
-                       <div class="total">
-                           <div class="envio">
-                               <div class="icon"><i class="fas fa-tags fa-lg"></i></div>
-                               <div class="mount">
-                                   <span>Sub-total:</span>
-                                   <span>$00.00</span>
-                               </div>                               
-                           </div>
-                           <div class="subtotal">
-                               <div class="icon"><i class="fas fa-truck fa-lg"></i></div>
-                               <div class="mount">
-                                   <span>Envio:</span>
-                                   <span>$00.00</span>
-                               </div>
-                           </div>
-                           <div class="total_sum">
-                               <div class="icon"><i class="fas fa-money-bill-alt fa-lg"></i></div>
-                               <div class="mount">
-                                   <span>Total:</span>
-                                   <span>$00.00</span>
-                               </div>
-                           </div>
-                       </div>
-                       <div class="estado">
-                           <div class="actual">
-                               <div class="indicador"></div>
-                               <span>Estado actual del pedido</span>
-                           </div>
-                           <div class="update updOrderStat" id="updOrderStat">
-                               Actualizar
-                           </div>
-                           <form id="orderStatusForm" class="select_status orderStatusForm" action="#" method="post">
-                               <select class="sel_stat_hidden sel_status" name="status" id="sel_status">
-                                   <option value="1">Estado 1</option>
-                                   <option value="2">Estado 2</option>
-                                   <option value="3">Estado 3</option>
-                               </select>
-                               <input id='submit_status' class='submit_status' type="submit" value="Aceptar">
-                           </form>
-                       </div>
-                   </div>
-                </article>                            
+                            </div>
+                        </div>
+                        <div class="estado">
+                            <div class="actual">
+                                <div class="indicador"></div>
+                                <span>Estado actual del pedido</span>
+                            </div>
+                            <div class="update updOrderStat" id="updOrderStat">
+                                Actualizar
+                            </div>
+                            <form id="orderStatusForm" class="select_status orderStatusForm" action="#" method="post">
+                                <select class="sel_stat_hidden sel_status" name="status" id="sel_status">
+                                    <option value="1">Estado 1</option>
+                                    <option value="2">Estado 2</option>
+                                    <option value="3">Estado 3</option>
+                                </select>
+                                <input id='submit_status' class='submit_status' type="submit" value="Aceptar">
+                            </form>
+                        </div>
+                    </div>
+                    </article>                           
+                <?php endforeach ?>
             </div>
         </section>
     </main>

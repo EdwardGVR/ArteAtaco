@@ -768,7 +768,9 @@ main section .title {
 }
 
 .pedido_todos .pedido_body .estado .indicador {
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -776,8 +778,42 @@ main section .title {
     background: #a3a2a2;
 }
 
+.pedido_todos .pedido_body .estado .indicador.pagopendiente {
+    background: #fbff00;
+}
+
+.pedido_todos .pedido_body .estado .indicador.pagorecibido {
+    background: #53d187;
+}
+
+.pedido_todos .pedido_body .estado .indicador.listoparaentrega {
+    background: #34c0eb;
+}
+
+.pedido_todos .pedido_body .estado .indicador.entregado {
+    background: #006eff;
+}
+
 .pedido_todos .pedido_body .estado .actual span {
     font-style: italic;
+}
+
+
+
+.pedido_todos .pedido_body .estado .actual span.pagopendiente {
+    border-bottom: 4px solid #fbff00;
+}
+
+.pedido_todos .pedido_body .estado .actual span.pagorecibido {
+    border-bottom: 4px solid #53d187;
+}
+
+.pedido_todos .pedido_body .estado .actual span.listoparaentrega {
+    border-bottom: 4px solid #34c0eb;
+}
+
+.pedido_todos .pedido_body .estado .actual span.entregado {
+    border-bottom: 4px solid #006eff;
 }
 
 .pedido_todos .pedido_body .estado .update {

@@ -84,7 +84,7 @@ if ($conexion != false) {
 		foreach ($productos_carrito AS $producto) {
 			$query = $conexion->prepare("
 				INSERT INTO pedidos 
-				VALUES (null, :codigo, :id_user, :id_direccion, :id_pago, :id_producto, :cantidad, :precioCompra, :costoEnvioCompra, 0, CURRENT_TIMESTAMP)
+				VALUES (null, :codigo, :id_user, :id_direccion, :id_pago, :id_producto, :cantidad, :precioCompra, :costoEnvioCompra, 1, CURRENT_TIMESTAMP)
 			");
 			$query->execute(array(
 				':codigo'=>$codigo,

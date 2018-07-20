@@ -110,10 +110,29 @@
                             <div class="prods">
                                 <?php foreach ($prods_pedidos AS $prod): ?>
                                     <?php if ($pedido['codigo'] == $prod['codigo']): ?>
+               							<!-- Validacion de imagenes -->
+                                        <?php 
+                                            $imgsCounter = 0; $mainImg = false; 
+                                            foreach ($imgs as $img) {
+                                                if ($img['id_prod'] == $prod['prod_id']) {
+                                                    $imgsCounter++;
+                                                    if ($imgsCounter > 0 && $img['principal'] == 1) {
+                                                        $mainImg = true; $imgPath = $img['ruta'];
+                                                    }
+                                                    if ($imgsCounter > 0 && !$mainImg) {
+                                                        $imgPath = $img['ruta'];
+                                                    }
+                                                }
+                                            }
+                                        ?>
                                         <div class="ped_prod">
-                                            <div class="imagen">
-                                            <i class="fas fa-file-image fa-2x"></i>
-                                            </div>
+                                            <?php if ($imgsCounter > 0): ?>
+                                                <img src="../<?= $imgPath ?>" alt="x" class="imagen">
+                                            <?php else: ?>
+                                                <div class="imagen">
+                                                    <i class="fas fa-file-image fa-2x"></i>
+                                                </div>
+                                            <?php endif ?>
                                             <div class="datos">
                                                 <span class="nombre"><?= $prod['prod_name'] ?></span>
                                                 <span class="cat"><?= $prod['prod_cat'] ?></span>
@@ -149,21 +168,37 @@
                                 </div>
                             </div>
                         </div>
+
+                        <?php $statusClass = strtolower(str_replace(' ', '', $pedido['status'])) ?>
+
                         <div class="estado">
                             <div class="actual">
-                                <div class="indicador"></div>
-                                <span>Estado actual del pedido</span>
+                                <div class="indicador <?= $statusClass ?>">
+                                    <i class="fa fa-info"></i>
+                                </div>
+                                <span class="<?= $statusClass ?>">
+                                    Estado actual del pedido: <?= $pedido['status'] ?>
+                                </span>
                             </div>
                             <div class="update updOrderStat" id="updOrderStat">
                                 Actualizar
                             </div>
-                            <form id="orderStatusForm" class="select_status orderStatusForm" action="#" method="post">
-                                <select class="sel_stat_hidden sel_status" name="status" id="sel_status">
-                                    <option value="1">Estado 1</option>
-                                    <option value="2">Estado 2</option>
-                                    <option value="3">Estado 3</option>
+                            <form id="orderStatusForm" class="select_status orderStatusForm" action="" method="post">
+                                <select class="sel_stat_hidden sel_status" name="newStatus" id="sel_status">
+                                    <?php foreach ($orderStatus AS $status): ?>
+                                        <?php if ($pedido['status'] == $status['status']): ?>
+                                            <option value="<?= $status['id'] ?>" selected>
+                                                <?= $status['status'] ?>
+                                            </option>
+                                        <?php else: ?>
+                                            <option value="<?= $status['id'] ?>">
+                                                <?= $status['status'] ?>
+                                            </option>
+                                        <?php endif ?>
+                                    <?php endforeach ?>
                                 </select>
-                                <input id='submit_status' class='submit_status' type="submit" value="Aceptar">
+                                <input type="hidden" name="orderCode" value="<?= $pedido['codigo'] ?>">
+                                <input id='submit_status' name="changeStatus" class='submit_status' type="submit" value="Aceptar">
                             </form>
                         </div>
                     </div>

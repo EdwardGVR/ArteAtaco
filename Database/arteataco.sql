@@ -2,7 +2,7 @@
 --
 -- Host: 127.0.0.1    Database: login_propio
 -- ------------------------------------------------------
--- Server version	5.5.5-10.1.33-MariaDB
+-- Server version	5.5.5-10.1.32-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -31,7 +31,7 @@ CREATE TABLE `carrito` (
   KEY `carrito_usuario_idx` (`id_user`),
   KEY `carrito_user_idx` (`id_user`),
   CONSTRAINT `carrito_user` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,6 +40,7 @@ CREATE TABLE `carrito` (
 
 LOCK TABLES `carrito` WRITE;
 /*!40000 ALTER TABLE `carrito` DISABLE KEYS */;
+INSERT INTO `carrito` VALUES (10,2,3,3),(12,4,6,1);
 /*!40000 ALTER TABLE `carrito` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -184,7 +185,7 @@ CREATE TABLE `imgs_prods` (
   PRIMARY KEY (`id`),
   KEY `prodImgs_prod_idx` (`id_prod`),
   CONSTRAINT `prodImgs_prod` FOREIGN KEY (`id_prod`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -193,7 +194,7 @@ CREATE TABLE `imgs_prods` (
 
 LOCK TABLES `imgs_prods` WRITE;
 /*!40000 ALTER TABLE `imgs_prods` DISABLE KEYS */;
-INSERT INTO `imgs_prods` VALUES (1,1,'images/productos/lamparas/lampara1_img1.jpg',1),(3,1,'images/productos/lamparas/lampara1_img2.jpg',0),(7,2,'images/productos/lamparas/lampara2_img1.jpg',1),(8,3,'images/productos/lamparas/lampara3_img1.jpg',0),(9,3,'images/productos/lamparas/lampara3_img2.jpg',0);
+INSERT INTO `imgs_prods` VALUES (1,1,'images/productos/lamparas/lampara1_img1.jpg',0),(3,1,'images/productos/lamparas/lampara1_img2.jpg',1),(7,2,'images/productos/lamparas/lampara2_img1.jpg',1),(8,3,'images/productos/lamparas/lampara3_img1.jpg',1),(9,3,'images/productos/lamparas/lampara3_img2.jpg',0);
 /*!40000 ALTER TABLE `imgs_prods` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -223,6 +224,30 @@ INSERT INTO `metodos_pago` VALUES (1,'Transferencia bancaria','fa fa-university'
 UNLOCK TABLES;
 
 --
+-- Table structure for table `order_status`
+--
+
+DROP TABLE IF EXISTS `order_status`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `order_status` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `status` varchar(250) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `order_status`
+--
+
+LOCK TABLES `order_status` WRITE;
+/*!40000 ALTER TABLE `order_status` DISABLE KEYS */;
+INSERT INTO `order_status` VALUES (1,'Pago pendiente'),(2,'Pago recibido'),(3,'Listo para entrega'),(4,'Entregado');
+/*!40000 ALTER TABLE `order_status` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `pedidos`
 --
 
@@ -246,9 +271,11 @@ CREATE TABLE `pedidos` (
   KEY `pedidos_producto_idx` (`id_producto`),
   KEY `pedidos_pago_idx` (`id_pago`),
   KEY `pedidos_direccion_idx` (`id_direccion`),
+  KEY `pedidos_status_idx` (`estado`),
   CONSTRAINT `pedidos_direccion` FOREIGN KEY (`id_direccion`) REFERENCES `direcciones` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `pedidos_pago` FOREIGN KEY (`id_pago`) REFERENCES `metodos_pago` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `pedidos_producto` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `pedidos_status` FOREIGN KEY (`estado`) REFERENCES `order_status` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `pedidos_user` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -259,7 +286,7 @@ CREATE TABLE `pedidos` (
 
 LOCK TABLES `pedidos` WRITE;
 /*!40000 ALTER TABLE `pedidos` DISABLE KEYS */;
-INSERT INTO `pedidos` VALUES (1,21199,2,29,1,1,1,0,0,0,'2018-01-19 20:34:33'),(2,221810,2,29,1,2,1,0,0,0,'2018-01-19 20:34:53'),(3,2251111,2,30,1,3,1,0,0,0,'2018-01-19 21:20:08'),(4,2261012,2,30,1,1,1,0,0,0,'2018-01-19 21:27:41'),(5,2271013,2,30,1,2,1,0,0,0,'2018-01-19 21:50:36'),(6,2291114,2,29,1,1,1,0,0,0,'2018-01-19 21:51:38'),(7,2291915,2,29,1,2,2,0,0,0,'2018-06-26 03:30:58'),(8,2291915,2,29,1,1,1,0,0,0,'2018-06-26 03:30:58'),(9,2351916,2,35,1,6,1,5,15,0,'2018-07-11 04:04:54'),(13,2291320,2,29,1,1,1,15,3,0,'2018-07-11 04:14:04'),(16,2351428,2,35,1,2,1,15,15,0,'2018-07-11 04:36:38'),(28,2301652,2,30,1,1,1,15,5,0,'2018-07-12 03:41:51'),(33,2291357,2,29,1,1,1,15,5,0,'2018-07-12 03:52:07'),(38,2301666,2,30,1,1,1,12,11,0,'2018-07-12 04:27:50'),(41,2411069,2,41,1,1,1,15,17.5,0,'2018-07-13 20:16:56'),(42,2411069,2,41,1,3,1,15,17.5,0,'2018-07-13 20:16:56'),(43,2411069,2,41,1,6,1,5,17.5,0,'2018-07-13 20:16:56');
+INSERT INTO `pedidos` VALUES (1,21199,2,29,1,1,1,0,0,1,'2018-01-19 20:34:33'),(2,221810,2,29,1,2,1,0,0,1,'2018-01-19 20:34:53'),(3,2251111,2,30,1,3,1,0,0,1,'2018-01-19 21:20:08'),(4,2261012,2,30,1,1,1,0,0,1,'2018-01-19 21:27:41'),(5,2271013,2,30,1,2,1,0,0,1,'2018-01-19 21:50:36'),(6,2291114,2,29,1,1,1,0,0,1,'2018-01-19 21:51:38'),(7,2291915,2,29,1,2,2,0,0,1,'2018-06-26 03:30:58'),(8,2291915,2,29,1,1,1,0,0,1,'2018-06-26 03:30:58'),(9,2351916,2,35,1,6,1,5,15,1,'2018-07-11 04:04:54'),(13,2291320,2,29,1,1,1,15,3,1,'2018-07-11 04:14:04'),(16,2351428,2,35,1,2,1,15,15,1,'2018-07-11 04:36:38'),(28,2301652,2,30,1,1,1,15,5,4,'2018-07-12 03:41:51'),(33,2291357,2,29,1,1,1,15,5,3,'2018-07-12 03:52:07'),(38,2301666,2,30,1,1,1,12,11,2,'2018-07-12 04:27:50'),(41,2411069,2,41,1,1,1,15,17.5,1,'2018-07-13 20:16:56'),(42,2411069,2,41,1,3,1,15,17.5,1,'2018-07-13 20:16:56'),(43,2411069,2,41,1,6,1,5,17.5,1,'2018-07-13 20:16:56');
 /*!40000 ALTER TABLE `pedidos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -414,4 +441,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-07-13 14:43:25
+-- Dump completed on 2018-07-19 23:06:15

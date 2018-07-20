@@ -22,21 +22,21 @@
 				<div class="pedido_header">
 					<h3>C&oacute;digo: #<?= $pedido['codigo'] ?></h3>
 					<h3>Estado: 
-						<?php if ($pedido['estado'] == 0): ?>
+						<?php if ($pedido['estado'] == 1): ?>
 							<span class="pago_pend">
 								Pago pendiente
 								<i class="fa fa-clock-o" aria-hidden="true"></i>
 								<i class="fa fa-money" aria-hidden="true"></i>
 							</span>
-						<?php elseif($pedido['estado'] == 1): ?>
+						<?php elseif($pedido['estado'] == 2): ?>
 							<span class="pago_rec">
 								Pago recibido
 							</span>
-						<?php elseif($pedido['estado'] == 2): ?>
+						<?php elseif($pedido['estado'] == 3): ?>
 							<span class="ready_shipp">
 								Listo para entrega
 							</span>			 
-						<?php elseif($pedido['estado'] == 3): ?>
+						<?php elseif($pedido['estado'] == 4): ?>
 							<span class="delivered">
 								Entregado
 							</span>			 

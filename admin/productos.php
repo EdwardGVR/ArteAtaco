@@ -45,45 +45,31 @@
                     $numImg = ++$numImgs['numImgs'];
                 }
 
-                switch ($idCat) {
-                    case 1:
-                        $categoria = 'lamparas';
-                        break;
-                    case 2:
-                        $categoria = 'dreamcatchers';
-                        break;
-                    case 3:
-                        $categoria = 'banquetas';
-                        break;
-                    case 4:
-                        $categoria = 'llamadores';
-                        break;
-                    case 5:
-                        $categoria = 'bisuteria';
-                        break;
-                    case 6:
-                        $categoria = 'nequis';
-                        break;
-                    case 7:
-                        $categoria = 'instrumentos';
-                        break;
-                    case 8:
-                        $categoria = 'farolitos';
-                        break;
-                    default:
-                        $categoria = FALSE;
-                        $errCat = "Categoria no valida";
-                        break;
-                }
+                // Preparar nombre de la categoria para la carpeta
+                $query = $conexion->prepare("SELECT nombre_cat FROM categorias WHERE id = :idCat");
+                $query->execute(array(':idCat'=>$idCat));
+                $catName = $query->fetch();
+                
+                // Formar nombre de la imagen
+                if ($catName != false) {
+                    $catName = $catName['nombre_cat'];
+                    $accent = array("&", "acute;", " ");
+                    $catName = str_replace($accent, "", $catName);
+                    $catName = strtolower($catName);
 
-                if ($categoria != FALSE) {
-                    if (substr($categoria, -1, 1) == 's') {
-                        $newImg['name'] = substr($categoria, 0, -1) . $idProd  . "_img" . $numImg . ".jpg";
+                    if (substr($catName, -1, 1) == 's') {
+                        $newImg['name'] = substr($catName, 0, -1) . $idProd  . "_img" . $numImg . ".jpg";
                     } else {
-                        $newImg['name'] = $categoria . $idProd  . "_img" . $numImg . ".jpg";
+                        $newImg['name'] = $catName . $idProd  . "_img" . $numImg . ".jpg";
                     }
 
-                    $uploadedFile = "../images/productos/" . $categoria . "/" . $newImg['name'];
+                    // Comprobar que existe la carpeta de la categoria
+                    $dir_path = "../images/productos/" . $catName;
+                    if (!file_exists($dir_path)) {
+                        mkdir($dir_path);
+                    }
+
+                    $uploadedFile = "../images/productos/" . $catName . "/" . $newImg['name'];
                     move_uploaded_file($_FILES['newImg']['tmp_name'], $uploadedFile);
                     $successUpload = TRUE;
                 }

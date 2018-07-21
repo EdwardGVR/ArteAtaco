@@ -80,6 +80,8 @@
                         ":id_prod" => $idProd, 
                         ":ruta" => substr($uploadedFile, 3)
                     ));
+
+                    header('Location: productos.php');
                 }
 
             }

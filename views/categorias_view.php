@@ -1,4 +1,4 @@
-	<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Arte Ataco :: Categorias</title>
@@ -19,19 +19,25 @@
 			<h2>Selecciona una categor&iacute;a</h2>
 		</div>
 		<?php foreach ($categorias as $categoria): ?>
-			<div class="contenedor_tarjeta">
-				<figure>
-					<img src="<?php echo $categoria['imagen'] ?>" class="frontal" alt="">
-					<a href="productos.php?id=<?php echo $categoria['id'] ?>"><span class="nombre-front"><?php echo $categoria['nombre_cat'] ?></span></a>
-					<figcaption class="trasera">
-						<h2 class="titulo"><?php echo $categoria['nombre_cat'] ?></h2>
-						<hr>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur amet minus facilis ratione, delectus distinctio eius upiditate nesciunt recusandae rerum quasi cum blanditiis, placeat, saepe!
-						</p>
-						<a href="productos.php?id=<?php echo $categoria['id'] ?>"><span class="link-cat">Ver <?php echo $categoria['nombre_cat'] ?></span></a>
-					</figcaption>
-				</figure>
+			<div class="contCat">
+				<div class="contenedor_tarjeta">
+					<figure>
+						<img src="<?= $categoria['imagen'] ?>" class="frontal" alt="">
+						<a href="productos.php?id=<?= $categoria['id'] ?>">
+							<span class="nombre-front"><?= $categoria['nombre_cat'] ?></span>
+						</a>
+						<figcaption class="trasera">
+							<h2 class="titulo"><?= $categoria['nombre_cat'] ?></h2>
+							<hr>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur amet minus facilis ratione, delectus distinctio eius upiditate nesciunt recusandae rerum quasi cum blanditiis, placeat, saepe!
+							</p>
+							<a href="productos.php?id=<?= $categoria['id'] ?>">
+								<span class="link-cat">Ver <?= $categoria['nombre_cat'] ?></span>
+							</a>
+						</figcaption>
+					</figure>
+				</div>
 			</div>
 		<?php endforeach ?>
 	</div>

@@ -3,6 +3,7 @@
 <head>
 	<title>Arte Ataco :: Categorias</title>
 	<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
 	<link rel="stylesheet" href="css/styles.css">
 </head>
@@ -15,11 +16,11 @@
 	</header>
 	
 	<div class="contenedor_cat">
-		<div class="titulo_cat">
+		<!-- <div class="titulo_cat">
 			<h2>Selecciona una categor&iacute;a</h2>
-		</div>
+		</div> -->
 		<?php foreach ($categorias as $categoria): ?>
-			<div class="contCat">
+			<div class="contCat" data-aos="zoom-out-up">
 				<div class="contenedor_tarjeta">
 					<figure>
 						<img src="<?= $categoria['imagen'] ?>" class="frontal" alt="">
@@ -38,6 +39,17 @@
 						</figcaption>
 					</figure>
 				</div>
+				<div class="randomProds">
+					<div class="randProd">
+
+					</div>
+					<div class="randProd">
+
+					</div>
+					<div class="randProd">
+
+					</div>
+				</div>
 			</div>
 		<?php endforeach ?>
 	</div>
@@ -45,5 +57,9 @@
 	<?php include 'footer.php'; ?>
 	
 	<script src="script/js/functions.js"></script>
+	<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  	<script>
+    	AOS.init();
+  	</script>
 </body>
 </html>

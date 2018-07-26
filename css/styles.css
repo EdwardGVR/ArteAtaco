@@ -445,24 +445,56 @@ h1.user i.fa {
 .contenedor_cat {
 	background: none;
 	box-shadow: none;
+	margin-top: 100px;
 }
 
 .contenedor_cat .contCat {
 	display: flex;
+	align-items: center;
 	width: 100%;
+	height: auto;
 	/* background: #ccc; */
-	margin-bottom: 40px;
-	box-shadow: 0 0 5px #000;
+	margin-bottom: 100px;
+	padding-bottom: 10px;
+	border-bottom: 3px solid #003973;
 }
 
 .contenedor_cat .contCat:nth-child(odd) {
+	flex-direction: row-reverse;
 	justify-content: flex-end;
 }
 
-.contenedor_tarjeta {
-	width: 300px;
+.contCat .contenedor_tarjeta {
+	min-width: 300px;
 	max-width: 300px;
 	height: 300px;
+}
+
+.contCat:nth-child(odd) .contenedor_tarjeta {
+	margin-left: 40px;
+}
+
+.contCat:nth-child(even) .contenedor_tarjeta {
+	margin-right: 40px;
+}
+
+.contCat .randomProds {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	height: 80%;
+	/* background: #ccc; */
+}
+
+.contCat .randomProds .randProd {
+	display: flex;
+	min-width: 200px;
+	height: 100%;
+	border-radius: 5px;
+	/* background: #000; */
+	box-shadow: 0 0 5px;
 }
 
 .contenedor_tarjeta:hover figure {

@@ -451,8 +451,9 @@ h1.user i.fa {
 .contenedor_cat .contCat {
 	display: flex;
 	flex-wrap: wrap;
-	align-items: center;
+	align-items: flex-start;
 	width: 100%;
+	min-width: 550px;
 	/* background: #ccc; */
 	margin-bottom: 100px;
 	padding-bottom: 10px;
@@ -490,11 +491,17 @@ h1.user i.fa {
 
 .contCat .randomProds .randProd {
 	display: flex;
-	min-width: 200px;
-	height: 250px;
+	min-width: 170px;
+	height: 200px;
 	border-radius: 5px;
 	/* background: #000; */
+	margin-bottom: 20px;
+	margin-right: 20px;
 	box-shadow: 0 0 5px;
+}
+
+.contCat .randomProds .randProd:last-child {
+	margin-right: 0;
 }
 
 .contenedor_tarjeta:hover figure {

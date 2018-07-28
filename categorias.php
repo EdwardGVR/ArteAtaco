@@ -19,6 +19,10 @@ if ($conexion != false) {
 	$query = $conexion->prepare('SELECT * FROM categorias ORDER BY nombre_cat ASC');
 	$query->execute();
 	$categorias = $query->fetchall();
+
+	$query = $conexion->prepare("SELECT * FROM productos");
+	$query->execute();
+	$productos = $query->fetchall();
 }
 
 require 'views/categorias_view.php';

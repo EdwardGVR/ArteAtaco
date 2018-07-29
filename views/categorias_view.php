@@ -40,8 +40,14 @@
 					</figure>
 				</div>
 				<div class="randomProds">
+					<?php $prodCount = 0; ?>
+					<?php foreach ($productos AS $prod): ?>
+						<?php if ($prod['id_categoria'] == $categoria['id'] && $prodCount <3): ?>
+							<?php $prodCount++; ?>
+						<?php endif ?>
+					<?php endforeach ?>
 					<div class="randProd">
-
+						<?= $prodCount ?>
 					</div>
 					<div class="randProd">
 
@@ -49,6 +55,9 @@
 					<div class="randProd">
 
 					</div>
+					<a class="seeAll" href="productos.php?id=<?= $categoria['id'] ?>">
+						<span>Ver todo en <?= $categoria['nombre_cat'] ?></span>
+					</a>
 				</div>
 			</div>
 		<?php endforeach ?>

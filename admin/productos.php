@@ -11,8 +11,6 @@
              JOIN categorias ON productos.id_categoria = categorias.id
              ORDER BY productos.id DESC
         ");
-
-        
         $query -> execute();
         $productos = $query->fetchall();
         
@@ -128,19 +126,14 @@
 
             $query = $conexion->prepare("DELETE FROM productos WHERE id = :idProd");
             $query->execute(array(':idProd' => $idProd));
-
-            header('Location: productos.php');
         }
 
         if (isset($_POST['saveChangesProd'])) {
             $idProd = $_POST['idProd'];
-
             $nombreProd = $_POST['nombreProd'];
             $catProd = $_POST['catProd'];
             $precioProd = $_POST['precioProd'];
             $descProd = $_POST['descProd'];
-
-            // echo $nombreProd;
 
             $query = $conexion->prepare(
                 "UPDATE productos 

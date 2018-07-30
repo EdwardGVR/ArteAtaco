@@ -57,8 +57,10 @@
 											$imgPath = $img['ruta'];
 								}	}	}
 								?>
-
-								<div class="randProd">
+								<div class="randProd" 
+									 data-aos="fade-left"
+									 data-aos-offset="250"
+									 data-aos-easing="linear">
 									<?php if ($imgsCounter > 0): ?>
 										<a class="randImgLink" href="detalles.php?id_prod=<?= $prod['id'] ?>">
 											<img src="<?= $imgPath ?>" alt="...">
@@ -73,19 +75,14 @@
 						<?php endif ?>
 					<?php endforeach ?>
 					<?php if ($prodCount == 0): ?>
-						<div class="randProd">
-							N/A
+						<div class="noProds">
+							<span>Actualmente no hay productos en esta categor&iacute;a</span>
 						</div>
-						<div class="randProd">
-							N/A
-						</div>
-						<div class="randProd">
-							N/A
-						</div>
+					<?php else: ?>
+						<a class="seeAll" href="productos.php?id=<?= $categoria['id'] ?>">
+							<span>Ver todo en <?= $categoria['nombre_cat'] ?></span>
+						</a>
 					<?php endif ?>
-					<a class="seeAll" href="productos.php?id=<?= $categoria['id'] ?>">
-						<span>Ver todo en <?= $categoria['nombre_cat'] ?></span>
-					</a>
 				</div>
 			</div>
 		<?php endforeach ?>

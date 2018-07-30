@@ -486,8 +486,15 @@ h1.user i.fa {
 	justify-content: space-between;
 	align-items: center;
 	width: calc(100% - 340px);
-	/* height: 80%; */
-	/* background: #ccc; */
+}
+
+.contCat .randomProds .noProds {
+	width: 100%;
+	background: #ccc;
+	border-radius: 5px;
+	padding: 10px;
+	font-style: italic;
+	font-size: 0.9em;
 }
 
 .contCat .randomProds .randProd {
@@ -495,7 +502,6 @@ h1.user i.fa {
 	min-width: 170px;
 	height: 200px;
 	border-radius: 5px;
-	/* background: #000; */
 	margin-bottom: 20px;
 	margin-right: 20px;
 	box-shadow: 0 1px 2px;

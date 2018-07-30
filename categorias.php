@@ -23,6 +23,10 @@ if ($conexion != false) {
 	$query = $conexion->prepare("SELECT * FROM productos");
 	$query->execute();
 	$productos = $query->fetchall();
+
+	$query = $conexion->prepare("SELECT * FROM imgs_prods");
+	$query->execute();
+	$imgs = $query->fetchall();
 }
 
 require 'views/categorias_view.php';

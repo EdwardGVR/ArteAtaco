@@ -41,20 +41,48 @@
 				</div>
 				<div class="randomProds">
 					<?php $prodCount = 0; ?>
-					<?php foreach ($productos AS $prod): ?>
+					<?php foreach ($productos as $prod): ?>
 						<?php if ($prod['id_categoria'] == $categoria['id'] && $prodCount <3): ?>
 							<?php $prodCount++; ?>
+							<?php if ($prodCount > 0): ?>
+								<!-- Validacion de imagenes -->
+								<?php $imgsCounter = 0; $mainImg = false; 
+								foreach ($imgs as $img) {
+									if ($img['id_prod'] == $prod['id']) {
+										$imgsCounter++;
+										if ($imgsCounter > 0 && $img['principal'] == 1) {
+											$mainImg = true; $imgPath = $img['ruta'];
+										}
+										if ($imgsCounter > 0 && !$mainImg) {
+											$imgPath = $img['ruta'];
+								}	}	}
+								?>
+
+								<div class="randProd">
+									<?php if ($imgsCounter > 0): ?>
+										<a class="randImgLink" href="detalles.php?id_prod=<?= $prod['id'] ?>">
+											<img src="<?= $imgPath ?>" alt="...">
+										</a>
+									<?php else: ?>
+										<a class="randImgLink" href="detalles.php?id_prod=<?= $prod['id'] ?>">
+											<span><?= $prod['nombre'] ?></span>
+										</a>
+									<?php endif ?>
+								</div>
+							<?php endif ?>
 						<?php endif ?>
 					<?php endforeach ?>
-					<div class="randProd">
-						<?= $prodCount ?>
-					</div>
-					<div class="randProd">
-
-					</div>
-					<div class="randProd">
-
-					</div>
+					<?php if ($prodCount == 0): ?>
+						<div class="randProd">
+							N/A
+						</div>
+						<div class="randProd">
+							N/A
+						</div>
+						<div class="randProd">
+							N/A
+						</div>
+					<?php endif ?>
 					<a class="seeAll" href="productos.php?id=<?= $categoria['id'] ?>">
 						<span>Ver todo en <?= $categoria['nombre_cat'] ?></span>
 					</a>

@@ -86,16 +86,29 @@
 								}
 							?>
 							<div class="prod_ped">
-								<div class="prod_img">
-									<?php if ($imgsCounter > 0): ?>
-										<a href="detalles.php?id_prod=<?= $prod['idProd'] ?>">
+								<?php if ($prod['disponible'] == 0): ?>
+									<div class="prod_img">
+										<?php if ($imgsCounter > 0): ?>
 											<img src="<?= $imgPath ?>" alt="...">
-										</a>
-									<?php endif ?>
-									<a href="detalles.php?id_prod=<?= $prod['idProd'] ?>">
+										<?php endif ?>
+										<h4 class="prodName"><?= $prod['nombreProd'] ?></h4>
+									</div>
+								<?php else: ?>
+									<a href="detalles.php?id_prod=<?= $prod['idProd'] ?>" class="prod_img">
+										<?php if ($imgsCounter > 0): ?>
+											<img src="<?= $imgPath ?>" alt="...">
+										<?php endif ?>
 										<h4 class="prodName"><?= $prod['nombreProd'] ?></h4>
 									</a>
-								</div>
+								<?php endif ?>
+								<?php if ($prod['disponible'] == 0): ?>
+									<div class="prodStatus">
+										<span>
+											Producto no disponible por el momento 
+											<i class="fa fa-exclamation-triangle"></i>
+										</span>
+									</div>
+								<?php endif ?>
 								<div class="prod_cant">
 									<h3>x<?= $prod['cantidad'] ?></h3>
 									<h4>Cantidad</h4>

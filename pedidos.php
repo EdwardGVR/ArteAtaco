@@ -34,7 +34,7 @@ if ($conexion != false) {
 
 	// Obtener productos de pedidos del cliente
 	$query = $conexion->prepare("
-		SELECT pedidos.*, productos.id AS idProd, productos.nombre AS nombreProd
+		SELECT pedidos.*, productos.id AS idProd, productos.nombre AS nombreProd, productos.disponible
 		FROM pedidos 
 		JOIN productos ON pedidos.id_producto = productos.id
 		WHERE pedidos.id_user = :id_user

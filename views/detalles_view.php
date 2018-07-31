@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- lightbox -->
 	<link href="script/css/lightbox.css" rel="stylesheet">
-
-	<title>Arte Ataco :: <?php echo $detalles['nombre'] ?></title>
+	<?php if ($detalles['disponible'] == 1): ?>
+		<title>Arte Ataco :: <?= $detalles['nombre'] ?></title>
+	<?php else: ?>
+		<title>Arte Ataco :: No encontrado</title>
+	<?php endif ?>
 	<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
 	<link rel="stylesheet" href="css/styleModal.css">
@@ -132,34 +134,34 @@
 				</div>
 			</div>
 		<?php else: ?>
-			<h3>No se ha encontrado el producto.</h3>
+			<span class="notFound">No se ha encontrado el producto <i class="fa fa-puzzle-piece"></i></span>
 		<?php endif ?>
 	</div>
 	
-	<div class="contenedor_detalles">
-		<img src="http://placeimg.com/300/300/tech" alt="">
-	</div>
-	
-	<!-- Comentarios disqus -->
-	<div id="disqus_thread"></div>
-		<script>
-		/**
-		*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-		*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-		/*
-		var disqus_config = function () {
-		this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-		this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-		};
-		*/
-		(function() { // DON'T EDIT BELOW THIS LINE
-		var d = document, s = d.createElement('script');
-		s.src = 'https://arteataco.disqus.com/embed.js';
-		s.setAttribute('data-timestamp', +new Date());
-		(d.head || d.body).appendChild(s);
-		})();
-		</script>
-		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	<?php if ($detalles != false): ?>
+		<div class="contenedor_detalles">
+			<!-- Comentarios disqus -->
+			<div id="disqus_thread"></div>
+				<script>
+				/**
+				*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+				*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+				/*
+				var disqus_config = function () {
+				this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+				this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+				};
+				*/
+				(function() { // DON'T EDIT BELOW THIS LINE
+				var d = document, s = d.createElement('script');
+				s.src = 'https://arteataco.disqus.com/embed.js';
+				s.setAttribute('data-timestamp', +new Date());
+				(d.head || d.body).appendChild(s);
+				})();
+				</script>
+				<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		</div>
+	<?php endif ?>
 
 	<?php include 'footer.php'; ?>
 

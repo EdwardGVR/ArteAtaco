@@ -24,7 +24,7 @@ if ($conexion != false) {
 	$categorias = $query->fetchall();
 
 	// Obtener datos de los productos de la categoria
-	$query = $conexion->prepare('SELECT * FROM productos WHERE id_categoria = :id_cat');
+	$query = $conexion->prepare('SELECT * FROM productos WHERE id_categoria = :id_cat AND disponible = 1');
 	$query->execute(array(':id_cat' => $id_cat));
 	$productos = $query->fetchall();
 

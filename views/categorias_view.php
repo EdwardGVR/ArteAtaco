@@ -62,10 +62,13 @@
 									 data-aos-offset="250"
 									 data-aos-easing="linear">
 									<a class="randImgLink" href="detalles.php?id_prod=<?= $prod['id'] ?>">
+										<div class="detailsHover">
+											<span>Ver detalles <i class="fa fa-info-circle"></i></span>
+										</div>
 									<?php if ($imgsCounter > 0): ?>
 										<img src="<?= $imgPath ?>" alt="...">
 									<?php else: ?>
-										<span><?= $prod['nombre'] ?></span>
+										<span class="randProdName"><?= $prod['nombre'] ?></span>
 									<?php endif ?>
 									</a>
 								</div>

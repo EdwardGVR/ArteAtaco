@@ -13,10 +13,9 @@ $iduser = get_user_id($conexion, $user);
 
 if ($conexion != false) {
 	// Obtener los detalles del producto
-	$query = $conexion->prepare('SELECT * FROM productos WHERE id = :id_prod');
+	$query = $conexion->prepare('SELECT * FROM productos WHERE id = :id_prod AND disponible = 1');
 	$query->execute(array(':id_prod' => $id_prod));
 	$detalles = $query->fetch();
-	// var_dump($detalles);
 
 	//Obtener las imagenes del producto
 	$query = $conexion->prepare("SELECT * FROM imgs_prods WHERE id_prod = :id_prod");

@@ -20,7 +20,7 @@ if ($conexion != false) {
 	$query->execute();
 	$categorias = $query->fetchall();
 
-	$query = $conexion->prepare("SELECT * FROM productos");
+	$query = $conexion->prepare("SELECT * FROM productos WHERE disponible = 1");
 	$query->execute();
 	$productos = $query->fetchall();
 

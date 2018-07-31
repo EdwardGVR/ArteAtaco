@@ -61,15 +61,13 @@
 									 data-aos="fade-left"
 									 data-aos-offset="250"
 									 data-aos-easing="linear">
+									<a class="randImgLink" href="detalles.php?id_prod=<?= $prod['id'] ?>">
 									<?php if ($imgsCounter > 0): ?>
-										<a class="randImgLink" href="detalles.php?id_prod=<?= $prod['id'] ?>">
-											<img src="<?= $imgPath ?>" alt="...">
-										</a>
+										<img src="<?= $imgPath ?>" alt="...">
 									<?php else: ?>
-										<a class="randImgLink" href="detalles.php?id_prod=<?= $prod['id'] ?>">
-											<span><?= $prod['nombre'] ?></span>
-										</a>
+										<span><?= $prod['nombre'] ?></span>
 									<?php endif ?>
+									</a>
 								</div>
 							<?php endif ?>
 						<?php endif ?>

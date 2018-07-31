@@ -24,6 +24,7 @@ body {
 	/*background: #ccc;*/
 	font-family: 'Roboto', sans-serif;
 	text-align: center;
+	overflow-x: hidden;
 	/*background-image: url(../images/background/fondo_arteataco.jpg);*/
 }
 
@@ -443,9 +444,13 @@ h1.user i.fa {
 }
 
 .contenedor_cat {
+	display: flex;
+	justify-content: center;
 	background: none;
 	box-shadow: none;
+	/* margin: 0; */
 	margin-top: 100px;
+	width: 80%;
 }
 
 .contenedor_cat .contCat {
@@ -505,17 +510,26 @@ h1.user i.fa {
 	margin-bottom: 20px;
 	margin-right: 20px;
 	box-shadow: 0 1px 2px;
-	transition: all ease .3s;
+	transition: all ease .5s;
 }
 
 .contCat .randomProds .randProd:hover {
 	box-shadow: 0 2px 5px;
 }
 
-.contCat .randomProds .randProd .randImgLink img {
+.contCat .randomProds .randProd .randImgLink {
+	width: 170px;
 	max-width: 170px;
+	height: 200px;
 	max-height: 200px;
+	overflow: hidden;
 	border-radius: 5px;
+}
+
+.contCat .randomProds .randProd .randImgLink img {
+	border-radius: 5px;
+	height: 100%;
+	width: auto;
 }
 
 .contCat .randomProds .seeAll {

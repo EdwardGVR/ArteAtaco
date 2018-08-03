@@ -101,11 +101,18 @@
 										<h4 class="prodName"><?= $prod['nombreProd'] ?></h4>
 									</a>
 								<?php endif ?>
-								<?php if ($prod['disponible'] == 0): ?>
+								<?php if ($prod['disponible'] == 0 && $prod['prodDeleted'] == 0): ?>
 									<div class="prodStatus">
 										<span>
-											Producto no disponible por el momento 
+											Este producto no est&aacute; disponible actualmente. 
 											<i class="fa fa-exclamation-triangle"></i>
+										</span>
+									</div>
+								<?php elseif ($prod['disponible'] == 0 && $prod['prodDeleted'] == 1): ?>
+									<div class="prodStatus">
+										<span>
+											Este producto fue eliminado del cat&aacute;logo. 
+											<i class="fa fa-trash"></i>
 										</span>
 									</div>
 								<?php endif ?>

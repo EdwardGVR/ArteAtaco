@@ -9,6 +9,7 @@
             "SELECT productos.*, categorias.nombre_cat
              FROM productos 
              JOIN categorias ON productos.id_categoria = categorias.id
+             WHERE productos.deleted = 0
              ORDER BY productos.id DESC
         ");
         $query -> execute();
@@ -124,8 +125,14 @@
         if (isset($_POST['deleteProd'])) {
             $idProd = $_POST['idProd'];
 
-            $query = $conexion->prepare("DELETE FROM productos WHERE id = :idProd");
+            $query = $conexion->prepare("
+                UPDATE productos 
+                SET deleted = 1, disponible = 0
+                WHERE id = :idProd
+            ");
             $query->execute(array(':idProd' => $idProd));
+
+            header('Location: productos.php');
         }
 
         if (isset($_POST['saveChangesProd'])) {
@@ -157,7 +164,10 @@
             $precio = $_POST['newProdPrice'];
             $descripcion = $_POST['newProdDesc'];
 
-            $query = $conexion->prepare("INSERT INTO productos (id, id_categoria, nombre, precio, descripcion, fecha_registro) VALUES (null, :idCat, :nombre, :precio, :descripcion, CURRENT_TIMESTAMP)");
+            $query = $conexion->prepare("
+                INSERT INTO productos (id, id_categoria, nombre, precio, descripcion, fecha_registro) 
+                VALUES (null, :idCat, :nombre, :precio, :descripcion, CURRENT_TIMESTAMP)
+            ");
             $query->execute(array(
                 ':idCat' => $idCat,
                 ':nombre' => $nombre,

@@ -39,7 +39,7 @@ if (document.title == 'Pedidos') {
     
     for (let i = 0; i < deleteProducts.length; i++) {
         deleteProducts[i].addEventListener('click', function confirmProdDel (e) {
-            if (!confirm('Se eliminará permanentemente el producto.\n\nSi solamente desea que no se muestre al cliente.\n\nConsidere mejor desactivar la disponibilidad.\n\n\nPulse Aceptar para continuar con la eliminación.\n\n\n')) {
+            if (!confirm('Se eliminará el producto, incluyendo imagenes.\n\nSi solamente desea que no se muestre al cliente.\n\nConsidere mejor desactivar la disponibilidad.\n\n\nPulse Aceptar para continuar con la eliminación.\n\n\n')) {
                 e.preventDefault();
             }
         });

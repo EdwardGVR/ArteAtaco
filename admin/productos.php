@@ -52,7 +52,7 @@
                 // Formar nombre de la imagen
                 if ($catName != false) {
                     $catName = $catName['nombre_cat'];
-                    $accent = array("&", "acute;", " ");
+                    $accent = array("&", "acute;", " ", "tilde");
                     $catName = str_replace($accent, "", $catName);
                     $catName = strtolower($catName);
 
@@ -124,6 +124,19 @@
 
         if (isset($_POST['deleteProd'])) {
             $idProd = $_POST['idProd'];
+
+            $query = $conexion->prepare("SELECT * FROM imgs_prods WHERE id_prod = :idProd");
+            $query->execute(array(':idProd'=>$idProd));
+            $imgsProd = $query->fetchall();
+
+            if ($imgsProd != false) {
+                foreach ($imgsProd as $imgProdDel) {
+                    unlink('../' . $imgProdDel['ruta']);
+                }
+                
+                $query = $conexion->prepare("DELETE FROM imgs_prods WHERE id_prod = :idProd");
+                $query->execute(array(':idProd'=>$idProd));
+            }
 
             $query = $conexion->prepare("
                 UPDATE productos 

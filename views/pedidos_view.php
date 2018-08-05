@@ -87,12 +87,19 @@
 							?>
 							<div class="prod_ped">
 								<?php if ($prod['disponible'] == 0): ?>
-									<div class="prod_img">
-										<?php if ($imgsCounter > 0): ?>
-											<img src="<?= $imgPath ?>" alt="...">
-										<?php endif ?>
-										<h4 class="prodName"><?= $prod['nombreProd'] ?></h4>
-									</div>
+									<?php if ($prod['prodDeleted'] == 0): ?>
+										<div class="prod_img">
+											<?php if ($imgsCounter > 0): ?>
+												<img src="<?= $imgPath ?>" alt="...">
+											<?php endif ?>
+											<h4 class="prodName"><?= $prod['nombreProd'] ?></h4>
+										</div>
+									<?php elseif ($prod['prodDeleted'] == 1): ?>
+										<div class="prod_img">
+											<div class="prodDel"><i class="fa fa-trash"></i></div>
+											<h4 class="prodName"><?= $prod['nombreProd'] ?></h4>
+										</div>
+									<?php endif ?>
 								<?php else: ?>
 									<a href="detalles.php?id_prod=<?= $prod['idProd'] ?>" class="prod_img">
 										<?php if ($imgsCounter > 0): ?>

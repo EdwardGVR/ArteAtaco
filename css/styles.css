@@ -2201,11 +2201,23 @@ input[name="add_address"]:hover {
 	width: 100%;
 }
 
-.prod_ped .prod_img img {
+.prod_ped .prod_img img,
+.prod_ped .prod_img .prodDel,
+.prod_ped .prod_img .noImg {
 	width: 100px;
 	height: 100px;
 	border-radius: 5px;
 	margin-bottom: 10px;
+}
+
+.prod_ped .prod_img .prodDel,
+.prod_ped .prod_img .noImg {
+	background: #ccc;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 5em;
+	color: #7fb7e4;
 }
 
 .prod_ped .prod_img .prodName {

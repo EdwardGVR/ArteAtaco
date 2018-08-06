@@ -91,12 +91,16 @@
 										<div class="prod_img">
 											<?php if ($imgsCounter > 0): ?>
 												<img src="<?= $imgPath ?>" alt="...">
+											<?php elseif ($imgsCounter == 0): ?>
+												<div class="noImg">
+													No img
+												</div>
 											<?php endif ?>
 											<h4 class="prodName"><?= $prod['nombreProd'] ?></h4>
 										</div>
 									<?php elseif ($prod['prodDeleted'] == 1): ?>
 										<div class="prod_img">
-											<div class="prodDel"><i class="fa fa-trash"></i></div>
+											<div class="prodDel"><i class="fa fa-times"></i></div>
 											<h4 class="prodName"><?= $prod['nombreProd'] ?></h4>
 										</div>
 									<?php endif ?>
@@ -104,6 +108,10 @@
 									<a href="detalles.php?id_prod=<?= $prod['idProd'] ?>" class="prod_img">
 										<?php if ($imgsCounter > 0): ?>
 											<img src="<?= $imgPath ?>" alt="...">
+										<?php elseif ($imgsCounter == 0): ?>
+											<div class="noImg">
+												<i class="fa fa-image"></i>
+											</div>
 										<?php endif ?>
 										<h4 class="prodName"><?= $prod['nombreProd'] ?></h4>
 									</a>

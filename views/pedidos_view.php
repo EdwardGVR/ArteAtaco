@@ -93,7 +93,7 @@
 												<img src="<?= $imgPath ?>" alt="...">
 											<?php elseif ($imgsCounter == 0): ?>
 												<div class="noImg">
-													No img
+													<i class="fa fa-image"></i>
 												</div>
 											<?php endif ?>
 											<h4 class="prodName"><?= $prod['nombreProd'] ?></h4>

@@ -7,7 +7,9 @@
     require '../functions.php';
     require '../conexion.php';
 
-    adminValidation($conexion);
+    $userData = adminValidation($conexion);
+    $userName = $userData['nombres'] . ' ' . $userData['apellidos'];
+    $userImg = $userData['imagen'];
 
     if ($conexion != false) {
         // Obtener los productos

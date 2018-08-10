@@ -24,10 +24,10 @@
         <div class="options">
             <div class="user_info">
                 <div class="image">
-                    <img src="" alt="usrimg">
+                <img src="<?= '../' . $userImg ?>" alt="usrimg">
                 </div>
                 <div class="data">
-                    <span class="nombre">Nombre usuario</span>
+                    <span class="nombre"><?= $userName ?></span>
                     <hr>
                     <span>Administrador</span>
                 </div>
@@ -48,7 +48,7 @@
                 <a href="../categorias.php" title="Ir a la tienda"><i class="fas fa-store"></i></a>
             </div>
             <h1>Pedidos</h1>
-            <a href="#" class="logout" title="Cerrar sesion"><i class="fa fa-times-circle"></i></a>
+            <a href="../logout.php" class="logout" title="Cerrar sesion"><i class="fa fa-times-circle"></i></a>
         </div>
         <section>
             <div class="title">

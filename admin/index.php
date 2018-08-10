@@ -7,6 +7,8 @@ if (!isset($_SESSION['user'])) {
 require '../functions.php';
 require '../conexion.php';
 
-adminValidation($conexion);
+$userData = adminValidation($conexion);
+$userName = $userData['nombres'] . ' ' . $userData['apellidos'];
+$userImg = $userData['imagen'];
 
 require "views/index_view.php";

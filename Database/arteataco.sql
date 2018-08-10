@@ -2,7 +2,7 @@
 --
 -- Host: 127.0.0.1    Database: login_propio
 -- ------------------------------------------------------
--- Server version	5.5.5-10.1.32-MariaDB
+-- Server version	5.5.5-10.1.33-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -395,6 +395,7 @@ CREATE TABLE `usuarios` (
   `password` varchar(100) NOT NULL,
   `imagen` varchar(150) DEFAULT NULL,
   `telefono` varchar(45) DEFAULT NULL,
+  `level` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -405,7 +406,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'fuljencio','Fuljencio Imbecil','Apellidos Prueba','fuljencio@gmail.com','12345',NULL,NULL),(2,'edward','Edward Ernesto','Guevara','edwardgvr@gmail.com','asdfg','images/user/profile/user_img_2.jpg',NULL),(3,'prueba4','Usuario de prueba','Prueba','prueba@mail.com','asdfg',NULL,'555555'),(4,'usuario','usuario nombre','prueba apellido','nombre@apellidos.com','usuario',NULL,NULL),(5,'test5','registro','prueba','registro@prueba.com','asdfg',NULL,'55555555'),(6,'test6','usuario','numero6','test6@mail.com','asdfg','images/user/profile/user_img_6.jpg',NULL);
+INSERT INTO `usuarios` VALUES (1,'fuljencio','Fuljencio Imbecil','Apellidos Prueba','fuljencio@gmail.com','12345',NULL,NULL,1),(2,'edward','Edward Ernesto','Guevara','edwardgvr@gmail.com','asdfg','images/user/profile/user_img_2.jpg',NULL,2),(3,'prueba4','Usuario de prueba','Prueba','prueba@mail.com','asdfg',NULL,'555555',1),(4,'usuario','usuario nombre','prueba apellido','nombre@apellidos.com','usuario',NULL,NULL,1),(5,'test5','registro','prueba','registro@prueba.com','asdfg',NULL,'55555555',1),(6,'test6','usuario','numero6','test6@mail.com','asdfg','images/user/profile/user_img_6.jpg',NULL,1);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -442,4 +443,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-08-02 20:05:09
+-- Dump completed on 2018-08-10 16:24:38

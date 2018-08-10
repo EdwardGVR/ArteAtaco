@@ -2,6 +2,8 @@
 		
 	$user_img = get_user_img($conexion, $iduser);
 	$qtyItems = getShpCarQty($iduser);
+	$userLevel = get_user_data($conexion, $iduser);
+	$userLevel = $userLevel['level'];
 
  ?>
 
@@ -32,10 +34,13 @@
 					<h1 class="user-btn"><?= $user ?> <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
 </h1>
 					<div class="drop-content">
-						<a href="cuenta.php">Cuenta</a>
-						<a href="pedidos.php">Pedidos</a>
-						<a href="carrito.php">Carrito (<?= $qtyItems ?>)</a>
-						<a href="logout.php">Cerrar Sesi&oacute;n</a>
+						<a href="cuenta.php"><span>Cuenta</span> <i class="fa fa-user"></i> </a>
+						<a href="pedidos.php"><span>Pedidos</span> <i class="fa fa-shopping-bag"></i> </a>
+						<a href="carrito.php"><span>Carrito (<?= $qtyItems ?>)</span> <i class="fa fa-shopping-cart"></i> </a>
+						<?php if ($userLevel == 2): ?>
+							<a class="admin" href="admin"><span>Administrar</span> <i class="fa fa-sliders"></i> </a>
+						<?php endif ?>
+						<a href="logout.php">Cerrar Sesi&oacute;n <i class="fa fa-sign-out"></i> </a>
 					</div>
 				<?php else: ?>
 					<h1 class="user-btn"><?= $user ?> <i class="fa fa-user-plus"></i></h1>

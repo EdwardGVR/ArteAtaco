@@ -349,14 +349,22 @@ a.reg:hover {
 }
 
 .drop-content a {
+	display: flex;
+	justify-content: space-between;
     background-color: #f9f9f9;
     color: black;
     padding: 10px 16px;
-    text-align: left;
     text-decoration: none;
-    display: block;
-    border-bottom: 1px solid #000;
+	border-bottom: 1px solid #000;
     transition: all ease 0.3s;
+}
+
+.drop-content a.admin {
+	background: #ccc;
+}
+
+.drop-content a i {
+	margin-left: 10px;
 }
 
 .drop-content a[href="logout.php"] {

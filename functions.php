@@ -101,4 +101,20 @@ function getShpCarQty ($id_user) {
 	}
 }
 
+function adminValidation ($conexion) {
+	if (isset($_SESSION['user'])) {
+		$user = $_SESSION['user'];
+		$iduser = get_user_id($conexion, $user);
+		
+		$userLevel = get_user_data($conexion, $iduser);
+		$userLevel = $userLevel['level'];
+	
+		if ($userLevel != 2) {
+			header('Location: ../categorias.php');
+		}
+	} else {
+		header('Location: ../categorias.php');
+	}
+}
+
  ?>

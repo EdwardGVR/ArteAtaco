@@ -1,7 +1,13 @@
 <?php
 
+if (!isset($_SESSION['user'])) {
+    session_start();
+}
+
 require '../functions.php';
 require '../conexion.php';
+
+adminValidation($conexion);
 
 if ($conexion != false) {
 

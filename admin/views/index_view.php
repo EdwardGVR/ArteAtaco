@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">   
     <link rel="stylesheet" href="css/styles.css">
     <title>ArteAteataco :: Admin</title>
@@ -43,7 +43,10 @@
     </nav>
     <main>
         <div class="bar">
-            <a href="index.php"><i class="fa fa-home"></i></a>
+            <div class="homeStoreBtns">
+                <a href="index.php" title="Ir a inicio"><i class="fa fa-home"></i></a>
+                <a href="../categorias.php" title="Ir a la tienda"><i class="fas fa-store"></i></a>
+            </div>
             <h1>Inicio</h1>
             <a href="#" class="logout" title="Cerrar sesion"><i class="fa fa-times-circle"></i></a>
         </div>

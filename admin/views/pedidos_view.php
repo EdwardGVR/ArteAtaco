@@ -140,7 +140,7 @@
                                                 <span class="nombre"><?= $prod['prod_name'] ?></span>
                                                 <span class="cat"><?= $prod['prod_cat'] ?></span>
                                                 <span class="cant"><?= $prod['cantidad'] ?>x</span>
-                                                <span class="precio">$<?= $prod['precioCompra'] ?></span>
+                                                <span class="precio">$<?= number_format($prod['precioCompra'], 2) ?></span>
                                             </div>
                                         </div>
                                         <?php $subtotal += $prod['precioCompra'] ?>  
@@ -153,21 +153,21 @@
                                 <div class="icon"><i class="fas fa-tags fa-lg"></i></div>
                                 <div class="mount">
                                     <span>Sub-total:</span>
-                                    <span>$<?= $subtotal ?></span>
+                                    <span>$<?= number_format($subtotal, 2) ?></span>
                                 </div>                               
                             </div>
                             <div class="subtotal">
                                 <div class="icon"><i class="fas fa-truck fa-lg"></i></div>
                                 <div class="mount">
                                     <span>Costo de env&iacute;o:</span>
-                                    <span>$<?= $pedido['costoEnvioCompra'] ?></span>
+                                    <span>$<?= number_format($pedido['costoEnvioCompra'], 2) ?></span>
                                 </div>
                             </div>
                             <div class="total_sum">
                                 <div class="icon"><i class="fas fa-money-bill-alt fa-lg"></i></div>
                                 <div class="mount">
                                     <span>Total:</span>
-                                    <span>$<?= $subtotal + $pedido['costoEnvioCompra'] ?></span>
+                                    <span>$<?= number_format($subtotal + $pedido['costoEnvioCompra'], 2) ?></span>
                                 </div>
                             </div>
                         </div>

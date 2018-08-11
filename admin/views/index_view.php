@@ -56,109 +56,51 @@
                 <hr>
             </div>
             <div class="contenedor_pedidos">
-                <article class="pedido">
-                    <div class="pedido_cliente">
-                        <span class="nombre">Nombre</span>
-                        <span class="apellido">Apellido</span>
-                        <div class="img_cliente"></div>
-                    </div>
-                    <hr>
-                    <div class="pedido_productos">
-                        <div class="producto">
-                            <span class="cantidad">1x</span>
-                            <span class="nombre_producto">Nombre del producto</span>
-                            <span class="precio">$00.00</span>
+                <?php foreach ($lastOrders as $lastOrder): ?>
+                    <?php $subtotal = 0 ?>
+                    <article class="pedido">
+                        <div class="codigo">
+                            <span class="code">#<?= $lastOrder['codigo'] ?></span>
+                            <span class="status"><?= $lastOrder['status'] ?></span>
                         </div>
-                    </div>
-                    <hr>
-                    <div class="pedido_direccion">
-                        <span class="departamento">Departamento</span>
-                        <span class="nombre_direccion">Nombre direccion</span>
-                        <div class="info_direccion tooltip"><i class="fas fa-info-circle"></i>
-                            <span class="tooltiptext">Detalles de la direccion de envio para este pedido</span>
+                        <div class="pedido_cliente">
+                            <span class="nombre"><?= $lastOrder['cos_names'] ?></span>
+                            <span class="apellido"><?= $lastOrder['cos_apellidos'] ?></span>
+                            <?php if ($lastOrder['cos_img'] != NULL): ?>
+                                <img class="img_cliente" src="../<?= $lastOrder['cos_img'] ?>" alt="">
+                            <?php else: ?>
+                                <div class="img_cliente"><i class="fa fa-user"></i></div>
+                            <?php endif ?>
                         </div>
-                    </div>
-                    <div class="pedido_total">
-                        <span>$00.00</span>
-                    </div>
-                </article>
-                <article class="pedido">
-                    <div class="pedido_cliente">
-                        <span class="nombre">Nombre</span>
-                        <span class="apellido">Apellido</span>
-                        <div class="img_cliente"></div>
-                    </div>
-                    <hr>
-                    <div class="pedido_productos">
-                        <div class="producto">
-                            <span class="cantidad">1x</span>
-                            <span class="nombre_producto">Nombre del producto</span>
-                            <span class="precio">$00.00</span>
-                        </div>
-                        <div class="producto">
-                            <span class="cantidad">1x</span>
-                            <span class="nombre_producto">Nombre del producto</span>
-                            <span class="precio">$00.00</span>
-                        </div>
-                        <div class="producto">
-                            <span class="cantidad">1x</span>
-                            <span class="nombre_producto">Nombre del producto</span>
-                            <span class="precio">$00.00</span>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="pedido_direccion">
-                        <span class="departamento">Departamento</span>
-                        <span class="nombre_direccion">Nombre direccion</span>
-                        <div class="info_direccion tooltip"><i class="fas fa-info-circle"></i>
-                            <span class="tooltiptext">Detalles de la direccion de envio para este pedido</span>
-                        </div>
-                    </div>
-                    <div class="pedido_total">
-                        <span>$00.00</span>
-                    </div>
-                </article>
-                <article class="pedido">
-                    <div class="pedido_cliente">
-                        <span class="nombre">Nombre</span>
-                        <span class="apellido">Apellido</span>
-                        <div class="img_cliente"></div>
-                    </div>
-                    <hr>
+                        <hr>
                         <div class="pedido_productos">
-                            <div class="producto">
-                                <span class="cantidad">1x</span>
-                                <span class="nombre_producto">Nombre del producto</span>
-                                <span class="precio">$00.00</span>
-                            </div>
-                            <div class="producto">
-                                <span class="cantidad">1x</span>
-                                <span class="nombre_producto">Nombre del producto</span>
-                                <span class="precio">$00.00</span>
-                            </div>
-                            <div class="producto">
-                                <span class="cantidad">1x</span>
-                                <span class="nombre_producto">Nombre del producto</span>
-                                <span class="precio">$00.00</span>
-                            </div>
-                            <div class="producto">
-                                <span class="cantidad">1x</span>
-                                <span class="nombre_producto">Nombre del producto</span>
-                                <span class="precio">$00.00</span>
+                            <?php foreach ($orderProds as $prod): ?>
+                                <?php if ($lastOrder['codigo'] == $prod['codigo']): ?>
+                                    <div class="producto">
+                                        <span class="cantidad"><?= $prod['cantidad'] ?>x</span>
+                                        <span class="nombre_producto"><?= $prod['prod_name'] ?></span>
+                                        <span class="precio">$<?= number_format($prod['precioCompra'], 2) ?></span>
+                                    </div>
+                                    <?php $subtotal += $prod['precioCompra'] ?>
+                                <?php endif ?>
+                            <?php endforeach ?>
+                        </div>
+                        <hr>
+                        <div class="pedido_direccion">
+                            <span class="departamento"><?= $lastOrder['dir_dpto'] ?></span>
+                            <span class="nombre_direccion">
+                                <?= $lastOrder['dir_name'] . ' ($' . number_format($lastOrder['costoEnvioCompra'], 2) . ')' ?>
+                            </span>
+                            <div class="info_direccion tooltip"><i class="fas fa-info-circle"></i>
+                                <span class="tooltiptext"><?= $lastOrder['dir_linea1']?><br/><?= $lastOrder['dir_linea2'] ?></span>
                             </div>
                         </div>
-                    <hr>
-                    <div class="pedido_direccion">
-                        <span class="departamento">Departamento</span>
-                        <span class="nombre_direccion">Nombre direccion</span>
-                        <div class="info_direccion tooltip"><i class="fas fa-info-circle"></i>
-                            <span class="tooltiptext">Detalles de la direccion de envio para este pedido</span>
+                        <div class="pedido_total">
+                            <?php $subtotal += $lastOrder['costoEnvioCompra'] ?>
+                            <span>$<?= number_format($subtotal, 2) ?></span>
                         </div>
-                    </div>
-                    <div class="pedido_total">
-                        <span>$00.00</span>
-                    </div>
-                </article>
+                    </article>
+                <?php endforeach ?>
             </div>
             <div class="button">
                 <a href="pedidos.php">Ver todos</a>

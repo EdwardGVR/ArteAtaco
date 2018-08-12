@@ -298,9 +298,26 @@ main section .title {
 .pedido .codigo {
     height: 5%;
     background: #666565;
-    padding: 0 10px;
+    padding: 0 5px;
     font-size: 0.7em;
-    color: #e6f1ff;
+    /* color: #e6f1ff; */
+}
+
+.pedido .codigo.pagopendiente {
+    background: #f1f361;
+}
+
+.pedido .codigo.pagorecibido {
+    background: #6dd699;
+}
+
+.pedido .codigo.listoparaentrega {
+    background: #8bd2e7;
+}
+
+.pedido .codigo.entregado {
+    background: #0650b3;
+    color: #d7e9ff;
 }
 
 .pedido .codigo .code {
@@ -308,7 +325,7 @@ main section .title {
 }
 
 .pedido .codigo .status {
-    color: #fff;
+    /* color: #fff; */
 }
 
 .pedido .pedido_cliente,
@@ -325,7 +342,7 @@ main section .title {
 .producto .producto_nombre .img_categoria {
     position: absolute;
     top: -20px;
-    right: -35px;
+    right: -40px;
     display: inline-block;
     width: 70px;
     height: 70px;
@@ -359,11 +376,17 @@ main section .title {
 
 .producto .producto_imagen {
     display: flex;
+    justify-content: center;
 }
 
 .producto .producto_imagen i {
     margin: auto;
     font-size: 9em;
+}
+
+.producto .producto_imagen img {
+    height: 100%;
+    border-radius: 5px;
 }
 
 .pedido_productos .producto {
@@ -394,6 +417,7 @@ main section .title {
 .producto .producto_descripcion {
     overflow: hidden;
     padding: 5px 10px;
+    height: 25%;
 }
 
 .pedido_direccion span {
@@ -1602,7 +1626,7 @@ main section .title {
 
 .tooltip .tooltiptext {
     visibility: hidden;
-    width: 100px;
+    width: 150px;
     min-width: 100px;
     background: #2F80ED;
     color: #fff;
@@ -1612,7 +1636,7 @@ main section .title {
     position: absolute;
     z-index: 1;
     bottom: 130%;
-    left: 85%;
+    left: 0%;
     margin-left: -60px;
     opacity: 0;
     font-size: 0.7em;

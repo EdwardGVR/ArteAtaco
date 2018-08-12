@@ -22,7 +22,8 @@ if ($conexion != false) {
 		departamentos.nombre AS dir_dpto, 
 		direcciones.nombre AS dir_name,
 		direcciones.linea1 AS dir_linea1,
-        direcciones.linea2 AS dir_linea2,
+		direcciones.linea2 AS dir_linea2,
+		tipo_direccion.tipo AS dir_tipo,
 		order_status.status AS status
 		FROM pedidos
 		JOIN direcciones ON pedidos.id_direccion = direcciones.id
@@ -52,9 +53,20 @@ if ($conexion != false) {
     $query->execute();
     $orderProds = $query->fetchall();
 
-	$query = $conexion->prepare("SELECT * FROM productos ORDER BY fecha_registro DESC LIMIT 3");
+	$query = $conexion->prepare("
+		SELECT productos.*, categorias.nombre_cat AS catName 
+		FROM productos 
+		JOIN categorias ON productos.id_categoria = categorias.id
+		ORDER BY fecha_registro DESC 
+		LIMIT 3
+	");
 	$query->execute();
 	$lastProducts = $query->fetchall();
+
+	// Obtener imagenes de productos
+	$query = $conexion->prepare("SELECT * FROM imgs_prods");
+	$query->execute();
+	$imgs = $query->fetchall();
 }
 
 require "views/index_view.php";

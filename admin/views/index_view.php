@@ -59,9 +59,13 @@
                 <?php foreach ($lastOrders as $lastOrder): ?>
                     <?php $subtotal = 0 ?>
                     <article class="pedido">
-                        <div class="codigo">
+                        <?php $statusClass = strtolower(str_replace(' ', '', $lastOrder['status'])) ?>
+                        <div class="codigo <?= $statusClass ?>">
                             <span class="code">#<?= $lastOrder['codigo'] ?></span>
-                            <span class="status"><?= $lastOrder['status'] ?></span>
+                            <span class="status">
+                                <i class="fa fa-info-circle"></i>
+                                &nbsp;<?= $lastOrder['status'] ?>
+                            </span>
                         </div>
                         <div class="pedido_cliente">
                             <span class="nombre"><?= $lastOrder['cos_names'] ?></span>
@@ -92,7 +96,11 @@
                                 <?= $lastOrder['dir_name'] . ' ($' . number_format($lastOrder['costoEnvioCompra'], 2) . ')' ?>
                             </span>
                             <div class="info_direccion tooltip"><i class="fas fa-info-circle"></i>
-                                <span class="tooltiptext"><?= $lastOrder['dir_linea1']?><br/><?= $lastOrder['dir_linea2'] ?></span>
+                                <span class="tooltiptext">
+                                    <?= '(' . $lastOrder['dir_tipo'] . ')' ?><br/>
+                                    <?= $lastOrder['dir_linea1']?><br/>
+                                    <?= $lastOrder['dir_linea2'] ?>
+                                </span>
                             </div>
                         </div>
                         <div class="pedido_total">
@@ -113,60 +121,47 @@
                 <hr>
             </div>
             <div class="contenedor_productos">
-                <article class="producto">
-                    <div class="producto_nombre">
-                        <span class="nombre">Prod name</span>
-                        <span class="categoria">Category</span>
-                        <div class="img_categoria"></div>
-                    </div>
-                    <hr>
-                    <div class="producto_imagen">
-                        <i class="fas fa-file-image"></i>
-                    </div>
-                    <hr>
-                    <div class="producto_descripcion">
-                        <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur, corporis? Lorem ipsum dolor sit amet.</span>
-                    </div>
-                    <div class="producto_precio">
-                        <span>$00.00</span>
-                    </div>
-                </article>
-                <article class="producto">
-                    <div class="producto_nombre">
-                        <span class="nombre">Prod name</span>
-                        <span class="categoria">Category</span>
-                        <div class="img_categoria"></div>
-                    </div>
-                    <hr>
-                    <div class="producto_imagen">
-                        <i class="fas fa-file-image"></i>
-                    </div>
-                    <hr>
-                    <div class="producto_descripcion">
-                        <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur, corporis? Lorem ipsum dolor sit amet.</span>
-                    </div>
-                    <div class="producto_precio">
-                        <span>$00.00</span>
-                    </div>
-                </article>
-                <article class="producto">
-                    <div class="producto_nombre">
-                        <span class="nombre">Prod name</span>
-                        <span class="categoria">Category</span>
-                        <div class="img_categoria"></div>
-                    </div>
-                    <hr>
-                    <div class="producto_imagen">
-                        <i class="fas fa-file-image"></i>
-                    </div>
-                    <hr>
-                    <div class="producto_descripcion">
-                        <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur, corporis? Lorem ipsum dolor sit amet.</span>
-                    </div>
-                    <div class="producto_precio">
-                        <span>$00.00</span>
-                    </div>
-                </article>
+                <?php foreach ($lastProducts AS $lastProd): ?>
+                    <article class="producto">
+                        <div class="producto_nombre">
+                            <span class="nombre"><?= $lastProd['nombre'] ?></span>
+                            <span class="categoria"><?= $lastProd['catName'] ?></span>
+                            <div class="img_categoria"></div>
+                        </div>
+                        <hr>
+                        <!-- Validacion de imagenes -->
+                        <?php 
+                            $imgsCounter = 0; $mainImg = false; 
+                            foreach ($imgs as $img) {
+                                if ($img['id_prod'] == $lastProd['id']) {
+                                    $imgsCounter++;
+                                    if ($imgsCounter > 0 && $img['principal'] == 1) {
+                                        $mainImg = true; $imgPath = $img['ruta'];
+                                    }
+                                    if ($imgsCounter > 0 && !$mainImg) {
+                                        $imgPath = $img['ruta'];
+                                    }
+                                }
+                            }
+                        ?>
+                        <div class="producto_imagen">
+                            <?php if ($imgsCounter > 0): ?>
+                                <img src="../<?= $imgPath ?>" alt="x" class="imagen">
+                            <?php else: ?>
+                                <div class="imagen">
+                                    <i class="fas fa-file-image"></i>
+                                </div>
+                            <?php endif ?>
+                        </div>
+                        <hr>
+                        <div class="producto_descripcion">
+                            <span><?= $lastProd['descripcion'] ?></span>
+                        </div>
+                        <div class="producto_precio">
+                            <span>$<?= number_format($lastProd['precio'], 2) ?></span>
+                        </div>
+                    </article>
+                <?php endforeach ?>
             </div>
             <div class="button">
                 <a href="productos.php">Ver todos</a>

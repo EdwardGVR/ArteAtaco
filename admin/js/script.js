@@ -1,4 +1,6 @@
-if (document.title == 'Pedidos') {
+if (document.title == 'Detalles de pedido') {
+
+    console.log("Detalles de pedido");
 
     let updateOrderStatusBtns = [...document.getElementsByClassName('updOrderStat')];
     for (let i = 0; i < updateOrderStatusBtns.length; i++) {

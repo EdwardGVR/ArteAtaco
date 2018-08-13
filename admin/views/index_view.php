@@ -58,7 +58,7 @@
             <div class="contenedor_pedidos">
                 <?php foreach ($lastOrders as $lastOrder): ?>
                     <?php $subtotal = 0 ?>
-                    <article class="pedido">
+                    <a href="detallesPedido.php?order=<?= $lastOrder['codigo'] ?>" class="pedido">
                         <?php $statusClass = strtolower(str_replace(' ', '', $lastOrder['status'])) ?>
                         <div class="codigo <?= $statusClass ?>">
                             <span class="code">#<?= $lastOrder['codigo'] ?></span>
@@ -107,7 +107,7 @@
                             <?php $subtotal += $lastOrder['costoEnvioCompra'] ?>
                             <span>$<?= number_format($subtotal, 2) ?></span>
                         </div>
-                    </article>
+                    </a>
                 <?php endforeach ?>
             </div>
             <div class="button">

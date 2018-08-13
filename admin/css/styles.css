@@ -257,9 +257,11 @@ main section .title {
 .contenedor_productos,
 .contenedor_puntos {
     display: flex;
+    justify-content: space-between;
     flex-wrap: wrap;
     margin: auto;
     width: 100%;
+    padding: 50px;
 }
 
 .contenedor_pedidos .pedido,
@@ -269,9 +271,15 @@ main section .title {
     flex-wrap: wrap;
     width: 200px;
     height: 350px;
-    margin: 20px auto;
     background: #a3a2a2;
-    cursor: default;
+    color: #000;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.contenedor_pedidos.all .pedido,
+.contenedor_productos.all .producto {
+    margin: 0 50px 100px 50px;
 }
 
 .contenedor_pedidos .pedido:hover,
@@ -533,9 +541,9 @@ main section .title {
     display: flex;
     flex-wrap: wrap;
     
-    margin: 30px auto;
+    margin: 0 auto;
     /* height: 200px; */
-    width: 80%;
+    width: 90%;
     min-width: 320px;
     /* background: #ccc; */
 }
@@ -563,9 +571,9 @@ main section .title {
 .pedido_todos .pedido_body {
     display: flex;
     flex-wrap: wrap;
-
     padding: 20px 20px 0 20px;
     width: 100%;
+    border-radius: 0 5px 5px 5px;
     /* height: 100%; */
     background: #C0E2ED;
 }

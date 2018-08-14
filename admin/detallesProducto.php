@@ -152,7 +152,7 @@
             ");
             $query->execute(array(':idProd' => $idProd));
 
-            header("Location: detallesProducto.php?idProd=$prodIdUrl");
+            header("Location: productos.php");
         }
 
         if (isset($_POST['saveChangesProd'])) {

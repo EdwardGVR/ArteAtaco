@@ -57,7 +57,17 @@
             </div>
             <div class="contenedor_productos all">
                 <?php foreach ($products as $prod): ?>
-                    <a href="detallesProducto.php?idProd=<?= $prod['id'] ?>" class="producto">
+                    <?php if ($prod['disponible'] == 1): ?>
+                        <a href="detallesProducto.php?idProd=<?= $prod['id'] ?>" class="producto">
+                        <div class="disp y">
+                            <span>Disponible</span>
+                        </div>
+                    <?php elseif ($prod['disponible'] == 0): ?>
+                        <a href="detallesProducto.php?idProd=<?= $prod['id'] ?>" class="producto noDisp">
+                        <div class="disp n">
+                            <span>No disponible</span>
+                        </div>
+                    <?php endif ?>
                         <div class="producto_nombre">
                             <span class="nombre"><?= $prod['nombre'] ?></span>
                             <span class="categoria"><?= $prod['catName'] ?></span>

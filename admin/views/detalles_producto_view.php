@@ -55,6 +55,65 @@
             <div class="contenedor_productos">
                 <?php if ($producto['disponible'] == 1): ?>
                     <div class="producto_list">
+
+                        <form action="" class="info" method="POST">
+                            <span class="title">Datos del producto</span>
+                            <hr>
+                            <div class="field">
+                                <span class="label">Nombre</span>
+                                <input 
+                                    type="text"
+                                    name="nombreProd"
+                                    class="value name valueProd<?= $producto['id'] ?>"
+                                    value="<?= $producto['nombre']?>"
+                                    disabled>
+                                </input>
+                            </div>
+                            <div class="field">
+                                <span class="label">Categor&iacute;a</span>
+                                <select 
+                                    type="text" 
+                                    name="catProd" 
+                                    class="value valueProd<?= $producto['id'] ?>" 
+                                    value="<?= $producto['nombre_cat'] ?>" 
+                                    disabled>
+                                    <option value="null" disabled>-- Seleccione una categor&iacute;a --</option>
+                                    <?php foreach ($categorias as $categoria): ?>
+                                        <?php if ($producto['id_categoria'] == $categoria['id']): ?>
+                                            <option value="<?= $categoria['id'] ?>" selected><?= $categoria['nombre_cat'] ?></option>
+                                        <?php else: ?>
+                                            <option value="<?= $categoria['id'] ?>"><?= $categoria['nombre_cat'] ?></option>
+                                        <?php endif ?>
+                                    <?php endforeach ?>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <span class="label">Precio ($)</span>
+                                <input 
+                                    id="precioProd"
+                                    type="text" 
+                                    name="precioProd" 
+                                    class="value valueProd<?= $producto['id'] ?>" 
+                                    value="<?= number_format($producto['precio'], 2) ?>"
+                                    step="0.10"
+                                    min="0" 
+                                    disabled>
+                                </input>
+                            </div>
+                            <div class="field">
+                                <span class="label">Descripci&oacute;n</span>
+                                <textarea 
+                                    name="descProd" 
+                                    class="value valueProd<?= $producto['id'] ?>" 
+                                    placeholder="<?= $producto['descripcion'] ?>" 
+                                    disabled><?= $producto['descripcion'] ?>
+                                </textarea>
+                            </div>
+                            <span class="dateReg">Fecha y hora de registro: <?= $producto['fecha_registro'] ?></span>
+                            <input type="hidden" name="idProd" value="<?= $producto['id'] ?>">
+                            <input type="submit" name="saveChangesProd" id="saveChangesProd<?= $producto['id'] ?>">
+                        </form>
+
                         <div class="imgs">
                             <div class="main">
                                 <?php foreach ($imgsProds as $imgProd): ?>
@@ -123,10 +182,62 @@
                                     </form>
                                 <?php endif ?>
                             </div>
-                            <span class="dateReg">Fecha y hora de registro: <?= $producto['fecha_registro'] ?></span>
                         </div>
-                        
-                        <form action="" class="info" method="POST">
+
+                        <div class="options">
+                            <form action="" class="opt disponible" method="POST">
+                                <input type="hidden" name="idProd" value="<?= $producto['id'] ?>">
+                                <input type="hidden" name="currentDisp" value="<?= $producto['disponible'] ?>">
+                                <input type="submit" name="setDisp" id="setDisp<?= $producto['id'] ?>">
+                                <span>Disponible</span>
+                                <div class="icon">
+                                    <?php if ($producto['disponible'] == 1): ?>
+                                        <label for="setDisp<?= $producto['id'] ?>"><i class="fas fa-toggle-on"></i></label>
+                                    <?php elseif ($producto['disponible'] == 0): ?>
+                                        <label for="setDisp<?= $producto['id'] ?>"><i class="fas fa-toggle-off"></i></label>
+                                    <?php endif ?>
+                                </div>
+                            </form>
+
+                            <div class="opt">
+                                <span>Editar</span>
+                                <div class="icon editProd <?= $producto['id'] ?>">
+                                    <i class="fa fa-edit <?= $producto['id'] ?>"></i>
+                                </div>
+                            </div>
+
+                            <form action="" class="opt borrar" method="POST">
+                                <input type="hidden" name="idProd" value="<?= $producto['id'] ?>">
+                                <input type="submit" name="deleteProd" id="deleteProd<?= $producto['id'] ?>">
+                                <span>Eliminar</span>
+                                <div class="icon">
+                                    <label for="deleteProd<?= $producto['id'] ?>" class="delProd">
+                                        <i class="fa fa-times-circle"></i>
+                                    </label>
+                                </div>
+                            </form>
+
+                            <form action="#" class="hidden editProd<?= $producto['id'] ?>" method="POST">
+                                <span>Enviar</span>
+                                <label for="saveChangesProd<?= $producto['id'] ?>">
+                                    <div class="icon">
+                                        <i class="fa fa-check-circle"></i>
+                                    </div>
+                                </label>
+                            </form>
+                            <div class="hidden cancelEdit editProd<?= $producto['id'] ?>">
+                                <span>Cancelar</span>
+                                <div class="icon">
+                                    <i class="fa fa-times-circle"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php elseif ($producto['disponible'] == 0):?>
+                    <div class="producto_list">
+                        <form action="" class="info noDisp" method="POST">
+                            <span class="title">Datos del producto</span>
+                            <hr>
                             <div class="field">
                                 <span class="label">Nombre</span>
                                 <input 
@@ -156,15 +267,12 @@
                                 </select>
                             </div>
                             <div class="field">
-                                <span class="label">Precio ($)</span>
+                                <span class="label">Precio</span>
                                 <input 
-                                    id="precioProd"
                                     type="text" 
                                     name="precioProd" 
                                     class="value valueProd<?= $producto['id'] ?>" 
-                                    value="<?= number_format($producto['precio'], 2) ?>"
-                                    step="0.10"
-                                    min="0" 
+                                    value="<?= '$' . $producto['precio'] ?>" 
                                     disabled>
                                 </input>
                             </div>
@@ -177,61 +285,10 @@
                                     disabled><?= $producto['descripcion'] ?>
                                 </textarea>
                             </div>
-                            <input type="hidden" name="idProd" value="<?= $producto['id'] ?>">
+                            <span class="dateReg">Fecha y hora de registro: <?= $producto['fecha_registro'] ?></span>
                             <input type="submit" name="saveChangesProd" id="saveChangesProd<?= $producto['id'] ?>">
                         </form>
 
-                        <div class="options">
-                            <form action="" class="opt disponible" method="POST">
-                                <input type="hidden" name="idProd" value="<?= $producto['id'] ?>">
-                                <input type="hidden" name="currentDisp" value="<?= $producto['disponible'] ?>">
-                                <input type="submit" name="setDisp" id="setDisp<?= $producto['id'] ?>">
-                                <span>Disponible</span>
-                                <div class="icon">
-                                    <?php if ($producto['disponible'] == 1): ?>
-                                        <label for="setDisp<?= $producto['id'] ?>"><i class="fas fa-toggle-on"></i></label>
-                                    <?php elseif ($producto['disponible'] == 0): ?>
-                                        <label for="setDisp<?= $producto['id'] ?>"><i class="fas fa-toggle-off"></i></label>
-                                    <?php endif ?>
-                                </div>
-                            </form>
-
-                            <form action="" class="opt borrar" method="POST">
-                                <input type="hidden" name="idProd" value="<?= $producto['id'] ?>">
-                                <input type="submit" name="deleteProd" id="deleteProd<?= $producto['id'] ?>">
-                                <span>Eliminar</span>
-                                <div class="icon">
-                                    <label for="deleteProd<?= $producto['id'] ?>" class="delProd">
-                                        <i class="fa fa-times-circle"></i>
-                                    </label>
-                                </div>
-                            </form>
-
-                            <div class="opt">
-                                <span>Editar</span>
-                                <div class="icon editProd <?= $producto['id'] ?>">
-                                    <i class="fa fa-edit <?= $producto['id'] ?>"></i>
-                                </div>
-                            </div>
-
-                            <form action="#" class="hidden editProd<?= $producto['id'] ?>" method="POST">
-                                <span>Enviar</span>
-                                <label for="saveChangesProd<?= $producto['id'] ?>">
-                                    <div class="icon">
-                                        <i class="fa fa-check-circle"></i>
-                                    </div>
-                                </label>
-                            </form>
-                            <div class="hidden cancelEdit editProd<?= $producto['id'] ?>">
-                                <span>Cancelar</span>
-                                <div class="icon">
-                                    <i class="fa fa-times-circle"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <?php elseif ($producto['disponible'] == 0):?>
-                    <div class="producto_list">
                         <div class="imgs noDisp">
                             <div class="main">
 
@@ -306,51 +363,7 @@
                                     </form>
                                 <?php endif ?>
                             </div>
-                            <span class="dateReg">Fecha y hora de registro: <?= $producto['fecha_registro'] ?></span>
                         </div>
-
-                        <form action="" class="info noDisp" method="POST">
-                            <div class="field">
-                                <span class="label">Nombre</span>
-                                <input 
-                                    type="text"
-                                    name="nombreProd"
-                                    class="value name valueProd<?= $producto['id'] ?>"
-                                    value="<?= $producto['nombre']?>"
-                                    disabled>
-                                </input>
-                            </div>
-                            <div class="field">
-                                <span class="label">Categor&iacute;a</span>
-                                <input 
-                                    type="text" 
-                                    name="catProd" 
-                                    class="value valueProd<?= $producto['id'] ?>" 
-                                    value="<?= $producto['nombre_cat'] ?>" 
-                                    disabled>
-                                </input>
-                            </div>
-                            <div class="field">
-                                <span class="label">Precio</span>
-                                <input 
-                                    type="text" 
-                                    name="precioProd" 
-                                    class="value valueProd<?= $producto['id'] ?>" 
-                                    value="<?= '$' . $producto['precio'] ?>" 
-                                    disabled>
-                                </input>
-                            </div>
-                            <div class="field">
-                                <span class="label">Descripci&oacute;n</span>
-                                <textarea 
-                                    name="descProd" 
-                                    class="value valueProd<?= $producto['id'] ?>" 
-                                    placeholder="<?= $producto['descripcion'] ?>" 
-                                    disabled><?= $producto['descripcion'] ?>
-                                </textarea>
-                            </div>
-                            <input type="submit" name="saveChangesProd" id="saveChangesProd<?= $producto['id'] ?>">
-                        </form>
 
                         <div class="options noDisp">
                             <form action="" class="opt disponible" method="POST">
@@ -367,6 +380,13 @@
                                 </div>
                             </form>
 
+                            <div class="opt">
+                                <span>Editar</span>
+                                <div class="icon editProd <?= $producto['id'] ?>">
+                                    <i class="fa fa-edit <?= $producto['id'] ?>"></i>
+                                </div>
+                            </div>
+
                             <form action="" class="opt borrar" method="POST">
                                 <input type="hidden" name="idProd" value="<?= $producto['id'] ?>">
                                 <input type="submit" name="deleteProd" id="deleteProd<?= $producto['id'] ?>">
@@ -377,13 +397,6 @@
                                     </label>
                                 </div>
                             </form>
-
-                            <div class="opt">
-                                <span>Editar</span>
-                                <div class="icon editProd <?= $producto['id'] ?>">
-                                    <i class="fa fa-edit <?= $producto['id'] ?>"></i>
-                                </div>
-                            </div>
 
                             <form action="#" class="hidden editProd<?= $producto['id'] ?>" method="POST">
                                 <span>Enviar</span>

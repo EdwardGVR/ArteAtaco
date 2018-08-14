@@ -34,7 +34,8 @@ if (document.title == 'Detalles de pedido') {
     
     }
 
-} else if (document.title == 'Productos') {
+} else if (document.title == 'Detalles producto') {
+    console.log("Detalles producto");
 
     let deleteProducts = [...document.getElementsByClassName('delProd')],
         editProducts = [...document.getElementsByClassName('editProd')];
@@ -92,6 +93,10 @@ if (document.title == 'Detalles de pedido') {
         });
     }
 
+    
+} else if (document.title == 'Productos') {
+    console.log("Productos");
+    
     let canelNewProduct = document.getElementById('cancelNewProd');
     canelNewProduct.addEventListener('click', () => {
         location.reload(true);
@@ -106,7 +111,7 @@ if (document.title == 'Detalles de pedido') {
             newProducForm.setAttribute('class', 'newProductForm');
         // }, 5000);
     });
-
+    
 } else if (document.title == 'Puntos de entrega') {
     let btnShowForm = document.getElementById('btnShowForm');
 

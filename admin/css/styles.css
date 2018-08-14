@@ -274,6 +274,7 @@ main section .title {
     background: #a3a2a2;
     color: #000;
     cursor: pointer;
+    border-radius: 5px;
     text-decoration: none;
 }
 
@@ -308,6 +309,7 @@ main section .title {
     background: #666565;
     padding: 0 5px;
     font-size: 0.7em;
+    border-radius: 5px 5px 0 0;
     /* color: #e6f1ff; */
 }
 
@@ -964,10 +966,10 @@ main section .title {
     display: flex;
     min-width: 460px;
     /* min-height: 100px; */
-    width: 80%;
+    width: 90%;
     background: #5f90c9;
     margin: auto;
-    margin-bottom: 50px;
+    /* margin-bottom: 50px; */
     border-radius: 10px;
     box-shadow: 3px 3px 20px 0px #000;
 }
@@ -1394,6 +1396,7 @@ main section .title {
     opacity: 1;
     transition: all ease 0.2s;
     font-size: 6em;
+    cursor: pointer;
     box-shadow: 3px 3px 15px #000;
 }
 

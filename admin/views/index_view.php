@@ -122,7 +122,7 @@
             </div>
             <div class="contenedor_productos">
                 <?php foreach ($lastProducts AS $lastProd): ?>
-                    <article class="producto">
+                    <a href="detallesProducto.php?idProd=<?= $lastProd['id'] ?>" class="producto">
                         <div class="producto_nombre">
                             <span class="nombre"><?= $lastProd['nombre'] ?></span>
                             <span class="categoria"><?= $lastProd['catName'] ?></span>
@@ -160,7 +160,7 @@
                         <div class="producto_precio">
                             <span>$<?= number_format($lastProd['precio'], 2) ?></span>
                         </div>
-                    </article>
+                    </a>
                 <?php endforeach ?>
             </div>
             <div class="button">

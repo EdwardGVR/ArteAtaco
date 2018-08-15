@@ -266,7 +266,8 @@ main section .title {
 }
 
 .contenedor_pedidos .pedido,
-.contenedor_productos .producto {
+.contenedor_productos .producto,
+.contenedor_puntos .puntoList {
     position: relative;
     display: flex;
     flex-wrap: wrap;
@@ -285,17 +286,20 @@ main section .title {
 }
 
 .contenedor_pedidos.all .pedido,
-.contenedor_productos.all .producto {
+.contenedor_productos.all .producto,
+.contenedor_puntos.all .puntoList {
     margin: 0 50px 100px 50px;
 }
 
 .contenedor_pedidos .pedido:hover,
-.contenedor_productos .producto:hover {
+.contenedor_productos .producto:hover,
+.contenedor_puntos .puntoList:hover {
     border: 2px solid #2F80ED;
 }
 
 .pedido div,
-.producto div {
+.producto div,
+.puntoList div {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -305,13 +309,15 @@ main section .title {
 }
 
 .pedido hr,
-.producto hr {
+.producto hr,
+.puntoList hr {
     width: 90%;
     margin: auto;
 }
 
 .pedido .codigo,
-.producto .disp {
+.producto .disp,
+.puntoList .disp {
     height: 5%;
     background: #666565;
     padding: 0 5px;

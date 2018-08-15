@@ -58,7 +58,7 @@
             <div class="contenedor_productos all">
                 <?php foreach ($products as $prod): ?>
                     <?php if ($prod['disponible'] == 1): ?>
-                        <a href="detallesProducto.php?idProd=<?= $prod['id'] ?>" class="producto">
+                    <a href="detallesProducto.php?idProd=<?= $prod['id'] ?>" class="producto">
                         <div class="disp y">
                             <span>Disponible</span>
                         </div>

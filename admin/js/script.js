@@ -113,6 +113,8 @@ if (document.title == 'Detalles de pedido') {
     });
     
 } else if (document.title == 'Puntos de entrega') {
+    console.log("Puntos de entrega");
+
     let btnShowForm = document.getElementById('btnShowForm');
 
     btnShowForm.addEventListener("click", () => {

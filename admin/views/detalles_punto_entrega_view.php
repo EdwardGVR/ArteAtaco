@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">   
     <link rel="stylesheet" href="css/styles.css">
-    <title>Puntos de entrega</title>
+    <title>Detalles punto de entrega</title>
 </head>
 <body>
     <div class="nav_hidden"></div>
@@ -56,45 +56,71 @@
                     <h2>Todos los puntos de entrega</h2>
                     <hr>    
                 </div>
-                <div class="contenedor_puntos all">
+                <div class="contenedor_puntos">
                     <?php foreach($puntos AS $punto): ?>
-                        <a href="#" class="puntoList">
-                            <div class="disp">
-                                <span class="code">Estado</span>
+                        <article class="punto">
+                            <div class="title">
+                                <span class="nombre"><?= $punto['nombre'] ?></span>
+                                <hr>
+                                <span class="dpto"><?= $punto['dptoNombre'] . " (" . $punto['pais'] . ")" ?></span>
                             </div>
-                            <div class="pedido_cliente">
-                                <span class="nombre">Nonbre</span>
-                                <span class="apellido">Departamento</span>
-                                <?php if (true): ?>
-                                    <img class="img_cliente" src="../<?= $lastOrder['cos_img'] ?>" alt="">
-                                <?php else: ?>
-                                    <div class="img_cliente"><i class="fa fa-user"></i></div>
-                                <?php endif ?>
-                            </div>
-                            <hr>
-                            <div class="puntoImg">
-                                <div class="imagen">
-                                    <i class="fas fa-file-image"></i>
+                            <div class="body">
+                                <div class="info">
+                                    <span class="value"><?= $punto['linea1'] ?></span>
+                                    <span class="value"><?= $punto['linea2'] ?></span>
+                                    <span class="value"><?= $punto['referencias'] ?></span>
+                                    <?php if($punto['costo'] == 0): ?>
+                                        <span class="value">Entrega gratuita</span>
+                                    <?php elseif($punto['costo'] != 0): ?>
+                                        <span class="value">Costo de envio: $<?= $punto['costo'] ?></span>
+                                    <?php endif ?>
+                                </div>
+                                <div class="details">
+                                    <i class="fas fa-map-marked-alt fa-8x"></i>
                                 </div>
                             </div>
-                            <hr>
-                            <div class="pedido_direccion">
-                                <span class="departamento">Informacion</span>
-                                <span class="nombre_direccion">
-                                    Informacion 
-                                </span>
-                                <div class="info_direccion tooltip"><i class="fas fa-info-circle"></i>
-                                    <span class="tooltiptext">
-                                        <?= '(' . "Informacion" . ')' ?><br/>
-                                        <?= "Informacion" ?><br/>
-                                        <?= "Informacion" ?>
-                                    </span>
+                            <div class="options">
+                                <div class="toggle">
+                                    <?php if($punto['estado'] == 1): ?>
+                                        <label for="togglePunto<?= $punto['id'] ?>" class="btn">
+                                            <!-- <div class="far fa-circle"></div> -->
+                                            <i class="fa fa-dot-circle"></i>
+                                        </label>
+                                        <div class="status">
+                                            <span>Activo</span>
+                                        </div>
+                                    <?php elseif($punto['estado'] == 0): ?>
+                                        <label for="togglePunto<?= $punto['id'] ?>" class="btn">
+                                            <i class="far fa-circle"></i>
+                                        </label>
+                                        <div class="status">
+                                            <span>Inactivo</span>
+                                        </div>
+                                    <?php endif ?>
+                                </div>
+                                <div class="editOptions">
+                                    <div class="btn img">
+                                        <i class="fa fa-image"></i>
+                                    </div>
+                                    <div class="btn edit">
+                                        <i class="fa fa-pen-square"></i>
+                                    </div>
+                                    <label for="deletePunto<?= $punto['id'] ?>" class="btn delete">
+                                            <i class="fa fa-times-circle"></i>
+                                    </label>
+
+                                    <form class="hidden" action="" method="POST">
+                                        <input type="hidden" name="puntoId" value="<?= $punto['id'] ?>">
+                                        <input type="submit" name="deletePoint" id="deletePunto<?= $punto['id'] ?>">
+                                        <input type="submit" name="togglePoint" id="togglePunto<?= $punto['id'] ?>">
+                                    </form>
+
+                                    <!-- <div class="btn cancel"></div>
+                                    <div class="btn reset"></div>
+                                    <div class="btn save"></div> -->
                                 </div>
                             </div>
-                            <div class="puntoCosto">
-                                <span>$<?= number_format(0, 2) ?></span>
-                            </div>
-                        </a>                        
+                        </article>                          
                     <?php endforeach ?>
                 </div>
             <?php endif ?>

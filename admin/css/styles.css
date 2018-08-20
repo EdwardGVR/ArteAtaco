@@ -308,6 +308,36 @@ main section .title {
     padding: 10px;
 }
 
+.puntoList.Inactivo {
+    background: #a3a2a2;
+}
+
+.puntoList .puntoImg {
+    height: 70px;
+    font-size: 0.9em;
+}
+
+.puntoList .puntoImg span  {
+    width: 100%;
+}
+
+.puntoList .puntoImg .linea2 {
+    font-size: 0.8em;
+}
+
+.puntoList .puntoInfo span { 
+    width: 100%;
+}
+
+.puntoList .puntoInfo .pais {
+    font-size: 0.8em;
+}
+
+.puntoList .puntoRefs {
+    height: 80px;
+    font-size: 0.9em;
+}
+
 .pedido hr,
 .producto hr,
 .puntoList hr {
@@ -339,13 +369,15 @@ main section .title {
 }
 
 .pedido .codigo.entregado,
-.producto .disp.y {
+.producto .disp.y,
+.puntoList .disp.Activo {
     background: #0650b3;
     color: #d7e9ff;
     font-size: 0.8em;
 }
 
-.producto .disp.n {
+.producto .disp.n,
+.puntoList .disp.Inactivo {
     color: #fff;
     font-size: 0.8em;
 }
@@ -534,7 +566,8 @@ main section .title {
 /* -------------------------------------------------------------------- */
 
 .pedido .pedido_total,
-.producto .producto_precio {
+.producto .producto_precio,
+.puntoList .puntoCosto {
     /* height: 10%; */
     display: flex;
     justify-content: center;
@@ -1739,6 +1772,10 @@ main section .title {
     transition: all ease 0.3s;
 }
 
+.contenedor_puntos .punto.activo {
+    background: #365272;
+}
+
 .contenedor_puntos .punto:hover {
     box-shadow: 0px 0px 4px 0px #000;
 }
@@ -1751,6 +1788,10 @@ main section .title {
     border-radius: 5px;
     background: #fff;
     margin-bottom: 10px;
+}
+
+.contenedor_puntos .punto.activo .title {
+    background: #e4f9ff;
 }
 
 .contenedor_puntos .punto .title hr {
@@ -1779,6 +1820,10 @@ main section .title {
     padding: 10px;
     border-radius: 5px;
     background: #fff;
+}
+
+.contenedor_puntos .punto.activo .body {
+    background: #bedaff;
 }
 
 .contenedor_puntos .punto .body .info {
@@ -1817,6 +1862,10 @@ main section .title {
     border-radius: 5px;
     padding: 10px;
     background: #dddddd;
+}
+
+.contenedor_puntos .punto.activo .options {
+    background: #5679da;
 }
 
 .contenedor_puntos .punto .options .toggle {
@@ -1872,8 +1921,9 @@ main section .title {
     align-content: center;
     align-items: center;
     flex-wrap: wrap;
-    width: 100%;
-    height: calc(100vh - 80px);
+    width: 50%;
+    margin: auto;
+    /* height: calc(100vh - 80px); */
     /* background: #ccc; */
 }
 

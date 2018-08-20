@@ -18,7 +18,7 @@ if ($conexion != false) {
         SELECT direcciones.*, departamentos.nombre AS dptoNombre 
         FROM direcciones
         JOIN departamentos ON direcciones.id_departamento = departamentos.id
-        WHERE id_tipo = 2 AND disponible = 1;
+        WHERE direcciones.id_tipo = 2 AND direcciones.disponible = 1;
     ");
     $query->execute();
     $puntos = $query->fetchall();

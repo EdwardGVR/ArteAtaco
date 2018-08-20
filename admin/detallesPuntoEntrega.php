@@ -10,60 +10,35 @@ require '../conexion.php';
 $userData = adminValidation($conexion);
 $userName = $userData['nombres'] . ' ' . $userData['apellidos'];
 $userImg = $userData['imagen'];
+$idPoint = isset($_GET['idPunto']) ? $_GET['idPunto'] : false;
 
 if ($conexion != false) {
 
-    // Obtener los puntos de entrega
-    $query = $conexion->prepare("
-        SELECT direcciones.*, departamentos.nombre AS dptoNombre 
-        FROM direcciones
-        JOIN departamentos ON direcciones.id_departamento = departamentos.id
-        WHERE id_tipo = 2 AND disponible = 1;
-    ");
-    $query->execute();
-    $puntos = $query->fetchall();
+    // Obtener el punto de entrega
+    if ($idPoint != false) {
+        $query = $conexion->prepare("
+            SELECT direcciones.*, departamentos.nombre AS dptoNombre 
+            FROM direcciones
+            JOIN departamentos ON direcciones.id_departamento = departamentos.id
+            WHERE direcciones.id_tipo = 2 AND direcciones.id = :idPoint
+        ");
+        $query->execute(array(':idPoint' => $idPoint));
+        $puntoPreData = $query->fetch();
 
-    if ($puntos != false) {
-        $hayPuntos = true;
+        if ($puntoPreData['disponible'] == 1) {
+            $puntoData = $puntoPreData;
+        } else {
+            $puntoData = false;
+        }
+
     } else {
-        $hayPuntos = false;
+        $puntoData = false;
     }
 
     // Obtener los departamentos
     $query = $conexion->prepare("SELECT * FROM departamentos");
     $query->execute();
     $departamentos = $query->fetchall();
-
-    // Guardar un nuevo punto de entrega
-    if (isset($_POST['savePoint'])) {
-        $dptoPoint = $_POST['dptoPunto'];
-        $nombrePoint = $_POST['nombrePunto'];
-        $paisPoint = "El Salvador";
-        $linea1Point = $_POST['linea1'];
-        $linea2Point = $_POST['linea2'];
-        $refsPoint = $_POST['refPunto'];
-        $tipoEntrega = $_POST['tipoEntrega'];
-
-        if ($tipoEntrega == "free") {
-            $costo = 0;
-        } elseif ($tipoEntrega == "noFree") {
-            $costo = $_POST['costoEntrega'];
-        }
-        
-        $query = $conexion->prepare("INSERT INTO direcciones VALUES (null, 2, :dpto, :nombre, :pais, :linea1, :linea2, :referencias, 2, :costo, 1, 1)");
-        $query->execute(array(
-            ':dpto' => $dptoPoint,
-            ':nombre' => $nombrePoint,
-            ':pais' => $paisPoint,
-            ':linea1' => $linea1Point,
-            ':linea2' => $linea2Point,
-            ':referencias' => $refsPoint,
-            ':costo' => $costo
-        ));
-
-        unset($_POST['savePoint']);
-        header('Location: puntosEntrega.php');
-    }
 
     // "Borrar" un punto de entrega
     if (isset($_POST['deletePoint'])) {
@@ -73,7 +48,7 @@ if ($conexion != false) {
         $query->execute(array(':idPoint' => $idPoint));
 
         unset($_POST['deletePoint']);
-        header('Location: puntosEntrega.php');
+        header("Location: puntosEntrega.php");
     }
 
     // Activar / desactivar punto de entrega
@@ -95,7 +70,7 @@ if ($conexion != false) {
         }
 
         unset($_POST['togglePoint']);
-        header('Location: puntosEntrega.php');
+        header("Location: detallesPuntoEntrega.php?idPunto=$idPoint");
     }
 }
 

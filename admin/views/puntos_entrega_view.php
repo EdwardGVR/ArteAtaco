@@ -58,41 +58,28 @@
                 </div>
                 <div class="contenedor_puntos all">
                     <?php foreach($puntos AS $punto): ?>
-                        <a href="#" class="puntoList">
-                            <div class="disp">
-                                <span class="code">Estado</span>
+                        <?php $status = ($punto['estado']) ? "Activo" : "Inactivo" ?>
+                        <a href="detallesPuntoEntrega.php?idPunto=<?= $punto['id'] ?>" class="puntoList <?= $status ?>">
+                            <div class="disp <?= $status ?>">
+                                <span class="code"><?= $status ?></span>
                             </div>
-                            <div class="pedido_cliente">
-                                <span class="nombre">Nonbre</span>
-                                <span class="apellido">Departamento</span>
-                                <?php if (true): ?>
-                                    <img class="img_cliente" src="../<?= $lastOrder['cos_img'] ?>" alt="">
-                                <?php else: ?>
-                                    <div class="img_cliente"><i class="fa fa-user"></i></div>
-                                <?php endif ?>
+                            <div class="puntoInfo">
+                                <span class="nombre"><?= $punto['nombre'] ?></span>
+                                <span class="apellido"><?= $punto['dptoNombre'] ?></span>
+                                <span class="pais"><?= $punto['pais'] ?></span>
                             </div>
                             <hr>
                             <div class="puntoImg">
-                                <div class="imagen">
-                                    <i class="fas fa-file-image"></i>
-                                </div>
+                                <span class="linea1"><?= $punto['linea1'] ?></span>
+                                <span class="linea2"><?= $punto['linea2'] ?></span>
                             </div>
                             <hr>
-                            <div class="pedido_direccion">
-                                <span class="departamento">Informacion</span>
-                                <span class="nombre_direccion">
-                                    Informacion 
-                                </span>
-                                <div class="info_direccion tooltip"><i class="fas fa-info-circle"></i>
-                                    <span class="tooltiptext">
-                                        <?= '(' . "Informacion" . ')' ?><br/>
-                                        <?= "Informacion" ?><br/>
-                                        <?= "Informacion" ?>
-                                    </span>
-                                </div>
+                            <div class="puntoRefs">
+                                <span><?= $punto['referencias'] ?></span>
                             </div>
                             <div class="puntoCosto">
-                                <span>$<?= number_format(0, 2) ?></span>
+                                <?php $cost = ($punto['costo'] != 0) ? "$" . number_format($punto['costo'], 2) : "Entrega gratis" ?>
+                                <span><?= $cost ?></span>
                             </div>
                         </a>                        
                     <?php endforeach ?>
@@ -102,7 +89,7 @@
                     <article class="punto">
                         <div id="puntosTitle" class="text">
                             <?php if($hayPuntos): ?>
-                                <span>Registrar un nuevo punto.</span>
+                                <span>Registrar un nuevo punto de entrega.</span>
                             <?php else: ?>
                                 <span>No hay puntos registrados.</span>
                             <?php endif ?>

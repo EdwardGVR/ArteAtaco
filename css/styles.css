@@ -228,7 +228,7 @@ a.reg:hover {
 	display: inline-block;
 	height: 40px;
 	width: 100%;
-	margin-bottom: 50px;
+	margin-bottom: 100px;
 }
 
 .bar i.fa-home:hover {
@@ -422,9 +422,10 @@ h1.user i.fa {
 	margin: auto 10%;
 	margin-bottom: 50px;
 	/*width: 70%;*/
+	border-radius: 5px;
 	padding: 1% 30px;
 	background: #EAE5E5;
-	box-shadow: 0 5px 10px #000;
+	box-shadow: 0 2px 5px #000;
 }
 
 .contenedor_carrito {
@@ -446,7 +447,7 @@ h1.user i.fa {
 .contenedor_detalles,
 .contenedor_carrito,
 .contenedor_pago {
-	min-height: 363px;
+	min-height: 500px;
 	margin: auto 10%;
 	margin-bottom: 50px;
 }

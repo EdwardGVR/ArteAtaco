@@ -31,7 +31,7 @@ CREATE TABLE `carrito` (
   KEY `carrito_usuario_idx` (`id_user`),
   KEY `carrito_user_idx` (`id_user`),
   CONSTRAINT `carrito_user` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `carrito` (
 
 LOCK TABLES `carrito` WRITE;
 /*!40000 ALTER TABLE `carrito` DISABLE KEYS */;
-INSERT INTO `carrito` VALUES (12,4,6,1);
+INSERT INTO `carrito` VALUES (12,4,6,1),(13,2,7,1);
 /*!40000 ALTER TABLE `carrito` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -134,7 +134,7 @@ CREATE TABLE `direcciones` (
 
 LOCK TABLES `direcciones` WRITE;
 /*!40000 ALTER TABLE `direcciones` DISABLE KEYS */;
-INSERT INTO `direcciones` VALUES (29,2,7,'Direccion test 5','El Salvador','Direccion de prueba',NULL,NULL,1,0,1,1),(30,2,1,'Direccion test 6','El Salvador','Direccion de prueba',NULL,NULL,1,0,1,1),(35,2,12,'Direccion test 7','El Salvador','Direccion de prueba',NULL,NULL,1,0,1,1),(38,2,7,'Punto 1','El Salvador','Linea 1','Linea 2','Referencias',2,0,0,1),(39,2,1,'Punto 2','El Salvador','Linea 1','Linea 2','Referencias',2,0,1,1),(40,2,2,'Punto 3','El Salvador','Linea 1','Linea 2','Referencias',2,0,1,1),(41,2,12,'Punto 4','El Salvador','Linea uno del punto','La linea lel del sos','lorem ipsum dolor sit amet',2,17.5,1,1);
+INSERT INTO `direcciones` VALUES (29,2,7,'Direccion test 5','El Salvador','Direccion de prueba',NULL,NULL,1,0,1,1),(30,2,1,'Direccion test 6','El Salvador','Direccion de prueba',NULL,NULL,1,0,1,1),(35,2,12,'Direccion test 7','El Salvador','Direccion de prueba',NULL,NULL,1,0,1,1),(38,2,7,'Punto 1','El Salvador','Linea 1','Linea 2','Referencias',2,0,1,1),(39,2,1,'Punto 2','El Salvador','Linea 1','Linea 2','Referencias',2,0,1,1),(40,2,2,'Punto 3','El Salvador','Linea 1','Linea 2','Referencias',2,0,1,1),(41,2,12,'Punto 4','El Salvador','Linea uno del punto','La linea lel del sos','lorem ipsum dolor sit amet',2,17.5,1,1);
 /*!40000 ALTER TABLE `direcciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -194,7 +194,7 @@ CREATE TABLE `imgs_prods` (
 
 LOCK TABLES `imgs_prods` WRITE;
 /*!40000 ALTER TABLE `imgs_prods` DISABLE KEYS */;
-INSERT INTO `imgs_prods` VALUES (1,1,'images/productos/lamparas/lampara1_img1.jpg',0),(3,1,'images/productos/lamparas/lampara1_img2.jpg',1),(7,2,'images/productos/lamparas/lampara2_img1.jpg',1),(8,3,'images/productos/lamparas/lampara3_img1.jpg',1),(9,3,'images/productos/lamparas/lampara3_img2.jpg',0);
+INSERT INTO `imgs_prods` VALUES (1,1,'images/productos/lamparas/lampara1_img1.jpg',1),(3,1,'images/productos/lamparas/lampara1_img2.jpg',0),(7,2,'images/productos/lamparas/lampara2_img1.jpg',1),(8,3,'images/productos/lamparas/lampara3_img1.jpg',1),(9,3,'images/productos/lamparas/lampara3_img2.jpg',0);
 /*!40000 ALTER TABLE `imgs_prods` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -396,6 +396,7 @@ CREATE TABLE `usuarios` (
   `imagen` varchar(150) DEFAULT NULL,
   `telefono` varchar(45) DEFAULT NULL,
   `level` tinyint(4) NOT NULL DEFAULT '1',
+  `regDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -406,7 +407,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'fuljencio','Fuljencio Imbecil','Apellidos Prueba','fuljencio@gmail.com','12345',NULL,NULL,1),(2,'edward','Edward Ernesto','Guevara','edwardgvr@gmail.com','asdfg','images/user/profile/user_img_2.jpg',NULL,2),(3,'prueba4','Usuario de prueba','Prueba','prueba@mail.com','asdfg',NULL,'555555',1),(4,'usuario','usuario nombre','prueba apellido','nombre@apellidos.com','usuario',NULL,NULL,1),(5,'test5','registro','prueba','registro@prueba.com','asdfg',NULL,'55555555',1),(6,'test6','usuario','numero6','test6@mail.com','asdfg','images/user/profile/user_img_6.jpg',NULL,1);
+INSERT INTO `usuarios` VALUES (1,'fuljencio','Fuljencio Imbecil','Apellidos Prueba','fuljencio@gmail.com','12345',NULL,NULL,1,'2018-08-21 17:31:15'),(2,'edward','Edward Ernesto','Guevara','edwardgvr@gmail.com','asdfg','images/user/profile/user_img_2.jpg',NULL,2,'2018-08-21 17:31:15'),(3,'prueba4','Usuario de prueba','Prueba','prueba@mail.com','asdfg',NULL,'555555',1,'2018-08-21 17:31:15'),(4,'usuario','usuario nombre','prueba apellido','nombre@apellidos.com','usuario',NULL,NULL,1,'2018-08-21 17:31:15'),(5,'test5','registro','prueba','registro@prueba.com','asdfg',NULL,'55555555',1,'2018-08-21 17:31:15'),(6,'test6','usuario','numero6','test6@mail.com','asdfg','images/user/profile/user_img_6.jpg',NULL,2,'2018-08-21 17:31:15');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -443,4 +444,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-08-10 16:24:38
+-- Dump completed on 2018-08-21 16:06:27

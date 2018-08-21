@@ -89,7 +89,7 @@
                     <article class="punto">
                         <div id="puntosTitle" class="text">
                             <?php if($hayPuntos): ?>
-                                <span>Registrar un nuevo punto de entrega.</span>
+                                <span>Registrar nuevo punto.</span>
                             <?php else: ?>
                                 <span>No hay puntos registrados.</span>
                             <?php endif ?>
@@ -120,7 +120,7 @@
                         <div class="field">
                             <label for="dptoPunto">Departamento:</label>
                             <select name="dptoPunto" id="dptoPunto" required>
-                                <option value="NULL" disabled selected>-- Seleccione un departamento --</option>
+                                <option value="NULL" disabled selected>-- Seleccione --</option>
                                 <?php foreach($departamentos AS $dpto): ?>
                                     <option value="<?= $dpto['id'] ?>"><?= $dpto['nombre'] ?></option>
                                 <?php endforeach ?>

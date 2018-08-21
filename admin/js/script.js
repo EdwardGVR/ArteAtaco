@@ -128,7 +128,7 @@ if (document.title == 'Detalles de pedido') {
 
         formNewPoint.setAttribute("class", "addPoint");
         btnShowForm.setAttribute("class", "hidden");
-        puntoTitle.innerText = "Agregar un nuevo punto de entrega";
+        puntoTitle.innerText = "Datos del punto.";
         puntoTitle.setAttribute("class", "text active");
 
         for (let i = 0; i < btnsActionForm.length; i++) {

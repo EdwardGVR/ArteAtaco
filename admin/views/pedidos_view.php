@@ -36,7 +36,7 @@
             <div class="buttons">
                 <a href="pedidos.php">Pedidos</a>
                 <a href="productos.php">Productos</a>
-                <a href="#">Clientes</a>
+                <a href="clientes.php">Clientes</a>
                 <a href="puntosEntrega.php">Puntos de entrega</a>
             </div>
         </div>
@@ -47,7 +47,7 @@
                 <a href="index.php" title="Ir a inicio"><i class="fa fa-home"></i></a>
                 <a href="../categorias.php" title="Ir a la tienda"><i class="fas fa-store"></i></a>
             </div>
-            <h1>Inicio</h1>
+            <h1>Pedidos</h1>
             <a href="../logout.php" class="logout" title="Cerrar sesion"><i class="fa fa-times-circle"></i></a>
         </div>
         <section>

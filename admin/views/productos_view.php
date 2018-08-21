@@ -36,7 +36,7 @@
             <div class="buttons">
                 <a href="pedidos.php">Pedidos</a>
                 <a href="productos.php">Productos</a>
-                <a href="#">Clientes</a>
+                <a href="clientes.php">Clientes</a>
                 <a href="puntosEntrega.php">Puntos de entrega</a>
             </div>
         </div>

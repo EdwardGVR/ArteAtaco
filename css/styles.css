@@ -731,7 +731,7 @@ figure img {
 }
 
 .contenedor_prod {
-	margin-top: 100px;
+	/* margin-top: 100px; */
 	justify-content: space-around;
 }
 
@@ -742,6 +742,7 @@ figure img {
 	margin: 20px 30px;
 	/* background: #CBF1FB; */
 	width: 200px;
+	height: 380px;
 	padding: 10px;
 	padding-bottom: 0;
 	border-radius: 10px;

@@ -544,6 +544,11 @@ main section .title {
     font-size: 7em;
 }
 
+.clienteList .clienteImg img {
+    height: 100%;
+    border-radius: 5px;
+}
+
 .clienteList .info1 {
     font-size: 1em;
 }
@@ -817,7 +822,8 @@ main section .title {
 .ped_prods .prods .ped_prod {
     display: flex;
     justify-content: flex-start;
-
+    text-decoration: none;
+    color: #000;
     height: 100px;
     width: 30%;
     min-width: 265px;
@@ -867,6 +873,26 @@ main section .title {
     background: #5f9fdb;
     border-radius: 5px;
     margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+.pedido_todos .pedido_body .total .total_sum {
+    margin-right: 0;
+}
+
+.pedido_todos .pedido_body .total .payMethod {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    color: #113054;
+    /* margin-top: 10px; */
+    margin-bottom: 10px;
+}
+
+.pedido_todos .pedido_body .total .payMethod span {
+    border-radius: 5px;
+    border: 2px solid #043164;
+    padding: 5px;
 }
 
 .pedido_todos .pedido_body .total .icon {
@@ -2217,8 +2243,9 @@ main section .title {
     width: calc(100% - 220px);
     min-width: 300px;
     border-radius: 5px;
-    background: #ccc;
+    /* background: #ccc; */
     padding: 10px;
+    padding-top: 0;
     flex-grow: 1;
 }
 
@@ -2236,11 +2263,12 @@ main section .title {
     width: 200px;
     min-width: 200px;
     /* height: 150px; */
-    background: #ccc;
+    /* background: #ccc; */
     margin-right: 20px;
     margin-bottom: 20px;
     border-radius: 5px;
     padding: 10px;
+    padding-top: 0;
 }
 
 .costDetail .data .cosInfo3 {
@@ -2250,6 +2278,7 @@ main section .title {
     flex-wrap: wrap;
     height: auto;
     padding: 10px;
+    padding-top: 0;
 }
 
 .costDetail .data .cosInfo3 .direccion {
@@ -2258,7 +2287,7 @@ main section .title {
     margin-right: 20px;
     /* margin: auto; */
     /* height: 100px; */
-    background: #eee;
+    background: #d5eeff;
     margin-bottom: 20px;
     border-radius: 5px;
     padding: 5px;
@@ -2288,7 +2317,7 @@ main section .title {
     width: 100%;
     padding: 10px 15px;
     border-radius: 5px;
-    background: #ccc;
+    /* background: #ccc; */
 }
 
 .costDetail .data .cosInfo4 .list {
@@ -2302,6 +2331,7 @@ main section .title {
 
 .costDetail .data .cosInfo4 .list div.typeCont {
     width: 45%;
+    min-width: 300px;
 }
 
 .costDetail .data .cosInfo4 .list div.type {

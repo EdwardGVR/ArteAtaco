@@ -148,6 +148,14 @@
                                         <?php $pedidosActivos = 0 ?>
                                         <?php foreach ($pedidosCliente as $orderActive): ?>
                                             <?php if ($orderActive['estado'] != 4): ?>
+                                                <?php 
+                                                    $cost = $orderActive['costoEnvioCompra']; 
+                                                    foreach ($prodsOrders as $prod) {
+                                                        if ($prod['codigo'] == $orderActive['codigo']) {
+                                                            $cost += $prod['precioCompra'];
+                                                        }
+                                                    }
+                                                ?>
                                                 <?php $statusClass = strtolower(str_replace(' ', '', $orderActive['status'])) ?>
                                                 <a class="order <?= $statusClass ?>" href="detallesPedido.php?order=<?= $orderActive['codigo'] ?>">
                                                     <div class="code">
@@ -157,7 +165,7 @@
                                                         <?= $orderActive['status'] ?>
                                                     </div>
                                                     <div class="cost">
-                                                        $00.00
+                                                        $&nbsp;<?= number_format($cost, 2) ?>
                                                     </div>
                                                 </a>
                                                 <?php $pedidosActivos++ ?>
@@ -181,6 +189,14 @@
                                         <?php $pedidosCompletos = 0 ?>
                                         <?php foreach ($pedidosCliente as $orderComplete): ?>
                                             <?php if ($orderComplete['estado'] == 4): ?>
+                                                <?php 
+                                                    $cost = $orderActive['costoEnvioCompra']; 
+                                                    foreach ($prodsOrders as $prod) {
+                                                        if ($prod['codigo'] == $orderActive['codigo']) {
+                                                            $cost += $prod['precioCompra'];
+                                                        }
+                                                    }
+                                                ?>
                                                 <?php $statusClass = strtolower(str_replace(' ', '', $orderComplete['status'])) ?>
                                                 <a class="order <?= $statusClass ?>" href="detallesPedido.php?order=<?= $orderComplete['codigo'] ?>">
                                                     <div class="code">
@@ -190,7 +206,7 @@
                                                         <?= $orderComplete['status'] ?>
                                                     </div>
                                                     <div class="cost">
-                                                        $00.00
+                                                        $&nbsp;<?= number_format($cost, 2) ?>
                                                     </div>
                                                 </a>
                                                 <?php $pedidosCompletos++ ?>

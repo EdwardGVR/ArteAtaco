@@ -70,13 +70,13 @@
                                         <hr>
                                     </div>
                                     <div class="info">
-                                        <div class="imagen">
+                                        <a class="imagen" href="detallesCliente.php?cosId=<?= $pedido['cos_id'] ?>">
                                             <?php if ($pedido['cos_img'] == NULL): ?>
                                                 <i class="fas fa-user fa-2x"></i>
                                             <?php else: ?>
                                                 <img src="../<?= $pedido['cos_img'] ?>" alt="">
                                             <?php endif ?>
-                                        </div>
+                                        </a>
                                         <div class="datos">
                                             <span class="nombres"><?= $pedido['cos_names'] ?></span>
                                             <span class="apellidos"><?= $pedido['cos_apellidos'] ?></span>
@@ -128,7 +128,7 @@
                                                 }
                                             }
                                         ?>
-                                        <div class="ped_prod">
+                                        <a class="ped_prod" href="detallesProducto.php?idProd=<?= $prod['prod_id'] ?>">
                                             <?php if ($imgsCounter > 0): ?>
                                                 <img src="../<?= $imgPath ?>" alt="x" class="imagen">
                                             <?php else: ?>
@@ -142,13 +142,16 @@
                                                 <span class="cant"><?= $prod['cantidad'] ?>x</span>
                                                 <span class="precio">$<?= number_format($prod['precioCompra'], 2) ?></span>
                                             </div>
-                                        </div>
+                                        </a>
                                         <?php $subtotal += $prod['precioCompra'] ?>  
                                     <?php endif ?>
                                 <?php endforeach ?>                                                      
                             </div>                                       
                         </div>
                         <div class="total">
+                            <div class="payMethod">
+                                <span><?= $pedido['pay_method'] ?></span>
+                            </div>
                             <div class="envio">
                                 <div class="icon"><i class="fas fa-tags fa-lg"></i></div>
                                 <div class="mount">

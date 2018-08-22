@@ -36,7 +36,7 @@ if ($conexion != false) {
 		$direccionesCliente = $query->fetchall();
 
 		$query = $conexion->prepare("
-			SELECT pedidos.codigo, pedidos.estado, order_status.status FROM pedidos 
+			SELECT pedidos.codigo, pedidos.estado, pedidos.costoEnvioCompra, order_status.status FROM pedidos 
 			JOIN order_status ON pedidos.estado = order_status.id
 			WHERE id_user = :cosId 
 			GROUP BY pedidos.codigo
@@ -44,6 +44,10 @@ if ($conexion != false) {
 		");
 		$query->execute(array(':cosId' => $costumerId));
 		$pedidosCliente = $query->fetchall();
+
+		$query = $conexion->prepare("SELECT codigo, precioCompra FROM pedidos");
+		$query->execute();
+		$prodsOrders = $query->fetchall();
 	} else {
 		$datosCliente = false;
 	}

@@ -29,13 +29,15 @@
                     direcciones.referencias AS dir_refs,
                     tipo_direccion.tipo AS dir_tipo, 
                     direcciones.disponible AS dir_disponible,
-                    order_status.status AS status
+                    order_status.status AS status,
+                    metodos_pago.nombre AS pay_method
             FROM pedidos
             JOIN direcciones ON pedidos.id_direccion = direcciones.id
             JOIN usuarios ON pedidos.id_user = usuarios.id
             JOIN departamentos ON direcciones.id_departamento = departamentos.id
             JOIN tipo_direccion ON direcciones.id_tipo = tipo_direccion.id
             JOIN order_status ON pedidos.estado = order_status.id
+            JOIN metodos_pago ON pedidos.id_pago = metodos_pago.id
             WHERE pedidos.codigo = :order
             GROUP BY pedidos.codigo
             ORDER BY pedidos.fecha DESC

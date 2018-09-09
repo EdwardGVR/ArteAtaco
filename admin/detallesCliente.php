@@ -22,6 +22,19 @@ if ($conexion != false) {
 
 		if ($datosClienteResult != false) {
 			$datosCliente = $datosClienteResult;
+			$shortName = "";
+			$spacePos = strpos($datosCliente['nombres'], " ");
+			if ($spacePos != false) {
+				$shortName .= substr($datosCliente['nombres'], 0, $spacePos) . " ";
+			} else {
+				$shortName .= $datosCliente['nombres'] . " ";
+			}
+			$spacePos = strpos($datosCliente['apellidos'], " ");
+			if ($spacePos != false) {
+				$shortName .= substr($datosCliente['apellidos'], 0, $spacePos);
+			} else {
+				$shortName .= $datosCliente['apellidos'];
+			}
 		} else {
 			$datosCliente = false;
 		}

@@ -1835,7 +1835,7 @@ main section .title {
 }
 
 .contenedor_puntos .punto.activo {
-    background: #365272;
+    background: #bee1f5;
 }
 
 .contenedor_puntos .punto:hover {
@@ -1856,14 +1856,14 @@ main section .title {
     /* background: #e4f9ff; */
     background: none;
     border: 2px solid #006eff;
-    color: #fff;
+    color: #000;
 }
 
 .contenedor_puntos .punto .title hr {
     width: 100%;
     height: 2px;
     margin: 5px 0;
-    background: #fff;
+    background: #000;
 }
 
 .contenedor_puntos .punto .title .nombre {
@@ -1912,8 +1912,8 @@ main section .title {
 }
 
 .contenedor_puntos .punto.activo .body .info .value {
-    background: #3c73b3;
-    color: #fff;
+    background: #9ecdec;
+    color: #000;
 }
 
 .contenedor_puntos .punto .body .details {
@@ -1959,7 +1959,7 @@ main section .title {
 }
 
 .contenedor_puntos .punto.activo .options .toggle .status {
-    background: #73e673;
+    background: #58da58;
 }
 
 .contenedor_puntos .punto .options .editOptions {
@@ -1974,14 +1974,14 @@ main section .title {
     width: 30px;
     height: 30px;
     border-radius: 5px;
-    background: #ccc;
+    background: #979797;
     cursor: pointer;
     transition: all ease 0.3s;
 }
 
 .contenedor_puntos .punto .options .toggle .btn:hover,
 .contenedor_puntos .punto .options .editOptions .btn:hover {
-    background: #aaa;
+    background: #797979;
 }
 
 .contenedor_puntos .punto .options .editOptions .delete:hover {
@@ -2180,6 +2180,12 @@ main section .title {
     margin: auto;
     margin-top: 50px;
     /* background: #ccc; */
+}
+
+.costDetail .noOrders {
+    padding: 5px;
+    border-radius: 5px;
+    background: #ccc;
 }
 
 .costDetail .title {

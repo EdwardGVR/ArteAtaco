@@ -48,7 +48,7 @@
                 <a href="index.php" title="Ir a inicio"><i class="fa fa-home"></i></a>
                 <a href="../categorias.php" title="Ir a la tienda"><i class="fas fa-store"></i></a>
             </div>
-            <h1>Cliente</h1>
+            <h1><?= $shortName ?></h1>
             <a href="../logout.php" class="logout" title="Cerrar sesion"><i class="fa fa-times-circle"></i></a>
         </div>
         <?php if ($datosCliente != false): ?>
@@ -175,7 +175,7 @@
                                                 <span>No hay pedidos activos</span>
                                             <?php endif ?>
                                     <?php else:?>
-                                        No hay pedidos.
+                                        <span class="noOrders">No hay pedidos.</span>
                                     <?php endif ?>
                                 </div>
                             </div>
@@ -216,7 +216,7 @@
                                             <span>No hay pedidos completos</span>
                                         <?php endif ?>
                                     <?php else:?>
-                                        No hay pedidos.
+                                        <span class="noOrders">No hay pedidos.</span>
                                     <?php endif ?>
                                 </div>
                             </div>

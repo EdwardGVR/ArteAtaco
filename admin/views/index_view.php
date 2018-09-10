@@ -5,42 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">   
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <title>ArteAteataco :: Admin</title>
 </head>
 <body>
-    <div class="nav_hidden"></div>
-    <nav>
-        <div class="side_bar">
-            <div class="side_user_info"></div>
-            <div class="side_icons">
-                <div class="side_icon"><i class="fas fa-shopping-bag"></i></div>
-                <div class="side_icon"><i class="fas fa-cubes"></i></div>
-                <div class="side_icon"><i class="fas fa-users"></i></div>
-                <div class="side_icon"><i class="fas fa-truck"></i></div>
-            </div>
-        </div>
-        <div class="options">
-            <div class="user_info">
-                <div class="image">
-                    <img src="<?= '../' . $userImg ?>" alt="usrimg">
-                </div>
-                <div class="data">
-                    <span class="nombre"><?= $userName ?></span>
-                    <hr>
-                    <span>Administrador</span>
-                </div>
-            </div>
-
-            <div class="buttons">
-                <a href="pedidos.php">Pedidos</a>
-                <a href="productos.php">Productos</a>
-                <a href="clientes.php">Clientes</a>
-                <a href="puntosEntrega.php">Puntos de entrega</a>
-            </div>
-        </div>
-    </nav>
+    <?php require "side_bar_view.php" ?>
     <main>
         <div class="bar">
             <div class="homeStoreBtns">

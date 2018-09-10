@@ -11,37 +11,7 @@
     <title>Detalles cliente</title>
 </head>
 <body>
-    <div class="nav_hidden"></div>
-    <nav>
-        <div class="side_bar">
-            <div class="side_user_info"></div>
-            <div class="side_icons">
-                <div class="side_icon"><i class="fas fa-shopping-bag"></i></div>
-                <div class="side_icon"><i class="fas fa-cubes"></i></div>
-                <div class="side_icon"><i class="fas fa-users"></i></div>
-                <div class="side_icon"><i class="fas fa-truck"></i></div>
-            </div>
-        </div>
-        <div class="options">
-            <div class="user_info">
-                <div class="image">
-                <img src="<?= '../' . $userImg ?>" alt="usrimg">
-                </div>
-                <div class="data">
-                    <span class="nombre"><?= $userName ?></span>
-                    <hr>
-                    <span>Administrador</span>
-                </div>
-            </div>
-
-            <div class="buttons">
-                <a href="pedidos.php">Pedidos</a>
-                <a href="productos.php">Productos</a>
-                <a href="clientes.php">Clientes</a>
-                <a href="puntosEntrega.php">Puntos de entrega</a>
-            </div>
-        </div>
-    </nav>
+    <?php require "side_bar_view.php" ?>
     <main>
         <div class="bar">
             <div class="homeStoreBtns">

@@ -360,6 +360,10 @@ main .bar a {
     transition: all ease 0.3s;
 }
 
+main .bar a.logout {
+    margin-right: 0;
+}
+
 main .bar a:hover {
     border-radius: 50%;
     font-size: 1.8em;
@@ -2552,10 +2556,88 @@ main section .title {
 .contPay .payMethod {
     display: flex;
     justify-content: center;
-    align-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin: auto;
     width: 300px;
     height: 200px;
-    background: #e6f4fa;
+    padding: 10px;
+    background: #e6f4fa ;
     border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
     box-shadow: 0 1px 4px #000;
+    transition: all ease 0.3s;
+}
+
+.contPay .payMethod:hover {
+    box-shadow: 0 1px 10px #000;
+}
+
+.contPay .payMethod::after {
+    content: "";
+    position: absolute;
+    top: 30%;
+    left: 0;
+    z-index: 10;
+    min-width: 500px;
+    height: 100%;
+    background: #75c0e0;
+    opacity: 0.2;
+    box-shadow: 0px -1px 3px #000;
+    transform: rotate(-33deg);
+    transition: all ease 0.3s;
+}
+
+.contPay .payMethod:hover::after {
+    /* top: 25%; */
+    transform: rotate(-28deg);
+}
+
+.contPay .payMethod .name {
+    padding: 10px;
+    max-width: 270px;
+    overflow-x: hidden;
+    border-radius: 5px;
+    background: #043164;
+    color: #fff;
+    font-weight: 600;
+}
+
+.contPay .payMethod .status {
+    padding-left: 18px;
+    width: 100%;
+    position: relative;
+    font-style: italic;
+    color: #000;
+}
+
+.contPay .payMethod .status .activo::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    background: #22d86e;
+    border-radius: 50%;
+    animation: pulse 6s linear 0s infinite;
+}
+
+.contPay .payMethod .status .inactivo::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    background: #929292;
+    border-radius: 50%;
+    animation: pulse 6s linear 0s infinite;
+}
+
+@keyframes pulse {
+    80%  { opacity: 0.1; }
 }

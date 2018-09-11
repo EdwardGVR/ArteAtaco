@@ -14,7 +14,9 @@ $userImg = $userData['imagen'];
 if ($conexion != false) {
 
     // Obtener los metodos de pago
-    
+    $query = $conexion->prepare("SELECT * FROM metodos_pago");
+    $query->execute();
+    $methods = $query->fetchall();
 }
 
 require "views/pay_methods_view.php";

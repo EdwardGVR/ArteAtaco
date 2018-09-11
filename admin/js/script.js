@@ -14,7 +14,7 @@ function getCookie(cname) {
 	return "";
 }
 
-console.log(getCookie("navStatus"));
+
 
 if (document.title == 'Detalles de pedido') {
 

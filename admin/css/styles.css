@@ -221,6 +221,7 @@ nav .options {
 nav .options.hidden {
     display: inline-block;
     width: 1%;
+    opacity: 0;
     height: auto;
     transition: all ease 1s;
 }

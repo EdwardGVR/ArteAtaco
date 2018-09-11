@@ -187,7 +187,7 @@ nav .side_bar {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 60px;
+    height: 50px;
     width: 100%;
     /* background: #000; */
     border-bottom: 2px solid #ccc;
@@ -294,12 +294,14 @@ nav .options.hidden {
 .options .buttons a {
     display: inline-block;
     width: 100%;
-    height: 60px;
+    height: 50px;
+    line-height: 10px;
     text-decoration: none;
     color: #fff;
-    padding: 19px 30px;
+    padding: 19px 10px;
     font-size: 0.9em;
     /* background: #365C8A; */
+    overflow: hidden;
     margin-bottom: 10px;
     border-bottom: 2px solid #fff;
     transition: border ease 0.3s;
@@ -329,7 +331,7 @@ main .bar {
     min-width: 400px;
     height: 60px;
     margin-bottom: 20px;
-    padding: 0 20px;
+    padding: 0 50px;
     background: #040b29;
     color: #fff;
     text-align: center;
@@ -379,16 +381,17 @@ main section {
 
 main section .title {
     width: 100%;
+    padding: 50px;
 }
 
 .title h2 {
     width: 100%;
-    padding-left: 5%;
+    /* padding-left: 5%; */
     margin: auto;
 }
 
 .title hr {
-    width: 90%;
+    width: 100%;
     height: 5px;
     margin: 20px auto;
     margin-bottom: 20px;
@@ -399,12 +402,15 @@ main section .title {
 .contenedor_pedidos,
 .contenedor_productos,
 .contenedor_puntos,
-.contenedorClientes {
+.contenedorClientes,
+.contPay {
     display: flex;
     justify-content: space-between;
+    align-content: flex-start;
     flex-wrap: wrap;
     margin: auto;
     width: 100%;
+    min-height: 500px;
     padding: 50px;
     padding-bottom: 0;
 }
@@ -2540,4 +2546,15 @@ main section .title {
     background: #797777;
     color: #4de08a;
     border-radius: 0 0 5px 5px;
+}
+
+.contPay .payMethod {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 300px;
+    height: 200px;
+    background: #e6f4fa;
+    border-radius: 5px;
+    box-shadow: 0 1px 4px #000;
 }

@@ -2641,3 +2641,156 @@ main section .title {
 @keyframes pulse {
     80%  { opacity: 0.1; }
 }
+
+.contPay .dets {
+    display: flex;
+    flex-wrap: wrap;
+    background: #324f70;
+    color: #fff;
+    padding: 10px;
+    margin: auto;
+    border-radius: 5px;
+    width: 80%;
+    min-width: 330px;
+}
+
+.contPay .dets > div {
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+    /* border-bottom: 2px solid #ffffff; */
+    /* box-shadow: 0 2px 3px #fff; */
+    padding: 0 10px;
+}
+
+.contPay .dets > div:last-child {
+    margin-bottom: 0;
+}
+
+.contPay .dets .name {
+    justify-content: space-between;
+}
+
+.contPay .dets .iconSec {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.contPay .dets .edit {
+    padding: 2px;
+    background: #abd9f3;
+    border-radius: 5px;
+    width: 70px;
+    color: #000;
+    text-align: center;
+    /* margin-top: 5px; */
+    font-size: 13px;
+    cursor: pointer;
+    transition: all ease 0.3s;
+}
+
+.contPay .dets .edit:hover {
+    background: #57b3e7;
+}
+
+.contPay .dets .iconSec .iconsCurrentNew {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.contPay .dets .iconSec .arrow {
+    margin-right: 20px;
+    font-size: 3em;
+}
+
+.contPay .dets .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    background: #fff;
+    color: #000;
+    border-radius: 5px;
+    font-size: 4em;
+    margin-right: 20px; 
+}
+
+.contPay .dets .setIcon {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: flex-end; */
+    flex-grow: 1;
+    width: 250px;
+    min-width: 200px;
+    /* height: 100px; */
+    max-height: 150px;
+    font-size: 0.9em;
+}
+
+.contPay .dets .setIcon .infoIcon {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.contPay .dets .setIcon .inputs {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.contPay .dets .setIcon .inputs.hidden {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.contPay .dets .setIcon .inputs span {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.contPay .dets .setIcon .buttons {
+    display: flex;
+}
+
+.contPay .dets #iconCode,
+.contPay .dets #setNewIcon,
+.contPay .dets .cancel {
+    min-width: 250px;
+    height: 30px;
+    /* display: block; */
+    padding: 5px;
+    border: none;
+    border-radius: 50px;
+    margin-bottom: 5px;
+    margin-right: 20px;
+}
+
+.contPay .dets #iconCode:focus {
+    border: 3px solid #0084ff;
+}
+
+.contPay .dets #setNewIcon,
+.contPay .dets .cancel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #7fb3e4;
+    color: #000;
+    min-width: 100px;
+    text-align: center;
+    font-size: 1em;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: all ease 0.3s;
+}
+
+.contPay .dets #setNewIcon:hover {
+    background: #94fabe;
+}
+
+.contPay .dets .cancel:hover {
+    background: #fa9494;
+}

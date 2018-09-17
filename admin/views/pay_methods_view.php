@@ -29,7 +29,7 @@
                 <?php if ($methods != false): ?>
                     <?php foreach ($methods as $method): ?>
                         <?php $status = ($method['status'] == 1) ? "activo" : "inactivo" ?>
-                        <a href="#?payMethod=<?= $method['id'] ?>" class="payMethod">
+                        <a href="detPayMethod.php?payMethod=<?= $method['id'] ?>" class="payMethod">
                             <div class="status"><span class="<?= $status ?>"><?= $status ?></span></div>
                             <div class="name"><?= $method['nombre'] ?></div>
                         </a>

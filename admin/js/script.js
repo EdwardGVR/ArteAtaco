@@ -165,4 +165,72 @@ if (document.title == 'Detalles de pedido') {
             inputCostoEntrega.setAttribute("type", "number");
         });
     });
+} else if (document.title == "Detalles metodo") {
+    console.info("Pagina detalles de metodo de pago");
+    
+    editBtns = [...document.querySelectorAll(".edit")],
+    cancelBtns = [...document.querySelectorAll(".cancel")];
+
+    for (let i =0; i < editBtns.length; i++) {
+        editBtns[i].addEventListener("click", () => {
+             for (let j = 0; j < editBtns.length; j++) {
+                editBtns[j].classList.add("hidden");
+             }
+
+             if (editBtns[i].getAttribute("id") == "editIcon") {
+                console.log(editBtns[i].getAttribute("id"));
+    
+                iconForm = document.getElementById("iconForm"),
+                arrowIcon = document.getElementById("arrowIcon"),
+                newIcon = document.getElementById("newIcon"),
+                newIconPreview = document.getElementById("newIconPreview"),
+                iconCode = document.getElementById("iconCode"),
+                setNewIcon = document.getElementById("setNewIcon"),
+                currentIcon = document.getElementById("currentIcon"),
+                eqIcons = document.getElementById("eqIcons");
+
+                currIconClass = currentIcon.children[0].attributes.class.value;
+                console.log(currIconClass);
+                
+
+                arrowIcon.classList.remove("hidden");
+                newIcon.classList.remove("hidden");
+                iconForm.classList.remove("hidden");
+                
+                iconCode.addEventListener("keyup", () => {
+                    if (iconCode.value.substring(0, 8) == '<i class') {
+                        codeArr = iconCode.value.split('<');
+                        icon = iconCode.value.substring(iconCode.value.lastIndexOf(">") +1, 0);
+
+                        if (codeArr.length == 3) {
+                            newIconPreview.innerHTML = icon;
+                            iconCode.value = icon;
+                        }
+                    }
+                    if (iconCode.value != "") {
+                        if (newIconPreview.children[0].attributes.class.value != "fas fa-question-circle") {
+                            if (newIconPreview.children[0].attributes.class.value != currIconClass) {
+                                setNewIcon.classList.remove("hidden");
+                                setNewIcon.removeAttribute("disabled");
+                                eqIcons.classList.add("hidden");
+                            } else {
+                                setNewIcon.classList.add("hidden");
+                                eqIcons.classList.remove("hidden");
+                            }
+                        } else {
+                            setNewIcon.classList.add("hidden");
+                        }
+                    } else {
+                        setNewIcon.classList.add("hidden");
+                    }
+                });
+            }
+        });
+    }
+
+    for (let i = 0; i < cancelBtns.length; i++) {
+        cancelBtns[i].addEventListener("click", () => {
+            location.reload(true);
+        });
+    }
 }

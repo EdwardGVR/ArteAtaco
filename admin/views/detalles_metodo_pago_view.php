@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-    <title>ArteAteataco :: Admin</title>
+    <title>Detalles metodo</title>
 </head>
 <body>
     <?php require "side_bar_view.php" ?>
@@ -25,38 +25,39 @@
                 <?php if ($methodDet != false): ?>
                     <div class="dets">
                         <div class="name">
-                            <span>Nombre del metodos</span>
+                            <span><?= $methodDet['nombre'] ?></span>
                             <div class="edit hidden" id="editName"><i class="fas fa-pen-square"></i> Editar</div>
                         </div>
                         <div class="iconSec">
                             <div class="iconsCurrentNew">
                                 <div class="currentIcon">
-                                    <div class="icon"><i class="fas fa-money-bill-alt"></i></div>
+                                    <div class="icon" id="currentIcon"><i class="<?= $methodDet['icon'] ?>"></i></div>
                                 </div>
-                                <div class="arrow hidden">
+                                <div class="arrow hidden" id="arrowIcon">
                                     <i class="fas fa-arrow-alt-circle-right"></i>
                                 </div>
-                                <div class="currentIcon hidden">
-                                    <div class="icon"><i class="fas fa-question-circle"></i></div>
+                                <div class="currentIcon hidden" id="newIcon">
+                                    <div class="icon" id="newIconPreview"><i class="fas fa-question-circle"></i></div>
                                 </div>
                             </div>
                             <form action="" class="setIcon" method="POST">
                                 <div class="infoIcon">
-                                    <span>C&oacute;digo del &iacute;cono actual: <?= htmlspecialchars("<i class=\"fas fa-money-bill-alt\"></i>") ?></span>
-                                    <span class="edit" id="editIcon"><i class="fas fa-pen-square"></i> Editar</span>
+                                    <span>C&oacute;digo del &iacute;cono actual: <?= htmlspecialchars("<i class=\"" . $methodDet['icon'] . "\"></i>") ?></span>
+                                    <span class="edit" id="editIcon"><i class="fas fa-pen-square"></i> Editar</span>    
                                 </div>
-                                <div class="inputs hidden">
-                                    <span>Ingrese el c&oacute;digo del nuevo &iacute;cono</span>
+                                <div class="inputsIcon hidden" id="iconForm">
+                                    <span>Ingrese el c&oacute;digo del nuevo &iacute;cono, puedes elegirlos desde <a href="https://fontawesome.com/icons?q=money" target="_blank">fontawesome</a></span>
                                     <input type="text" name="iconCode" id="iconCode" placeholder="<?= htmlspecialchars("<i class=\"fas fa-money-bill-alt\"></i>") ?>">
                                     <div class="buttons">
-                                        <input type="submit" value="Aceptar" id="setNewIcon">
+                                        <input class="hidden" type="submit" value="Aceptar" id="setNewIcon" name="setNewIcon" disabled="">
                                         <div class="cancel">Cancelar</div>
                                     </div>
+                                    <span class="eqIcons hidden" id="eqIcons">Los &iacute;conos son iguales, por favor elige otro</span>
                                 </div>
                             </form>
                         </div>
                         <div class="options">
-                            <div class="opt">Editar</div>
+                            <!-- <div class="opt">Editar</div> -->
                             <div class="opt">Deshabilitar</div>
                             <div class="opt">Eliminar</div>
                         </div>
@@ -67,5 +68,7 @@
             </div>
         </section>
     </main>
+
+    <script src="js/script.js"></script>
 </body>
 </html>

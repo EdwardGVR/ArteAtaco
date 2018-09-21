@@ -22,6 +22,22 @@ if ($conexion != false) {
         $methodDet = false;
     }
 
+    if (isset($_POST['setNewIcon'])) {
+        $newIcon = $_POST['iconCode'];        
+        $startClassPos = strpos($newIcon, "class=");
+        $endClassPos = strpos($newIcon, "></i>");
+
+        $newIcon = substr($newIcon, $startClassPos+7);
+        $newIcon = substr($newIcon, 0, $endClassPos-11);
+
+        $query = $conexion->prepare("UPDATE metodos_pago SET icon = :newIcon WHERE id = :idPay");
+        $query->execute(array(
+            ':newIcon' => $newIcon,
+            ':idPay' => $payMethodId
+        ));
+
+        header("Location: detPayMethod.php?payMethod=$payMethodId");
+    }
 }
 
 require "views/detalles_metodo_pago_view.php";

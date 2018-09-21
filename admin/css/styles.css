@@ -2697,11 +2697,32 @@ main section .title {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+    overflow: hidden;
 }
 
 .contPay .dets .iconSec .arrow {
     margin-right: 20px;
-    font-size: 3em;
+    font-size: 2em;
+    width: 50px;
+    text-align: center;
+    animation: rotate-arrow 2s linear 0s infinite
+}
+
+@keyframes rotate-arrow {
+    0% {
+        /* transform: rotate(0deg); */
+        /* font-size: 3em; */
+        /* transform: scaleX(1); */
+    }
+    50% {
+        /* transform: rotate(180deg); */
+        font-size: 1.5em;
+        transform: scaleX(-1);
+    }
+    100% {
+        /* transform: rotate(360deg); */
+        /* font-size: 3em; */
+    }
 }
 
 .contPay .dets .icon {
@@ -2715,6 +2736,11 @@ main section .title {
     border-radius: 5px;
     font-size: 4em;
     margin-right: 20px; 
+}
+
+.contPay .dets #newIcon .icon > i {
+    width: auto;
+    height: auto;
 }
 
 .contPay .dets .setIcon {
@@ -2735,24 +2761,34 @@ main section .title {
     margin-bottom: 20px;
 }
 
-.contPay .dets .setIcon .inputs {
+.contPay .dets .setIcon .inputsIcon {
     display: flex;
     flex-wrap: wrap;
 }
 
-.contPay .dets .setIcon .inputs.hidden {
+.contPay .dets .setIcon .inputsIcon.hidden {
     display: none;
     opacity: 0;
     visibility: hidden;
 }
 
-.contPay .dets .setIcon .inputs span {
+.contPay .dets .setIcon .inputsIcon span {
     width: 100%;
     margin-bottom: 5px;
 }
 
+.contPay .dets .setIcon .inputsIcon span a {
+    color: #fff;
+}
+
 .contPay .dets .setIcon .buttons {
     display: flex;
+}
+
+.contPay .dets .setIcon .inputsIcon span.eqIcons {
+    font-size: 0.9em;
+    font-style: italic;
+    color: #fa9494;
 }
 
 .contPay .dets #iconCode,
@@ -2791,6 +2827,14 @@ main section .title {
     background: #94fabe;
 }
 
+.contPay .dets #setNewIcon.hidden {
+    display: none;
+}
+
 .contPay .dets .cancel:hover {
     background: #fa9494;
+}
+
+.hidden {
+    display: none;
 }

@@ -220,7 +220,7 @@ CREATE TABLE `metodos_pago` (
 
 LOCK TABLES `metodos_pago` WRITE;
 /*!40000 ALTER TABLE `metodos_pago` DISABLE KEYS */;
-INSERT INTO `metodos_pago` VALUES (1,'Transferencia bancaria','fa fa-university',1),(2,'M&eacute;todo 2','fa fa-money',1),(3,'M&eacute;todo 3','fa fa-money',0);
+INSERT INTO `metodos_pago` VALUES (1,'Transferencia bancaria','fab fa-bitcoin',1),(2,'M&eacute;todo 2','fas fa-money-check-alt',1),(3,'M&eacute;todo 3','fas fa-hand-holding-usd',0);
 /*!40000 ALTER TABLE `metodos_pago` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -445,4 +445,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-09-11 14:05:42
+-- Dump completed on 2018-09-21 15:56:34

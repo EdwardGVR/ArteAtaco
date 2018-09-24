@@ -38,6 +38,20 @@ if ($conexion != false) {
 
         header("Location: detPayMethod.php?payMethod=$payMethodId");
     }
+
+    if (isset($_POST['saveNewName'])) {
+        $newName = $_POST['newName'];
+        $newName = trim($newName);
+        $newName = htmlspecialchars($newName);
+
+        $query = $conexion->prepare("UPDATE metodos_pago SET nombre = :newMethodName WHERE id = :idPay");
+        $query->execute(array(
+            ':newMethodName' => $newName,
+            ':idPay' => $payMethodId
+        ));
+
+        header("Location: detPayMethod.php?payMethod=$payMethodId");
+    }
 }
 
 require "views/detalles_metodo_pago_view.php";

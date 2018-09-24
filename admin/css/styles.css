@@ -2669,6 +2669,72 @@ main section .title {
 
 .contPay .dets .name {
     justify-content: space-between;
+    max-height: 30px;
+}
+
+.contPay .dets .name form {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.contPay .dets .name form .nameEdit {
+    display: flex;
+    align-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.contPay .dets .name .newName {
+    background: #fff;
+    font-size: 1.3em;
+    color: #000;
+    border: none;
+    height: 30px;
+    padding: 0 10px;
+    border-radius: 50px;
+}
+
+.contPay .dets .name .newName:focus {
+    border: 2px solid #006eff;
+}
+
+.contPay .dets .name .newName[disabled] {
+    background: none;
+    font-size: 1.3em;
+    color: #fff;
+    border: none;
+}
+
+.contPay .dets .name .saveNewName,
+.contPay .dets .name .cancel {
+    width: 100px;
+    height: 30px;
+    margin-left: 20px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1em;
+    background: #7fb3e4;
+    cursor: pointer;
+    transition: all ease 0.3s;
+}
+
+.contPay .dets .name .cancel.hidden {
+    display: none;
+}
+
+.contPay .dets .name .saveNewName:hover {
+    background: #94fabe;
+}
+
+.contPay .dets .name .saveNewName[disabled] {
+    display: none;
+}
+
+.contPay .dets .name .errMsg {
+    width: 100%;
+    font-size: 0.8em;
+    color: #fa9494;
+    font-style: italic;
 }
 
 .contPay .dets .iconSec {
@@ -2681,6 +2747,7 @@ main section .title {
     background: #abd9f3;
     border-radius: 5px;
     width: 70px;
+    height: 20px;
     color: #000;
     text-align: center;
     /* margin-top: 5px; */

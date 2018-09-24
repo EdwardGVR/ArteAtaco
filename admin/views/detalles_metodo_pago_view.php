@@ -25,8 +25,15 @@
                 <?php if ($methodDet != false): ?>
                     <div class="dets">
                         <div class="name">
-                            <span><?= $methodDet['nombre'] ?></span>
-                            <div class="edit hidden" id="editName"><i class="fas fa-pen-square"></i> Editar</div>
+                            <form action="" method="POST">
+                                <div class="nameEdit">
+                                    <input id="newName" name="newName" type="text" class="newName" value="<?= $methodDet['nombre'] ?>" disabled>
+                                    <input id="saveNewName" type="submit" class="saveNewName hidden" value="Aceptar" name="saveNewName" disabled>
+                                    <div id="cancelName" class="cancel hidden">Cancelar</div>
+                                    <span id="errMsg" class="errMsg hidden">Este es el nombre actual, por favor elige otro.</span>
+                                </div>
+                                <div class="edit" id="editName"><i class="fas fa-pen-square"></i> Editar</div>
+                            </form>
                         </div>
                         <div class="iconSec">
                             <div class="iconsCurrentNew">

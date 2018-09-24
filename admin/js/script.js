@@ -175,9 +175,10 @@ if (document.title == 'Detalles de pedido') {
         editBtns[i].addEventListener("click", () => {
              for (let j = 0; j < editBtns.length; j++) {
                 editBtns[j].classList.add("hidden");
+                // cancelBtns[j].classList.remove("hidden");
              }
 
-             if (editBtns[i].getAttribute("id") == "editIcon") {
+            if (editBtns[i].getAttribute("id") == "editIcon") {
                 console.log(editBtns[i].getAttribute("id"));
     
                 iconForm = document.getElementById("iconForm"),
@@ -222,6 +223,32 @@ if (document.title == 'Detalles de pedido') {
                         }
                     } else {
                         setNewIcon.classList.add("hidden");
+                    }
+                });
+            } else if (editBtns[i].getAttribute("id") == "editName") {
+                let newNameInput = document.getElementById("newName"),
+                    saveNewName = document.getElementById("saveNewName"),
+                    sameName = document.getElementById("errMsg"),
+                    cancelName = document.getElementById("cancelName");
+
+                newNameInput.removeAttribute("disabled");
+                saveNewName.removeAttribute("disabled");
+                cancelName.classList.remove("hidden");
+
+                currentName = newNameInput.value;
+
+                newNameInput.addEventListener("keyup", () => {
+                    if (newNameInput.value.trim() != "") {
+                        newNameTrimed = newNameInput.value.trim();
+                        if (newNameTrimed != currentName) {
+                            sameName.classList.add("hidden");
+                            saveNewName.classList.remove("hidden");
+                        } else {
+                            sameName.classList.remove("hidden");
+                            saveNewName.classList.add("hidden");
+                        }
+                    } else {
+                        saveNewName.classList.add("hidden");
                     }
                 });
             }

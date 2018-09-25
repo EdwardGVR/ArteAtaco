@@ -21,12 +21,12 @@
             <a href="../logout.php" class="logout" title="Cerrar sesion"><i class="fa fa-times-circle"></i></a>
         </div>
         <section>
-            <div class="title">
-                <h2>Todos los m&eacute;todos de pago</h2>
-                <hr>
-            </div>
-            <div class="contPay">
-                <?php if ($methods != false): ?>
+            <?php if ($methods != false): ?>
+                <div class="title">
+                    <h2>Todos los m&eacute;todos de pago</h2>
+                    <hr>
+                </div>
+                <div class="contPay">
                     <?php foreach ($methods as $method): ?>
                         <?php $status = ($method['status'] == 1) ? "activo" : "inactivo" ?>
                         <a href="detPayMethod.php?payMethod=<?= $method['id'] ?>" class="payMethod">
@@ -34,10 +34,12 @@
                             <div class="name"><?= $method['nombre'] ?></div>
                         </a>
                     <?php endforeach ?>
-                <?php else: ?>
-
-                <?php endif ?>
-            </div>
+            <?php else: ?>
+                <div class="noPayMethods">
+                    No hay metodos de pago registrados.
+                </div>
+            <?php endif ?>
+                </div>
         </section>
     </main>
 </body>

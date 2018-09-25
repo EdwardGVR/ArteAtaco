@@ -63,11 +63,15 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="options">
-                            <!-- <div class="opt">Editar</div> -->
-                            <div class="opt">Deshabilitar</div>
-                            <div class="opt">Eliminar</div>
-                        </div>
+                        <form action="" class="options" method="POST">
+                            <input type="hidden" name="currentStatus" value="<?= $methodDet['status'] ?>">
+                            <?php if ($methodDet['status'] == 1): ?>
+                                <input type="submit" name="toggleStatus" class="opt disable" value="Deshabilitar">
+                            <?php else: ?>
+                                <input type="submit" name="toggleStatus" class="opt enable" value="Habilitar">
+                            <?php endif ?>
+                            <input id="deleteMethod" type="submit" name="deleteMethod" class="opt delete" value="Eliminar">
+                        </form>
                     </div>
                 <?php else: ?>
                     <span>No se encontro</span>

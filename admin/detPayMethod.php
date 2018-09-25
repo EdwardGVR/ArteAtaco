@@ -15,7 +15,7 @@ $payMethodId = (isset($_GET['payMethod'])) ? $_GET['payMethod'] : false;
 if ($conexion != false) {
     if ($payMethodId != false) {
         // Obtener detalles del metodo de pago
-        $query = $conexion->prepare("SELECT * FROM metodos_pago WHERE id = :idPay");
+        $query = $conexion->prepare("SELECT * FROM metodos_pago WHERE id = :idPay AND deleted = 0");
         $query->execute(array('idPay' => $payMethodId));
         $methodDet = $query->fetch();
     } else {
@@ -51,6 +51,27 @@ if ($conexion != false) {
         ));
 
         header("Location: detPayMethod.php?payMethod=$payMethodId");
+    }
+
+    if (isset($_POST['toggleStatus'])) {
+        $currentStatus = $_POST['currentStatus'];
+        
+        if ($currentStatus == 1) {
+            $query = $conexion->prepare("UPDATE metodos_pago SET status = 0 WHERE id = :idPay");
+            $query->execute(array(':idPay' => $payMethodId));
+        } else if ($currentStatus == 0) {
+            $query = $conexion->prepare("UPDATE metodos_pago SET status = 1 WHERE id = :idPay");
+            $query->execute(array(':idPay' => $payMethodId));
+        }
+
+        header("Location: detPayMethod.php?payMethod=$payMethodId");
+    }
+
+    if (isset($_POST['deleteMethod'])) {
+        $query = $conexion->prepare("UPDATE metodos_pago SET deleted = 1 WHERE id = :idPay");
+        $query->execute(array(':idPay' => $payMethodId));
+
+        header("Location: payMethods.php");
     }
 }
 

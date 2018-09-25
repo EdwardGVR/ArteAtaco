@@ -1526,6 +1526,7 @@ main section .title {
     /* height: 100px; */
     font-size: 2em;
     font-weight: bold;
+    padding: 0;
 }
 
 .producto_list .info hr {
@@ -2553,6 +2554,13 @@ main section .title {
     border-radius: 0 0 5px 5px;
 }
 
+.contPay .noPayMethods {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    background: #ccc;
+}
+
 .contPay .payMethod {
     display: flex;
     justify-content: center;
@@ -2703,6 +2711,7 @@ main section .title {
     font-size: 1.3em;
     color: #fff;
     border: none;
+    padding: 0;
 }
 
 .contPay .dets .name .saveNewName,
@@ -2899,6 +2908,55 @@ main section .title {
 }
 
 .contPay .dets .cancel:hover {
+    background: #fa9494;
+}
+
+.contPay .dets .options {
+    display: flex;
+    width: 100%;
+    padding: 0 10px;
+}
+
+.contPay .dets .opt {
+    padding: 5px;
+    border-radius: 5px;
+    background: #9dd0ff;
+    color: #000;
+    margin-right: 10px;
+    width: 100px;
+    text-align: center;
+    transition: all ease 0.3s;
+    cursor: pointer;
+}
+
+.contPay .dets .options input[type="submit"] {
+    border: none;
+    font-size: 1em;
+}
+
+.contPay .dets .opt.enable {
+    background: #adffad;
+    color: #025524;
+}
+
+.contPay .dets .opt.enable:hover {
+    background: #00ca00;
+}
+
+.contPay .dets .opt.disable {
+    background: #ccc;
+}
+
+.contPay .dets .opt.disable:hover {
+    background: #868686;
+    color: #fff;
+}
+
+.contPay .dets .opt.delete {
+    color: #770303;
+}
+
+.contPay .dets .opt.delete:hover {
     background: #fa9494;
 }
 

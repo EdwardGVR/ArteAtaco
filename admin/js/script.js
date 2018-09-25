@@ -169,7 +169,8 @@ if (document.title == 'Detalles de pedido') {
     console.info("Pagina detalles de metodo de pago");
     
     editBtns = [...document.querySelectorAll(".edit")],
-    cancelBtns = [...document.querySelectorAll(".cancel")];
+    cancelBtns = [...document.querySelectorAll(".cancel")],
+    deleteBtn = document.getElementById("deleteMethod");
 
     for (let i =0; i < editBtns.length; i++) {
         editBtns[i].addEventListener("click", () => {
@@ -260,4 +261,10 @@ if (document.title == 'Detalles de pedido') {
             location.reload(true);
         });
     }
+
+    deleteBtn.addEventListener("click", function confirmDel (e) {
+        if (!confirm('Se eliminará el método de pago')) {
+            e.preventDefault();
+        }
+    });
 }

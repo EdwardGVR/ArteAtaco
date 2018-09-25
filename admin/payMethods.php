@@ -14,7 +14,7 @@ $userImg = $userData['imagen'];
 if ($conexion != false) {
 
     // Obtener los metodos de pago
-    $query = $conexion->prepare("SELECT * FROM metodos_pago");
+    $query = $conexion->prepare("SELECT * FROM metodos_pago WHERE deleted = 0");
     $query->execute();
     $methods = $query->fetchall();
 }

@@ -16,7 +16,7 @@ function getCookie(cname) {
 
 
 
-if (document.title == 'Detalles de pedido') {
+       if (document.title == 'Detalles de pedido') {
 
     console.log("Detalles de pedido");
 
@@ -267,4 +267,19 @@ if (document.title == 'Detalles de pedido') {
             e.preventDefault();
         }
     });
+} else if (document.title == "Metodos de pago") {
+    console.log("Pagina metodos de pago");
+    
+    let info = document.getElementById("noPayMethodsInfo"),
+        regNewBtn = document.getElementById("regNewBtn"),
+        regNewInfo = document.getElementById("regNewInfo"),
+        regNewForm = document.getElementById("regNewForm");
+
+        regNewBtn.addEventListener("click", () => {
+            info.innerText = "Ingrese los datos del nuevo método";
+            regNewBtn.classList.add("hidden");
+            regNewInfo.classList.add("hidden");
+            regNewForm.classList.remove("hidden");
+        });
+
 }

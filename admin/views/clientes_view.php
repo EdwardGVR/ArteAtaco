@@ -21,11 +21,11 @@
             <a href="../logout.php" class="logout" title="Cerrar sesion"><i class="fa fa-times-circle"></i></a>
         </div>
         <section>
-            <div class="title">
-                <h2>Todos los clientes</h2>
-                <hr>    
-            </div>
             <?php if ($clientes != false): ?>
+                <div class="title">
+                    <h2>Todos los clientes</h2>
+                    <hr>    
+                </div>
                 <div class="contenedorClientes all">    
                     <?php foreach ($clientes as $cliente): ?>
                         <a href="detallesCliente.php?cosId=<?= $cliente['id'] ?>" class="clienteList">

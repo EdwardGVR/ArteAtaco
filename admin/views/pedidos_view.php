@@ -22,8 +22,12 @@
         </div>
         <section>
             <div class="title">
-                <h2>Todos los pedidos</h2>
-                <hr>
+                <?php if ($lastOrders != false): ?>
+                    <h2>Todos los pedidos</h2>
+                    <hr>
+                <?php else: ?>
+                    <h2>No hay pedidos</h2>
+                <?php endif ?>
             </div>
             <div class="contenedor_pedidos all">
                 <?php foreach ($lastOrders as $lastOrder): ?>

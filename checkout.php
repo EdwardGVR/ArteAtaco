@@ -141,7 +141,7 @@ if ($conexion != false) {
 	$direcciones = $query->fetchall();
 
 	// Obtener los metodos de pago
-	$query = $conexion->prepare("SELECT * FROM metodos_pago");
+	$query = $conexion->prepare("SELECT * FROM metodos_pago WHERE status = 1");
 	$query->execute(array());
 	$metodos = $query->fetchall();
 	

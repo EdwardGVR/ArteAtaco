@@ -53,6 +53,18 @@ if ($conexion != false) {
         header("Location: detPayMethod.php?payMethod=$payMethodId");
     }
 
+    if (isset($_POST['saveNewInfo'])) {
+        $newInfo = $_POST['newInfo'];
+
+        $query = $conexion->prepare("UPDATE metodos_pago SET info = :newInfo WHERE id = :idPay");
+        $query->execute(array(
+            ':newInfo'=>$newInfo,
+            ':idPay'=>$payMethodId
+        ));
+
+        header("Location: detPayMethod.php?payMethod=$payMethodId");
+    }
+
     if (isset($_POST['toggleStatus'])) {
         $currentStatus = $_POST['currentStatus'];
         
@@ -68,7 +80,7 @@ if ($conexion != false) {
     }
 
     if (isset($_POST['deleteMethod'])) {
-        $query = $conexion->prepare("UPDATE metodos_pago SET deleted = 1 WHERE id = :idPay");
+        $query = $conexion->prepare("UPDATE metodos_pago SET deleted = 1, status = 0 WHERE id = :idPay");
         $query->execute(array(':idPay' => $payMethodId));
 
         header("Location: payMethods.php");

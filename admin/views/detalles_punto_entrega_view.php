@@ -15,7 +15,7 @@
         <div class="bar">
             <div class="homeStoreBtns">
                 <a href="index.php" title="Ir a inicio"><i class="fa fa-home"></i></a>
-                <a href="../categorias.php" title="Ir a la tienda"><i class="fas fa-store"></i></a>
+                <a href="../categorias.php" target="_blank" title="Ir a la tienda"><i class="fas fa-store"></i></a>
             </div>
             <h1>Punto de entrega: <?= $puntoData['nombre'] ?></h1>
             <a href="../logout.php" class="logout" title="Cerrar sesion"><i class="fa fa-times-circle"></i></a>
@@ -68,7 +68,7 @@
                             <div class="btn edit">
                                 <i class="fa fa-pen-square"></i>
                             </div>
-                            <label for="deletePunto<?= $puntoData['id'] ?>" class="btn delete">
+                            <label id="deleteBtn" for="deletePunto<?= $puntoData['id'] ?>" class="btn delete">
                                     <i class="fa fa-times-circle"></i>
                             </label>
 

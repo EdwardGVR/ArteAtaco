@@ -15,7 +15,7 @@
         <div class="bar">
             <div class="homeStoreBtns">
                 <a href="index.php" title="Ir a inicio"><i class="fa fa-home"></i></a>
-                <a href="../categorias.php" title="Ir a la tienda"><i class="fas fa-store"></i></a>
+                <a href="../categorias.php" target="_blank" title="Ir a la tienda"><i class="fas fa-store"></i></a>
             </div>
             <h1><?= $methodDet['nombre'] ?></h1>
             <a href="../logout.php" class="logout" title="Cerrar sesion"><i class="fa fa-times-circle"></i></a>
@@ -33,6 +33,17 @@
                                     <span id="errMsg" class="errMsg hidden">Este es el nombre actual, por favor elige otro.</span>
                                 </div>
                                 <div class="edit" id="editName"><i class="fas fa-pen-square"></i> Editar</div>
+                            </form>
+                        </div>
+                        <div class="info">
+                            <form action="" method="POST">
+                                <div class="infoEdit">
+                                    <textarea id="newInfo" name="newInfo" class="newInfo" disabled><?= $methodDet['info'] ?></textarea>
+                                    <input id="saveNewInfo" type="submit" class="saveNewInfo hidden" value="Aceptar" name="saveNewInfo" disabled>
+                                    <div id="cancelInfo" class="cancel hidden">Cancelar</div>
+                                    <span id="errMsgInfo" class="errMsg hidden">La informaci&oacute;n introducida es la misma.</span>
+                                </div>
+                                <div class="edit" id="editInfo"><i class="fas fa-pen-square"></i> Editar</div>
                             </form>
                         </div>
                         <div class="iconSec">

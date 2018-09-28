@@ -165,6 +165,17 @@ function getCookie(cname) {
             inputCostoEntrega.setAttribute("type", "number");
         });
     });
+} else if (document.title == "Detalles punto de entrega") {
+    console.info("Pagina detalles de punto de entrega");
+
+    let deleteBtn = document.getElementById("deleteBtn");
+
+    deleteBtn.addEventListener("click", function confirmDel (e) {
+        if (!confirm('Se eliminará el punto de entrega')) {
+            e.preventDefault();
+        }
+    });
+    
 } else if (document.title == "Detalles metodo") {
     console.info("Pagina detalles de metodo de pago");
     
@@ -252,6 +263,33 @@ function getCookie(cname) {
                         saveNewName.classList.add("hidden");
                     }
                 });
+            } else if (editBtns[i].getAttribute("id") == "editInfo") {
+                let newInfoInput = document.getElementById("newInfo"),
+                    cancelBtn = document.getElementById("cancelInfo");
+                    saveBtn = document.getElementById("saveNewInfo"),
+                    sameInfo = document.getElementById("errMsgInfo");
+                
+                newInfoInput.removeAttribute("disabled");
+                cancelBtn.classList.remove("hidden");
+
+                currentInfo = newInfoInput.value;
+
+                newInfoInput.addEventListener("keyup", () => {
+                    if (newInfoInput.value != "") {
+                        if (newInfoInput.value != currentInfo) {
+                            saveBtn.classList.remove("hidden");
+                            saveBtn.removeAttribute("disabled");
+                            sameInfo.classList.add("hidden");
+                        } else {
+                            saveBtn.classList.add("hidden");
+                            saveBtn.setAttribute("disabled", "true");
+                            sameInfo.classList.remove("hidden");
+                        }
+                    } else {
+                        saveBtn.classList.add("hidden");
+                        saveBtn.setAttribute("disabled", "true");
+                    }
+                });
             }
         });
     }
@@ -273,13 +311,47 @@ function getCookie(cname) {
     let info = document.getElementById("noPayMethodsInfo"),
         regNewBtn = document.getElementById("regNewBtn"),
         regNewInfo = document.getElementById("regNewInfo"),
-        regNewForm = document.getElementById("regNewForm");
+        regNewForm = document.getElementById("regNewForm"),
+        iconInput = document.getElementById("methodIcon"),
+        iconPreview = document.getElementById("iconPreview");
 
         regNewBtn.addEventListener("click", () => {
+            let cancelBtn = document.getElementById("cancelSaving");
+
+            cancelBtn.addEventListener("click", () => {
+                location.reload(true);
+            });
+
             info.innerText = "Ingrese los datos del nuevo método";
             regNewBtn.classList.add("hidden");
             regNewInfo.classList.add("hidden");
             regNewForm.classList.remove("hidden");
+
+            iconInput.addEventListener("keyup", () => {
+                if (iconInput.value.substring(0, 8) == '<i class') {
+                    codeArr = iconInput.value.split('<');
+                    icon = iconInput.value.substring(iconInput.value.lastIndexOf(">") +1, 0);
+
+                    if (codeArr.length == 3) {
+                        iconPreview.innerHTML = icon;
+                        iconInput.value = icon;
+                    }
+                } else if (iconInput.value.substring(0, 1) != '<') {
+                    iconInput.value = "";
+                }
+                // comprobar que no este vacio
+                if (iconInput.value != "") {
+                    // comprobar que no sea el icono por default
+                    if (iconPreview.children[0].attributes.class.value != "fas fa-question-circle") {
+                        setNewIcon.classList.remove("hidden");
+                        setNewIcon.removeAttribute("disabled");
+                    } else {
+                        setNewIcon.classList.add("hidden");
+                    }
+                } else {
+                    setNewIcon.classList.add("hidden");
+                }
+            });
         });
 
 }

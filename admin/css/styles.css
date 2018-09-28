@@ -386,7 +386,7 @@ main section {
     /* background: #ccc; */
 }
 
-main section .title {
+main section > .title {
     width: 100%;
     padding: 50px;
 }
@@ -953,6 +953,7 @@ main section .title {
 
 .ped_prods .title {
     font-weight: bold;
+    width: 100%;
 }
 
 .ped_prods .title hr {
@@ -2008,7 +2009,7 @@ main section .title {
 
 .contenedor_puntos .punto.activo .title {
     /* background: #e4f9ff; */
-    background: none;
+    /* background: none; */
     border: 2px solid #006eff;
     color: #000;
 }
@@ -2044,7 +2045,7 @@ main section .title {
 
 .contenedor_puntos .punto.activo .body {
     /* background: #bedaff; */
-    background: none;
+    /* background: none; */
     border: 2px solid #006eff;
 }
 
@@ -2066,7 +2067,7 @@ main section .title {
 }
 
 .contenedor_puntos .punto.activo .body .info .value {
-    background: #9ecdec;
+    /* background: #9ecdec; */
     color: #000;
 }
 
@@ -2092,7 +2093,7 @@ main section .title {
 }
 
 .contenedor_puntos .punto.activo .options {
-    background: none;
+    /* background: none; */
     border: 2px solid #006eff;
 }
 
@@ -2340,6 +2341,7 @@ main section .title {
     padding: 5px;
     border-radius: 5px;
     background: #ccc;
+    margin: auto;
 }
 
 .costDetail .title {
@@ -2567,6 +2569,13 @@ main section .title {
     /* background: #ccc; */
 }
 
+.contPay .noPayMethods.regOther {
+    /* width: auto; */
+    height: auto;
+    /* margin: 0px; */
+    margin-top: 20px;
+}
+
 .contPay .noPayMethods .info {
     padding: 5px;
     border-radius: 5px;
@@ -2629,6 +2638,8 @@ main section .title {
 }
 
 .contPay .noPayMethods .regNew form .inputs .labels {
+    display: flex;
+    flex-wrap: wrap;
     width: 150px;
 }
 
@@ -2639,17 +2650,43 @@ main section .title {
     margin-bottom: 20px;
 }
 
+.contPay .noPayMethods .regNew form .inputs .labels label[for="methodInfo"] {
+    align-self: flex-end;
+}
+
 .contPay .noPayMethods .regNew form .inputs .fields {
     width: calc(100% - 150px);
 }
 
-.contPay .noPayMethods .regNew form .inputs .fields input {
+.contPay .noPayMethods .regNew form .inputs .fields input,
+.contPay .noPayMethods .regNew form .inputs .fields textarea {
     width: 100%;
     border: none;
     border-radius: 5px;
     padding: 0 10px;
     height: 30px;
     margin-bottom: 20px;
+}
+
+.contPay .noPayMethods .regNew form .inputs .fields textarea {
+    resize: vertical;
+    height: 30px;
+    max-height: 100px;
+    min-height: 30px;
+    padding-top: 7px;
+    font-size: 0.8em;
+}
+
+.contPay .noPayMethods .regNew form .inputs .fields .infoIcons {
+    font-size: 0.9em;
+}
+
+.contPay .noPayMethods .regNew form .inputs .fields .infoIcons a {
+    padding: 3px;
+    background: #339af0;
+    border-radius: 5px;
+    color: #fff;
+    text-decoration: none;
 }
 
 .contPay .noPayMethods .regNew form .inputs .fields .iconPreview {
@@ -2663,6 +2700,7 @@ main section .title {
     color: #fff;
     border-radius: 5px;
     margin-bottom: 20px;
+    margin-top: 10px;
 }
 
 .contPay .noPayMethods .regNew form .options {
@@ -2699,7 +2737,7 @@ main section .title {
     justify-content: center;
     align-items: flex-start;
     flex-wrap: wrap;
-    margin: auto;
+    margin: 20px;
     width: 300px;
     height: 200px;
     padding: 10px;
@@ -2835,21 +2873,53 @@ main section .title {
     border-radius: 50px;
 }
 
-.contPay .dets .name .newName:focus {
+.contPay .dets .name .newName:focus,
+.contPay .dets .info .newInfo:focus {
     border: 2px solid #006eff;
 }
 
-.contPay .dets .name .newName[disabled] {
+.contPay .dets .name .newName[disabled],
+.contPay .dets .info .newInfo[disabled] {
     background: none;
     font-size: 1.3em;
     color: #fff;
     border: none;
     padding: 0;
+    border-radius: 50px;
+    resize: none;
+}
+
+.contPay .dets .info form {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.contPay .dets .info .infoEdit {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+    /* width: 100%; */
+}
+
+.contPay .dets .info .newInfo {
+    width: 500px;
+    border: none;
+    border-radius: 5px;
+    height: 30px;
+    padding: 0 5px;
+    resize: vertical;
+    max-height: 100px;
+    min-height: 30px;
+    padding: 5px;
 }
 
 .contPay .dets .name .saveNewName,
-.contPay .dets .name .cancel {
+.contPay .dets .name .cancel,
+.contPay .dets .info .saveNewInfo,
+.contPay .dets .info .cancel {
     width: 100px;
+    max-width: 100px;
     height: 30px;
     margin-left: 20px;
     border: none;
@@ -2864,7 +2934,8 @@ main section .title {
     display: none;
 }
 
-.contPay .dets .name .saveNewName:hover {
+.contPay .dets .name .saveNewName:hover,
+.contPay .dets .info .saveNewInfo:hover {
     background: #94fabe;
 }
 
@@ -2872,7 +2943,8 @@ main section .title {
     display: none;
 }
 
-.contPay .dets .name .errMsg {
+.contPay .dets .name .errMsg,
+.contPay .dets .info .errMsg {
     width: 100%;
     font-size: 0.8em;
     color: #fa9494;

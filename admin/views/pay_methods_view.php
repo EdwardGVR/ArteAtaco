@@ -34,6 +34,40 @@
                             <div class="name"><?= $method['nombre'] ?></div>
                         </a>
                     <?php endforeach ?>
+
+                    <div class="noPayMethods regOther">
+                        <span id="noPayMethodsInfo" class="info hidden">No hay metodos de pago registrados.</span>
+                        <div class="regNew">
+                            <div id="regNewBtn" class="button"><i class="fa fa-plus-circle"></i></div>
+                            <span id="regNewInfo">Registrar un nuevo m&eacute;todo</span>
+                            <form action="" id="regNewForm" class="hidden" method="POST">
+                                <div class="inputs">
+                                    <div class="labels">
+                                        <label for="methodName">Nombre:</label>
+                                        <label for="methodIcon">&Iacute;cono:</label>
+                                        <label for="methodInfo">Descripci&oacute;n</label>
+                                    </div>
+                                    <div class="fields">
+                                        <input type="text" id="methodName" name="methodName" placeholder="Nombre del metodo" required>
+                                        <input type="text" id="methodIcon" name="methodIcon" placeholder="<?= htmlspecialchars("<i class=\"fa fa-icon\"></i>") ?>" required>
+                                        <span class="infoIcons">
+                                            Iconos disponibles en 
+                                            <a href="https://fontawesome.com/icons" target="_blank">fontawesome</a>
+                                        </span>
+                                        <div class="iconPreview" id="icon">
+                                            <div class="icon" id="iconPreview"><i class="fas fa-question-circle"></i></div>
+                                        </div>
+                                        <textarea id="methodInfo" name="methodInfo" placeholder="Informacion sobre el metodo" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="options">
+                                    <div class="cancel" id="cancelSaving">Cancelar</div>
+                                    <input type="submit" name="saveMethod" id="saveMethod" value="Registrar">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
             <?php else: ?>
                 <div class="contPay">
                     <div class="noPayMethods">
@@ -44,20 +78,25 @@
                             <form action="" id="regNewForm" class="hidden" method="POST">
                                 <div class="inputs">
                                     <div class="labels">
-                                        <label for="methodName">Nombre del m&eacute;todo:</label>
-                                        <label for="methodIcon">&Iacute;cono del m&eacute;todo:</label>
-                                        <label for=""></label>
+                                        <label for="methodName">Nombre:</label>
+                                        <label for="methodIcon">&Iacute;cono:</label>
+                                        <label for="methodInfo">Descripci&oacute;n</label>
                                     </div>
                                     <div class="fields">
                                         <input type="text" id="methodName" name="methodName" placeholder="Nombre del metodo" required>
                                         <input type="text" id="methodIcon" name="methodIcon" placeholder="<?= htmlspecialchars("<i class=\"fa fa-icon\"></i>") ?>" required>
+                                        <span class="infoIcons">
+                                            Iconos disponibles en 
+                                            <a href="https://fontawesome.com/icons" target="_blank">fontawesome</a>
+                                        </span>
                                         <div class="iconPreview" id="icon">
                                             <div class="icon" id="iconPreview"><i class="fas fa-question-circle"></i></div>
                                         </div>
+                                        <textarea id="methodInfo" name="methodInfo" placeholder="Informacion sobre el metodo" required></textarea>
                                     </div>
                                 </div>
                                 <div class="options">
-                                    <div class="cancel">Cancelar</div>
+                                    <div class="cancel" id="cancelSaving">Cancelar</div>
                                     <input type="submit" name="saveMethod" id="saveMethod" value="Registrar">
                                 </div>
                             </form>

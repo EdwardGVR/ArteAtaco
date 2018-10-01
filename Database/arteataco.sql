@@ -54,7 +54,10 @@ DROP TABLE IF EXISTS `categorias`;
 CREATE TABLE `categorias` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre_cat` varchar(100) NOT NULL,
+  `descripcion` varchar(250) NOT NULL DEFAULT 'Lorem ipsum dolor sit amet...',
   `imagen` varchar(200) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT '1',
+  `deleted` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `nombre_categoria` (`nombre_cat`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
@@ -66,7 +69,7 @@ CREATE TABLE `categorias` (
 
 LOCK TABLES `categorias` WRITE;
 /*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
-INSERT INTO `categorias` VALUES (1,'L&aacutemparas','images/categorias/lamp.png'),(2,'Atrapasue&ntildeos','images/categorias/atrapa.jpg'),(3,'Banquetas','images/categorias/banqueta.png'),(4,'Llamadores','images/categorias/misc.png'),(5,'Bisuteria','images/categorias/bisute.png'),(6,'Nequi','images/categorias/nequi.jpg'),(7,'Instrumentos','images/categorias/instrumentos.jpg'),(8,'Farolitos','images/categorias/farolitos.jpg');
+INSERT INTO `categorias` VALUES (1,'L&aacutemparas','Lorem ipsum dolor sit amet...','images/categorias/lamp.png',1,0),(2,'Atrapasue&ntildeos','Lorem ipsum dolor sit amet...','images/categorias/atrapa.jpg',1,0),(3,'Banquetas','Lorem ipsum dolor sit amet...','images/categorias/banqueta.png',1,0),(4,'Llamadores','Lorem ipsum dolor sit amet...','images/categorias/misc.png',1,0),(5,'Bisuteria','Lorem ipsum dolor sit amet...','images/categorias/bisute.png',1,0),(6,'Nequi','Lorem ipsum dolor sit amet...','images/categorias/nequi.jpg',1,0),(7,'Instrumentos','Lorem ipsum dolor sit amet...','images/categorias/instrumentos.jpg',1,0),(8,'Farolitos','Lorem ipsum dolor sit amet...','images/categorias/farolitos.jpg',1,0);
 /*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -323,7 +326,7 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES (1,1,'LÃ¡mpara de bÃºho',15,'LÃ¡mpara de bÃºho hecha en PVC calado                                ',3,'images/productos/lamparas/pvc/buho.jpg',1,'2018-05-12 23:58:35',1),(2,1,'L&aacute;mpara 2',15,'LÃ¡mpara de otra cosa para probar                                    ',2,'images/productos/lamparas/pvc/lamp1.jpg',1,'2018-05-12 23:58:35',1),(3,1,'L&aacute;mpara 3',15,'LÃ¡mpara de bÃºho hecha en PVC calado                                    ',1,'images/productos/lamparas/pvc/lamp2.jpg',1,'2018-05-12 23:58:35',1),(4,1,'L&aacute;mpara 4',15,'LÃ¡mpara de bÃºho hecha en PVC calado                                    ',2,'images/productos/lamparas/pvc/lamp3.jpg',1,'2018-05-12 23:58:35',1),(6,3,'Producto nuevo',5,'Descripcion del nuevo producto',NULL,NULL,1,'2018-05-13 00:09:39',1),(7,2,'Atrapa weas',5,'Descripcion de atrapa nuevo                                                                        ',NULL,NULL,1,'2018-07-30 16:41:17',1);
+INSERT INTO `productos` VALUES (1,1,'LÃ¡mpara de bÃºho',15,'LÃ¡mpara de bÃºho hecha en PVC calado                                ',3,'images/productos/lamparas/pvc/buho.jpg',1,'2018-05-12 23:58:35',0),(2,1,'L&aacute;mpara 2',15,'LÃ¡mpara de otra cosa para probar                                    ',2,'images/productos/lamparas/pvc/lamp1.jpg',1,'2018-05-12 23:58:35',0),(3,1,'L&aacute;mpara 3',15,'LÃ¡mpara de bÃºho hecha en PVC calado                                    ',1,'images/productos/lamparas/pvc/lamp2.jpg',1,'2018-05-12 23:58:35',0),(4,1,'L&aacute;mpara 4',15,'LÃ¡mpara de bÃºho hecha en PVC calado                                    ',2,'images/productos/lamparas/pvc/lamp3.jpg',1,'2018-05-12 23:58:35',0),(6,3,'Producto nuevo',5,'Descripcion del nuevo producto',NULL,NULL,1,'2018-05-13 00:09:39',0),(7,2,'Atrapa weas',5,'Descripcion de atrapa nuevo                                                                        ',NULL,NULL,1,'2018-07-30 16:41:17',0);
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -447,4 +450,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-09-28 16:39:30
+-- Dump completed on 2018-10-01 16:46:18

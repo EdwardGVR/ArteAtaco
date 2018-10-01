@@ -57,6 +57,7 @@ if ($conexion != false) {
 		SELECT productos.*, categorias.nombre_cat AS catName 
 		FROM productos 
 		JOIN categorias ON productos.id_categoria = categorias.id
+		WHERE productos.deleted = 0
 		ORDER BY fecha_registro DESC 
 		LIMIT 3
 	");

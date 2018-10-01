@@ -14,6 +14,7 @@
         <div class="side_icons">
             <a href="pedidos.php" class="side_icon" title="Pedidos"><i class="fas fa-shopping-bag"></i></a>
             <a href="productos.php" class="side_icon" title="Productos"><i class="fas fa-cubes"></i></a>
+            <a href="categorias.php" class="side_icon" title="Categor&iacute;as"><i class="fas fa-folder"></i></a>
             <a href="clientes.php" class="side_icon" title="Clientes"><i class="fas fa-users"></i></a>
             <a href="payMethods.php" class="side_icon" title="M&eacute;todos de pago"><i class="fas fa-money-bill-alt"></i></a>
             <a href="puntosEntrega.php" class="side_icon" title="Puntos de entrega"><i class="fas fa-truck"></i></a>
@@ -34,6 +35,7 @@
         <div class="buttons">
             <a href="pedidos.php">Pedidos</a>
             <a href="productos.php">Productos</a>
+            <a href="categorias.php">Categor&iacute;as</a>
             <a href="clientes.php">Clientes</a>
             <a href="payMethods.php">M&eacute;todos de pago</a>
             <a href="puntosEntrega.php">Puntos de entrega</a>

@@ -80,6 +80,57 @@
                     <?php endforeach ?>
                 </div>
             <?php else: ?>
+                <!-- <div class="newProduct">
+                    <div class="add_product" id="addProductBtn">
+                        <div class="icon"><i class="fa fa-plus-circle"></i></div>
+                    </div>
+
+                    <form action="" class="newProductForm hidden" id="newProductForm" method="POST">
+                        <div class="data">
+                            <span class="title">Agregar nuevo producto.</span>
+
+                            <div class="field">
+                                <label for="newProdName">Nombre:</label>
+                                <input type="text" name="newProdName" id="newProdName" placeholder="Nombre del nuevo producto">
+                            </div>
+
+                            <div class="field">
+                                <label for="newProdCat">Categor&iacute;a:</label>
+                                <select name="newProdCat" id="newProdCat">
+                                    <option value="NULL" disabled selected>- - Seleccione una categor&iacute;a - -</option>
+                                    <?php foreach ($categorias as $categoria): ?>
+                                        <option value="<?= $categoria['id'] ?>"><?= $categoria['nombre_cat'] ?></option>
+                                    <?php endforeach ?>
+                                </select>
+                            </div>
+
+                            <div class="field">
+                                <label for="newProdPrice">Precio:</label>
+                                <input type="number" name="newProdPrice" id="newProdPrice" min="0" step="0.01" placeholder="00.00">
+                            </div>
+
+                            <div class="field">
+                                <label for="newProdDesc">Descripci&oacute;n:</label>
+                                <textarea type="number" name="newProdDesc" id="newProdDesc" placeholder="Descripci&oacute;n del nuevo producto"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="options">
+                            <div class="opt save">
+                                <input type="submit" name="saveNewProduct" id="saveNewProduct">
+                                <label for="saveNewProduct" title="Guardar"><i class="fa fa-save"></i></label>
+                            </div>
+                            <div class="opt reset">
+                                <input type="reset" id="resetNewProduct">
+                                <label for="resetNewProduct" title="Limpiar formulario"><i class="fa fa-eraser"></i></label>
+                            </div>
+                            <div class="opt cancel">
+                                <div class="icon cancelNewProd" id="cancelNewProd" title="Cancelar"><i class="fa fa-times-circle"></i></div>
+                            </div>
+                        </div>
+                    </form>
+                </div> -->
+            <?php endif ?>
                 <div class="newProduct">
                     <div class="add_product" id="addProductBtn">
                         <div class="icon"><i class="fa fa-plus-circle"></i></div>
@@ -130,7 +181,6 @@
                         </div>
                     </form>
                 </div>
-            <?php endif ?>
         </section>
     </main>
     <script src="js/script.js"></script>

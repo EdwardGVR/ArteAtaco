@@ -26,59 +26,65 @@
                 <hr>
             </div>
             <div class="contenedor_pedidos">
-                <?php foreach ($lastOrders as $lastOrder): ?>
-                    <?php $subtotal = 0 ?>
-                    <a href="detallesPedido.php?order=<?= $lastOrder['codigo'] ?>" class="pedido">
-                        <?php $statusClass = strtolower(str_replace(' ', '', $lastOrder['status'])) ?>
-                        <div class="codigo <?= $statusClass ?>">
-                            <span class="code">#<?= $lastOrder['codigo'] ?></span>
-                            <span class="status">
-                                <i class="fa fa-info-circle"></i>
-                                &nbsp;<?= $lastOrder['status'] ?>
-                            </span>
-                        </div>
-                        <div class="pedido_cliente">
-                            <span class="nombre"><?= $lastOrder['cos_names'] ?></span>
-                            <span class="apellido"><?= $lastOrder['cos_apellidos'] ?></span>
-                            <?php if ($lastOrder['cos_img'] != NULL): ?>
-                                <img class="img_cliente" src="../<?= $lastOrder['cos_img'] ?>" alt="">
-                            <?php else: ?>
-                                <div class="img_cliente"><i class="fa fa-user"></i></div>
-                            <?php endif ?>
-                        </div>
-                        <hr>
-                        <div class="pedido_productos">
-                            <?php foreach ($orderProds as $prod): ?>
-                                <?php if ($lastOrder['codigo'] == $prod['codigo']): ?>
-                                    <div class="producto">
-                                        <span class="cantidad"><?= $prod['cantidad'] ?>x</span>
-                                        <span class="nombre_producto"><?= $prod['prod_name'] ?></span>
-                                        <span class="precio">$<?= number_format($prod['precioCompra'], 2) ?></span>
-                                    </div>
-                                    <?php $subtotal += $prod['precioCompra'] ?>
-                                <?php endif ?>
-                            <?php endforeach ?>
-                        </div>
-                        <hr>
-                        <div class="pedido_direccion">
-                            <span class="departamento"><?= $lastOrder['dir_dpto'] ?></span>
-                            <span class="nombre_direccion">
-                                <?= $lastOrder['dir_name'] . ' ($' . number_format($lastOrder['costoEnvioCompra'], 2) . ')' ?>
-                            </span>
-                            <div class="info_direccion tooltip"><i class="fas fa-info-circle"></i>
-                                <span class="tooltiptext">
-                                    <?= '(' . $lastOrder['dir_tipo'] . ')' ?><br/>
-                                    <?= $lastOrder['dir_linea1']?><br/>
-                                    <?= $lastOrder['dir_linea2'] ?>
+                <?php if ($lastOrders != false): ?>
+                    <?php foreach ($lastOrders as $lastOrder): ?>
+                        <?php $subtotal = 0 ?>
+                        <a href="detallesPedido.php?order=<?= $lastOrder['codigo'] ?>" class="pedido">
+                            <?php $statusClass = strtolower(str_replace(' ', '', $lastOrder['status'])) ?>
+                            <div class="codigo <?= $statusClass ?>">
+                                <span class="code">#<?= $lastOrder['codigo'] ?></span>
+                                <span class="status">
+                                    <i class="fa fa-info-circle"></i>
+                                    &nbsp;<?= $lastOrder['status'] ?>
                                 </span>
                             </div>
-                        </div>
-                        <div class="pedido_total">
-                            <?php $subtotal += $lastOrder['costoEnvioCompra'] ?>
-                            <span>$<?= number_format($subtotal, 2) ?></span>
-                        </div>
-                    </a>
-                <?php endforeach ?>
+                            <div class="pedido_cliente">
+                                <span class="nombre"><?= $lastOrder['cos_names'] ?></span>
+                                <span class="apellido"><?= $lastOrder['cos_apellidos'] ?></span>
+                                <?php if ($lastOrder['cos_img'] != NULL): ?>
+                                    <img class="img_cliente" src="../<?= $lastOrder['cos_img'] ?>" alt="">
+                                <?php else: ?>
+                                    <div class="img_cliente"><i class="fa fa-user"></i></div>
+                                <?php endif ?>
+                            </div>
+                            <hr>
+                            <div class="pedido_productos">
+                                <?php foreach ($orderProds as $prod): ?>
+                                    <?php if ($lastOrder['codigo'] == $prod['codigo']): ?>
+                                        <div class="producto">
+                                            <span class="cantidad"><?= $prod['cantidad'] ?>x</span>
+                                            <span class="nombre_producto"><?= $prod['prod_name'] ?></span>
+                                            <span class="precio">$<?= number_format($prod['precioCompra'], 2) ?></span>
+                                        </div>
+                                        <?php $subtotal += $prod['precioCompra'] ?>
+                                    <?php endif ?>
+                                <?php endforeach ?>
+                            </div>
+                            <hr>
+                            <div class="pedido_direccion">
+                                <span class="departamento"><?= $lastOrder['dir_dpto'] ?></span>
+                                <span class="nombre_direccion">
+                                    <?= $lastOrder['dir_name'] . ' ($' . number_format($lastOrder['costoEnvioCompra'], 2) . ')' ?>
+                                </span>
+                                <div class="info_direccion tooltip"><i class="fas fa-info-circle"></i>
+                                    <span class="tooltiptext">
+                                        <?= '(' . $lastOrder['dir_tipo'] . ')' ?><br/>
+                                        <?= $lastOrder['dir_linea1']?><br/>
+                                        <?= $lastOrder['dir_linea2'] ?>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="pedido_total">
+                                <?php $subtotal += $lastOrder['costoEnvioCompra'] ?>
+                                <span>$<?= number_format($subtotal, 2) ?></span>
+                            </div>
+                        </a>
+                    <?php endforeach ?>
+                <?php else: ?>
+                    <div class="noOrders">
+                        <span>No hay pedidos que mostrar</span>
+                    </div>
+                <?php endif ?>
             </div>
             <div class="button">
                 <a href="pedidos.php">Ver todos</a>
@@ -91,47 +97,53 @@
                 <hr>
             </div>
             <div class="contenedor_productos">
-                <?php foreach ($lastProducts AS $lastProd): ?>
-                    <a href="detallesProducto.php?idProd=<?= $lastProd['id'] ?>" class="producto">
-                        <div class="producto_nombre">
-                            <span class="nombre"><?= $lastProd['nombre'] ?></span>
-                            <span class="categoria"><?= $lastProd['catName'] ?></span>
-                            <div class="img_categoria"></div>
-                        </div>
-                        <hr>
-                        <!-- Validacion de imagenes -->
-                        <?php 
-                            $imgsCounter = 0; $mainImg = false; 
-                            foreach ($imgs as $img) {
-                                if ($img['id_prod'] == $lastProd['id']) {
-                                    $imgsCounter++;
-                                    if ($imgsCounter > 0 && $img['principal'] == 1) {
-                                        $mainImg = true; $imgPath = $img['ruta'];
-                                    }
-                                    if ($imgsCounter > 0 && !$mainImg) {
-                                        $imgPath = $img['ruta'];
+                <?php if ($lastProducts != false): ?>
+                    <?php foreach ($lastProducts AS $lastProd): ?>
+                        <a href="detallesProducto.php?idProd=<?= $lastProd['id'] ?>" class="producto">
+                            <div class="producto_nombre">
+                                <span class="nombre"><?= $lastProd['nombre'] ?></span>
+                                <span class="categoria"><?= $lastProd['catName'] ?></span>
+                                <div class="img_categoria"></div>
+                            </div>
+                            <hr>
+                            <!-- Validacion de imagenes -->
+                            <?php 
+                                $imgsCounter = 0; $mainImg = false; 
+                                foreach ($imgs as $img) {
+                                    if ($img['id_prod'] == $lastProd['id']) {
+                                        $imgsCounter++;
+                                        if ($imgsCounter > 0 && $img['principal'] == 1) {
+                                            $mainImg = true; $imgPath = $img['ruta'];
+                                        }
+                                        if ($imgsCounter > 0 && !$mainImg) {
+                                            $imgPath = $img['ruta'];
+                                        }
                                     }
                                 }
-                            }
-                        ?>
-                        <div class="producto_imagen">
-                            <?php if ($imgsCounter > 0): ?>
-                                <img src="../<?= $imgPath ?>" alt="x" class="imagen">
-                            <?php else: ?>
-                                <div class="imagen">
-                                    <i class="fas fa-file-image"></i>
-                                </div>
-                            <?php endif ?>
-                        </div>
-                        <hr>
-                        <div class="producto_descripcion">
-                            <span><?= $lastProd['descripcion'] ?></span>
-                        </div>
-                        <div class="producto_precio">
-                            <span>$<?= number_format($lastProd['precio'], 2) ?></span>
-                        </div>
-                    </a>
-                <?php endforeach ?>
+                            ?>
+                            <div class="producto_imagen">
+                                <?php if ($imgsCounter > 0): ?>
+                                    <img src="../<?= $imgPath ?>" alt="x" class="imagen">
+                                <?php else: ?>
+                                    <div class="imagen">
+                                        <i class="fas fa-file-image"></i>
+                                    </div>
+                                <?php endif ?>
+                            </div>
+                            <hr>
+                            <div class="producto_descripcion">
+                                <span><?= $lastProd['descripcion'] ?></span>
+                            </div>
+                            <div class="producto_precio">
+                                <span>$<?= number_format($lastProd['precio'], 2) ?></span>
+                            </div>
+                        </a>
+                    <?php endforeach ?>
+                <?php else: ?>
+                    <div class="noOrders">
+                        <span>No hay productos que mostrar</span>
+                    </div>
+                <?php endif ?>
             </div>
             <div class="button">
                 <a href="productos.php">Ver todos</a>

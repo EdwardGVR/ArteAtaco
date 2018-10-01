@@ -36,8 +36,8 @@
                                     name="nombreProd"
                                     class="value name valueProd<?= $producto['id'] ?>"
                                     value="<?= $producto['nombre']?>"
-                                    disabled>
-                                </input>
+                                    disabled
+                                >
                             </div>
                             <div class="field">
                                 <span class="label">Categor&iacute;a</span>
@@ -67,8 +67,8 @@
                                     value="<?= number_format($producto['precio'], 2) ?>"
                                     step="0.10"
                                     min="0" 
-                                    disabled>
-                                </input>
+                                    disabled
+                                >
                             </div>
                             <div class="field">
                                 <span class="label">Descripci&oacute;n</span>

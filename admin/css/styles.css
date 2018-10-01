@@ -2659,7 +2659,9 @@ main section > .title {
 }
 
 .contPay .noPayMethods .regNew form .inputs .fields input,
-.contPay .noPayMethods .regNew form .inputs .fields textarea {
+.contPay .noPayMethods .regNew form .inputs .fields textarea,
+.contPay .noPayMethods .regNew form .field input,
+.contPay .noPayMethods .regNew.cat form textarea {
     width: 100%;
     border: none;
     border-radius: 5px;
@@ -2668,7 +2670,8 @@ main section > .title {
     margin-bottom: 20px;
 }
 
-.contPay .noPayMethods .regNew form .inputs .fields textarea {
+.contPay .noPayMethods .regNew form .inputs .fields textarea,
+.contPay .noPayMethods .regNew.cat form textarea {
     resize: vertical;
     height: 30px;
     max-height: 100px;
@@ -3167,4 +3170,22 @@ main section > .title {
 
 .hidden {
     display: none;
+}
+
+.regNew.cat .field {
+    display: flex;
+    width: 100%;
+}
+
+.regNew.cat .field label {
+    display: inline-block;
+    width: 200px;
+    min-width: 200px;
+    margin-bottom: 10px;
+    /* background: #000; */
+}
+
+.regNew.cat .field label[for="catImg"]:nth-child(2) {
+    font-size: 2em;
+    cursor: pointer;
 }

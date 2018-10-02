@@ -40,7 +40,7 @@
                         <div class="regNew cat">
                             <div id="regNewBtn" class="button"><i class="fa fa-plus-circle"></i></div>
                             <span id="regNewInfo">Registrar una nueva categor&iacute;a</span>
-                            <form action="" id="regNewForm" class="hidden" method="POST">
+                            <form action="" enctype="multipart/form-data" id="regNewForm" class="hidden" method="POST">
                                 <div class="inputs">
                                     <div class="field">
                                         <label for="catName">Nombre:</label>

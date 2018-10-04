@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-    <title>Metodos de pago</title>
+    <title>Categorias</title>
 </head>
 <body>
     <?php require "side_bar_view.php" ?>
@@ -29,7 +29,7 @@
                 <div class="contPay">
                     <?php foreach ($cats as $cat): ?>
                         <?php $status = ($cat['status'] == 1) ? "activo" : "inactivo" ?>
-                        <a href="#?payMethod=<?= $cat['id'] ?>" class="payMethod">
+                        <a href="detallesCategoria.php?cat=<?= $cat['id'] ?>" class="payMethod">
                             <div class="status"><span class="<?= $status ?>"><?= str_replace("o", "a", $status) ?></span></div>
                             <div class="name"><?= $cat['nombre_cat'] ?></div>
                         </a>

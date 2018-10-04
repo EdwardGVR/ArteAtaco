@@ -16,7 +16,7 @@ function getCookie(cname) {
 
 
 
-       if (document.title == 'Detalles de pedido') {
+if (document.title == 'Detalles de pedido') {
 
     console.log("Detalles de pedido");
 
@@ -305,8 +305,9 @@ function getCookie(cname) {
             e.preventDefault();
         }
     });
-} else if (document.title == "Metodos de pago") {
-    console.log("Pagina metodos de pago");
+} else if (document.title == "Metodos de pago" || document.title == "Categorias") {
+    
+    console.log((document.title == "Metodos de pago") ? "Pagina metodos de pago" : "Pagina categorias");
     
     let info = document.getElementById("noPayMethodsInfo"),
         regNewBtn = document.getElementById("regNewBtn"),
@@ -354,4 +355,29 @@ function getCookie(cname) {
             });
         });
 
+} else if (document.title == "Detalles categoria") {
+    console.info("Pagina detalles categoria");
+
+    let swStatus = document.getElementById("switch"),
+        toggleForm = document.getElementById("toggleStatusForm");
+
+    swStatus.addEventListener("click", () => {
+        let statusBar = document.getElementById("status"),
+            statusClass = statusBar.classList[1],
+            statusMsg = document.getElementById("statusMsg");
+    
+        if (statusClass == "activa") {
+            statusBar.classList.remove("activa");
+            statusBar.classList.add("inactiva");
+            statusMsg.textContent = "La categoría está inactiva";
+        } else if (statusClass == "inactiva") {
+            statusBar.classList.remove("inactiva");
+            statusBar.classList.add("activa");
+            statusMsg.textContent = "La categoría está activa";
+        }
+
+        setTimeout(() => {
+            toggleForm.submit();
+        }, 500)
+    });
 }

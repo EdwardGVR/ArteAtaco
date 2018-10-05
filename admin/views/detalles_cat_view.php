@@ -36,6 +36,19 @@
                     </div>
                 </div>
             </div>
+
+            <div id="modal" class="modalMsg">
+                <div class="confirmToggle">
+                    <p>La categor&iacute;a pasar&aacute; a estar inactiva, lo que significa que no se mostrar&aacute; al cliente pero
+                    seguir&aacute; estando disponible en el panel de administraci&oacute;n.</p>
+                    <p>Seleccione que desea hacer con los productos pertenecientes a esta categor&iacute;a:</p>
+                    <div class="options">
+                        <div id="hideProds" class="opt hide"><span>No mostrar</span></div>
+                        <div id="toOthers" class="opt showMisc"><span>Mostrar en "otros"</span></div>
+                        <div id="closeModal" class="opt cancel"><span>Cancelar</span></div>
+                    </div>
+                </div>
+            </div>
         <?php else: ?>
             <div class="contCatDet">
                 <span>No se encontr&oacute;</span>

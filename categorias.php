@@ -16,13 +16,17 @@ if (isset($_SESSION['user'])) {
 }
 
 if ($conexion != false) {
-	$query = $conexion->prepare('SELECT * FROM categorias ORDER BY nombre_cat ASC');
+	$query = $conexion->prepare('SELECT * FROM categorias WHERE status = 1 ORDER BY nombre_cat ASC');
 	$query->execute();
 	$categorias = $query->fetchall();
 
-	$query = $conexion->prepare("SELECT * FROM productos WHERE disponible = 1");
+	$query = $conexion->prepare("SELECT * FROM productos WHERE disponible = 1 AND to_others = 0");
 	$query->execute();
 	$productos = $query->fetchall();
+
+	$query = $conexion->prepare("SELECT * FROM productos WHERE disponible = 1 AND to_others = 1");
+	$query->execute();
+	$prodsOther = $query->fetchall();
 
 	$query = $conexion->prepare("SELECT * FROM imgs_prods");
 	$query->execute();

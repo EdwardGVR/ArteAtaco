@@ -364,20 +364,47 @@ if (document.title == 'Detalles de pedido') {
     swStatus.addEventListener("click", () => {
         let statusBar = document.getElementById("status"),
             statusClass = statusBar.classList[1],
-            statusMsg = document.getElementById("statusMsg");
+            statusMsg = document.getElementById("statusMsg"),
+            closeModal = document.getElementById("closeModal"),
+            hideProds = document.getElementById("hideProds"),
+            toOthers = document.getElementById("toOthers");
     
-        if (statusClass == "activa") {
-            statusBar.classList.remove("activa");
-            statusBar.classList.add("inactiva");
-            statusMsg.textContent = "La categoría está inactiva";
-        } else if (statusClass == "inactiva") {
-            statusBar.classList.remove("inactiva");
-            statusBar.classList.add("activa");
-            statusMsg.textContent = "La categoría está activa";
-        }
+        modalMsg = document.getElementById("modal");
+        modalMsg.classList.add("open");
 
-        setTimeout(() => {
-            toggleForm.submit();
-        }, 500)
+        closeModal.addEventListener("click", () => {
+            modalMsg.classList.remove("open");
+        });
+
+        hideProds.addEventListener("click", () => {
+            modalMsg.classList.remove("open");
+            setTimeout(() => {
+                // toggleForm.submit();
+
+                if (statusClass == "activa") {
+                    statusBar.classList.remove("activa");
+                    statusBar.classList.add("inactiva");
+                    statusMsg.textContent = "La categoría está inactiva";
+                } else if (statusClass == "inactiva") {
+                    statusBar.classList.remove("inactiva");
+                    statusBar.classList.add("activa");
+                    statusMsg.textContent = "La categoría está activa";
+                }        
+            }, 500)
+        });
+        
+        // if (statusClass == "activa") {
+        //     statusBar.classList.remove("activa");
+        //     statusBar.classList.add("inactiva");
+        //     statusMsg.textContent = "La categoría está inactiva";
+        // } else if (statusClass == "inactiva") {
+        //     statusBar.classList.remove("inactiva");
+        //     statusBar.classList.add("activa");
+        //     statusMsg.textContent = "La categoría está activa";
+        // }
+
+        // setTimeout(() => {
+        //     toggleForm.submit();
+        // }, 500)
     });
 }

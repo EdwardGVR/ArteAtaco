@@ -87,6 +87,75 @@
 				</div>
 			</div>
 		<?php endforeach ?>
+
+		<?php if ($prodsOther != false): ?>
+			<div class="contCat" data-aos="zoom-out-up">
+				<div class="contenedor_tarjeta">
+					<figure>
+						<img src="<?= $prod['imagen'] ?>" class="frontal" alt="No se pudo mostrar">
+						<a href="productos.php?id=others">
+							<span class="nombre-front">Otros</span>
+						</a>
+						<figcaption class="trasera">
+							<h2 class="titulo">Otros</h2>
+							<hr>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur amet minus facilis ratione, delectus distinctio eius upiditate nesciunt recusandae rerum quasi cum blanditiis, placeat, saepe!
+							</p>
+							<a href="productos.php?id=otros">
+								<span class="link-cat">Ver Otros</span>
+							</a>
+						</figcaption>
+					</figure>
+				</div>
+				<div class="randomProds">
+					<?php $prodOthersCount = 0; ?>
+					<?php foreach ($prodsOther as $prod): ?>
+						<?php if ($prod['to_others'] == 1 && $prodOthersCount <3): ?>
+							<?php $prodOthersCount++; ?>
+							<?php if ($prodOthersCount > 0): ?>
+								<!-- Validacion de imagenes -->
+								<?php $imgsCounter = 0; $mainImg = false; 
+								foreach ($imgs as $img) {
+									if ($img['id_prod'] == $prod['id']) {
+										$imgsCounter++;
+										if ($imgsCounter > 0 && $img['principal'] == 1) {
+											$mainImg = true; $imgPath = $img['ruta'];
+										}
+										if ($imgsCounter > 0 && !$mainImg) {
+											$imgPath = $img['ruta'];
+								}	}	}
+								?>
+								<div class="randProd" 
+									data-aos="fade-left"
+									data-aos-offset="250"
+									data-aos-easing="linear">
+									<a class="randImgLink" href="detalles.php?id_prod=<?= $prod['id'] ?>">
+										<div class="detailsHover">
+											<span>Ver detalles <i class="fa fa-info-circle"></i></span>
+										</div>
+									<?php if ($imgsCounter > 0): ?>
+										<img src="<?= $imgPath ?>" alt="...">
+									<?php else: ?>
+										<span class="randProdName"><?= $prod['nombre'] ?></span>
+									<?php endif ?>
+									</a>
+								</div>
+							<?php endif ?>
+						<?php endif ?>
+					<?php endforeach ?>
+					<?php if ($prodOthersCount == 0): ?>
+						<div class="noProds">
+							<span>Actualmente no hay productos en esta categor&iacute;a</span>
+						</div>
+					<?php else: ?>
+						<a class="seeAll" href="productos.php?id=otros">
+							<span>Ver todo en Otros</span>
+						</a>
+					<?php endif ?>
+				</div>
+			</div>
+		<?php endif ?>
 	</div>
 
 	<?php include 'footer.php'; ?>

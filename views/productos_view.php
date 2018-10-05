@@ -3,8 +3,8 @@
 <head>
 	<title> Arte Ataco ::
 		<?php 
-			echo $categoria['nombre_cat'];
-			$cat_actual = $categoria['nombre_cat'];
+			echo $categoria;
+			$cat_actual = $categoria;
 	 	?>
 	 </title>
 	<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
@@ -82,9 +82,9 @@
 					</div>
 
 					<div class="prod-options">
-						<a class="opt detalles" href="detalles.php?id_prod=<?php echo $producto['id'] ?>">Detalles <i class="fa fa-info-circle"></i></a>
-						<form class="opt shortcut_carrito" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-							<input type="hidden" name="id_producto" value="<?php echo $producto['id'] ?>">
+						<a class="opt detalles" href="detalles.php?id_prod=<?= $producto['id'] ?>">Detalles <i class="fa fa-info-circle"></i></a>
+						<form class="opt shortcut_carrito" action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+							<input type="hidden" name="id_producto" value="<?= $producto['id'] ?>">
 							<?php if ($user != "Invitado"): ?>
 								<input type="submit" class="carrito" id="carrito_shortcut<?= $producto['id'] ?>" name="shortcut_carrito" value="Carrito">
 								<label for="carrito_shortcut<?= $producto['id'] ?>" class="button carrito">Carrito <i class="fa fa-cart-plus fa-lg"></i></label>

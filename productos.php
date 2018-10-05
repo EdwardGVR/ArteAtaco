@@ -11,7 +11,7 @@ if (isset($_SESSION['user'])) {
 require 'conexion.php';
 $iduser = get_user_id($conexion, $user);
 
-$id_cat = isset($_GET['id']) ? (int)$_GET['id'] : false;
+$id_cat = isset($_GET['id']) ? $_GET['id'] : false;
 
 if (!$id_cat) {
 	header('Location: categorias.php');
@@ -24,20 +24,43 @@ if ($conexion != false) {
 	$categorias = $query->fetchall();
 
 	// Obtener datos de los productos de la categoria
-	$query = $conexion->prepare('SELECT * FROM productos WHERE id_categoria = :id_cat AND disponible = 1');
-	$query->execute(array(':id_cat' => $id_cat));
-	$productos = $query->fetchall();
+	if ($id_cat == "otros") {
+		$query = $conexion->prepare('
+			SELECT * FROM productos 
+			WHERE to_others = 1 
+			AND disponible = 1
+		');
+		$query->execute();
+		$productos = $query->fetchall();
+	} else {
+		$query = $conexion->prepare('
+			SELECT * FROM productos 
+			WHERE id_categoria = :id_cat
+			AND to_others = 0 
+			AND disponible = 1
+		');
+		$query->execute(array(':id_cat' => $id_cat));
+		$productos = $query->fetchall();
+	}
 
 	//Otener todas las imagenes de los productos de la categoria
-	$query = $conexion->prepare(
-		"SELECT imgs_prods.*, productos.id_categoria FROM imgs_prods
-			JOIN productos ON imgs_prods.id_prod = productos.id
-			WHERE id_categoria = :id_cat"
-	);
-	$query->execute(array(':id_cat' => $id_cat));
-	$catImgs = $query->fetchall();
-
-	// print_r($catImgs);
+	if ($id_cat == "otros") {
+		$query = $conexion->prepare(
+			"SELECT imgs_prods.*, productos.id_categoria FROM imgs_prods
+				JOIN productos ON imgs_prods.id_prod = productos.id
+				WHERE to_others = 1"
+		);
+		$query->execute();
+		$catImgs = $query->fetchall();
+	} else {
+		$query = $conexion->prepare(
+			"SELECT imgs_prods.*, productos.id_categoria FROM imgs_prods
+				JOIN productos ON imgs_prods.id_prod = productos.id
+				WHERE id_categoria = :id_cat"
+		);
+		$query->execute(array(':id_cat' => $id_cat));
+		$catImgs = $query->fetchall();
+	}
 
 	//Otener imagenes principales de los productos de la categoria
 	$query = $conexion->prepare(
@@ -58,12 +81,16 @@ if ($conexion != false) {
 	$notMainImgs = $query->fetchall();
 
 	// Obtener categorias para el title de la tab
-	$query = $conexion->prepare('SELECT nombre_cat FROM categorias WHERE id = :id_cat');
-	$query->execute(array(':id_cat' => $id_cat));
-	$categoria = $query->fetch();
+	if ($id_cat == "otros") {
+		$categoria = "Otros";
+	} else {
+		$query = $conexion->prepare('SELECT nombre_cat FROM categorias WHERE id = :id_cat');
+		$query->execute(array(':id_cat' => $id_cat));
+		$categoria = $query->fetch();
+		$categoria = $categoria['nombre_cat'];
+	}
 
 	// AGREGAR AL CARRITO
-
 	if (isset($_POST['shortcut_carrito'])) {
 
 		$id_producto = $_POST['id_producto'];

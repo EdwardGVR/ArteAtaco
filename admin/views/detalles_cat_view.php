@@ -26,8 +26,17 @@
                 <?php $status = ($cat['status'] == 1) ? "activa" : "inactiva"; ?>
                 <div id="status" class="status <?= $status ?>">
                     <span id="statusMsg">La categor&iacute;a est&aacute; <?= $status ?></span>
-                    <form id="toggleStatusForm" action="detallesCategoria.php?cat=<?= $cat['id'] ?>" method="POST">
-                        <input type="hidden" name="toggleStatus" value="<?= $cat['status'] ?>">
+                    <form id="setActiveForm" action="detallesCategoria.php?cat=<?= $cat['id'] ?>" method="POST">
+                        <input type="hidden" name="setActive" value="<?= $cat['status'] ?>">
+                        <input type="hidden" name="currentStatus" value="<?= $cat['status'] ?>">
+                    </form>
+                    <form id="toggleHide" action="detallesCategoria.php?cat=<?= $cat['id'] ?>" method="POST">
+                        <input type="hidden" name="toggleAndHide" value="<?= $cat['status'] ?>">
+                        <input type="hidden" name="currentStatus" value="<?= $cat['status'] ?>">
+                    </form>
+                    <form id="toggleOthers" action="detallesCategoria.php?cat=<?= $cat['id'] ?>" method="POST">
+                        <input type="hidden" name="toggleAndToOthers" value="<?= $cat['status'] ?>">
+                        <input type="hidden" name="currentStatus" value="<?= $cat['status'] ?>">
                     </form>
                     <div id="switch" class="switch">
                         <div class="box">

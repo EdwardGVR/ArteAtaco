@@ -34,32 +34,41 @@ if ($conexion != false) {
     $query->execute(array(':idCat' => $idCat));
     $prods = $query->fetchall();
 
-    // Activar / desactivar punto de entrega
-    if (isset($_POST['toggleStatus'])) {    
-        $currentStatus = $_POST['toggleStatus'];
+    // Desactivar categoria y ocultar / mostrar productos
+    if (isset($_POST['toggleAndHide'])) {    
+        $query = $conexion->prepare("UPDATE categorias SET status = 0 WHERE id = :idCat");
+        $query->execute(array(':idCat' => $idCat));
 
-        if ($currentStatus == 1) {
-            $query = $conexion->prepare("UPDATE categorias SET status = 0 WHERE id = :idCat");
-            $query->execute(array(':idCat' => $idCat));
-        } else if ($currentStatus == 0) {
-            $query = $conexion->prepare("UPDATE categorias SET status = 1 WHERE id = :idCat");
-            $query->execute(array(':idCat' => $idCat));
-        }
+        $query = $conexion->prepare("UPDATE productos SET disponible = 0 WHERE id_categoria = :idCat");
+        $query->execute(array(':idCat' => $idCat));
 
         header("Location: detallesCategoria.php?cat=$idCat");
     }
-    
-    // "Borrar" un punto de entrega
-    if (isset($_POST['deletePoint'])) {
-        $idPoint = $_POST['puntoId'];
 
-        $query = $conexion->prepare("UPDATE direcciones SET disponible = 0, estado = 0 WHERE id = :idPoint");
-        $query->execute(array(':idPoint' => $idPoint));
+    // Desactivar categoria y enviar productos a "otros"
+    if (isset($_POST['toggleAndToOthers'])) {    
+        $query = $conexion->prepare("UPDATE categorias SET status = 0 WHERE id = :idCat");
+        $query->execute(array(':idCat' => $idCat));
 
-        unset($_POST['deletePoint']);
-        header("Location: puntosEntrega.php");
+        $query = $conexion->prepare("UPDATE productos SET to_others = 1 WHERE id_categoria = :idCat");
+        $query->execute(array(':idCat' => $idCat));
+
+        header("Location: detallesCategoria.php?cat=$idCat");
     }
 
+    // Activar categoria y restablecer productos
+    if (isset($_POST['setActive'])) {    
+        $query = $conexion->prepare("UPDATE categorias SET status = 1 WHERE id = :idCat");
+        $query->execute(array(':idCat' => $idCat));
+
+        $query = $conexion->prepare("UPDATE productos SET to_others = 0 WHERE id_categoria = :idCat");
+        $query->execute(array(':idCat' => $idCat));
+
+        $query = $conexion->prepare("UPDATE productos SET disponible = 1 WHERE id_categoria = :idCat");
+        $query->execute(array(':idCat' => $idCat));
+
+        header("Location: detallesCategoria.php?cat=$idCat");
+    }
     
 }
 

@@ -359,7 +359,8 @@ if (document.title == 'Detalles de pedido') {
     console.info("Pagina detalles categoria");
 
     let swStatus = document.getElementById("switch"),
-        toggleForm = document.getElementById("toggleStatusForm");
+        toggleHide = document.getElementById("toggleHide"),
+        toggleOthers = document.getElementById("toggleOthers");
 
     swStatus.addEventListener("click", () => {
         let statusBar = document.getElementById("status"),
@@ -369,42 +370,55 @@ if (document.title == 'Detalles de pedido') {
             hideProds = document.getElementById("hideProds"),
             toOthers = document.getElementById("toOthers");
     
-        modalMsg = document.getElementById("modal");
-        modalMsg.classList.add("open");
+        if (statusClass == "inactiva") {
+            let setActiveForm = document.getElementById("setActiveForm");
 
-        closeModal.addEventListener("click", () => {
-            modalMsg.classList.remove("open");
-        });
-
-        hideProds.addEventListener("click", () => {
-            modalMsg.classList.remove("open");
             setTimeout(() => {
-                // toggleForm.submit();
+                statusBar.classList.remove("inactiva");
+                statusBar.classList.add("activa");
+                statusMsg.textContent = "La categoría está activa";
+            }, 400)
 
-                if (statusClass == "activa") {
+            setTimeout(() => {
+                setActiveForm.submit();
+            }, 900);
+
+        } else if (statusClass == "activa") {
+            modalMsg = document.getElementById("modal");
+            modalMsg.classList.add("open");
+
+            closeModal.addEventListener("click", () => {
+                modalMsg.classList.remove("open");
+            });
+
+            hideProds.addEventListener("click", () => {
+                modalMsg.classList.remove("open");
+                setTimeout(() => {
                     statusBar.classList.remove("activa");
                     statusBar.classList.add("inactiva");
                     statusMsg.textContent = "La categoría está inactiva";
-                } else if (statusClass == "inactiva") {
-                    statusBar.classList.remove("inactiva");
-                    statusBar.classList.add("activa");
-                    statusMsg.textContent = "La categoría está activa";
-                }        
-            }, 500)
-        });
-        
-        // if (statusClass == "activa") {
-        //     statusBar.classList.remove("activa");
-        //     statusBar.classList.add("inactiva");
-        //     statusMsg.textContent = "La categoría está inactiva";
-        // } else if (statusClass == "inactiva") {
-        //     statusBar.classList.remove("inactiva");
-        //     statusBar.classList.add("activa");
-        //     statusMsg.textContent = "La categoría está activa";
-        // }
+                }, 400)
 
-        // setTimeout(() => {
-        //     toggleForm.submit();
-        // }, 500)
+                setTimeout(() => {
+                    toggleHide.submit();
+                    console.log("send form");
+                }, 900);
+            });
+
+            toOthers.addEventListener("click", () => {
+                modalMsg.classList.remove("open");
+                setTimeout(() => {
+                    statusBar.classList.remove("activa");
+                    statusBar.classList.add("inactiva");
+                    statusMsg.textContent = "La categoría está inactiva";
+                }, 400)
+
+                setTimeout(() => {
+                    toggleOthers.submit();
+                    console.log("send form");
+                }, 900);
+            });
+            
+        }
     });
 }

@@ -69,7 +69,7 @@ CREATE TABLE `categorias` (
 
 LOCK TABLES `categorias` WRITE;
 /*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
-INSERT INTO `categorias` VALUES (1,'L&aacute;mparas','L&aacute;mparas hechas en PVC, Bamboo y otros materiales para decorar su hogar y generar un ambiente c&aacute;lido.','images/categorias/lamp.png',1,0),(2,'Atrapasue&ntilde;os','Lorem ipsum dolor sit amet...','images/categorias/atrapa.jpg',1,0),(3,'Banquetas','Lorem ipsum dolor sit amet...','images/categorias/banqueta.png',1,0),(4,'Llamadores','Lorem ipsum dolor sit amet...','images/categorias/misc.png',1,0),(5,'Bisuteria','Lorem ipsum dolor sit amet...','images/categorias/bisute.png',1,0),(6,'Nequi','Lorem ipsum dolor sit amet...','images/categorias/nequi.jpg',1,0),(7,'Instrumentos','Lorem ipsum dolor sit amet...','images/categorias/instrumentos.jpg',1,0),(8,'Farolitos','Lorem ipsum dolor sit amet...','images/categorias/farolitos.jpg',1,0);
+INSERT INTO `categorias` VALUES (1,'L&aacute;mparas','L&aacute;mparas hechas en PVC, Bamboo y otros materiales para decorar su hogar y generar un ambiente c&aacute;lido.','images/categorias/lamparas_img.jpg',1,0),(2,'Atrapasue&ntilde;os','Lorem ipsum dolor sit amet...','images/categorias/atrapasuen;os_img.jpg',1,0),(3,'Banquetas','Lorem ipsum dolor sit amet...','images/categorias/banquetas_img.jpg',1,0),(4,'Llamadores','Lorem ipsum dolor sit amet...','images/categorias/llamadores_img.jpg',1,0),(5,'Bisuteria','Lorem ipsum dolor sit amet...','images/categorias/bisuteria_img.jpg',1,0),(6,'Nequi','Lorem ipsum dolor sit amet...','images/categorias/nequi_img.jpg',1,0),(7,'Instrumentos','Lorem ipsum dolor sit amet...','images/categorias/instrumentos_img.jpg',1,0),(8,'Farolitos','Lorem ipsum dolor sit amet...','images/categorias/farolitos_img.jpg',1,0);
 /*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -451,4 +451,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-08 13:17:32
+-- Dump completed on 2018-10-08 15:02:30

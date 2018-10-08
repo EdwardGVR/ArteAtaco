@@ -22,8 +22,8 @@
         </div>
         <section>
         <?php if ($cat != false): ?>
+            <?php $status = ($cat['status'] == 1) ? "activa" : "inactiva"; ?>
             <div class="contCatDet">
-                <?php $status = ($cat['status'] == 1) ? "activa" : "inactiva"; ?>
                 <div id="status" class="status <?= $status ?>">
                     <span id="statusMsg">La categor&iacute;a est&aacute; <?= $status ?></span>
                     <form id="setActiveForm" action="detallesCategoria.php?cat=<?= $cat['id'] ?>" method="POST">
@@ -43,6 +43,26 @@
                             <div draggable="true" class="circle"></div>
                         </div>
                     </div>
+                </div>
+                <div class="info">
+                    <form id="editName" action="" class="name" method="POST">
+                        <div class="field">
+                            <label for="catName">Nombre</label>
+                            <input type="text" value="<?= $cat['nombre_cat'] ?>" placeholder="<?= $cat['nombre_cat'] ?>" disabled>
+                        </div>
+                    </form>
+                    <form id="editDesc" action="" class="desc" method="POST">
+                        <div class="field">
+                            <label for="catDesc">Descripci&oacute;n</label>
+                            <textarea name="catDesc" id="catDesc" disabled><?= $cat['descripcion'] ?></textarea>
+                        </div>
+                    </form>
+                    <form id="editImg" action="" class="img" method="POST">
+                        <div class="field">
+                            <label for="catImg">Imagen</label>
+                            <img src="../<?= $cat['imagen'] ?>" alt="x">
+                        </div>
+                    </form>
                 </div>
             </div>
 

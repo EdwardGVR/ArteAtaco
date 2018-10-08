@@ -74,7 +74,7 @@
                             </div>
                         </div>
                     </form>
-                    <form id="editImg" action="" class="img" method="POST">
+                    <form id="editImg" enctype="multipart/form-data" action="detallesCategoria.php?cat=<?= $cat['id'] ?>" class="img" method="POST">
                         <div class="field">
                             <label for="meh">Imagen</label>
                             <div class="catImg">
@@ -84,8 +84,10 @@
                                 </a>
                             </div>
                             <div class="options">
-                                <input type="file" name="catImg" id="catImg" class="hidden" accept="image/*">
+                                <input type="hidden" name="catName" value="<?= $cat['nombre_cat'] ?>">
+                                <input type="hidden" name="setImg">
                                 <label for="catImg" class="uploadBtn opt">Subir &nbsp; <i class="fa fa-camera"></i> </label>
+                                <input type="file" name="catImg" id="catImg" class="hidden" accept="image/*">
                             </div>
                         </div>
                     </form>

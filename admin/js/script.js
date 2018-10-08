@@ -424,7 +424,7 @@ if (document.title == 'Detalles de pedido') {
         }
     });
 
-    for (let i = 0; editBtns.length; i++) {
+    for (let i = 0; i < editBtns.length; i++) {
         editBtns[i].addEventListener("click", () => {
             for (let j = 0; j < editBtns.length; j++) {
                 editBtns[j].classList.add("hidden");
@@ -496,5 +496,12 @@ if (document.title == 'Detalles de pedido') {
             }
         });
     }
+
+    var catImg = document.getElementById("catImg"),
+        editImgForm = document.getElementById("editImg");
+
+    catImg.addEventListener("change", () => {
+        editImgForm.submit();
+    });
 
 }

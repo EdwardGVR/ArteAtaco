@@ -13,7 +13,7 @@ $userImg = $userData['imagen'];
 
 if ($conexion != false) {
     // Obtener categorias
-    $query = $conexion->prepare("SELECT * FROM categorias WHERE deleted = 0");
+    $query = $conexion->prepare("SELECT * FROM categorias WHERE deleted = 0 ORDER BY nombre_cat ASC");
     $query->execute();
     $cats = $query->fetchAll();
 

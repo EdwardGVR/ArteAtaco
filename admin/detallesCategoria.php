@@ -97,6 +97,46 @@ if ($conexion != false) {
 
         header("Location: detallesCategoria.php?cat=$idCat");
     }
+
+    // Cambiar imagen de categoria
+    if (isset($_POST['setImg'])) {
+        $catName = $_POST['catName'];
+
+        print_r($_FILES);
+
+        if (isset($_FILES['catImg'])) {
+            $catImg = $_FILES['catImg'];
+
+            if ($catImg['error'] == 1) {
+                $imgError = true;
+                echo $catImg['error'];
+            } else {
+                $imgError = false;
+                $accents = array("&", "acute;", " ", "tilde");
+                $catNameFiltered = htmlentities($catName);
+                $catNameFiltered = str_replace($accents, "", $catNameFiltered);
+                $catNameFiltered = strtolower($catNameFiltered);
+
+                $catImg['name'] = $catNameFiltered . "_img.jpg";
+
+                $uploadedFile = "../images/categorias/" . $catImg['name'];
+                move_uploaded_file($_FILES['catImg']['tmp_name'], $uploadedFile);
+                $successUpload = true;
+            }
+        }
+        
+        if ($successUpload) {
+            $query = $conexion->prepare("UPDATE categorias SET imagen = :catImg WHERE id = :idCat");
+            $query->execute(array(
+                ":catImg" => substr($uploadedFile, 3),
+                ":idCat" => $idCat
+            ));
+            
+            header("Location: detallesCategoria.php?cat=$idCat");
+        } else {
+            echo "Error en la imagen";
+        }
+    }
 }
 
 require "views/detalles_cat_view.php";

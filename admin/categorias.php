@@ -21,6 +21,7 @@ if ($conexion != false) {
     if (isset($_POST['saveCat'])) {
         $catName = $_POST['catName'];
         $catInfo = $_POST['catInfo'];
+        $catInfoDB = htmlentities($catInfo);
 
         //Comprobar que se recibe la imagen
         if (isset($_FILES['catImg'])) {
@@ -33,6 +34,7 @@ if ($conexion != false) {
                 $imgError = false;
                 $accents = array("&", "acute;", " ", "tilde");
                 $catNameFiltered = htmlentities($catName);
+                $catNameDB = $catNameFiltered;
                 $catNameFiltered = str_replace($accents, "", $catNameFiltered);
                 $catNameFiltered = strtolower($catNameFiltered);
 
@@ -47,8 +49,8 @@ if ($conexion != false) {
         if ($successUpload) {
             $query = $conexion->prepare("INSERT INTO categorias (nombre_cat, descripcion, imagen) VALUES (:catName, :catInfo, :catImg)");
             $query->execute(array(
-                ":catName" => $catName, 
-                ":catInfo" => $catInfo,
+                ":catName" => $catNameDB, 
+                ":catInfo" => $catInfoDB,
                 ":catImg" => substr($uploadedFile, 3)
             ));
             header("Location: categorias.php");

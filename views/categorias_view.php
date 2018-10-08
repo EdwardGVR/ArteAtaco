@@ -20,21 +20,21 @@
 			<h2>Selecciona una categor&iacute;a</h2>
 		</div> -->
 		<?php foreach ($categorias as $categoria): ?>
+			<?php $name = html_entity_decode($categoria['nombre_cat']) ?>
+			<?php $desc = html_entity_decode($categoria['descripcion']) ?>
 			<div class="contCat" data-aos="zoom-out-up">
 				<div class="contenedor_tarjeta">
 					<figure>
 						<img src="<?= $categoria['imagen'] ?>" class="frontal" alt="">
 						<a href="productos.php?id=<?= $categoria['id'] ?>">
-							<span class="nombre-front"><?= $categoria['nombre_cat'] ?></span>
+							<span class="nombre-front"><?= $name ?></span>
 						</a>
 						<figcaption class="trasera">
-							<h2 class="titulo"><?= $categoria['nombre_cat'] ?></h2>
+							<h2 class="titulo"><?= $name ?></h2>
 							<hr>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur amet minus facilis ratione, delectus distinctio eius upiditate nesciunt recusandae rerum quasi cum blanditiis, placeat, saepe!
-							</p>
+							<p><?= $desc ?></p>
 							<a href="productos.php?id=<?= $categoria['id'] ?>">
-								<span class="link-cat">Ver <?= $categoria['nombre_cat'] ?></span>
+								<span class="link-cat">Ver <?= $name ?></span>
 							</a>
 						</figcaption>
 					</figure>
@@ -81,7 +81,7 @@
 						</div>
 					<?php else: ?>
 						<a class="seeAll" href="productos.php?id=<?= $categoria['id'] ?>">
-							<span>Ver todo en <?= $categoria['nombre_cat'] ?></span>
+							<span>Ver todo en <?= $name ?></span>
 						</a>
 					<?php endif ?>
 				</div>

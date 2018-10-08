@@ -360,7 +360,9 @@ if (document.title == 'Detalles de pedido') {
 
     let swStatus = document.getElementById("switch"),
         toggleHide = document.getElementById("toggleHide"),
-        toggleOthers = document.getElementById("toggleOthers");
+        toggleOthers = document.getElementById("toggleOthers"),
+        editBtns = [...document.querySelectorAll(".info .options .editBtn")],
+        cancelBtns = [...document.querySelectorAll(".info .options .cancelBtn")];
 
     swStatus.addEventListener("click", () => {
         let statusBar = document.getElementById("status"),
@@ -421,4 +423,78 @@ if (document.title == 'Detalles de pedido') {
             
         }
     });
+
+    for (let i = 0; editBtns.length; i++) {
+        editBtns[i].addEventListener("click", () => {
+            for (let j = 0; j < editBtns.length; j++) {
+                editBtns[j].classList.add("hidden");
+
+                cancelBtns[j].addEventListener("click", () => {
+                    location.reload(true);
+                });
+            }
+
+            if (editBtns[i].getAttribute("id") == "editName") {
+                let saveName = document.getElementById("saveName"),
+                    cancelName = document.getElementById("cancelName"),
+                    inputName = document.getElementById("catName"),
+                    sameName = document.getElementById("sameName")
+                    editNameForm = document.getElementById("editName");
+                
+                cancelName.classList.remove("hidden");
+                inputName.removeAttribute("disabled");
+                    
+                currentName = inputName.value;
+                    
+                inputName.addEventListener("keyup", () => {
+                    if (inputName.value.trim() != "") {
+                        if (inputName.value.trim() != currentName) {
+                            saveName.classList.remove("hidden");
+                            sameName.classList.add("hidden");
+                        } else {
+                            saveName.classList.add("hidden");
+                            sameName.classList.remove("hidden");
+                        }
+                    } else {
+                        saveName.classList.add("hidden");
+                    }
+                });
+
+                saveName.addEventListener("click", () => {
+                    editNameForm.submit();
+                })
+
+            } else if (editBtns[i].getAttribute("id") == "editInfo") {
+                let saveInfo = document.getElementById("saveInfo"),
+                    cancelInfo = document.getElementById("cancelInfo"),
+                    inputInfo = document.getElementById("catDesc"),
+                    sameInfo = document.getElementById("sameInfo")
+                    editDescForm = document.getElementById("editDesc");
+                
+                cancelInfo.classList.remove("hidden");
+                inputInfo.removeAttribute("disabled");
+                    
+                currentInfo = inputInfo.value;
+                    
+                inputInfo.addEventListener("keyup", () => {
+                    if (inputInfo.value.trim() != "") {
+                        if (inputInfo.value.trim() != currentInfo) {
+                            saveInfo.classList.remove("hidden");
+                            sameInfo.classList.add("hidden");
+                        } else {
+                            saveInfo.classList.add("hidden");
+                            sameInfo.classList.remove("hidden");
+                        }
+                    } else {
+                        saveInfo.classList.add("hidden");
+                    }
+                });
+
+                saveInfo.addEventListener("click", () => {
+                    editDescForm.submit();
+                })
+            }
+        });
+    }
+
 }

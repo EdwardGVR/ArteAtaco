@@ -69,7 +69,34 @@ if ($conexion != false) {
 
         header("Location: detallesCategoria.php?cat=$idCat");
     }
-    
+
+    // Editar nombre de categoria
+    if (isset($_POST['editName'])) {
+        $catName = $_POST['catName'];
+        $catName = htmlentities($catName);
+
+        $query = $conexion->prepare("UPDATE categorias SET nombre_cat = :catName WHERE id = :idCat");
+        $query->execute(array(
+            ':catName' => $catName,
+            ':idCat' => $idCat
+        ));
+
+        header("Location: detallesCategoria.php?cat=$idCat");
+    }
+
+    // Editar descripcion de categoria
+    if (isset($_POST['editDesc'])) {
+        $catDesc = $_POST['catDesc'];
+        $catDesc = htmlentities($catDesc);
+
+        $query = $conexion->prepare("UPDATE categorias SET descripcion = :catDesc WHERE id = :idCat");
+        $query->execute(array(
+            ':catDesc' => $catDesc,
+            ':idCat' => $idCat
+        ));
+
+        header("Location: detallesCategoria.php?cat=$idCat");
+    }
 }
 
 require "views/detalles_cat_view.php";

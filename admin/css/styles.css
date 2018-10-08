@@ -3201,7 +3201,8 @@ main section > .title {
     background: #ccc;
     border-radius: 5px;
     width: 80%;
-    min-height: 500px;
+    min-width: 360px;
+    /* min-height: 500px; */
 }
 
 .contCatDet .status {
@@ -3281,7 +3282,7 @@ main section > .title {
     flex-wrap: wrap;
     width: 100%;
     border-radius: 5px;
-    background: #65b5ff;
+    background: #9aceff;
 }
 
 .contCatDet .info form {
@@ -3299,15 +3300,16 @@ main section > .title {
 
 .contCatDet .info form .field {
     display: flex;
-    justify-content: space-between;
-    /* width: 400px; */
+    justify-content: flex-start;
+    flex-wrap: wrap;
     width: 100%;
 }
 
 .contCatDet .info form label {
     display: inline-block;
-    width: 100px;
+    min-width: 100px;
     padding: 5px 0;
+    font-size: 0.9em;
     /* background: #000; */
 }
 
@@ -3320,18 +3322,112 @@ main section > .title {
 
 .contCatDet .info form input,
 .contCatDet .info form textarea {
-    width: 280px;
+    min-width: 400px;
     border: none;
     border-radius: 5px;
     padding: 5px 10px;
     font-size: 0.9em;
+    margin-bottom: 10px;
 }
 
 .contCatDet .info form textarea {
     resize: vertical;
-    height: 30px;
+    height: auto;
     max-height: 200px;
     min-height: 30px;
+}
+
+.contCatDet .info .field .options {
+    display: flex;
+    justify-content: flex-end;
+    height: 30px;
+    flex-grow: 1;
+    /* width: calc(100% - 400px); */
+}
+
+.contCatDet .info .field .catImg {
+    background: #cbf7ff;
+    border-radius: 5px;
+    padding: 10px;
+    margin-left: 10px;
+    width: 280px;
+    position: relative;
+}
+
+.contCatDet .info .field .catImg .bg {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 7em;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    color: #fff;
+    border-radius: 5px;
+    opacity: 0;
+    text-decoration: none;
+    transition: all ease 0.3s;
+}
+
+.contCatDet .info .field .catImg .bg:hover {
+    opacity: 0.4;
+}
+
+.contCatDet .info .field .catImg img {
+    width: 100%;
+}
+
+.contCatDet .info form .opt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    min-width: 70px;
+    height: 100%;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 0.8em;
+    border-radius: 50px;
+    background: #ccc;
+    transition: all ease 0.3s;
+}
+
+.contCatDet .info form .sameInfo {
+    border-radius: 5px;
+    background: #ffc3c3;
+    color: #ff0000;
+    padding: 7px;
+    font-size: 0.8em;
+    font-style: italic;
+}
+
+.contCatDet .info form .editBtn,
+.contCatDet .info form .uploadBtn {
+    background: #022752;
+    color: #fff;
+}
+
+.contCatDet .info form .editBtn:hover,
+.contCatDet .info form .uploadBtn:hover {
+    background: #044794;
+}
+
+.contCatDet .info form .saveBtn,
+.contCatDet .info form .cancelBtn {
+    background: #50a2ff;
+}
+
+.contCatDet .info form .saveBtn:hover {
+    background: #044794;
+    color: #fff;
+}
+
+.contCatDet .info form .cancelBtn:hover {
+    background: #940404;
+    color: #fff;
 }
 
 .modalMsg {

@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="css/lightbox.css" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <title>Detalles categoria</title>
 </head>
@@ -45,22 +46,47 @@
                     </div>
                 </div>
                 <div class="info">
-                    <form id="editName" action="" class="name" method="POST">
+                    <form id="editName" action="detallesCategoria.php?cat=<?= $cat['id'] ?>" class="name" method="POST">
+                        <input type="hidden" name="editName">
                         <div class="field">
+                            <?php $name = html_entity_decode($cat['nombre_cat']) ?>
                             <label for="catName">Nombre</label>
-                            <input type="text" value="<?= $cat['nombre_cat'] ?>" placeholder="<?= $cat['nombre_cat'] ?>" disabled>
+                            <input id="catName" type="text" name="catName" value="<?= $name ?>" placeholder="<?= $name ?>" disabled>
+                            <div class="options">
+                                <span id="editName" class="editBtn opt">Editar &nbsp; <i class="fa fa-edit"></i> </span>
+                                <span id="saveName" class="saveBtn opt hidden">Guardar</span>
+                                <span id="sameName" class="sameInfo hidden">El nombre ingresado es el mismo</span>
+                                <span id="cancelName" class="cancelBtn opt hidden">Cancelar</span>
+                            </div>
                         </div>
                     </form>
-                    <form id="editDesc" action="" class="desc" method="POST">
+                    <form id="editDesc" action="detallesCategoria.php?cat=<?= $cat['id'] ?>" class="desc" method="POST">
+                        <input type="hidden" name="editDesc">
                         <div class="field">
+                            <?php $desc = html_entity_decode($cat['descripcion']) ?>
                             <label for="catDesc">Descripci&oacute;n</label>
-                            <textarea name="catDesc" id="catDesc" disabled><?= $cat['descripcion'] ?></textarea>
+                            <textarea name="catDesc" id="catDesc" disabled><?= $desc ?></textarea>
+                            <div class="options">
+                                <span id="editInfo" class="editBtn opt">Editar &nbsp; <i class="fa fa-edit"></i> </span>
+                                <span id="saveInfo" class="saveBtn opt hidden">Guardar</span>
+                                <span id="sameInfo" class="sameInfo hidden">La descripci&oacute;n es la misma</span>
+                                <span id="cancelInfo" class="cancelBtn opt hidden">Cancelar</span>
+                            </div>
                         </div>
                     </form>
                     <form id="editImg" action="" class="img" method="POST">
                         <div class="field">
-                            <label for="catImg">Imagen</label>
-                            <img src="../<?= $cat['imagen'] ?>" alt="x">
+                            <label for="meh">Imagen</label>
+                            <div class="catImg">
+                                <img src="../<?= $cat['imagen'] ?>" alt="x">
+                                <a href="../<?= $cat['imagen'] ?>" class="bg" data-lightbox="Imagen de la categoria">
+                                    <i class="fa fa-eye"></i>
+                                </a>
+                            </div>
+                            <div class="options">
+                                <input type="file" name="catImg" id="catImg" class="hidden" accept="image/*">
+                                <label for="catImg" class="uploadBtn opt">Subir &nbsp; <i class="fa fa-camera"></i> </label>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -86,6 +112,7 @@
         </section>
     </main>
 
+    <script src="js/lightbox-plus-jquery.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

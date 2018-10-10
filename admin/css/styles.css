@@ -3431,7 +3431,7 @@ main section > .title {
 }
 
 .modalMsg {
-    position: absolute;
+    position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;

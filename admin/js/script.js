@@ -362,7 +362,8 @@ if (document.title == 'Detalles de pedido') {
         toggleHide = document.getElementById("toggleHide"),
         toggleOthers = document.getElementById("toggleOthers"),
         editBtns = [...document.querySelectorAll(".info .options .editBtn")],
-        cancelBtns = [...document.querySelectorAll(".info .options .cancelBtn")];
+        cancelBtns = [...document.querySelectorAll(".info .options .cancelBtn")],
+        deleteBtn = document.getElementById("deleteCatBtn");
 
     swStatus.addEventListener("click", () => {
         let statusBar = document.getElementById("status"),
@@ -370,7 +371,8 @@ if (document.title == 'Detalles de pedido') {
             statusMsg = document.getElementById("statusMsg"),
             closeModal = document.getElementById("closeModal"),
             hideProds = document.getElementById("hideProds"),
-            toOthers = document.getElementById("toOthers");
+            toOthers = document.getElementById("toOthers"),
+            toggleMsg = document.getElementById("toggleMsg");
     
         if (statusClass == "inactiva") {
             let setActiveForm = document.getElementById("setActiveForm");
@@ -388,13 +390,23 @@ if (document.title == 'Detalles de pedido') {
         } else if (statusClass == "activa") {
             modalMsg = document.getElementById("modal");
             modalMsg.classList.add("open");
+            toggleMsg.classList.remove("hidden");
+
+            window.addEventListener("keyup", function (e) {
+                if (e.keyCode == 27) {
+                    modalMsg.classList.remove("open");
+                    toggleMsg.classList.add("hidden");
+                }
+            });
 
             closeModal.addEventListener("click", () => {
                 modalMsg.classList.remove("open");
+                toggleMsg.classList.add("hidden");
             });
 
             hideProds.addEventListener("click", () => {
                 modalMsg.classList.remove("open");
+                toggleMsg.classList.add("hidden");
                 setTimeout(() => {
                     statusBar.classList.remove("activa");
                     statusBar.classList.add("inactiva");
@@ -409,6 +421,7 @@ if (document.title == 'Detalles de pedido') {
 
             toOthers.addEventListener("click", () => {
                 modalMsg.classList.remove("open");
+                toggleMsg.classList.add("hidden");
                 setTimeout(() => {
                     statusBar.classList.remove("activa");
                     statusBar.classList.add("inactiva");
@@ -502,6 +515,21 @@ if (document.title == 'Detalles de pedido') {
 
     catImg.addEventListener("change", () => {
         editImgForm.submit();
+    });
+
+    deleteBtn.addEventListener("click", () => {
+        let modalMsg = document.getElementById("modal");
+            // deleteMsg = document.getElementById("deleteMsg");
+
+        modalMsg.classList.add("open");
+        // deleteMsg.classList.remove("hidden");
+
+        window.addEventListener("keyup", function (e) {
+            if (e.keyCode == 27) {
+                modalMsg.classList.remove("open");
+                // toggleMsg.classList.add("hidden");
+            }
+        });
     });
 
 }

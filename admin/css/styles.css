@@ -3227,6 +3227,24 @@ main section > .title {
     color: #505050;
 }
 
+.contCatDet .status .delete {
+    padding: 5px;
+    border-radius: 50%;
+    height: 30px;
+    min-width: 30px;
+    text-align: center;
+    margin: 0 10px 0 20px;
+    background: #ffc3c3;
+    color: #4d0000;
+    cursor: pointer;
+    transition: all ease 0.3s;
+}
+
+.contCatDet .status .delete:hover {
+    background: #ac0101;
+    color: #ffffff;
+}
+
 .contCatDet .status span {
     width: 100%;
     text-align: center;
@@ -3265,6 +3283,7 @@ main section > .title {
     border-radius: 50%;
     transition: all linear 0.2s;
     position: absolute;
+    transition: all ease 0.3s;
 }
 
 .contCatDet .status.activa .switch .box .circle {

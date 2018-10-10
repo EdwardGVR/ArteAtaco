@@ -27,23 +27,33 @@
             <div class="contCatDet">
                 <div id="status" class="status <?= $status ?>">
                     <span id="statusMsg">La categor&iacute;a est&aacute; <?= $status ?></span>
-                    <form id="setActiveForm" action="detallesCategoria.php?cat=<?= $cat['id'] ?>" method="POST">
+                    
+                    <form id="setActiveForm" class="hidden" action="detallesCategoria.php?cat=<?= $cat['id'] ?>" method="POST">
                         <input type="hidden" name="setActive" value="<?= $cat['status'] ?>">
                         <input type="hidden" name="currentStatus" value="<?= $cat['status'] ?>">
                     </form>
-                    <form id="toggleHide" action="detallesCategoria.php?cat=<?= $cat['id'] ?>" method="POST">
+                    <form id="toggleHide" class="hidden" action="detallesCategoria.php?cat=<?= $cat['id'] ?>" method="POST">
                         <input type="hidden" name="toggleAndHide" value="<?= $cat['status'] ?>">
                         <input type="hidden" name="currentStatus" value="<?= $cat['status'] ?>">
                     </form>
-                    <form id="toggleOthers" action="detallesCategoria.php?cat=<?= $cat['id'] ?>" method="POST">
+                    <form id="toggleOthers" class="hidden" action="detallesCategoria.php?cat=<?= $cat['id'] ?>" method="POST">
                         <input type="hidden" name="toggleAndToOthers" value="<?= $cat['status'] ?>">
                         <input type="hidden" name="currentStatus" value="<?= $cat['status'] ?>">
                     </form>
+                    <form id="deleteCatForm" class="hidden" action="detallesCategoria.php?cat=<?= $cat['id'] ?>" method="POST">
+                        <input type="hidden" name="deleteCat" value="deleteCat">
+                        <input type="hidden" name="prodsAction" value="unknown">
+                    </form>
+                    
                     <div id="switch" class="switch">
                         <div class="box">
                             <div draggable="true" class="circle"></div>
                         </div>
                     </div>
+                    <div id="deleteCatBtn" class="delete">
+                        <i class="fa fa-trash"></i>
+                    </div>
+
                 </div>
                 <div class="info">
                     <form id="editName" action="detallesCategoria.php?cat=<?= $cat['id'] ?>" class="name" method="POST">
@@ -95,7 +105,7 @@
             </div>
 
             <div id="modal" class="modalMsg">
-                <div class="confirmToggle">
+                <div id="toggleMsg" class="confirmToggle hidden">
                     <p>La categor&iacute;a pasar&aacute; a estar inactiva, lo que significa que no se mostrar&aacute; al cliente pero
                     seguir&aacute; estando disponible en el panel de administraci&oacute;n.</p>
                     <p>Seleccione que desea hacer con los productos pertenecientes a esta categor&iacute;a:</p>

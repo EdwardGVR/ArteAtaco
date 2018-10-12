@@ -518,17 +518,23 @@ if (document.title == 'Detalles de pedido') {
     });
 
     deleteBtn.addEventListener("click", () => {
-        let modalMsg = document.getElementById("modal");
-            // deleteMsg = document.getElementById("deleteMsg");
+        let modalMsg = document.getElementById("modal"),
+            deleteMsg = document.getElementById("deleteMsg"),
+            closeDelete = document.getElementById("closeDelete");
 
         modalMsg.classList.add("open");
-        // deleteMsg.classList.remove("hidden");
+        deleteMsg.classList.remove("hidden");
 
         window.addEventListener("keyup", function (e) {
             if (e.keyCode == 27) {
                 modalMsg.classList.remove("open");
-                // toggleMsg.classList.add("hidden");
+                deleteMsg.classList.add("hidden");
             }
+        });
+
+        closeDelete.addEventListener("click", () => {
+            modalMsg.classList.remove("open");
+            deleteMsg.classList.add("hidden");
         });
     });
 

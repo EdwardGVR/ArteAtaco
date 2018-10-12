@@ -115,6 +115,18 @@
                         <div id="closeModal" class="opt cancel"><span>Cancelar</span></div>
                     </div>
                 </div>
+
+                <div id="deleteMsg" class="confirmToggle hidden">
+                    <p>La categor&iacute;a ser&aacute; eliminada, no se mostrar&aacute; al cliente ni
+                    estar&aacute; disponible en el panel de administraci&oacute;n.</p>
+                    <p>Seleccione que desea hacer con los productos de esta categor&iacute;a:</p>
+                    <div class="options">
+                        <div id="noDispProds" class="opt hide"><span>No disponibles</span></div>
+                        <div id="toOthers" class="opt showMisc"><span>Mostrar en "otros"</span></div>
+                        <div id="delProds" class="opt cancel"><span>Eliminar</span></div>
+                        <div id="closeDelete" class="opt cancel"><span>Cancelar</span></div>
+                    </div>
+                </div>
             </div>
         <?php else: ?>
             <div class="contCatDet">

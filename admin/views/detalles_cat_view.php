@@ -42,7 +42,7 @@
                     </form>
                     <form id="deleteCatForm" class="hidden" action="detallesCategoria.php?cat=<?= $cat['id'] ?>" method="POST">
                         <input type="hidden" name="deleteCat" value="deleteCat">
-                        <input type="hidden" name="prodsAction" value="unknown">
+                        <input type="hidden" id="prodsAction" name="prodsAction" value="unknown">
                     </form>
                     
                     <div id="switch" class="switch">
@@ -119,10 +119,10 @@
                 <div id="deleteMsg" class="confirmToggle hidden">
                     <p>La categor&iacute;a ser&aacute; eliminada, no se mostrar&aacute; al cliente ni
                     estar&aacute; disponible en el panel de administraci&oacute;n.</p>
-                    <p>Seleccione que desea hacer con los productos de esta categor&iacute;a:</p>
+                    <p>Seleccione que hacer con los productos de esta categor&iacute;a:</p>
                     <div class="options">
-                        <div id="noDispProds" class="opt hide"><span>No disponibles</span></div>
-                        <div id="toOthers" class="opt showMisc"><span>Mostrar en "otros"</span></div>
+                        <div id="del-noDisp" class="opt hide"><span>No disponibles</span></div>
+                        <div id="del-toOthers" class="opt showMisc"><span>Mostrar en "otros"</span></div>
                         <div id="delProds" class="opt cancel"><span>Eliminar</span></div>
                         <div id="closeDelete" class="opt cancel"><span>Cancelar</span></div>
                     </div>

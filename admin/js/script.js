@@ -520,10 +520,27 @@ if (document.title == 'Detalles de pedido') {
     deleteBtn.addEventListener("click", () => {
         let modalMsg = document.getElementById("modal"),
             deleteMsg = document.getElementById("deleteMsg"),
-            closeDelete = document.getElementById("closeDelete");
+            closeDelete = document.getElementById("closeDelete"),
+            prodsNoDisp = document.getElementById("del-noDisp"),
+            prodsToOthers = document.getElementById("del-toOthers"),
+            prodsDel = document.getElementById("delProds"),
+            prodsAction = document.getElementById("prodsAction"),
+            delForm = document.getElementById("deleteCatForm"),
+            contCat = document.querySelector(".contCatDet");
 
         modalMsg.classList.add("open");
         deleteMsg.classList.remove("hidden");
+
+        prodsNoDisp.addEventListener("click", () => {
+            prodsAction.setAttribute("value", "setProdsNoDisp");
+            modalMsg.classList.remove("open");
+            deleteMsg.classList.add("hidden");
+            contCat.classList.add("deleted");
+
+            setTimeout(()=>{
+                delForm.submit(); 
+            }, 2000);
+        });
 
         window.addEventListener("keyup", function (e) {
             if (e.keyCode == 27) {

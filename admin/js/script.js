@@ -533,6 +533,31 @@ if (document.title == 'Detalles de pedido') {
 
         prodsNoDisp.addEventListener("click", () => {
             prodsAction.setAttribute("value", "setProdsNoDisp");
+
+            modalMsg.classList.remove("open");
+            deleteMsg.classList.add("hidden");
+            contCat.classList.add("deleted");
+
+            setTimeout(()=>{
+                delForm.submit(); 
+            }, 2000);
+        });
+
+        prodsToOthers.addEventListener("click", () => {
+            prodsAction.setAttribute("value", "setProdsToOthers");
+            
+            modalMsg.classList.remove("open");
+            deleteMsg.classList.add("hidden");
+            contCat.classList.add("deleted");
+
+            setTimeout(()=>{
+                delForm.submit(); 
+            }, 2000);
+        });
+
+        delProds.addEventListener("click", () => {
+            prodsAction.setAttribute("value", "deleteProds");
+            
             modalMsg.classList.remove("open");
             deleteMsg.classList.add("hidden");
             contCat.classList.add("deleted");

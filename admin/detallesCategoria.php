@@ -112,7 +112,7 @@ if ($conexion != false) {
                 echo $catImg['error'];
             } else {
                 $imgError = false;
-                $accents = array("&", "acute;", " ", "tilde");
+                $accents = array("&", "acute;", " ", "tilde;");
                 $catNameFiltered = htmlentities($catName);
                 $catNameFiltered = str_replace($accents, "", $catNameFiltered);
                 $catNameFiltered = strtolower($catNameFiltered);
@@ -135,6 +135,70 @@ if ($conexion != false) {
             header("Location: detallesCategoria.php?cat=$idCat");
         } else {
             echo "Error en la imagen";
+        }
+    }
+
+    if (isset($_POST['deleteCat'])) {
+        $query = $conexion->prepare("
+            UPDATE categorias
+            SET descripcion = '', imagen = '', status = '0', deleted = '1'
+            WHERE id = :idCat
+        ");
+        $query->execute(array(':idCat' => $idCat));
+
+        unlink('../' . $cat['imagen']);
+
+        $prodsAction = $_POST['prodsAction'];
+
+        switch ($prodsAction) {
+            case 'setProdsNoDisp':
+                $query = $conexion->prepare("UPDATE productos SET disponible = 0 WHERE id_categoria = :idCat");
+                $query->execute(array(':idCat' => $idCat));
+
+                header("Location: categorias.php");
+
+                break;
+
+            case 'setProdsToOthers':
+                $query = $conexion->prepare("UPDATE productos SET to_others = 1 WHERE id_categoria = :idCat");
+                $query->execute(array(':idCat' => $idCat));
+
+                header("Location: categorias.php");
+
+                break;
+
+            case 'deleteProds':
+                $query = $conexion->prepare("UPDATE productos SET deleted = 1, disponible = 0 WHERE id_categoria = :idCat");
+                $query->execute(array(':idCat' => $idCat));
+
+                $query = $conexion->prepare("
+                    SELECT imgs_prods.* 
+                    FROM imgs_prods 
+                    JOIN productos ON imgs_prods.id_prod = productos.id 
+                    WHERE productos.id_categoria = :idCat
+                ");
+                $query->execute(array(':idCat' => $idCat));
+                $imgsCatProds = $query->fetchall();
+
+                foreach ($imgsCatProds as $img) {
+                    $imgPath = $img['ruta'];
+
+                    unlink('../' . $imgPath);
+
+                    $query = $conexion->prepare("DELETE FROM imgs_prods WHERE id = :idImg");
+                    $query->execute(array(':idImg' => $img['id']));
+                }
+
+                header("Location: categorias.php");
+                break;
+            
+            case 'unknown':
+                $deleteError = true;
+                break;
+            
+            default:
+                # code...
+                break;
         }
     }
 }

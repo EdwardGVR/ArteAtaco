@@ -155,15 +155,11 @@ if ($conexion != false) {
                 $query = $conexion->prepare("UPDATE productos SET disponible = 0 WHERE id_categoria = :idCat");
                 $query->execute(array(':idCat' => $idCat));
 
-                header("Location: categorias.php");
-
                 break;
 
             case 'setProdsToOthers':
                 $query = $conexion->prepare("UPDATE productos SET to_others = 1 WHERE id_categoria = :idCat");
                 $query->execute(array(':idCat' => $idCat));
-
-                header("Location: categorias.php");
 
                 break;
 
@@ -189,7 +185,6 @@ if ($conexion != false) {
                     $query->execute(array(':idImg' => $img['id']));
                 }
 
-                header("Location: categorias.php");
                 break;
             
             case 'unknown':
@@ -200,6 +195,8 @@ if ($conexion != false) {
                 # code...
                 break;
         }
+
+        header("Location: categorias.php");
     }
 }
 

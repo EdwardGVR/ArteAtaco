@@ -1552,6 +1552,8 @@ main section > .title {
     /* padding: 0 20px; */
     padding-top: 10px;
     margin-bottom: 10px;
+    text-decoration: none;
+    color: #000;
 }
 
 .producto_list .info .field span {
@@ -3340,7 +3342,8 @@ main section > .title {
     left: 6px;
 }
 
-.contCatDet .info {
+.contCatDet .info,
+.contCatDet .catProds {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
@@ -3491,6 +3494,70 @@ main section > .title {
 .contCatDet .info form .cancelBtn:hover {
     background: #940404;
     color: #fff;
+}
+
+.contCatDet .catProds {
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.contCatDet .catProds .title {
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+}
+
+.contCatDet .catProds .prod {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 120px;
+    height: 150px;
+    padding: 10px;
+    text-decoration: none;
+    color: #000;
+    transition: all ease 0.3s;
+    margin-right: 20px;
+    background: #e0eeff;
+    border-radius: 5px;
+}
+
+.contCatDet .catProds .prod.noDisponible {
+    background: #888888;
+}
+
+.contCatDet .catProds .prod:hover {
+    box-shadow: 0 0 3px #000;
+}
+
+.contCatDet .catProds .prod:last-child {
+    margin-right: 0;
+}
+
+.contCatDet .catProds .prod .img {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    text-align: center;
+    line-height: 100px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background: #b3ddff;
+}
+
+.contCatDet .catProds .prod .img img {
+    width: 100%;
+}
+
+.contCatDet .catProds .prod .name {
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+    text-align: center;
+    font-size: 0.8em;
+    border-radius: 5px;
+    background: #b3ddff;
 }
 
 .modalMsg {

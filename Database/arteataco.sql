@@ -2,7 +2,7 @@
 --
 -- Host: 127.0.0.1    Database: login_propio
 -- ------------------------------------------------------
--- Server version	5.5.5-10.1.33-MariaDB
+-- Server version	5.5.5-10.1.32-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -60,7 +60,7 @@ CREATE TABLE `categorias` (
   `deleted` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `nombre_categoria` (`nombre_cat`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,7 +69,7 @@ CREATE TABLE `categorias` (
 
 LOCK TABLES `categorias` WRITE;
 /*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
-INSERT INTO `categorias` VALUES (1,'L&aacute;mparas','L&aacute;mparas hechas en PVC, Bamboo y otros materiales para decorar su hogar y generar un ambiente c&aacute;lido.','images/categorias/lamparas_img.jpg',1,0),(2,'Atrapasue&ntilde;os','Lorem ipsum dolor sit amet...','images/categorias/atrapasuen;os_img.jpg',1,0),(3,'Banquetas','Lorem ipsum dolor sit amet...','images/categorias/banquetas_img.jpg',1,0),(4,'Llamadores','Lorem ipsum dolor sit amet...','images/categorias/llamadores_img.jpg',1,0),(5,'Bisuteria','Lorem ipsum dolor sit amet...','images/categorias/bisuteria_img.jpg',1,0),(6,'Nequi','Lorem ipsum dolor sit amet...','images/categorias/nequi_img.jpg',1,0),(7,'Instrumentos','Lorem ipsum dolor sit amet...','images/categorias/instrumentos_img.jpg',1,0),(8,'Farolitos','Lorem ipsum dolor sit amet...','images/categorias/farolitos_img.jpg',1,0),(9,'Cat 9','','',0,1);
+INSERT INTO `categorias` VALUES (1,'L&aacute;mparas','L&aacute;mparas hechas en PVC, Bamboo y otros materiales para decorar su hogar y generar un ambiente c&aacute;lido.','images/categorias/lamparas_img.jpg',1,0),(2,'Atrapasue&ntilde;os','Lorem ipsum dolor sit amet...','images/categorias/atrapasuenos_img.jpg',1,0),(3,'Banquetas','Lorem ipsum dolor sit amet...','images/categorias/banquetas_img.jpg',1,0),(4,'Llamadores','Lorem ipsum dolor sit amet...','images/categorias/llamadores_img.jpg',1,0),(5,'Bisuteria','Lorem ipsum dolor sit amet...','images/categorias/bisuteria_img.jpg',1,0),(6,'Nequi','Lorem ipsum dolor sit amet...','images/categorias/nequi_img.jpg',1,0),(7,'Instrumentos','Lorem ipsum dolor sit amet...','images/categorias/instrumentos_img.jpg',1,0),(8,'Farolitos','Lorem ipsum dolor sit amet...','images/categorias/farolitos_img.jpg',1,0);
 /*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -451,4 +451,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-16 14:29:57
+-- Dump completed on 2018-10-19 12:53:17

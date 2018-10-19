@@ -60,7 +60,7 @@
                         <input type="hidden" name="editName">
                         <div class="field">
                             <?php $name = html_entity_decode($cat['nombre_cat']) ?>
-                            <label for="catName">Nombre</label>
+                            <label for="catName">Nombre:</label>
                             <input id="catName" type="text" name="catName" value="<?= $name ?>" placeholder="<?= $name ?>" disabled>
                             <div class="options">
                                 <span id="editName" class="editBtn opt">Editar &nbsp; <i class="fa fa-edit"></i> </span>
@@ -74,7 +74,7 @@
                         <input type="hidden" name="editDesc">
                         <div class="field">
                             <?php $desc = html_entity_decode($cat['descripcion']) ?>
-                            <label for="catDesc">Descripci&oacute;n</label>
+                            <label for="catDesc">Descripci&oacute;n:</label>
                             <textarea name="catDesc" id="catDesc" disabled><?= $desc ?></textarea>
                             <div class="options">
                                 <span id="editInfo" class="editBtn opt">Editar &nbsp; <i class="fa fa-edit"></i> </span>
@@ -86,7 +86,7 @@
                     </form>
                     <form id="editImg" enctype="multipart/form-data" action="detallesCategoria.php?cat=<?= $cat['id'] ?>" class="img" method="POST">
                         <div class="field">
-                            <label for="meh">Imagen</label>
+                            <label for="meh">Imagen:</label>
                             <div class="catImg">
                                 <img src="../<?= $cat['imagen'] ?>" alt="x">
                                 <a href="../<?= $cat['imagen'] ?>" class="bg" data-lightbox="Imagen de la categoria">
@@ -101,6 +101,37 @@
                             </div>
                         </div>
                     </form>
+                </div>
+                <div class="catProds">
+                    <?php if ($prods != false): ?>
+                        <span class="title">Productos de la categor&iacute;a</span>
+                        <?php  foreach($prods as $prod): ?>
+                            <?php $statusClass = ($prod['disponible'] == 1) ? "disponible" : "noDisponible"; ?>
+                            <!-- Validacion de imagenes -->
+                            <?php $imgsCounter = 0; $mainImg = false; 
+                                foreach ($imgsProds as $img) {
+                                    if ($img['id_prod'] == $prod['id']) { $imgsCounter++;
+                                        if ($imgsCounter > 0 && $img['principal'] == 1) {
+                                            $mainImg = true; $imgPath = $img['ruta']; }
+                                        if ($imgsCounter > 0 && !$mainImg) {
+                                            $imgPath = $img['ruta']; } 
+                                }   } ?>
+                            <a href="detallesProducto.php?idProd=<?= $prod['id'] ?>" class="prod <?= $statusClass ?>">
+                                <div class="img">
+                                <?php if ($imgsCounter > 0): ?>
+                                    <img src="../<?= $imgPath ?>" alt="x">
+                                <?php else: ?>
+                                    <i class="fas fa-file-image"></i>
+                                <?php endif ?>
+                                </div>
+                                <div class="name">
+                                    <span><?= $prod['nombre'] ?></span>
+                                </div>
+                            </a>
+                        <?php endforeach ?>
+                    <?php else: ?>
+                        <span class="title">No hay productos en esta categor&iacute;a</span>
+                    <?php endif ?>
                 </div>
             </div>
 

@@ -30,11 +30,20 @@ if ($conexion != false) {
     }
 
     // Obtener los productos de la categoria
-    $query = $conexion->prepare("SELECT * FROM productos WHERE id_categoria = :idCat");
+    $query = $conexion->prepare("SELECT * FROM productos WHERE id_categoria = :idCat AND deleted = 0");
     $query->execute(array(':idCat' => $idCat));
     $prods = $query->fetchall();
 
-    // Desactivar categoria y ocultar / mostrar productos
+    // Obtener las imagenes de los productos de la categoria
+    $query = $conexion->prepare("
+        SELECT imgs_prods.* FROM imgs_prods
+        JOIN productos ON imgs_prods.id_prod = productos.id
+        WHERE productos.id_categoria = :idCat
+    ");
+    $query->execute(array(':idCat' => $idCat));
+    $imgsProds = $query->fetchall();
+
+    // Desactivar categoria y ocultar productos
     if (isset($_POST['toggleAndHide'])) {    
         $query = $conexion->prepare("UPDATE categorias SET status = 0 WHERE id = :idCat");
         $query->execute(array(':idCat' => $idCat));
@@ -145,7 +154,6 @@ if ($conexion != false) {
             WHERE id = :idCat
         ");
         $query->execute(array(':idCat' => $idCat));
-
         unlink('../' . $cat['imagen']);
 
         $prodsAction = $_POST['prodsAction'];
@@ -154,13 +162,11 @@ if ($conexion != false) {
             case 'setProdsNoDisp':
                 $query = $conexion->prepare("UPDATE productos SET disponible = 0 WHERE id_categoria = :idCat");
                 $query->execute(array(':idCat' => $idCat));
-
                 break;
 
             case 'setProdsToOthers':
                 $query = $conexion->prepare("UPDATE productos SET to_others = 1 WHERE id_categoria = :idCat");
                 $query->execute(array(':idCat' => $idCat));
-
                 break;
 
             case 'deleteProds':
@@ -184,7 +190,6 @@ if ($conexion != false) {
                     $query = $conexion->prepare("DELETE FROM imgs_prods WHERE id = :idImg");
                     $query->execute(array(':idImg' => $img['id']));
                 }
-
                 break;
             
             case 'unknown':

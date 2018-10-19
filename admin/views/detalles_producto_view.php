@@ -39,7 +39,7 @@
                                     disabled
                                 >
                             </div>
-                            <div class="field">
+                            <a href="detallesCategoria.php?cat=<?= $producto['id_categoria'] ?>" class="field">
                                 <span class="label">Categor&iacute;a</span>
                                 <select 
                                     type="text" 
@@ -56,7 +56,7 @@
                                         <?php endif ?>
                                     <?php endforeach ?>
                                 </select>
-                            </div>
+                            </a>
                             <div class="field">
                                 <span class="label">Precio ($)</span>
                                 <input 
@@ -215,10 +215,10 @@
                                     name="nombreProd"
                                     class="value name valueProd<?= $producto['id'] ?>"
                                     value="<?= $producto['nombre']?>"
-                                    disabled>
-                                </input>
+                                    disabled
+                                />
                             </div>
-                            <div class="field">
+                            <a href="detallesCategoria.php?cat=<?= $producto['id_categoria'] ?>" class="field">
                                 <span class="label">Categor&iacute;a</span>
                                 <select 
                                     type="text" 
@@ -235,7 +235,7 @@
                                         <?php endif ?>
                                     <?php endforeach ?>
                                 </select>
-                            </div>
+                            </a>
                             <div class="field">
                                 <span class="label">Precio</span>
                                 <input 

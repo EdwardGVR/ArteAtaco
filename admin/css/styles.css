@@ -3571,6 +3571,7 @@ main section > .title {
     height: 100%;
     background: #ccc;
     opacity: 0.8;
+    z-index: 100;
     transition: all ease 0.3s;
 }
 

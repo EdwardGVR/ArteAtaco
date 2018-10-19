@@ -40,7 +40,8 @@
                                 >
                             </div>
                             <a href="detallesCategoria.php?cat=<?= $producto['id_categoria'] ?>" class="field">
-                                <span class="label">Categor&iacute;a</span>
+                                <?php $catMsg = ($producto['catStatus'] == 0) ? " (Inactiva actualmente)" : ""; ?>
+                                <span class="label">Categor&iacute;a<?= $catMsg ?></span>
                                 <select 
                                     type="text" 
                                     name="catProd" 
@@ -155,19 +156,32 @@
                         </div>
 
                         <div class="options">
-                            <form action="" class="opt disponible" method="POST">
-                                <input type="hidden" name="idProd" value="<?= $producto['id'] ?>">
-                                <input type="hidden" name="currentDisp" value="<?= $producto['disponible'] ?>">
-                                <input type="submit" name="setDisp" id="setDisp<?= $producto['id'] ?>">
-                                <span>Disponible</span>
-                                <div class="icon">
-                                    <?php if ($producto['disponible'] == 1): ?>
-                                        <label for="setDisp<?= $producto['id'] ?>"><i class="fas fa-toggle-on"></i></label>
-                                    <?php elseif ($producto['disponible'] == 0): ?>
-                                        <label for="setDisp<?= $producto['id'] ?>"><i class="fas fa-toggle-off"></i></label>
-                                    <?php endif ?>
+                            <?php if ($producto['catStatus'] == 1): ?>
+                                <form action="" class="opt disponible" method="POST">
+                                    <input type="hidden" name="idProd" value="<?= $producto['id'] ?>">
+                                    <input type="hidden" name="currentDisp" value="<?= $producto['disponible'] ?>">
+                                    <input type="submit" name="setDisp" id="setDisp<?= $producto['id'] ?>">
+                                    <span>Disponibilidad</span>
+                                    <div class="icon">
+                                        <?php if ($producto['disponible'] == 1): ?>
+                                            <label for="setDisp<?= $producto['id'] ?>"><i class="fas fa-toggle-on"></i></label>
+                                        <?php elseif ($producto['disponible'] == 0): ?>
+                                            <label for="setDisp<?= $producto['id'] ?>"><i class="fas fa-toggle-off"></i></label>
+                                        <?php endif ?>
+                                    </div>
+                                </form>
+                            <?php elseif ($producto['catStatus']  == 0): ?>
+                                <div class="opt">
+                                    <span>Disponibilidad</span>
+                                    <div class="icon">
+                                        <?php if ($producto['disponible'] == 1): ?>
+                                            <i class="fas fa-toggle-on"></i>
+                                        <?php elseif ($producto['disponible'] == 0): ?>
+                                            <i class="fas fa-toggle-off"></i>
+                                        <?php endif ?>
+                                    </div>
                                 </div>
-                            </form>
+                            <?php endif ?>
 
                             <div class="opt">
                                 <span>Editar</span>
@@ -219,7 +233,8 @@
                                 />
                             </div>
                             <a href="detallesCategoria.php?cat=<?= $producto['id_categoria'] ?>" class="field">
-                                <span class="label">Categor&iacute;a</span>
+                                <?php $catMsg = ($producto['catStatus'] == 0) ? " (Inactiva actualmente)" : ""; ?>
+                                <span class="label">Categor&iacute;a<?= $catMsg ?></span>
                                 <select 
                                     type="text" 
                                     name="catProd" 
@@ -243,8 +258,8 @@
                                     name="precioProd" 
                                     class="value valueProd<?= $producto['id'] ?>" 
                                     value="<?= '$' . $producto['precio'] ?>" 
-                                    disabled>
-                                </input>
+                                    disabled
+                                />
                             </div>
                             <div class="field">
                                 <span class="label">Descripci&oacute;n</span>
@@ -336,19 +351,32 @@
                         </div>
 
                         <div class="options noDisp">
-                            <form action="" class="opt disponible" method="POST">
-                                <input type="hidden" name="idProd" value="<?= $producto['id'] ?>">
-                                <input type="hidden" name="currentDisp" value="<?= $producto['disponible'] ?>">
-                                <input type="submit" name="setDisp" id="setDisp<?= $producto['id'] ?>">
-                                <span>Disponible</span>
-                                <div class="icon">
-                                    <?php if ($producto['disponible'] == 1): ?>
-                                        <label for="setDisp<?= $producto['id'] ?>"><i class="fas fa-toggle-on"></i></label>
-                                    <?php elseif ($producto['disponible'] == 0): ?>
-                                        <label for="setDisp<?= $producto['id'] ?>"><i class="fas fa-toggle-off"></i></label>
-                                    <?php endif ?>
+                            <?php if ($producto['catStatus'] == 1): ?>
+                                <form action="" class="opt disponible" method="POST">
+                                    <input type="hidden" name="idProd" value="<?= $producto['id'] ?>">
+                                    <input type="hidden" name="currentDisp" value="<?= $producto['disponible'] ?>">
+                                    <input type="submit" name="setDisp" id="setDisp<?= $producto['id'] ?>">
+                                    <span>Disponibilidad</span>
+                                    <div class="icon">
+                                        <?php if ($producto['disponible'] == 1): ?>
+                                            <label for="setDisp<?= $producto['id'] ?>"><i class="fas fa-toggle-on"></i></label>
+                                        <?php elseif ($producto['disponible'] == 0): ?>
+                                            <label for="setDisp<?= $producto['id'] ?>"><i class="fas fa-toggle-off"></i></label>
+                                        <?php endif ?>
+                                    </div>
+                                </form>
+                            <?php elseif ($producto['catStatus'] == 0): ?>
+                                <div class="opt">
+                                    <span>Disponibilidad</span>
+                                    <div id="confirmToggle" class="icon">
+                                        <?php if ($producto['disponible'] == 1): ?>
+                                            <i class="fas fa-toggle-on"></i>
+                                        <?php elseif ($producto['disponible'] == 0): ?>
+                                            <i class="fas fa-toggle-off"></i>
+                                        <?php endif ?>
+                                    </div>
                                 </div>
-                            </form>
+                            <?php endif ?>
 
                             <div class="opt">
                                 <span>Editar</span>
@@ -387,6 +415,24 @@
                 <?php endif ?>
             </div>
         </section>
+
+        <form action="" id="toggleForm" class="hidden" method="POST">
+            <input type="hidden" name="toggleProd">
+            <input type="hidden" name="actionForm" id="actionForm" value="unknown">
+        </form>
+
+        <div id="modal" class="modalMsg">
+            <div id="toggleMsg" class="confirmToggle hidden">
+                <p>La categor&iacute;a de este producto se encuentra inactiva en este momento, puede elegir entre las 
+                siguientes opciones para que este producto est&eacute; disponible para el cliente.</p>
+                <div class="options">
+                    <div id="activeCat" class="opt hide"><span>Activar categor&iacute;a</span></div>
+                    <div id="chooseCat" class="opt showMisc"><span>Elegir otra categor&iacute;a</span></div>
+                    <div id="othersCat" class="opt showMisc"><span>Mostrar en "otros"</span></div>
+                    <div id="closeModal" class="opt cancel"><span>Cancelar</span></div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <script src="js/lightbox-plus-jquery.js"></script>

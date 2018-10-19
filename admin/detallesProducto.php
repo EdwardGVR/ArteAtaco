@@ -15,7 +15,7 @@
     if ($conexion != false) {
         // Obtener detalles del producto      
         $query = $conexion->prepare(
-            "SELECT productos.*, categorias.nombre_cat
+            "SELECT productos.*, categorias.nombre_cat, categorias.status AS catStatus
             FROM productos 
             JOIN categorias ON productos.id_categoria = categorias.id
             WHERE productos.id = :idProd
@@ -176,6 +176,29 @@
             ));
 
             header("Location: detallesProducto.php?idProd=$prodIdUrl");
+        }
+
+        if (isset($_POST['toggleProd'])) {
+            $action = $_POST['actionForm'];
+
+            switch ($action) {
+                case 'activeCat':
+                    # code...
+                    break;
+                case 'chooseCat':
+                    # code...
+                    break;
+                case 'othersCat':
+                    # code...
+                    break;
+                case 'unknown':
+                    $errorForm = true;
+                    break;
+                
+                default:
+                    # code...
+                    break;
+            }
         }
 
         // Obtener las imagenes

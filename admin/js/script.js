@@ -14,8 +14,6 @@ function getCookie(cname) {
 	return "";
 }
 
-
-
 if (document.title == 'Detalles de pedido') {
 
     console.log("Detalles de pedido");
@@ -53,7 +51,7 @@ if (document.title == 'Detalles de pedido') {
     }
 
 } else if (document.title == 'Detalles producto') {
-    console.log("Detalles producto");
+    console.info("Detalles producto");
 
     let deleteProducts = [...document.getElementsByClassName('delProd')],
         editProducts = [...document.getElementsByClassName('editProd')];
@@ -64,9 +62,6 @@ if (document.title == 'Detalles de pedido') {
                 e.preventDefault();
             }
         });
-
-        
-        
     }
     
     for (let j = 0; j < editProducts.length; j++) {
@@ -111,6 +106,50 @@ if (document.title == 'Detalles de pedido') {
         });
     }
 
+    // Confirmar activacion
+    let confirmToggle = document.getElementById("confirmToggle"),
+        modal = document.getElementById("modal"),
+        toggleMsg = document.getElementById("toggleMsg"),
+        closeModal = document.getElementById("closeModal");
+    
+    if (confirmToggle != undefined) {
+        confirmToggle.addEventListener("click", () => {
+            // Abrir modal
+            modal.classList.add("open");
+            toggleMsg.classList.remove("hidden");
+
+            // Cerrar modal
+            closeModal.addEventListener("click", () => {
+                modal.classList.remove("open");
+                toggleMsg.classList.add("hidden");
+            });
+            window.addEventListener("keyup", function (e) {
+                if (e.value = 27) {
+                    modal.classList.remove("open");
+                    toggleMsg.classList.add("hidden");
+                }
+            });
+
+            let activeCat = document.getElementById("activeCat"),
+                chooseCat = document.getElementById("chooseCat"),
+                othersCat = document.getElementById("othersCat"),
+                toggleForm = document.getElementById("toggleForm"),
+                actionForm = document.getElementById("actionForm");
+            
+            activeCat.addEventListener("click", () => {
+                actionForm.setAttribute("value", "activeCat");
+                toggleForm.submit();
+            });
+            chooseCat.addEventListener("click", () => {
+                actionForm.setAttribute("value", "chooseCat");
+                toggleForm.submit();
+            });
+            othersCat.addEventListener("click", () => {
+                actionForm.setAttribute("value", "othersCat");
+                toggleForm.submit();
+            });
+        });
+    }
     
 } else if (document.title == 'Productos') {
     console.log("Productos");

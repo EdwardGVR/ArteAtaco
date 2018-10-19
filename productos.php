@@ -18,6 +18,15 @@ if (!$id_cat) {
 }
 
 if ($conexion != false) {
+	$query = $conexion->prepare("SELECT status FROM categorias WHERE id = :idCat");
+	$query->execute(array(':idCat' => $id_cat));
+	$catStatus = $query->fetch();
+	$catStatus = $catStatus['status'];
+
+	if ($catStatus == 0) {
+		header('Location: categorias.php');
+	}
+
 	// Obtener categorias para el menu
 	$query = $conexion->prepare('SELECT * FROM categorias ORDER BY nombre_cat ASC');
 	$query->execute();

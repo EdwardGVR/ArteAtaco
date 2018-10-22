@@ -69,7 +69,7 @@ CREATE TABLE `categorias` (
 
 LOCK TABLES `categorias` WRITE;
 /*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
-INSERT INTO `categorias` VALUES (1,'L&aacute;mparas','L&aacute;mparas hechas en PVC, Bamboo y otros materiales para decorar su hogar y generar un ambiente c&aacute;lido.','images/categorias/lamparas_img.jpg',1,0),(2,'Atrapasue&ntilde;os','Lorem ipsum dolor sit amet...','images/categorias/atrapasuenos_img.jpg',1,0),(3,'Banquetas','Lorem ipsum dolor sit amet...','images/categorias/banquetas_img.jpg',1,0),(4,'Llamadores','Lorem ipsum dolor sit amet...','images/categorias/llamadores_img.jpg',1,0),(5,'Bisuteria','Lorem ipsum dolor sit amet...','images/categorias/bisuteria_img.jpg',1,0),(6,'Nequi','Lorem ipsum dolor sit amet...','images/categorias/nequi_img.jpg',1,0),(7,'Instrumentos','Lorem ipsum dolor sit amet...','images/categorias/instrumentos_img.jpg',1,0),(8,'Farolitos','Lorem ipsum dolor sit amet...','images/categorias/farolitos_img.jpg',1,0);
+INSERT INTO `categorias` VALUES (1,'L&aacute;mparas','L&aacute;mparas hechas en PVC, Bamboo y otros materiales para decorar su hogar y generar un ambiente c&aacute;lido.','images/categorias/lamparas_img.jpg',0,0),(2,'Atrapasue&ntilde;os','Lorem ipsum dolor sit amet...','images/categorias/atrapasuenos_img.jpg',1,0),(3,'Banquetas','Lorem ipsum dolor sit amet...','images/categorias/banquetas_img.jpg',1,0),(4,'Llamadores','Lorem ipsum dolor sit amet...','images/categorias/llamadores_img.jpg',1,0),(5,'Bisuteria','Lorem ipsum dolor sit amet...','images/categorias/bisuteria_img.jpg',1,0),(6,'Nequi','Lorem ipsum dolor sit amet...','images/categorias/nequi_img.jpg',1,0),(7,'Instrumentos','Lorem ipsum dolor sit amet...','images/categorias/instrumentos_img.jpg',1,0),(8,'Farolitos','Lorem ipsum dolor sit amet...','images/categorias/farolitos_img.jpg',1,0);
 /*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -327,7 +327,7 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES (1,1,'LÃ¡mpara de bÃºho',15,'LÃ¡mpara de bÃºho hecha en PVC calado                                ',3,'images/productos/lamparas/pvc/buho.jpg',1,'2018-05-12 23:58:35',0,0),(2,1,'L&aacute;mpara 2',15,'LÃ¡mpara de otra cosa para probar                                    ',2,'images/productos/lamparas/pvc/lamp1.jpg',1,'2018-05-12 23:58:35',0,0),(3,1,'L&aacute;mpara 3',15,'LÃ¡mpara de bÃºho hecha en PVC calado                                    ',1,'images/productos/lamparas/pvc/lamp2.jpg',1,'2018-05-12 23:58:35',0,0),(4,1,'L&aacute;mpara 4',15,'LÃ¡mpara de bÃºho hecha en PVC calado                                    ',2,'images/productos/lamparas/pvc/lamp3.jpg',1,'2018-05-12 23:58:35',0,0),(6,3,'Producto nuevo',5,'Descripcion del nuevo producto',NULL,NULL,1,'2018-05-13 00:09:39',0,0),(7,2,'Atrapa weas',5,'Descripcion de atrapa nuevo                                                                        ',NULL,NULL,1,'2018-07-30 16:41:17',0,0);
+INSERT INTO `productos` VALUES (1,8,'LÃ¡mpara de bÃºho',15,'LÃ¡mpara de bÃºho hecha en PVC calado                                ',3,'images/productos/lamparas/pvc/buho.jpg',1,'2018-05-12 23:58:35',0,0),(2,1,'L&aacute;mpara 2',15,'LÃ¡mpara de otra cosa para probar                                    ',2,'images/productos/lamparas/pvc/lamp1.jpg',0,'2018-05-12 23:58:35',0,0),(3,1,'L&aacute;mpara 3',15,'LÃ¡mpara de bÃºho hecha en PVC calado                                    ',1,'images/productos/lamparas/pvc/lamp2.jpg',0,'2018-05-12 23:58:35',0,0),(4,1,'L&aacute;mpara 4',15,'LÃ¡mpara de bÃºho hecha en PVC calado                                    ',2,'images/productos/lamparas/pvc/lamp3.jpg',0,'2018-05-12 23:58:35',0,0),(6,3,'Producto nuevo',5,'Descripcion del nuevo producto',NULL,NULL,1,'2018-05-13 00:09:39',0,0),(7,2,'Atrapa weas',5,'Descripcion de atrapa nuevo                                                                        ',NULL,NULL,1,'2018-07-30 16:41:17',0,0);
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -451,4 +451,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-19 12:53:17
+-- Dump completed on 2018-10-22 12:57:56

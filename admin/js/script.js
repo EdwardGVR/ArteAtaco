@@ -122,11 +122,13 @@ if (document.title == 'Detalles de pedido') {
             closeModal.addEventListener("click", () => {
                 modal.classList.remove("open");
                 toggleMsg.classList.add("hidden");
+                chooseCatMsg.classList.add("hidden");
             });
             window.addEventListener("keyup", function (e) {
                 if (e.value = 27) {
                     modal.classList.remove("open");
                     toggleMsg.classList.add("hidden");
+                    chooseCatMsg.classList.add("hidden");
                 }
             });
 
@@ -140,10 +142,37 @@ if (document.title == 'Detalles de pedido') {
                 actionForm.setAttribute("value", "activeCat");
                 toggleForm.submit();
             });
+
             chooseCat.addEventListener("click", () => {
+                
+                let chooseCatMsg = document.getElementById("chooseCatMsg"),
+                    cancelChoose = document.getElementById("cancelChoose"),
+                    newCatSelect = document.getElementById("newCatSelect"),
+                    newCat = document.getElementById("newCat"),
+                    saveNewCatBtn = document.getElementById("saveNewCatBtn");
+                
+                toggleMsg.classList.add("hidden");
+                chooseCatMsg.classList.remove("hidden");
+
                 actionForm.setAttribute("value", "chooseCat");
-                toggleForm.submit();
+                
+                cancelChoose.addEventListener("click", () => {
+                    modal.classList.remove("open");
+                    toggleMsg.classList.add("hidden");
+                    chooseCatMsg.classList.add("hidden");
+                });
+
+                newCatSelect.addEventListener("change", () => {
+                    newCat.setAttribute("value", newCatSelect.value);
+                    saveNewCatBtn.classList.add("active");
+                });
+
+                saveNewCatBtn.addEventListener("click", () => {
+                    toggleForm.submit();
+                });
+
             });
+
             othersCat.addEventListener("click", () => {
                 actionForm.setAttribute("value", "othersCat");
                 toggleForm.submit();

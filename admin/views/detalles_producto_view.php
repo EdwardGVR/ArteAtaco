@@ -419,6 +419,7 @@
         <form action="" id="toggleForm" class="hidden" method="POST">
             <input type="hidden" name="toggleProd">
             <input type="hidden" name="actionForm" id="actionForm" value="unknown">
+            <input type="hidden" name="newCat" id="newCat" value="null">
         </form>
 
         <div id="modal" class="modalMsg">
@@ -430,6 +431,24 @@
                     <div id="chooseCat" class="opt showMisc"><span>Elegir otra categor&iacute;a</span></div>
                     <div id="othersCat" class="opt showMisc"><span>Mostrar en "otros"</span></div>
                     <div id="closeModal" class="opt cancel"><span>Cancelar</span></div>
+                </div>
+            </div>
+            
+            <div id="chooseCatMsg" class="confirmToggle hidden">
+                <p>Elija la nueva categor&iacute;a para el producto.</p>
+                <div class="options">
+                    <div id="saveNewCat" class="chooseCatForm">
+                        <select name="newCat" id="newCatSelect" required>
+                            <option value="false" disabled selected>-- Elija una categor&iacute;a --</option>
+                            <?php foreach ($categorias as $cat): ?>
+                                <?php if ($cat['status'] == 1): ?>
+                                    <option value="<?= $cat['id'] ?>"><?= $cat['nombre_cat'] ?></option>
+                                <?php endif ?>
+                            <?php endforeach ?>
+                        </select>
+                        <div id="saveNewCatBtn" class="opt saveNewCat"><span>Aceptar</span></div>
+                        <div id="cancelChoose" class="opt cancel"><span>Cancelar</span></div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -49,13 +49,7 @@
 					<div class="detalle">
 						<span>
 							<!-- Validacion coste de envio -->
-							<?php 
-								if ($pedido['costoEnvioCompra'] == 0) {
-									$costoEnvio = "Gratuito";
-								} else {
-									$costoEnvio = "$" . $pedido['costoEnvioCompra'];
-								}
-							?>
+							<?php $costoEnvio = ($pedido['costoEnvioCompra'] == 0) ? "Gratuito" : "$" . $pedido['costoEnvioCompra']; ?>
 							Env&iacute;o a: <?= $pedido['dir_name'] ?>
 							(Costo de env&iacute;o: <?= $costoEnvio ?>)
 							<?php if ($pedido['disponible'] == 0): ?>

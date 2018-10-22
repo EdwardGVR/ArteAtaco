@@ -54,7 +54,6 @@ if ($conexion != false) {
 	$query = $conexion->prepare('SELECT * FROM categorias ORDER BY nombre_cat ASC');
 	$query->execute();
 	$categorias = $query->fetchall();
-	//print_r($categorias);
 
 	// Subir imagen de usuario
 	if (isset($_FILES['user_img'])) {
@@ -86,7 +85,6 @@ if ($conexion != false) {
 		}
 	}
 	$imagen_user = "images/user/profile/user_img_" . $iduser . ".jpg";
-	// echo $imagen_user;
 
 	$query = $conexion->prepare("
 		SELECT * FROM direcciones 
@@ -95,14 +93,12 @@ if ($conexion != false) {
 	$dirs = $query->fetchall();
 	// Obtener cantidad de direcciones del usuario
 	$cant_direcciones = count($dirs);
-	// print_r($cant_direcciones);
 
 	if ($cant_direcciones < 3) {
 		$permitir_direccion = true;
 	} else {
 		$permitir_direccion = false;
 	}
-	// var_dump($permitir_direccion);
 
 	// Guardar los cambios de usuario
 	if (isset($_POST['guardar'])) {
@@ -211,56 +207,28 @@ if ($conexion != false) {
 			$direccion = $query->fetch();
 
 			if ($direccion['nombre'] != $nombre_dir_update) {
-				// Guardar en direcciones
 				$query = $conexion->prepare("UPDATE direcciones SET nombre = :nombre_dir_update WHERE id = :id");
-				$query->execute(array(
-					':nombre_dir_update' => $nombre_dir_update,
-					':id' => $_POST['id_address']
-				));
-				// Guardar en direcciones_persistence
-				$query = $conexion->prepare("UPDATE direcciones_persistence SET nombre = :nombre_dir_update WHERE id = :id");
 				$query->execute(array(
 					':nombre_dir_update' => $nombre_dir_update,
 					':id' => $_POST['id_address']
 				));
 			}
 			if ($direccion['linea1'] != $linea1_update) {
-				// Guardar en direcciones
 				$query = $conexion->prepare("UPDATE direcciones SET linea1 = :linea1_update WHERE id = :id");
-				$query->execute(array(
-					':linea1_update' => $linea1_update,
-					':id' => $_POST['id_address']
-				));	
-				// Guardar en direcciones_persistence
-				$query = $conexion->prepare("UPDATE direcciones_persistence SET linea1 = :linea1_update WHERE id = :id");
 				$query->execute(array(
 					':linea1_update' => $linea1_update,
 					':id' => $_POST['id_address']
 				));	
 			}
 			if ($direccion['linea2'] != $linea2_update) {
-				// Guardar en direcciones
 				$query = $conexion->prepare("UPDATE direcciones SET linea2 = :linea2_update WHERE id = :id");
-				$query->execute(array(
-					':linea2_update' => $linea2_update,
-					':id' => $_POST['id_address']
-				));
-				// Guardar en direcciones_persistence
-				$query = $conexion->prepare("UPDATE direcciones_persistence SET linea2 = :linea2_update WHERE id = :id");
 				$query->execute(array(
 					':linea2_update' => $linea2_update,
 					':id' => $_POST['id_address']
 				));
 			}
 			if ($direccion['referencias'] != $referencias_update) {
-				// Guardar en direcciones
 				$query = $conexion->prepare("UPDATE direcciones SET referencias = :referencias_update WHERE id = :id");
-				$query->execute(array(
-					':referencias_update' => $referencias_update,
-					':id' => $_POST['id_address']
-				));
-				// Guardar en direcciones_persistence
-				$query = $conexion->prepare("UPDATE direcciones_persistence SET referencias = :referencias_update WHERE id = :id");
 				$query->execute(array(
 					':referencias_update' => $referencias_update,
 					':id' => $_POST['id_address']
@@ -274,15 +242,6 @@ if ($conexion != false) {
 	// Eliminar una direccion
 	if (isset($_POST['eliminar_direccion'])) {
 		$id_address = $_POST['id_address'];
-
-		// $query = $conexion->prepare("DELETE FROM direcciones WHERE id = :id_address AND id_user = :id_user");
-		// $query->execute(array(
-		// 	':id_address' => $id_address,
-		// 	':id_user' => $iduser
-		// ));
-
-		// $query = $conexion->prepare("UPDATE direcciones_persistence SET activa = 0 WHERE id = :id");
-		// $query->execute(array(':id' => $_POST['id_address']));
 
 		$query = $conexion->prepare("UPDATE direcciones SET estado = 0, disponible = 0 WHERE id = :id_address AND id_user = :id_user");
 		$query->execute(array(
@@ -331,24 +290,8 @@ if ($conexion != false) {
 
 		// Comprobar que no hay errores
 		if (empty($errores_new_direccion && $permitir_direccion)) {
-			// Guardar en la tabla direcciones
 			$query = $conexion->prepare("
 				INSERT INTO direcciones 
-				VALUES(null, :id_user, :id_departamento, :nombre, :pais, :linea1, :linea2, :referencias, 1, 0, 1, 1)
-			");
-			$query->execute(array(
-				':id_user'=>$iduser,
-				':id_departamento'=>$departamento,
-				':nombre'=>$address_name,
-				':pais'=>$pais,
-				':linea1'=>$address_line_1,
-				':linea2'=>$address_line_2,
-				':referencias'=>$referencias
-			));
-
-			// Guardar en la tabla direcciones_persistence
-			$query = $conexion->prepare("
-				INSERT INTO direcciones_persistence
 				VALUES(null, :id_user, :id_departamento, :nombre, :pais, :linea1, :linea2, :referencias, 1, 0, 1, 1)
 			");
 			$query->execute(array(

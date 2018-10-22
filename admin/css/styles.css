@@ -1043,10 +1043,17 @@ main section > .title {
     margin-bottom: 10px;
 }
 
-.pedido_todos .pedido_body .total .payMethod span {
+.pedido_todos .pedido_body .total .payMethod a {
     border-radius: 5px;
     border: 2px solid #043164;
     padding: 5px;
+    text-decoration: none;
+    color: #000;
+    transition: all ease 0.3s;
+}
+
+.pedido_todos .pedido_body .total .payMethod a:hover {
+    background: #a5cfff;
 }
 
 .pedido_todos .pedido_body .total .icon {
@@ -1607,6 +1614,8 @@ main section > .title {
     padding: 5px;
     border-radius: 5px;
     font-size: 1em;
+    text-decoration: none;
+    color: #000;
     /* font-style: italic; */
     background: #98d1f1;
     cursor: default;
@@ -1738,6 +1747,8 @@ main section > .title {
 
 .contenedor_productos .producto_list .info.noDisp .field .label {
     background: #dbdada;
+    text-decoration: none;
+    color: #000;
 }
 
 .contenedor_productos .producto_list .info.noDisp .field input,

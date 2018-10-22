@@ -64,20 +64,6 @@ if ($conexion != false) {
 				':referencias'=>$referencias
 			));
 	
-			$query = $conexion->prepare("
-				INSERT INTO direcciones_persistence
-				VALUES(null, :id_user, :id_departamento, :nombre, :pais, :linea1, :linea2, :referencias, 1, 0, 1, 1)
-			");
-			$query->execute(array(
-				':id_user'=>$iduser,
-				':id_departamento'=>$departamento,
-				':nombre'=>$address_name,
-				':pais'=>$pais,
-				':linea1'=>$address_line_1,
-				':linea2'=>$address_line_2,
-				':referencias'=>$referencias
-			));
-	
 			$added = "Se agreg&oacute; la direcci&oacute;n!";
 		}
 	

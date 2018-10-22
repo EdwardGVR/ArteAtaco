@@ -157,23 +157,38 @@ if ($conexion != false) {
 
     if (isset($_POST['saveChangesProd'])) {
         $idProd = $_POST['idProd'];
-        $nombreProd = $_POST['nombreProd'];
+        $nombreProd = htmlentities($_POST['nombreProd']);
         $catProd = $_POST['catProd'];
         $precioProd = $_POST['precioProd'];
-        $descProd = $_POST['descProd'];
+        $descProd = htmlentities($_POST['descProd']);
 
-        $query = $conexion->prepare(
-            "UPDATE productos 
-                SET id_categoria = :catProd, nombre = :nombreProd, precio = :precioProd, descripcion = :descProd
-                WHERE id = :idProd"
-        );
-        $query->execute(array(
-            ':catProd' => $catProd,
-            ':nombreProd' => $nombreProd,
-            ':precioProd' => $precioProd,
-            ':descProd' => $descProd,
-            ':idProd' => $idProd
-        ));
+        if ($catProd != "others") {
+            $query = $conexion->prepare(
+                "UPDATE productos 
+                    SET id_categoria = :catProd, nombre = :nombreProd, precio = :precioProd, descripcion = :descProd
+                    WHERE id = :idProd"
+            );
+            $query->execute(array(
+                ':catProd' => $catProd,
+                ':nombreProd' => $nombreProd,
+                ':precioProd' => $precioProd,
+                ':descProd' => $descProd,
+                ':idProd' => $idProd
+            ));
+        } else {
+            $query = $conexion->prepare(
+                "UPDATE productos 
+                    SET nombre = :nombreProd, precio = :precioProd, descripcion = :descProd, to_others = 1
+                    WHERE id = :idProd"
+            );
+            $query->execute(array(
+                ':nombreProd' => $nombreProd,
+                ':precioProd' => $precioProd,
+                ':descProd' => $descProd,
+                ':idProd' => $idProd
+            ));
+        }
+
 
         header("Location: detallesProducto.php?idProd=$prodIdUrl");
     }
@@ -213,8 +228,14 @@ if ($conexion != false) {
                 break;
 
             case 'othersCat':
-                # code...
+                $query = $conexion->prepare("
+                    UPDATE productos 
+                    SET to_others = 1, disponible = 1
+                    WHERE id = :idProd
+                ");
+                $query->execute(array(':idProd' => $producto['id']));
                 break;
+
             case 'unknown':
                 $errorForm = true;
                 break;

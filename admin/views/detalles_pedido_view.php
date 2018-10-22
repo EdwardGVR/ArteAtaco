@@ -62,7 +62,8 @@
                             </div>
                             <div class="pedido_direccion">
                                     <div class="titulo">
-                                        <span>Direccion (<?= $pedido['dir_tipo'] ?>)</span>
+                                        <?php $dirStatusMsg = ($pedido['dir_status'] == 0) ? " (eliminada)" : ""; ?>
+                                        <span>Direccion (<?= $pedido['dir_tipo'] ?>) <?= $dirStatusMsg ?></span>
                                         <hr>
                                     </div>
                                     <div class="info">
@@ -70,7 +71,7 @@
                                         <span><?= $pedido['dir_name'] ?></span>
                                         <hr>
                                         <span class="det">
-                                            <?= $pedido['dir_linea1'] ?>, <?= $pedido['dir_linea2'] ?>, <?= $pedido['dir_refs'] ?>
+                                            <?= $pedido['dir_linea1'] ?> <br> <?= $pedido['dir_linea2'] ?> <br> <?= $pedido['dir_refs'] ?>
                                         </span>
                                     </div>
                             </div>
@@ -120,7 +121,7 @@
                         </div>
                         <div class="total">
                             <div class="payMethod">
-                                <span><?= $pedido['pay_method'] ?></span>
+                                <a href="detPayMethod.php?payMethod=<?= $pedido['pay_method_id'] ?>"><?= $pedido['pay_method'] ?></a>
                             </div>
                             <div class="envio">
                                 <div class="icon"><i class="fas fa-tags fa-lg"></i></div>

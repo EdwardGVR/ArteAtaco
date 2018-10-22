@@ -39,9 +39,10 @@
                                     disabled
                                 >
                             </div>
-                            <a href="detallesCategoria.php?cat=<?= $producto['id_categoria'] ?>" class="field">
-                                <?php $catMsg = ($producto['catStatus'] == 0) ? " (Inactiva actualmente)" : ""; ?>
-                                <span class="label">Categor&iacute;a<?= $catMsg ?></span>
+                            <div class="field">
+                                <a href="detallesCategoria.php?cat=<?= $producto['id_categoria'] ?>" class="label">
+                                    Categor&iacute;a
+                                </a>
                                 <select 
                                     type="text" 
                                     name="catProd" 
@@ -50,14 +51,16 @@
                                     disabled>
                                     <option value="null" disabled>-- Seleccione una categor&iacute;a --</option>
                                     <?php foreach ($categorias as $categoria): ?>
+                                        <?php $catDispMsg = ($categoria['status'] == 0) ? " (Inactiva actualmente)" : ""; ?>
                                         <?php if ($producto['id_categoria'] == $categoria['id']): ?>
-                                            <option value="<?= $categoria['id'] ?>" selected><?= $categoria['nombre_cat'] ?></option>
+                                            <option value="<?= $categoria['id'] ?>" selected><?= $categoria['nombre_cat'] . $catDispMsg ?></option>
                                         <?php else: ?>
-                                            <option value="<?= $categoria['id'] ?>"><?= $categoria['nombre_cat'] ?></option>
+                                            <option value="<?= $categoria['id'] ?>"><?= $categoria['nombre_cat'] . $catDispMsg ?></option>
                                         <?php endif ?>
                                     <?php endforeach ?>
+                                    <option value="others">Otros</option>
                                 </select>
-                            </a>
+                            </div>
                             <div class="field">
                                 <span class="label">Precio ($)</span>
                                 <input 
@@ -232,9 +235,8 @@
                                     disabled
                                 />
                             </div>
-                            <a href="detallesCategoria.php?cat=<?= $producto['id_categoria'] ?>" class="field">
-                                <?php $catMsg = ($producto['catStatus'] == 0) ? " (Inactiva actualmente)" : ""; ?>
-                                <span class="label">Categor&iacute;a<?= $catMsg ?></span>
+                            <div class="field">
+                                    <a href="detallesCategoria.php?cat=<?= $producto['id_categoria'] ?>" class="label">Categor&iacute;a</a>
                                 <select 
                                     type="text" 
                                     name="catProd" 
@@ -243,14 +245,16 @@
                                     disabled>
                                     <option value="null" disabled>-- Seleccione una categor&iacute;a --</option>
                                     <?php foreach ($categorias as $categoria): ?>
+                                        <?php $catDispMsg = ($categoria['status'] == 0) ? " (Inactiva actualmente)" : ""; ?>
                                         <?php if ($producto['id_categoria'] == $categoria['id']): ?>
-                                            <option value="<?= $categoria['id'] ?>" selected><?= $categoria['nombre_cat'] ?></option>
+                                            <option value="<?= $categoria['id'] ?>" selected><?= $categoria['nombre_cat'] . $catDispMsg ?></option>
                                         <?php else: ?>
-                                            <option value="<?= $categoria['id'] ?>"><?= $categoria['nombre_cat'] ?></option>
+                                            <option value="<?= $categoria['id'] ?>"><?= $categoria['nombre_cat'] . $catDispMsg ?></option>
                                         <?php endif ?>
                                     <?php endforeach ?>
+                                        <option value="others">Otros</option>
                                 </select>
-                            </a>
+                            </div>
                             <div class="field">
                                 <span class="label">Precio</span>
                                 <input 
@@ -271,6 +275,7 @@
                                 </textarea>
                             </div>
                             <span class="dateReg">Fecha y hora de registro: <?= $producto['fecha_registro'] ?></span>
+                            <input type="hidden" name="idProd" value="<?= $producto['id'] ?>">
                             <input type="submit" name="saveChangesProd" id="saveChangesProd<?= $producto['id'] ?>">
                         </form>
 

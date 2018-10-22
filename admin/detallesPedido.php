@@ -27,9 +27,11 @@
                     direcciones.linea1 AS dir_linea1,
                     direcciones.linea2 AS dir_linea2,
                     direcciones.referencias AS dir_refs,
+                    direcciones.disponible AS dir_status,
                     tipo_direccion.tipo AS dir_tipo, 
                     direcciones.disponible AS dir_disponible,
                     order_status.status AS status,
+                    metodos_pago.id AS pay_method_id,
                     metodos_pago.nombre AS pay_method
             FROM pedidos
             JOIN direcciones ON pedidos.id_direccion = direcciones.id

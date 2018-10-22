@@ -2,7 +2,7 @@
 --
 -- Host: 127.0.0.1    Database: login_propio
 -- ------------------------------------------------------
--- Server version	5.5.5-10.1.32-MariaDB
+-- Server version	5.5.5-10.1.33-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -139,38 +139,6 @@ LOCK TABLES `direcciones` WRITE;
 /*!40000 ALTER TABLE `direcciones` DISABLE KEYS */;
 INSERT INTO `direcciones` VALUES (29,2,7,'Direccion test 5','El Salvador','Direccion de prueba',NULL,NULL,1,0,1,1),(30,2,1,'Direccion test 6','El Salvador','Direccion de prueba',NULL,NULL,1,0,1,1),(35,2,12,'Direccion test 7','El Salvador','Direccion de prueba',NULL,NULL,1,0,1,1),(38,2,7,'Punto 1','El Salvador','Linea 1','Linea 2','Referencias',2,0,1,1),(39,2,1,'Punto 2','El Salvador','Linea 1','Linea 2','Referencias',2,0,1,1),(40,2,2,'Punto 3','El Salvador','Linea 1','Linea 2','Referencias',2,0,1,1),(41,2,12,'Punto 4','El Salvador','Linea uno del punto','La linea lel del sos','lorem ipsum dolor sit amet',2,17.5,1,1);
 /*!40000 ALTER TABLE `direcciones` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `direcciones_persistence`
---
-
-DROP TABLE IF EXISTS `direcciones_persistence`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `direcciones_persistence` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_user` int(11) NOT NULL,
-  `id_departamento` int(11) NOT NULL,
-  `nombre` varchar(150) NOT NULL,
-  `pais` varchar(50) NOT NULL,
-  `linea1` varchar(150) NOT NULL,
-  `linea2` varchar(150) DEFAULT NULL,
-  `referencias` varchar(250) DEFAULT NULL,
-  `id_tipo` int(11) NOT NULL DEFAULT '1',
-  `activa` tinyint(4) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `direcciones_persistence`
---
-
-LOCK TABLES `direcciones_persistence` WRITE;
-/*!40000 ALTER TABLE `direcciones_persistence` DISABLE KEYS */;
-INSERT INTO `direcciones_persistence` VALUES (1,2,1,'Direccion 1','El Salvador','Direccion de prueba',NULL,NULL,1,0),(2,2,1,'Direccion 2','El Salvador','Direccion de prueba','Probar la edicion en ambas tablas','No hay datos',1,0),(3,2,1,'Direccion 3','El Salvador','Direccion de prueba',NULL,NULL,1,0),(4,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,1,0),(5,2,1,'Direccion 5','El Salvador','Direccion de prueba',NULL,NULL,1,0),(6,2,1,'Direccion 5','El Salvador','Direccion de prueba',NULL,NULL,1,0),(7,2,1,'Direccion 5','El Salvador','Direccion de prueba',NULL,NULL,1,0),(8,2,1,'Direccion 5','El Salvador','Direccion de prueba',NULL,NULL,1,0),(9,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,1,0),(10,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,1,0),(11,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,1,0),(12,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,1,0),(13,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,1,0),(14,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,1,0),(15,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,1,0),(16,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,1,0),(17,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,1,0),(18,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,1,0),(19,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,1,0),(20,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,1,0),(21,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,1,0),(22,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,1,0),(23,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,1,0),(24,2,1,'Direccion 4','El Salvador','Direccion de prueba',NULL,NULL,1,0),(25,2,1,'Direccion 5 editada','El Salvador','Direccion de prueba','No hay datos','No hay datos',1,0),(26,2,1,'Direccion test 1','El Salvador','Direccion de prueba',NULL,NULL,1,0),(27,2,1,'Direccion test 2','El Salvador','Direccion de prueba\\',NULL,NULL,1,0),(28,2,1,'Direccion test 3','El Salvador','Direccion de prueba',NULL,NULL,1,0),(29,2,1,'Direccion test 5','El Salvador','Direccion de prueba',NULL,NULL,1,1),(30,2,1,'Direccion test 6','El Salvador','Direccion de prueba',NULL,NULL,1,1),(31,2,1,'Direccion test 6','El Salvador','Direccion de prueba',NULL,NULL,1,1),(32,2,1,'Direccion test 6','El Salvador','Direccion de prueba',NULL,NULL,1,1),(33,2,1,'Direccion test 7','El Salvador','Direccion de prueba',NULL,NULL,1,1),(34,2,1,'Direccion test 7','El Salvador','Direccion de prueba',NULL,NULL,1,1),(35,2,1,'Direccion test 7','El Salvador','Direccion de prueba',NULL,NULL,1,1);
-/*!40000 ALTER TABLE `direcciones_persistence` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -327,39 +295,8 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES (1,8,'LÃ¡mpara de bÃºho',15,'LÃ¡mpara de bÃºho hecha en PVC calado                                ',3,'images/productos/lamparas/pvc/buho.jpg',1,'2018-05-12 23:58:35',0,0),(2,1,'L&aacute;mpara 2',15,'LÃ¡mpara de otra cosa para probar                                    ',2,'images/productos/lamparas/pvc/lamp1.jpg',0,'2018-05-12 23:58:35',0,0),(3,1,'L&aacute;mpara 3',15,'LÃ¡mpara de bÃºho hecha en PVC calado                                    ',1,'images/productos/lamparas/pvc/lamp2.jpg',0,'2018-05-12 23:58:35',0,0),(4,1,'L&aacute;mpara 4',15,'LÃ¡mpara de bÃºho hecha en PVC calado                                    ',2,'images/productos/lamparas/pvc/lamp3.jpg',0,'2018-05-12 23:58:35',0,0),(6,3,'Producto nuevo',5,'Descripcion del nuevo producto',NULL,NULL,1,'2018-05-13 00:09:39',0,0),(7,2,'Atrapa weas',5,'Descripcion de atrapa nuevo                                                                        ',NULL,NULL,1,'2018-07-30 16:41:17',0,0);
+INSERT INTO `productos` VALUES (1,8,'L&aacute;mpara de b&uacute;ho',15,'L&aacute;mpara de b&uacute;ho hecha en PVC calado                                                                ',3,'images/productos/lamparas/pvc/buho.jpg',1,'2018-05-12 23:58:35',0,0),(2,1,'L&aacute;mpara 2',15,'L&aacute;mpara de otra cosa para probar                                                                                                                                                                                                    ',2,'images/productos/lamparas/pvc/lamp1.jpg',1,'2018-05-12 23:58:35',0,1),(3,1,'L&aacute;mpara 3',0,'L&aacute;mpara de b&uacute;ho hecha en PVC calado                                                                    ',1,'images/productos/lamparas/pvc/lamp2.jpg',0,'2018-05-12 23:58:35',0,0),(4,1,'L&aacute;mpara 4',0,'L&aacute;mpara de b&uacute;ho hecha en PVC calado                                                                    ',2,'images/productos/lamparas/pvc/lamp3.jpg',0,'2018-05-12 23:58:35',0,0),(6,3,'Producto nuevo',5,'Descripcion del nuevo producto',NULL,NULL,1,'2018-05-13 00:09:39',0,0),(7,2,'Atrapa weas',5,'Descripcion de atrapa nuevo                                                                        ',NULL,NULL,1,'2018-07-30 16:41:17',0,0);
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `temporal`
---
-
-DROP TABLE IF EXISTS `temporal`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `temporal` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_user` int(11) DEFAULT NULL,
-  `id_direccion` int(11) DEFAULT NULL,
-  `id_pago` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `tmp_usuario_idx` (`id_user`),
-  KEY `tmp_pago_idx` (`id_pago`),
-  KEY `tmp_direccion_idx` (`id_direccion`),
-  CONSTRAINT `tmp_direccion` FOREIGN KEY (`id_direccion`) REFERENCES `direcciones` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `tmp_pago` FOREIGN KEY (`id_pago`) REFERENCES `metodos_pago` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `tmp_usuario` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `temporal`
---
-
-LOCK TABLES `temporal` WRITE;
-/*!40000 ALTER TABLE `temporal` DISABLE KEYS */;
-/*!40000 ALTER TABLE `temporal` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -382,7 +319,7 @@ CREATE TABLE `tipo_direccion` (
 
 LOCK TABLES `tipo_direccion` WRITE;
 /*!40000 ALTER TABLE `tipo_direccion` DISABLE KEYS */;
-INSERT INTO `tipo_direccion` VALUES (1,'Usuario'),(2,'Punto de entrega');
+INSERT INTO `tipo_direccion` VALUES (1,'Personalizada'),(2,'Punto de entrega');
 /*!40000 ALTER TABLE `tipo_direccion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -451,4 +388,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-22 12:57:56
+-- Dump completed on 2018-10-22 15:59:58

@@ -46,20 +46,13 @@
                             </div>
                             <hr>
                             <!-- Validacion de imagenes -->
-                            <?php 
-                                $imgsCounter = 0; $mainImg = false; 
+                            <?php $imgsCounter = 0; $mainImg = false; 
                                 foreach ($imgs as $img) {
-                                    if ($img['id_prod'] == $prod['id']) {
-                                        $imgsCounter++;
+                                    if ($img['id_prod'] == $prod['id']) { $imgsCounter++;
                                         if ($imgsCounter > 0 && $img['principal'] == 1) {
-                                            $mainImg = true; $imgPath = $img['ruta'];
-                                        }
-                                        if ($imgsCounter > 0 && !$mainImg) {
-                                            $imgPath = $img['ruta'];
-                                        }
-                                    }
-                                }
-                            ?>
+                                            $mainImg = true; $imgPath = $img['ruta']; }
+                                        if ($imgsCounter > 0 && !$mainImg) { $imgPath = $img['ruta']; }
+                                }   } ?>
                             <div class="producto_imagen">
                                 <?php if ($imgsCounter > 0): ?>
                                     <img src="../<?= $imgPath ?>" alt="x" class="imagen">

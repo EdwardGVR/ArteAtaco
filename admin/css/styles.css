@@ -1043,7 +1043,7 @@ main section > .title {
     margin-bottom: 10px;
 }
 
-.pedido_todos .pedido_body .total .payMethod a {
+.pedido_todos .pedido_body .total .payMethod .method {
     border-radius: 5px;
     border: 2px solid #043164;
     padding: 5px;

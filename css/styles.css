@@ -422,6 +422,7 @@ h1.user i.fa {
 	margin: auto 10%;
 	margin-bottom: 50px;
 	/*width: 70%;*/
+	min-height: 50vh;
 	border-radius: 5px;
 	padding: 1% 30px;
 	background: #EAE5E5;

@@ -32,7 +32,8 @@
                     direcciones.disponible AS dir_disponible,
                     order_status.status AS status,
                     metodos_pago.id AS pay_method_id,
-                    metodos_pago.nombre AS pay_method
+                    metodos_pago.nombre AS pay_method,
+                    metodos_pago.deleted AS method_del
             FROM pedidos
             JOIN direcciones ON pedidos.id_direccion = direcciones.id
             JOIN usuarios ON pedidos.id_user = usuarios.id
@@ -60,6 +61,7 @@
                     productos.id AS prod_id, 
                     productos.nombre AS prod_name,
                     productos.imagen AS prod_img,
+                    productos.deleted AS prod_del,
                     categorias.nombre_cat AS prod_cat
             FROM pedidos 
             JOIN productos ON pedidos.id_producto = productos.id

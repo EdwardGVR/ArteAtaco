@@ -152,6 +152,9 @@ if ($conexion != false) {
         ");
         $query->execute(array(':idProd' => $idProd));
 
+        $query = $conexion->prepare("DELETE FROM carrito WHERE id_producto = :idProd");
+        $query->execute(array(':idProd' => $idProd));
+
         header("Location: productos.php");
     }
 

@@ -84,22 +84,23 @@
                             <div class="prods">
                                 <?php foreach ($prods_pedidos AS $prod): ?>
                                     <?php if ($pedido['codigo'] == $prod['codigo']): ?>
-               							<!-- Validacion de imagenes -->
-                                        <?php 
-                                            $imgsCounter = 0; $mainImg = false; 
+                                           
+                                        <!-- Validacion de imagenes -->
+                                        <?php $imgsCounter = 0; $mainImg = false; 
                                             foreach ($imgs as $img) {
-                                                if ($img['id_prod'] == $prod['prod_id']) {
-                                                    $imgsCounter++;
+                                                if ($img['id_prod'] == $prod['prod_id']) { $imgsCounter++;
                                                     if ($imgsCounter > 0 && $img['principal'] == 1) {
-                                                        $mainImg = true; $imgPath = $img['ruta'];
-                                                    }
-                                                    if ($imgsCounter > 0 && !$mainImg) {
-                                                        $imgPath = $img['ruta'];
-                                                    }
-                                                }
-                                            }
-                                        ?>
-                                        <a class="ped_prod" href="detallesProducto.php?idProd=<?= $prod['prod_id'] ?>">
+                                                        $mainImg = true; $imgPath = $img['ruta']; }
+                                                    if ($imgsCounter > 0 && !$mainImg) { $imgPath = $img['ruta']; }
+                                            }   } ?>
+                                        
+                                        <?php if ($prod['prod_del'] == 1): ?>
+                                            <div class="ped_prod">
+                                            <?php $prodDelMsg = " (Eliminado)" ?>
+                                        <?php else: ?>
+                                            <?php $prodDelMsg = "" ?>
+                                            <a class="ped_prod" href="detallesProducto.php?idProd=<?= $prod['prod_id'] ?>">
+                                        <?php endif ?>
                                             <?php if ($imgsCounter > 0): ?>
                                                 <img src="../<?= $imgPath ?>" alt="x" class="imagen">
                                             <?php else: ?>
@@ -108,12 +109,16 @@
                                                 </div>
                                             <?php endif ?>
                                             <div class="datos">
-                                                <span class="nombre"><?= $prod['prod_name'] ?></span>
+                                                <span class="nombre"><?= $prod['prod_name'] . $prodDelMsg ?></span>
                                                 <span class="cat"><?= $prod['prod_cat'] ?></span>
                                                 <span class="cant"><?= $prod['cantidad'] ?>x</span>
                                                 <span class="precio">$<?= number_format($prod['precioCompra'], 2) ?></span>
                                             </div>
-                                        </a>
+                                        <?php if ($prod['prod_del'] == 1): ?>
+                                            </div>
+                                        <?php else: ?>
+                                            </a>
+                                        <?php endif ?>
                                         <?php $subtotal += $prod['precioCompra'] ?>  
                                     <?php endif ?>
                                 <?php endforeach ?>                                                      
@@ -121,7 +126,11 @@
                         </div>
                         <div class="total">
                             <div class="payMethod">
-                                <a href="detPayMethod.php?payMethod=<?= $pedido['pay_method_id'] ?>"><?= $pedido['pay_method'] ?></a>
+                                <?php if ($pedido['method_del'] == 1): ?>
+                                    <span class="method"><?= $pedido['pay_method'] ?> (Eliminado)</span>        
+                                <?php else:?>
+                                    <a class="method" href="detPayMethod.php?payMethod=<?= $pedido['pay_method_id'] ?>"><?= $pedido['pay_method'] ?></a>
+                                <?php endif ?>
                             </div>
                             <div class="envio">
                                 <div class="icon"><i class="fas fa-tags fa-lg"></i></div>

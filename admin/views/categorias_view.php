@@ -36,7 +36,7 @@
                     <?php endforeach ?>
 
                     <div class="noPayMethods regOther">
-                        <span id="noPayMethodsInfo" class="info hidden">No hay metodos de pago registrados.</span>
+                        <span id="noPayMethodsInfo" class="info hidden">No hay categor&iacute;as registradas.</span>
                         <div class="regNew cat">
                             <div id="regNewBtn" class="button"><i class="fa fa-plus-circle"></i></div>
                             <span id="regNewInfo">Registrar una nueva categor&iacute;a</span>
@@ -67,33 +67,29 @@
             <?php else: ?>
                 <div class="contPay">
                     <div class="noPayMethods">
-                        <span id="noPayMethodsInfo" class="info">No hay metodos de pago registrados.</span>
-                        <div class="regNew">
+                        <span id="noPayMethodsInfo" class="info">No hay categor&iacute;as registradas.</span>
+                        <div class="regNew cat">
                             <div id="regNewBtn" class="button"><i class="fa fa-plus-circle"></i></div>
-                            <span id="regNewInfo">Registrar un nuevo m&eacute;todo</span>
-                            <form action="" id="regNewForm" class="hidden" method="POST">
+                            <span id="regNewInfo">Registrar una categor&iacute;a</span>
+                            <form action="" enctype="multipart/form-data" id="regNewForm" class="hidden" method="POST">
                                 <div class="inputs">
-                                    <div class="labels">
-                                        <label for="methodName">Nombre:</label>
-                                        <label for="methodIcon">&Iacute;cono:</label>
-                                        <label for="methodInfo">Descripci&oacute;n</label>
+                                    <div class="field">
+                                        <label for="catName">Nombre:</label>
+                                        <input type="text" id="catName" name="catName" placeholder="Nombre de la categor&iacute;a" required>
                                     </div>
-                                    <div class="fields">
-                                        <input type="text" id="methodName" name="methodName" placeholder="Nombre del metodo" required>
-                                        <input type="text" id="methodIcon" name="methodIcon" placeholder="<?= htmlspecialchars("<i class=\"fa fa-icon\"></i>") ?>" required>
-                                        <span class="infoIcons">
-                                            Iconos disponibles en 
-                                            <a href="https://fontawesome.com/icons" target="_blank">fontawesome</a>
-                                        </span>
-                                        <div class="iconPreview" id="icon">
-                                            <div class="icon" id="iconPreview"><i class="fas fa-question-circle"></i></div>
-                                        </div>
-                                        <textarea id="methodInfo" name="methodInfo" placeholder="Informacion sobre el metodo" required></textarea>
+                                    <div class="field">
+                                        <label for="catInfo">Descripci&oacute;n</label>
+                                        <textarea id="catInfo" name="catInfo" placeholder="Descripcion de la categoria" required></textarea>
+                                    </div>
+                                    <div class="field">
+                                        <label for="catImg">Imagen:</label>
+                                        <label for="catImg"><i class="fa fa-upload"></i></label>
+                                        <input type="file" id="catImg" class="hidden" name="catImg" accept="image/*" required>
                                     </div>
                                 </div>
                                 <div class="options">
                                     <div class="cancel" id="cancelSaving">Cancelar</div>
-                                    <input type="submit" name="saveMethod" id="saveMethod" value="Registrar">
+                                    <input type="submit" name="saveCat" id="saveCat" value="Registrar">
                                 </div>
                             </form>
                         </div>

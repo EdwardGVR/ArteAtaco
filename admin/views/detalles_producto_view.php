@@ -103,7 +103,7 @@
                                     <?php endif?>
                                 <?php endforeach ?>
 
-                                <?php if (!$imgsForThisProd): ?>
+                                <?php if ( isset($imgsForThisProd) && !$imgsForThisProd): ?>
                                     <div class="noImgsText">
                                         <span>No hay im&aacute;genes para este producto </span>
                                         <div class="icons">

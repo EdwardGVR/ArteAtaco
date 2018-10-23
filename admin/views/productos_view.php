@@ -150,7 +150,8 @@
                                 <select name="newProdCat" id="newProdCat">
                                     <option value="NULL" disabled selected>- - Seleccione una categor&iacute;a - -</option>
                                     <?php foreach ($categorias as $categoria): ?>
-                                        <option value="<?= $categoria['id'] ?>"><?= $categoria['nombre_cat'] ?></option>
+                                        <?php $catStatusMsg = ($categoria['status'] == 0) ? " (actualmente inactiva)" : ""; ?>
+                                        <option value="<?= $categoria['id'] ?>"><?= $categoria['nombre_cat'] . $catStatusMsg ?></option>
                                     <?php endforeach ?>
                                 </select>
                             </div>

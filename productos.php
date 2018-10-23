@@ -18,13 +18,15 @@ if (!$id_cat) {
 }
 
 if ($conexion != false) {
-	$query = $conexion->prepare("SELECT status FROM categorias WHERE id = :idCat");
-	$query->execute(array(':idCat' => $id_cat));
-	$catStatus = $query->fetch();
-	$catStatus = $catStatus['status'];
-
-	if ($catStatus == 0) {
-		header('Location: categorias.php');
+	if ($id_cat != "otros") {
+		$query = $conexion->prepare("SELECT status FROM categorias WHERE id = :idCat");
+		$query->execute(array(':idCat' => $id_cat));
+		$catData = $query->fetch();
+		$catStatus = $catData['status'];
+	
+		if ($catStatus == 0) {
+			header('Location: categorias.php');
+		}
 	}
 
 	// Obtener categorias para el menu
@@ -70,24 +72,6 @@ if ($conexion != false) {
 		$query->execute(array(':id_cat' => $id_cat));
 		$catImgs = $query->fetchall();
 	}
-
-	//Otener imagenes principales de los productos de la categoria
-	$query = $conexion->prepare(
-		"SELECT imgs_prods.*, productos.id_categoria FROM imgs_prods
-		 JOIN productos ON imgs_prods.id_prod = productos.id
-		 WHERE imgs_prods.principal = 1 AND id_categoria = :id_cat"
-	);
-	$query->execute(array(':id_cat' => $id_cat));
-	$mainImgs = $query->fetchall();
-
-	//Otener imagenes no principales de los productos de la categoria
-	$query = $conexion->prepare(
-		"SELECT imgs_prods.*, productos.id_categoria FROM imgs_prods
-		 JOIN productos ON imgs_prods.id_prod = productos.id
-		 WHERE imgs_prods.principal = 0 AND id_categoria = :id_cat"
-	);
-	$query->execute(array(':id_cat' => $id_cat));
-	$notMainImgs = $query->fetchall();
 
 	// Obtener categorias para el title de la tab
 	if ($id_cat == "otros") {

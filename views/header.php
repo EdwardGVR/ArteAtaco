@@ -22,8 +22,6 @@
 				<?php endforeach ?>
 			</div>
 		</div>
-			<a class="bar-btn">Opciones</a>
-			<a class="bar-btn">Opcion</a>
 			<a href="contacto.php" class="bar-btn">Contacto</a>
 			<a class="bar-btn">A cerca</a>
 	</div>

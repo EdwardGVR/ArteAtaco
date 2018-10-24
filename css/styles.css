@@ -463,6 +463,10 @@ h1.user i.fa {
 	width: 80%;
 }
 
+.contenedor_cat span.noCats {
+	margin: auto;
+}
+
 .contenedor_cat .contCat {
 	display: flex;
 	flex-wrap: wrap;
@@ -2108,9 +2112,9 @@ input[name="add_address"]:hover {
 	align-items: center;
 	flex-wrap: wrap;
 	width: 85%;
-	min-width: 600px	;
+	min-width: 600px;
+	min-height: 50vh;
 	margin: auto;
-	min-height: 300px;
 	padding: 10px;
 	/* box-shadow: 0 0 20px; */
 }
@@ -2578,10 +2582,10 @@ background: linear-gradient(to top, #fff, #16396E); /* W3C, IE 10+/ Edge, Firefo
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	height: 50px;
-	font-size: 1.4em;
-	border-radius: 10px	10px 0 0;
-	background:#394EB7;
+	height: 30px;
+	font-size: 1em;
+	border-radius: 20px;
+	background:#0c265e;
 	color: #fff;
 	margin-bottom: 10px;
 }
@@ -2626,7 +2630,7 @@ background: linear-gradient(to top, #fff, #16396E); /* W3C, IE 10+/ Edge, Firefo
 }
 
 .detalles_usuario form.address .guardar_direccion {
-	background: #86E074;
+	background: #d3fccb;
 	width: 100px;
 	border-radius: 20px;
 	text-align: center;
@@ -2793,16 +2797,16 @@ background: linear-gradient(to top, #fff, #16396E); /* W3C, IE 10+/ Edge, Firefo
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
-	width: 80%;
+	width: 500px;
 	margin: auto;
 	box-shadow: 0 0 10px #000;
 	min-width: 600px;
 }
 
 .contenedor_contacto h3 {
-	padding: 20px;
+	padding: 10px;
 	width: 100%;
-	background: #1B428A;
+	background: #0c2b66;
 	color: #fff;
 	margin-bottom: 40px;
 }
@@ -2822,10 +2826,14 @@ background: linear-gradient(to top, #fff, #16396E); /* W3C, IE 10+/ Edge, Firefo
 	align-items: flex-start;
 	flex-wrap: nowrap;
 	width: 100%;
-	padding: 30px;
+	padding: 20px;
 	border-radius: 10px;
 	margin-bottom: 30px;
 	background: #D6E5F2;
+}
+
+.contacto_form .contacto_campo:last-child {
+	margin-bottom: 0;
 }
 
 .contacto_form .contacto_campo:last-child {
@@ -2833,10 +2841,9 @@ background: linear-gradient(to top, #fff, #16396E); /* W3C, IE 10+/ Edge, Firefo
 }
 
 .contacto_campo span {
-	width: 400px;
-	/*background: #ccc;*/
+	width: 200px;
 	text-align: left;
-	/*margin-bottom: 10px;*/
+	font-size: 0.9em;
 }
 
 .contacto_campo span .contacto_tip,
@@ -2861,6 +2868,12 @@ background: linear-gradient(to top, #fff, #16396E); /* W3C, IE 10+/ Edge, Firefo
 	min-height: 30px;
 	max-height: 150px;
 	padding: 10px;
+}
+
+.contacto_campo textarea {
+	resize: vertical;
+	font-size: 0.9em;
+	padding: 5px;
 }
 
 .contacto_campo input {

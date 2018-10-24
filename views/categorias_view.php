@@ -156,6 +156,10 @@
 				</div>
 			</div>
 		<?php endif ?>
+
+		<?php if ($categorias == false): ?>
+			<span class="noCats">No hay categor&iacute;as disponibles actualmente</span>
+		<?php endif ?>
 	</div>
 
 	<?php include 'footer.php'; ?>

@@ -164,7 +164,7 @@
 
 				<?php else: ?>
 					<div class="address">
-						No tiene ninguna direcci&oacute;n registrada, puede agregar direcciones en el siguiente formulario y apareceran aqu&iacute;.
+						No tiene ninguna direcci&oacute;n registrada, puede empezar registrando una direcci&oacute;n en el siguiente formulario.
 
 						<form id="new_address" class="address" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 							<div class="new_address_title">

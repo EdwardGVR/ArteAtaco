@@ -33,7 +33,7 @@
 					<?php foreach ($categorias as $categoria): ?>
 						<option value="<?php echo $categoria['nombre_cat'] ?>"><?php echo $categoria['nombre_cat'] ?></option>
 					<?php endforeach ?>
-					<option value="general">Ninguno, es una pregunta general</option>
+					<option value="general">Otra pregunta</option>
 					<option value="null" disabled="" selected="">- - Selecciona una opci&oacute;n - -</option>
 				</select>
 			</div>

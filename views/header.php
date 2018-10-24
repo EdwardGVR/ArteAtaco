@@ -30,27 +30,28 @@
 
 	<div class="user">		
 		<div class="dropmenu">
-				<?php if (isset($_SESSION['user'])): ?>
-					<h1 class="user-btn"><?= $user ?> <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
-</h1>
-					<div class="drop-content">
-						<a href="cuenta.php"><span>Cuenta</span> <i class="fa fa-user"></i> </a>
-						<a href="pedidos.php"><span>Pedidos</span> <i class="fa fa-shopping-bag"></i> </a>
-						<a href="carrito.php"><span>Carrito (<?= $qtyItems ?>)</span> <i class="fa fa-shopping-cart"></i> </a>
-						<?php if ($userLevel == 2): ?>
-							<a class="admin" href="admin"><span>Administrar</span> <i class="fa fa-sliders"></i> </a>
-						<?php endif ?>
-						<a href="logout.php">Cerrar Sesi&oacute;n <i class="fa fa-sign-out"></i> </a>
-					</div>
-				<?php else: ?>
-					<h1 class="user-btn"><?= $user ?> <i class="fa fa-user-plus"></i></h1>
-					<div class="drop-content">
-						<a href="login.php">Iniciar Sesi&oacute;n</a>
-						<a href="register.php">Registrarse</a>
-					</div>
-				<?php endif ?>
+			<?php if (isset($_SESSION['user'])): ?>
+				<h1 class="user-btn"><?= $user ?>
+					<i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+				</h1>
+				<div class="drop-content">
+					<a href="cuenta.php"><span>Cuenta</span> <i class="fa fa-user"></i> </a>
+					<a href="pedidos.php"><span>Pedidos</span> <i class="fa fa-shopping-bag"></i> </a>
+					<a href="carrito.php"><span>Carrito (<?= $qtyItems ?>)</span> <i class="fa fa-shopping-cart"></i> </a>
+					<?php if ($userLevel == 1): ?>
+						<a class="admin" href="admin"><span>Administrar</span> <i class="fa fa-sliders"></i> </a>
+					<?php endif ?>
+					<a href="logout.php">Cerrar Sesi&oacute;n <i class="fa fa-sign-out"></i> </a>
+				</div>
+			<?php else: ?>
+				<h1 class="user-btn"><?= $user ?> <i class="fa fa-user-plus"></i></h1>
+				<div class="drop-content">
+					<a href="login.php">Iniciar Sesi&oacute;n</a>
+					<a href="register.php">Registrarse</a>
+				</div>
+			<?php endif ?>
 		</div>
-		<!-- Condicion imagen -->
+		
 		<?php if (isset($user_img)): ?>
 			<?php if ($user_img != false): ?>
 				<a href="cuenta.php"><img class="user_img" src="<?= $user_img ?>" alt="N/A"></a>

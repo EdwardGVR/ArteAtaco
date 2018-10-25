@@ -30,7 +30,11 @@ $codigo = $iduser;
 
 if ($conexion != false) {
 	// Obtener las categorias
-	$query = $conexion->prepare("SELECT id, nombre_cat FROM categorias ORDER BY nombre_cat ASC");
+	$query = $conexion->prepare("
+		SELECT id, nombre_cat 
+		FROM categorias 
+		WHERE status = 1
+		ORDER BY nombre_cat ASC");
 	$query->execute();
 	$categorias = $query->fetchall();
 

@@ -29,7 +29,7 @@
         $imgs = $query->fetchall();
 
         // Obtener las categorias
-        $query = $conexion->prepare("SELECT * FROM categorias");
+        $query = $conexion->prepare("SELECT * FROM categorias WHERE deleted = 0");
         $query->execute();
         $categorias = $query->fetchall();
 

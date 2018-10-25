@@ -1946,6 +1946,18 @@ main section > .title {
     font-size: 1.5em;
 }
 
+.productsAdmin .regCats {
+    margin: auto;
+}
+
+.productsAdmin .regCats a {
+    text-decoration: none;
+    color: #fff;
+    padding: 4px;
+    background: #0650b3;
+    border-radius: 5px;
+}
+
 /***************************************** tooltip ********************************************/
 
 .tooltip {

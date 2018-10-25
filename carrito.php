@@ -18,7 +18,11 @@ $subtotal = 0;
 
 if ($conexion != false) {
 
-	$query = $conexion->prepare("SELECT id, nombre_cat FROM categorias ORDER BY nombre_cat ASC");
+	$query = $conexion->prepare("
+		SELECT id, nombre_cat 
+		FROM categorias
+		WHERE status = 1 
+		ORDER BY nombre_cat ASC");
 	$query->execute();
 	$categorias = $query->fetchall();
 
@@ -30,14 +34,9 @@ if ($conexion != false) {
 	$query->execute(array(':iduser'=>$iduser));
 	$carrito = $query->fetchall();
 	
-	// print_r($carrito);
-	
 	$query = $conexion->prepare("SELECT * FROM imgs_prods");
 	$query->execute();
 	$imagenes = $query->fetchall();
-
-	// print_r($imagenes);
-
 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['actualizar_cantidad'])) {
 		$cantidad_actualizada = $_POST['quantity'];

@@ -51,7 +51,11 @@ if (!is_null($datos_user['telefono'])) {
 }
 
 if ($conexion != false) {
-	$query = $conexion->prepare('SELECT * FROM categorias ORDER BY nombre_cat ASC');
+	$query = $conexion->prepare('
+		SELECT * 
+		FROM categorias 
+		WHERE status = 1
+		ORDER BY nombre_cat ASC');
 	$query->execute();
 	$categorias = $query->fetchall();
 

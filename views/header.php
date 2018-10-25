@@ -1,10 +1,8 @@
 <?php 
-		
 	$user_img = get_user_img($conexion, $iduser);
 	$qtyItems = getShpCarQty($iduser);
 	$userLevel = get_user_data($conexion, $iduser);
 	$userLevel = $userLevel['level'];
-
  ?>
 
 <div class="bar">

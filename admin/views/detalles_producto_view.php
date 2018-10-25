@@ -43,13 +43,16 @@
                                 <a href="detallesCategoria.php?cat=<?= $producto['id_categoria'] ?>" class="label">
                                     Categor&iacute;a
                                 </a>
+                                
+                                <?php $catName = ($producto['to_others'] == 1) ? $producto['nombre_cat'] . "Actualmente en otros" : $producto['nombre_cat']; ?>
+                                
                                 <select 
                                     type="text" 
                                     name="catProd" 
                                     class="value valueProd<?= $producto['id'] ?>" 
-                                    value="<?= $producto['nombre_cat'] ?>" 
+                                    value="<?= $catName ?>" 
                                     disabled>
-                                    <option value="null" disabled>-- Seleccione una categor&iacute;a --</option>
+                                        <option value="null" disabled>-- Seleccione una categor&iacute;a --</option>
                                     <?php foreach ($categorias as $categoria): ?>
                                         <?php $catDispMsg = ($categoria['status'] == 0) ? " (Inactiva actualmente)" : ""; ?>
                                         <?php if ($producto['id_categoria'] == $categoria['id']): ?>

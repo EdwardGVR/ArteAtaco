@@ -1,3 +1,38 @@
+<?php 
+    // Obtener cantidades
+
+    $query = $conexion->prepare("SELECT COUNT(*) FROM pedidos");
+    $query->execute();
+    $result = $query->fetch();
+    $qtyOrders = " (" . $result['COUNT(*)'] . ")";
+
+    $query = $conexion->prepare("SELECT COUNT(*) FROM productos WHERE deleted = 0");
+    $query->execute();
+    $result = $query->fetch();
+    $qtyProds = " (" . $result['COUNT(*)'] . ")";
+
+    $query = $conexion->prepare("SELECT COUNT(*) FROM categorias WHERE deleted = 0");
+    $query->execute();
+    $result = $query->fetch();
+    $qtyCats = " (" . $result['COUNT(*)'] . ")";
+
+    $userId = $userData['id'];
+    $query = $conexion->prepare("SELECT COUNT(*) FROM usuarios WHERE id != :userId");
+    $query->execute(array(':userId' => $userId));
+    $result = $query->fetch();
+    $qtyCost = " (" . $result['COUNT(*)'] . ")";
+
+    $query = $conexion->prepare("SELECT COUNT(*) FROM metodos_pago WHERE deleted = 0");
+    $query->execute();
+    $result = $query->fetch();
+    $qtyPayMethods = " (" . $result['COUNT(*)'] . ")";
+
+    $query = $conexion->prepare("SELECT COUNT(*) FROM direcciones WHERE id_tipo = 2 AND disponible = 1");
+    $query->execute();
+    $result = $query->fetch();
+    $qtyDelivPoint = " (" . $result['COUNT(*)'] . ")";
+?>
+
 <div id="nav-fake" class="nav_hidden"></div>
 <nav>
     <div class="side_bar">
@@ -33,12 +68,12 @@
         </div>
 
         <div class="buttons">
-            <a href="pedidos.php">Pedidos</a>
-            <a href="productos.php">Productos</a>
-            <a href="categorias.php">Categor&iacute;as</a>
-            <a href="clientes.php">Clientes</a>
-            <a href="payMethods.php">M&eacute;todos de pago</a>
-            <a href="puntosEntrega.php">Puntos de entrega</a>
+            <a href="pedidos.php">Pedidos <?= $qtyOrders ?></a>
+            <a href="productos.php">Productos <?= $qtyProds ?></a>
+            <a href="categorias.php">Categor&iacute;as <?= $qtyCats ?></a>
+            <a href="clientes.php">Clientes <?= $qtyCost ?></a>
+            <a href="payMethods.php">M&eacute;todos de pago <?= $qtyPayMethods ?></a>
+            <a href="puntosEntrega.php">Puntos de entrega <?= $qtyDelivPoint ?></a>
         </div>
     </div>
 </nav>

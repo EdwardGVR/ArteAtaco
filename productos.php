@@ -30,7 +30,11 @@ if ($conexion != false) {
 	}
 
 	// Obtener categorias para el menu
-	$query = $conexion->prepare('SELECT * FROM categorias ORDER BY nombre_cat ASC');
+	$query = $conexion->prepare('
+		SELECT * 
+		FROM categorias 
+		WHERE status = 1
+		ORDER BY nombre_cat ASC');
 	$query->execute();
 	$categorias = $query->fetchall();
 

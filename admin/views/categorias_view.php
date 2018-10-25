@@ -28,12 +28,21 @@
                 </div>
                 <div class="contPay">
                     <?php foreach ($cats as $cat): ?>
-                        <?php $status = ($cat['status'] == 1) ? "activo" : "inactivo" ?>
-                        <a href="detallesCategoria.php?cat=<?= $cat['id'] ?>" class="payMethod">
-                            <div class="status"><span class="<?= $status ?>"><?= str_replace("o", "a", $status) ?></span></div>
-                            <div class="name"><?= $cat['nombre_cat'] ?></div>
-                        </a>
+                        <?php if ($cat['id'] != 1): ?>
+                            <?php $status = ($cat['status'] == 1) ? "activo" : "inactivo" ?>
+                            <a href="detallesCategoria.php?cat=<?= $cat['id'] ?>" class="payMethod">
+                                <div class="status"><span class="<?= $status ?>"><?= str_replace("o", "a", $status) ?></span></div>
+                                <div class="name"><?= $cat['nombre_cat'] ?></div>
+                            </a>
+                        <?php endif ?>
                     <?php endforeach ?>
+
+                    <?php if ($qtyProdsOther > 0): ?>
+                        <a href="detallesCategoria.php?cat=1" class="payMethod">
+                            <div class="status"><span class="activa">activa</span></div>
+                            <div class="name">Otros</div>
+                        </a>
+                    <?php endif ?>
 
                     <div class="noPayMethods regOther">
                         <span id="noPayMethodsInfo" class="info hidden">No hay categor&iacute;as registradas.</span>

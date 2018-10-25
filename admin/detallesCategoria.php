@@ -30,18 +30,42 @@ if ($conexion != false) {
     }
 
     // Obtener los productos de la categoria
-    $query = $conexion->prepare("SELECT * FROM productos WHERE id_categoria = :idCat AND deleted = 0");
-    $query->execute(array(':idCat' => $idCat));
-    $prods = $query->fetchall();
+    if ($idCat != 1) {
+        $query = $conexion->prepare("
+            SELECT * 
+            FROM productos 
+            WHERE id_categoria = :idCat AND to_others = 0 AND deleted = 0
+        ");
+        $query->execute(array(':idCat' => $idCat));
+        $prods = $query->fetchall();
+    } else {
+        $query = $conexion->prepare("
+            SELECT * 
+            FROM productos 
+            WHERE (id_categoria = 1 OR to_others = 1) AND deleted = 0");
+        $query->execute();
+        $prodsOther = $query->fetchall();
+    }
+
 
     // Obtener las imagenes de los productos de la categoria
-    $query = $conexion->prepare("
-        SELECT imgs_prods.* FROM imgs_prods
-        JOIN productos ON imgs_prods.id_prod = productos.id
-        WHERE productos.id_categoria = :idCat
-    ");
-    $query->execute(array(':idCat' => $idCat));
-    $imgsProds = $query->fetchall();
+    if ($idCat != 1) {
+        $query = $conexion->prepare("
+            SELECT imgs_prods.* FROM imgs_prods
+            JOIN productos ON imgs_prods.id_prod = productos.id
+            WHERE productos.id_categoria = :idCat AND productos.to_others = 0 AND productos.deleted = 0
+        ");
+        $query->execute(array(':idCat' => $idCat));
+        $imgsProds = $query->fetchall();
+    } else {
+        $query = $conexion->prepare("
+            SELECT imgs_prods.* FROM imgs_prods
+            JOIN productos ON imgs_prods.id_prod = productos.id
+            WHERE (productos.id_categoria = :idCat OR productos.to_others = 1) AND productos.deleted = 0
+        ");
+        $query->execute(array(':idCat' => $idCat));
+        $imgsProds = $query->fetchall();
+    }
 
     // Desactivar categoria y ocultar productos
     if (isset($_POST['toggleAndHide'])) {    

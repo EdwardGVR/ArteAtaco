@@ -26,8 +26,6 @@
             <?php $status = ($cat['status'] == 1) ? "activa" : "inactiva"; ?>
             <div class="contCatDet">
                 <div id="status" class="status <?= $status ?>">
-                    <span id="statusMsg">La categor&iacute;a est&aacute; <?= $status ?></span>
-                    
                     <form id="setActiveForm" class="hidden" action="detallesCategoria.php?cat=<?= $cat['id'] ?>" method="POST">
                         <input type="hidden" name="setActive" value="<?= $cat['status'] ?>">
                         <input type="hidden" name="currentStatus" value="<?= $cat['status'] ?>">
@@ -44,15 +42,19 @@
                         <input type="hidden" name="deleteCat" value="deleteCat">
                         <input type="hidden" id="prodsAction" name="prodsAction" value="unknown">
                     </form>
+
+                    <span id="statusMsg">La categor&iacute;a est&aacute; <?= $status ?></span>
                     
-                    <div id="switch" class="switch">
-                        <div class="box">
-                            <div draggable="true" class="circle"></div>
+                    <?php if ($cat['id'] != 1): ?>
+                        <div id="switch" class="switch">
+                            <div class="box">
+                                <div draggable="true" class="circle"></div>
+                            </div>
                         </div>
-                    </div>
-                    <div id="deleteCatBtn" class="delete">
-                        <i class="fa fa-trash"></i>
-                    </div>
+                        <div id="deleteCatBtn" class="delete">
+                            <i class="fa fa-trash"></i>
+                        </div>
+                    <?php endif ?>
 
                 </div>
                 <div class="info">

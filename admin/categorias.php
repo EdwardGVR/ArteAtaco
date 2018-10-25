@@ -13,9 +13,18 @@ $userImg = $userData['imagen'];
 
 if ($conexion != false) {
     // Obtener categorias
-    $query = $conexion->prepare("SELECT * FROM categorias WHERE deleted = 0 ORDER BY nombre_cat ASC");
+    $query = $conexion->prepare("
+        SELECT * 
+        FROM categorias 
+        WHERE deleted = 0
+        ORDER BY nombre_cat ASC");
     $query->execute();
     $cats = $query->fetchAll();
+
+    $query = $conexion->prepare("SELECT COUNT(*) FROM productos WHERE id_categoria = 1 OR to_others = 1");
+    $query->execute();
+    $qtyProdsOther = $query->fetch();
+    $qtyProdsOther = $qtyProdsOther['COUNT(*)'];
 
     //Guardar nueva categoria
     if (isset($_POST['saveCat'])) {

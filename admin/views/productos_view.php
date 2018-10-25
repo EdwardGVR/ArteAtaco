@@ -39,9 +39,10 @@
                                 <span>No disponible</span>
                             </div>
                         <?php endif ?>
+                            <?php $catName = ($prod['to_others'] == 1) ? " Ahora en otros" : $prod['catName']; ?>
                             <div class="producto_nombre">
                                 <span class="nombre"><?= $prod['nombre'] ?></span>
-                                <span class="categoria"><?= $prod['catName'] ?></span>
+                                <span class="categoria"><?= $catName ?></span>
                                 <div class="img_categoria"></div>
                             </div>
                             <hr>
@@ -74,6 +75,8 @@
                 </div>
 
             <?php endif ?>
+
+            <?php if ($categorias != false): ?>
                 <div class="newProduct">
                     <div class="add_product" id="addProductBtn">
                         <div class="icon"><i class="fa fa-plus-circle"></i></div>
@@ -125,6 +128,9 @@
                         </div>
                     </form>
                 </div>
+            <?php else: ?>
+                <span class="regCats">Empieza <a href="categorias.php">creando categor&iacute;as <i class="fa fa-plus-circle"></i> </a></span>
+            <?php endif ?>
         </section>
     </main>
     <script src="js/script.js"></script>

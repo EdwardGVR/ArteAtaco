@@ -39,7 +39,7 @@
 
                     <?php if ($qtyProdsOther > 0): ?>
                         <a href="detallesCategoria.php?cat=1" class="payMethod">
-                            <div class="status"><span class="activa">activa</span></div>
+                            <div class="status"><span class="activo">activa</span></div>
                             <div class="name">Otros</div>
                         </a>
                     <?php endif ?>

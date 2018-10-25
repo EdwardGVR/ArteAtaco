@@ -1893,6 +1893,8 @@ main section > .title {
     min-height: 30px;
     resize: vertical;
     max-height: 300px;
+    font-size: 0.8em;
+    padding-top: 5px;
 }
 
 .productsAdmin .newProduct .newProductForm .options {

@@ -165,33 +165,33 @@ if ($conexion != false) {
         $precioProd = $_POST['precioProd'];
         $descProd = htmlentities($_POST['descProd']);
 
-        if ($catProd != "others") {
-            $query = $conexion->prepare(
-                "UPDATE productos 
-                    SET id_categoria = :catProd, nombre = :nombreProd, precio = :precioProd, descripcion = :descProd
-                    WHERE id = :idProd"
-            );
-            $query->execute(array(
-                ':catProd' => $catProd,
-                ':nombreProd' => $nombreProd,
-                ':precioProd' => $precioProd,
-                ':descProd' => $descProd,
-                ':idProd' => $idProd
-            ));
-        } else {
-            $query = $conexion->prepare(
-                "UPDATE productos 
-                    SET nombre = :nombreProd, precio = :precioProd, descripcion = :descProd, to_others = 1
-                    WHERE id = :idProd"
-            );
-            $query->execute(array(
-                ':nombreProd' => $nombreProd,
-                ':precioProd' => $precioProd,
-                ':descProd' => $descProd,
-                ':idProd' => $idProd
-            ));
-        }
+        $query = $conexion->prepare("
+            UPDATE productos 
+            SET id_categoria = :catProd, nombre = :nombreProd, precio = :precioProd, descripcion = :descProd
+            WHERE id = :idProd
+        ");
+        $query->execute(array(
+            ':catProd' => $catProd,
+            ':nombreProd' => $nombreProd,
+            ':precioProd' => $precioProd,
+            ':descProd' => $descProd,
+            ':idProd' => $idProd
+        ));
 
+        if ($catProd == 1) {
+            $query = $conexion->prepare("UPDATE categorias SET status = 1, deleted = 0 WHERE id = 1");
+            $query->execute();
+        } else {
+            $query = $conexion->prepare("SELECT COUNT(*) FROM productos WHERE id_categoria = 1");
+            $query->execute();
+            $qtyProdsOther = $query->fetch();
+            $qtyProdsOther = $qtyProdsOther['COUNT(*)'];
+
+            if ($qtyProdsOther <= 0) {
+                $query = $conexion->prepare("UPDATE categorias SET status = 0, deleted = 1 WHERE id = 1");
+                $query->execute();
+            }
+        }
 
         header("Location: detallesProducto.php?idProd=$prodIdUrl");
     }

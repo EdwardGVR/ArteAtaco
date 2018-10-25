@@ -44,7 +44,7 @@ if ($conexion != false) {
             FROM productos 
             WHERE (id_categoria = 1 OR to_others = 1) AND deleted = 0");
         $query->execute();
-        $prodsOther = $query->fetchall();
+        $prods = $query->fetchall();
     }
 
 
@@ -82,6 +82,9 @@ if ($conexion != false) {
     if (isset($_POST['toggleAndToOthers'])) {    
         $query = $conexion->prepare("UPDATE categorias SET status = 0 WHERE id = :idCat");
         $query->execute(array(':idCat' => $idCat));
+
+        $query = $conexion->prepare("UPDATE categorias SET status = 1, deleted = 0 WHERE id = 1");
+        $query->execute();
 
         $query = $conexion->prepare("UPDATE productos SET to_others = 1 WHERE id_categoria = :idCat");
         $query->execute(array(':idCat' => $idCat));

@@ -391,7 +391,11 @@ if (document.title == 'Detalles de pedido') {
                 location.reload(true);
             });
 
-            info.innerText = "Ingrese los datos del nuevo método";
+            if (document.title == "Categorias") {
+                info.innerText = "Ingrese los datos de la nueva categoría";
+            } else {
+                info.innerText = "Ingrese los datos del nuevo método";
+            }
             regNewBtn.classList.add("hidden");
             regNewInfo.classList.add("hidden");
             regNewForm.classList.remove("hidden");

@@ -16,7 +16,11 @@
 			<a href="categorias.php"><h1 class="drop-btn categorias">Categorias</h1></a>
 			<div class="drop-content">
 				<?php foreach ($categorias as $categoria): ?>
-					<a href="productos.php?id=<?= $categoria['id'] ?>"><?= $categoria['nombre_cat'] ?></a>
+					<?php if ($categoria['id'] != 1): ?>
+						<a href="productos.php?id=<?= $categoria['id'] ?>"><?= $categoria['nombre_cat'] ?></a>
+					<?php else: ?>
+						<a href="productos.php?id=otros"><?= $categoria['nombre_cat'] ?></a>
+					<?php endif ?>
 				<?php endforeach ?>
 			</div>
 		</div>

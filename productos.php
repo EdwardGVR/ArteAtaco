@@ -42,7 +42,7 @@ if ($conexion != false) {
 	if ($id_cat == "otros") {
 		$query = $conexion->prepare('
 			SELECT * FROM productos 
-			WHERE to_others = 1 
+			WHERE to_others = 1 OR id_categoria = 1
 			AND disponible = 1
 		');
 		$query->execute();
@@ -51,8 +51,9 @@ if ($conexion != false) {
 		$query = $conexion->prepare('
 			SELECT * FROM productos 
 			WHERE id_categoria = :id_cat
-			AND to_others = 0 
-			AND disponible = 1
+				AND to_others = 0
+				AND id_categoria != 1 
+				AND disponible = 1
 		');
 		$query->execute(array(':id_cat' => $id_cat));
 		$productos = $query->fetchall();
@@ -63,7 +64,7 @@ if ($conexion != false) {
 		$query = $conexion->prepare(
 			"SELECT imgs_prods.*, productos.id_categoria FROM imgs_prods
 				JOIN productos ON imgs_prods.id_prod = productos.id
-				WHERE to_others = 1"
+				WHERE productos.to_others = 1 OR productos.id_categoria = 1"
 		);
 		$query->execute();
 		$catImgs = $query->fetchall();
@@ -71,7 +72,7 @@ if ($conexion != false) {
 		$query = $conexion->prepare(
 			"SELECT imgs_prods.*, productos.id_categoria FROM imgs_prods
 				JOIN productos ON imgs_prods.id_prod = productos.id
-				WHERE id_categoria = :id_cat"
+				WHERE productos.id_categoria = :id_cat AND productos.id_categoria != 1 AND productos.to_others = 0"
 		);
 		$query->execute(array(':id_cat' => $id_cat));
 		$catImgs = $query->fetchall();

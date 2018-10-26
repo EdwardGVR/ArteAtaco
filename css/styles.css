@@ -815,7 +815,7 @@ figure img {
 }
 
 .contenedor_prod .producto .prod-precio span {
-	width: 30%;
+	width: 80px;
 	height: 30px;
 	line-height: 30px;
 	color: #000;

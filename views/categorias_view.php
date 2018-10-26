@@ -116,7 +116,7 @@
 				<div class="randomProds">
 					<?php $prodOthersCount = 0; ?>
 					<?php foreach ($prodsOther as $prod): ?>
-						<?php if ($prod['to_others'] == 1 && $prodOthersCount <3): ?>
+						<?php if ($prodOthersCount <3): ?>
 							<?php $prodOthersCount++; ?>
 							<?php if ($prodOthersCount > 0): ?>
 								<!-- Validacion de imagenes -->

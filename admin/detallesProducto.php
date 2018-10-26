@@ -181,6 +181,9 @@ if ($conexion != false) {
         if ($catProd == 1) {
             $query = $conexion->prepare("UPDATE categorias SET status = 1, deleted = 0 WHERE id = 1");
             $query->execute();
+
+            $query = $conexion->prepare("UPDATE productos SET to_others = 0 WHERE id = :idProd");
+            $query->execute(array(':idProd' => $idProd));
         } else {
             $query = $conexion->prepare("SELECT COUNT(*) FROM productos WHERE id_categoria = 1");
             $query->execute();
@@ -193,6 +196,19 @@ if ($conexion != false) {
             }
         }
 
+        $query = $conexion->prepare("SELECT status FROM categorias WHERE id = :idCat");
+        $query->execute(array(':idCat' => $catProd));
+        $statusCat = $query->fetch();
+        $statusCat = $statusCat['status'];
+
+        if ($statusCat == 0) {
+            $query = $conexion->prepare("UPDATE productos SET disponible = 0 WHERE id = :idProd");
+            $query->execute(array(':idProd' => $idProd));
+        } else {
+            $query = $conexion->prepare("UPDATE productos SET disponible = 1 WHERE id = :idProd");
+            $query->execute(array(':idProd' => $idProd));
+        }
+
         header("Location: detallesProducto.php?idProd=$prodIdUrl");
     }
 
@@ -201,12 +217,17 @@ if ($conexion != false) {
 
         switch ($action) {
             case 'activeCat':
+                $currentCat = $_POST['currentCat'];
+
                 $query = $conexion->prepare("
                     UPDATE categorias 
                     SET status = 1 
                     WHERE id = :idCat
                 ");
                 $query->execute(array(':idCat' => $producto['id_categoria'] ));
+
+                $query = $conexion->prepare("UPDATE productos SET to_others = 0 WHERE id_categoria = :idCat");
+                $query->execute(array(':idCat' => $currentCat));
 
                 $query = $conexion->prepare("
                     UPDATE productos 
@@ -237,6 +258,9 @@ if ($conexion != false) {
                     WHERE id = :idProd
                 ");
                 $query->execute(array(':idProd' => $producto['id']));
+
+                $query = $conexion->prepare("UPDATE categorias SET status = 1, deleted = 0 WHERE id = 1");
+                $query->execute();
                 break;
 
             case 'unknown':

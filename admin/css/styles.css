@@ -572,6 +572,13 @@ main section > .title {
 }
 
 .producto .producto_nombre .img_categoria {
+    padding: 0;
+    border-radius: 10%;
+    overflow: hidden;
+}
+
+.producto .producto_nombre .img_categoria img {
+    width: 100%;
     border-radius: 10%;
 }
 

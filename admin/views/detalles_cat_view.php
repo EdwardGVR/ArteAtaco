@@ -65,7 +65,9 @@
                             <label for="catName">Nombre:</label>
                             <input id="catName" type="text" name="catName" value="<?= $name ?>" placeholder="<?= $name ?>" disabled>
                             <div class="options">
-                                <span id="editName" class="editBtn opt">Editar &nbsp; <i class="fa fa-edit"></i> </span>
+                                <?php if ($cat['id'] != 1): ?>
+                                    <span id="editName" class="editBtn opt">Editar &nbsp; <i class="fa fa-edit"></i> </span>
+                                <?php endif ?>
                                 <span id="saveName" class="saveBtn opt hidden">Guardar</span>
                                 <span id="sameName" class="sameInfo hidden">El nombre ingresado es el mismo</span>
                                 <span id="cancelName" class="cancelBtn opt hidden">Cancelar</span>

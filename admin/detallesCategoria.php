@@ -103,6 +103,8 @@ if ($conexion != false) {
         $query = $conexion->prepare("UPDATE productos SET disponible = 1 WHERE id_categoria = :idCat");
         $query->execute(array(':idCat' => $idCat));
 
+        
+
         header("Location: detallesCategoria.php?cat=$idCat");
     }
 

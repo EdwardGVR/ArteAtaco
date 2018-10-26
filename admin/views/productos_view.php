@@ -43,7 +43,9 @@
                             <div class="producto_nombre">
                                 <span class="nombre"><?= $prod['nombre'] ?></span>
                                 <span class="categoria"><?= $catName ?></span>
-                                <div class="img_categoria"></div>
+                                <div class="img_categoria">
+                                    <img src="<?= '../' . $prod['catImg'] ?>" alt="x">
+                                </div>
                             </div>
                             <hr>
                             <!-- Validacion de imagenes -->

@@ -58,6 +58,7 @@
                                     <?php $catDispMsg = ($categoria['status'] == 0) ? " (Inactiva actualmente)" : ""; ?>
                                     <?php if ($categoria['id'] != 1): ?>
                                         <?php if ($producto['id_categoria'] == $categoria['id']): ?>
+                                            <?php $currentCat = $categoria['id'] ?>
                                             <option value="<?= $categoria['id'] ?>" selected><?= $categoria['nombre_cat'] . $catDispMsg ?></option>
                                         <?php else: ?>
                                             <option value="<?= $categoria['id'] ?>"><?= $categoria['nombre_cat'] . $catDispMsg ?></option>
@@ -167,7 +168,7 @@
                         </div>
                     </div>
                     <div class="options <?= $dispClass ?>">
-                        <?php if ($producto['catStatus'] == 1): ?>
+                        <?php if ($producto['catStatus'] == 1 || $producto['disponible'] == 1): ?>
                             <form action="" class="opt disponible" method="POST">
                                 <input type="hidden" name="idProd" value="<?= $producto['id'] ?>">
                                 <input type="hidden" name="currentDisp" value="<?= $producto['disponible'] ?>">
@@ -235,6 +236,7 @@
             <input type="hidden" name="toggleProd">
             <input type="hidden" name="actionForm" id="actionForm" value="unknown">
             <input type="hidden" name="newCat" id="newCat" value="null">
+            <input type="hidden" name="currentCat" id="currentCat" value="<?= $currentCat ?>">
         </form>
 
         <div id="modal" class="modalMsg">
@@ -256,7 +258,7 @@
                         <select name="newCat" id="newCatSelect" required>
                             <option value="false" disabled selected>-- Elija una categor&iacute;a --</option>
                             <?php foreach ($categorias as $cat): ?>
-                                <?php if ($cat['status'] == 1): ?>
+                                <?php if ($cat['status'] == 1 || $cat['id'] == 1): ?>
                                     <option value="<?= $cat['id'] ?>"><?= $cat['nombre_cat'] ?></option>
                                 <?php endif ?>
                             <?php endforeach ?>

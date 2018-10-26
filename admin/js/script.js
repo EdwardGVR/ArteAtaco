@@ -437,77 +437,79 @@ if (document.title == 'Detalles de pedido') {
         cancelBtns = [...document.querySelectorAll(".info .options .cancelBtn")],
         deleteBtn = document.getElementById("deleteCatBtn");
 
-    swStatus.addEventListener("click", () => {
-        let statusBar = document.getElementById("status"),
-            statusClass = statusBar.classList[1],
-            statusMsg = document.getElementById("statusMsg"),
-            closeModal = document.getElementById("closeModal"),
-            hideProds = document.getElementById("hideProds"),
-            toOthers = document.getElementById("toOthers"),
-            toggleMsg = document.getElementById("toggleMsg");
+    if (swStatus != null) {
+        swStatus.addEventListener("click", () => {
+            let statusBar = document.getElementById("status"),
+                statusClass = statusBar.classList[1],
+                statusMsg = document.getElementById("statusMsg"),
+                closeModal = document.getElementById("closeModal"),
+                hideProds = document.getElementById("hideProds"),
+                toOthers = document.getElementById("toOthers"),
+                toggleMsg = document.getElementById("toggleMsg");
+        
+            if (statusClass == "inactiva") {
+                let setActiveForm = document.getElementById("setActiveForm");
     
-        if (statusClass == "inactiva") {
-            let setActiveForm = document.getElementById("setActiveForm");
-
-            setTimeout(() => {
-                statusBar.classList.remove("inactiva");
-                statusBar.classList.add("activa");
-                statusMsg.textContent = "La categoría está activa";
-            }, 400)
-
-            setTimeout(() => {
-                setActiveForm.submit();
-            }, 900);
-
-        } else if (statusClass == "activa") {
-            modalMsg = document.getElementById("modal");
-            modalMsg.classList.add("open");
-            toggleMsg.classList.remove("hidden");
-
-            window.addEventListener("keyup", function (e) {
-                if (e.keyCode == 27) {
+                setTimeout(() => {
+                    statusBar.classList.remove("inactiva");
+                    statusBar.classList.add("activa");
+                    statusMsg.textContent = "La categoría está activa";
+                }, 400)
+    
+                setTimeout(() => {
+                    setActiveForm.submit();
+                }, 900);
+    
+            } else if (statusClass == "activa") {
+                modalMsg = document.getElementById("modal");
+                modalMsg.classList.add("open");
+                toggleMsg.classList.remove("hidden");
+    
+                window.addEventListener("keyup", function (e) {
+                    if (e.keyCode == 27) {
+                        modalMsg.classList.remove("open");
+                        toggleMsg.classList.add("hidden");
+                    }
+                });
+    
+                closeModal.addEventListener("click", () => {
                     modalMsg.classList.remove("open");
                     toggleMsg.classList.add("hidden");
-                }
-            });
-
-            closeModal.addEventListener("click", () => {
-                modalMsg.classList.remove("open");
-                toggleMsg.classList.add("hidden");
-            });
-
-            hideProds.addEventListener("click", () => {
-                modalMsg.classList.remove("open");
-                toggleMsg.classList.add("hidden");
-                setTimeout(() => {
-                    statusBar.classList.remove("activa");
-                    statusBar.classList.add("inactiva");
-                    statusMsg.textContent = "La categoría está inactiva";
-                }, 400)
-
-                setTimeout(() => {
-                    toggleHide.submit();
-                    console.log("send form");
-                }, 900);
-            });
-
-            toOthers.addEventListener("click", () => {
-                modalMsg.classList.remove("open");
-                toggleMsg.classList.add("hidden");
-                setTimeout(() => {
-                    statusBar.classList.remove("activa");
-                    statusBar.classList.add("inactiva");
-                    statusMsg.textContent = "La categoría está inactiva";
-                }, 400)
-
-                setTimeout(() => {
-                    toggleOthers.submit();
-                    console.log("send form");
-                }, 900);
-            });
-            
-        }
-    });
+                });
+    
+                hideProds.addEventListener("click", () => {
+                    modalMsg.classList.remove("open");
+                    toggleMsg.classList.add("hidden");
+                    setTimeout(() => {
+                        statusBar.classList.remove("activa");
+                        statusBar.classList.add("inactiva");
+                        statusMsg.textContent = "La categoría está inactiva";
+                    }, 400)
+    
+                    setTimeout(() => {
+                        toggleHide.submit();
+                        console.log("send form");
+                    }, 900);
+                });
+    
+                toOthers.addEventListener("click", () => {
+                    modalMsg.classList.remove("open");
+                    toggleMsg.classList.add("hidden");
+                    setTimeout(() => {
+                        statusBar.classList.remove("activa");
+                        statusBar.classList.add("inactiva");
+                        statusMsg.textContent = "La categoría está inactiva";
+                    }, 400)
+    
+                    setTimeout(() => {
+                        toggleOthers.submit();
+                        console.log("send form");
+                    }, 900);
+                });
+                
+            }
+        });
+    }
 
     for (let i = 0; i < editBtns.length; i++) {
         editBtns[i].addEventListener("click", () => {
@@ -557,6 +559,11 @@ if (document.title == 'Detalles de pedido') {
                     editDescForm = document.getElementById("editDesc");
                 
                 cancelInfo.classList.remove("hidden");
+                
+                cancelInfo.addEventListener("click", () => {
+                    location.reload(true);
+                });
+
                 inputInfo.removeAttribute("disabled");
                     
                 currentInfo = inputInfo.value;
@@ -589,67 +596,69 @@ if (document.title == 'Detalles de pedido') {
         editImgForm.submit();
     });
 
-    deleteBtn.addEventListener("click", () => {
-        let modalMsg = document.getElementById("modal"),
-            deleteMsg = document.getElementById("deleteMsg"),
-            closeDelete = document.getElementById("closeDelete"),
-            prodsNoDisp = document.getElementById("del-noDisp"),
-            prodsToOthers = document.getElementById("del-toOthers"),
-            prodsDel = document.getElementById("delProds"),
-            prodsAction = document.getElementById("prodsAction"),
-            delForm = document.getElementById("deleteCatForm"),
-            contCat = document.querySelector(".contCatDet");
-
-        modalMsg.classList.add("open");
-        deleteMsg.classList.remove("hidden");
-
-        prodsNoDisp.addEventListener("click", () => {
-            prodsAction.setAttribute("value", "setProdsNoDisp");
-
-            modalMsg.classList.remove("open");
-            deleteMsg.classList.add("hidden");
-            contCat.classList.add("deleted");
-
-            setTimeout(()=>{
-                delForm.submit(); 
-            }, 2000);
-        });
-
-        prodsToOthers.addEventListener("click", () => {
-            prodsAction.setAttribute("value", "setProdsToOthers");
-            
-            modalMsg.classList.remove("open");
-            deleteMsg.classList.add("hidden");
-            contCat.classList.add("deleted");
-
-            setTimeout(()=>{
-                delForm.submit(); 
-            }, 2000);
-        });
-
-        delProds.addEventListener("click", () => {
-            prodsAction.setAttribute("value", "deleteProds");
-            
-            modalMsg.classList.remove("open");
-            deleteMsg.classList.add("hidden");
-            contCat.classList.add("deleted");
-
-            setTimeout(()=>{
-                delForm.submit(); 
-            }, 2000);
-        });
-
-        window.addEventListener("keyup", function (e) {
-            if (e.keyCode == 27) {
+    if (deleteBtn != null) {
+        deleteBtn.addEventListener("click", () => {
+            let modalMsg = document.getElementById("modal"),
+                deleteMsg = document.getElementById("deleteMsg"),
+                closeDelete = document.getElementById("closeDelete"),
+                prodsNoDisp = document.getElementById("del-noDisp"),
+                prodsToOthers = document.getElementById("del-toOthers"),
+                prodsDel = document.getElementById("delProds"),
+                prodsAction = document.getElementById("prodsAction"),
+                delForm = document.getElementById("deleteCatForm"),
+                contCat = document.querySelector(".contCatDet");
+    
+            modalMsg.classList.add("open");
+            deleteMsg.classList.remove("hidden");
+    
+            prodsNoDisp.addEventListener("click", () => {
+                prodsAction.setAttribute("value", "setProdsNoDisp");
+    
                 modalMsg.classList.remove("open");
                 deleteMsg.classList.add("hidden");
-            }
+                contCat.classList.add("deleted");
+    
+                setTimeout(()=>{
+                    delForm.submit(); 
+                }, 2000);
+            });
+    
+            prodsToOthers.addEventListener("click", () => {
+                prodsAction.setAttribute("value", "setProdsToOthers");
+                
+                modalMsg.classList.remove("open");
+                deleteMsg.classList.add("hidden");
+                contCat.classList.add("deleted");
+    
+                setTimeout(()=>{
+                    delForm.submit(); 
+                }, 2000);
+            });
+    
+            delProds.addEventListener("click", () => {
+                prodsAction.setAttribute("value", "deleteProds");
+                
+                modalMsg.classList.remove("open");
+                deleteMsg.classList.add("hidden");
+                contCat.classList.add("deleted");
+    
+                setTimeout(()=>{
+                    delForm.submit(); 
+                }, 2000);
+            });
+    
+            window.addEventListener("keyup", function (e) {
+                if (e.keyCode == 27) {
+                    modalMsg.classList.remove("open");
+                    deleteMsg.classList.add("hidden");
+                }
+            });
+    
+            closeDelete.addEventListener("click", () => {
+                modalMsg.classList.remove("open");
+                deleteMsg.classList.add("hidden");
+            });
         });
-
-        closeDelete.addEventListener("click", () => {
-            modalMsg.classList.remove("open");
-            deleteMsg.classList.add("hidden");
-        });
-    });
+    }
 
 }

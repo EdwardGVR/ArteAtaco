@@ -1435,6 +1435,31 @@ body.checkout {
 	font-size: 0.7em;
 }
 
+.select_address .noDirs,
+.payment_method .noMethods,
+.confirm_info .noMethods {
+	width: 500px;
+	padding: 10px;
+	margin: 40px auto;
+	border-radius: 5px;
+	background: #336b9c;
+	font-size: 0.9em;
+	color: #fff;
+	display: flex;
+	align-items: center;
+}
+
+.confirm_info .noMethods {
+	background: #f7f2ad;
+	color: #686801;
+}
+
+.select_address .noDirs i,
+.payment_method .noMethods i,
+.confirm_info .noMethods i {
+	margin-right: 10px;
+}
+
 h3.indication {
 	width: 100%;
 	text-align: left;

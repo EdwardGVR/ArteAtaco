@@ -31,6 +31,19 @@
     $query->execute();
     $result = $query->fetch();
     $qtyDelivPoint = " (" . $result['COUNT(*)'] . ")";
+
+    $query = $conexion->prepare("SELECT COUNT(*) FROM productos WHERE id_categoria = 1 OR to_others = 1");
+    $query->execute();
+    $qtyProdsOther = $query->fetch();
+    $qtyProdsOther = $qtyProdsOther['COUNT(*)'];
+
+    if ($qtyProdsOther <= 0) {
+        $query = $conexion->prepare("UPDATE categorias SET status = 0, deleted = 1 WHERE id = 1");
+        $query->execute();
+    } else {
+        $query = $conexion->prepare("UPDATE categorias SET status = 1, deleted = 0 WHERE id = 1");
+        $query->execute();
+    }
 ?>
 
 <div id="nav-fake" class="nav_hidden"></div>

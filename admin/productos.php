@@ -14,7 +14,7 @@
     if ($conexion != false) {
         // Obtener todos los productos
         $query = $conexion->prepare("
-            SELECT productos.*, categorias.nombre_cat AS catName 
+            SELECT productos.*, categorias.nombre_cat AS catName, categorias.imagen AS catImg 
             FROM productos 
             JOIN categorias ON productos.id_categoria = categorias.id
             WHERE productos.deleted = 0

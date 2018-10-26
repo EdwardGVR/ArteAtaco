@@ -44,14 +44,11 @@ if ($conexion != false) {
 	$codigo .= $id_metodo_pago;
 	$random_code = rand(0,9);
 	$codigo .= $random_code;
-	// echo $codigo;
 
 	$query = $conexion->prepare("SELECT id_tipo FROM direcciones WHERE id = :idDireccion");
 	$query->execute(array(':idDireccion'=>$id_direccion));
 	$tipoDireccion = $query->fetch();
 	$tipoDireccion = $tipoDireccion['id_tipo'];
-
-	// print_r($tipoDireccion);
 
 	if ($tipoDireccion == 1) {
 		$query = $conexion->prepare("
@@ -68,14 +65,12 @@ if ($conexion != false) {
 		$costoEnvio = $query->fetch();
 		$costoEnvio = $costoEnvio[0];
 	}
-	// print_r($costoEnvio);
 
 	if (isset($_POST['place_order'])) {
 		$unique_code = auto_inc_code();
 		$codigo .= $unique_code;
-		// echo $unique_code;
-		// echo $codigo;
 
+		// Obtener productos del carrito
 		$query = $conexion->prepare("
 			SELECT carrito.*, productos.precio FROM carrito 
 			JOIN productos ON carrito.id_producto = productos.id
@@ -83,9 +78,8 @@ if ($conexion != false) {
 		");
 		$query->execute(array(':id_user'=>$iduser));
 		$productos_carrito = $query->fetchall();
-		// print_r($productos_carrito);
 
-		foreach ($productos_carrito AS $producto) {
+		foreach ($productos_carrito as $producto) {
 			$query = $conexion->prepare("
 				INSERT INTO pedidos 
 				VALUES (null, :codigo, :id_user, :id_direccion, :id_pago, :id_producto, :cantidad, :precioCompra, :costoEnvioCompra, 1, CURRENT_TIMESTAMP)
@@ -165,17 +159,17 @@ switch ($id_metodo_pago) {
 	case 1:
 		// Transferencia bancaria
 		//...
-		require 'views/bank_transfer_view.php';
+		require 'views/payMethods/bank_transfer_view.php';
 		break;
 	case 2:
 		// Metodo 2
 		//...
-		require 'views/pago_view.php';
+		require 'views/payMethods/pago_view.php';
 		break;
 	case 3:
 		// Metodo 3
 		//...
-		require 'views/pago_view.php';
+		require 'views/payMethods/pago_view.php';
 		break;
 	default:
 		# code...

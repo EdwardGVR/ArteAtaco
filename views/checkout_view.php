@@ -267,7 +267,9 @@
 
 					<div class="form_confirm_info">
 						<?php if ($allowPass): ?>
-							<a id="checkoutBtn" href="pago.php?method=<?= $pay_sel['nombre'] ?>" class="send_info">La informaci&oacute;n es correcta</a>
+							<?php $payName = str_replace(" ", "-", $pay_sel['nombre']) ?>
+							<?php $payName = strtolower($payName) ?>
+							<a id="checkoutBtn" href="pago.php?method=<?= $payName ?>" class="send_info">La informaci&oacute;n es correcta</a>
 						<?php else: ?>
 							<div class="noInfo">Completar informaci&oacute;n para continuar <i class="fa fa-exclamation-triangle"></i></div>
 						<?php endif ?>

@@ -96,7 +96,7 @@ if ($conexion != false) {
 
 	// Obtener los productos en el carrito
 	$query = $conexion->prepare("
-		SELECT carrito.*, productos.id_categoria, productos.nombre, productos.precio, productos.stock, productos.imagen 
+		SELECT carrito.*, productos.id_categoria, productos.nombre, productos.precio, productos.stock 
 		FROM carrito, productos 
 		WHERE carrito.id_user = :iduser AND carrito.id_producto = productos.id 
 		GROUP BY carrito.id_producto");

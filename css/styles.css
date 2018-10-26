@@ -1519,12 +1519,12 @@ h3.indication {
 }
 
 .shipping_address_active {
-	background: #c8dfff;
+	background: #b0dfff;
 	box-shadow: 0 0 2px #000;
 }
 
 .shipping_address.review {
-	background: #b5d6e4;
+	background: #d4f2ff;
 	box-shadow: 0 0 3px #000;
 	transition: all ease 0.3s;
 }
@@ -1580,7 +1580,7 @@ h3.indication {
 
 .shipping_address_active .button.cancel,
 .shipping_address .button.review {
-	background: #a8a8a8;
+	background: #5dc4e4;
 }
 
 .shipping_address .button:hover,
@@ -1729,8 +1729,8 @@ input[name="add_address"]:hover {
 
 .new_address .errores {
 	text-align: left;
-	background: #E78C8C;
-	color: #F32525;
+	background: #ffc0c0;
+	color: #8f0808;
 	padding: 10px;
 	width: 100%;
 	border-radius: 10px;

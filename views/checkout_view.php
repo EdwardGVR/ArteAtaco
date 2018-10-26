@@ -128,8 +128,7 @@
 					<?php else: ?>
 						<span class="noDirs">
 							<i class="fa fa-info-circle fa-2x"></i>
-							No tiene ninguna direcci&oacute;n registrada, puede agregar direcciones en el siguiente 
-							formulario y aparecer&aacute;n aqu&iacute;:
+							No tiene ninguna direcci&oacute;n registrada, puede agregar direcciones y aparecer&aacute;n aqu&iacute;:
 						</span>
 					<?php endif ?>
 				</div>
@@ -148,11 +147,12 @@
 					</div>
 					<form id="newAddressForm" class="form_new_address closed" action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 						Nombre de la direcci&oacute;n: *
-						<input type="text" name="address_name" class="new_address_field" placeholder="Nombre descriptivo ej: Casa Santa Ana, Oficina, etc..">
+						<input type="text" name="address_name" class="new_address_field" placeholder="ej: Casa Santa Ana, Oficina, etc.." required>
 						Pa&iacute;s: *
 						<input type="text" name="pais" class="new_address_field" value="El Salvador" readonly disabled>
 						Departamento: *
-						<select name="departamento" id="dpto" class="new_address_field">
+						<select name="departamento" id="dpto" class="new_address_field" required>
+							<option value="null" disabled selected>-- Selecciones un departamento --</option>
 							<?php foreach ($departamentos as $departamento): ?>
 								<?php if($departamento['id'] == 1 || $departamento['id'] == 2 || $departamento['id'] == 3 || $departamento['id'] == 7): ?>
 									<option value="<?= $departamento['id'] ?>"><?php echo $departamento['nombre'] ?></option>
@@ -162,7 +162,7 @@
 							<?php endforeach ?>
 						</select>
 						Direccion:
-						<input type="text" name="address_line_1" class="new_address_field" placeholder="Direccion linea 1 *">
+						<input type="text" name="address_line_1" class="new_address_field" placeholder="Direccion linea 1 *" required>
 						<input type="text" name="address_line_2" class="new_address_field" placeholder="Direccion linea 2">
 						Referencias:
 						<textarea name="referencias" id="ref" class="new_address_field" placeholder="Referencias de ubicacion ej: Frente a iglesia, a la par de local X, etc..."></textarea>

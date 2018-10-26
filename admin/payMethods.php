@@ -24,8 +24,8 @@ if ($conexion != false) {
         $methodIcon = $_POST['methodIcon'];
         $methdoInfo = $_POST['methodInfo'];
 
-        $startClassPos = strpos($newIcon, "class=");
-        $endClassPos = strpos($newIcon, "></i>");
+        $startClassPos = strpos($methodIcon, "class=");
+        $endClassPos = strpos($methodIcon, "></i>");
 
         $methodIcon = substr($methodIcon, $startClassPos+7);
         $methodIcon = substr($methodIcon, 0, $endClassPos-11);

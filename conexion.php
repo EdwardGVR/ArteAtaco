@@ -1,5 +1,5 @@
 <?php 
 
-$conexion = conexion('login_propio', 'root', '');
+$conexion = conexion('arteataco', 'root', '');
 
  ?>

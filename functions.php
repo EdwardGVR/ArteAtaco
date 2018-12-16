@@ -109,7 +109,7 @@ function adminValidation ($conexion) {
 		$userData = get_user_data($conexion, $iduser);
 		$userLevel = $userData['level'];
 
-		if ($userLevel == 1) {
+		if ($userLevel == 2) {
 			return $userData;
 		} else {
 			header('Location: ../categorias.php');

@@ -38,7 +38,7 @@
 					<a href="cuenta.php"><span>Cuenta</span> <i class="fa fa-user"></i> </a>
 					<a href="pedidos.php"><span>Pedidos</span> <i class="fa fa-shopping-bag"></i> </a>
 					<a href="carrito.php"><span>Carrito (<?= $qtyItems ?>)</span> <i class="fa fa-shopping-cart"></i> </a>
-					<?php if ($userLevel == 1): ?>
+					<?php if ($userLevel == 2): ?>
 						<a class="admin" href="admin"><span>Administrar</span> <i class="fa fa-sliders"></i> </a>
 					<?php endif ?>
 					<a href="logout.php">Cerrar Sesi&oacute;n <i class="fa fa-sign-out"></i> </a>

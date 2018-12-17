@@ -10,7 +10,7 @@
 <?php require("messenger_contact.php") ?>
 
 	<div class="contenedor">
-		<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST" class="formulario" name="login">
+		<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="GET" class="formulario" name="login">
 			<input type="text" placeholder="Usuario o correo: " name="nombre">
 			<input type="password" placeholder="Contraseña: " name="pass">
 			<span class="remember">Mantener sesi&oacute;n iniciada? <input type="checkbox" name="remember" value="1">	</span>

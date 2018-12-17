@@ -1,6 +1,10 @@
 <?php session_start();
 
 require 'functions.php';
+require 'conexion.php';
+if (!$conexion) {
+	header('Location: error.php');
+}
 
 $errores = '';
 
@@ -19,17 +23,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$errores .= '<li>No se ingreso la contraseña</li>';
 	}
 
-	require 'conexion.php';
-	if (!$conexion) {
-		header('Location: error.php');
-	}
-
 	if (empty($errores)) {
 		$login = login_verification($conexion, $user, $password);
 
-		// print_r($login);
-
-		if ($login != false) {
+		if ($login) {
 			$query = $conexion->prepare("SELECT user FROM usuarios WHERE user = :user OR email = :user");
 			$query->execute(array(':user' => $user));
 			$logged = $query->fetch();
@@ -43,8 +40,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	}
 }
 
-// Enlazamos con el archivo de la vista
-// (DEBE IR AL FINAL)
 require 'views/login_view.php';
 
  ?>

@@ -1,5 +1,5 @@
 <?php 
 
-$conexion = conexion('2082237_arteataco', '2082237_arteataco', 'arteataco');
+$conexion = conexion('id4411650_arteataco', 'id4411650_arteataco', 'arteataco');
 
  ?>

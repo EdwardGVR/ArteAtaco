@@ -2,7 +2,7 @@
 
 function conexion($DB, $user, $pass){
 	try {
-		$conexion = new PDO("mysql:host=fdb2.awardspace.net;dbname=$DB", $user, $pass);
+		$conexion = new PDO("mysql:host=localhost;dbname=$DB", $user, $pass);
 		return $conexion;
 	} catch (PDOException $e) {
 		echo "Error en la conexion". $e;
@@ -10,19 +10,19 @@ function conexion($DB, $user, $pass){
 }
 
 function login_verification($conexion, $user, $password){
-		$query = $conexion->prepare("SELECT * FROM usuarios WHERE (user = :user OR email = :user) AND password = :password");
-		$query->execute(array(
-			':user' => $user,
-			':password' => $password
-		));
+	$query = $conexion->prepare("SELECT * FROM usuarios WHERE (user = :user OR email = :user) AND password = :password");
+	$query->execute(array(
+		':user' => $user,
+		':password' => $password
+	));
 
-		$query_result = $query->fetch();
+	$query_result = $query->fetch();
 
-		if ($query_result != false) {
-			return true;
-		} else {
-			return false;
-		}
+	if ($query_result != false) {
+		return true;
+	} else {
+		return false;
+	}
 }
 
 function get_user_id($conexion, $user){

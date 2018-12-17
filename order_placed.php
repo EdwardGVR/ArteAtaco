@@ -9,8 +9,6 @@ if (isset($_SESSION['user'])) {
 	$user = "Invitado";
 }
 
-//CODE...
-
 if (isset($_COOKIE['order_placed_ckp'])) {
 	unset($_COOKIE['order_placed_ckp']);
 	setcookie("order_placed_ckp", "", time()-3600);
@@ -22,7 +20,11 @@ require 'conexion.php';
 $iduser = get_user_id($conexion, $user);
 
 if ($conexion != false) {
-	$query = $conexion->prepare("SELECT id, nombre_cat FROM categorias ORDER BY nombre_cat ASC");
+	$query = $conexion->prepare("
+		SELECT id, nombre_cat 
+		FROM categorias 
+		WHERE status = 1
+		ORDER BY nombre_cat ASC");
 	$query->execute();
 	$categorias = $query->fetchall();
 

@@ -87,4 +87,36 @@ function auto_inc_code(){
 	}
 }
 
+function getShpCarQty ($id_user) {
+	require 'conexion.php';
+	if ($conexion != false) {
+		$query = $conexion->prepare("SELECT cantidad FROM carrito WHERE id_user = :id_user");
+		$query->execute(array(":id_user"=>$id_user));
+		$qtysResult = $query->fetchall();
+		$items = 0;
+		foreach($qtysResult as $qty){
+			$items += $qty['cantidad'];
+		}
+		return $items;
+	}
+}
+
+function adminValidation ($conexion) {
+	if (isset($_SESSION['user'])) {
+		$user = $_SESSION['user'];
+		$iduser = get_user_id($conexion, $user);
+		
+		$userData = get_user_data($conexion, $iduser);
+		$userLevel = $userData['level'];
+
+		if ($userLevel == 2) {
+			return $userData;
+		} else {
+			header('Location: ../categorias.php');
+		}
+	} else {
+		header('Location: ../categorias.php');
+	}
+}
+
  ?>

@@ -10,6 +10,8 @@
 </head>
 <body>
 
+<script>var pagId = "cuenta";</script>
+
 <?php require("messenger_contact.php") ?>
 
 <?php require 'header.php' ?>
@@ -132,7 +134,11 @@
 							<span>Departamento:</span>
 							<select name="departamento_new_dir" id="dpto" class="new_address_dpto">
 								<?php foreach ($departamentos as $departamento): ?>
-									<option value="<?php echo $departamento['id'] ?>"><?php echo $departamento['nombre'] ?></option>
+									<?php if($departamento['id'] == 1 || $departamento['id'] == 2 || $departamento['id'] == 3 || $departamento['id'] == 7): ?>
+										<option value="<?php echo $departamento['id'] ?>"><?php echo $departamento['nombre'] ?></option>
+									<?php else: ?>
+										<option value="<?php echo $departamento['id'] ?>" disabled><?php echo $departamento['nombre'] . "(No disponible)" ?></option>
+									<?php endif ?>
 								<?php endforeach ?>
 							</select>
 							<span>Linea 1:</span>
@@ -158,7 +164,7 @@
 
 				<?php else: ?>
 					<div class="address">
-						No tiene ninguna direcci&oacute;n registrada, puede agregar direcciones en el siguiente formulario y apareceran aqu&iacute;.
+						No tiene ninguna direcci&oacute;n registrada, puede empezar registrando una direcci&oacute;n en el siguiente formulario.
 
 						<form id="new_address" class="address" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 							<div class="new_address_title">

@@ -10,44 +10,126 @@
 </head>
 <body>
 
+<script>var pagId = "carrito";</script>
+
 <?php require("messenger_contact.php") ?>
 <?php require 'header.php' ?>
 
 	<div class="contenedor_carrito">
 		<?php if ($carrito != false): ?>
+			<?php $cantItems = 0 ?>
 			<?php foreach ($carrito as $item): ?>
+				<?php $subtotalProd = $item['precio'] * $item['cantidad'] ?>
 				<div class="prod_carrito">
-					<div class="img_carrito">
-						<img src="<?php echo $item['imagen'] ?>" alt="No se pudo cargar la imagen">
+					<div class="img-opts">
+						<a href="detalles.php?id_prod=<?= $item['id_producto'] ?>">
+						<div class="img_carrito">
+								<?php $mainImg = false; $imgsForProd = false; ?>
+								<?php foreach ($imagenes as $img): ?>
+									<?php if ($img['id_prod'] == $item['id_producto']): ?>
+										<?php $imgsForProd = true ?>
+										<?php if ($img['principal'] == 1): ?>
+											<?php 
+												$mainImg = true;
+												$rutaMainImg = $img['ruta'];
+											?>
+										<?php endif ?>
+									<?php endif ?>
+								<?php endforeach ?>
+		
+								<?php if ($imgsForProd == true): ?>
+									<?php if ($mainImg == true): ?>
+										<img src="<?= $rutaMainImg ?>" alt="No se pudo cargar la imagen">
+									<?php else: ?>
+										<?php foreach ($imagenes as $noMainImg): ?>
+											<?php if ($noMainImg['id_prod'] == $item['id_producto']): ?>
+												<img src="<?= $noMainImg['ruta'] ?>" alt="No se pudo cargar">
+											<?php endif ?>
+										<?php endforeach ?>
+									<?php endif ?>
+								<?php else: ?>
+									<span class="noImgs">No hay imagenes para este producto <i class="fa fa-exclamation-circle"></i></span>
+								<?php endif ?>
+						</div>
+						</a>
+						<div class="options">
+							<div class="opt">
+								<span class="editarCant" idProd="<?= $item['id_producto'] ?>">
+									<i class="fa fa-edit" idProd="<?= $item['id_producto'] ?>"></i> 
+									<pre idProd="<?= $item['id_producto'] ?>"> Editar cantidad</pre>
+								</span>
+							</div>
+							<div class="opt">
+								<form class="form_eliminar" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+									<input type="hidden" name="idCarritoDelete" value="<?php echo $item['id'] ?>">
+									<input type="hidden" name="itemName" value="<?php echo $item['nombre'] ?>">
+									<input type="submit" id="eliminar<?= $item['id_producto'] ?>" name="delete_item" value="X">
+									<label for="eliminar<?= $item['id_producto'] ?>" class="btn_eliminar">
+										<i class="fa fa-trash"></i><pre> Eliminar</pre>
+									</label>
+								</form>
+							</div>
+						</div>
 					</div>
 					<div class="info_carrito">
-						<!-- Eliminar item -->
-						<div class="eliminar">
-							<form class="form_eliminar" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-								<input type="hidden" name="idCarritoDelete" value="<?php echo $item['id'] ?>">
-								<input type="hidden" name="itemName" value="<?php echo $item['nombre'] ?>">
-								<input type="submit" class="btn_eliminar" name="delete_item" value="X">
-							</form>
+						<div class="header">
+							<div class="art">
+								<span><?= $item['nombre'] ?></span>
+							</div>
 						</div>
-						<form class="form_carrito_confirm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-							<input type="hidden" value="<?php echo $item['id'] ?>" name="idcarrito">
-							<input type="hidden" value="<?php echo $item['id_producto'] ?>" name="idprod">
-							<input type="hidden" value="<?php echo $item['id_user'] ?>" name="iduser">
-							<span class="item_carrito">Producto: <?php echo $item['nombre'] ?></span>
-							<span class="item_cantidad">Cantidad: <?php echo $item['cantidad'] ?></span>
-							<span class="item_mod_cantidad">Modificar cantidad: <input type="number" class="confirm_cantidad" name="quantity" min="1" max="10" value="<?php echo $item['cantidad'] ?>"></span>
-							<input type="submit" class="actualizar_cantidad" name="actualizar_cantidad" value="Actualizar">
-						</form>
+						<div class="info">
+							<div class="field">	
+								<span class="title">Precio:</span>
+								<span class="value precio" idProd="<?= $item['id_producto'] ?>">$<?= $item['precio'] ?></span>
+							</div>
+							<div class="field">	
+								<span class="title">Cantidad:</span>
+								<form class="hidden cantidad" action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+									<input type="hidden" value="<?php echo $item['id'] ?>" name="idcarrito">
+									<input type="hidden" value="<?php echo $item['id_producto'] ?>" name="idprod">
+									<input type="hidden" value="<?php echo $item['id_user'] ?>" name="iduser">
+									
+									<select name="quantity" idProd="<?= $item['id_producto'] ?>">
+										<?php for ($i = 1; $i <= 10; $i++): ?>
+											<?php if ($i == $item['cantidad']): ?>
+												<option value="<?= $i ?>" selected><?= $i ?></option>
+											<?php else: ?>
+												<option value="<?= $i ?>"><?= $i ?></option>
+											<?php endif ?>
+										<?php endfor ?>
+									</select>
+									<input 	type="submit" 
+											class="updateQuantity" 
+											id="updateQuantity<?= $item['id_producto'] ?>"
+											name="actualizar_cantidad"
+									>
+								</form>
+								<span class="value cantidad"  idProd="<?= $item['id_producto'] ?>">
+									<?= $item['cantidad'] ?>
+								</span>	
+								<label for="updateQuantity<?= $item['id_producto'] ?>" class="hidden" title="Aceptar">
+									<i class="fa fa-check-circle"></i>
+								</label>
+								<!-- cancelEditQuantity -->
+								<div class="hidden cancelEQ" idProd="<?= $item['id_producto'] ?>">
+									<i class="fa fa-times-circle" title="Cancelar"></i>
+								</div>
+							</div>
+							<div class="field">	
+								<span class="title">Subtotal (producto):</span>
+								<span class="value subtotalProd" idProd="<?= $item['id_producto'] ?>">$<?= $subtotalProd ?></span>
+							</div>
+						</div>
 					</div>
 				</div>
 				<?php $subtotal += ($item['precio']*$item['cantidad']) ?>
+				<?php $cantItems += $item['cantidad'] ?>
 			<?php endforeach ?>
 			<div class="carrito_subtotal">
-				<span>Subtotal: $ <?php echo  $subtotal ?></span>
-				<form action="checkout.php" method="POST">
-					<input type="submit" name="carrito_checkpoint" class="checkout" value="Ir a caja">
-				</form>
-				<!-- <a href="checkout.php" class="checkout">Ir a caja</a> -->
+				<div class="subtotal">Subtotal (<?= $cantItems ?> items): <span>$<?php echo  $subtotal ?></span></div>
+				<div class="goToCheckout">
+					<a href="checkout.php" class="checkout">Ir a caja</a>
+				</div>
 			</div>
 		<?php else: ?>
 			<p>El carrito est&aacute; vac&iacute;o</p>

@@ -11,27 +11,84 @@ if (isset($_SESSION['user'])) {
 require 'conexion.php';
 $iduser = get_user_id($conexion, $user);
 
-$id_cat = isset($_GET['id']) ? (int)$_GET['id'] : false;
+$id_cat = isset($_GET['id']) ? $_GET['id'] : false;
 
 if (!$id_cat) {
 	header('Location: categorias.php');
 }
 
 if ($conexion != false) {
-	$query = $conexion->prepare('SELECT * FROM categorias ORDER BY nombre_cat ASC');
+	if ($id_cat != "otros") {
+		$query = $conexion->prepare("SELECT status FROM categorias WHERE id = :idCat");
+		$query->execute(array(':idCat' => $id_cat));
+		$catData = $query->fetch();
+		$catStatus = $catData['status'];
+	
+		if ($catStatus == 0) {
+			header('Location: categorias.php');
+		}
+	}
+
+	// Obtener categorias para el menu
+	$query = $conexion->prepare('
+		SELECT * 
+		FROM categorias 
+		WHERE status = 1
+		ORDER BY nombre_cat ASC');
 	$query->execute();
 	$categorias = $query->fetchall();
 
-	$query = $conexion->prepare('SELECT * FROM productos WHERE id_categoria = :id_cat');
-	$query->execute(array(':id_cat' => $id_cat));
-	$productos = $query->fetchall();
+	// Obtener datos de los productos de la categoria
+	if ($id_cat == "otros") {
+		$query = $conexion->prepare('
+			SELECT * FROM productos 
+			WHERE to_others = 1 OR id_categoria = 1
+			AND disponible = 1
+		');
+		$query->execute();
+		$productos = $query->fetchall();
+	} else {
+		$query = $conexion->prepare('
+			SELECT * FROM productos 
+			WHERE id_categoria = :id_cat
+				AND to_others = 0
+				AND id_categoria != 1 
+				AND disponible = 1
+		');
+		$query->execute(array(':id_cat' => $id_cat));
+		$productos = $query->fetchall();
+	}
 
-	$query = $conexion->prepare('SELECT nombre_cat FROM categorias WHERE id = :id_cat');
-	$query->execute(array(':id_cat' => $id_cat));
-	$categoria = $query->fetch();
+	//Otener todas las imagenes de los productos de la categoria
+	if ($id_cat == "otros") {
+		$query = $conexion->prepare(
+			"SELECT imgs_prods.*, productos.id_categoria FROM imgs_prods
+				JOIN productos ON imgs_prods.id_prod = productos.id
+				WHERE productos.to_others = 1 OR productos.id_categoria = 1"
+		);
+		$query->execute();
+		$catImgs = $query->fetchall();
+	} else {
+		$query = $conexion->prepare(
+			"SELECT imgs_prods.*, productos.id_categoria FROM imgs_prods
+				JOIN productos ON imgs_prods.id_prod = productos.id
+				WHERE productos.id_categoria = :id_cat AND productos.id_categoria != 1 AND productos.to_others = 0"
+		);
+		$query->execute(array(':id_cat' => $id_cat));
+		$catImgs = $query->fetchall();
+	}
+
+	// Obtener categorias para el title de la tab
+	if ($id_cat == "otros") {
+		$categoria = "Otros";
+	} else {
+		$query = $conexion->prepare('SELECT nombre_cat FROM categorias WHERE id = :id_cat');
+		$query->execute(array(':id_cat' => $id_cat));
+		$categoria = $query->fetch();
+		$categoria = $categoria['nombre_cat'];
+	}
 
 	// AGREGAR AL CARRITO
-
 	if (isset($_POST['shortcut_carrito'])) {
 
 		$id_producto = $_POST['id_producto'];
@@ -49,7 +106,6 @@ if ($conexion != false) {
 		$consultar_carrito = $query->fetch();
 
 		if ($consultar_carrito != false) {
-			// El usuario ya tiene agregado el producto
 			// echo "El usuario ya tiene agregado el producto";
 			$cantidad_uptaded = $consultar_carrito['cantidad'] + $cantidad;
 			// echo "Se ha actualizado la cantidad";
@@ -60,7 +116,6 @@ if ($conexion != false) {
 				':iduser' => $iduser
 			));
 		} else {
-			// El usuario NO tiene agregado el producto
 			// echo "El usuario NO tiene agregado el producto";
 			$query = $conexion->prepare("INSERT INTO carrito VALUES (null, :iduser, :idprod, :cantidad)");
 			$query->execute(array(
@@ -73,10 +128,7 @@ if ($conexion != false) {
 		header('Location: carrito.php');
 
 	}
-
 }
-
-
 
 require 'views/productos_view.php';
 

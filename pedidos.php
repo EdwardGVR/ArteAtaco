@@ -14,31 +14,49 @@ require 'conexion.php';
 $iduser = get_user_id($conexion, $user);
 
 if ($conexion != false) {
-	$query = $conexion->prepare("SELECT id, nombre_cat FROM categorias ORDER BY nombre_cat ASC");
+	// Obtener categorias
+	$query = $conexion->prepare("
+		SELECT id, nombre_cat 
+		FROM categorias 
+		WHERE status = 1
+		ORDER BY nombre_cat ASC");
 	$query->execute();
 	$categorias = $query->fetchall();
 
+	// Obtener pedidos del cliente
 	$query = $conexion->prepare("
-		SELECT pedidos.*, direcciones_persistence.nombre AS dir_name, direcciones_persistence.activa
-		FROM pedidos, direcciones_persistence
-		WHERE pedidos.id_user = :id_user AND pedidos.id_direccion = direcciones_persistence.id
-		GROUP BY codigo 
-		ORDER BY fecha DESC");
+		SELECT pedidos.*, direcciones.nombre AS dir_name, direcciones.disponible 
+		FROM pedidos
+		JOIN direcciones ON pedidos.id_direccion = direcciones.id
+		WHERE pedidos.id_user = :id_user
+		GROUP BY pedidos.codigo
+		ORDER BY pedidos.fecha DESC");
 	$query->execute(array(':id_user'=>$iduser));
 	$pedidos = $query->fetchall();
 
 	// print_r($pedidos);	
 
+	// Obtener productos de pedidos del cliente
 	$query = $conexion->prepare("
-		SELECT pedidos.codigo, pedidos.cantidad, pedidos.estado, productos.id, productos.nombre, productos.precio, productos.imagen 
-		FROM pedidos, productos 
-		WHERE pedidos.id_user = :id_user AND pedidos.id_producto = productos.id
-		ORDER BY fecha ASC
+		SELECT 	pedidos.*, 
+				productos.id AS idProd, 
+				productos.nombre AS nombreProd, 
+				productos.disponible, 
+				productos.deleted AS prodDeleted
+		FROM pedidos 
+		JOIN productos ON pedidos.id_producto = productos.id
+		WHERE pedidos.id_user = :id_user
+		ORDER BY pedidos.fecha ASC
 	");
 	$query->execute(array(':id_user'=>$iduser));
 	$productos_pedidos = $query->fetchall();
 
 	// print_r($productos_pedidos);
+
+	// Obtener imagenes de productos
+	$query = $conexion->prepare("SELECT * FROM imgs_prods");
+	$query->execute();
+	$imgs = $query->fetchall();
 }
 
 require 'views/pedidos_view.php';

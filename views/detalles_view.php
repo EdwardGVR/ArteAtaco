@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- lightbox -->
 	<link href="script/css/lightbox.css" rel="stylesheet">
-
-	<title>Arte Ataco :: <?php echo $detalles['nombre'] ?></title>
+	<?php if ($detalles['disponible'] == 1): ?>
+		<title>Arte Ataco :: <?= $detalles['nombre'] ?></title>
+	<?php else: ?>
+		<title>Arte Ataco :: No encontrado</title>
+	<?php endif ?>
 	<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
 	<link rel="stylesheet" href="css/styleModal.css">
@@ -36,81 +38,132 @@
 
 		<?php if ($detalles != false): ?>
 			<div class="detalles-prod">
-				<div class="detalles-prod-img">
-					<div class="mini-img">
-						<a href="<?php echo $detalles['imagen'] ?>" data-lightbox="product" data-title="Producto">
-							<img onmousemove="javascript:document.getElementById('imgDefault').src='<?php echo $detalles['imagen'] ?>';"
-							 src="<?php echo $detalles['imagen'] ?>" alt="">
-						</a>
-						<a href="http://lorempixel.com/720/960/cats" data-lightbox="product" data-title="Producto">
-							<img onmousemove="javascript:document.getElementById('imgDefault').src='http://lorempixel.com/720/960/cats';"
-							 src="http://lorempixel.com/200/200/cats" alt="">
-						</a>
-						<a href="http://lorempixel.com/720/960/food" data-lightbox="product" data-title="Producto">
-							<img onmousemove="javascript:document.getElementById('imgDefault').src='http://lorempixel.com/720/960/food';" src="http://lorempixel.com/200/200/food" alt="">
-						</a>
-						<a href="http://lorempixel.com/720/960/city" data-lightbox="product" data-title="Producto">
-							<img onmousemove="javascript:document.getElementById('imgDefault').src='http://lorempixel.com/720/960/city';" src="http://lorempixel.com/200/200/city" alt="">
-						</a>
+
+				<?php if ($imagenes != false): ?>
+					<div class="detalles-prod-img">
+						<div class="mini-img">
+							<?php foreach ($imagenes as $img): ?>
+								<a href="<?= $img['ruta'] ?>" data-lightbox="product" data-title="Producto">
+									<img onmousemove="javascript:document.getElementById('imgDefault').src='<?= $img['ruta'] ?>';"
+										src="<?= $img['ruta'] ?>"
+									>
+								</a>
+							<?php endforeach ?>
+						</div>
+						
+						<?php foreach ($imagenes as $checkImg): ?>
+							<?php if ($checkImg['principal'] == 1): ?>
+								<?php $mainImg = TRUE; ?>
+								<a 	id="principal" onmousemove="cambiarEnlace()" href="<?= $checkImg['ruta'] ?>" 
+									data-lightbox="product" data-title="Producto">
+									<img class="img_default" id="imgDefault" src="<?= $checkImg['ruta'] ?>" alt="">
+								</a>
+							<?php endif ?>
+						<?php endforeach ?>
+
+						<?php if (!isset($mainImg)): ?>
+							<a 	id="principal" onmousemove="cambiarEnlace()" href="<?= $imagenes[0]['ruta'] ?>" 
+								data-lightbox="product" data-title="Producto">
+								<img class="img_default" id="imgDefault" src="<?= $imagenes[0]['ruta'] ?>" alt="">
+							</a>
+						<?php endif ?>
+
+						<div class="img-info">
+							<p>Click sobre una imagen para ampliarla</p>
+						</div>
 					</div>
-					    <a id="principal" onmousemove="cambiarEnlace()" href="<?php echo $detalles['imagen'] ?>" data-lightbox="product" data-title="Producto">
-					    	<img class="img_default" id="imgDefault" src="<?php echo $detalles['imagen'] ?>" alt="">
-					    </a>
-					<div class="img-info">
-						<p>Click sobre una imagen para ampliarla  </p>
+				<?php else: ?>
+					<div class="detalles-prod-img noImgs">
+						<span>Actualmente no hay imagenes para este producto <i class="fa fa-image"></i> <i class="fa fa-exclamation-circle"></i></span>
 					</div>
-				</div>
+				<?php endif ?>
+				
 				<div class="detalles-prod-info">
-					<h2 class="item">Producto: <?php echo $detalles['nombre'] ?></h2>
+					<div class="prod-det">
+						<div class="title">
+							<span>Producto:</span>
+						</div>
+						<div class="info">
+							<span><?php echo $detalles['nombre'] ?></span>
+						</div>
+					</div>
 					<hr>
-					<h2 class="precio">Precio:</br> <?php echo '$'.$detalles['precio'] ?></h2>
+
+					<div class="prod-det">
+						<div class="title">
+							<span>Descripci&oacute;n:</span>
+						</div>
+						<div class="info">
+							<?php echo $detalles['descripcion'] ?>
+						</div>
+					</div>
+
+					<div class="prod-det">
+						<div class="title">
+							<span>Precio:</span>
+						</div>
+						<div class="info">
+							<?php echo '$'.$detalles['precio'] ?>
+						</div>
+					</div>
 
 					<form class="form_carrito" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 						<input type="hidden" value="<?php echo $id_prod ?>" name="idprod">
 						<input type="hidden" value="<?php echo $user ?>" name="username">
-						<h2 class="detalles_cantidad">Cantidad</h2> <input type="number" name="quantity" min="1" max="10" value="1">
+						
+						<div class="prod-det carrito">
+							<div class="title">
+								<span>Cantidad:</span>
+							</div>
+							<div class="info">
+								<input type="number" name="quantity" min="1" max="10" value="1">
+							</div>
+						</div>
+
 						<?php if ($user != "Invitado"): ?>
-							<input type="submit" class="carrito-prod" value="Carrito">
+							<div class="carrito-submit-container">
+								<input type="submit" class="carrito-prod" value="Carrito">
+							</div>
 						<?php else: ?>
-							<div id="two" class="button carrito-prod">Carrito</div>
+							<div class="carrito-submit-container">
+								<div id="two" class="button carrito-prod">Carrito <i class="fa fa-shopping-cart"></i></div>
+							</div>
 						<?php endif ?>				
 					</form>
-
-					<h2 class="descripcion">Descripci&oacute;n:</br> <?php echo $detalles['descripcion'] ?></h2>
 					<!-- <h2 class="stock">Disponibles:</br> <?php //echo $detalles['stock'] . ' unidades' ?></h2> -->
 				</div>
 			</div>
 		<?php else: ?>
-			<h3>No se ha encontrado el producto.</h3>
+			<span class="notFound">No se ha encontrado el producto <i class="fa fa-puzzle-piece"></i></span>
 		<?php endif ?>
 	</div>
 	
-	<div class="contenedor_detalles">
-		<img src="http://lorempixel.com/300/300/food" alt="">
-	</div>
-	
-	<!-- Comentarios disqus -->
-	<div id="disqus_thread"></div>
-		<script>
-		/**
-		*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-		*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-		/*
-		var disqus_config = function () {
-		this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-		this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-		};
-		*/
-		(function() { // DON'T EDIT BELOW THIS LINE
-		var d = document, s = d.createElement('script');
-		s.src = 'https://arteataco.disqus.com/embed.js';
-		s.setAttribute('data-timestamp', +new Date());
-		(d.head || d.body).appendChild(s);
-		})();
-		</script>
-		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	<?php if ($detalles != false): ?>
+		<div class="contenedor_detalles">
+			<!-- Comentarios disqus -->
+			<div id="disqus_thread"></div>
+				<script>
+				/**
+				*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+				*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+				/*
+				var disqus_config = function () {
+				this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+				this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+				};
+				*/
+				(function() { // DON'T EDIT BELOW THIS LINE
+				var d = document, s = d.createElement('script');
+				s.src = 'https://arteataco.disqus.com/embed.js';
+				s.setAttribute('data-timestamp', +new Date());
+				(d.head || d.body).appendChild(s);
+				})();
+				</script>
+				<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		</div>
+	<?php endif ?>
 
-<?php include 'footer.php'; ?>
+	<?php include 'footer.php'; ?>
 
 	<!-- lightbox -->
 	<script src="script/js/lightbox-plus-jquery.js"></script>

@@ -10,19 +10,19 @@ function conexion($DB, $user, $pass){
 }
 
 function login_verification($conexion, $user, $password){
-		$query = $conexion->prepare("SELECT * FROM usuarios WHERE (user = :user OR email = :user) AND password = :password");
-		$query->execute(array(
-			':user' => $user,
-			':password' => $password
-		));
+	$query = $conexion->prepare("SELECT * FROM usuarios WHERE (user = :user OR email = :user) AND password = :password");
+	$query->execute(array(
+		':user' => $user,
+		':password' => $password
+	));
 
-		$query_result = $query->fetch();
+	$query_result = $query->fetch();
 
-		if ($query_result != false) {
-			return true;
-		} else {
-			return false;
-		}
+	if ($query_result != false) {
+		return true;
+	} else {
+		return false;
+	}
 }
 
 function get_user_id($conexion, $user){

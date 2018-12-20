@@ -1,0 +1,6 @@
+{
+    "require": {
+        "imagine/imagine": "~0.5.0",
+        "calcinai/php-imagick": "^0.1.2"
+    }
+}

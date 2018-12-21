@@ -320,6 +320,8 @@ if ($conexion != false) {
 	$direcciones = $query->fetchall();
 }
 
+compressImg();
+
 require 'views/cuenta_view.php';
 
 ?>

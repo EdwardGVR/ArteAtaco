@@ -119,4 +119,12 @@ function adminValidation ($conexion) {
 	}
 }
 
+function compressImg () {
+	require 'vendor/autoload.php';
+	
+	//$imagine = new Imagine\Gd\Imagine();
+	//$image = $imagine->open('images/user/profile/img_test1.jpg');	
+	//$image->save('images/user/profile/img_test1_compressed.jpg', array('quality' => 30));
+}
+
  ?>

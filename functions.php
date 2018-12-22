@@ -119,12 +119,16 @@ function adminValidation ($conexion) {
 	}
 }
 
-function compressImg () {
+function compressImgs ($imgs, $q) {
 	require 'vendor/autoload.php';
-	
-	//$imagine = new Imagine\Gd\Imagine();
-	//$image = $imagine->open('images/user/profile/img_test1.jpg');	
-	//$image->save('images/user/profile/img_test1_compressed.jpg', array('quality' => 30));
+	$imagine = new Imagine\Gd\Imagine();
+
+	if (is_array($imgs) && is_integer($q)) {
+		foreach ($imgs as $img) {
+			$image = $imagine->open($img);	
+			$image->save($img, array('quality' => $q));
+		}
+	}
 }
 
  ?>

@@ -73,6 +73,8 @@ if ($conexion != false) {
 			$archivo_subido = "images/user/profile/" . $user_img['name'];
 			move_uploaded_file($_FILES['user_img']['tmp_name'], $archivo_subido);
 
+			compressImgs(["$archivo_subido"], 20);
+
 			$query = $conexion->prepare("SELECT imagen FROM usuarios WHERE id = :iduser");
 			$query->execute(array(':iduser' => $iduser));
 			$check_image = $query->fetch();
@@ -88,7 +90,8 @@ if ($conexion != false) {
 			}
 		}
 	}
-	$imagen_user = "images/user/profile/user_img_" . $iduser . ".jpg";
+	//$imagen_user = "images/user/profile/user_img_" . $iduser . ".jpg";
+	$imagen_user = get_user_img($conexion, $iduser);
 
 	$query = $conexion->prepare("
 		SELECT * FROM direcciones 
@@ -319,8 +322,6 @@ if ($conexion != false) {
 	$query->execute(array(':iduser' => $iduser));
 	$direcciones = $query->fetchall();
 }
-
-compressImg();
 
 require 'views/cuenta_view.php';
 

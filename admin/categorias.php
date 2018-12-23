@@ -51,6 +51,9 @@ if ($conexion != false) {
 
                 $uploadedFile = "../images/categorias/" . $catImg['name'];
                 move_uploaded_file($_FILES['catImg']['tmp_name'], $uploadedFile);
+
+                compressImgs([$uploadedFile], 20);
+
                 $successUpload = true;
             }
         }

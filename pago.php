@@ -45,6 +45,21 @@ if ($conexion != false) {
 	$random_code = rand(0,9);
 	$codigo .= $random_code;
 
+	// Comprobar estado de direccion y metodo de pago
+	$query = $conexion->prepare("SELECT estado FROM direcciones WHERE id = :id");
+	$query->execute(array(':id' => $_COOKIE["dirSelected"]));
+	$dirStat = $query->fetch();
+	$dirStat = $dirStat[0];
+
+	$query = $conexion->prepare("SELECT status FROM metodos_pago WHERE id = :id");
+	$query->execute(array(':id' => $_COOKIE["pagoSelected"]));
+	$payStat = $query->fetch();
+	$payStat = $payStat[0];
+
+	if ($dirStat == 0 || $payStat == 0) {
+		header("Location: checkout.php");
+	}
+
 	$query = $conexion->prepare("SELECT id_tipo FROM direcciones WHERE id = :idDireccion");
 	$query->execute(array(':idDireccion'=>$id_direccion));
 	$tipoDireccion = $query->fetch();

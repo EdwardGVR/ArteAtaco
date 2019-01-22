@@ -91,6 +91,15 @@ if ($conexion != false) {
 		}
 	}
 	//$imagen_user = "images/user/profile/user_img_" . $iduser . ".jpg";
+
+	// Rotar imagen de usuario
+	if (isset($_POST['rotateImg'])) {
+		$userImg = $_POST['userImage'];
+
+		rotateImg($userImg);
+		header("location: cuenta.php");
+	}
+
 	$imagen_user = get_user_img($conexion, $iduser);
 
 	$query = $conexion->prepare("

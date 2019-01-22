@@ -384,15 +384,18 @@ if (window.pagId) {
 				inputRadioPago = document.getElementById("metodoPago" + getCookie("pagoSelected")),
 				anularPagoSel = document.getElementById("anularPagoUser" + getCookie("pagoSelected"));
 
-			pagoActive.setAttribute("class", "pay_option_active");
+			if (pagoActive != null) {
+				pagoActive.setAttribute("class", "pay_option_active");
+				inputRadioPago.setAttribute("disabled", "");
+				inputRadioPago.setAttribute("checked", "");
+				
+				anularPagoSel.addEventListener("click", () => {
+					document.cookie = "pagoSelected =; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+					location.reload();
+				});
+			}
 
-			inputRadioPago.setAttribute("disabled", "");
-			inputRadioPago.setAttribute("checked", "");
 
-			anularPagoSel.addEventListener("click", () => {
-				document.cookie = "pagoSelected =; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-				location.reload();
-			});
 		}
 		// console.log(getCookie("dirSelected"));
 		

@@ -180,6 +180,14 @@ if ($conexion != false) {
 		$query = $conexion->prepare("SELECT * FROM metodos_pago WHERE id = :id");
 		$query->execute(array(':id' => $_COOKIE["pagoSelected"]));
 		$pay_sel = $query->fetch();
+		$payStatus = $pay_sel['status'];
+
+		if ($payStatus == 0) {
+			setcookie('pagoSelected', '0', -1000);
+			unset($_COOKIE['pagoSelected']);
+			$pay_sel = false;
+			header("location: checkout.php");
+		}
 	}
 }
 
@@ -190,7 +198,11 @@ if (isset($dir_sel)) {
 }
 
 if (isset($dir_sel) && isset($pay_sel)) {
-	$allowPass = true;
+	if ($estadoDireccion == 1 && $payStatus == 1) {
+		$allowPass = true;
+	} else {
+		$allowPass = false;
+	}
 } else {
 	$allowPass = false;
 }

@@ -3,7 +3,7 @@
 <head>
 	<title>Arte Ataco :: <?php echo $user ?></title>
 
-	<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
 	<link rel="stylesheet" href="css/styleModal.css">
 	<link rel="stylesheet" href="css/styles.css">
@@ -19,18 +19,21 @@
 <div class="contenedor_cuenta">
 	<div class="imagen_cuenta">
 		<?php if (isset($img_upload_error)): ?>
-					<div class="error_upload_img">
-						<span>Error al subir la imagen</span><br />
-						<span>Intente con un archivo m&aacute;s peque&ntilde;o</span>
-					</div>
-				<?php endif ?>
+			<div class="error_upload_img">
+				<span>Error al subir la imagen</span><br />
+				<span>Intente con un archivo m&aacute;s peque&ntilde;o</span>
+			</div>
+		<?php endif ?>
 		<div class="imagen_usuario">
 			<?php if (isset($imagen)): ?>
-				<img class="imagen_usuario" src="<?php echo $imagen_user ?>" alt="*">
-				<form class="upload" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" enctype="multipart/form-data" method="POST">
-  					<input onchange="this.form.submit()" class="file" id="file" name="user_img" type="file" accept="image/*"/>
-  					<label for="file"><i class="fa fa-camera"></i></label>
+				<img class="imagen_usuario" src="<?= $imagen_user ?>" alt="*">
+				<form class="upload" action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" enctype="multipart/form-data" method="POST">
+					<input type="hidden" name="userImage" value="<?= $imagen_user ?>">
+					<input onchange="this.form.submit()" class="file" id="file" name="user_img" type="file" accept="image/*"/>
+					<input type="submit" id="rotateImg" name="rotateImg" value="wer" class="file">
+					<label for="file"><i class="fa fa-camera"></i></label>
 				</form>
+				<label class="rotate" title="Rotar imagen" for="rotateImg"><i class="fa fa-redo"></i></label>  
 			<?php else: ?>
 				<i class="fa fa-user"></i>	
 				<form class="upload" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" enctype="multipart/form-data" method="POST">

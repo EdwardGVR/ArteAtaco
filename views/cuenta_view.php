@@ -31,14 +31,14 @@
 					<input type="hidden" name="userImage" value="<?= $imagen_user ?>">
 					<input onchange="this.form.submit()" class="file" id="file" name="user_img" type="file" accept="image/*"/>
 					<input type="submit" id="rotateImg" name="rotateImg" value="wer" class="file">
-					<label for="file"><i class="fa fa-camera"></i></label>
+					<label for="file" title="Subir imagen"><i class="fa fa-camera"></i></label>
 				</form>
-				<label class="rotate" title="Rotar imagen" for="rotateImg"><i class="fa fa-redo"></i></label>  
+				<label class="rotate" title="Rotar imagen" for="rotateImg"><i class="fas fa-redo"></i></label>  
 			<?php else: ?>
 				<i class="fa fa-user"></i>	
 				<form class="upload" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" enctype="multipart/form-data" method="POST">
   					<input onchange="this.form.submit()" class="file" id="file" name="user_img" type="file" accept="image/*"/>
-  					<label for="file"><i class="fa fa-camera"></i></label>
+  					<label for="file" title="Subir imagen"><i class="fa fa-camera"></i></label>
 				</form>
 			<?php endif ?>
 			

@@ -131,12 +131,13 @@ function compressImgs ($imgs, $q) {
 	}
 }
 
-function rotateImg ($img, $deg = 45) {
+function rotateImg ($img) {
 	require 'vendor/autoload.php';
+	
 	$imagine = new Imagine\Gd\Imagine();
 
 	$image = $imagine->open($img);
-	$image->rotate($deg);
+	$image->rotate(90);
 	$image->save($img);
 }
 

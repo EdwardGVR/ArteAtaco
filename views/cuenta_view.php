@@ -50,7 +50,7 @@
 	</div>
 	<div class="informacion_cuenta">
 		<div class="info_usuario">
-			<form class="edit_info" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method='POST'>
+			<form class="edit_info" action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method='POST'>
 				<h3>Informaci&oacute;n</h3>
 				<hr>
 				
@@ -80,12 +80,9 @@
 		</div>
 		<div class="detalles_usuario">
 			<div class="contenedor_address">
-				<span class="titulo">Direcciones</span>
+				<h3>Direcciones</h3>
 				<?php if ($direcciones != false): ?>
 					<?php foreach ($direcciones as $direccion): ?>
-						<?php //echo $direccion['id'] ?>
-						<?php //echo $direccion['id_user'] ?>
-
 						<?php $direccion_numero++ ?>
 
 						<?php if (!is_null($direccion['linea2'])): ?>
@@ -167,14 +164,16 @@
 
 				<?php else: ?>
 					<div class="address">
-						No tiene ninguna direcci&oacute;n registrada, puede empezar registrando una direcci&oacute;n en el siguiente formulario.
-
+						<span class="no-address">
+							<i class="fa fa-info-circle"></i> 
+							No tiene ninguna direcci&oacute;n personalizada, puede empezar guardando una direcci&oacute;n en el siguiente formulario.
+						</span>
 						<form id="new_address" class="address" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 							<div class="new_address_title">
-								Agregar una nueva direccion (Hasta 3)
+								Formulario para agregar una nueva direccion (Puede guardar hasta 3 direcciones)
 							</div>
 							<span>Nombre:</span>
-							<input id="nombre_new_dir" type="text" name="nombre_new_dir">
+							<input id="nombre_new_dir" type="text" name="nombre_new_dir" placeholder="Nombre descriptivo de la direcci&oacute;n ej: Casa, Oficina, etc">
 							<span>Departamento:</span>
 							<select name="departamento_new_dir" id="dpto" class="new_address_dpto">
 								<?php foreach ($departamentos as $departamento): ?>
@@ -182,9 +181,9 @@
 								<?php endforeach ?>
 							</select>
 							<span>Linea 1:</span>
-							<input id="linea1_new_dir" type="text" name="linea1_new_dir">
+							<input id="linea1_new_dir" type="text" name="linea1_new_dir" placeholder="Municipio, calle, colonia, etc">
 							<span>Linea 2:</span>
-							<input id="linea2_new_dir" class="linea2_new_dir" type="text" name="linea2_new_dir">
+							<input id="linea2_new_dir" class="linea2_new_dir" type="text" name="linea2_new_dir" placeholder="Pasaje, block, # de casa, etc">
 							<span>Referencias:</span>
 							<textarea id="ref_new_dir" class="ref_new_dir" type="text" name="ref_new_dir"></textarea>
 							<div class="opciones_new_address">

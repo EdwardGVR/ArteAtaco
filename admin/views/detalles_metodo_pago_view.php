@@ -79,13 +79,23 @@
                             <?php if ($methodDet['status'] == 1): ?>
                                 <input type="submit" name="toggleStatus" class="opt disable" value="Deshabilitar">
                             <?php else: ?>
-                                <input type="submit" name="toggleStatus" class="opt enable" value="Habilitar">
+                                <?php if ($methodDet['dev_status'] == 1): ?>
+                                    <input type="submit" name="toggleStatus" class="opt enable" value="Habilitar" disabled>
+                                <?php else: ?>
+                                    <input type="submit" name="toggleStatus" class="opt enable" value="Habilitar">
+                                <?php endif ?>
                             <?php endif ?>
                             <input id="deleteMethod" type="submit" name="deleteMethod" class="opt delete" value="Eliminar">
+                            <?php if ($methodDet['dev_status'] == 1): ?>
+                                <span class="toggleError">
+                                    <i class="fa fa-info-circle"></i>
+                                    &lt;Este m&eacute;todo de pago se encuentra en desarrollo, por lo que no puede ser habilitado por ahora&#47;&gt;
+                                </span>
+                            <?php endif ?>
                         </form>
                     </div>
                 <?php else: ?>
-                    <span>No se encontro</span>
+                    <span>No se encontr&oacute;</span>
                 <?php endif ?>
             </div>
         </section>

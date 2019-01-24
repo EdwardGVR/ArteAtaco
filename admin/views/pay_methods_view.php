@@ -28,9 +28,10 @@
                 </div>
                 <div class="contPay">
                     <?php foreach ($methods as $method): ?>
-                        <?php $status = ($method['status'] == 1) ? "activo" : "inactivo" ?>
+                        <?php $status = ($method['status'] == 1) ? "activo" : "inactivo"; ?>
+                        <?php $devStatus = ($method['dev_status'] == 1) ? " &lt;En desarrollo&#47;&gt;" : ""; ?>
                         <a href="detPayMethod.php?payMethod=<?= $method['id'] ?>" class="payMethod">
-                            <div class="status"><span class="<?= $status ?>"><?= $status ?></span></div>
+                            <div class="status"><span class="<?= $status ?>"><?= $status . $devStatus ?></span></div>
                             <div class="name"><?= $method['nombre'] ?></div>
                         </a>
                     <?php endforeach ?>

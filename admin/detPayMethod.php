@@ -72,8 +72,10 @@ if ($conexion != false) {
             $query = $conexion->prepare("UPDATE metodos_pago SET status = 0 WHERE id = :idPay");
             $query->execute(array(':idPay' => $payMethodId));
         } else if ($currentStatus == 0) {
-            $query = $conexion->prepare("UPDATE metodos_pago SET status = 1 WHERE id = :idPay");
-            $query->execute(array(':idPay' => $payMethodId));
+            if ($methodDet['dev_status'] != 1) {
+                $query = $conexion->prepare("UPDATE metodos_pago SET status = 1 WHERE id = :idPay");
+                $query->execute(array(':idPay' => $payMethodId));
+            }
         }
 
         header("Location: detPayMethod.php?payMethod=$payMethodId");

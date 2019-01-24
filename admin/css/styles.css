@@ -2921,6 +2921,7 @@ main section > .title {
     font-size: 1.3em;
     color: #fff;
     border: none;
+    height: auto;
     padding: 0;
     border-radius: 50px;
     resize: none;
@@ -3157,6 +3158,18 @@ main section > .title {
     display: flex;
     width: 100%;
     padding: 0 10px;
+}
+
+.contPay .dets .options .toggleError {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 0.9em;
+    font-style: italic;
+    border-radius: 5px;
+    background: #dfabab;
+    color: #3d0404;
 }
 
 .contPay .dets .opt {

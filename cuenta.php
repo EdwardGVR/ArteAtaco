@@ -21,6 +21,20 @@ $direccion_numero = 0;
 
 if (!is_null(get_user_data($conexion, $iduser)['imagen'])) {
 	$imagen = get_user_data($conexion, $iduser)['imagen'];
+	
+	$nombre = "";
+	$nombresUser = get_user_data($conexion, $iduser)['nombres'];
+	$spacePos = strpos($nombresUser, " ");
+	if ($spacePos != false) {
+		$nombresUser = substr($nombresUser, 0, $spacePos);
+	}
+	$nombre .= $nombresUser;
+	$apellidosUser = get_user_data($conexion, $iduser)['apellidos'];
+	$spacePos = strpos($nombresUser, " ");
+	if ($spacePos != false) {
+		$apellidosUser = substr($apellidosUser, 0, $spacePos);
+	}
+	$nombre .= " " . $apellidosUser;
 }
 
 $pedidos_activos = cantidad_pedidos_activos($conexion, $iduser);

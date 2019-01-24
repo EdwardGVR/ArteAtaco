@@ -13,7 +13,19 @@ $userImg = $userData['imagen'];
 
 if ($conexion != false) {
 
-    // Obtener los metodos de pago
+    // Obtener los metodos de pago previamente
+    $query = $conexion->prepare("SELECT * FROM metodos_pago WHERE deleted = 0");
+    $query->execute();
+    $methodsPrev = $query->fetchall();
+
+    foreach ($methodsPrev as $meth) {
+        if ($meth['dev_status'] == 1) {
+            $query = $conexion->prepare("UPDATE metodos_pago SET status = 0 WHERE id = :id");
+            $query->execute(array(':id' => $meth['id']));
+        }
+    }
+
+    // Obtener los metodos de pago definitivos
     $query = $conexion->prepare("SELECT * FROM metodos_pago WHERE deleted = 0");
     $query->execute();
     $methods = $query->fetchall();

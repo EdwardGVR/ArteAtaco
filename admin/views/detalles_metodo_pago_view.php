@@ -11,7 +11,7 @@
 </head>
 <body>
     <?php require "side_bar_view.php" ?>
-    <main>
+    <main class="mainDetPayMethod">
         <div class="bar">
             <div class="homeStoreBtns">
                 <a href="index.php" title="Ir a inicio"><i class="fa fa-home"></i></a>
@@ -21,6 +21,30 @@
             <a href="../logout.php" class="logout" title="Cerrar sesion"><i class="fa fa-times-circle"></i></a>
         </div>
         <section>
+
+            <?php if ($methodDet['dev_status'] == 1): ?>
+                <div class="devNotice">
+                    <span class="toggleError">
+                        <i class="fas fa-terminal"></i>
+                        &nbsp;&lt;Este m&eacute;todo de pago se encuentra en desarrollo, por lo que a&uacute;n no puede ser habilitado&#47;&gt;&nbsp;
+                        <i class="fa fa-info-circle"></i>
+                    </span>
+                    <?php if ($userData['level'] > 2): ?>
+                        <div class="setDev">
+                            <form id="setNewDevStatus" action="" method="POST">
+                                <input type="hidden" id="newStatus" name="setNewDevStatus" value="0">
+                                <label for="newDevStatus"><i class="fas fa-wrench"></i> Actualizar estado</label>
+                                <select name="newDevStatus" id="newDevStatus">
+                                    <option value="1">En desarrollo</option>
+                                    <option value="2">Listo, no habilitar</option>
+                                    <option value="3">Listo, habilitar</option>
+                                </select>
+                            </form>
+                        </div>
+                    <?php endif ?>
+                </div>
+            <?php endif ?>
+
             <div class="contPay">
                 <?php if ($methodDet != false): ?>
                     <div class="dets">
@@ -76,21 +100,19 @@
                         </div>
                         <form action="" class="options" method="POST">
                             <input type="hidden" name="currentStatus" value="<?= $methodDet['status'] ?>">
+                            
                             <?php if ($methodDet['status'] == 1): ?>
                                 <input type="submit" name="toggleStatus" class="opt disable" value="Deshabilitar">
                             <?php else: ?>
                                 <?php if ($methodDet['dev_status'] == 1): ?>
-                                    <input type="submit" name="toggleStatus" class="opt enable" value="Habilitar" disabled>
+                                    <!-- <input type="submit" name="toggleStatus" class="opt enable" value="Habilitar" disabled> -->
                                 <?php else: ?>
                                     <input type="submit" name="toggleStatus" class="opt enable" value="Habilitar">
                                 <?php endif ?>
                             <?php endif ?>
-                            <input id="deleteMethod" type="submit" name="deleteMethod" class="opt delete" value="Eliminar">
-                            <?php if ($methodDet['dev_status'] == 1): ?>
-                                <span class="toggleError">
-                                    <i class="fa fa-info-circle"></i>
-                                    &lt;Este m&eacute;todo de pago se encuentra en desarrollo, por lo que no puede ser habilitado por ahora&#47;&gt;
-                                </span>
+                            
+                            <?php if ($userData['level'] > 2): ?>
+                                <input id="deleteMethod" type="submit" name="deleteMethod" class="opt delete" value="Eliminar">
                             <?php endif ?>
                         </form>
                     </div>

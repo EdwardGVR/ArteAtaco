@@ -332,7 +332,7 @@ CREATE TABLE `user_levels` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nivel` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -341,7 +341,7 @@ CREATE TABLE `user_levels` (
 
 LOCK TABLES `user_levels` WRITE;
 /*!40000 ALTER TABLE `user_levels` DISABLE KEYS */;
-INSERT INTO `user_levels` VALUES (1,'Administrador'),(2,'Cliente');
+INSERT INTO `user_levels` VALUES (1,'Cliente'),(2,'Administrador'),(3,'Creador');
 /*!40000 ALTER TABLE `user_levels` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -375,7 +375,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (2,'edward','Edward Ernesto','Guevara','edwardgvr@gmail.com','asdfg','images/user/profile/user_img_2.jpg',NULL,2,'2018-08-21 17:31:15');
+INSERT INTO `usuarios` VALUES (2,'edward','Edward Ernesto','Guevara','edwardgvr@gmail.com','asdfg','images/user/profile/user_img_2.jpg',NULL,3,'2018-08-21 17:31:15');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -412,4 +412,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-01-24 16:45:03
+-- Dump completed on 2019-01-25 16:31:16

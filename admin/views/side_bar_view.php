@@ -1,6 +1,14 @@
 <?php 
-    // Obtener cantidades
+    $query = $conexion->prepare("
+        SELECT nivel FROM user_levels
+        JOIN usuarios ON usuarios.level = user_levels.id
+        WHERE usuarios.id = :id
+    ");
+    $query->execute(array(':id' => $userData['id']));
+    $level = $query->fetch();
+    $level = $level[0];
 
+    // Obtener cantidades
     $query = $conexion->prepare("SELECT COUNT(*) FROM pedidos");
     $query->execute();
     $result = $query->fetch();
@@ -44,6 +52,8 @@
         $query = $conexion->prepare("UPDATE categorias SET status = 1, deleted = 0 WHERE id = 1");
         $query->execute();
     }
+
+
 ?>
 
 <div id="nav-fake" class="nav_hidden"></div>
@@ -76,7 +86,7 @@
             <div class="data">
                 <span class="nombre"><?= $userName ?></span>
                 <hr>
-                <span>Administrador</span>
+                <span><?= $level ?></span>
             </div>
         </div>
 

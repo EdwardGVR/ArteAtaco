@@ -8,6 +8,7 @@
 body {
     display: flex;
     /* background: #000; */
+    min-width: 1200px;
 }
 
 .hidden {
@@ -3160,16 +3161,50 @@ main section > .title {
     padding: 0 10px;
 }
 
-.contPay .dets .options .toggleError {
+.mainDetPayMethod .devNotice {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    height: auto;
+    margin: auto;
+    /* background: #ccc; */
+}
+
+.mainDetPayMethod .toggleError {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
+    padding: 10px;
     font-size: 0.9em;
     font-style: italic;
     border-radius: 5px;
-    background: #dfabab;
-    color: #3d0404;
+    border: 2px dashed #049b18;
+    background: #b5cadb;
+    color: #000930;
+}
+
+.mainDetPayMethod .setDev {
+    width: 500px;
+    padding: 10px;
+    margin-left: 50px;
+    border-radius: 5px;
+    background: #000930;
+    color: #dbe5ec;
+}
+
+.mainDetPayMethod .setDev form {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.mainDetPayMethod .setDev select {
+    border: none;
+    border-radius: 5px;
+    background: #dbe5ec;
+    color: #000930;
 }
 
 .contPay .dets .opt {

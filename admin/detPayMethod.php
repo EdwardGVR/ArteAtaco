@@ -87,6 +87,21 @@ if ($conexion != false) {
 
         header("Location: payMethods.php");
     }
+
+    if (isset($_POST['setNewDevStatus'])) {
+        $newDevStatus = $_POST['setNewDevStatus'];
+        switch ($newDevStatus) {
+            case 1:
+                $query = $conexion->prepare("UPDATE metodos_pago SET dev_status = 1 WHERE id = :id");
+                $query->execute(array(':id' => $payMethodId));
+                header("location: detPayMethod.php?payMethod=$payMethodId");
+                break;
+            
+            default:
+                # code...
+                break;
+        }
+    }
 }
 
 require "views/detalles_metodo_pago_view.php";

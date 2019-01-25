@@ -250,6 +250,14 @@ if (document.title == 'Detalles de pedido') {
     editBtns = [...document.querySelectorAll(".edit")],
     cancelBtns = [...document.querySelectorAll(".cancel")],
     deleteBtn = document.getElementById("deleteMethod");
+    setDevStatus = document.getElementById("setNewDevStatus");
+    newDevStatus = document.getElementById("newStatus");
+    setStatusSelect = document.getElementById("newDevStatus");
+
+    setStatusSelect.addEventListener("change", () => {
+        newDevStatus.value = setStatusSelect.value;
+        // setDevStatus.submit();
+    });
 
     for (let i =0; i < editBtns.length; i++) {
         editBtns[i].addEventListener("click", () => {

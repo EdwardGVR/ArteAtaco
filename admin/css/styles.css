@@ -2862,22 +2862,23 @@ main section > .title {
 .contPay .dets {
     display: flex;
     flex-wrap: wrap;
-    background: #324f70;
-    color: #fff;
+    color: #000;
     padding: 10px;
     margin: auto;
     border-radius: 5px;
-    width: 80%;
+    width: 100%;
     min-width: 330px;
+    box-shadow: 0 4px 7px #000;
 }
 
 .contPay .dets > div {
     display: flex;
     width: 100%;
+    background: #eee;
     margin-bottom: 20px;
-    /* border-bottom: 2px solid #ffffff; */
-    /* box-shadow: 0 2px 3px #fff; */
-    padding: 0 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 3px #000;
 }
 
 .contPay .dets > div:last-child {
@@ -2886,7 +2887,7 @@ main section > .title {
 
 .contPay .dets .name {
     justify-content: space-between;
-    max-height: 30px;
+    /* max-height: 30px; */
 }
 
 .contPay .dets .name form {
@@ -2903,7 +2904,7 @@ main section > .title {
 
 .contPay .dets .name .newName {
     background: #fff;
-    font-size: 1.3em;
+    font-size: 1em;
     color: #000;
     border: none;
     height: 30px;
@@ -2919,8 +2920,8 @@ main section > .title {
 .contPay .dets .name .newName[disabled],
 .contPay .dets .info .newInfo[disabled] {
     background: none;
-    font-size: 1.3em;
-    color: #fff;
+    font-size: 1em;
+    color: #000;
     border: none;
     height: auto;
     padding: 0;
@@ -3163,9 +3164,10 @@ main section > .title {
 
 .mainDetPayMethod .devNotice {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
-    width: 80%;
+    width: 100%;
+    padding: 0 50px;
     height: auto;
     margin: auto;
     /* background: #ccc; */
@@ -3186,12 +3188,14 @@ main section > .title {
 }
 
 .mainDetPayMethod .setDev {
-    width: 500px;
+    min-width: 300px;
+    max-width: 300px;
     padding: 10px;
     margin-left: 50px;
     border-radius: 5px;
     background: #000930;
     color: #dbe5ec;
+    font-size: 0.9em;
 }
 
 .mainDetPayMethod .setDev form {
@@ -3248,6 +3252,98 @@ main section > .title {
 
 .contPay .dets .opt.delete:hover {
     background: #fa9494;
+}
+
+.contPay .datos {
+    display: flex;
+    justify-content: space-between;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 50px;
+    padding: 20px;
+    box-shadow: 0 4px 7px #000;
+}
+
+.contPay .datos span.title {
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    background: #d5ebff;
+    box-shadow: 0 2px 3px;
+    font-weight: bold;
+}
+
+.contPay .datos .dato {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background: #eee;
+    box-shadow: 0 2px 3px #000;
+}
+
+.contPay .datos .dato:last-child {
+    margin-bottom: 0;
+}
+
+.contPay .datos .dato.add {
+    justify-content: center;
+    width: 50px;
+    font-size: 1.5em;
+    background: #395e88;
+    color: #fff;
+    cursor: pointer;
+}
+
+.contPay .datos label {
+    display: flex;
+    align-items: center;
+    width: 200px;
+    padding: 5px 0;
+}
+
+.contPay .datos input {
+    width: 500px;
+    padding: 5px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+}
+
+.contPay .datos .options {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 200px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.contPay .datos .options .buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 70px;
+    height: auto;
+}
+
+.contPay .datos .options .buttons i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all ease 0.3s;
+}
+
+.contPay .datos .options .buttons i:hover {
+    background: #ccc;
 }
 
 .hidden {

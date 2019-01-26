@@ -256,7 +256,7 @@ if (document.title == 'Detalles de pedido') {
 
     setStatusSelect.addEventListener("change", () => {
         newDevStatus.value = setStatusSelect.value;
-        // setDevStatus.submit();
+        setDevStatus.submit();
     });
 
     for (let i =0; i < editBtns.length; i++) {

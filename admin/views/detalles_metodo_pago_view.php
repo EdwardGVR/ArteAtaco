@@ -22,28 +22,29 @@
         </div>
         <section>
 
+        <div class="devNotice">
             <?php if ($methodDet['dev_status'] == 1): ?>
-                <div class="devNotice">
-                    <span class="toggleError">
-                        <i class="fas fa-terminal"></i>
-                        &nbsp;&lt;Este m&eacute;todo de pago se encuentra en desarrollo, por lo que a&uacute;n no puede ser habilitado&#47;&gt;&nbsp;
-                        <i class="fa fa-info-circle"></i>
-                    </span>
-                    <?php if ($userData['level'] > 2): ?>
-                        <div class="setDev">
-                            <form id="setNewDevStatus" action="" method="POST">
-                                <input type="hidden" id="newStatus" name="setNewDevStatus" value="0">
-                                <label for="newDevStatus"><i class="fas fa-wrench"></i> Actualizar estado</label>
-                                <select name="newDevStatus" id="newDevStatus">
-                                    <option value="1">En desarrollo</option>
-                                    <option value="2">Listo, no habilitar</option>
-                                    <option value="3">Listo, habilitar</option>
-                                </select>
-                            </form>
-                        </div>
-                    <?php endif ?>
+                <span class="toggleError">
+                    <i class="fas fa-terminal"></i>
+                    &nbsp;&lt;Este m&eacute;todo de pago se encuentra en desarrollo, por lo que a&uacute;n no puede ser habilitado&#47;&gt;&nbsp;
+                    <i class="fa fa-info-circle"></i>
+                </span>
+            <?php endif ?>
+            <?php if ($userData['level'] > 2): ?>
+                <div class="setDev">
+                    <form id="setNewDevStatus" action="" method="POST">
+                        <input type="hidden" id="newStatus" name="setNewDevStatus" value="0">
+                        <label for="newDevStatus"><i class="fas fa-wrench"></i> Actualizar estado</label>
+                        <select name="newDevStatus" id="newDevStatus">
+                            <option value="null" disabled selected>-- Opciones --</option>
+                            <option value="1">En desarrollo</option>
+                            <option value="2">Listo, no habilitar</option>
+                            <option value="3">Listo, habilitar</option>
+                        </select>
+                    </form>
                 </div>
             <?php endif ?>
+        </div>
 
             <div class="contPay">
                 <?php if ($methodDet != false): ?>
@@ -116,6 +117,61 @@
                             <?php endif ?>
                         </form>
                     </div>
+
+                    <form class="datos" action="" method="POST">
+                        <span class="title">Datos del m&eacute;todo de pago</span>
+                        <div class="dato">
+                            <label for="dato1">Dato 1:</label>
+                            <input type="text" id="dato1" name="dato1" value="valor del dato 1">
+                            <div class="options">
+                                <div class="buttons">
+                                    <span id="editDato"><i class="fas fa-edit"></i></span>
+                                    <span id="deleteDato"><i class="fas fa-trash"></i></span>
+                                    <!-- <span id="saveDato"><i class="fas fa-save"></i></span> -->
+                                    <!-- <span id="cancelDato"><i class="fas fa-times-circle"></i></span> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dato">
+                            <label for="dato1">Dato 1:</label>
+                            <input type="text" id="dato1" name="dato1" value="valor del dato 1">
+                            <div class="options">
+                                <div class="buttons">
+                                    <span id="editDato"><i class="fas fa-edit"></i></span>
+                                    <span id="deleteDato"><i class="fas fa-trash"></i></span>
+                                    <!-- <span id="saveDato"><i class="fas fa-save"></i></span> -->
+                                    <!-- <span id="cancelDato"><i class="fas fa-times-circle"></i></span> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dato">
+                            <label for="dato1">Dato 1:</label>
+                            <input type="text" id="dato1" name="dato1" value="valor del dato 1">
+                            <div class="options">
+                                <div class="buttons">
+                                    <span id="editDato"><i class="fas fa-edit"></i></span>
+                                    <span id="deleteDato"><i class="fas fa-trash"></i></span>
+                                    <!-- <span id="saveDato"><i class="fas fa-save"></i></span> -->
+                                    <!-- <span id="cancelDato"><i class="fas fa-times-circle"></i></span> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dato">
+                            <label for="dato1">Dato 1:</label>
+                            <input type="text" id="dato1" name="dato1" value="valor del dato 1">
+                            <div class="options">
+                                <div class="buttons">
+                                    <span id="editDato"><i class="fas fa-edit"></i></span>
+                                    <span id="deleteDato"><i class="fas fa-trash"></i></span>
+                                    <!-- <span id="saveDato"><i class="fas fa-save"></i></span> -->
+                                    <!-- <span id="cancelDato"><i class="fas fa-times-circle"></i></span> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dato add">
+                            <i class="fa fa-plus-circle"></i>
+                        </div>
+                    </form>
                 <?php else: ?>
                     <span>No se encontr&oacute;</span>
                 <?php endif ?>

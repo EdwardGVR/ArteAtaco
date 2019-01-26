@@ -92,15 +92,34 @@ if ($conexion != false) {
         $newDevStatus = $_POST['setNewDevStatus'];
         switch ($newDevStatus) {
             case 1:
-                $query = $conexion->prepare("UPDATE metodos_pago SET dev_status = 1 WHERE id = :id");
+                $query = $conexion->prepare("
+                    UPDATE metodos_pago
+                    SET dev_status = 1, status = 0
+                    WHERE id = :id
+                ");
                 $query->execute(array(':id' => $payMethodId));
-                header("location: detPayMethod.php?payMethod=$payMethodId");
                 break;
-            
+            case 2:
+                $query = $conexion->prepare("
+                    UPDATE metodos_pago
+                    SET dev_status = 2, status = 0
+                    WHERE id = :id
+                ");
+                $query->execute(array(':id' => $payMethodId));
+                break;
+            case 3:
+                $query = $conexion->prepare("
+                    UPDATE metodos_pago
+                    SET dev_status = 2, status = 1
+                    WHERE id = :id
+                ");
+                $query->execute(array(':id' => $payMethodId));
+                break;
             default:
                 # code...
                 break;
         }
+        header("location: detPayMethod.php?payMethod=$payMethodId");
     }
 }
 

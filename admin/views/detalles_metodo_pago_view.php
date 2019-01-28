@@ -117,57 +117,27 @@
                             <?php endif ?>
                         </form>
                     </div>
-
-                    <form class="datos" action="" method="POST">
+                    <form class="datos" id="formDatos" action="" method="POST">
                         <span class="title">Datos del m&eacute;todo de pago</span>
-                        <div class="dato">
-                            <label for="dato1">Dato 1:</label>
-                            <input type="text" id="dato1" name="dato1" value="valor del dato 1">
-                            <div class="options">
-                                <div class="buttons">
-                                    <span id="editDato"><i class="fas fa-edit"></i></span>
-                                    <span id="deleteDato"><i class="fas fa-trash"></i></span>
-                                    <!-- <span id="saveDato"><i class="fas fa-save"></i></span> -->
-                                    <!-- <span id="cancelDato"><i class="fas fa-times-circle"></i></span> -->
+                        <?php if($datosMethod != false): ?>
+                        <?php foreach ($datosMethod as $dato): ?>
+                            <div class="dato">
+                                <label for="dato1"><?= $dato['dato'] ?></label>
+                                <input type="hidden" name="idDato" value="<?= $dato['id'] ?>">
+                                <input type="text" id="dato<?= $dato['id'] ?>" name="dato1" value="<?= $dato['valor'] ?>" disabled>
+                                <div class="options">
+                                    <div class="buttons">
+                                        <span class="editDato" id="editDato<?= $dato['id'] ?>"><i class="fas fa-edit"></i></span>
+                                        <span class="deleteDato" id="deleteDato<?= $dato['id'] ?>"><i class="fas fa-trash"></i></span>
+                                        <span class="opt2 save hidden" id="saveDato<?= $dato['id'] ?>"><i class="fas fa-save"></i></span>
+                                        <span class="opt2 cancel hidden" id="cancelDato<?= $dato['id'] ?>"><i class="fas fa-times-circle"></i></span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="dato">
-                            <label for="dato1">Dato 1:</label>
-                            <input type="text" id="dato1" name="dato1" value="valor del dato 1">
-                            <div class="options">
-                                <div class="buttons">
-                                    <span id="editDato"><i class="fas fa-edit"></i></span>
-                                    <span id="deleteDato"><i class="fas fa-trash"></i></span>
-                                    <!-- <span id="saveDato"><i class="fas fa-save"></i></span> -->
-                                    <!-- <span id="cancelDato"><i class="fas fa-times-circle"></i></span> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="dato">
-                            <label for="dato1">Dato 1:</label>
-                            <input type="text" id="dato1" name="dato1" value="valor del dato 1">
-                            <div class="options">
-                                <div class="buttons">
-                                    <span id="editDato"><i class="fas fa-edit"></i></span>
-                                    <span id="deleteDato"><i class="fas fa-trash"></i></span>
-                                    <!-- <span id="saveDato"><i class="fas fa-save"></i></span> -->
-                                    <!-- <span id="cancelDato"><i class="fas fa-times-circle"></i></span> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="dato">
-                            <label for="dato1">Dato 1:</label>
-                            <input type="text" id="dato1" name="dato1" value="valor del dato 1">
-                            <div class="options">
-                                <div class="buttons">
-                                    <span id="editDato"><i class="fas fa-edit"></i></span>
-                                    <span id="deleteDato"><i class="fas fa-trash"></i></span>
-                                    <!-- <span id="saveDato"><i class="fas fa-save"></i></span> -->
-                                    <!-- <span id="cancelDato"><i class="fas fa-times-circle"></i></span> -->
-                                </div>
-                            </div>
-                        </div>
+                        <?php endforeach ?>
+                        <?php else: ?>
+                            <div class="dato">No hay datos para este m&eacute;todo de pago</div>
+                        <?php endif ?>
                         <div class="dato add">
                             <i class="fa fa-plus-circle"></i>
                         </div>

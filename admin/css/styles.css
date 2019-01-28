@@ -3312,6 +3312,14 @@ main section > .title {
     padding: 5px;
     border: 2px solid #ccc;
     border-radius: 5px;
+    font-size: 1em;
+}
+
+.contPay .datos input[disabled] {
+    color: #000;
+    background: #eee;
+    border: none;
+    padding: 0;
 }
 
 .contPay .datos .options {

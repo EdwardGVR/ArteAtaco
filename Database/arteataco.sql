@@ -74,6 +74,34 @@ INSERT INTO `categorias` VALUES (1,'Otros','En esta categor&iacute;a encontrar&a
 UNLOCK TABLES;
 
 --
+-- Table structure for table `datos_metodos_pago`
+--
+
+DROP TABLE IF EXISTS `datos_metodos_pago`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `datos_metodos_pago` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_metodo_pago` int(11) NOT NULL,
+  `dato` varchar(150) NOT NULL,
+  `valor` varchar(150) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `dato_metodo_idx` (`id_metodo_pago`),
+  CONSTRAINT `dato_metodo` FOREIGN KEY (`id_metodo_pago`) REFERENCES `metodos_pago` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `datos_metodos_pago`
+--
+
+LOCK TABLES `datos_metodos_pago` WRITE;
+/*!40000 ALTER TABLE `datos_metodos_pago` DISABLE KEYS */;
+INSERT INTO `datos_metodos_pago` VALUES (1,2,'Cuenta','06524423257-23'),(2,2,'Banco','Nombre Banco'),(3,2,'Titular','Nombre titular');
+/*!40000 ALTER TABLE `datos_metodos_pago` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `departamentos`
 --
 
@@ -412,4 +440,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-01-25 16:31:16
+-- Dump completed on 2019-01-28 16:49:24

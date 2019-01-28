@@ -18,6 +18,10 @@ if ($conexion != false) {
         $query = $conexion->prepare("SELECT * FROM metodos_pago WHERE id = :idPay AND deleted = 0");
         $query->execute(array('idPay' => $payMethodId));
         $methodDet = $query->fetch();
+
+        $query = $conexion->prepare("SELECT * FROM datos_metodos_pago WHERE id_metodo_pago = :id");
+        $query->execute(array(':id' => $payMethodId));
+        $datosMethod = $query->fetchall();
     } else {
         $methodDet = false;
     }

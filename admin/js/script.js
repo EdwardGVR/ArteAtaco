@@ -381,6 +381,55 @@ if (document.title == 'Detalles de pedido') {
             e.preventDefault();
         }
     });
+
+    editDatoBtns = document.querySelectorAll(".editDato");
+    deleteDatoBtns = document.querySelectorAll(".deleteDato");
+    saveCancelDatoBtns = document.querySelectorAll(".opt2");
+    saveDatoButtons = document.querySelectorAll(".datos .dato .options .buttons .opt2.save");
+    datoInputs = document.querySelectorAll(".datos .dato input[type=\"text\"]");
+    datosForm = document.getElementById("formDatos");
+
+    for (let i = 0; i < editDatoBtns.length; i++) {
+        editDatoBtns[i].addEventListener("click", (e) => {
+            idDato = e.target.parentNode.getAttribute("id");
+            idDato = idDato.substring(idDato.length, idDato.length - 1);
+            
+            for (j = 0; j < editDatoBtns.length; j++) {
+                editDatoBtns[j].classList.add("hidden");
+                deleteDatoBtns[j].classList.add("hidden");
+            }
+
+            for (k = 0; k < saveCancelDatoBtns.length; k++) {
+                saveCancelIds = saveCancelDatoBtns[k].getAttribute("id");
+                saveCancelIds = saveCancelIds.substring(saveCancelIds.length, saveCancelIds.length - 1);
+                
+                if (saveCancelIds == idDato) {
+                    saveCancelDatoBtns[k].classList.remove("hidden");
+                }
+            }
+
+            for (l = 0; l < datoInputs.length; l++) {
+                datoInputId = datoInputs[l].getAttribute("id");
+                datoInputId = datoInputId.substring(datoInputId.length, datoInputId.length - 1);
+
+                if (datoInputId == idDato) {
+                    datoInputs[l].removeAttribute("disabled");
+                }
+            }
+        });
+    }
+
+    for (let a  = 0; a < saveDatoButtons; a++) {
+        console.log(saveDatoButtons[a]);
+        
+        
+        saveDatoButtons[j].addEventListener("click", () => {
+            console.log(saveDatoButtons[a]);
+            
+        });
+    }
+
+
 } else if (document.title == "Metodos de pago" || document.title == "Categorias") {
     
     console.log((document.title == "Metodos de pago") ? "Pagina metodos de pago" : "Pagina categorias");

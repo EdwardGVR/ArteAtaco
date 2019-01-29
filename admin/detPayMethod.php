@@ -125,6 +125,44 @@ if ($conexion != false) {
         }
         header("location: detPayMethod.php?payMethod=$payMethodId");
     }
+
+    if (isset($_POST['datoSet'])) {
+        $idDato = $_POST['datoSet'];
+        $dato = $_POST['datoMod'];
+        $valor = $_POST['valorMod'];
+
+        $query = $conexion->prepare("UPDATE datos_metodos_pago SET dato = :dato, valor = :valor WHERE id = :id");
+        $query->execute(array(
+            ':id' => $idDato,
+            ':dato' => $dato,
+            ':valor' => $valor
+        ));
+
+        header("location: detPayMethod.php?payMethod=$payMethodId");
+    }
+
+    if (isset($_POST['deleteDato'])) {
+        $idDato = $_POST['deleteDato'];
+
+        $query = $conexion->prepare("DELETE FROM datos_metodos_pago WHERE id = :id");
+        $query->execute(array(':id' => $idDato));
+
+        header("location: detPayMethod.php?payMethod=$payMethodId");
+    }
+
+    if (isset($_POST['saveNewDato'])) {
+        $dato = $_POST['newDatoName'];
+        $value = $_POST['newDatoValue'];
+
+        $query = $conexion->prepare("INSERT INTO datos_metodos_pago (id_metodo_pago, dato, valor) VALUES (:idMetodo, :dato, :valor)");
+        $query->execute(array(
+            ':idMetodo' => $payMethodId,
+            ':dato' => $dato,
+            ':valor' => $valor
+        ));
+
+        header("location: detPayMethod.php?payMethod=$payMethodId");
+    }
 }
 
 require "views/detalles_metodo_pago_view.php";

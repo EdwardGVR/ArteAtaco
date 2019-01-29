@@ -122,9 +122,10 @@
                         <?php if($datosMethod != false): ?>
                         <?php foreach ($datosMethod as $dato): ?>
                             <div class="dato">
-                                <label for="dato1"><?= $dato['dato'] ?></label>
-                                <input type="hidden" name="idDato" value="<?= $dato['id'] ?>">
-                                <input type="text" id="dato<?= $dato['id'] ?>" name="dato1" value="<?= $dato['valor'] ?>" disabled>
+                                <input type="hidden" id="delDato<?= $dato['id'] ?>" name="null" value="null">
+                                <input type="hidden" id="setDato<?= $dato['id'] ?>" name="null" value="null">
+                                <input type="text" id="labelDato<?= $dato['id'] ?>" class="datoLabel" name="null" value="<?= $dato['dato'] ?>" disabled>
+                                <input type="text" id="dato<?= $dato['id'] ?>" name="null" value="<?= $dato['valor'] ?>" disabled>
                                 <div class="options">
                                     <div class="buttons">
                                         <span class="editDato" id="editDato<?= $dato['id'] ?>"><i class="fas fa-edit"></i></span>
@@ -138,7 +139,18 @@
                         <?php else: ?>
                             <div class="dato">No hay datos para este m&eacute;todo de pago</div>
                         <?php endif ?>
-                        <div class="dato add">
+                        <div id="newDato" class="dato new">
+                            <input id="newDatoSetter" type="hidden" name="null" value="null">
+                            <input type="text" name="newDatoName" placeholder="Etiqueta">
+                            <input type="text" name="newDatoValue" placeholder="Valor">
+                            <div class="options">
+                                <div class="buttons">
+                                    <span id="saveNewDato" class="save" ><i class="fas fa-save"></i></span>
+                                    <span class="cancel"><i class="fas fa-times-circle"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="addDato" class="dato add">
                             <i class="fa fa-plus-circle"></i>
                         </div>
                     </form>

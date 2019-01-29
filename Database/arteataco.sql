@@ -88,7 +88,7 @@ CREATE TABLE `datos_metodos_pago` (
   PRIMARY KEY (`id`),
   KEY `dato_metodo_idx` (`id_metodo_pago`),
   CONSTRAINT `dato_metodo` FOREIGN KEY (`id_metodo_pago`) REFERENCES `metodos_pago` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -97,7 +97,7 @@ CREATE TABLE `datos_metodos_pago` (
 
 LOCK TABLES `datos_metodos_pago` WRITE;
 /*!40000 ALTER TABLE `datos_metodos_pago` DISABLE KEYS */;
-INSERT INTO `datos_metodos_pago` VALUES (1,2,'Cuenta','06524423257-23'),(2,2,'Banco','Nombre Banco'),(3,2,'Titular','Nombre titular');
+INSERT INTO `datos_metodos_pago` VALUES (1,2,'Cuenta Bancaria','00000000-00'),(2,2,'Nombre del banco','Nombre Banco'),(4,2,'Titular de la cuenta','Nombre del titular');
 /*!40000 ALTER TABLE `datos_metodos_pago` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -440,4 +440,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-01-28 16:49:24
+-- Dump completed on 2019-01-29 16:45:49

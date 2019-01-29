@@ -385,8 +385,9 @@ if (document.title == 'Detalles de pedido') {
     editDatoBtns = document.querySelectorAll(".editDato");
     deleteDatoBtns = document.querySelectorAll(".deleteDato");
     saveCancelDatoBtns = document.querySelectorAll(".opt2");
-    saveDatoButtons = document.querySelectorAll(".datos .dato .options .buttons .opt2.save");
+    saveDatoButtons = document.querySelectorAll(".datos .save");
     datoInputs = document.querySelectorAll(".datos .dato input[type=\"text\"]");
+    datoLabels = document.querySelectorAll(".datos .dato .datoLabel");
     datosForm = document.getElementById("formDatos");
 
     for (let i = 0; i < editDatoBtns.length; i++) {
@@ -414,21 +415,57 @@ if (document.title == 'Detalles de pedido') {
 
                 if (datoInputId == idDato) {
                     datoInputs[l].removeAttribute("disabled");
+                    datoInputs[l].setAttribute("name", "valorMod");
                 }
             }
+
+            for (m = 0; m < datoLabels.length; m++) {
+                datoLabelId = datoLabels[m].getAttribute("id");
+                datoLabelId = datoLabelId.substring(datoLabelId.length, datoLabelId.length - 1);
+
+                if (datoLabelId == idDato) {
+                    datoLabels[m].removeAttribute("disabled");
+                    datoLabels[m].setAttribute("name", "datoMod");
+                }
+            }
+
+            datosSetter = document.getElementById("setDato" + idDato);            
+            datosSetter.setAttribute("name", "datoSet");
+            datosSetter.setAttribute("value", idDato);
+        });
+
+        deleteDatoBtns[i].addEventListener("click", (e) => {
+            idDato = e.target.parentNode.getAttribute("id");
+            idDato = idDato.substring(idDato.length, idDato.length - 1);
+
+            datosSetter = document.getElementById("delDato" + idDato);            
+            datosSetter.setAttribute("name", "deleteDato");
+            datosSetter.setAttribute("value", idDato);
+
+            datosForm.submit();
         });
     }
 
-    for (let a  = 0; a < saveDatoButtons; a++) {
-        console.log(saveDatoButtons[a]);
-        
-        
-        saveDatoButtons[j].addEventListener("click", () => {
-            console.log(saveDatoButtons[a]);
-            
+    for (let a  = 0; a < saveDatoButtons.length; a++) {        
+        saveDatoButtons[a].addEventListener("click", () => {
+            datosForm.submit();
         });
     }
 
+    addDatoBtn = document.getElementById("addDato");
+    addDatoBtn.addEventListener("click", () => {
+        newDatoForm = document.getElementById("newDato");
+        newDatoSetter = document.getElementById("newDatoSetter");
+        saveDatoBtn = document.getElementById("saveNewDato");
+
+        newDatoForm.classList.remove("new");
+        addDatoBtn.classList.add("hidden");
+        newDatoSetter.setAttribute("name", "saveNewDato");
+
+        saveDatoBtn.addEventListener("click", () => {
+            datosForm.submit();
+        });
+    });
 
 } else if (document.title == "Metodos de pago" || document.title == "Categorias") {
     

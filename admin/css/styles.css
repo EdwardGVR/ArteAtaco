@@ -3285,6 +3285,15 @@ main section > .title {
     border-radius: 5px;
     background: #eee;
     box-shadow: 0 2px 3px #000;
+    transition: all ease 0.3s;
+}
+
+.contPay .datos .dato.new {
+    height: 0;
+    padding: 0;
+    background: none;
+    opacity: 0;
+    transition: all ease 0.3s;
 }
 
 .contPay .datos .dato:last-child {
@@ -3298,6 +3307,12 @@ main section > .title {
     background: #395e88;
     color: #fff;
     cursor: pointer;
+    transition: all ease 0.3s;
+}
+
+.contPay .datos .dato.add:hover {
+    border-radius: 50%;
+    background: #0e2d50;
 }
 
 .contPay .datos label {

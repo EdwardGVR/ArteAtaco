@@ -141,11 +141,11 @@
                         <?php endif ?>
                         <div id="newDato" class="dato new">
                             <input id="newDatoSetter" type="hidden" name="null" value="null">
-                            <input type="text" name="newDatoName" placeholder="Etiqueta">
-                            <input type="text" name="newDatoValue" placeholder="Valor">
+                            <input type="hidden" class="newDatoInput" name="newDatoName" placeholder="Etiqueta" required>
+                            <input type="hidden" class="newDatoInput" name="newDatoValue" placeholder="Valor" required>
                             <div class="options">
                                 <div class="buttons">
-                                    <span id="saveNewDato" class="save" ><i class="fas fa-save"></i></span>
+                                    <span id="saveNewDato" class="saveNew" ><i class="fas fa-save"></i></span>
                                     <span class="cancel"><i class="fas fa-times-circle"></i></span>
                                 </div>
                             </div>

@@ -457,7 +457,11 @@ if (document.title == 'Detalles de pedido') {
         newDatoForm = document.getElementById("newDato");
         newDatoSetter = document.getElementById("newDatoSetter");
         saveDatoBtn = document.getElementById("saveNewDato");
+        newDatoInputs = document.querySelectorAll("#newDato .newDatoInput");
 
+        for (i = 0; i < newDatoInputs.length; i++) {
+            newDatoInputs[i].setAttribute("type", "text");
+        }
         newDatoForm.classList.remove("new");
         addDatoBtn.classList.add("hidden");
         newDatoSetter.setAttribute("name", "saveNewDato");

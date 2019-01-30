@@ -158,7 +158,7 @@ if ($conexion != false) {
         $query->execute(array(
             ':idMetodo' => $payMethodId,
             ':dato' => $dato,
-            ':valor' => $valor
+            ':valor' => $value
         ));
 
         header("location: detPayMethod.php?payMethod=$payMethodId");

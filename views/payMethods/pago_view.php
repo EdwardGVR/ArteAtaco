@@ -17,8 +17,8 @@
 	</div>
 	
 	<div class="hacer_pedido">
-		<form class="place_order" action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-			<input type="hidden" name="order_code" value="<?php echo $codigo ?>">
+		<form class="place_order" action="" method="POST">
+			<input type="hidden" name="order_code" value="<?= $codigo ?>">
 			<input type="submit" name="place_order" value="Hacer pedido">
 		</form>
 	</div>

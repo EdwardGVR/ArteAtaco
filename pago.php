@@ -56,6 +56,10 @@ if ($conexion != false) {
 	$payStat = $query->fetch();
 	$payStat = $payStat[0];
 
+	$query = $conexion->prepare("SELECT * FROM datos_metodos_pago WHERE id_metodo_pago = :id");
+	$query->execute(array(':id' => $_COOKIE['pagoSelected']));
+	$datosMetodo = $query->fetchall();
+
 	if ($dirStat == 0 || $payStat == 0) {
 		header("Location: checkout.php");
 	}

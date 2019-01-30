@@ -150,9 +150,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="addDato" class="dato add">
-                            <i class="fa fa-plus-circle"></i>
-                        </div>
+                        <?php if ($countDatos <= 9): ?>
+                            <div id="addDato" class="dato add">
+                                <i class="fa fa-plus-circle"></i>
+                            </div>
+                        <?php endif ?>
                     </form>
                 <?php else: ?>
                     <span>No se encontr&oacute;</span>

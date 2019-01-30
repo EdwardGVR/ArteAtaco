@@ -22,6 +22,11 @@ if ($conexion != false) {
         $query = $conexion->prepare("SELECT * FROM datos_metodos_pago WHERE id_metodo_pago = :id");
         $query->execute(array(':id' => $payMethodId));
         $datosMethod = $query->fetchall();
+
+        $query = $conexion->prepare("SELECT COUNT(*) FROM datos_metodos_pago WHERE id_metodo_pago = :id");
+        $query->execute(array(':id' => $payMethodId));
+        $countDatos = $query->fetch();
+        $countDatos = $countDatos[0];
     } else {
         $methodDet = false;
     }

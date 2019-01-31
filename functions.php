@@ -77,7 +77,7 @@ function auto_inc_code(){
 	$archivo = 'script/aiucode/corr.txt';
 
 	if (file_exists($archivo)) {
-		$code = file_get_contents($archivo) ;
+		$code = file_get_contents($archivo);
 		$code++;
 		file_put_contents($archivo, $code);
 		return $code;
@@ -139,6 +139,32 @@ function rotateImg ($img) {
 	$image = $imagine->open($img);
 	$image->rotate(90);
 	$image->save($img);
+}
+
+function createPayMethodFiles ($file) {
+	file_put_contents($file, "
+		\r\n	<!DOCTYPE html>
+		\r\n	<html>
+		\r\n	<head>
+		\r\n	<title>Arte Ataco :: Pago</title>
+		\r\n		<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.2.0/css/all.css\" integrity=\"sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ\" crossorigin=\"anonymous\">
+		\r\n		<link href=\"https://fonts.googleapis.com/css?family=Roboto\" rel=\"stylesheet\"> 
+		\r\n		<link rel=\"stylesheet\" href=\"css/styleModal.css\"> 
+		\r\n		<link rel=\"stylesheet\" href=\"css/styles.css\">
+		\r\n	</head>
+		\r\n	<body>
+		\r\n	<?php require \"views/messenger_contact.php\" ?>
+		\r\n	<?php require \"views/header.php\" ?>		
+		\r\n	<div class=\"contenedor_pago\">
+		\r\n		<div class=\"pago\">
+		\r\n			Ups! Ocurri&oacute; un problema al cargar la p&aacute;gina, por favor intenta de nuevo m&aacute;s tarde.
+		\r\n		</div>
+		\r\n	</div>
+		\r\n	<?php require \"views/footer.php\" ?>
+		\r\n	<script src=\"script/js/functions.js\"></script>
+		\r\n	</body>
+		\r\n	</html>
+	");
 }
 
  ?>

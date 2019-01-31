@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Arte Ataco :: Pago</title>
-	<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
 	<link rel="stylesheet" href="css/styleModal.css"> 
 	<link rel="stylesheet" href="css/styles.css">
@@ -22,8 +22,8 @@
 	<div class="nota">El dep&oacute;sito debe hacerse a la mayor brevedad posible.</div>
 	
 	<div class="hacer_pedido">
-		<form class="place_order" action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-			<input type="hidden" name="order_code" value="<?php echo $codigo ?>">
+		<form class="place_order" action="" method="POST">
+			<input type="hidden" name="order_code" value="<?= $codigo ?>">
 			<input type="submit" name="place_order" value="Hacer pedido">
 		</form>
 	</div>

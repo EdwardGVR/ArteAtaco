@@ -38,7 +38,6 @@ if ($conexion != false) {
 
         $startClassPos = strpos($methodIcon, "class=");
         $endClassPos = strpos($methodIcon, "></i>");
-
         $methodIcon = substr($methodIcon, $startClassPos+7);
         $methodIcon = substr($methodIcon, 0, $endClassPos-11);
 
@@ -48,6 +47,10 @@ if ($conexion != false) {
             ':icon'=>$methodIcon,
             ':info'=>$methdoInfo
         ));
+
+        $methodNameSlug = str_replace(" ", "-", $methodName);
+        $methodNameSlug = strtolower($methodNameSlug);
+        
 
         header("Location: payMethods.php");
     }

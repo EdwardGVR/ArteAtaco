@@ -56,6 +56,7 @@ if ($conexion != false) {
 	$payStat = $query->fetch();
 	$payStat = $payStat[0];
 
+	// Obtener datos del metodo de pago
 	$query = $conexion->prepare("SELECT * FROM datos_metodos_pago WHERE id_metodo_pago = :id");
 	$query->execute(array(':id' => $_COOKIE['pagoSelected']));
 	$datosMetodo = $query->fetchall();
@@ -174,25 +175,14 @@ if ($conexion != false) {
 	}
 }
 
-switch ($id_metodo_pago) {
-	case 1:
-		// Transferencia bancaria
-		//...
-		require 'views/payMethods/bank_transfer_view.php';
-		break;
-	case 2:
-		// Metodo 2
-		//...
-		require 'views/payMethods/pago_view.php';
-		break;
-	case 3:
-		// Metodo 3
-		//...
-		require 'views/payMethods/pago_view.php';
-		break;
-	default:
-		# code...
-		break;
+$methodSlug = $_GET['method'];
+
+if (file_exists("payMethods/" . $methodSlug . ".php")) {
+	require "payMethods/" . $methodSlug . ".php";
+} else {
+	require "payMethods/error-view.php";
 }
+
+
 
 ?>

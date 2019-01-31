@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Arte Ataco :: Pago</title>
-	<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
 	<link rel="stylesheet" href="css/styleModal.css"> 
 	<link rel="stylesheet" href="css/styles.css">
@@ -13,14 +13,7 @@
 	
 <div class="contenedor_pago">
 	<div class="pago">
-		Pagina para realizar pago
-	</div>
-	
-	<div class="hacer_pedido">
-		<form class="place_order" action="" method="POST">
-			<input type="hidden" name="order_code" value="<?= $codigo ?>">
-			<input type="submit" name="place_order" value="Hacer pedido">
-		</form>
+		Ups! Ocurri&oacute; un problema al cargar la p&aacute;gina, por favor intenta de nuevo m&aacute;s tarde.
 	</div>
 </div>
 

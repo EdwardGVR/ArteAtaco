@@ -446,8 +446,7 @@ h1.user i.fa {
 
 .contenedor_prod,
 .contenedor_detalles,
-.contenedor_carrito,
-.contenedor_pago {
+.contenedor_carrito {
 	min-height: 500px;
 	margin: auto 10%;
 	margin-bottom: 50px;
@@ -2047,57 +2046,6 @@ input[name="add_address"]:hover {
 	border-radius: 5px;
 	/* margin-bottom: 20px; */
 	background: #e2e7e5;
-}
-
-.contenedor_pago {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-wrap: wrap;
-	/* margin-top: 100px; */
-}
-
-.contenedor_pago .nota {
-	width: 100%;
-	margin-top: 20px;
-	font-style: italic;
-}
-
-.contenedor_pago input[name="place_order"] {
-	line-height: 10px;
-	font-size: 1.4em;
-	background: #F2C049;
-	cursor: pointer;
-	margin-top: 50px;
-	transition: all ease 0.3s;
-}
-
-.contenedor_pago input[name="place_order"]:hover {
-	background: #D89B0A;	
-}
-
-.pago {
-	display: flex;
-	justify-content: center;
-	align-content: center;
-	flex-wrap: wrap;
-
-	/* width: 800px; */
-	/* height: 400px; */
-	padding: 20px;
-	background: #DAF2E5;
-	border-radius: 5px;
-	box-shadow: 0 2px 5px #000;
-}
-
-.pago .info  {
-	width: 100%;
-	margin-bottom: 30px;	
-	font-size: 1.3em;
-}
-
-.pago .info:last-child {
-	margin-bottom: 0;
 }
 
 .contenedor_placed {

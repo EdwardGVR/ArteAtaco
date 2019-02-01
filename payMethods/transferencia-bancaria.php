@@ -1,5 +1,5 @@
 <?php
     //CODE...
 
-    require "transferencia-bancaria-view.php";
+    require "views/transferencia-bancaria-view.php";
 ?>

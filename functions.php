@@ -141,30 +141,58 @@ function rotateImg ($img) {
 	$image->save($img);
 }
 
-function createPayMethodFiles ($file) {
-	file_put_contents($file, "
-		\r\n	<!DOCTYPE html>
-		\r\n	<html>
-		\r\n	<head>
-		\r\n	<title>Arte Ataco :: Pago</title>
-		\r\n		<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.2.0/css/all.css\" integrity=\"sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ\" crossorigin=\"anonymous\">
-		\r\n		<link href=\"https://fonts.googleapis.com/css?family=Roboto\" rel=\"stylesheet\"> 
-		\r\n		<link rel=\"stylesheet\" href=\"css/styleModal.css\"> 
-		\r\n		<link rel=\"stylesheet\" href=\"css/styles.css\">
-		\r\n	</head>
-		\r\n	<body>
-		\r\n	<?php require \"views/messenger_contact.php\" ?>
-		\r\n	<?php require \"views/header.php\" ?>		
-		\r\n	<div class=\"contenedor_pago\">
-		\r\n		<div class=\"pago\">
-		\r\n			Ups! Ocurri&oacute; un problema al cargar la p&aacute;gina, por favor intenta de nuevo m&aacute;s tarde.
-		\r\n		</div>
-		\r\n	</div>
-		\r\n	<?php require \"views/footer.php\" ?>
-		\r\n	<script src=\"script/js/functions.js\"></script>
-		\r\n	</body>
-		\r\n	</html>
-	");
+function createPayMethodFiles ($payMethodName) {
+	$viewFile = "../payMethods/views/" . $payMethodName . "-view.php";
+	$backendFile = "../payMethods/" . $payMethodName . ".php";
+
+	if (!file_exists($viewFile)) {
+		file_put_contents($viewFile,
+"<!DOCTYPE html>
+<html>
+	<head>
+	<title>Arte Ataco :: Pago</title>
+		<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.6.3/css/all.css\" integrity=\"sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/\" crossorigin=\"anonymous\">    <link href=\"https://fonts.googleapis.com/css?family=Roboto\" rel=\"stylesheet\">
+		<link href=\"https://fonts.googleapis.com/css?family=Roboto\" rel=\"stylesheet\"> 
+		<link rel=\"stylesheet\" href=\"css/styleModal.css\"> 
+		<link rel=\"stylesheet\" href=\"css/styles.css\">
+		<link rel=\"stylesheet\" href=\"payMethods/css/styles.css\">
+	</head>
+	<body>
+	<?php require \"views/messenger_contact.php\" ?>
+	<?php require \"views/header.php\" ?>		
+	<div class=\"contenedor_pago\">
+		<div class=\"pago\">
+			Ocurri&oacute; un error, pudes seleccionar otro m&eacute;todo de pago o intentar de nuevo m&aacute;s tarde.
+		</div>
+	</div>
+	<?php require \"views/footer.php\" ?>
+	<script src=\"script/js/functions.js\"></script>
+	</body>
+</html>");
+	}
+
+	if (!file_exists($backendFile)) {
+		file_put_contents($backendFile,
+"<?php
+	//CODE...
+
+	require \"views/$payMethodName-view.php\";
+?>");
+	}
+}
+
+function deletePayMethodFiles ($payMethodName) {
+	$viewFile = "../payMethods/views/" . $payMethodName . "-view.php";
+	$backendFile = "../payMethods/" . $payMethodName . ".php";
+
+	if (file_exists($viewFile)) {
+		unlink($viewFile);
+	}
+
+	if (file_exists($backendFile)) {
+		unlink($backendFile);
+	}
+
 }
 
  ?>

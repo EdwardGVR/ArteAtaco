@@ -91,8 +91,18 @@ if ($conexion != false) {
     }
 
     if (isset($_POST['deleteMethod'])) {
-        $query = $conexion->prepare("UPDATE metodos_pago SET deleted = 1, status = 0 WHERE id = :idPay");
+        $query = $conexion->prepare("UPDATE metodos_pago SET deleted = 1, status = 0, dev_status = 1 WHERE id = :idPay");
         $query->execute(array(':idPay' => $payMethodId));
+
+        $query = $conexion->prepare("SELECT nombre FROM metodos_pago WHERE id = :id");
+        $query->execute(array(':id' => $payMethodId));
+        $result = $query->fetch();
+        $methodName = $result['nombre'];
+
+        $methodNameSlug = str_replace(" ", "-", $methodName);
+        $methodNameSlug = strtolower($methodNameSlug);
+
+        deletePayMethodFiles($methodNameSlug);
 
         header("Location: payMethods.php");
     }

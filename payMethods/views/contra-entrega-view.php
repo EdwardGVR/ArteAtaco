@@ -6,6 +6,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
 	<link rel="stylesheet" href="css/styleModal.css"> 
 	<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="payMethods/css/styles.css">
 </head>
 <body>
 <?php require "views/messenger_contact.php" ?>
@@ -14,9 +15,9 @@
 <div class="contenedor_pago">
 	<div class="pago">
 		<h3 class="info">A continuaci&oacute;n los 	detalles de la cuenta:</h3>
-		<div class="info">N&uacute;mero: <h4>xxxx-xxxx-xxxx-xxxx</h4></div>
-		<div class="info">Banco: <h4>Nombre banco</h4></div>
-		<div class="info">Titular: <h4>Nombre del titular</h4></div>
+		<?php foreach ($datosMetodo as $dat): ?>
+			<div class="info"><?= $dat['dato'] ?> <h4><?= $dat['valor'] ?></h4></div>
+		<?php endforeach ?>
 	</div>
 
 	<div class="nota">El dep&oacute;sito debe hacerse a la mayor brevedad posible.</div>

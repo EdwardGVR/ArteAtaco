@@ -51,6 +51,7 @@ if ($conexion != false) {
         $methodNameSlug = str_replace(" ", "-", $methodName);
         $methodNameSlug = strtolower($methodNameSlug);
         
+        createPayMethodFiles($methodNameSlug);
 
         header("Location: payMethods.php");
     }

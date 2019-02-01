@@ -1,0 +1,5 @@
+.contenedor_pago {
+    display: flex;
+    flex-wrap: wrap;
+    background: #ccc;
+}

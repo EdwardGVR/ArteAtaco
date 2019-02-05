@@ -7,11 +7,11 @@ if (isset($_SESSION['user'])) {
 	$user = "Invitado";
 }
 
-if (!isset($_COOKIE["checkoutCheckpoint"])) {
-	header("Location: checkout.php");
-} else {
-	setcookie("checkoutCheckpoint", "", time()-3600);
-}
+// if (!isset($_COOKIE["checkoutCheckpoint"])) {
+// 	header("Location: checkout.php");
+// } else {
+// 	setcookie("checkoutCheckpoint", "", time()-3600);
+// }
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;

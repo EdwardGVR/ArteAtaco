@@ -4,33 +4,92 @@
 		<title>Arte Ataco :: Pago</title>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
-		<link rel="stylesheet" href="css/styleModal.css"> 
-		<link rel="stylesheet" href="css/styles.css">
 		<link rel="stylesheet" href="payMethods/css/styles.css">
 	</head>
 	<body>
-	<?php require "views/messenger_contact.php" ?>
-	<?php require 'views/header.php' ?>
-		
-	<div class="contenedor_pago">
-		<div class="pago">
-			<h3 class="info">A continuaci&oacute;n los 	detalles de la cuenta:</h3>
-			<?php foreach ($datosMetodo as $dat): ?>
-				<div class="info"><?= $dat['dato'] ?> <h4><?= $dat['valor'] ?></h4></div>
-			<?php endforeach ?>
-		</div>
 
-		<div class="nota">El dep&oacute;sito debe hacerse a la mayor brevedad posible.</div>
-		
-		<div class="hacer_pedido">
-			<form class="place_order" action="" method="POST">
-				<input type="hidden" name="order_code" value="<?= $codigo ?>">
-				<input type="submit" name="place_order" value="Hacer pedido">
-			</form>
+	<header>
+		<div class="headerCont">
+			<div class="headerSection">
+				<a href="#" class="iconCircle">
+					<i class="fa fa-home"></i>
+				</a>
+				<a href="#" class="iconCircle">
+					<i class="fa fa-envelope"></i>
+				</a>
+			</div>
+			<div class="headerSection">
+				<span class="methodName">Metodo de pago</span>
+			</div>
+			<div class="headerSection">
+				<a href="#" class="iconCircle">
+					<i class="fa fa-user"></i>
+				</a>
+			</div>
+			<hr>
 		</div>
-	</div>
+	</header>
 
-	<?php require 'views/footer.php' ?>
+	<main>
+		<div class="mainCont">
+			<div class="methodData">
+				<span class="title">Datos del pago</span>
+				<div class="data">
+					<span class="label">Nombre del dato:</span>
+					<hr>
+					<span class="value">- - - - - Valor del dato - - - - -</span>
+				</div>
+				<div class="data">
+					<span class="label">Nombre del dato:</span>
+					<hr>
+					<span class="value">- - - - - Valor del dato - - - - -</span>
+				</div>
+				<div class="data">
+					<span class="label">Nombre del dato:</span>
+					<hr>
+					<span class="value">- - - - - Valor del dato - - - - -</span>
+				</div>
+				<div class="data">
+					<span class="label">Nombre del dato:</span>
+					<hr>
+					<span class="value">- - - - - Valor del dato - - - - -</span>
+				</div>
+			</div>
+			<div class="payConfirm">
+				<form class="placeOrder" action="" method="POST">
+					<input type="hidden" name="order_code" value="<?= $codigo ?>">
+					<input type="submit" name="place_order" value="Hacer pedido">
+					<span class="orderCode">C&oacute;digo: #00000</span>
+				</form>
+
+				<div class="totals">
+					<div class="stage">
+						<span class="label">Sub-total</span>
+						<div class="icon"><i class="fa fa-shopping-cart"></i></div>
+						<span class="mount">$00.00</span>
+					</div>
+					<div class="stage">
+						<span class="label">Transporte</span>
+						<div class="icon"><i class="fa fa-truck"></i></div>
+						<span class="mount">$00.00</span>
+					</div>
+					<div class="stage">
+						<span class="label">Total</span>
+						<div class="icon"><i class="fa fa-cash-register"></i></div>
+						<span class="mount total">$00.00</span>
+					</div>
+				</div>
+
+				<form class="placeOrder" action="" method="POST">
+					<span class="orderCode">C&oacute;digo: #00000</span>
+					<input type="hidden" name="order_code" value="<?= $codigo ?>">
+					<input type="submit" name="place_order" value="Hacer pedido">
+				</form>
+			</div>
+		</div>
+	</main>
+		
+
 	<script src="script/js/functions.js"></script>
 	</body>
 </html>

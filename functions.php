@@ -153,20 +153,15 @@ function createPayMethodFiles ($payMethodName) {
 	<title>Arte Ataco :: Pago</title>
 		<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.6.3/css/all.css\" integrity=\"sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/\" crossorigin=\"anonymous\">    <link href=\"https://fonts.googleapis.com/css?family=Roboto\" rel=\"stylesheet\">
 		<link href=\"https://fonts.googleapis.com/css?family=Roboto\" rel=\"stylesheet\"> 
-		<link rel=\"stylesheet\" href=\"css/styleModal.css\"> 
-		<link rel=\"stylesheet\" href=\"css/styles.css\">
 		<link rel=\"stylesheet\" href=\"payMethods/css/styles.css\">
 	</head>
 	<body>
-	<?php require \"views/messenger_contact.php\" ?>
-	<?php require \"views/header.php\" ?>		
-	<div class=\"contenedor_pago\">
-		<div class=\"pago\">
-			Ocurri&oacute; un error, pudes seleccionar otro m&eacute;todo de pago o intentar de nuevo m&aacute;s tarde.
-		</div>
-	</div>
-	<?php require \"views/footer.php\" ?>
-	<script src=\"script/js/functions.js\"></script>
+		<span>Ocurri&oacute; un error, puede seleccionar otro m&eacute;todo de pago o intentar de nuevo m&aacute;s tarde.</span>
+
+		<!-- <form class=\"placeOrder\" action=\"\" method=\"POST\">
+			<input type=\"hidden\" name=\"order_code\" value=\"<?= \$codigo ?>\">
+			<input type=\"submit\" name=\"place_order\" value=\"Hacer pedido\">
+		</form> -->
 	</body>
 </html>");
 	}
@@ -174,6 +169,7 @@ function createPayMethodFiles ($payMethodName) {
 	if (!file_exists($backendFile)) {
 		file_put_contents($backendFile,
 "<?php
+	// -- Method data available through \$datosMetodo --
 	//CODE...
 
 	require \"views/$payMethodName-view.php\";

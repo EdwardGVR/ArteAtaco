@@ -38,6 +38,7 @@ if ($conexion != false) {
 	$query->execute();
 	$categorias = $query->fetchall();
 
+	// Iniciar generacion de codigo
 	$id_direccion = $_COOKIE["dirSelected"];
 	$codigo .= $id_direccion;
 	$id_metodo_pago = $_COOKIE["pagoSelected"];
@@ -57,14 +58,24 @@ if ($conexion != false) {
 	$payStat = $payStat[0];
 
 	// Obtener datos del metodo de pago
-	$query = $conexion->prepare("SELECT * FROM datos_metodos_pago WHERE id_metodo_pago = :id");
+	$query = $conexion->prepare("
+		SELECT 	datos_metodos_pago.dato,
+				datos_metodos_pago.valor
+		FROM datos_metodos_pago 
+		WHERE datos_metodos_pago.id_metodo_pago = :id
+	");
 	$query->execute(array(':id' => $_COOKIE['pagoSelected']));
-	$datosMetodo = $query->fetchall();
+	$datosMethod = $query->fetchall();
+
+	$query = $conexion->prepare("SELECT * FROM metodos_pago WHERE id = :id");
+	$query->execute(array(':id' => $_COOKIE["pagoSelected"]));
+	$infoMethod = $query->fetch();
 
 	if ($dirStat == 0 || $payStat == 0) {
 		header("Location: checkout.php");
 	}
 
+	// Comprobar tipo de direccion
 	$query = $conexion->prepare("SELECT id_tipo FROM direcciones WHERE id = :idDireccion");
 	$query->execute(array(':idDireccion'=>$id_direccion));
 	$tipoDireccion = $query->fetch();
@@ -86,18 +97,37 @@ if ($conexion != false) {
 		$costoEnvio = $costoEnvio[0];
 	}
 
-	if (isset($_POST['place_order'])) {
-		$unique_code = auto_inc_code();
-		$codigo .= $unique_code;
+	if ($costoEnvio == 0) {
+		$shippShown = "Gratis";
+	} else {
+		$shippShown = "$" . number_format($costoEnvio, 2);
+	}
 
-		// Obtener productos del carrito
-		$query = $conexion->prepare("
-			SELECT carrito.*, productos.precio FROM carrito 
-			JOIN productos ON carrito.id_producto = productos.id
-			WHERE carrito.id_user = :id_user
-		");
-		$query->execute(array(':id_user'=>$iduser));
-		$productos_carrito = $query->fetchall();
+	$unique_code = auto_inc_code();
+	$codigo .= $unique_code;
+
+	// Obtener productos del carrito
+	$query = $conexion->prepare("
+		SELECT carrito.*, productos.precio FROM carrito 
+		JOIN productos ON carrito.id_producto = productos.id
+		WHERE carrito.id_user = :id_user
+	");
+	$query->execute(array(':id_user'=>$iduser));
+	$productos_carrito = $query->fetchall();
+
+	// Generar sub-total
+	$subtotal = 0;
+	foreach ($productos_carrito as $pc) {
+		$subtotal += $pc['precio'] * $pc['cantidad'];
+	}
+
+	$subtotal = number_format($subtotal, 2);
+
+	$total = number_format($subtotal + $costoEnvio, 2);
+
+	if (isset($_POST['place_order'])) {
+		// $unique_code = auto_inc_code();
+		// $codigo .= $unique_code;
 
 		foreach ($productos_carrito as $producto) {
 			$query = $conexion->prepare("

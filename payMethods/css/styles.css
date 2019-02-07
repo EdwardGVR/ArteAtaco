@@ -86,6 +86,27 @@ main {
     margin-bottom: 50px;
 }
 
+.error {
+    align-self: center;
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 1.1em;
+    color: #5f5901;
+    background: #f7f2ad;
+    box-shadow: 0 1px 2px #000;
+}
+
+.error span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.error i {
+    font-size: 2em;
+}
+
 .methodData {
     display: flex;
     justify-content: center;
@@ -95,6 +116,7 @@ main {
     border: 5px solid #ccc;
     padding: 50px 0;
     position: relative;
+    margin-right: 10px;
     /* box-shadow: 0 3px 6px #000; */
 }
 
@@ -137,6 +159,11 @@ main {
     font-weight: bold;
     text-align: center;
     /* background: #ccc; */
+}
+
+.methodData .data .value.info {
+    font-size: 0.9em;
+    font-weight: 500;
 }
 
 .payConfirm {
@@ -191,6 +218,7 @@ main {
     flex-wrap: wrap;
     width: 100%;
     height: 150px;
+    position: relative;
     /* background: #000; */
 }
 
@@ -214,9 +242,12 @@ main {
     align-self: flex-end;
     font-weight: bold;
     color: #039726;
+    border-radius: 5px;
+    background: #caf0d3;
 }
 
 .payConfirm .totals .stage .mount.total {
+    padding: 3px;
     color: #016318;
     font-size: 1.2em;
 }
@@ -226,4 +257,37 @@ main {
     font-size: 4em;
     text-align: center;
     color: #709BC7;
+}
+
+.payConfirm .totals .stageBar {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 25px;
+    width: 100%;
+    height: 25px;
+    padding: 0 35px;
+}
+
+.payConfirm .totals .stageBar .barCircle {
+    width: 25px;
+    height: 25px;
+    z-index: 2;
+    border-radius: 50%;
+    background: #fff;
+    border: 5px solid #3E83C9;
+    transition: all ease 0.3s;
+}
+
+.payConfirm .totals .stageBar .barCircle:hover {
+    background: #739cc5;
+}
+
+.payConfirm .totals .stageBar .barLine {
+    position: absolute;
+    top: 10px;
+    left: 40px;
+    width: 420px;
+    z-index: 1;
+    border: 3px solid #3E83C9;
 }

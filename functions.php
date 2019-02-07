@@ -87,6 +87,14 @@ function auto_inc_code(){
 	}
 }
 
+function get_current_code(){
+	$archivo = 'script/aiucode/corr.txt';
+	if (file_exists($archivo)) {
+		$code = file_get_contents($archivo);
+		return $code;
+	}
+}
+
 function getShpCarQty ($id_user) {
 	require 'conexion.php';
 	if ($conexion != false) {
@@ -150,18 +158,109 @@ function createPayMethodFiles ($payMethodName) {
 "<!DOCTYPE html>
 <html>
 	<head>
-	<title>Arte Ataco :: Pago</title>
+		<title>Arte Ataco :: Pago</title>
 		<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.6.3/css/all.css\" integrity=\"sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/\" crossorigin=\"anonymous\">    <link href=\"https://fonts.googleapis.com/css?family=Roboto\" rel=\"stylesheet\">
 		<link href=\"https://fonts.googleapis.com/css?family=Roboto\" rel=\"stylesheet\"> 
 		<link rel=\"stylesheet\" href=\"payMethods/css/styles.css\">
 	</head>
 	<body>
-		<span>Ocurri&oacute; un error, puede seleccionar otro m&eacute;todo de pago o intentar de nuevo m&aacute;s tarde.</span>
+		<header>
+			<div class=\"headerCont\">
+				<div class=\"headerSection\">
+					<a href=\"checkout.php\" class=\"iconCircle\">
+						<i class=\"fas fa-arrow-left\"></i>
+					</a>
+					<a href=\"index.php\" class=\"iconCircle\">
+						<i class=\"fa fa-home\"></i>
+					</a>
+				</div>
+				<div class=\"headerSection\">
+					<span class=\"methodName\">
+						<i class=\"<?= \$infoMethod['icon'] ?>\"></i>					
+						<?= \$infoMethod['nombre'] ?>
+						<i class=\"<?= \$infoMethod['icon'] ?>\"></i>
+					</span>
+				</div>
+				<div class=\"headerSection\">
+					<a href=\"contacto.php\" class=\"iconCircle\">
+						<i class=\"fa fa-envelope\"></i>
+					</a>
+					<a href=\"cuenta.php\" class=\"iconCircle\">
+						<i class=\"fa fa-user\"></i>
+					</a>
+				</div>
+				<hr>
+			</div>
+		</header>
 
-		<!-- <form class=\"placeOrder\" action=\"\" method=\"POST\">
-			<input type=\"hidden\" name=\"order_code\" value=\"<?= \$codigo ?>\">
-			<input type=\"submit\" name=\"place_order\" value=\"Hacer pedido\">
-		</form> -->
+		<main>
+			<div class=\"mainCont\">
+				<!-- <div class=\"error\">
+					<span>
+						<i class=\"fas fa-exclamation-triangle\"></i>
+						Ups! sentimos los inconvenientes, ha ocurrido un error con este m&eacute;todo de pago,
+						por favor intente seleccionar otro o vuelva de nuevo m&aacute;s tarde
+						<i class=\"fas fa-exclamation-triangle\"></i>
+					</span>
+				</div> -->
+
+				<div class=\"methodData\">
+					<span class=\"title\">Datos del pago</span>
+					<div class=\"data\">
+						<span class=\"label\">Info:</span>
+						<hr>
+						<span class=\"value info\"><?= \$infoMethod['info'] ?></span>
+					</div>
+					<?php if (\$datosMethod != false): ?>
+						<?php foreach (\$datosMethod as \$d): ?>
+							<div class=\"data\">
+								<span class=\"label\"><?= \$d['dato'] ?>:</span>
+								<hr>
+								<span class=\"value\"><?= \$d['valor'] ?></span>
+							</div>
+						<?php endforeach ?>
+					<?php endif ?>
+				</div>
+
+				<div class=\"payConfirm\">
+					<form class=\"placeOrder\" action=\"\" method=\"POST\">
+						<input type=\"hidden\" name=\"order_code\" value=\"<?= \$codigo ?>\">
+						<input type=\"submit\" name=\"place_order\" value=\"Hacer pedido\">
+						<span class=\"orderCode\">C&oacute;digo: #<?= \$codigo ?></span>
+					</form>
+
+					<div class=\"totals\">
+						<div class=\"stage\">
+							<span class=\"label\">Sub-total</span>
+							<div class=\"icon\"><i class=\"fa fa-shopping-cart\"></i></div>
+							<span class=\"mount\">$<?= \$subtotal ?></span>
+						</div>
+						<div class=\"stage\">
+							<span class=\"label\">Transporte</span>
+							<div class=\"icon\"><i class=\"fa fa-truck\"></i></div>
+							<span class=\"mount\"><?= \$shippShown ?></span>
+						</div>
+						<div class=\"stage\">
+							<span class=\"label\">Total</span>
+							<div class=\"icon\"><i class=\"fa fa-cash-register\"></i></div>
+							<span class=\"mount total\">$<?= \$total ?></span>
+						</div>
+						<div class=\"stageBar\">
+							<div class=\"barCircle\"></div>
+							<div class=\"barCircle\"></div>
+							<div class=\"barCircle\"></div>
+							<div class=\"barLine\"></div>
+						</div>
+					</div>
+
+					<form class=\"placeOrder\" action=\"\" method=\"POST\">
+						<span class=\"orderCode\">C&oacute;digo: #<?= \$codigo ?></span>
+						<input type=\"hidden\" name=\"order_code\" value=\"<?= \$codigo ?>\">
+						<input type=\"submit\" name=\"place_order\" value=\"Hacer pedido\">
+					</form>
+				</div>
+			</div>
+		</main>
 	</body>
 </html>");
 	}
@@ -169,7 +268,7 @@ function createPayMethodFiles ($payMethodName) {
 	if (!file_exists($backendFile)) {
 		file_put_contents($backendFile,
 "<?php
-	// -- Method data available through \$datosMetodo --
+	// -- Method data available through \$datosMethod --
 	//CODE...
 
 	require \"views/$payMethodName-view.php\";

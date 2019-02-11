@@ -59,6 +59,22 @@ if ($conexion != false) {
             ':idPay' => $payMethodId
         ));
 
+        $oldNameSlug = str_replace(" ", "-", $methodDet['nombre']);
+        $oldNameSlug = strtolower($oldNameSlug);
+
+        $newNameSlug = str_replace(" ", "-", $newName);
+        $newNameSlug = strtolower($newNameSlug);
+
+        $oldViewName = "../payMethods/views/" . $oldNameSlug . "-view.php";
+        $oldName = "../payMethods/" . $oldNameSlug . ".php";
+
+
+        $newViewName = "../payMethods/views/" . $newNameSlug . "-view.php";
+        $newName = "../payMethods/" . $newNameSlug . ".php";
+
+        rename($oldViewName, $newViewName);
+        rename($oldName, $newName);
+
         header("Location: detPayMethod.php?payMethod=$payMethodId");
     }
 

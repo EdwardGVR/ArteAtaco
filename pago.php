@@ -70,6 +70,10 @@ if ($conexion != false) {
 	$query = $conexion->prepare("SELECT * FROM metodos_pago WHERE id = :id");
 	$query->execute(array(':id' => $_COOKIE["pagoSelected"]));
 	$infoMethod = $query->fetch();
+	
+	$methodName = $infoMethod['nombre'];
+	$methodName = strtolower($methodName);
+	$methodName = str_replace(" ", "-", $methodName);
 
 	if ($dirStat == 0 || $payStat == 0) {
 		header("Location: checkout.php");

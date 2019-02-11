@@ -271,7 +271,7 @@ function createPayMethodFiles ($payMethodName) {
 	// -- Method data available through \$datosMethod --
 	//CODE...
 
-	require \"views/$payMethodName-view.php\";
+	require \"views/\$methodName-view.php\";
 ?>");
 	}
 }

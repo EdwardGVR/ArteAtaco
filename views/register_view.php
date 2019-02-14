@@ -34,7 +34,7 @@
 
 			<input type="submit" name="submit" class="login_btn" value="Registrarse">
 		</form>
-		<p class="msg_form">Ya tienes cuenta? <a class="reg" href="login.php">Inicia Sesión</a></p>
+		<p class="msg_form">Ya tienes cuenta? <a class="login" href="login.php">Inicia Sesión</a></p>
 	</div>
 
 	<script src="script/js/functions.js"></script>

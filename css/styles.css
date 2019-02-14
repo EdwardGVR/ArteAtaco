@@ -28,35 +28,54 @@ body {
 	/*background-image: url(../images/background/fondo_arteataco.jpg);*/
 }
 
-.contenedor {
+.contenedorLogin {
+	padding: 10px 0;
 	width: 450px;
 	/*height: 270px;*/
-	background: #101B6F;
+	background: #eef8ff;
 	display: inline-block;
 	position: absolute;
 	top: 45%;
 	left: 10%;
 	margin-top: -140px;
 	border-radius: 20px;
-	box-shadow: 3px 3px 10px;
+	box-shadow: 0px 3px 5px;
+}
+
+.contenedorLogin input {
+	box-shadow: inset 0px 2px 5px;
+}
+
+.contenedorLogin input[type="submit"],
+.contenedor_reg input[type="submit"] {
+	box-shadow: 0 1px 2px;
+	background: #fff;
+	width: 50%;
+	transition: all ease 0.3s;
+}
+
+.contenedorLogin input[type="submit"]:hover,
+.contenedor_reg input[type="submit"]:hover {
+	background: #405ca8;
+	color: #fff;
 }
 
 .contenedor_reg {
 	width: 500px;
-	/*height: 430px;*/
 	position: absolute;
-	top: 10%;
+	top: 20%;
 	left: 10%;
-	background: #101B6F;
+	padding: 10px 0;
+	background: #eef8ff;
 	display: inline-block;
 	/*margin: 220px auto;*/
 	border-radius: 10px;
-	box-shadow: 3px 3px 15px;
+	box-shadow: 0px 2px 5px;
 }
 
 .contenedor_reg .label {
 	text-align: left;
-	color: #fff;
+	/* color: #fff; */
 	padding-left: 50px;
 }
 
@@ -69,7 +88,7 @@ body {
 
 .formulario {
 	text-align: center;
-	margin-top: 20px;
+	/* margin-top: 20px; */
 }
 
 input[type="text"],
@@ -79,38 +98,22 @@ input[type="email"] {
 	display: inline-block;
 	width: 400px;
 	height: 40px;
-	margin: 20px auto;
+	margin: 10px auto;
 	padding: 10px;
 	border: none;
 	border-radius: 7px;
+	box-shadow: inset 0px 2px 5px;
 }
 
 input[type="text"]:focus,
 input[type="password"]:focus,
 input[type="submit"]:focus,
 input[type="email"]:focus {
-	border: 3px solid #6EE2E6;
-}
-
-input[type="submi"] {
-	width: 200px;
-	background: #FFFFFF;
-	border: none;
-	font-weight: bold;
-	letter-spacing: 2px;
-	word-spacing: 5px;
-	margin-top: 30px;
-	margin-bottom: 40px;
-	border-radius: 10px;
-	box-shadow: 3px 3px 10px #000;
-}
-
-input[type="submi"]:hover {
-	background: #9BD7ED;
+	border: 3px solid #ccc;
 }
 
 .remember {
-	color: #fff;
+	/* color: #fff; */
 }
 
 .login_btn {
@@ -125,10 +128,11 @@ input[type="submi"]:hover {
 }
 
 a.login {
-	border: 2px solid #000;
+	/* border: 2px solid #000; */
 	border-radius: 7px;
-	padding: 2px;
+	padding: 5px;
 	background: #ABF6C4;
+	transition: all ease 0.3s;
 }
 
 a.login:hover {
@@ -148,7 +152,7 @@ a.reg:hover {
 
 .error {
 	width: 400px;
-	background: #F2ADAD;
+	background: #f7d7d7;
 	display: inline-block;
 	color: #F23131;
 	border-radius: 5px;
@@ -157,20 +161,28 @@ a.reg:hover {
 }
 
 .msg_form {
-	background: #FFFFFF;
 	line-height: 40px;
-	width: 300px;
-	margin: 20px auto;
-	border: 2px solid #000;
+	margin-top: 20px;
 	border-radius: 10px;
-	box-shadow: 3px 3px 15px;
+	font-size: 0.9em;
+	font-style: italic;
 }
 
-#nequi_login {
+.nequiLogin img.nequi {
+	max-height: 600px;
+	max-width: 600px;
 	position: absolute;
-	width: 150px;
-	top: 20%;
-	left: 50%;
+}
+
+.nequiLogin img.nequi.head {
+	right: 500px;
+	top: 150px;
+}
+
+.nequiLogin img.nequi.arm1 {
+	left: 100px;
+	top: 600px;
+	transform: rotate(190deg);
 }
 
 .info_login {

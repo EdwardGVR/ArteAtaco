@@ -93,11 +93,10 @@
 							<?php endif ?>	
 						</form>
 					</div>
-
-				</div>
+			</div>
 			<?php endforeach ?>
 		<?php else: ?>
-			<p>Actualmente no hay productos disponibles en la categoria de <?php echo $cat_actual ?>.</p>
+			<p>Actualmente no hay productos disponibles en la categoria de <?= $cat_actual ?>.</p>
 		<?php endif ?>
 	</div>
 

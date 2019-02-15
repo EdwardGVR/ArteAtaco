@@ -60,9 +60,9 @@
 								</span>
 							</div>
 							<div class="opt">
-								<form class="form_eliminar" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-									<input type="hidden" name="idCarritoDelete" value="<?php echo $item['id'] ?>">
-									<input type="hidden" name="itemName" value="<?php echo $item['nombre'] ?>">
+								<form class="form_eliminar" action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+									<input type="hidden" name="idCarritoDelete" value="<?= $item['id'] ?>">
+									<input type="hidden" name="itemName" value="<?= $item['nombre'] ?>">
 									<input type="submit" id="eliminar<?= $item['id_producto'] ?>" name="delete_item" value="X">
 									<label for="eliminar<?= $item['id_producto'] ?>" class="btn_eliminar">
 										<i class="fa fa-trash"></i><pre> Eliminar</pre>
@@ -116,7 +116,7 @@
 								</div>
 							</div>
 							<div class="field">	
-								<span class="title">Subtotal (producto):</span>
+								<span class="title">Subtotal (Este producto):</span>
 								<span class="value subtotalProd" idProd="<?= $item['id_producto'] ?>">$<?= $subtotalProd ?></span>
 							</div>
 						</div>

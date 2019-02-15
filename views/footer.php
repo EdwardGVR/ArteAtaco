@@ -5,17 +5,16 @@
 		</a>
 	</div>
 	<div class="social">
-		<div class="facebook">
-			<i class="fa fa-facebook-square"></i>
-			Facebook
+		<div class="link facebook">
+			<a href="https://www.facebook.com/ArteAtaco/" target="_blank"><i class="fab fa-facebook-square"></i> facebook/ArteAtaco</a>
 		</div>
-		<div class="whatsapp">
-			<i class="fa fa-whatsapp"></i>
-			Whatsapp
+		<div class="link whatsapp">
+			<a href="#"><i class="fab fa-whatsapp-square"></i> WhatsApp: 7706-1410</a>
 		</div>
-		<div class="correo">
-			<i class="fa fa-envelope"></i>
-			Correo
+		<div class="link correo">
+			<a href="https://mail.google.com/mail/u/0/#inbox?compose=DmwnWrRnZvsmMXSjhMVrwMtgLTVhKNBJnnmwNxrsjJQzTnbwSPNnznqfDPBKDDNGKJcxQCvdTpqb" target="_blank">
+				<i class="fas fa-envelope-square"></i> Correo: arte.ataco@gmail.com
+			</a>
 		</div>
 	</div>
 </footer>

@@ -8,12 +8,12 @@
 <div class="bar">
 
 	<div class="home">
-		<a href="categorias.php"><i class="fa fa-home" style="color: #fff"></i></a>
+		<a href="categorias.php"><i class="fa fa-home"></i></a>
 	</div>
 
 	<div class="bar-options">
 		<div class="dropmenu bar-btn">
-			<a href="categorias.php"><h1 class="drop-btn categorias">Categorias</h1></a>
+			<a href="categorias.php"><h1 class="drop-btn categorias">Categor&iacute;as</h1></a>
 			<div class="drop-content">
 				<?php foreach ($categorias as $categoria): ?>
 					<?php if ($categoria['id'] != 1): ?>
@@ -32,19 +32,19 @@
 		<div class="dropmenu">
 			<?php if (isset($_SESSION['user'])): ?>
 				<h1 class="user-btn"><?= $user ?>
-					<i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+					&nbsp;<i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
 				</h1>
 				<div class="drop-content">
 					<a href="cuenta.php"><span>Cuenta</span> <i class="fa fa-user"></i> </a>
 					<a href="pedidos.php"><span>Pedidos</span> <i class="fa fa-shopping-bag"></i> </a>
 					<a href="carrito.php"><span>Carrito (<?= $qtyItems ?>)</span> <i class="fa fa-shopping-cart"></i> </a>
 					<?php if ($userLevel > 1): ?>
-						<a class="admin" href="admin"><span>Administrar</span> <i class="fa fa-sliders"></i> </a>
+						<a class="admin" href="admin"><span>Administrar</span> <i class="fas fa-tools"></i> </a>
 					<?php endif ?>
 					<a href="logout.php">Cerrar Sesi&oacute;n <i class="fa fa-sign-out"></i> </a>
 				</div>
 			<?php else: ?>
-				<h1 class="user-btn"><?= $user ?> <i class="fa fa-user-plus"></i></h1>
+				<h1 class="user-btn"><?= $user ?> &nbsp; <i class="fa fa-user-plus"></i></h1>
 				<div class="drop-content">
 					<a href="login.php">Iniciar Sesi&oacute;n</a>
 					<a href="register.php">Registrarse</a>

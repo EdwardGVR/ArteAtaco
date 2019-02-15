@@ -11,30 +11,29 @@
 <?php require "messenger_contact.php" ?>
 
 	<div class="contenedorLogin">
-		<form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST" class="formulario" name="login">
-			<input type="text" placeholder="Usuario o correo: " name="nombre">
-			<input type="password" placeholder="Contraseña: " name="pass">
-			<!-- <span class="remember">Mantener sesi&oacute;n iniciada? <input type="checkbox" name="remember" value="1"></span> -->
-			<?php if (!empty($errores)): ?>
-				<div class="error">
-					<ul>
-						<?= $errores ?>
-					</ul>
-				</div>
-			<?php endif; ?>
-			<input type="submit" name="submit" class="login_btn" value="Iniciar Sesion">
-		</form>
-		<p class="msg_form">No tienes cuenta? <a class="login" href="register.php">Registrate</a> O puedes revisar el cat&aacute;logo de productos como <a class="login" href="categorias.php">Invitado</a></p>
+		<div class="formLogin">
+			<form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST" class="formulario" name="login">
+				<input type="text" placeholder="Usuario o correo: " name="nombre">
+				<input type="password" placeholder="Contraseña: " name="pass">
+				<!-- <span class="remember">Mantener sesi&oacute;n iniciada? <input type="checkbox" name="remember" value="1"></span> -->
+				<?php if (!empty($errores)): ?>
+					<div class="error">
+						<ul>
+							<?= $errores ?>
+						</ul>
+					</div>
+				<?php endif; ?>
+				<input type="submit" name="submit" class="login_btn" value="Iniciar Sesion">
+			</form>
+			<p class="msg_form">No tienes cuenta? <a class="login" href="register.php">Registrate</a> O puedes revisar el cat&aacute;logo de productos como <a class="login" href="categorias.php">Invitado</a></p>
+			<div class="nequiLogin">
+				<img src="https://lh3.googleusercontent.com/4vYmmT1fRDRF5XPI_Ny4pZf8xHE5XNavg1ZjI_L8tuZD1f8UKdNCU3DZm69s8rd56Lp7fzmr29qEF1Er6HHWQjB4W1QcRbdU9LBm1krVA3-hrBBPbQQnPgKNE9kda-cZCwUvVewj_5KuqK28-87O9jKxJr8qAAAZUnn-7wmbU3_dmpCaWHlChpLjVkeYntAWj7VVMM9bjb4RS6qN264jVvMOHWMXGVFwTyk5HYWGNCcHJConnACmGbpHMO_XZ8AEtDhYhQTlQYDN-H8wLfmYxupBZlB0YZ96G-UHdeaAmprQSZk1Skq4CFrYUcCaECgJFghzh869LVH4e38iCMsxEdZPJP0VjHtsAANj81l9YbuxUDQ_8yIJNTgK0RGu9-v8iZe0qhMrJeLHUSgyYg3glPHlg_N5Na04lCa-Qk31IgL3Ab6id7mq7h0q8p2Movm6BBe9svTYH7fGklk6xEpESpb5dcW9BguE0s_DwCGup2eaniXUGwahX6y8U3ZiTP_5uSMUPc99NMUGJTIbT1WNgVulSERKIMFuljRHPwOuq__uZN3mWylKNz4EvyTRel0fBPOFtRGU7cOMXeJv3oMgWHaJ9Bqr01G7iDECsp7-TRgTJjQoRh4xokCSR-yRVXUlH3OmZ6Ua9xauU2Dq_Qftf_9WYgYkNg=w473-h428-no" 
+					alt="x"
+					class="nequi">
+			</div>
+		</div>
 	</div>
 
-	<div class="nequiLogin">
-		<img src="https://lh3.googleusercontent.com/mAg5sR6gPwjS1l9SAyD7pvcKnX76-4g6zu5DyaVO0p1VIWw9BGkH9cKrMOH1N_fR3enhzVqBmhVeeVVbCS3pC3YqQnkmeJnNUww1R8dBKNSsAGngNDW8a67bJWQzwBuYVGquNuSQDrqNEslR6MBTikLO7ZYYd6mOU3_2S0PywBPPBwCt1TMg5_YBUMP_u-piavNN16aLyjNXxKN4o6TEK88wUK5C59qm8fggNBpYjJxHKwsoeQvVO-dP_ccs2B6BoNOLlCIqaMip-cTLgVYECO-M5Y-TKEDJHpIv7D1OicCZ4r_46tQoZFKZtk5UsVofqOds2cPuHkej4-SISrnFiCbXSyNzJU-QW-SycsrgEgygWUPATwa1nplU3QHBC6DHeuEOGiAx31C-gz_yCuLaFlpiyq3_7qsIFmFLC-ffAU2hKbMfs3QX0F0k9YB86OUtMa8Foo4kHQrPCQDN4jQWyyNnZACSxMt9hDTZiuMy9iq64v25SDjT5RTUDqu7w7MB8kOpArZiUG1cUzsVLZoFzNCSTIDiuE054UUev9r55aegYC6x7exdMa192q2OcU2sLZW_3ugmsLpumnCzHOoXh_QP4c9ira2aLgeImPb65YoEKrdQImib5GAtIBAcki6-lEofVaKTBDwXbMIu8642SRdDNi6Rew=w299-h880-no" 
-			alt="x"
-			class="nequi head">
-		<img src="https://lh3.googleusercontent.com/AVnrMjnNSp71SgXmKT2DTVPnYds3304oTnInpquP2-Oxaq_MEADplcBiTc2JiBfe1IXyOb0psJ5EYTuDeWB7ZHrzrh9wcvvivN88YcYz0ZmpEdUjYzYiK0rkt24WqHx4JmaMMEFpJTPG-dAj-xe5d5pkw0JWsqFvHUdWZJ2OjNxL-dClaWUG1JNChKZWnZfs_nqPXHj0efDHDm879N8KX8XaJHbCT8MJNe9-v_cX982e1nNP1DZ3V4szRTUjsXCf9FrrrXHEdcBe2-Y9eqV8LygVKYoF4kKz-gTKonLiQek0TPpFaaGqATFs2zDZASkSwEz_r5YwQ7_qmzUPXozi_Y6WcxSY65QO3KEgNfsQKZUM3eGgeJJ77L4lIXFpDChmqIlpi1486ZTndo7-AMrmylzbqpw59n98N6fg-ShhvRKUqRHDJDs2k0HH2CNM7lXiFw58-VPDpdeEHRF3_cDrz5d3FwmBn756HzfzDnJ1c478YEMdSUAatbcerJBYF-JYRNWpOAETBWPP5cA-f5brwIOyyM3bjGGWKUrGFeYvdgrPXaCVhAKlYwZL82egcRPDNSq9F1xmEQtoFb4thrs7OcbFtMrkRNbo5xdIRjymvFV0MYQBqBkxjuKcFH4r79mfProMXoRAAsV-3owvrPflmG4DOCkEvw=w2904-h768-no" 
-			alt="x" 
-			class="nequi arm1">
-	</div>
 
 	<script src="script/js/functions.js"></script>
 </body>

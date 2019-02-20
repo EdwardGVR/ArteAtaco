@@ -130,37 +130,34 @@ if ($conexion != false) {
 	$total = number_format($subtotal + $costoEnvio, 2);
 
 	if (isset($_POST['place_order'])) {
-		// $unique_code = auto_inc_code();
-		// $codigo .= $unique_code;
-
-		// foreach ($productos_carrito as $producto) {
-		// 	$query = $conexion->prepare("
-		// 		INSERT INTO pedidos 
-		// 		VALUES (null, :codigo, :id_user, :id_direccion, :id_pago, :id_producto, :cantidad, :precioCompra, :costoEnvioCompra, 1, CURRENT_TIMESTAMP)
-		// 	");
-		// 	$query->execute(array(
-		// 		':codigo'=>$codigo,
-		// 		':id_user'=>$iduser,
-		// 		':id_direccion'=>$id_direccion,
-		// 		':id_pago'=>$id_metodo_pago,
-		// 		':id_producto'=>$producto['id_producto'],
-		// 		':cantidad'=>$producto['cantidad'],
-		// 		':precioCompra'=>$producto['precio'],
-		// 		':costoEnvioCompra'=>$costoEnvio
-		// 	));	
-		// }
+		foreach ($productos_carrito as $producto) {
+			$query = $conexion->prepare("
+				INSERT INTO pedidos 
+				VALUES (null, :codigo, :id_user, :id_direccion, :id_pago, :id_producto, :cantidad, :precioCompra, :costoEnvioCompra, 1, CURRENT_TIMESTAMP)
+			");
+			$query->execute(array(
+				':codigo'=>$codigo,
+				':id_user'=>$iduser,
+				':id_direccion'=>$id_direccion,
+				':id_pago'=>$id_metodo_pago,
+				':id_producto'=>$producto['id_producto'],
+				':cantidad'=>$producto['cantidad'],
+				':precioCompra'=>$producto['precio'],
+				':costoEnvioCompra'=>$costoEnvio
+			));	
+		}
 		
-		// $query = $conexion->prepare("SELECT * FROM pedidos WHERE codigo = :codigo");
-		// $query->execute(array(':codigo'=>$codigo));
-		// $check_pedido = $query->fetch();
+		$query = $conexion->prepare("SELECT * FROM pedidos WHERE codigo = :codigo");
+		$query->execute(array(':codigo'=>$codigo));
+		$check_pedido = $query->fetch();
 
-		// if ($check_pedido != false) {
-		// 	$query = $conexion->prepare("DELETE FROM carrito WHERE id_user = :id_user");
-		// 	$query->execute(array(':id_user'=>$iduser));
+		if ($check_pedido != false) {
+			$query = $conexion->prepare("DELETE FROM carrito WHERE id_user = :id_user");
+			$query->execute(array(':id_user'=>$iduser));
 
-		// 	setcookie("checkoutCheckpoint", "", time()-3600);
-		// 	unset($_COOKIE['checkoutCheckpoint']);
-		// }
+			setcookie("checkoutCheckpoint", "", time()-3600);
+			unset($_COOKIE['checkoutCheckpoint']);
+		}
 
 		/*
 		//Enviar email de confirmacion de pedido
@@ -203,9 +200,9 @@ if ($conexion != false) {
 		}
 		*/
 		
-		// setcookie("order_placed_ckp", true);
+		setcookie("order_placed_ckp", true);
 		
-		// header('Location: order_placed.php');
+		header('Location: order_placed.php');
 
 		$to = $email_user;
 

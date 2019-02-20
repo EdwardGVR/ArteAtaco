@@ -2125,10 +2125,10 @@ input[name="add_address"]:hover {
 	width: 80%;	
 	min-width: 550px;
 	border-radius: 5px;
-	background: #d6e5f1;
+	/* background: #d6e5f1; */
 	margin-bottom: 50px;
 	padding: 20px;
-	box-shadow: 0 1px 4px;
+	box-shadow: 0 2px 4px;
 }
 
 .pedido .pedido_header {
@@ -2170,6 +2170,7 @@ input[name="add_address"]:hover {
 	border-radius: 2px;
 }
 
+.pedido .pedidos_body,
 .pedido .pedido_body {
 	display: flex;
 	justify-content: space-between;
@@ -2184,12 +2185,17 @@ input[name="add_address"]:hover {
 	align-items: center;
 	/* margin-bottom: 10px; */
 	width: 100%;
-	background: #e6ecff;
+	background: #e6f3ff;
 	/* border-radius: 5px; */
 	padding: 10px;
 	/* border-bottom: 2px solid #003973; */
 	box-shadow: 0 1px 3px;
 	transition: all ease 0.3s;
+}
+
+.pedido .pedido_body .prod_ped {
+	margin-bottom: 20px;
+	border-radius: 15px;
 }
 
 .pedido .prod_ped:hover {
@@ -2211,6 +2217,19 @@ input[name="add_address"]:hover {
 	font-size: 0.8em;
 }
 
+.pedidos_body .prod_ped .prod_img,
+.pedidos_body .prod_ped .prod_cant,
+.pedidos_body .prod_ped .prod_pre,
+.pedidos_body .prod_ped .prodStatus {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	width: 150px;
+	min-height: 50px;
+	font-size: 0.8em;
+}
+
 .prod_ped .prod_img h4,
 .prod_ped .prod_cant h4,
 .prod_ped .prod_pre h4 {
@@ -2227,6 +2246,15 @@ input[name="add_address"]:hover {
 	margin-bottom: 10px;
 }
 
+.pedidos_body .prod_ped .prod_img img,
+.pedidos_body .prod_ped .prod_img .prodDel,
+.pedidos_body .prod_ped .prod_img .noImg {
+	width: 50px;
+	height: 50px;
+	border-radius: 5px;
+	margin-bottom: 10px;
+}
+
 .prod_ped .prod_img .prodDel,
 .prod_ped .prod_img .noImg {
 	background: #ccc;
@@ -2237,11 +2265,39 @@ input[name="add_address"]:hover {
 	color: #7fb7e4;
 }
 
+.pedidos_body .prod_ped .prod_img .prodDel,
+.pedidos_body .prod_ped .prod_img .noImg {
+	background: #ccc;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1em;
+	color: #7fb7e4;
+}
+
 .prod_ped .prod_img .prodName {
 	min-width: 100px;
-	background: #89aff7;
+	background: #b3e3ff;
 	padding: 5px;
 	border-radius: 5px;
+}
+
+.pedido .detBtnCont {
+	display: flex;
+	justify-content: flex-end;
+	width: 100%;
+}
+
+.pedido .detailsBtn {
+	padding: 10px;
+	margin-top: 20px;
+	background: #c4e3ff;
+	border-radius: 5px;
+	transition: all ease 0.3s;
+}
+
+.pedido .detailsBtn:hover {
+	background: #89cff7;
 }
 
 .contenedor_pedidos .pedido:last-child {

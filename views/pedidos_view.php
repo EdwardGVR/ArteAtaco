@@ -48,20 +48,17 @@
 					</h3>
 					<div class="detalle">
 						<span>
-							<!-- Validacion coste de envio -->
-							<?php $costoEnvio = ($pedido['costoEnvioCompra'] == 0) ? "Gratuito" : "$" . $pedido['costoEnvioCompra']; ?>
 							Env&iacute;o a: <?= $pedido['dir_name'] ?>
-							(Costo de env&iacute;o: <?= $costoEnvio ?>)
 							<?php if ($pedido['disponible'] == 0): ?>
 								&nbsp;<span class="eliminada">(Esta direccion fue eliminada)</span>
 							<?php endif ?>
 						</span>	
-						<span>Fecha: <?= $pedido['fecha'] ?></span>					
+						<span>Fecha del pedido: <?= $pedido['fecha'] ?></span>					
 					</div>
 					<span class="prodsHeader">Producto(s):</span>
 					<hr class="lineProds">
 				</div>
-				<div class="pedido_body">
+				<div class="pedidos_body">
 					<?php foreach ($productos_pedidos as $prod): ?>
 						<?php if ($pedido['codigo'] == $prod['codigo']): ?>
 							<!-- Validacion de imagenes -->
@@ -130,13 +127,16 @@
 									<h4>Cantidad</h4>
 								</div>
 								<div class="prod_pre">
-									<h3>$<?= $prod['precioCompra'] ?></h3>
+									<h3>$<?= number_format($prod['precioCompra'], 2) ?></h3>
 									<h4>Precio de compra</h4>
 								</div>
 							</div>
 						<?php endif ?>
 					<?php endforeach ?>		
 				</div>
+				<span class="detBtnCont">
+					<a class="detailsBtn" href="det_pedido.php?orderCode=<?= $pedido['codigo'] ?>">Detalles</a>
+				</span>
 			</div>
 		<?php endforeach ?>
 	<?php else: ?>

@@ -29,13 +29,30 @@ if ($conexion != false) {
 	if ($orderCode != false) {
 		// Obtener pedido
 		$query = $conexion->prepare("
-			SELECT pedidos.*, direcciones.nombre AS dir_name, direcciones.disponible 
+			SELECT pedidos.*,
+				direcciones.nombre AS dir_name,
+				direcciones.disponible,
+				direcciones.estado AS dir_status,
+				direcciones.linea1 AS dir_ln1,
+				direcciones.linea2 AS dir_ln2,
+				direcciones.referencias AS dir_refs,
+				direcciones.pais AS dir_pais,
+				departamentos.nombre AS dir_dpt,
+				metodos_pago.nombre AS pay_name,
+				metodos_pago.icon AS pay_icon,
+				order_status.status AS order_status
 			FROM pedidos
 			JOIN direcciones ON pedidos.id_direccion = direcciones.id
+			JOIN departamentos ON direcciones.id_departamento = departamentos.id
+			JOIN metodos_pago ON pedidos.id_pago = metodos_pago.id
+			JOIN order_status ON pedidos.estado = order_status.id
 			WHERE pedidos.codigo = :orderCode
 			GROUP BY pedidos.codigo");
 		$query->execute(array(':orderCode'=>$orderCode));
 		$pedido = $query->fetch();
+
+		$statusClass = str_replace(" ", "_", $pedido['order_status']);
+		$statusClass = strtolower($statusClass);
 
 		// Obtener productos del pedido
 		$query = $conexion->prepare("
@@ -50,6 +67,13 @@ if ($conexion != false) {
 		");
 		$query->execute(array(':orderCode' => $orderCode));
 		$prodsPed = $query->fetchall();
+
+		$subtotal = 0;
+		foreach ($prodsPed as $p) {
+			$subtotal += ($p['precioCompra'] * $p['cantidad']);
+		}
+		$subtotal = number_format($subtotal, 2);
+		$total = number_format($subtotal + $pedido['costoEnvioCompra'], 2);
 	}
 
 

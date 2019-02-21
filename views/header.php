@@ -41,7 +41,7 @@
 					<?php if ($userLevel > 1): ?>
 						<a class="admin" href="admin"><span>Administrar</span> <i class="fas fa-tools"></i> </a>
 					<?php endif ?>
-					<a href="logout.php">Cerrar Sesi&oacute;n <i class="fa fa-sign-out"></i> </a>
+					<a href="logout.php"><span>Salir</span><i class="fas fa-sign-out-alt"></i></a>
 				</div>
 			<?php else: ?>
 				<h1 class="user-btn"><?= $user ?> &nbsp; <i class="fa fa-user-plus"></i></h1>

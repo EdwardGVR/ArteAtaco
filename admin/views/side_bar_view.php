@@ -9,10 +9,13 @@
     $level = $level[0];
 
     // Obtener cantidades
-    $query = $conexion->prepare("SELECT COUNT(*) FROM pedidos");
-    $query->execute();
-    $result = $query->fetch();
-    $qtyOrders = " (" . $result['COUNT(*)'] . ")";
+    $userId = $userData['id'];
+
+    $query = $conexion->prepare("SELECT * FROM pedidos WHERE id_user = :idUser GROUP BY codigo");
+    $query->execute(array(':idUser' => $userId));
+    $result = $query->fetchall();
+    $result = count($result);
+    $qtyOrders = " (" . $result . ")";
 
     $query = $conexion->prepare("SELECT COUNT(*) FROM productos WHERE deleted = 0");
     $query->execute();
@@ -24,7 +27,6 @@
     $result = $query->fetch();
     $qtyCats = " (" . $result['COUNT(*)'] . ")";
 
-    $userId = $userData['id'];
     $query = $conexion->prepare("SELECT COUNT(*) FROM usuarios WHERE id != :userId");
     $query->execute(array(':userId' => $userId));
     $result = $query->fetch();

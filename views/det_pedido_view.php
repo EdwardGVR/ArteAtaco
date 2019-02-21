@@ -17,43 +17,39 @@
 <div class="contenedor_pedidos">
 	<div class="pedido">
 		<div class="pedido_header">
-			<h3>C&oacute;digo: #<?= $pedido['codigo'] ?></h3>
-			<h3>Estado: 
-				<?php if ($pedido['estado'] == 1): ?>
-					<span class="pago_pend">
-						Pago pendiente
-						<i class="fa fa-clock-o" aria-hidden="true"></i>
-						<i class="fa fa-money" aria-hidden="true"></i>
-					</span>
-				<?php elseif($pedido['estado'] == 2): ?>
-					<span class="pago_rec">
-						Pago recibido
-					</span>
-				<?php elseif($pedido['estado'] == 3): ?>
-					<span class="ready_shipp">
-						Listo para entrega
-					</span>			 
-				<?php elseif($pedido['estado'] == 4): ?>
-					<span class="delivered">
-						Entregado
-					</span>			 
-				<?php else: ?>
-					<span class="nd">
-						No se encontr&oacute;
-					</span>	
-				<?php endif ?>
-			</h3>
+			<div class="code">
+				<span><?= $pedido['fecha'] ?></span>
+				<span class="codigo">C&oacute;digo: #<?= $pedido['codigo'] ?></span>
+				<span>Estado: 
+					<span class="<?= $statusClass ?>"><?= $pedido['order_status'] ?></span>
+				</span>				
+			</div>
+			<span class="prodsHeader">Datos:</span>
+			<hr class="lineProds">
 			<div class="detalle">
-				<span>
+				<div class="section dir">
 					<!-- Validacion coste de envio -->
 					<?php $costoEnvio = ($pedido['costoEnvioCompra'] == 0) ? "Gratuito" : "$" . $pedido['costoEnvioCompra']; ?>
-					Env&iacute;o a: <?= $pedido['dir_name'] ?>
-					(Costo de env&iacute;o: <?= $costoEnvio ?>)
+					<span class="mainDet">
+						Direcci&oacute;n de entrega: <?= $pedido['dir_name'] ?>
+					</span>	
 					<?php if ($pedido['disponible'] == 0): ?>
-						&nbsp;<span class="eliminada">(Esta direccion fue eliminada)</span>
+						&nbsp;<span class="eliminada">(Esta direcci&oacute;n fue eliminada)</span>
+					<?php elseif ($pedido['dir_status'] == 0): ?>
+						<span class="eliminada">(Direcci&oacute;n no disponible temporalmente)</span>
 					<?php endif ?>
-				</span>	
-				<span>Fecha: <?= $pedido['fecha'] ?></span>					
+					<span>Departamento: <?= $pedido['dir_dpt'] ?></span>
+					<span>Pa&iacute;s: <?= $pedido['dir_pais'] ?></span>
+					<span>Linea 1: <?= $pedido['dir_ln1'] ?></span>
+					<span>Linea 2: <?= $pedido['dir_ln2'] ?></span>
+					<span>Referencias: <?= $pedido['dir_refs'] ?></span>
+				</div>
+				<div class="section payMth">
+					<span class="mainDet">M&eacute;todo de pago: <?= $pedido['pay_name'] ?></span>
+					<span class="pedCost">Sub-total de productos: $<?= $subtotal ?></span>
+					<span class="pedCost">Costo de env&iacute;o: <?= $costoEnvio ?></span>
+					<span class="pedCost total">Total: $<?= $total ?></span>
+				</div>
 			</div>
 			<span class="prodsHeader">Producto(s):</span>
 			<hr class="lineProds">

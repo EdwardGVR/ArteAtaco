@@ -2117,6 +2117,12 @@ input[name="add_address"]:hover {
 	/* box-shadow: 0 0 20px; */
 }
 
+.contenedor_pedidos .back2all {
+	width: 80%;
+	margin-bottom: 10px;
+	text-align-last: left;
+}
+
 .contenedor_pedidos .pedido {
 	display: flex;
 	justify-content: center;
@@ -2365,6 +2371,20 @@ input[name="add_address"]:hover {
 
 .pedido .detailsBtn:hover {
 	background: #89cff7;
+}
+
+.pedido .sendPayComp {
+	padding: 10px;
+	border-radius: 5px;
+	background: #a1c6f0;
+	cursor: pointer;
+	margin: 40px auto;
+	transition: all ease 0.3s;
+}
+
+.pedido .sendPayComp:hover {
+	background: #24558b;
+	color: #fff;
 }
 
 .contenedor_pedidos .pedido:last-child {

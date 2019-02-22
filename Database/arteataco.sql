@@ -31,7 +31,7 @@ CREATE TABLE `carrito` (
   KEY `carrito_usuario_idx` (`id_user`),
   KEY `carrito_user_idx` (`id_user`),
   CONSTRAINT `carrito_user` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,6 @@ CREATE TABLE `carrito` (
 
 LOCK TABLES `carrito` WRITE;
 /*!40000 ALTER TABLE `carrito` DISABLE KEYS */;
-INSERT INTO `carrito` VALUES (2,2,2,1);
 /*!40000 ALTER TABLE `carrito` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -71,6 +70,33 @@ LOCK TABLES `categorias` WRITE;
 /*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
 INSERT INTO `categorias` VALUES (1,'Otros','En esta categor&iacute;a encontrar&aacute;s una variedad de productos que distintos.','images/categorias/otros_img.jpg',0,1),(2,'Categor&iacute;a 1','Descripci&oacute;n de la categor&iacute;a uno.','images/categorias/categoria1_img.jpg',1,0);
 /*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `comprobantes_pago`
+--
+
+DROP TABLE IF EXISTS `comprobantes_pago`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `comprobantes_pago` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `orderCode` int(11) NOT NULL,
+  `comprobante` varchar(150) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `comprobante_codigo` (`orderCode`),
+  CONSTRAINT `comp_pedido` FOREIGN KEY (`orderCode`) REFERENCES `pedidos` (`codigo`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `comprobantes_pago`
+--
+
+LOCK TABLES `comprobantes_pago` WRITE;
+/*!40000 ALTER TABLE `comprobantes_pago` DISABLE KEYS */;
+INSERT INTO `comprobantes_pago` VALUES (2,212239,'payMethods/comprobantes//212239CDP.jpg');
+/*!40000 ALTER TABLE `comprobantes_pago` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -165,7 +191,7 @@ CREATE TABLE `direcciones` (
 
 LOCK TABLES `direcciones` WRITE;
 /*!40000 ALTER TABLE `direcciones` DISABLE KEYS */;
-INSERT INTO `direcciones` VALUES (1,2,1,'Casa Ataco','El Salvador','Barrio la vega, calle 98 norte','Casa #3424','Dos cuadras atras de la iglesia',2,5,1,1);
+INSERT INTO `direcciones` VALUES (1,2,1,'Casa Ataco','El Salvador','Barrio la vega, calle 98 norte','Casa #3424','Dos cuadras atras de la iglesia',2,0,1,1);
 /*!40000 ALTER TABLE `direcciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -212,7 +238,7 @@ CREATE TABLE `metodos_pago` (
   `deleted` tinyint(4) NOT NULL DEFAULT '0',
   `dev_status` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -221,7 +247,7 @@ CREATE TABLE `metodos_pago` (
 
 LOCK TABLES `metodos_pago` WRITE;
 /*!40000 ALTER TABLE `metodos_pago` DISABLE KEYS */;
-INSERT INTO `metodos_pago` VALUES (1,'Contra entrega','fas fa-handshake','Pague el producto en el momento de la entrega.',0,0,1),(2,'Transferencia bancaria','fas fa-university','Debera efectuar un deposito por la cantidad total del pedido segun la informacion que le presentamos a continuacion.',1,0,2);
+INSERT INTO `metodos_pago` VALUES (1,'Contra entrega','fas fa-handshake','Pague el producto en el momento de la entrega.',1,0,2),(2,'Deposito bancarios','fas fa-university','Debera efectuar un deposito por la cantidad total del pedido segun la informacion que le presentamos a continuacion.',1,0,2),(3,'Nuevo metodo','fas fa-cash-register','Nuevo metodo de pago de prueba para testear la creacion de los archivos correspondientes de vista y backend',0,1,1),(4,'Nuevo metodo 2','fas fa-cash-register','Info del nuevo metodo',0,1,2);
 /*!40000 ALTER TABLE `metodos_pago` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -274,12 +300,13 @@ CREATE TABLE `pedidos` (
   KEY `pedidos_pago_idx` (`id_pago`),
   KEY `pedidos_direccion_idx` (`id_direccion`),
   KEY `pedidos_status_idx` (`estado`),
+  KEY `pedido_codigo` (`codigo`),
   CONSTRAINT `pedidos_direccion` FOREIGN KEY (`id_direccion`) REFERENCES `direcciones` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `pedidos_pago` FOREIGN KEY (`id_pago`) REFERENCES `metodos_pago` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `pedidos_producto` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `pedidos_status` FOREIGN KEY (`estado`) REFERENCES `order_status` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `pedidos_user` FOREIGN KEY (`id_user`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -288,6 +315,7 @@ CREATE TABLE `pedidos` (
 
 LOCK TABLES `pedidos` WRITE;
 /*!40000 ALTER TABLE `pedidos` DISABLE KEYS */;
+INSERT INTO `pedidos` VALUES (1,212239,2,1,2,1,2,10.25,0,2,'2019-02-20 21:18:33'),(2,212239,2,1,2,2,2,10,0,2,'2019-02-20 21:18:33');
 /*!40000 ALTER TABLE `pedidos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -440,4 +468,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-01-30 16:31:28
+-- Dump completed on 2019-02-22 16:29:05

@@ -840,6 +840,27 @@ main section > .title {
     border-radius: 0 5px 5px 5px;
     /* height: 100%; */
     background: #C0E2ED;
+    margin-bottom: 100px;
+}
+
+.pedido_todos:last-child  .pedido_body {
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    margin-bottom: 0;
+    padding: 20px;
+}
+
+.pedido_todos:last-child  .pedido_body .titulo {
+    width: 100%;
+    font-weight: bold;
+}
+
+.pedido_todos:last-child  .pedido_body .titulo hr {
+    height: 5px;
+    margin: 10px 0;
+    border-radius: 5px;
+    background: #919090;
 }
 
 .pedido_todos .pedido_body .pedido_cliente_direccion {

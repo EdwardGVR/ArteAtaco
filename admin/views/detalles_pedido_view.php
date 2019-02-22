@@ -35,45 +35,45 @@
                     <div class="pedido_body">
                         <div class="pedido_cliente_direccion">
                             <div class="pedido_cliente">
-                                    <div class="titulo">
-                                        <span>Cliente</span>
+                                <div class="titulo">
+                                    <span>Cliente</span>
+                                    <hr>
+                                </div>
+                                <div class="info">
+                                    <a class="imagen" href="detallesCliente.php?cosId=<?= $pedido['cos_id'] ?>">
+                                        <?php if ($pedido['cos_img'] == NULL): ?>
+                                            <i class="fas fa-user fa-2x"></i>
+                                        <?php else: ?>
+                                            <img src="../<?= $pedido['cos_img'] ?>" alt="">
+                                        <?php endif ?>
+                                    </a>
+                                    <div class="datos">
+                                        <span class="nombres"><?= $pedido['cos_names'] ?></span>
+                                        <span class="apellidos"><?= $pedido['cos_apellidos'] ?></span>
                                         <hr>
+                                        <?php if ($pedido['cos_tel'] == NULL): ?>
+                                            <span class="tel">No se ha registrado tel&eacute;fono</span>
+                                        <?php else: ?>
+                                            <span class="tel"><?= $pedido['cos_tel'] ?></span>
+                                        <?php endif ?>
+                                        <span class="email"><?= $pedido['cos_email'] ?></span>
                                     </div>
-                                    <div class="info">
-                                        <a class="imagen" href="detallesCliente.php?cosId=<?= $pedido['cos_id'] ?>">
-                                            <?php if ($pedido['cos_img'] == NULL): ?>
-                                                <i class="fas fa-user fa-2x"></i>
-                                            <?php else: ?>
-                                                <img src="../<?= $pedido['cos_img'] ?>" alt="">
-                                            <?php endif ?>
-                                        </a>
-                                        <div class="datos">
-                                            <span class="nombres"><?= $pedido['cos_names'] ?></span>
-                                            <span class="apellidos"><?= $pedido['cos_apellidos'] ?></span>
-                                            <hr>
-                                            <?php if ($pedido['cos_tel'] == NULL): ?>
-                                                <span class="tel">No se ha registrado tel&eacute;fono</span>
-                                            <?php else: ?>
-                                                <span class="tel"><?= $pedido['cos_tel'] ?></span>
-                                            <?php endif ?>
-                                            <span class="email"><?= $pedido['cos_email'] ?></span>
-                                        </div>
-                                    </div>
+                                </div>
                             </div>
                             <div class="pedido_direccion">
-                                    <div class="titulo">
-                                        <?php $dirStatusMsg = ($pedido['dir_status'] == 0) ? " (eliminada)" : ""; ?>
-                                        <span>Direccion (<?= $pedido['dir_tipo'] ?>) <?= $dirStatusMsg ?></span>
-                                        <hr>
-                                    </div>
-                                    <div class="info">
-                                        <span><?= $pedido['dir_dpto'] ?></span>
-                                        <span><?= $pedido['dir_name'] ?></span>
-                                        <hr>
-                                        <span class="det">
-                                            <?= $pedido['dir_linea1'] ?> <br> <?= $pedido['dir_linea2'] ?> <br> <?= $pedido['dir_refs'] ?>
-                                        </span>
-                                    </div>
+                                <div class="titulo">
+                                    <?php $dirStatusMsg = ($pedido['dir_status'] == 0) ? " (eliminada)" : ""; ?>
+                                    <span>Direccion (<?= $pedido['dir_tipo'] ?>) <?= $dirStatusMsg ?></span>
+                                    <hr>
+                                </div>
+                                <div class="info">
+                                    <span><?= $pedido['dir_dpto'] ?></span>
+                                    <span><?= $pedido['dir_name'] ?></span>
+                                    <hr>
+                                    <span class="det">
+                                        <?= $pedido['dir_linea1'] ?> <br> <?= $pedido['dir_linea2'] ?> <br> <?= $pedido['dir_refs'] ?>
+                                    </span>
+                                </div>
                             </div>
                         </div>
                         <div class="ped_prods">
@@ -119,7 +119,7 @@
                                         <?php else: ?>
                                             </a>
                                         <?php endif ?>
-                                        <?php $subtotal += $prod['precioCompra'] ?>  
+                                        <?php $subtotal += ($prod['precioCompra'] * $prod['cantidad']) ?>  
                                     <?php endif ?>
                                 <?php endforeach ?>                                                      
                             </div>                                       
@@ -190,6 +190,20 @@
                     </div>
                     </article>                           
                 <?php endforeach ?>
+
+                <div class="pedido_todos">
+                    <div class="pedido_body">
+                        <div class="titulo">
+                            <span>Comprobante de pago</span>
+                            <hr>
+                        </div>
+                    <?php if ($comprobante == NULL): ?>
+                        <span>No se ha encontrado el comprobante de pago</span>
+                    <?php else: ?>
+                        <img src="../<?= $comprobante ?>" alt="x">
+                    <?php endif ?>
+                    </div>
+                </div>
             </div>
         </section>
     </main>

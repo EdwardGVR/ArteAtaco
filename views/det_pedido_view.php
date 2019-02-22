@@ -15,6 +15,7 @@
  <?php require 'header.php' ?>
 
 <div class="contenedor_pedidos">
+	<span class="back2all"><a href="pedidos.php"><i class="fas fa-chevron-circle-left"></i> Ir a pedidos</a></span>
 	<div class="pedido">
 		<div class="pedido_header">
 			<div class="code">
@@ -130,6 +131,21 @@
 				<?php endif ?>
 			<?php endforeach ?>		
 		</div>
+	</div>
+
+	<div class="pedido">
+		<div class="pedido_header">
+			<span class="prodsHeader">Comprobante de pago:</span>
+			<hr class="lineProds">
+		</div>
+		<?php if ($comprobante == NULL): ?>
+			<form class="sendCompForm hidden" action="" enctype="multipart/form-data" method="POST">
+				<input type="file" onchange="this.form.submit()" name="payCompImg" id="sendPayComp" accept="image/*"/>
+			</form>
+			<label class="sendPayComp" for="sendPayComp"><span>Enviar comprobante de pago <i class="fas fa-file-upload"></i></span></label>
+		<?php else: ?>
+			<img src="<?= $comprobante ?>" alt="x">
+		<?php endif ?>
 	</div>
 </div>
 

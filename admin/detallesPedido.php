@@ -50,6 +50,11 @@
 
         // print_r($pedidos);
 
+        $query = $conexion->prepare("SELECT comprobante FROM comprobantes_pago WHERE orderCode = :orderCode");
+        $query->execute(array(':orderCode' => $orderNumber));
+        $comprobante = $query->fetch();
+        $comprobante = $comprobante['comprobante'];
+
         // Obtener estados de pedido disponibles
         $query = $conexion->prepare("SELECT * FROM order_status");
         $query->execute();
@@ -60,7 +65,6 @@
             SELECT  pedidos.*, 
                     productos.id AS prod_id, 
                     productos.nombre AS prod_name,
-                    productos.imagen AS prod_img,
                     productos.deleted AS prod_del,
                     categorias.nombre_cat AS prod_cat
             FROM pedidos 
@@ -70,6 +74,8 @@
         ");
         $query->execute();
         $prods_pedidos = $query->fetchall();
+
+        // print_r($prods_pedidos);
 
        	// Obtener imagenes de productos
         $query = $conexion->prepare("SELECT * FROM imgs_prods");

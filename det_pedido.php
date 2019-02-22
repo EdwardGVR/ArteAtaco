@@ -54,6 +54,11 @@ if ($conexion != false) {
 		$statusClass = str_replace(" ", "_", $pedido['order_status']);
 		$statusClass = strtolower($statusClass);
 
+		$query = $conexion->prepare("SELECT comprobante FROM comprobantes_pago WHERE orderCode = :orderCode");
+		$query->execute(array(':orderCode' => $orderCode));
+		$comprobante = $query->fetch();
+		$comprobante = $comprobante['comprobante'];
+
 		// Obtener productos del pedido
 		$query = $conexion->prepare("
 			SELECT 	pedidos.*, 
@@ -74,8 +79,28 @@ if ($conexion != false) {
 		}
 		$subtotal = number_format($subtotal, 2);
 		$total = number_format($subtotal + $pedido['costoEnvioCompra'], 2);
-	}
 
+		if (isset($_FILES['payCompImg'])) {
+			$compImg = $_FILES['payCompImg'];
+			$compImg['name'] = $orderCode . "CDP.jpg";
+
+			$uploadedFile = "payMethods/comprobantes/" . $compImg['name'];
+			move_uploaded_file($compImg['tmp_name'], $uploadedFile);
+
+			compressImgs(["$uploadedFile"], 50);
+
+			$query = $conexion->prepare("INSERT INTO comprobantes_pago (id, orderCode, comprobante) VALUES (null, :orderCode, :comp)");
+			$query->execute(array(
+				':orderCode' => $orderCode,
+				':comp' => $uploadedFile
+			));
+
+			$query = $conexion->prepare("UPDATE pedidos SET estado = 2 WHERE codigo = :orderCode");
+			$query->execute(array(':orderCode' => $orderCode));
+			
+			header("location: det_pedido.php?orderCode=$orderCode");
+		}
+	}
 
 	// Obtener imagenes de productos
 	$query = $conexion->prepare("SELECT * FROM imgs_prods");

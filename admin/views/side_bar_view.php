@@ -61,7 +61,7 @@
 <div id="nav-fake" class="nav_hidden"></div>
 <nav>
     <div class="side_bar">
-        <div class="burguerBtn">
+        <div class="burguerBtn" id="burguerBtn">
             <div class="hamburguerBtn open" title="Contraer / Expandir men&uacute;">
                 <span></span>
                 <span></span>
@@ -104,18 +104,25 @@
 </nav>
 
 <script>
-    var hamburger = document.querySelector(".hamburguerBtn");
-    // On click
-    hamburger.addEventListener("click", function() {
-        // Toggle class "is-active"
-        hamburger.classList.toggle("open");
-        // Do something else, like open/close menu
-        let navOptions = document.querySelector("#nav-options"),
-            navFake = document.querySelector("#nav-fake"),
-            nav = document.querySelector("nav");
+    // var hamburger = document.querySelector(".hamburguerBtn");
+    // // On click
+    // hamburger.addEventListener("click", function() {
+    //     // Toggle class "is-active"
+    //     hamburger.classList.toggle("open");
+    //     // Do something else, like open/close menu
+    //     let navOptions = document.querySelector("#nav-options"),
+    //         navFake = document.querySelector("#nav-fake"),
+    //         nav = document.querySelector("nav");
 
-        navOptions.classList.toggle("hidden");
-        navFake.classList.toggle("hidden");
-        nav.classList.toggle("hidden");
-    });
+    //     navOptions.classList.toggle("hidden");
+    //     navFake.classList.toggle("hidden");
+    //     nav.classList.toggle("hidden");
+
+    //     if (hamburger.classList[1] == "open") {
+    //         document.cookie = "sideBarStatus = open";
+    //     } else {
+    //         document.cookie = "sideBarStatus = closed";
+    //     }
+    // });
+
 </script>

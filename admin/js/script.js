@@ -14,6 +14,51 @@ function getCookie(cname) {
 	return "";
 }
 
+var hamburger = document.querySelector(".hamburguerBtn");
+    // On click
+hamburger.addEventListener("click", function() {
+    // Toggle class "is-active"
+    hamburger.classList.toggle("open");
+    // Do something else, like open/close menu
+    let navOptions = document.querySelector("#nav-options"),
+        navFake = document.querySelector("#nav-fake"),
+        nav = document.querySelector("nav");
+
+    navOptions.classList.toggle("hidden");
+    navFake.classList.toggle("hidden");
+    nav.classList.toggle("hidden");
+
+    if (hamburger.classList[1] == "open") {
+        document.cookie = "sideBarStatus = open";
+    } else {
+        document.cookie = "sideBarStatus = closed";
+    }
+});
+
+let sideBarStatus = getCookie("sideBarStatus");
+if (sideBarStatus == "open") {
+    hamburger.classList.add("open");
+    
+    let navOptions = document.querySelector("#nav-options"),
+        navFake = document.querySelector("#nav-fake"),
+        nav = document.querySelector("nav");
+
+    navOptions.classList.remove("hidden");
+    navFake.classList.remove("hidden");
+    nav.classList.remove("hidden");
+
+} else if (sideBarStatus == "closed") {
+    hamburger.classList.remove("open");
+
+    let navOptions = document.querySelector("#nav-options"),
+        navFake = document.querySelector("#nav-fake"),
+        nav = document.querySelector("nav");
+
+    navOptions.classList.add("hidden");
+    navFake.classList.add("hidden");
+    nav.classList.add("hidden");
+}
+
 if (document.title == 'Detalles de pedido') {
 
     console.log("Detalles de pedido");

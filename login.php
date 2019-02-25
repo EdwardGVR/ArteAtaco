@@ -33,7 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 			$_SESSION['user'] = $logged['user'];	
 			header('Location: categorias.php');
-			//print_r($logged);
 		} else {
 			$errores .= '<li>Datos Incorrectos</li>';
 		}

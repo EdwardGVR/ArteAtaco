@@ -44,7 +44,7 @@
 					<a href="logout.php"><span>Salir</span><i class="fas fa-sign-out-alt"></i></a>
 				</div>
 			<?php else: ?>
-				<h1 class="user-btn"><?= $user ?> &nbsp; <i class="fa fa-user-plus"></i></h1>
+				<h1 class="user-btn"><?= $user ?> &nbsp; <i class="fas fa-user-circle"></i></h1>
 				<div class="drop-content">
 					<a href="login.php">Iniciar Sesi&oacute;n</a>
 					<a href="register.php">Registrarse</a>
@@ -56,7 +56,7 @@
 			<?php if ($user_img != false): ?>
 				<a href="cuenta.php"><img class="user_img" src="<?= $user_img ?>" alt="N/A"></a>
 			<?php else: ?>
-				<div class="user_img"><a href="cuenta.php"><i class="fa fa-user-circle"></i></a></div>
+				<div class="user_img"><a href="cuenta.php"><i class="fas fa-user-circle"></i></a></div>
 			<?php endif ?>
 		<?php endif ?>
 	</div>

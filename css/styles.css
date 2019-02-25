@@ -351,10 +351,13 @@ a.reg:hover {
 }
 
 .user_img {
+	display: flex;
+	align-items: center;
 	width: 50px;
 	height: 50px;
 	border-radius: 50%;
 	margin-left: 10px;
+	font-size: 3em;
 }
 
 .user_img .fa {

@@ -82,6 +82,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		// Ingresar Datos
 		//echo "Correcto";
 
+		$password = password_hash($password, PASSWORD_DEFAULT);
+
 		$query = $conexion->prepare ("INSERT INTO usuarios (id, user, nombres, apellidos, email, password) VALUES (null, :user, :nombres, :apellidos, :email, :pass)");
 		$query->execute(array(
 			":user" => $user,

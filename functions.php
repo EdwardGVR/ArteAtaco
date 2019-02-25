@@ -10,16 +10,19 @@ function conexion($DB, $user, $pass){
 }
 
 function login_verification($conexion, $user, $password){
-	$query = $conexion->prepare("SELECT * FROM usuarios WHERE (user = :user OR email = :user) AND password = :password");
+	$query = $conexion->prepare("SELECT password FROM usuarios WHERE user = :user OR email = :user");
 	$query->execute(array(
-		':user' => $user,
-		':password' => $password
+		':user' => $user
 	));
-
 	$query_result = $query->fetch();
-
+	
 	if ($query_result != false) {
-		return true;
+		$hashPswd = $query_result['password'];
+		if (password_verify($password, $hashPswd)) {
+			return true;
+		} else {
+			return false;
+		}
 	} else {
 		return false;
 	}

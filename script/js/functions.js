@@ -366,5 +366,10 @@ if (window.pagId) {
 				document.cookie = "checkoutCheckpoint =" + true;
 			});
 		}
+	} else if (pagId == "lamps") {
+		console.info("Pagina de lamparas");
+
+		let customLampsBtn = document.getElementById("customLampsBtn");
+		customLampsBtn.classList.remove("hidden");
 	}
 }

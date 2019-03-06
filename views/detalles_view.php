@@ -84,7 +84,7 @@
 							<span>Producto:</span>
 						</div>
 						<div class="info">
-							<span><?php echo $detalles['nombre'] ?></span>
+							<span><?= $detalles['nombre'] ?></span>
 						</div>
 					</div>
 					<hr>
@@ -94,7 +94,7 @@
 							<span>Descripci&oacute;n:</span>
 						</div>
 						<div class="info">
-							<?php echo $detalles['descripcion'] ?>
+							<?= $detalles['descripcion'] ?>
 						</div>
 					</div>
 
@@ -103,7 +103,7 @@
 							<span>Precio:</span>
 						</div>
 						<div class="info">
-							<?php echo '$'.$detalles['precio'] ?>
+							<?= '$'. number_format($detalles['precio'], 2) ?>
 						</div>
 					</div>
 

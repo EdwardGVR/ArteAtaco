@@ -21,6 +21,10 @@ h1, h2 {
 	/* color: #fff; */
 }
 
+header {
+	position: relative;
+}
+
 body {
 	/*background: #ccc;*/
 	font-family: 'Roboto', sans-serif;
@@ -240,9 +244,9 @@ a.reg:hover {
 	height: 50px;
 	width: 50px;
 	padding-top: 2px;
-	border: 5px solid #a0a0a0;
+	border: 5px solid #000;
 	border-radius: 50%;
-	color: #a0a0a0;
+	color: #000;
 	font-size: 1.8em;
 	transition: all ease 0.5s;
 }
@@ -251,12 +255,13 @@ a.reg:hover {
 	display: inline-block;
 	height: 80px;
 	width: 100%;
-	margin-bottom: 100px;
+	margin-bottom: 50px;
 }
 
 .bar i.fa-home:hover {
-	background: #3e5f91;
-	color: #ccc;
+	border: 5px solid #a0a0a0;
+	/* background: #506d99; */
+	color: #a0a0a0;
 }
 
 .bar .user {
@@ -272,7 +277,7 @@ a.reg:hover {
 	align-items: center;
 	height: 50px;
 
-	border: 5px solid #a0a0a0;
+	border: 5px solid #000;
 	border-radius: 15px;
 	width: auto;
 	font-size: 20px;
@@ -318,7 +323,7 @@ a.reg:hover {
 
 @media only screen and (max-width: 750px) {
 	header {
-		height: 250px;
+		height: 200px;
 	}
 	.home {
 		/*margin-left: 10px;*/
@@ -333,7 +338,7 @@ a.reg:hover {
 		order: 2;
 	}
 	.bar_hidden {
-		height: 200px;
+		height: 100px;
 	}
 }
 
@@ -429,8 +434,8 @@ a.reg:hover {
 
 .user .dropmenu h1:hover {
 	background: #FFFFFF;
-	color: #000;
-	border: 5px solid #000;
+	color: #a0a0a0;
+	border: 5px solid #a0a0a0;
 	/* border-bottom: 0; */
 }
 
@@ -748,6 +753,30 @@ figure .trasera a:hover {
 
 figure img {
 	background: #8BB0C5;
+}
+
+.customLampContainer {
+	display: flex;
+	width: 100%;
+	justify-content: flex-start;
+	padding: 0 20px;
+	margin-bottom: 20px;
+}
+
+.customLampsInfo {
+	display: flex;
+	height: 40px;
+	background: #a7dcff;
+	padding: 10px;
+	border-radius: 10px;
+	cursor: pointer;
+	box-shadow: 2px 2px 3px #0d598b;
+	transition: all ease 0.3s;
+}
+
+.customLampsInfo:hover {
+	background: #71c6ff;
+	box-shadow: 2px 2px 6px #053d63;
 }
 
 .contenedor_prod {

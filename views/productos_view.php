@@ -16,28 +16,42 @@
 
 <?php require("messenger_contact.php") ?>
 
+<?php if ($cat_actual == "L&aacute;mparas"): ?>
+	<script>var pagId = "lamps";</script>
+<?php endif ?>
+
 	<header>
 		<?php require 'header.php' ?>
 	</header>
 
+	<div id="customLampsBtn" class="customLampContainer hidden">
+			<div class="customLampsInfo">
+				<span>Dise&ntilde;o personalizado <i class="fas fa-magic"></i></span>
+			</div>
+		</div>
+
 	<div class="contenedor_prod">
 
 	<div id="modal-container">
-	    <div class="modal-background">
-	      <div class="modal">
-	        <h2>Para continuar por favor inicia sesi&oacute;n o registrate</h2>
-	        <div class="btns">
-	        	<a href="login.php" class="boton">Aceptar</a>
-	        </div>
-	        <svg class="modal-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
-	    	<rect x="0" y="0" fill="none" width="226" height="162" rx="3" ry="3"></rect>
-	        </svg>
-	      </div>
-	    </div>
-	  </div>
+		<div class="modal-background">
+			<div class="modal">
+				<h2>Para continuar por favor inicia sesi&oacute;n o registrate</h2>
+				<div class="btns">
+					<a href="login.php" class="boton">Aceptar</a>
+				</div>
+				<svg class="modal-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
+			<rect x="0" y="0" fill="none" width="226" height="162" rx="3" ry="3"></rect>
+				</svg>
+			</div>
+		</div>
+	</div>
+
+		
 
 		<?php if ($productos != false): ?>
+
 			<?php foreach ($productos as $producto): ?>
+				<?php $precio = number_format($producto['precio'], 2) ?>
 				<div class="producto">
 
 					<div class="prod-img">
@@ -78,7 +92,7 @@
 					</div>
 
 					<div class="prod-precio">
-						<span><?= '$' . $producto['precio'] ?> <i class="fa fa-tag"></i></span>
+						<span><?= '$' . $precio ?> <i class="fa fa-tag"></i></span>
 					</div>
 
 					<div class="prod-options">

@@ -9,6 +9,8 @@
 
 .hidden {
 	display: none !important;
+	margin: 0 !important;
+	padding: 0 !important;
 }
 
 a {
@@ -957,7 +959,7 @@ figure img {
 	width: 500px;
 	min-width: 500px;
 	margin-right: 20px;
-	/* height: 400px; */
+	height: 400px;
 	/* flex-grow: 1; */
 }
 
@@ -1059,6 +1061,7 @@ figure img {
 	display: flex;
 	align-items: center;
 	flex-wrap: wrap;
+	margin-top: 50px;
 	/*height: 50px;*/
 	/* margin-bottom: 60px; */
 }
@@ -1141,7 +1144,7 @@ figure img {
 
 .detalles-prod-info .prod-det .title span {
 	padding: 5px;
-	background: #9dc9f3;
+	background: #c1e1ff;
 	border-radius: 5px;
 	font-size: 1.3em;
 	cursor: default;
@@ -1153,8 +1156,125 @@ figure img {
 	font-size: 1.5em;
 }
 
+.detalles-prod-info .prod-det .info input[type="number"] {
+	width: 50px;
+	border-radius: 5px;
+	padding: 5px;
+	border: 2px solid #ccc;
+}
+
 .detalles-prod-info .prod-det .info input[type="number"]:focus {
 	border: 2px solid #005AFF;
+}
+
+.detalles-prod-info .customText {
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+	margin-top: 20px;
+	width: 100%;
+}
+
+.detalles-prod-info .customText.active {
+	border: 2px solid #ccc;
+	border-radius: 5px;
+	padding: 10px;
+}
+
+.detalles-prod-info .customText .title {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.detalles-prod-info .customText .title span {
+	font-size: 1.3em;
+	padding: 5px;
+	border-radius: 5px;
+	background: #3b74aa;
+	color: #fff;
+	cursor: pointer;
+}
+
+.detalles-prod-info .customText .title span.cancel {
+	background: #ad2f2f;
+}
+
+.detalles-prod-info .customText .textsGroup {
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+	width: 100%;
+	margin-top: 10px;
+	/* background: #ccc; */
+}
+
+.detalles-prod-info .customText .textsGroup .lampTitle {
+	width: 100%;
+	text-align: left;
+	font-size: 1.3em;
+	margin-top: 10px;
+	cursor: pointer;
+}
+
+.detalles-prod-info .customText .textsGroup hr {
+	margin: 10px 0;
+	background: #3b74aa;
+}
+
+.detalles-prod-info .customText .textsGroup .textConts {
+	width: 100%;
+}
+
+.detalles-prod-info .customText .textsGroup .textCont {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	margin-bottom: 10px;
+	/* background: #000; */
+}
+
+.detalles-prod-info .customText .textsGroup .textCont:last-child {
+	margin-bottom: 0;
+}
+
+.detalles-prod-info .customText .text {
+	margin: 0;
+}
+
+.detalles-prod-info .customText .position {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	flex-wrap: wrap;
+	border-radius: 5px;
+	box-shadow: inset 0 2px 4px #000;
+	padding: 0 10px;
+	height: 40px;
+	/* background: #000; */
+}
+
+.detalles-prod-info .customText .position label {
+	margin-right: 5px;
+	font-size: 1.2em;
+}
+
+.detalles-prod-info .customText .position select {
+	border-radius: 5px 0 0 5px;
+	/* border: 2px solid #ccc; */
+	border: none;
+}
+
+.detalles-prod-info .customText .options {
+	font-size: 2em;
+	color: #aaaaaa;
+	transition: all ease 0.3s;
+	cursor: pointer;
+}
+
+.detalles-prod-info .customText .options:hover {
+	color: #db3838;
 }
 
 h2.item,

@@ -371,5 +371,73 @@ if (window.pagId) {
 
 		let customLampsBtn = document.getElementById("customLampsBtn");
 		customLampsBtn.classList.remove("hidden");
+	} else if (pagId == "lampsDetails") {
+		console.info("Pagina de detalles de lamparas");
+
+		let customLampsBtn = document.getElementById("customText");
+		customLampsBtn.classList.remove("hidden");
+
+		let itemsQty = document.getElementById("itemsQty"),
+			customTextBtn = document.getElementById("customTextBtn"),
+			cancelTextBtn = document.getElementById("cancelTextBtn"),
+			firstTextGroup = document.getElementById("textGroup1"),
+			allTexts = [...document.getElementsByClassName("textsGroup")],
+			titleBtns = [...document.getElementsByClassName("lampTitle")],
+			textConts = [...document.getElementsByClassName("textConts")];
+
+		customTextBtn.addEventListener("click", () => {
+			firstTextGroup.classList.remove("hidden");
+			cancelTextBtn.classList.remove("hidden");
+			textConts[0].classList.remove("hidden");
+
+
+			newQty = itemsQty.value;
+
+			if (cancelTextBtn.classList[1] != "hidden") {
+				for (let i = 0; i < newQty; i++) {
+					allTexts[i].classList.remove("hidden");
+				}
+	
+				for (let j = newQty; j < 10; j++) {
+					allTexts[j].classList.add("hidden");
+				}
+			}
+		});
+
+		for (i = 0; i < titleBtns.length; i++) {
+			titleBtns[i].addEventListener("click", (e) => {
+				idText = e.target.id;
+				idText = idText.substring(idText.length -1);
+				showTextGroup = document.getElementById("textsLamp" + idText);
+				showTextGroup.classList.remove("hidden");
+			});
+		}
+
+		cancelTextBtn.addEventListener("click", () => {
+			cancelTextBtn.classList.add("hidden");
+
+			for (i = 0; i < allTexts.length; i++) {
+				allTexts[i].classList.add("hidden");
+				textConts[i].classList.add("hidden");
+			}
+		});
+
+		itemsQty.addEventListener("change", () => {
+			newQty = itemsQty.value;
+			if (newQty > 10) {
+				itemsQty.value = 10;
+				newQty = 10;
+			}
+
+			if (cancelTextBtn.classList[1] != "hidden") {
+				for (let i = 0; i < newQty; i++) {
+					allTexts[i].classList.remove("hidden");
+				}
+	
+				for (let j = newQty; j < 10; j++) {
+					allTexts[j].classList.add("hidden");
+				}
+			}
+		});
 	}
 }

@@ -17,6 +17,13 @@ if ($conexion != false) {
 	$query->execute(array(':id_prod' => $id_prod));
 	$detalles = $query->fetch();
 
+	$idCatActual = $detalles['id_categoria'];
+
+	$query = $conexion->prepare("SELECT nombre_cat FROM categorias WHERE id = :id");
+	$query->execute(array(':id' => $idCatActual));
+	$nombreCat = $query->fetch();
+	$nombreCat = $nombreCat['nombre_cat'];
+
 	//Obtener las imagenes del producto
 	$query = $conexion->prepare("SELECT * FROM imgs_prods WHERE id_prod = :id_prod");
 	$query->execute(array(':id_prod' => $id_prod));

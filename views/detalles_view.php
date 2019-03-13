@@ -16,6 +16,10 @@
 
 <?php require("messenger_contact.php") ?>
 
+	<?php if ($nombreCat == "L&aacute;mparas"): ?>
+		<script>var pagId = "lampsDetails";</script>
+	<?php endif ?>
+
 	<header>
 		<?php require 'header.php' ?>
 	</header>
@@ -106,20 +110,66 @@
 							<?= '$'. number_format($detalles['precio'], 2) ?>
 						</div>
 					</div>
-
-					<form class="form_carrito" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-						<input type="hidden" value="<?php echo $id_prod ?>" name="idprod">
-						<input type="hidden" value="<?php echo $user ?>" name="username">
 						
-						<div class="prod-det carrito">
-							<div class="title">
-								<span>Cantidad:</span>
-							</div>
-							<div class="info">
-								<input type="number" name="quantity" min="1" max="10" value="1">
-							</div>
+					<div class="prod-det carrito">
+						<div class="title">
+							<span>Cantidad:</span>
+						</div>
+						<div class="info">
+							<input type="number" id="itemsQty" name="quantity" min="1" max="10" value="1">
+						</div>
+					</div>
+
+					<div id="customText" class="customText active hidden">
+						<div class="title">
+							<span id="customTextBtn">Agregar texto personalizado Gratis!</span>
+							<span id="cancelTextBtn" class="cancel hidden">Cancelar</span>
 						</div>
 
+						<?php for ($i = 1; $i <= 10; $i++): ?>
+							<div id="textGroup<?= $i ?>" class="textsGroup hidden">
+								<div id="showTexts<?= $i ?>" class="lampTitle">
+									<span id="spanTitle<?= $i ?>"><i class="fas fa-plus-circle"></i> Agregar textos a l&aacute;mpara <?= $i ?></span>
+								</div>
+								<div id="textsLamp<?= $i ?>" class="textConts hidden">
+									<hr class="">
+
+									<div class="textCont">
+										<input type="text" class="text">
+										<div class="position">
+											<label for="selectPos">Posici&oacute;n:</label>
+											<select name="selectPos" id="selectPos">
+												<option value="fu">Frente, arriba</option>
+												<option value="fd">Frente, abajo</option>
+												<option value="bu">Atras, arriba</option>
+												<option value="bd">Atras, abajo</option>
+											</select>
+										</div>
+										<div class="options"><i class="fas fa-window-close"></i></div>
+									</div>
+	
+									<div class="textCont">
+										<input type="text" class="text">
+										<div class="position">
+											<label for="selectPos">Posici&oacute;n:</label>
+											<select name="selectPos" id="selectPos">
+												<option value="fu">Frente, arriba</option>
+												<option value="fd">Frente, abajo</option>
+												<option value="bu">Atras, arriba</option>
+												<option value="bd">Atras, abajo</option>
+											</select>
+										</div>
+										<div class="options"><i class="fas fa-window-close"></i></div>
+									</div>
+								</div>
+							</div>
+						<?php endfor ?>
+					</div>
+						
+					<form class="form_carrito" action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+						<input type="hidden" value="<?= $id_prod ?>" name="idprod">
+						<input type="hidden" value="<?= $user ?>" name="username">
+						
 						<?php if ($user != "Invitado"): ?>
 							<div class="carrito-submit-container">
 								<input type="submit" class="carrito-prod" value="Carrito">

@@ -11,6 +11,7 @@
 	display: none !important;
 	margin: 0 !important;
 	padding: 0 !important;
+	transition: all ease 0.3s !important;
 }
 
 a {
@@ -1173,12 +1174,14 @@ figure img {
 	flex-wrap: wrap;
 	margin-top: 20px;
 	width: 100%;
+	transition: all ease 0.3s;
 }
 
 .detalles-prod-info .customText.active {
 	border: 2px solid #ccc;
 	border-radius: 5px;
 	padding: 10px;
+	transition: all ease 0.3s;
 }
 
 .detalles-prod-info .customText .title {
@@ -1210,6 +1213,9 @@ figure img {
 }
 
 .detalles-prod-info .customText .textsGroup .lampTitle {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 	width: 100%;
 	text-align: left;
 	font-size: 1.3em;
@@ -1218,7 +1224,7 @@ figure img {
 }
 
 .detalles-prod-info .customText .textsGroup hr {
-	margin: 10px 0;
+	margin: 5px 0 10px 0;
 	background: #3b74aa;
 }
 
@@ -1233,6 +1239,36 @@ figure img {
 	width: 100%;
 	margin-bottom: 10px;
 	/* background: #000; */
+}
+
+.detalles-prod-info .customText .textInput input:focus {
+	border: none;
+}
+
+.detalles-prod-info .customText .textInput {
+	position: relative;
+}
+
+.detalles-prod-info .customText .letterCounter {
+	position: absolute;
+	top: 18px;
+	right: 15px;
+	border-radius: 10px;
+	background: #206313;
+	color: #fff;
+	font-weight: bold;
+	padding: 5px;
+	transition: all ease 0.3s;
+}
+
+.detalles-prod-info .customText .letterCounter.almost {
+	background: #c49711;
+	transition: all ease 0.3s;
+}
+
+.detalles-prod-info .customText .letterCounter.limit {
+	background: #802626;
+	transition: all ease 0.3s;
 }
 
 .detalles-prod-info .customText .textsGroup .textCont:last-child {
@@ -1266,14 +1302,14 @@ figure img {
 	border: none;
 }
 
-.detalles-prod-info .customText .options {
-	font-size: 2em;
+.detalles-prod-info .customText .optionsText {
+	font-size: 1.5em;
 	color: #aaaaaa;
 	transition: all ease 0.3s;
 	cursor: pointer;
 }
 
-.detalles-prod-info .customText .options:hover {
+.detalles-prod-info .customText .optionsText:hover {
 	color: #db3838;
 }
 

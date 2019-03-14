@@ -378,18 +378,23 @@ if (window.pagId) {
 		customLampsBtn.classList.remove("hidden");
 
 		let itemsQty = document.getElementById("itemsQty"),
+			customText = document.getElementById("customText"),
 			customTextBtn = document.getElementById("customTextBtn"),
 			cancelTextBtn = document.getElementById("cancelTextBtn"),
 			firstTextGroup = document.getElementById("textGroup1"),
 			allTexts = [...document.getElementsByClassName("textsGroup")],
-			titleBtns = [...document.getElementsByClassName("lampTitle")],
-			textConts = [...document.getElementsByClassName("textConts")];
+			titleBtns = [...document.getElementsByClassName("addText")],
+			textConts = [...document.getElementsByClassName("textConts")],
+			optionsText = [...document.getElementsByClassName("optionsText")],
+			textFields = [...document.getElementsByClassName("textInputField")],
+			posSelects = [...document.getElementsByClassName("selectTextPos")],
+			letterCounter = document.getElementById("letterCounter");
 
 		customTextBtn.addEventListener("click", () => {
 			firstTextGroup.classList.remove("hidden");
 			cancelTextBtn.classList.remove("hidden");
 			textConts[0].classList.remove("hidden");
-
+			customText.classList.add("active");
 
 			newQty = itemsQty.value;
 
@@ -410,15 +415,38 @@ if (window.pagId) {
 				idText = idText.substring(idText.length -1);
 				showTextGroup = document.getElementById("textsLamp" + idText);
 				showTextGroup.classList.remove("hidden");
+				showTextOption = document.getElementById("optionText" + idText);
+				showTextOption.classList.remove("hidden");
+			});
+		}
+
+		for (j = 0; j < optionsText.length; j++) {
+			optionsText[j].addEventListener("click", (e) => {
+				idText = e.target.id;
+				idText = idText.substring(idText.length -1);
+				
+				showTextGroup = document.getElementById("textsLamp" + idText);
+				showTextGroup.classList.add("hidden");
+				showTextOption = document.getElementById("optionText" + idText);
+				showTextOption.classList.add("hidden");
 			});
 		}
 
 		cancelTextBtn.addEventListener("click", () => {
 			cancelTextBtn.classList.add("hidden");
+			customText.classList.remove("active");
 
 			for (i = 0; i < allTexts.length; i++) {
 				allTexts[i].classList.add("hidden");
 				textConts[i].classList.add("hidden");
+				if (optionsText[i] != undefined) {
+					optionsText[i].classList.add("hidden");
+				}
+			}
+
+			for (j = 0; j < textFields.length; j++) {
+				textFields[j].value = "";
+				textFields[j].classList.remove("customTextUsed");
 			}
 		});
 
@@ -439,5 +467,49 @@ if (window.pagId) {
 				}
 			}
 		});
+
+		for (field = 0; field < textFields.length; field++) {
+			textFields[field].addEventListener("keyup", (e) => {
+				fieldId = e.target.id;
+				fieldId = fieldId.substring(fieldId.length - 2);
+				fieldValue = e.target;				
+				fieldValueLength = e.target.value.length;
+				counter = document.getElementById("letterCounter" + fieldId);
+
+				if (fieldValueLength <= 30) {
+					counter.innerHTML = fieldValueLength;
+					if (fieldValueLength < 25) {
+						letterCounter.classList.remove("almost")
+						letterCounter.classList.remove("limit")
+					} else if (fieldValueLength >= 25 && fieldValueLength < 30) {
+						letterCounter.classList.remove("limit")
+						letterCounter.classList.add("almost")
+					} else if (fieldValueLength == 30) {
+						letterCounter.classList.remove("almost")
+						letterCounter.classList.add("limit")
+					}
+				} else {
+					fieldValue.value = fieldValue.value.substring(0, 30);
+				}
+
+				if (fieldValueLength > 0) {
+					e.target.classList.add("customTextUsed");
+				} else {
+					e.target.classList.remove("customTextUsed");
+				}
+			});
+
+			posSelects[field].addEventListener("change", (e) => {
+				fieldId = e.target.id;
+				fieldId = fieldId.substring(fieldId.length - 2);
+				lampId = fieldId.substring(0,1)
+				//console.log(e.target.value);
+				//console.log(lampId);
+				
+				
+			});
+		}
+
+
 	}
 }

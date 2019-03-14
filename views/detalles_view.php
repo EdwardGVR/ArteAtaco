@@ -120,7 +120,7 @@
 						</div>
 					</div>
 
-					<div id="customText" class="customText active hidden">
+					<div id="customText" class="customText hidden">
 						<div class="title">
 							<span id="customTextBtn">Agregar texto personalizado Gratis!</span>
 							<span id="cancelTextBtn" class="cancel hidden">Cancelar</span>
@@ -129,38 +129,38 @@
 						<?php for ($i = 1; $i <= 10; $i++): ?>
 							<div id="textGroup<?= $i ?>" class="textsGroup hidden">
 								<div id="showTexts<?= $i ?>" class="lampTitle">
-									<span id="spanTitle<?= $i ?>"><i class="fas fa-plus-circle"></i> Agregar textos a l&aacute;mpara <?= $i ?></span>
+									<span id="spanTitle<?= $i ?>" class="addText">
+										<i class="fas fa-plus-circle"></i> Agregar textos a l&aacute;mpara <?= $i ?>
+									</span>
+									<?php if ($i > 1): ?>
+										<div id="optionText<?= $i ?>" class="optionsText hidden">
+											<i id="spanTitleIcon<?= $i ?>" class="fas fa-window-close"></i>
+										</div>
+									<?php endif ?>
 								</div>
 								<div id="textsLamp<?= $i ?>" class="textConts hidden">
 									<hr class="">
 
-									<div class="textCont">
-										<input type="text" class="text">
-										<div class="position">
-											<label for="selectPos">Posici&oacute;n:</label>
-											<select name="selectPos" id="selectPos">
-												<option value="fu">Frente, arriba</option>
-												<option value="fd">Frente, abajo</option>
-												<option value="bu">Atras, arriba</option>
-												<option value="bd">Atras, abajo</option>
-											</select>
-										</div>
-										<div class="options"><i class="fas fa-window-close"></i></div>
-									</div>
-	
-									<div class="textCont">
-										<input type="text" class="text">
-										<div class="position">
-											<label for="selectPos">Posici&oacute;n:</label>
-											<select name="selectPos" id="selectPos">
-												<option value="fu">Frente, arriba</option>
-												<option value="fd">Frente, abajo</option>
-												<option value="bu">Atras, arriba</option>
-												<option value="bd">Atras, abajo</option>
-											</select>
-										</div>
-										<div class="options"><i class="fas fa-window-close"></i></div>
-									</div>
+                                    <?php for ($j = 1; $j <= 2; $j++): ?>
+                                        <div class="textCont">
+                                            <div class="textInput">
+                                                <input id="textInput<?= $i . $j ?>" type="text" class="textInputField" value="">
+                                                <div id="letterCounter" class="letterCounter">
+                                                    <span id="letterCounter<?= $i . $j ?>">0</span> / 30
+                                                </div>
+                                            </div>
+                                            <div class="position">
+                                                <label for="selectPos">Posici&oacute;n:</label>
+                                                <select id="textPosition<?= $i . $j ?>" name="selectPos" class="selectTextPos">
+                                                    <option value="null" selected disabled>Seleccionar</option>
+                                                    <option value="fu">Frente, arriba</option>
+                                                    <option value="fd">Frente, abajo</option>
+                                                    <option value="bu">Atras, arriba</option>
+                                                    <option value="bd">Atras, abajo</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    <?php endfor ?>
 								</div>
 							</div>
 						<?php endfor ?>

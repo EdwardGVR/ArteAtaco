@@ -149,7 +149,7 @@
                                                     <span id="letterCounter<?= $i . $j ?>">0</span> / 30
                                                 </div>
                                             </div>
-                                            <div class="position">
+                                            <div id="posLamp<?= $i ?>" class="position">
                                                 <label for="selectPos">Posici&oacute;n:</label>
                                                 <select id="textPosition<?= $i . $j ?>" name="selectPos" class="selectTextPos">
                                                     <option value="null" selected disabled>Seleccionar</option>
@@ -169,6 +169,7 @@
 					<form class="form_carrito" action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 						<input type="hidden" value="<?= $id_prod ?>" name="idprod">
 						<input type="hidden" value="<?= $user ?>" name="username">
+						<input type="hidden" value="1" name="quantity" id="qtyForm">
 						
 						<?php if ($user != "Invitado"): ?>
 							<div class="carrito-submit-container">

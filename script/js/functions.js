@@ -378,6 +378,7 @@ if (window.pagId) {
 		customLampsBtn.classList.remove("hidden");
 
 		let itemsQty = document.getElementById("itemsQty"),
+			qtyForm = document.getElementById("qtyForm"),
 			customText = document.getElementById("customText"),
 			customTextBtn = document.getElementById("customTextBtn"),
 			cancelTextBtn = document.getElementById("cancelTextBtn"),
@@ -457,6 +458,8 @@ if (window.pagId) {
 				newQty = 10;
 			}
 
+			qtyForm.value = newQty;
+
 			if (cancelTextBtn.classList[1] != "hidden") {
 				for (let i = 0; i < newQty; i++) {
 					allTexts[i].classList.remove("hidden");
@@ -500,13 +503,38 @@ if (window.pagId) {
 			});
 
 			posSelects[field].addEventListener("change", (e) => {
-				fieldId = e.target.id;
-				fieldId = fieldId.substring(fieldId.length - 2);
-				lampId = fieldId.substring(0,1)
-				//console.log(e.target.value);
-				//console.log(lampId);
+				lampSelectId = e.target.id;
+				lampSelectId = lampSelectId.substring(lampSelectId.length - 2);
+				lampId = lampSelectId.substring(0,1);
+				selectId = lampSelectId.substring(1,2);
 				
+				if (selectId == 1) {
+					pos1 = document.getElementById("textPosition" + lampId + 1);
+					pos1 = "lamp" + lampId + pos1.value;
+					pos = [...document.querySelectorAll("#textPosition" + lampId + "2 option")];
+
+					for (i = 0; i < pos.length; i++) {
+						if (pos[i].value == pos1.substring(pos1.length - 2)) {
+							pos[i].classList.add("hidden");
+						} else {
+							pos[i].classList.remove("hidden");
+						}
+					}
+				}
 				
+				if (selectId == 2) {
+					pos2 = document.getElementById("textPosition" + lampId + 2);
+					pos2 = "lamp" + lampId + pos2.value;
+					pos = [...document.querySelectorAll("#textPosition" + lampId + "1 option")];
+
+					for (i = 0; i < pos.length; i++) {
+						if (pos[i].value == pos2.substring(pos2.length - 2)) {
+							pos[i].classList.add("hidden");
+						} else {
+							pos[i].classList.remove("hidden");
+						}
+					}
+				}								
 			});
 		}
 

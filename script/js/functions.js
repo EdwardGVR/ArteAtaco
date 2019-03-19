@@ -448,6 +448,8 @@ if (window.pagId) {
 			for (j = 0; j < textFields.length; j++) {
 				textFields[j].value = "";
 				textFields[j].classList.remove("customTextUsed");
+				posSelects[j].value = "null";
+				posSelects[j].setAttribute("disabled", "");
 			}
 		});
 
@@ -478,6 +480,7 @@ if (window.pagId) {
 				fieldValue = e.target;				
 				fieldValueLength = e.target.value.length;
 				counter = document.getElementById("letterCounter" + fieldId);
+				select = document.getElementById("textPosition" + fieldId);
 
 				if (fieldValueLength <= 30) {
 					counter.innerHTML = fieldValueLength;
@@ -494,11 +497,14 @@ if (window.pagId) {
 				} else {
 					fieldValue.value = fieldValue.value.substring(0, 30);
 				}
-
+				
 				if (fieldValueLength > 0) {
 					e.target.classList.add("customTextUsed");
+					select.removeAttribute("disabled");
 				} else {
 					e.target.classList.remove("customTextUsed");
+					select.setAttribute("disabled", "");
+					select.value = "null";
 				}
 			});
 

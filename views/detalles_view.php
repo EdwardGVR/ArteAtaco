@@ -151,7 +151,7 @@
                                             </div>
                                             <div id="posLamp<?= $i ?>" class="position">
                                                 <label for="selectPos">Posici&oacute;n:</label>
-                                                <select id="textPosition<?= $i . $j ?>" name="selectPos" class="selectTextPos">
+                                                <select id="textPosition<?= $i . $j ?>" name="selectPos" class="selectTextPos" disabled>
                                                     <option value="null" selected disabled>Seleccionar</option>
                                                     <option value="fu">Frente, arriba</option>
                                                     <option value="fd">Frente, abajo</option>

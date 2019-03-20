@@ -389,7 +389,8 @@ if (window.pagId) {
 			optionsText = [...document.getElementsByClassName("optionsText")],
 			textFields = [...document.getElementsByClassName("textInputField")],
 			posSelects = [...document.getElementsByClassName("selectTextPos")],
-			letterCounter = document.getElementById("letterCounter");
+			letterCounterNums = [...document.getElementsByClassName("letterCounterNum")],
+			allPos = [...document.querySelectorAll(".selectTextPos option")];
 
 		customTextBtn.addEventListener("click", () => {
 			firstTextGroup.classList.remove("hidden");
@@ -450,6 +451,10 @@ if (window.pagId) {
 				textFields[j].classList.remove("customTextUsed");
 				posSelects[j].value = "null";
 				posSelects[j].setAttribute("disabled", "");
+				for (let p = 0; p < allPos.length; p++) {
+					allPos[p].classList.remove("hidden");
+				}
+				letterCounterNums[j].innerHTML = 0;
 			}
 		});
 
@@ -479,6 +484,8 @@ if (window.pagId) {
 				fieldId = fieldId.substring(fieldId.length - 2);
 				fieldValue = e.target;				
 				fieldValueLength = e.target.value.length;
+
+				letterCounter = document.getElementById("letterCounterCont" + fieldId);
 				counter = document.getElementById("letterCounter" + fieldId);
 				select = document.getElementById("textPosition" + fieldId);
 
@@ -503,8 +510,8 @@ if (window.pagId) {
 					select.removeAttribute("disabled");
 				} else {
 					e.target.classList.remove("customTextUsed");
-					select.setAttribute("disabled", "");
 					select.value = "null";
+					select.setAttribute("disabled", "");
 				}
 			});
 
@@ -525,6 +532,7 @@ if (window.pagId) {
 						} else {
 							pos[i].classList.remove("hidden");
 						}
+
 					}
 				}
 				

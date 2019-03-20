@@ -145,8 +145,8 @@
                                         <div class="textCont">
                                             <div class="textInput">
                                                 <input id="textInput<?= $i . $j ?>" type="text" class="textInputField" value="">
-                                                <div id="letterCounter" class="letterCounter">
-                                                    <span id="letterCounter<?= $i . $j ?>">0</span> / 30
+                                                <div id="letterCounterCont<?= $i . $j ?>" class="letterCounter">
+                                                    <span id="letterCounter<?= $i . $j ?>" class="letterCounterNum">0</span> / 30
                                                 </div>
                                             </div>
                                             <div id="posLamp<?= $i ?>" class="position">

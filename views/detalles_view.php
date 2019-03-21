@@ -142,7 +142,7 @@
 									<hr class="">
 
                                     <?php for ($j = 1; $j <= 2; $j++): ?>
-                                        <div class="textCont">
+                                        <div id="textContainer<?= $i . $j ?>" class="textCont">
                                             <div class="textInput">
                                                 <input id="textInput<?= $i . $j ?>" type="text" class="textInputField" value="">
                                                 <div id="letterCounterCont<?= $i . $j ?>" class="letterCounter">

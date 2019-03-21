@@ -524,10 +524,8 @@ if (window.pagId) {
 				}
 				
 				if (fieldValueLength > 0) {
-					e.target.classList.add("customTextUsed");
 					select.removeAttribute("disabled");
 				} else {
-					e.target.classList.remove("customTextUsed");
 					select.value = "null";
 					select.setAttribute("disabled", "");
 
@@ -542,7 +540,6 @@ if (window.pagId) {
 							} else {
 								pos[i].classList.remove("hidden");
 							}
-	
 						}
 					}
 					
@@ -595,7 +592,9 @@ if (window.pagId) {
 							pos[i].classList.remove("hidden");
 						}
 					}
-				}								
+				}
+				
+				
 			});
 		}
 

@@ -431,6 +431,22 @@ if (window.pagId) {
 				showTextGroup.classList.add("hidden");
 				showTextOption = document.getElementById("optionText" + idText);
 				showTextOption.classList.add("hidden");
+
+				cancelInputs = document.querySelectorAll("#textsLamp" + idText + " .textInputField");
+				cancelSelects = document.querySelectorAll("#textsLamp" + idText + " .selectTextPos");
+				cancelCounters = document.querySelectorAll("#textsLamp" + idText + " .letterCounterNum");
+				resetPosOptions = document.querySelectorAll("#textsLamp" + idText + " option");
+
+				for (let i = 0; i < cancelInputs.length; i++) {
+					cancelInputs[i].value = "";
+					cancelSelects[i].value = "null";
+					cancelSelects[i].setAttribute("disabled", "");
+					cancelCounters[i].innerHTML = 0;
+				}
+
+				for (let positions = 0; positions < resetPosOptions.length; positions ++) {
+					resetPosOptions[positions].classList.remove("hidden");
+				}
 			});
 		}
 
@@ -484,6 +500,8 @@ if (window.pagId) {
 				fieldId = fieldId.substring(fieldId.length - 2);
 				fieldValue = e.target;				
 				fieldValueLength = e.target.value.length;
+				lampId = fieldId.substring(0,1);
+				selectId = fieldId.substring(1,2);
 
 				letterCounter = document.getElementById("letterCounterCont" + fieldId);
 				counter = document.getElementById("letterCounter" + fieldId);
@@ -512,6 +530,35 @@ if (window.pagId) {
 					e.target.classList.remove("customTextUsed");
 					select.value = "null";
 					select.setAttribute("disabled", "");
+
+					if (selectId == 1) {
+						pos1 = document.getElementById("textPosition" + lampId + 1);
+						pos1 = "lamp" + lampId + pos1.value;
+						pos = [...document.querySelectorAll("#textPosition" + lampId + "2 option")];
+	
+						for (i = 0; i < pos.length; i++) {
+							if (pos[i].value == pos1.substring(pos1.length - 2)) {
+								pos[i].classList.add("hidden");
+							} else {
+								pos[i].classList.remove("hidden");
+							}
+	
+						}
+					}
+					
+					if (selectId == 2) {
+						pos2 = document.getElementById("textPosition" + lampId + 2);
+						pos2 = "lamp" + lampId + pos2.value;
+						pos = [...document.querySelectorAll("#textPosition" + lampId + "1 option")];
+	
+						for (i = 0; i < pos.length; i++) {
+							if (pos[i].value == pos2.substring(pos2.length - 2)) {
+								pos[i].classList.add("hidden");
+							} else {
+								pos[i].classList.remove("hidden");
+							}
+						}
+					}			
 				}
 			});
 

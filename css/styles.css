@@ -1322,9 +1322,9 @@ figure img {
 
 .detalles-prod-info .customText .optionsBtns {
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-around;
 	align-items: center;
-	width: 100px;
+	width: 120px;
 	border-radius: 5px;
 	box-shadow: inset 0 2px 4px #000;
 }
@@ -1346,8 +1346,13 @@ figure img {
 	opacity: 1;
 }
 
-.detalles-prod-info .customText .optionsBtns.active i[class*="check"] {
+.detalles-prod-info .customText .optionsBtns.active i[class*="check"],
+.detalles-prod-info .customText .optionsBtns.active i[class*="save"] {
 	color: #1ED852;
+}
+
+.detalles-prod-info .customText .optionsBtns.active i[class*="pencil"] {
+	color: #003973;
 }
 
 .detalles-prod-info .customText .optionsBtns.active i[class*="times"] {

@@ -126,11 +126,11 @@
 							<span id="cancelTextBtn" class="cancel hidden">Cancelar todos</span>
 						</div>
 
-						<?php for ($i = 1; $i <= 10; $i++): ?>
+						<?php for ($i = 0; $i < 10; $i++): ?>
 							<div id="textGroup<?= $i ?>" class="textsGroup hidden">
 								<div id="showTexts<?= $i ?>" class="lampTitle">
 									<span id="spanTitle<?= $i ?>" class="addText">
-										<i class="fas fa-plus-circle"></i> Agregar textos a l&aacute;mpara <?= $i ?>
+										<i class="fas fa-plus-circle"></i> Agregar textos a l&aacute;mpara <?= $i + 1 ?>
 									</span>
 									<?php if ($i > 1): ?>
 										<div id="optionText<?= $i ?>" class="optionsText hidden">
@@ -160,8 +160,10 @@
                                                 </select>
                                             </div>
 											<div id="optionsBtns<?= $i . $j ?>" class="optionsBtns">
-												<i class="fa fa-check-circle"></i>
-												<i class="fa fa-times-circle"></i>
+												<i id="saveText<?= $i . $j ?>" class="fa fa-check-circle saveCustomText"></i>
+												<i id="editText<?= $i . $j ?>" class="fas fa-pencil-alt editCustomText hidden"></i>
+												<i id="saveEditedText<?= $i . $j ?>" class="fas fa-save saveEditedText hidden"></i>
+												<i id="cancelText<?= $i . $j ?>" class="fa fa-times-circle cancelCustomText"></i>
 											</div>
                                         </div>
                                     <?php endfor ?>

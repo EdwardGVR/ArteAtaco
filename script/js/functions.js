@@ -390,7 +390,10 @@ if (window.pagId) {
 			textFields = [...document.getElementsByClassName("textInputField")],
 			posSelects = [...document.getElementsByClassName("selectTextPos")],
 			letterCounterNums = [...document.getElementsByClassName("letterCounterNum")],
-			allPos = [...document.querySelectorAll(".selectTextPos option")];
+			allPos = [...document.querySelectorAll(".selectTextPos option")],
+			allOptionsBtns = [...document.getElementsByClassName("optionsBtns")],
+			allSaveCustomText = [...document.getElementsByClassName("saveCustomText")],
+			allCancelCustomText = [...document.getElementsByClassName("cancelCustomText")];
 
 		customTextBtn.addEventListener("click", () => {
 			firstTextGroup.classList.remove("hidden");
@@ -471,6 +474,8 @@ if (window.pagId) {
 					allPos[p].classList.remove("hidden");
 				}
 				letterCounterNums[j].innerHTML = 0;
+				allOptionsBtns[j].classList.remove("active");
+
 			}
 		});
 
@@ -570,8 +575,9 @@ if (window.pagId) {
 				lampId = lampSelectId.substring(0,1);
 				selectId = lampSelectId.substring(1,2);
 				optionsBtns = document.getElementById("optionsBtns" + lampSelectId);
+				textInput = document.getElementById("textInput" + lampSelectId);
 				
-				if (e.target.value != "null") {
+				if (e.target.value != "null" && textInput.value != "") {
 					optionsBtns.classList.add("active");
 				} else {
 					optionsBtns.classList.remove("active");
@@ -608,6 +614,70 @@ if (window.pagId) {
 			});
 		}
 
+		for (btn = 0; btn < allSaveCustomText.length; btn ++) {
+			allSaveCustomText[btn].addEventListener("click", (e) => {
+				id = e.target.id;
+				id = id.substring(id.length -2);
+				active = (e.target.parentNode.classList[1] == "active") ? true : false;
+				
+				if (active) {
+					text = document.getElementById("textInput" + id);
+					select = document.getElementById("textPosition" + id);
+					editBtn = document.getElementById("editText" + id);
 
+					e.target.classList.add("hidden");
+					editBtn.classList.remove("hidden");
+					text.setAttribute("disabled", "");
+					select.setAttribute("disabled", "");
+
+					editBtn.addEventListener("click", () => {
+						saveEditBtn = document.getElementById("saveEditedText" + id);
+						text = document.getElementById("textInput" + id);
+						select = document.getElementById("textPosition" + id);
+
+						editBtn.classList.add("hidden");
+						saveEditBtn.classList.remove("hidden");
+						text.removeAttribute("disabled");
+						select.removeAttribute("disabled");
+
+						saveEditBtn.addEventListener("click", () => {
+							saveEditBtn.classList.add("hidden");
+							editBtn.classList.remove("hidden");
+							text.setAttribute("disabled", "");
+							select.setAttribute("disabled", "");
+						});
+					});
+				}
+
+				
+			});
+			
+			allCancelCustomText[btn].addEventListener("click", (e) => {
+				id = e.target.id;
+				id = id.substring(id.length - 2);
+				active = (e.target.parentNode.classList[1] == "active") ? true : false;
+
+				if (active) {
+					text = document.getElementById("textInput" + id);
+					select = document.getElementById("textPosition" + id);
+					editBtn = document.getElementById("editText" + id);
+					saveBtn = document.getElementById("saveText" + id);
+					letterCounter = document.getElementById("letterCounter" + id);
+					optionsBtns = document.getElementById("optionsBtns" + id);
+					saveEditBtn = document.getElementById("saveEditedText" + id);
+					
+					text.value = "";
+					text.removeAttribute("disabled");
+					select.value = "null";
+					select.setAttribute("disabled", "");
+					letterCounter.innerHTML = 0;
+					optionsBtns.classList.remove("active");
+					editBtn.classList.add("hidden");
+					saveEditBtn.classList.add("hidden");
+					saveBtn.classList.remove("hidden");
+				}
+	
+			});
+		}
 	}
 }

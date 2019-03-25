@@ -932,7 +932,7 @@ figure img {
 
 .contenedor_detalles {
 	padding: 20px 5px;
-	min-width: 515px;
+	min-width: 1080px;
 	background: none;
 }
 
@@ -1182,6 +1182,7 @@ figure img {
 	border-radius: 5px;
 	padding: 10px;
 	transition: all ease 0.3s;
+	min-width: 540px;
 }
 
 .detalles-prod-info .customText .title {
@@ -1245,6 +1246,10 @@ figure img {
 	border: none;
 }
 
+.detalles-prod-info .customText .textInputField {
+	width: 300px;
+}
+
 .detalles-prod-info .customText .textInput {
 	position: relative;
 }
@@ -1252,7 +1257,7 @@ figure img {
 .detalles-prod-info .customText .letterCounter {
 	position: absolute;
 	top: 18px;
-	right: 15px;
+	right: 10px;
 	border-radius: 10px;
 	background: #206313;
 	color: #fff;
@@ -1289,6 +1294,7 @@ figure img {
 	padding: 0 10px;
 	height: 40px;
 	width: 200px;
+	margin: 0 10px;
 	/* background: #000; */
 }
 
@@ -1312,6 +1318,40 @@ figure img {
 
 .detalles-prod-info .customText .optionsText:hover {
 	color: #db3838;
+}
+
+.detalles-prod-info .customText .optionsBtns {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100px;
+	border-radius: 5px;
+	box-shadow: inset 0 2px 4px #000;
+}
+
+.detalles-prod-info .customText .optionsBtns i {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 40px;
+	height: 40px;
+	font-size: 2em;
+	cursor: pointer;
+	opacity: 0.4;
+	color: #777777;
+	transition: all ease 0.3s;
+}
+
+.detalles-prod-info .customText .optionsBtns.active i:hover {
+	opacity: 1;
+}
+
+.detalles-prod-info .customText .optionsBtns.active i[class*="check"] {
+	color: #1ED852;
+}
+
+.detalles-prod-info .customText .optionsBtns.active i[class*="times"] {
+	color: #EC7070;
 }
 
 h2.item,

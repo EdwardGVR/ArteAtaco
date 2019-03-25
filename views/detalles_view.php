@@ -123,7 +123,7 @@
 					<div id="customText" class="customText hidden">
 						<div class="title">
 							<span id="customTextBtn">Agregar texto personalizado Gratis!</span>
-							<span id="cancelTextBtn" class="cancel hidden">Cancelar</span>
+							<span id="cancelTextBtn" class="cancel hidden">Cancelar todos</span>
 						</div>
 
 						<?php for ($i = 1; $i <= 10; $i++): ?>
@@ -159,6 +159,10 @@
                                                     <option value="bd">Atras, abajo</option>
                                                 </select>
                                             </div>
+											<div id="optionsBtns<?= $i . $j ?>" class="optionsBtns">
+												<i class="fa fa-check-circle"></i>
+												<i class="fa fa-times-circle"></i>
+											</div>
                                         </div>
                                     <?php endfor ?>
 								</div>

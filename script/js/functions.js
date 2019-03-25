@@ -506,7 +506,8 @@ if (window.pagId) {
 				letterCounter = document.getElementById("letterCounterCont" + fieldId);
 				counter = document.getElementById("letterCounter" + fieldId);
 				select = document.getElementById("textPosition" + fieldId);
-
+				optionsBtns = document.getElementById("optionsBtns" + fieldId);
+				
 				if (fieldValueLength <= 30) {
 					counter.innerHTML = fieldValueLength;
 					if (fieldValueLength < 25) {
@@ -525,9 +526,13 @@ if (window.pagId) {
 				
 				if (fieldValueLength > 0) {
 					select.removeAttribute("disabled");
+					if (select.value != "null") {
+						optionsBtns.classList.add("active");
+					}
 				} else {
-					select.value = "null";
-					select.setAttribute("disabled", "");
+					// select.value = "null";
+					// select.setAttribute("disabled", "");
+					optionsBtns.classList.remove("active");
 
 					if (selectId == 1) {
 						pos1 = document.getElementById("textPosition" + lampId + 1);
@@ -564,6 +569,13 @@ if (window.pagId) {
 				lampSelectId = lampSelectId.substring(lampSelectId.length - 2);
 				lampId = lampSelectId.substring(0,1);
 				selectId = lampSelectId.substring(1,2);
+				optionsBtns = document.getElementById("optionsBtns" + lampSelectId);
+				
+				if (e.target.value != "null") {
+					optionsBtns.classList.add("active");
+				} else {
+					optionsBtns.classList.remove("active");
+				}
 				
 				if (selectId == 1) {
 					pos1 = document.getElementById("textPosition" + lampId + 1);
@@ -593,8 +605,6 @@ if (window.pagId) {
 						}
 					}
 				}
-				
-				
 			});
 		}
 

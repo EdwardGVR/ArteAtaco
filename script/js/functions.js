@@ -630,7 +630,11 @@ if (window.pagId) {
 					text.setAttribute("disabled", "");
 					select.setAttribute("disabled", "");
 
-					editBtn.addEventListener("click", () => {
+					editBtn.addEventListener("click", (e) => {
+						id = e.target.id;
+						id = id.substring(id.length -2);
+
+						editBtn = document.getElementById("editText" + id);
 						saveEditBtn = document.getElementById("saveEditedText" + id);
 						text = document.getElementById("textInput" + id);
 						select = document.getElementById("textPosition" + id);
@@ -640,7 +644,15 @@ if (window.pagId) {
 						text.removeAttribute("disabled");
 						select.removeAttribute("disabled");
 
-						saveEditBtn.addEventListener("click", () => {
+						saveEditBtn.addEventListener("click", (e) => {
+							id = e.target.id;
+							id = id.substring(id.length -2);
+
+							editBtn = document.getElementById("editText" + id);
+							saveEditBtn = document.getElementById("saveEditedText" + id);
+							text = document.getElementById("textInput" + id);
+							select = document.getElementById("textPosition" + id);
+							
 							saveEditBtn.classList.add("hidden");
 							editBtn.classList.remove("hidden");
 							text.setAttribute("disabled", "");
@@ -665,7 +677,35 @@ if (window.pagId) {
 					letterCounter = document.getElementById("letterCounter" + id);
 					optionsBtns = document.getElementById("optionsBtns" + id);
 					saveEditBtn = document.getElementById("saveEditedText" + id);
+					posOptions = document.querySelectorAll("#textPosition" + id + " option");
+
+					idFull = select.id;
+					idFull = idFull.substring(idFull.length -2);
+					idLamp = idFull.substring(0, 1);
+					idSelect = idFull.substring(1, 2);
 					
+					switch (idSelect) {
+						case "1":
+							pos = [...document.querySelectorAll("#textPosition" + lampId + "2 option")];
+		
+							for (i = 0; i < pos.length; i++) {
+								pos[i].classList.remove("hidden");
+							}
+							break;
+						
+						case "2":
+							pos = [...document.querySelectorAll("#textPosition" + lampId + "1 option")];
+		
+							for (i = 0; i < pos.length; i++) {
+								pos[i].classList.remove("hidden");
+							}
+							break;
+						
+						default:
+							console.error("No se ejecutaron las acciones del switch");
+							break;
+					}
+
 					text.value = "";
 					text.removeAttribute("disabled");
 					select.value = "null";

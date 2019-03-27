@@ -132,11 +132,9 @@
 									<span id="spanTitle<?= $i ?>" class="addText">
 										<i class="fas fa-plus-circle"></i> Agregar textos a l&aacute;mpara <?= $i + 1 ?>
 									</span>
-									<?php if ($i > 1): ?>
 										<div id="optionText<?= $i ?>" class="optionsText hidden">
 											<i id="spanTitleIcon<?= $i ?>" class="fas fa-window-close"></i>
 										</div>
-									<?php endif ?>
 								</div>
 								<div id="textsLamp<?= $i ?>" class="textConts hidden">
 									<hr class="">
@@ -149,7 +147,7 @@
                                                     <span id="letterCounter<?= $i . $j ?>" class="letterCounterNum">0</span> / 30
                                                 </div>
                                             </div>
-                                            <div id="posLamp<?= $i ?>" class="position">
+                                            <div id="posLamp<?= $i . $j ?>" class="position">
                                                 <label for="selectPos">Posici&oacute;n:</label>
                                                 <select id="textPosition<?= $i . $j ?>" name="selectPos" class="selectTextPos" disabled>
                                                     <option value="null" selected disabled>Seleccionar</option>

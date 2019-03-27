@@ -382,7 +382,8 @@ if (window.pagId) {
 			customText = document.getElementById("customText"),
 			customTextBtn = document.getElementById("customTextBtn"),
 			cancelTextBtn = document.getElementById("cancelTextBtn"),
-			firstTextGroup = document.getElementById("textGroup1"),
+			firstTextGroup = document.getElementById("textGroup0"),
+			firstCancelLamp = document.getElementById("optionText0")
 			allTexts = [...document.getElementsByClassName("textsGroup")],
 			titleBtns = [...document.getElementsByClassName("addText")],
 			textConts = [...document.getElementsByClassName("textConts")],
@@ -397,6 +398,7 @@ if (window.pagId) {
 
 		customTextBtn.addEventListener("click", () => {
 			firstTextGroup.classList.remove("hidden");
+			firstCancelLamp.classList.remove("hidden");
 			cancelTextBtn.classList.remove("hidden");
 			textConts[0].classList.remove("hidden");
 			customText.classList.add("active");
@@ -439,9 +441,16 @@ if (window.pagId) {
 				cancelSelects = document.querySelectorAll("#textsLamp" + idText + " .selectTextPos");
 				cancelCounters = document.querySelectorAll("#textsLamp" + idText + " .letterCounterNum");
 				resetPosOptions = document.querySelectorAll("#textsLamp" + idText + " option");
+				cancelOneTextBtn = document.querySelectorAll("#textsLamp" + idText + " i[id*=\"cancelText\"]");
+				optionsText = document.querySelectorAll("div[id*=\"optionsBtns" + idText + "\"]");
+				editTextBtns = document.querySelectorAll("#textsLamp" + idText + " i[id*=\"editText\"]");
+				saveEditedBtns = document.querySelectorAll("#textsLamp" + idText + " i[id*=\"saveEditedText\"]");
+				saveTextBtns = document.querySelectorAll("#textsLamp" + idText + " i[id*=\"saveText\"]");
 
 				for (let i = 0; i < cancelInputs.length; i++) {
 					cancelInputs[i].value = "";
+					cancelInputs[i].removeAttribute("disabled");
+
 					cancelSelects[i].value = "null";
 					cancelSelects[i].setAttribute("disabled", "");
 					cancelCounters[i].innerHTML = 0;
@@ -450,32 +459,56 @@ if (window.pagId) {
 				for (let positions = 0; positions < resetPosOptions.length; positions ++) {
 					resetPosOptions[positions].classList.remove("hidden");
 				}
+
+				for (let c = 0; c < cancelOneTextBtn.length; c ++) {
+					cancelOneTextBtn[c].classList.remove("cancelActive");
+					optionsText[c].classList.remove("active");
+					editTextBtns[c].classList.add("hidden");
+					saveEditedBtns[c].classList.add("hidden");
+					saveTextBtns[c].classList.remove("hidden");
+				}
 			});
 		}
 
 		cancelTextBtn.addEventListener("click", () => {
 			cancelTextBtn.classList.add("hidden");
 			customText.classList.remove("active");
+			cancelThisLamp = document.getElementsByClassName("optionsText");
+			editTextBtns = document.querySelectorAll(".optionsBtns i[id*=\"editText\"]");
+			saveEditedTextBtns = document.querySelectorAll(".optionsBtns i[id*=\"saveEditedText\"]");
+			saveTextBtns = document.querySelectorAll(".optionsBtns i[id*=\"saveText\"]");
+			cancelTextBtns = document.querySelectorAll(".optionsBtns i[id*=\"cancelText\"]");
 
 			for (i = 0; i < allTexts.length; i++) {
 				allTexts[i].classList.add("hidden");
 				textConts[i].classList.add("hidden");
-				if (optionsText[i] != undefined) {
-					optionsText[i].classList.add("hidden");
+				
+				if (cancelThisLamp[i] != undefined) {
+					cancelThisLamp[i].classList.add("hidden");
 				}
 			}
 
 			for (j = 0; j < textFields.length; j++) {
 				textFields[j].value = "";
+				textFields[j].removeAttribute("disabled");
 				textFields[j].classList.remove("customTextUsed");
 				posSelects[j].value = "null";
 				posSelects[j].setAttribute("disabled", "");
+
 				for (let p = 0; p < allPos.length; p++) {
 					allPos[p].classList.remove("hidden");
 				}
+
 				letterCounterNums[j].innerHTML = 0;
 				allOptionsBtns[j].classList.remove("active");
 
+			}
+
+			for (k = 0; k < editTextBtns.length; k ++) {
+				editTextBtns[k].classList.add("hidden");
+				saveEditedTextBtns[k].classList.add("hidden");
+				saveTextBtns[k].classList.remove("hidden");
+				cancelTextBtns[k].classList.remove("cancelActive");
 			}
 		});
 
@@ -512,6 +545,7 @@ if (window.pagId) {
 				counter = document.getElementById("letterCounter" + fieldId);
 				select = document.getElementById("textPosition" + fieldId);
 				optionsBtns = document.getElementById("optionsBtns" + fieldId);
+				cancelText = document.getElementById("cancelText" + fieldId);
 				
 				if (fieldValueLength <= 30) {
 					counter.innerHTML = fieldValueLength;
@@ -534,10 +568,58 @@ if (window.pagId) {
 					if (select.value != "null") {
 						optionsBtns.classList.add("active");
 					}
+
+					cancelText.classList.add("cancelActive");
+
+					cancelText.addEventListener("click", (e) => {
+						id = e.target.id;
+						id = id.substring(id.length - 2);
+
+						text = document.getElementById("textInput" + id);
+						select = document.getElementById("textPosition" + id);
+						letterCounter = document.getElementById("letterCounter" + id);
+						optionsBtns = document.getElementById("optionsBtns" + id);
+						cancelText = document.getElementById("cancelText" + id);
+
+						idFull = select.id;
+						idFull = idFull.substring(idFull.length -2);
+						idLamp = idFull.substring(0, 1);
+						idSelect = idFull.substring(1, 2);
+						
+						switch (idSelect) {
+							case "1":
+								pos = [...document.querySelectorAll("#textPosition" + lampId + "2 option")];
+								for (i = 0; i < pos.length; i++) {
+									pos[i].classList.remove("hidden");
+								}
+								break;
+							
+							case "2":
+								pos = [...document.querySelectorAll("#textPosition" + lampId + "1 option")];
+								for (i = 0; i < pos.length; i++) {
+									pos[i].classList.remove("hidden");
+								}
+								break;
+							
+							default:
+								console.error("No se ejecutaron las acciones del switch");
+								break;
+						}
+
+						text.value = "";
+						text.removeAttribute("disabled");
+						select.value = "null";
+						select.setAttribute("disabled", "");
+						letterCounter.innerHTML = 0;
+
+						cancelText.classList.remove("cancelActive");
+					});
+
 				} else {
-					// select.value = "null";
-					// select.setAttribute("disabled", "");
+					select.value = "null";
+					select.setAttribute("disabled", "");
 					optionsBtns.classList.remove("active");
+					cancelText.classList.remove("cancelActive");
 
 					if (selectId == 1) {
 						pos1 = document.getElementById("textPosition" + lampId + 1);

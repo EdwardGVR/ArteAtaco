@@ -1201,7 +1201,14 @@ figure img {
 }
 
 .detalles-prod-info .customText .title span.cancel {
-	background: #ad2f2f;
+	background: #cccccc;
+	color: #000;
+	transition: all ease 0.3s;
+}
+
+.detalles-prod-info .customText .title span.cancel:hover {
+	background: #640000;
+	color: #ffffff;
 }
 
 .detalles-prod-info .customText .textsGroup {
@@ -1314,7 +1321,7 @@ figure img {
 
 .detalles-prod-info .customText .optionsText {
 	font-size: 1.5em;
-	color: #aaaaaa;
+	color: #960f0f;
 	transition: all ease 0.3s;
 	cursor: pointer;
 }
@@ -1339,10 +1346,14 @@ figure img {
 	width: 40px;
 	height: 40px;
 	font-size: 2em;
-	cursor: pointer;
 	opacity: 0.4;
 	color: #777777;
 	transition: all ease 0.3s;
+}
+
+.detalles-prod-info .customText .optionsBtns.active i,
+.detalles-prod-info .customText .optionsBtns i[class*="cancelActive"] {
+	cursor: pointer;
 }
 
 .detalles-prod-info .customText .optionsBtns.active i:hover,

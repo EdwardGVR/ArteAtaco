@@ -123,7 +123,7 @@
 					<div id="customText" class="customText hidden">
 						<div class="title">
 							<span id="customTextBtn">Agregar texto personalizado Gratis!</span>
-							<span id="cancelTextBtn" class="cancel hidden">Cancelar todos</span>
+							<span id="cancelTextBtn" class="cancel hidden">Borrar todos los textos</span>
 						</div>
 
 						<?php for ($i = 0; $i < 10; $i++): ?>

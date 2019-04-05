@@ -374,6 +374,61 @@ if (window.pagId) {
 	} else if (pagId == "lampsDetails") {
 		console.info("Pagina de detalles de lamparas");
 
+		function resetOneLampTexts (idText) {
+			showTextGroup = document.getElementById("textsLamp" + idText);
+			showTextGroup.classList.add("hidden");
+
+			showTextOption = document.getElementById("optionText" + idText);
+			showTextOption.classList.add("hidden");
+
+			cancelInputs = document.querySelectorAll("#textsLamp" + idText + " .textInputField");
+			cancelSelects = document.querySelectorAll("#textsLamp" + idText + " .selectTextPos");
+			cancelCounters = document.querySelectorAll("#textsLamp" + idText + " .letterCounterNum");
+			resetPosOptions = document.querySelectorAll("#textsLamp" + idText + " option");
+			cancelOneTextBtn = document.querySelectorAll("#textsLamp" + idText + " i[id*=\"cancelText\"]");
+			optionsText = document.querySelectorAll("div[id*=\"optionsBtns" + idText + "\"]");
+			editTextBtns = document.querySelectorAll("#textsLamp" + idText + " i[id*=\"editText\"]");
+			saveEditedBtns = document.querySelectorAll("#textsLamp" + idText + " i[id*=\"saveEditedText\"]");
+			saveTextBtns = document.querySelectorAll("#textsLamp" + idText + " i[id*=\"saveText\"]");
+
+			for (let i = 0; i < cancelInputs.length; i++) {
+				cancelInputs[i].value = "";
+				cancelInputs[i].removeAttribute("disabled");
+
+				cancelSelects[i].value = "null";
+				cancelSelects[i].setAttribute("disabled", "");
+
+				cancelCounters[i].innerHTML = 0;
+			}
+
+			for (let positions = 0; positions < resetPosOptions.length; positions ++) {
+				resetPosOptions[positions].classList.remove("hidden");
+			}
+
+			for (let c = 0; c < cancelOneTextBtn.length; c ++) {
+				cancelOneTextBtn[c].classList.remove("cancelActive");
+				optionsText[c].classList.remove("active");
+				editTextBtns[c].classList.add("hidden");
+				saveEditedBtns[c].classList.add("hidden");
+				saveTextBtns[c].classList.remove("hidden");
+			}
+		}
+
+		function setTextsArray (action, idText) {
+			switch (action) {
+				case "add":
+					
+					break;
+				
+				case "remove":
+					
+					break;
+			
+				default:
+					break;
+			}
+		}
+
 		let customLampsBtn = document.getElementById("customText");
 		customLampsBtn.classList.remove("hidden");
 
@@ -396,12 +451,15 @@ if (window.pagId) {
 			allSaveCustomText = [...document.getElementsByClassName("saveCustomText")],
 			allCancelCustomText = [...document.getElementsByClassName("cancelCustomText")];
 
+		// Boton de agregar textos gratis
 		customTextBtn.addEventListener("click", () => {
 			firstTextGroup.classList.remove("hidden");
 			firstCancelLamp.classList.remove("hidden");
 			cancelTextBtn.classList.remove("hidden");
 			textConts[0].classList.remove("hidden");
 			customText.classList.add("active");
+
+			let textArr = [];
 
 			newQty = itemsQty.value;
 
@@ -427,49 +485,17 @@ if (window.pagId) {
 			});
 		}
 
+		// Botones de cancelar los dos textos de una lampara
 		for (j = 0; j < optionsText.length; j++) {
 			optionsText[j].addEventListener("click", (e) => {
 				idText = e.target.id;
 				idText = idText.substring(idText.length -1);
 				
-				showTextGroup = document.getElementById("textsLamp" + idText);
-				showTextGroup.classList.add("hidden");
-				showTextOption = document.getElementById("optionText" + idText);
-				showTextOption.classList.add("hidden");
-
-				cancelInputs = document.querySelectorAll("#textsLamp" + idText + " .textInputField");
-				cancelSelects = document.querySelectorAll("#textsLamp" + idText + " .selectTextPos");
-				cancelCounters = document.querySelectorAll("#textsLamp" + idText + " .letterCounterNum");
-				resetPosOptions = document.querySelectorAll("#textsLamp" + idText + " option");
-				cancelOneTextBtn = document.querySelectorAll("#textsLamp" + idText + " i[id*=\"cancelText\"]");
-				optionsText = document.querySelectorAll("div[id*=\"optionsBtns" + idText + "\"]");
-				editTextBtns = document.querySelectorAll("#textsLamp" + idText + " i[id*=\"editText\"]");
-				saveEditedBtns = document.querySelectorAll("#textsLamp" + idText + " i[id*=\"saveEditedText\"]");
-				saveTextBtns = document.querySelectorAll("#textsLamp" + idText + " i[id*=\"saveText\"]");
-
-				for (let i = 0; i < cancelInputs.length; i++) {
-					cancelInputs[i].value = "";
-					cancelInputs[i].removeAttribute("disabled");
-
-					cancelSelects[i].value = "null";
-					cancelSelects[i].setAttribute("disabled", "");
-					cancelCounters[i].innerHTML = 0;
-				}
-
-				for (let positions = 0; positions < resetPosOptions.length; positions ++) {
-					resetPosOptions[positions].classList.remove("hidden");
-				}
-
-				for (let c = 0; c < cancelOneTextBtn.length; c ++) {
-					cancelOneTextBtn[c].classList.remove("cancelActive");
-					optionsText[c].classList.remove("active");
-					editTextBtns[c].classList.add("hidden");
-					saveEditedBtns[c].classList.add("hidden");
-					saveTextBtns[c].classList.remove("hidden");
-				}
+				resetOneLampTexts(idText);
 			});
 		}
 
+		// Boton de borrar todos los textos
 		cancelTextBtn.addEventListener("click", () => {
 			cancelTextBtn.classList.add("hidden");
 			customText.classList.remove("active");
@@ -512,6 +538,7 @@ if (window.pagId) {
 			}
 		});
 
+		// Evento de cantidad de productos
 		itemsQty.addEventListener("change", () => {
 			newQty = itemsQty.value;
 			if (newQty > 10) {
@@ -528,10 +555,20 @@ if (window.pagId) {
 	
 				for (let j = newQty; j < 10; j++) {
 					allTexts[j].classList.add("hidden");
+
+					// Reiniciar los textos mayores a la cantidad
+					idText = j;
+					resetOneLampTexts(idText);
 				}
 			}
 		});
 
+		/* 	Validar longitud del texto,
+			activacion de selects de posiciones,
+			validacion de posiciones,
+			validacion de activacion de opciones de texto 
+			borrar un solo texto de una lampara
+		*/
 		for (field = 0; field < textFields.length; field++) {
 			textFields[field].addEventListener("keyup", (e) => {
 				fieldId = e.target.id;
@@ -547,6 +584,7 @@ if (window.pagId) {
 				optionsBtns = document.getElementById("optionsBtns" + fieldId);
 				cancelText = document.getElementById("cancelText" + fieldId);
 				
+				// Validacion de longitud del texto
 				if (fieldValueLength <= 30) {
 					counter.innerHTML = fieldValueLength;
 					if (fieldValueLength < 25) {
@@ -563,6 +601,7 @@ if (window.pagId) {
 					fieldValue.value = fieldValue.value.substring(0, 30);
 				}
 				
+				// Validar activacion de select y opciones de texto
 				if (fieldValueLength > 0) {
 					select.removeAttribute("disabled");
 					if (select.value != "null") {
@@ -571,6 +610,7 @@ if (window.pagId) {
 
 					cancelText.classList.add("cancelActive");
 
+					// Borrar un solo texto de la lampara
 					cancelText.addEventListener("click", (e) => {
 						id = e.target.id;
 						id = id.substring(id.length - 2);
@@ -586,6 +626,7 @@ if (window.pagId) {
 						idLamp = idFull.substring(0, 1);
 						idSelect = idFull.substring(1, 2);
 						
+						// Validacion de posiciones de selects
 						switch (idSelect) {
 							case "1":
 								pos = [...document.querySelectorAll("#textPosition" + lampId + "2 option")];
@@ -621,6 +662,7 @@ if (window.pagId) {
 					optionsBtns.classList.remove("active");
 					cancelText.classList.remove("cancelActive");
 
+					// Validacion de posiciones de selects
 					if (selectId == 1) {
 						pos1 = document.getElementById("textPosition" + lampId + 1);
 						pos1 = "lamp" + lampId + pos1.value;
@@ -650,7 +692,8 @@ if (window.pagId) {
 					}			
 				}
 			});
-
+			
+			// Validacion de posiciones de selects
 			posSelects[field].addEventListener("change", (e) => {
 				lampSelectId = e.target.id;
 				lampSelectId = lampSelectId.substring(lampSelectId.length - 2);
@@ -696,7 +739,9 @@ if (window.pagId) {
 			});
 		}
 
+		// Eventos de guardar, editar y guardar edicion de texto
 		for (btn = 0; btn < allSaveCustomText.length; btn ++) {
+			// Botones de guardar texto
 			allSaveCustomText[btn].addEventListener("click", (e) => {
 				id = e.target.id;
 				id = id.substring(id.length -2);
@@ -712,6 +757,7 @@ if (window.pagId) {
 					text.setAttribute("disabled", "");
 					select.setAttribute("disabled", "");
 
+					// Botones de editar texto
 					editBtn.addEventListener("click", (e) => {
 						id = e.target.id;
 						id = id.substring(id.length -2);
@@ -726,6 +772,7 @@ if (window.pagId) {
 						text.removeAttribute("disabled");
 						select.removeAttribute("disabled");
 
+						// Botones de guardar edicion
 						saveEditBtn.addEventListener("click", (e) => {
 							id = e.target.id;
 							id = id.substring(id.length -2);
@@ -746,6 +793,7 @@ if (window.pagId) {
 				
 			});
 			
+			// Botones de borrar un texto
 			allCancelCustomText[btn].addEventListener("click", (e) => {
 				id = e.target.id;
 				id = id.substring(id.length - 2);

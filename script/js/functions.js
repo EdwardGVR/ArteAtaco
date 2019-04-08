@@ -374,6 +374,8 @@ if (window.pagId) {
 	} else if (pagId == "lampsDetails") {
 		console.info("Pagina de detalles de lamparas");
 
+		var textsArray = [];
+
 		function resetOneLampTexts (idText) {
 			showTextGroup = document.getElementById("textsLamp" + idText);
 			showTextGroup.classList.add("hidden");
@@ -412,6 +414,10 @@ if (window.pagId) {
 				saveEditedBtns[c].classList.add("hidden");
 				saveTextBtns[c].classList.remove("hidden");
 			}
+		}
+
+		function getTextInfo (idText) {
+				
 		}
 
 		function setTextsArray (action, idText) {

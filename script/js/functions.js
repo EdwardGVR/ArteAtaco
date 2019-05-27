@@ -374,7 +374,7 @@ if (window.pagId) {
 	} else if (pagId == "lampsDetails") {
 		console.info("Pagina de detalles de lamparas");
 
-		var textsArray = [];
+		var customTexts = [];
 
 		function resetOneLampTexts (idText) {
 			showTextGroup = document.getElementById("textsLamp" + idText);
@@ -417,10 +417,18 @@ if (window.pagId) {
 		}
 
 		function getTextInfo (idText) {
-				
+			text = document.getElementById("textInput" + idText).value;
+			position = document.getElementById("textPosition" + idText).value;
+
+			console.log("ID producto: " + productId);
+			console.log("Texto: " + text);
+			console.log("Posicion: " + position);
 		}
 
-		function setTextsArray (action, idText) {
+		function setTexts (action, idText) {
+
+			getTextInfo(idText);
+
 			switch (action) {
 				case "add":
 					
@@ -752,6 +760,8 @@ if (window.pagId) {
 				id = e.target.id;
 				id = id.substring(id.length -2);
 				active = (e.target.parentNode.classList[1] == "active") ? true : false;
+
+				setTexts("add", id);
 				
 				if (active) {
 					text = document.getElementById("textInput" + id);

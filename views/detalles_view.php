@@ -17,7 +17,11 @@
 <?php require("messenger_contact.php") ?>
 
 	<?php if ($nombreCat == "L&aacute;mparas"): ?>
-		<script>var pagId = "lampsDetails";</script>
+		<script>
+			var pagId = "lampsDetails";
+			var productId = <?= $id_prod ?>;
+			var userId = <?= $iduser ?>;
+		</script>
 	<?php endif ?>
 
 	<header>
